@@ -1,0 +1,12 @@
+#|-*- mode:lisp -*-|#
+
+(uiop:define-package #:lake-user
+  (:mix #:cl
+        #:lake))
+(in-package #:lake-user)
+
+(task "default" ("generate"))
+
+(task "generate" ()
+  (ql:quickload :aws-sdk/generator)
+  (uiop:symbol-call :aws-sdk/generator :generate-all-services))
