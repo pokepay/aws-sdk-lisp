@@ -4,7 +4,8 @@
                 #:make-credentials
                 #:provider
                 #:retrieve
-                #:expiredp)
+                #:expiredp
+                #:provider-expiration)
   (:import-from #:aws-sdk/ec2metadata
                 #:ec2metadata)
   (:import-from #:trivial-timeout
