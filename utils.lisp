@@ -7,3 +7,9 @@
 
 (defun lispify (value &optional (package *package*))
   (intern (string-upcase (kebab:to-lisp-case value)) package))
+
+(defun getenv (var)
+  (let ((value (uiop:getenv var)))
+    (when (and (stringp value)
+               (string/= value ""))
+      value)))

@@ -25,6 +25,7 @@ Before using the SDK, you'll need to set AWS credentials for AWS services. AWS-S
 
 * Environment Credentials: Set `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
 * Shared Credentials file (~/.aws/credentials).
+* EC2 Instance Role Credentials
 
 ### Configuring AWS Region
 
@@ -32,6 +33,7 @@ For making AWS API request, AWS region is also required. There're multiple metho
 
 * Environment variable: `AWS_REGION`
 * Shared configuration file (~/.aws/config).
+* EC2 Instance Role Availability Zone
 
 ## Development note
 
