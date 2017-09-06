@@ -1,6 +1,8 @@
 (defpackage #:aws-sdk/credentials
   (:use #:cl)
   (:import-from #:aws-sdk/credentials/base
+                #:make-credentials
+                #:credentials
                 #:retrieve
                 #:credential-keys
                 #:credential-headers)
@@ -10,7 +12,9 @@
                 #:shared-provider)
   (:import-from #:aws-sdk/credentials/ec2role
                 #:ec2role-provider)
-  (:export #:aws-credentials
+  (:export #:credentials
+           #:make-credentials
+           #:aws-credentials
            #:credential-keys
            #:credential-headers))
 (in-package #:aws-sdk/credentials)

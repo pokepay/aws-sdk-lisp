@@ -1,0 +1,28 @@
+(defpackage #:aws-sdk/session
+  (:use #:cl)
+  (:import-from #:aws-sdk/credentials
+                #:credentials
+                #:aws-credentials)
+  (:import-from #:aws-sdk/utils
+                #:getenv)
+  (:import-from #:aws-sdk/utils/config
+                #:read-from-file)
+  (:import-from #:assoc-utils
+                #:aget)
+  (:export #:session
+           #:make-session
+           #:session-credentials
+           #:session-region))
+(in-package #:aws-sdk/session)
+
+(defun aws-region ()
+  (or (getenv "AWS_REGION")
+      (and (probe-file #P"~/.aws/config")
+           (aget (read-from-file #P"~/.aws/config"
+                                 :profile (or (getenv "AWS_PROFILE")
+                                              "default"))
+                 "region"))))
+
+(defstruct session
+  (credentials (aws-credentials) :type (or credentials null))
+  (region (aws-region) :type (or string null)))
