@@ -22,10 +22,10 @@
 (defmethod retrieve ((provider ec2role-provider))
   (handler-case
       (let ((role (ppcre:scan-to-strings "^.+?(?=[\\r\\n])"
-                                         (ec2metadata "iam/security-credentials"))))
+                                         (ec2metadata "/iam/security-credentials"))))
         (when role
           (let ((res (yason:parse
-                      (ec2metadata (format nil "iam/security-credentials/~A" role)))))
+                      (ec2metadata (format nil "/iam/security-credentials/~A" role)))))
             (setf (provider-expiration provider)
                   (local-time:parse-timestring (gethash "Expiration" res)))
             (make-credentials
