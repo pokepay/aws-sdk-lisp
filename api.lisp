@@ -20,10 +20,11 @@
 
 (defun aws-region ()
   (or (getenv "AWS_REGION")
-      (aget (read-from-file #P"~/.aws/config"
-                            :profile (or (getenv "AWS_PROFILE")
-                                         "default"))
-            "region")
+      (and (probe-file #P"~/.aws/config")
+           (aget (read-from-file #P"~/.aws/config"
+                                 :profile (or (getenv "AWS_PROFILE")
+                                              "default"))
+                 "region"))
       (ec2-region)
       (error "AWS region is not configured.")))
 

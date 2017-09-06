@@ -28,11 +28,13 @@
       "default"))
 
 (defun read-config (provider)
-  (read-from-file (slot-value provider 'file)
-                  :profile (provider-profile provider)))
+  (with-slots (file) provider
+    (when (probe-file file)
+      (read-from-file file
+                      :profile (provider-profile provider)))))
 
 (defmethod retrieve ((provider shared-provider))
-  (with-slots (file retrievedp) provider
+  (with-slots (retrievedp) provider
     (setf retrievedp nil)
     (let ((creds (read-config provider)))
       (when creds
