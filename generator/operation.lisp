@@ -25,7 +25,8 @@
 (defun parse-response (response response-name wrapper-name)
   (when response-name
     (let* ((output (xmls-to-alist (xmls:parse response)))
-           (output (aget output response-name)))
+           (output ;; Unwrap the root element
+             (cdr (first output))))
       (if wrapper-name
           (values (aget output wrapper-name)
                   (aget output "ResponseMetadata"))
