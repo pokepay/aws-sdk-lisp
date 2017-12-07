@@ -5,6 +5,7 @@
                 #:session-credentials
                 #:session-region)
   (:import-from #:aws-sdk/credentials
+                #:aws-credentials
                 #:credential-keys
                 #:credential-headers)
   (:import-from #:aws-sign4)
@@ -21,10 +22,11 @@
 
 (defun aws-request (&key (path "/") service method params headers payload
                       (session *session*))
-  (let ((credentials (session-credentials session))
+  (let ((credentials (or (session-credentials session)
+                         (aws-credentials)))
         (region (session-region session)))
     (unless credentials
-      (error "No credentials are set in the given session"))
+      (error "No credentials are found"))
     (unless region
       (error "AWS region is not configured"))
     (let ((host (aws-host service region))

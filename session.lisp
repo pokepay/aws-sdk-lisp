@@ -1,8 +1,7 @@
 (defpackage #:aws-sdk/session
   (:use #:cl)
   (:import-from #:aws-sdk/credentials
-                #:credentials
-                #:aws-credentials)
+                #:credentials)
   (:import-from #:aws-sdk/utils
                 #:getenv)
   (:import-from #:aws-sdk/utils/config
@@ -24,5 +23,5 @@
                  "region"))))
 
 (defstruct session
-  (credentials (aws-credentials) :type (or credentials null))
+  (credentials nil :type (or credentials null))
   (region (aws-region) :type (or string null)))
