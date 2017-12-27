@@ -1,4 +1,6 @@
-(defsystem "aws-sdk"
+(require 'asdf)
+
+(asdf:defsystem "aws-sdk"
   :class :package-inferred-system
   :version "0.1.0"
   :author "Eitaro Fukamachi"

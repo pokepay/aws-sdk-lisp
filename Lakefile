@@ -8,5 +8,6 @@
 (task "default" ("generate"))
 
 (task "generate" ()
+  (load "aws-sdk.asd")
   (ql:quickload :aws-sdk/generator)
   (uiop:symbol-call :aws-sdk/generator :generate-all-services))
