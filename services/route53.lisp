@@ -18,13 +18,15 @@
                         ((aws-sdk/generator/shape::shape alarm-identifier))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Region"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'region))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'region)))
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name))))))
 (common-lisp:deftype alarm-name () 'common-lisp:string)
 (common-lisp:deftype alias-health-enabled () 'common-lisp:boolean)
 (common-lisp:progn
@@ -41,17 +43,20 @@
                         ((aws-sdk/generator/shape::shape alias-target))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "DNSName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'dnsname))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'dnsname)))
     (aws-sdk/generator/shape::to-query-params "EvaluateTargetHealth"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'evaluate-target-health)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'evaluate-target-health))))))
 (common-lisp:deftype associate-vpccomment () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -71,17 +76,20 @@
                           associate-vpcwith-hosted-zone-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "VPC"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'vpc))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'vpc)))
     (aws-sdk/generator/shape::to-query-params "Comment"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'comment)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'comment))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (associate-vpcwith-hosted-zone-response (:copier common-lisp:nil))
@@ -96,9 +104,10 @@
                           associate-vpcwith-hosted-zone-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ChangeInfo"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'change-info)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'change-info))))))
 (common-lisp:progn
  (common-lisp:defstruct (change (:copier common-lisp:nil))
    (action (common-lisp:error ":action is required") :type
@@ -110,13 +119,15 @@
                         ((aws-sdk/generator/shape::shape change))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Action"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'action))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'action)))
     (aws-sdk/generator/shape::to-query-params "ResourceRecordSet"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-record-set)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-record-set))))))
 (common-lisp:deftype change-action () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (change-batch (:copier common-lisp:nil))
@@ -129,13 +140,15 @@
                         ((aws-sdk/generator/shape::shape change-batch))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Comment"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'comment))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'comment)))
     (aws-sdk/generator/shape::to-query-params "Changes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'changes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'changes))))))
 (common-lisp:progn
  (common-lisp:defstruct (change-info (:copier common-lisp:nil))
    (id (common-lisp:error ":id is required") :type
@@ -151,21 +164,25 @@
                         ((aws-sdk/generator/shape::shape change-info))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status)))
     (aws-sdk/generator/shape::to-query-params "SubmittedAt"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'submitted-at))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'submitted-at)))
     (aws-sdk/generator/shape::to-query-params "Comment"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'comment)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'comment))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (change-resource-record-sets-request (:copier common-lisp:nil))
@@ -182,13 +199,15 @@
                           change-resource-record-sets-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "ChangeBatch"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'change-batch)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'change-batch))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (change-resource-record-sets-response (:copier common-lisp:nil))
@@ -203,9 +222,10 @@
                           change-resource-record-sets-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ChangeInfo"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'change-info)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'change-info))))))
 (common-lisp:deftype change-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -226,21 +246,25 @@
                           change-tags-for-resource-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-type)))
     (aws-sdk/generator/shape::to-query-params "ResourceId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-id)))
     (aws-sdk/generator/shape::to-query-params "AddTags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'add-tags))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'add-tags)))
     (aws-sdk/generator/shape::to-query-params "RemoveTagKeys"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'remove-tag-keys)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'remove-tag-keys))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (change-tags-for-resource-response (:copier common-lisp:nil)))
@@ -303,37 +327,45 @@
                           cloud-watch-alarm-configuration))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "EvaluationPeriods"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'evaluation-periods))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'evaluation-periods)))
     (aws-sdk/generator/shape::to-query-params "Threshold"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'threshold))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'threshold)))
     (aws-sdk/generator/shape::to-query-params "ComparisonOperator"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'comparison-operator))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'comparison-operator)))
     (aws-sdk/generator/shape::to-query-params "Period"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'period))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'period)))
     (aws-sdk/generator/shape::to-query-params "MetricName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'metric-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'metric-name)))
     (aws-sdk/generator/shape::to-query-params "Namespace"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'namespace))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'namespace)))
     (aws-sdk/generator/shape::to-query-params "Statistic"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'statistic))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'statistic)))
     (aws-sdk/generator/shape::to-query-params "Dimensions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'dimensions)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'dimensions))))))
 (common-lisp:deftype cloud-watch-region () 'common-lisp:string)
 (common-lisp:deftype comparison-operator () 'common-lisp:string)
 (common-lisp:progn
@@ -348,9 +380,10 @@
                           concurrent-modification))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (conflicting-domain-exists (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -364,9 +397,10 @@
                           conflicting-domain-exists))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (conflicting-types (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -377,9 +411,10 @@
                         ((aws-sdk/generator/shape::shape conflicting-types))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-health-check-request (:copier common-lisp:nil))
    (caller-reference (common-lisp:error ":caller-reference is required") :type
@@ -395,13 +430,15 @@
                           create-health-check-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CallerReference"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'caller-reference))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'caller-reference)))
     (aws-sdk/generator/shape::to-query-params "HealthCheckConfig"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check-config)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check-config))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-health-check-response (:copier common-lisp:nil))
@@ -418,13 +455,15 @@
                           create-health-check-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HealthCheck"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check)))
     (aws-sdk/generator/shape::to-query-params "Location"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'location)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'location))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-hosted-zone-request (:copier common-lisp:nil))
    (name (common-lisp:error ":name is required") :type
@@ -445,25 +484,30 @@
                           create-hosted-zone-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "VPC"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'vpc))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'vpc)))
     (aws-sdk/generator/shape::to-query-params "CallerReference"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'caller-reference))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'caller-reference)))
     (aws-sdk/generator/shape::to-query-params "HostedZoneConfig"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-config))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-config)))
     (aws-sdk/generator/shape::to-query-params "DelegationSetId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'delegation-set-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'delegation-set-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-hosted-zone-response (:copier common-lisp:nil))
    (hosted-zone (common-lisp:error ":hosted-zone is required") :type
@@ -484,25 +528,30 @@
                           create-hosted-zone-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZone"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone)))
     (aws-sdk/generator/shape::to-query-params "ChangeInfo"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'change-info))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'change-info)))
     (aws-sdk/generator/shape::to-query-params "DelegationSet"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'delegation-set))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'delegation-set)))
     (aws-sdk/generator/shape::to-query-params "VPC"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'vpc))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'vpc)))
     (aws-sdk/generator/shape::to-query-params "Location"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'location)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'location))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-reusable-delegation-set-request (:copier common-lisp:nil))
@@ -519,13 +568,15 @@
                           create-reusable-delegation-set-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CallerReference"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'caller-reference))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'caller-reference)))
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-reusable-delegation-set-response (:copier common-lisp:nil))
@@ -542,13 +593,15 @@
                           create-reusable-delegation-set-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DelegationSet"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'delegation-set))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'delegation-set)))
     (aws-sdk/generator/shape::to-query-params "Location"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'location)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'location))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-traffic-policy-instance-request (:copier common-lisp:nil))
@@ -572,25 +625,30 @@
                           create-traffic-policy-instance-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "TTL"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'ttl))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'ttl)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-id)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyVersion"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-version)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-version))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-traffic-policy-instance-response (:copier common-lisp:nil))
@@ -608,13 +666,15 @@
                           create-traffic-policy-instance-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstance"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance)))
     (aws-sdk/generator/shape::to-query-params "Location"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'location)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'location))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-traffic-policy-request (:copier common-lisp:nil))
@@ -633,17 +693,20 @@
                           create-traffic-policy-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "Document"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'document))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'document)))
     (aws-sdk/generator/shape::to-query-params "Comment"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'comment)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'comment))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-traffic-policy-response (:copier common-lisp:nil))
@@ -660,13 +723,15 @@
                           create-traffic-policy-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicy"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy)))
     (aws-sdk/generator/shape::to-query-params "Location"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'location)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'location))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-traffic-policy-version-request (:copier common-lisp:nil))
@@ -685,17 +750,20 @@
                           create-traffic-policy-version-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "Document"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'document))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'document)))
     (aws-sdk/generator/shape::to-query-params "Comment"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'comment)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'comment))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-traffic-policy-version-response (:copier common-lisp:nil))
@@ -712,13 +780,15 @@
                           create-traffic-policy-version-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicy"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy)))
     (aws-sdk/generator/shape::to-query-params "Location"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'location)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'location))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-vpcassociation-authorization-request (:copier common-lisp:nil))
@@ -735,13 +805,15 @@
                           create-vpcassociation-authorization-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "VPC"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'vpc)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'vpc))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-vpcassociation-authorization-response (:copier common-lisp:nil))
@@ -758,13 +830,15 @@
                           create-vpcassociation-authorization-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "VPC"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'vpc)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'vpc))))))
 (common-lisp:deftype dnsname () 'common-lisp:string)
 (common-lisp:deftype dnsrcode () 'common-lisp:string)
 (common-lisp:progn
@@ -779,17 +853,20 @@
                         ((aws-sdk/generator/shape::shape delegation-set))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "CallerReference"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'caller-reference))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'caller-reference)))
     (aws-sdk/generator/shape::to-query-params "NameServers"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name-servers)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name-servers))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delegation-set-already-created (:copier common-lisp:nil))
@@ -804,9 +881,10 @@
                           delegation-set-already-created))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delegation-set-already-reusable (:copier common-lisp:nil))
@@ -821,9 +899,10 @@
                           delegation-set-already-reusable))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (delegation-set-in-use (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -836,9 +915,10 @@
                           delegation-set-in-use))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:deftype delegation-set-name-servers ()
    '(trivial-types:proper-list dnsname))
@@ -861,9 +941,10 @@
                           delegation-set-not-available))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (delegation-set-not-reusable (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -877,9 +958,10 @@
                           delegation-set-not-reusable))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:deftype delegation-sets ()
    '(trivial-types:proper-list delegation-set))
@@ -901,9 +983,10 @@
                           delete-health-check-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HealthCheckId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-health-check-response (:copier common-lisp:nil)))
@@ -928,9 +1011,10 @@
                           delete-hosted-zone-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-hosted-zone-response (:copier common-lisp:nil))
    (change-info (common-lisp:error ":change-info is required") :type
@@ -944,9 +1028,10 @@
                           delete-hosted-zone-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ChangeInfo"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'change-info)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'change-info))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-reusable-delegation-set-request (:copier common-lisp:nil))
@@ -961,9 +1046,10 @@
                           delete-reusable-delegation-set-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-reusable-delegation-set-response (:copier common-lisp:nil)))
@@ -989,9 +1075,10 @@
                           delete-traffic-policy-instance-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-traffic-policy-instance-response (:copier common-lisp:nil)))
@@ -1019,13 +1106,15 @@
                           delete-traffic-policy-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "Version"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'version)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'version))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-traffic-policy-response (:copier common-lisp:nil)))
@@ -1053,13 +1142,15 @@
                           delete-vpcassociation-authorization-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "VPC"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'vpc)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'vpc))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-vpcassociation-authorization-response (:copier common-lisp:nil)))
@@ -1082,13 +1173,15 @@
                         ((aws-sdk/generator/shape::shape dimension))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "Value"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'value))))))
 (common-lisp:deftype dimension-field () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype dimension-list () '(trivial-types:proper-list dimension))
@@ -1116,17 +1209,20 @@
                           disassociate-vpcfrom-hosted-zone-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "VPC"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'vpc))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'vpc)))
     (aws-sdk/generator/shape::to-query-params "Comment"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'comment)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'comment))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (disassociate-vpcfrom-hosted-zone-response (:copier common-lisp:nil))
@@ -1141,9 +1237,10 @@
                           disassociate-vpcfrom-hosted-zone-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ChangeInfo"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'change-info)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'change-info))))))
 (common-lisp:deftype enable-sni () 'common-lisp:boolean)
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
@@ -1170,17 +1267,20 @@
                         ((aws-sdk/generator/shape::shape geo-location))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ContinentCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'continent-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'continent-code)))
     (aws-sdk/generator/shape::to-query-params "CountryCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'country-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'country-code)))
     (aws-sdk/generator/shape::to-query-params "SubdivisionCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'subdivision-code)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'subdivision-code))))))
 (common-lisp:deftype geo-location-continent-code () 'common-lisp:string)
 (common-lisp:deftype geo-location-continent-name () 'common-lisp:string)
 (common-lisp:deftype geo-location-country-code () 'common-lisp:string)
@@ -1205,29 +1305,35 @@
                         ((aws-sdk/generator/shape::shape geo-location-details))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ContinentCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'continent-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'continent-code)))
     (aws-sdk/generator/shape::to-query-params "ContinentName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'continent-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'continent-name)))
     (aws-sdk/generator/shape::to-query-params "CountryCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'country-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'country-code)))
     (aws-sdk/generator/shape::to-query-params "CountryName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'country-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'country-name)))
     (aws-sdk/generator/shape::to-query-params "SubdivisionCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'subdivision-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'subdivision-code)))
     (aws-sdk/generator/shape::to-query-params "SubdivisionName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'subdivision-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'subdivision-name))))))
 (common-lisp:progn
  (common-lisp:deftype geo-location-details-list ()
    '(trivial-types:proper-list geo-location-details))
@@ -1248,9 +1354,10 @@
                         ((aws-sdk/generator/shape::shape get-change-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-change-response (:copier common-lisp:nil))
    (change-info (common-lisp:error ":change-info is required") :type
@@ -1261,9 +1368,10 @@
                         ((aws-sdk/generator/shape::shape get-change-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ChangeInfo"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'change-info)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'change-info))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-checker-ip-ranges-request (:copier common-lisp:nil)))
@@ -1289,9 +1397,10 @@
                           get-checker-ip-ranges-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CheckerIpRanges"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'checker-ip-ranges)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'checker-ip-ranges))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-geo-location-request (:copier common-lisp:nil))
    (continent-code common-lisp:nil :type
@@ -1308,17 +1417,20 @@
                           get-geo-location-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ContinentCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'continent-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'continent-code)))
     (aws-sdk/generator/shape::to-query-params "CountryCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'country-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'country-code)))
     (aws-sdk/generator/shape::to-query-params "SubdivisionCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'subdivision-code)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'subdivision-code))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-geo-location-response (:copier common-lisp:nil))
    (geo-location-details
@@ -1333,9 +1445,10 @@
                           get-geo-location-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "GeoLocationDetails"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'geo-location-details)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'geo-location-details))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-health-check-count-request (:copier common-lisp:nil)))
@@ -1361,9 +1474,10 @@
                           get-health-check-count-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HealthCheckCount"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check-count)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check-count))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-health-check-last-failure-reason-request (:copier common-lisp:nil))
@@ -1378,9 +1492,10 @@
                           get-health-check-last-failure-reason-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HealthCheckId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-health-check-last-failure-reason-response (:copier common-lisp:nil))
@@ -1396,9 +1511,10 @@
                           get-health-check-last-failure-reason-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HealthCheckObservations"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check-observations)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check-observations))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-health-check-request (:copier common-lisp:nil))
    (health-check-id (common-lisp:error ":health-check-id is required") :type
@@ -1411,9 +1527,10 @@
                           get-health-check-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HealthCheckId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-health-check-response (:copier common-lisp:nil))
    (health-check (common-lisp:error ":health-check is required") :type
@@ -1427,9 +1544,10 @@
                           get-health-check-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HealthCheck"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-health-check-status-request (:copier common-lisp:nil))
@@ -1444,9 +1562,10 @@
                           get-health-check-status-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HealthCheckId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-health-check-status-response (:copier common-lisp:nil))
@@ -1462,9 +1581,10 @@
                           get-health-check-status-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HealthCheckObservations"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check-observations)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check-observations))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-hosted-zone-count-request (:copier common-lisp:nil)))
@@ -1490,9 +1610,10 @@
                           get-hosted-zone-count-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneCount"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-count)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-count))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-hosted-zone-request (:copier common-lisp:nil))
    (id (common-lisp:error ":id is required") :type
@@ -1505,9 +1626,10 @@
                           get-hosted-zone-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-hosted-zone-response (:copier common-lisp:nil))
    (hosted-zone (common-lisp:error ":hosted-zone is required") :type
@@ -1523,17 +1645,20 @@
                           get-hosted-zone-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZone"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone)))
     (aws-sdk/generator/shape::to-query-params "DelegationSet"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'delegation-set))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'delegation-set)))
     (aws-sdk/generator/shape::to-query-params "VPCs"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'vpcs)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'vpcs))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-reusable-delegation-set-request (:copier common-lisp:nil))
@@ -1548,9 +1673,10 @@
                           get-reusable-delegation-set-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-reusable-delegation-set-response (:copier common-lisp:nil))
@@ -1565,9 +1691,10 @@
                           get-reusable-delegation-set-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DelegationSet"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'delegation-set)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'delegation-set))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-traffic-policy-instance-count-request (:copier common-lisp:nil)))
@@ -1594,9 +1721,10 @@
                           get-traffic-policy-instance-count-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceCount"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-count)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-count))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-traffic-policy-instance-request (:copier common-lisp:nil))
@@ -1611,9 +1739,10 @@
                           get-traffic-policy-instance-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-traffic-policy-instance-response (:copier common-lisp:nil))
@@ -1629,9 +1758,10 @@
                           get-traffic-policy-instance-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstance"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-traffic-policy-request (:copier common-lisp:nil))
    (id (common-lisp:error ":id is required") :type
@@ -1647,13 +1777,15 @@
                           get-traffic-policy-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "Version"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'version)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'version))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-traffic-policy-response (:copier common-lisp:nil))
    (traffic-policy (common-lisp:error ":traffic-policy is required") :type
@@ -1667,9 +1799,10 @@
                           get-traffic-policy-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicy"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy))))))
 (common-lisp:progn
  (common-lisp:defstruct (health-check (:copier common-lisp:nil))
    (id (common-lisp:error ":id is required") :type
@@ -1688,25 +1821,30 @@
                         ((aws-sdk/generator/shape::shape health-check))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "CallerReference"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'caller-reference))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'caller-reference)))
     (aws-sdk/generator/shape::to-query-params "HealthCheckConfig"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check-config))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check-config)))
     (aws-sdk/generator/shape::to-query-params "HealthCheckVersion"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check-version))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check-version)))
     (aws-sdk/generator/shape::to-query-params "CloudWatchAlarmConfiguration"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'cloud-watch-alarm-configuration)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'cloud-watch-alarm-configuration))))))
 (common-lisp:progn
  (common-lisp:defstruct (health-check-already-exists (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -1720,9 +1858,10 @@
                           health-check-already-exists))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (health-check-config (:copier common-lisp:nil))
    (ipaddress common-lisp:nil :type
@@ -1761,69 +1900,85 @@
                         ((aws-sdk/generator/shape::shape health-check-config))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "IPAddress"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'ipaddress))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'ipaddress)))
     (aws-sdk/generator/shape::to-query-params "Port"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'port))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'port)))
     (aws-sdk/generator/shape::to-query-params "Type"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'type)))
     (aws-sdk/generator/shape::to-query-params "ResourcePath"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-path))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-path)))
     (aws-sdk/generator/shape::to-query-params "FullyQualifiedDomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'fully-qualified-domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'fully-qualified-domain-name)))
     (aws-sdk/generator/shape::to-query-params "SearchString"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-string))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-string)))
     (aws-sdk/generator/shape::to-query-params "RequestInterval"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'request-interval))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'request-interval)))
     (aws-sdk/generator/shape::to-query-params "FailureThreshold"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'failure-threshold))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'failure-threshold)))
     (aws-sdk/generator/shape::to-query-params "MeasureLatency"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'measure-latency))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'measure-latency)))
     (aws-sdk/generator/shape::to-query-params "Inverted"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'inverted))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'inverted)))
     (aws-sdk/generator/shape::to-query-params "HealthThreshold"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-threshold))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-threshold)))
     (aws-sdk/generator/shape::to-query-params "ChildHealthChecks"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'child-health-checks))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'child-health-checks)))
     (aws-sdk/generator/shape::to-query-params "EnableSNI"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'enable-sni))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'enable-sni)))
     (aws-sdk/generator/shape::to-query-params "Regions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'regions))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'regions)))
     (aws-sdk/generator/shape::to-query-params "AlarmIdentifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'alarm-identifier))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'alarm-identifier)))
     (aws-sdk/generator/shape::to-query-params "InsufficientDataHealthStatus"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'insufficient-data-health-status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'insufficient-data-health-status))))))
 (common-lisp:deftype health-check-count () 'common-lisp:integer)
 (common-lisp:deftype health-check-id () 'common-lisp:string)
 (common-lisp:progn
@@ -1836,9 +1991,10 @@
                         ((aws-sdk/generator/shape::shape health-check-in-use))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype health-check-nonce () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (health-check-observation (:copier common-lisp:nil))
@@ -1856,17 +2012,20 @@
                           health-check-observation))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Region"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'region))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'region)))
     (aws-sdk/generator/shape::to-query-params "IPAddress"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'ipaddress))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'ipaddress)))
     (aws-sdk/generator/shape::to-query-params "StatusReport"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status-report)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status-report))))))
 (common-lisp:progn
  (common-lisp:deftype health-check-observations ()
    '(trivial-types:proper-list health-check-observation))
@@ -1901,9 +2060,10 @@
                           health-check-version-mismatch))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:deftype health-checks ()
    '(trivial-types:proper-list health-check))
@@ -1930,25 +2090,30 @@
                         ((aws-sdk/generator/shape::shape hosted-zone))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "CallerReference"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'caller-reference))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'caller-reference)))
     (aws-sdk/generator/shape::to-query-params "Config"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'config))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'config)))
     (aws-sdk/generator/shape::to-query-params "ResourceRecordSetCount"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-record-set-count)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-record-set-count))))))
 (common-lisp:progn
  (common-lisp:defstruct (hosted-zone-already-exists (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -1962,9 +2127,10 @@
                           hosted-zone-already-exists))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (hosted-zone-config (:copier common-lisp:nil))
    (comment common-lisp:nil :type
@@ -1977,13 +2143,15 @@
                         ((aws-sdk/generator/shape::shape hosted-zone-config))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Comment"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'comment))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'comment)))
     (aws-sdk/generator/shape::to-query-params "PrivateZone"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'private-zone)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'private-zone))))))
 (common-lisp:deftype hosted-zone-count () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (hosted-zone-not-empty (:copier common-lisp:nil))
@@ -1997,9 +2165,10 @@
                           hosted-zone-not-empty))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (hosted-zone-not-found (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -2012,9 +2181,10 @@
                           hosted-zone-not-found))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype hosted-zone-rrset-count () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:deftype hosted-zones () '(trivial-types:proper-list hosted-zone))
@@ -2035,9 +2205,10 @@
                         ((aws-sdk/generator/shape::shape incompatible-version))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype insufficient-data-health-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (invalid-argument (:copier common-lisp:nil))
@@ -2049,9 +2220,10 @@
                         ((aws-sdk/generator/shape::shape invalid-argument))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-change-batch (:copier common-lisp:nil))
    (messages common-lisp:nil :type
@@ -2064,13 +2236,15 @@
                         ((aws-sdk/generator/shape::shape invalid-change-batch))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "messages"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'messages))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'messages)))
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-domain-name (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -2081,9 +2255,10 @@
                         ((aws-sdk/generator/shape::shape invalid-domain-name))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-input (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -2093,9 +2268,10 @@
                         ((aws-sdk/generator/shape::shape invalid-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-pagination-token (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -2108,9 +2284,10 @@
                           invalid-pagination-token))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-traffic-policy-document (:copier common-lisp:nil))
@@ -2125,9 +2302,10 @@
                           invalid-traffic-policy-document))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-vpcid (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -2137,9 +2315,10 @@
                         ((aws-sdk/generator/shape::shape invalid-vpcid))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype inverted () 'common-lisp:boolean)
 (common-lisp:deftype is-private-zone () 'common-lisp:boolean)
 (common-lisp:progn
@@ -2152,9 +2331,10 @@
                         ((aws-sdk/generator/shape::shape last-vpcassociation))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (limits-exceeded (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -2164,9 +2344,10 @@
                         ((aws-sdk/generator/shape::shape limits-exceeded))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-geo-locations-request (:copier common-lisp:nil))
    (start-continent-code common-lisp:nil :type
@@ -2186,21 +2367,25 @@
                           list-geo-locations-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "StartContinentCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'start-continent-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'start-continent-code)))
     (aws-sdk/generator/shape::to-query-params "StartCountryCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'start-country-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'start-country-code)))
     (aws-sdk/generator/shape::to-query-params "StartSubdivisionCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'start-subdivision-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'start-subdivision-code)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-geo-locations-response (:copier common-lisp:nil))
    (geo-location-details-list
@@ -2225,29 +2410,35 @@
                           list-geo-locations-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "GeoLocationDetailsList"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'geo-location-details-list))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'geo-location-details-list)))
     (aws-sdk/generator/shape::to-query-params "IsTruncated"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'is-truncated))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'is-truncated)))
     (aws-sdk/generator/shape::to-query-params "NextContinentCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-continent-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-continent-code)))
     (aws-sdk/generator/shape::to-query-params "NextCountryCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-country-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-country-code)))
     (aws-sdk/generator/shape::to-query-params "NextSubdivisionCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-subdivision-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-subdivision-code)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-health-checks-request (:copier common-lisp:nil))
    (marker common-lisp:nil :type (common-lisp:or page-marker common-lisp:null))
@@ -2262,13 +2453,15 @@
                           list-health-checks-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Marker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'marker)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-health-checks-response (:copier common-lisp:nil))
    (health-checks (common-lisp:error ":health-checks is required") :type
@@ -2290,25 +2483,30 @@
                           list-health-checks-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HealthChecks"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-checks))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-checks)))
     (aws-sdk/generator/shape::to-query-params "Marker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'marker)))
     (aws-sdk/generator/shape::to-query-params "IsTruncated"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'is-truncated))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'is-truncated)))
     (aws-sdk/generator/shape::to-query-params "NextMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-marker)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-hosted-zones-by-name-request (:copier common-lisp:nil))
@@ -2326,17 +2524,20 @@
                           list-hosted-zones-by-name-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DNSName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'dnsname))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'dnsname)))
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-hosted-zones-by-name-response (:copier common-lisp:nil))
@@ -2362,33 +2563,40 @@
                           list-hosted-zones-by-name-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZones"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zones))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zones)))
     (aws-sdk/generator/shape::to-query-params "DNSName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'dnsname))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'dnsname)))
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "IsTruncated"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'is-truncated))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'is-truncated)))
     (aws-sdk/generator/shape::to-query-params "NextDNSName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-dnsname))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-dnsname)))
     (aws-sdk/generator/shape::to-query-params "NextHostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-hosted-zones-request (:copier common-lisp:nil))
    (marker common-lisp:nil :type (common-lisp:or page-marker common-lisp:null))
@@ -2405,17 +2613,20 @@
                           list-hosted-zones-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Marker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'marker)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items)))
     (aws-sdk/generator/shape::to-query-params "DelegationSetId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'delegation-set-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'delegation-set-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-hosted-zones-response (:copier common-lisp:nil))
    (hosted-zones (common-lisp:error ":hosted-zones is required") :type
@@ -2437,25 +2648,30 @@
                           list-hosted-zones-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZones"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zones))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zones)))
     (aws-sdk/generator/shape::to-query-params "Marker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'marker)))
     (aws-sdk/generator/shape::to-query-params "IsTruncated"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'is-truncated))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'is-truncated)))
     (aws-sdk/generator/shape::to-query-params "NextMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-marker)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-resource-record-sets-request (:copier common-lisp:nil))
@@ -2478,25 +2694,30 @@
                           list-resource-record-sets-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "StartRecordName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'start-record-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'start-record-name)))
     (aws-sdk/generator/shape::to-query-params "StartRecordType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'start-record-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'start-record-type)))
     (aws-sdk/generator/shape::to-query-params "StartRecordIdentifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'start-record-identifier))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'start-record-identifier)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-resource-record-sets-response (:copier common-lisp:nil))
@@ -2522,29 +2743,35 @@
                           list-resource-record-sets-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceRecordSets"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-record-sets))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-record-sets)))
     (aws-sdk/generator/shape::to-query-params "IsTruncated"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'is-truncated))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'is-truncated)))
     (aws-sdk/generator/shape::to-query-params "NextRecordName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-record-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-record-name)))
     (aws-sdk/generator/shape::to-query-params "NextRecordType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-record-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-record-type)))
     (aws-sdk/generator/shape::to-query-params "NextRecordIdentifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-record-identifier))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-record-identifier)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-reusable-delegation-sets-request (:copier common-lisp:nil))
@@ -2560,13 +2787,15 @@
                           list-reusable-delegation-sets-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Marker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'marker)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-reusable-delegation-sets-response (:copier common-lisp:nil))
@@ -2589,25 +2818,30 @@
                           list-reusable-delegation-sets-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DelegationSets"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'delegation-sets))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'delegation-sets)))
     (aws-sdk/generator/shape::to-query-params "Marker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'marker)))
     (aws-sdk/generator/shape::to-query-params "IsTruncated"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'is-truncated))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'is-truncated)))
     (aws-sdk/generator/shape::to-query-params "NextMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-marker)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-request (:copier common-lisp:nil))
@@ -2624,13 +2858,15 @@
                           list-tags-for-resource-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-type)))
     (aws-sdk/generator/shape::to-query-params "ResourceId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-response (:copier common-lisp:nil))
@@ -2645,9 +2881,10 @@
                           list-tags-for-resource-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceTagSet"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-tag-set)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-tag-set))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resources-request (:copier common-lisp:nil))
@@ -2664,13 +2901,15 @@
                           list-tags-for-resources-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-type)))
     (aws-sdk/generator/shape::to-query-params "ResourceIds"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-ids)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-ids))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resources-response (:copier common-lisp:nil))
@@ -2685,9 +2924,10 @@
                           list-tags-for-resources-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceTagSets"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-tag-sets)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-tag-sets))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-traffic-policies-request (:copier common-lisp:nil))
@@ -2704,13 +2944,15 @@
                           list-traffic-policies-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyIdMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-id-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-id-marker)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-traffic-policies-response (:copier common-lisp:nil))
@@ -2733,21 +2975,25 @@
                           list-traffic-policies-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicySummaries"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-summaries))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-summaries)))
     (aws-sdk/generator/shape::to-query-params "IsTruncated"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'is-truncated))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'is-truncated)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyIdMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-id-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-id-marker)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-traffic-policy-instances-by-hosted-zone-request
@@ -2769,21 +3015,25 @@
                           list-traffic-policy-instances-by-hosted-zone-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceNameMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-name-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-name-marker)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceTypeMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-type-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-type-marker)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-traffic-policy-instances-by-hosted-zone-response
@@ -2808,25 +3058,30 @@
                           list-traffic-policy-instances-by-hosted-zone-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstances"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instances))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instances)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceNameMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-name-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-name-marker)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceTypeMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-type-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-type-marker)))
     (aws-sdk/generator/shape::to-query-params "IsTruncated"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'is-truncated))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'is-truncated)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-traffic-policy-instances-by-policy-request
@@ -2853,29 +3108,35 @@
                           list-traffic-policy-instances-by-policy-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-id)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyVersion"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-version))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-version)))
     (aws-sdk/generator/shape::to-query-params "HostedZoneIdMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id-marker)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceNameMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-name-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-name-marker)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceTypeMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-type-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-type-marker)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-traffic-policy-instances-by-policy-response
@@ -2902,29 +3163,35 @@
                           list-traffic-policy-instances-by-policy-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstances"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instances))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instances)))
     (aws-sdk/generator/shape::to-query-params "HostedZoneIdMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id-marker)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceNameMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-name-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-name-marker)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceTypeMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-type-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-type-marker)))
     (aws-sdk/generator/shape::to-query-params "IsTruncated"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'is-truncated))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'is-truncated)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-traffic-policy-instances-request (:copier common-lisp:nil))
@@ -2945,21 +3212,25 @@
                           list-traffic-policy-instances-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneIdMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id-marker)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceNameMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-name-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-name-marker)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceTypeMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-type-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-type-marker)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-traffic-policy-instances-response (:copier common-lisp:nil))
@@ -2985,29 +3256,35 @@
                           list-traffic-policy-instances-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstances"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instances))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instances)))
     (aws-sdk/generator/shape::to-query-params "HostedZoneIdMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id-marker)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceNameMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-name-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-name-marker)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceTypeMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-type-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-type-marker)))
     (aws-sdk/generator/shape::to-query-params "IsTruncated"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'is-truncated))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'is-truncated)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-traffic-policy-versions-request (:copier common-lisp:nil))
@@ -3026,17 +3303,20 @@
                           list-traffic-policy-versions-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyVersionMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-version-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-version-marker)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-traffic-policy-versions-response (:copier common-lisp:nil))
@@ -3058,21 +3338,25 @@
                           list-traffic-policy-versions-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicies"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policies))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policies)))
     (aws-sdk/generator/shape::to-query-params "IsTruncated"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'is-truncated))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'is-truncated)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyVersionMarker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-version-marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-version-marker)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-vpcassociation-authorizations-request (:copier common-lisp:nil))
@@ -3091,17 +3375,20 @@
                           list-vpcassociation-authorizations-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token)))
     (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-results)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-results))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-vpcassociation-authorizations-response (:copier common-lisp:nil))
@@ -3120,17 +3407,20 @@
                           list-vpcassociation-authorizations-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token)))
     (aws-sdk/generator/shape::to-query-params "VPCs"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'vpcs)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'vpcs))))))
 (common-lisp:deftype max-results () 'common-lisp:string)
 (common-lisp:deftype measure-latency () 'common-lisp:boolean)
 (common-lisp:deftype message () 'common-lisp:string)
@@ -3146,9 +3436,10 @@
                         ((aws-sdk/generator/shape::shape no-such-change))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (no-such-delegation-set (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -3161,9 +3452,10 @@
                           no-such-delegation-set))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (no-such-geo-location (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -3174,9 +3466,10 @@
                         ((aws-sdk/generator/shape::shape no-such-geo-location))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (no-such-health-check (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -3187,9 +3480,10 @@
                         ((aws-sdk/generator/shape::shape no-such-health-check))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (no-such-hosted-zone (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -3200,9 +3494,10 @@
                         ((aws-sdk/generator/shape::shape no-such-hosted-zone))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (no-such-traffic-policy (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -3215,9 +3510,10 @@
                           no-such-traffic-policy))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (no-such-traffic-policy-instance (:copier common-lisp:nil))
@@ -3232,9 +3528,10 @@
                           no-such-traffic-policy-instance))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype nonce () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (not-authorized-exception (:copier common-lisp:nil))
@@ -3248,9 +3545,10 @@
                           not-authorized-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype page-marker () 'common-lisp:string)
 (common-lisp:deftype page-max-items () 'common-lisp:string)
 (common-lisp:deftype page-truncated () 'common-lisp:boolean)
@@ -3270,9 +3568,10 @@
                           prior-request-not-complete))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (public-zone-vpcassociation (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -3286,9 +3585,10 @@
                           public-zone-vpcassociation))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype rdata () 'common-lisp:string)
 (common-lisp:deftype rrtype () 'common-lisp:string)
 (common-lisp:progn
@@ -3313,9 +3613,10 @@
                         ((aws-sdk/generator/shape::shape resource-record))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Value"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'value))))))
 (common-lisp:progn
  (common-lisp:defstruct (resource-record-set (:copier common-lisp:nil))
    (name (common-lisp:error ":name is required") :type
@@ -3349,57 +3650,70 @@
                         ((aws-sdk/generator/shape::shape resource-record-set))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "Type"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'type)))
     (aws-sdk/generator/shape::to-query-params "SetIdentifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'set-identifier))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'set-identifier)))
     (aws-sdk/generator/shape::to-query-params "Weight"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'weight))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'weight)))
     (aws-sdk/generator/shape::to-query-params "Region"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'region))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'region)))
     (aws-sdk/generator/shape::to-query-params "GeoLocation"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'geo-location))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'geo-location)))
     (aws-sdk/generator/shape::to-query-params "Failover"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'failover))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'failover)))
     (aws-sdk/generator/shape::to-query-params "MultiValueAnswer"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'multi-value-answer))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'multi-value-answer)))
     (aws-sdk/generator/shape::to-query-params "TTL"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'ttl))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'ttl)))
     (aws-sdk/generator/shape::to-query-params "ResourceRecords"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-records))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-records)))
     (aws-sdk/generator/shape::to-query-params "AliasTarget"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'alias-target))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'alias-target)))
     (aws-sdk/generator/shape::to-query-params "HealthCheckId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check-id)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstanceId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance-id))))))
 (common-lisp:deftype resource-record-set-failover () 'common-lisp:string)
 (common-lisp:deftype resource-record-set-identifier () 'common-lisp:string)
 (common-lisp:deftype resource-record-set-multi-value-answer ()
@@ -3435,17 +3749,20 @@
                         ((aws-sdk/generator/shape::shape resource-tag-set))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-type)))
     (aws-sdk/generator/shape::to-query-params "ResourceId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-id)))
     (aws-sdk/generator/shape::to-query-params "Tags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags))))))
 (common-lisp:progn
  (common-lisp:deftype resource-tag-set-list ()
    '(trivial-types:proper-list resource-tag-set))
@@ -3468,13 +3785,15 @@
                         ((aws-sdk/generator/shape::shape status-report))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status)))
     (aws-sdk/generator/shape::to-query-params "CheckedTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'checked-time)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'checked-time))))))
 (common-lisp:deftype subnet-mask () 'common-lisp:string)
 (common-lisp:deftype ttl () 'common-lisp:integer)
 (common-lisp:progn
@@ -3486,13 +3805,15 @@
                         ((aws-sdk/generator/shape::shape tag))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Key"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'key)))
     (aws-sdk/generator/shape::to-query-params "Value"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'value))))))
 (common-lisp:deftype tag-key () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype tag-key-list () '(trivial-types:proper-list tag-key))
@@ -3541,29 +3862,35 @@
                           test-dnsanswer-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "RecordName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'record-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'record-name)))
     (aws-sdk/generator/shape::to-query-params "RecordType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'record-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'record-type)))
     (aws-sdk/generator/shape::to-query-params "ResolverIP"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resolver-ip))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resolver-ip)))
     (aws-sdk/generator/shape::to-query-params "EDNS0ClientSubnetIP"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'edns0client-subnet-ip))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'edns0client-subnet-ip)))
     (aws-sdk/generator/shape::to-query-params "EDNS0ClientSubnetMask"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'edns0client-subnet-mask)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'edns0client-subnet-mask))))))
 (common-lisp:progn
  (common-lisp:defstruct (test-dnsanswer-response (:copier common-lisp:nil))
    (nameserver (common-lisp:error ":nameserver is required") :type
@@ -3586,29 +3913,35 @@
                           test-dnsanswer-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Nameserver"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'nameserver))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'nameserver)))
     (aws-sdk/generator/shape::to-query-params "RecordName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'record-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'record-name)))
     (aws-sdk/generator/shape::to-query-params "RecordType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'record-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'record-type)))
     (aws-sdk/generator/shape::to-query-params "RecordData"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'record-data))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'record-data)))
     (aws-sdk/generator/shape::to-query-params "ResponseCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'response-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'response-code)))
     (aws-sdk/generator/shape::to-query-params "Protocol"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'protocol)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'protocol))))))
 (common-lisp:deftype threshold () 'common-lisp:double-float)
 (common-lisp:progn
  (common-lisp:defstruct (throttling-exception (:copier common-lisp:nil))
@@ -3620,9 +3953,10 @@
                         ((aws-sdk/generator/shape::shape throttling-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype time-stamp () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (too-many-health-checks (:copier common-lisp:nil))
@@ -3636,9 +3970,10 @@
                           too-many-health-checks))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (too-many-hosted-zones (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -3651,9 +3986,10 @@
                           too-many-hosted-zones))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (too-many-traffic-policies (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -3667,9 +4003,10 @@
                           too-many-traffic-policies))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (too-many-traffic-policy-instances (:copier common-lisp:nil))
@@ -3684,9 +4021,10 @@
                           too-many-traffic-policy-instances))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (too-many-vpcassociation-authorizations (:copier common-lisp:nil))
@@ -3701,9 +4039,10 @@
                           too-many-vpcassociation-authorizations))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:deftype traffic-policies ()
    '(trivial-types:proper-list traffic-policy))
@@ -3731,29 +4070,35 @@
                         ((aws-sdk/generator/shape::shape traffic-policy))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "Version"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'version))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'version)))
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "Type"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'type)))
     (aws-sdk/generator/shape::to-query-params "Document"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'document))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'document)))
     (aws-sdk/generator/shape::to-query-params "Comment"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'comment)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'comment))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (traffic-policy-already-exists (:copier common-lisp:nil))
@@ -3768,9 +4113,10 @@
                           traffic-policy-already-exists))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype traffic-policy-comment () 'common-lisp:string)
 (common-lisp:deftype traffic-policy-document () 'common-lisp:string)
 (common-lisp:deftype traffic-policy-id () 'common-lisp:string)
@@ -3786,9 +4132,10 @@
                           traffic-policy-in-use))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (traffic-policy-instance (:copier common-lisp:nil))
    (id (common-lisp:error ":id is required") :type
@@ -3818,41 +4165,50 @@
                           traffic-policy-instance))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "HostedZoneId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone-id)))
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "TTL"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'ttl))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'ttl)))
     (aws-sdk/generator/shape::to-query-params "State"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'state))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'state)))
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-id)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyVersion"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-version))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-version)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-type)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-type))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (traffic-policy-instance-already-exists (:copier common-lisp:nil))
@@ -3867,9 +4223,10 @@
                           traffic-policy-instance-already-exists))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype traffic-policy-instance-count () 'common-lisp:integer)
 (common-lisp:deftype traffic-policy-instance-id () 'common-lisp:string)
 (common-lisp:deftype traffic-policy-instance-state () 'common-lisp:string)
@@ -3911,25 +4268,30 @@
                           traffic-policy-summary))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "Type"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'type)))
     (aws-sdk/generator/shape::to-query-params "LatestVersion"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'latest-version))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'latest-version)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyCount"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-count)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-count))))))
 (common-lisp:deftype traffic-policy-version () 'common-lisp:integer)
 (common-lisp:deftype traffic-policy-version-marker () 'common-lisp:string)
 (common-lisp:deftype transport-protocol () 'common-lisp:string)
@@ -3972,65 +4334,80 @@
                           update-health-check-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HealthCheckId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check-id)))
     (aws-sdk/generator/shape::to-query-params "HealthCheckVersion"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check-version))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check-version)))
     (aws-sdk/generator/shape::to-query-params "IPAddress"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'ipaddress))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'ipaddress)))
     (aws-sdk/generator/shape::to-query-params "Port"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'port))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'port)))
     (aws-sdk/generator/shape::to-query-params "ResourcePath"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-path))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-path)))
     (aws-sdk/generator/shape::to-query-params "FullyQualifiedDomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'fully-qualified-domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'fully-qualified-domain-name)))
     (aws-sdk/generator/shape::to-query-params "SearchString"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-string))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-string)))
     (aws-sdk/generator/shape::to-query-params "FailureThreshold"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'failure-threshold))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'failure-threshold)))
     (aws-sdk/generator/shape::to-query-params "Inverted"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'inverted))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'inverted)))
     (aws-sdk/generator/shape::to-query-params "HealthThreshold"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-threshold))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-threshold)))
     (aws-sdk/generator/shape::to-query-params "ChildHealthChecks"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'child-health-checks))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'child-health-checks)))
     (aws-sdk/generator/shape::to-query-params "EnableSNI"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'enable-sni))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'enable-sni)))
     (aws-sdk/generator/shape::to-query-params "Regions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'regions))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'regions)))
     (aws-sdk/generator/shape::to-query-params "AlarmIdentifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'alarm-identifier))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'alarm-identifier)))
     (aws-sdk/generator/shape::to-query-params "InsufficientDataHealthStatus"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'insufficient-data-health-status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'insufficient-data-health-status))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-health-check-response (:copier common-lisp:nil))
@@ -4045,9 +4422,10 @@
                           update-health-check-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HealthCheck"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'health-check)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'health-check))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-hosted-zone-comment-request (:copier common-lisp:nil))
@@ -4064,13 +4442,15 @@
                           update-hosted-zone-comment-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "Comment"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'comment)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'comment))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-hosted-zone-comment-response (:copier common-lisp:nil))
@@ -4085,9 +4465,10 @@
                           update-hosted-zone-comment-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "HostedZone"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hosted-zone)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hosted-zone))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-traffic-policy-comment-request (:copier common-lisp:nil))
@@ -4106,17 +4487,20 @@
                           update-traffic-policy-comment-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "Version"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'version))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'version)))
     (aws-sdk/generator/shape::to-query-params "Comment"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'comment)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'comment))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-traffic-policy-comment-response (:copier common-lisp:nil))
@@ -4131,9 +4515,10 @@
                           update-traffic-policy-comment-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicy"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-traffic-policy-instance-request (:copier common-lisp:nil))
@@ -4155,21 +4540,25 @@
                           update-traffic-policy-instance-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "TTL"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'ttl))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'ttl)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-id)))
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyVersion"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-version)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-version))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-traffic-policy-instance-response (:copier common-lisp:nil))
@@ -4185,9 +4574,10 @@
                           update-traffic-policy-instance-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "TrafficPolicyInstance"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'traffic-policy-instance)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'traffic-policy-instance))))))
 (common-lisp:progn
  (common-lisp:defstruct (vpc (:copier common-lisp:nil))
    (vpcregion common-lisp:nil :type
@@ -4198,13 +4588,15 @@
                         ((aws-sdk/generator/shape::shape vpc))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "VPCRegion"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'vpcregion))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'vpcregion)))
     (aws-sdk/generator/shape::to-query-params "VPCId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'vpcid)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'vpcid))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (vpcassociation-authorization-not-found (:copier common-lisp:nil))
@@ -4219,9 +4611,10 @@
                           vpcassociation-authorization-not-found))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (vpcassociation-not-found (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -4234,9 +4627,10 @@
                           vpcassociation-not-found))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype vpcid () 'common-lisp:string)
 (common-lisp:deftype vpcregion () 'common-lisp:string)
 (common-lisp:progn

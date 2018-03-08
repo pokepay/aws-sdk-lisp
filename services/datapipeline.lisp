@@ -22,17 +22,20 @@
                           activate-pipeline-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id)))
     (aws-sdk/generator/shape::to-query-params "parameterValues"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'parameter-values))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'parameter-values)))
     (aws-sdk/generator/shape::to-query-params "startTimestamp"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'start-timestamp)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'start-timestamp))))))
 (common-lisp:progn
  (common-lisp:defstruct (activate-pipeline-output (:copier common-lisp:nil)))
  (common-lisp:export
@@ -53,13 +56,15 @@
                         ((aws-sdk/generator/shape::shape add-tags-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id)))
     (aws-sdk/generator/shape::to-query-params "tags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (add-tags-output (:copier common-lisp:nil)))
  (common-lisp:export (common-lisp:list 'add-tags-output 'make-add-tags-output))
@@ -83,21 +88,25 @@
                           create-pipeline-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "uniqueId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'unique-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'unique-id)))
     (aws-sdk/generator/shape::to-query-params "description"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'description))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'description)))
     (aws-sdk/generator/shape::to-query-params "tags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-pipeline-output (:copier common-lisp:nil))
    (pipeline-id (common-lisp:error ":pipelineid is required") :type
@@ -110,9 +119,10 @@
                           create-pipeline-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (deactivate-pipeline-input (:copier common-lisp:nil))
    (pipeline-id (common-lisp:error ":pipelineid is required") :type
@@ -128,13 +138,15 @@
                           deactivate-pipeline-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id)))
     (aws-sdk/generator/shape::to-query-params "cancelActive"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'cancel-active)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'cancel-active))))))
 (common-lisp:progn
  (common-lisp:defstruct (deactivate-pipeline-output (:copier common-lisp:nil)))
  (common-lisp:export
@@ -157,9 +169,10 @@
                           delete-pipeline-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-objects-input (:copier common-lisp:nil))
    (pipeline-id (common-lisp:error ":pipelineid is required") :type
@@ -178,21 +191,25 @@
                           describe-objects-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id)))
     (aws-sdk/generator/shape::to-query-params "objectIds"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'object-ids))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'object-ids)))
     (aws-sdk/generator/shape::to-query-params "evaluateExpressions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'evaluate-expressions))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'evaluate-expressions)))
     (aws-sdk/generator/shape::to-query-params "marker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'marker)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-objects-output (:copier common-lisp:nil))
    (pipeline-objects (common-lisp:error ":pipelineobjects is required") :type
@@ -209,17 +226,20 @@
                           describe-objects-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineObjects"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-objects))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-objects)))
     (aws-sdk/generator/shape::to-query-params "marker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'marker)))
     (aws-sdk/generator/shape::to-query-params "hasMoreResults"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'has-more-results)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'has-more-results))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-pipelines-input (:copier common-lisp:nil))
    (pipeline-ids (common-lisp:error ":pipelineids is required") :type
@@ -232,9 +252,10 @@
                           describe-pipelines-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineIds"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-ids)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-ids))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-pipelines-output (:copier common-lisp:nil))
    (pipeline-description-list
@@ -249,9 +270,10 @@
                           describe-pipelines-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineDescriptionList"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-description-list)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-description-list))))))
 (common-lisp:progn
  (common-lisp:defstruct (evaluate-expression-input (:copier common-lisp:nil))
    (pipeline-id (common-lisp:error ":pipelineid is required") :type
@@ -269,17 +291,20 @@
                           evaluate-expression-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id)))
     (aws-sdk/generator/shape::to-query-params "objectId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'object-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'object-id)))
     (aws-sdk/generator/shape::to-query-params "expression"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'expression)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'expression))))))
 (common-lisp:progn
  (common-lisp:defstruct (evaluate-expression-output (:copier common-lisp:nil))
    (evaluated-expression (common-lisp:error ":evaluatedexpression is required")
@@ -293,9 +318,10 @@
                           evaluate-expression-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "evaluatedExpression"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'evaluated-expression)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'evaluated-expression))))))
 (common-lisp:progn
  (common-lisp:defstruct (field (:copier common-lisp:nil))
    (key (common-lisp:error ":key is required") :type
@@ -309,17 +335,20 @@
                         ((aws-sdk/generator/shape::shape field))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "key"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'key)))
     (aws-sdk/generator/shape::to-query-params "stringValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'string-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'string-value)))
     (aws-sdk/generator/shape::to-query-params "refValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'ref-value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'ref-value))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-pipeline-definition-input (:copier common-lisp:nil))
@@ -336,13 +365,15 @@
                           get-pipeline-definition-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id)))
     (aws-sdk/generator/shape::to-query-params "version"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'version)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'version))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-pipeline-definition-output (:copier common-lisp:nil))
@@ -361,17 +392,20 @@
                           get-pipeline-definition-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineObjects"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-objects))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-objects)))
     (aws-sdk/generator/shape::to-query-params "parameterObjects"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'parameter-objects))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'parameter-objects)))
     (aws-sdk/generator/shape::to-query-params "parameterValues"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'parameter-values)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'parameter-values))))))
 (common-lisp:progn
  (common-lisp:defstruct (instance-identity (:copier common-lisp:nil))
    (document common-lisp:nil :type
@@ -384,13 +418,15 @@
                         ((aws-sdk/generator/shape::shape instance-identity))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "document"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'document))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'document)))
     (aws-sdk/generator/shape::to-query-params "signature"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'signature)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'signature))))))
 (common-lisp:progn
  (common-lisp:defstruct (internal-service-error (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -403,9 +439,10 @@
                           internal-service-error))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-request-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -419,9 +456,10 @@
                           invalid-request-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-pipelines-input (:copier common-lisp:nil))
    (marker common-lisp:nil :type
@@ -432,9 +470,10 @@
                         ((aws-sdk/generator/shape::shape list-pipelines-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "marker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'marker)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-pipelines-output (:copier common-lisp:nil))
    (pipeline-id-list (common-lisp:error ":pipelineidlist is required") :type
@@ -451,17 +490,20 @@
                           list-pipelines-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineIdList"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id-list))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id-list)))
     (aws-sdk/generator/shape::to-query-params "marker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'marker)))
     (aws-sdk/generator/shape::to-query-params "hasMoreResults"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'has-more-results)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'has-more-results))))))
 (common-lisp:progn
  (common-lisp:defstruct (operator (:copier common-lisp:nil))
    (type common-lisp:nil :type (common-lisp:or operator-type common-lisp:null))
@@ -472,13 +514,15 @@
                         ((aws-sdk/generator/shape::shape operator))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "type"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'type)))
     (aws-sdk/generator/shape::to-query-params "values"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'values)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'values))))))
 (common-lisp:deftype operator-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (parameter-attribute (:copier common-lisp:nil))
@@ -492,13 +536,15 @@
                         ((aws-sdk/generator/shape::shape parameter-attribute))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "key"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'key)))
     (aws-sdk/generator/shape::to-query-params "stringValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'string-value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'string-value))))))
 (common-lisp:progn
  (common-lisp:deftype parameter-attribute-list ()
    '(trivial-types:proper-list parameter-attribute))
@@ -519,13 +565,15 @@
                         ((aws-sdk/generator/shape::shape parameter-object))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "attributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attributes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attributes))))))
 (common-lisp:progn
  (common-lisp:deftype parameter-object-list ()
    '(trivial-types:proper-list parameter-object))
@@ -545,13 +593,15 @@
                         ((aws-sdk/generator/shape::shape parameter-value))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "stringValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'string-value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'string-value))))))
 (common-lisp:progn
  (common-lisp:deftype parameter-value-list ()
    '(trivial-types:proper-list parameter-value))
@@ -573,9 +623,10 @@
                           pipeline-deleted-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (pipeline-description (:copier common-lisp:nil))
    (pipeline-id (common-lisp:error ":pipelineid is required") :type
@@ -593,25 +644,30 @@
                         ((aws-sdk/generator/shape::shape pipeline-description))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id)))
     (aws-sdk/generator/shape::to-query-params "name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "fields"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'fields))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'fields)))
     (aws-sdk/generator/shape::to-query-params "description"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'description))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'description)))
     (aws-sdk/generator/shape::to-query-params "tags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags))))))
 (common-lisp:progn
  (common-lisp:deftype pipeline-description-list ()
    '(trivial-types:proper-list pipeline-description))
@@ -630,13 +686,15 @@
                         ((aws-sdk/generator/shape::shape pipeline-id-name))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (pipeline-not-found-exception (:copier common-lisp:nil))
@@ -651,9 +709,10 @@
                           pipeline-not-found-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (pipeline-object (:copier common-lisp:nil))
    (id (common-lisp:error ":id is required") :type
@@ -667,17 +726,20 @@
                         ((aws-sdk/generator/shape::shape pipeline-object))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "fields"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'fields)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'fields))))))
 (common-lisp:progn
  (common-lisp:deftype pipeline-object-list ()
    '(trivial-types:proper-list pipeline-object))
@@ -705,17 +767,20 @@
                         ((aws-sdk/generator/shape::shape poll-for-task-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "workerGroup"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'worker-group))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'worker-group)))
     (aws-sdk/generator/shape::to-query-params "hostname"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hostname))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hostname)))
     (aws-sdk/generator/shape::to-query-params "instanceIdentity"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'instance-identity)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'instance-identity))))))
 (common-lisp:progn
  (common-lisp:defstruct (poll-for-task-output (:copier common-lisp:nil))
    (task-object common-lisp:nil :type
@@ -726,9 +791,10 @@
                         ((aws-sdk/generator/shape::shape poll-for-task-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "taskObject"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'task-object)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'task-object))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (put-pipeline-definition-input (:copier common-lisp:nil))
@@ -749,21 +815,25 @@
                           put-pipeline-definition-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id)))
     (aws-sdk/generator/shape::to-query-params "pipelineObjects"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-objects))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-objects)))
     (aws-sdk/generator/shape::to-query-params "parameterObjects"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'parameter-objects))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'parameter-objects)))
     (aws-sdk/generator/shape::to-query-params "parameterValues"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'parameter-values)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'parameter-values))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (put-pipeline-definition-output (:copier common-lisp:nil))
@@ -782,17 +852,20 @@
                           put-pipeline-definition-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "validationErrors"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'validation-errors))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'validation-errors)))
     (aws-sdk/generator/shape::to-query-params "validationWarnings"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'validation-warnings))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'validation-warnings)))
     (aws-sdk/generator/shape::to-query-params "errored"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'errored)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'errored))))))
 (common-lisp:progn
  (common-lisp:defstruct (query (:copier common-lisp:nil))
    (selectors common-lisp:nil :type
@@ -802,9 +875,10 @@
                         ((aws-sdk/generator/shape::shape query))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "selectors"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'selectors)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'selectors))))))
 (common-lisp:progn
  (common-lisp:defstruct (query-objects-input (:copier common-lisp:nil))
    (pipeline-id (common-lisp:error ":pipelineid is required") :type
@@ -821,25 +895,30 @@
                         ((aws-sdk/generator/shape::shape query-objects-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id)))
     (aws-sdk/generator/shape::to-query-params "query"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'query))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'query)))
     (aws-sdk/generator/shape::to-query-params "sphere"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sphere))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sphere)))
     (aws-sdk/generator/shape::to-query-params "marker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'marker)))
     (aws-sdk/generator/shape::to-query-params "limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct (query-objects-output (:copier common-lisp:nil))
    (ids common-lisp:nil :type (common-lisp:or |idList| common-lisp:null))
@@ -853,17 +932,20 @@
                         ((aws-sdk/generator/shape::shape query-objects-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ids"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'ids))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'ids)))
     (aws-sdk/generator/shape::to-query-params "marker"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'marker))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'marker)))
     (aws-sdk/generator/shape::to-query-params "hasMoreResults"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'has-more-results)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'has-more-results))))))
 (common-lisp:progn
  (common-lisp:defstruct (remove-tags-input (:copier common-lisp:nil))
    (pipeline-id (common-lisp:error ":pipelineid is required") :type
@@ -876,13 +958,15 @@
                         ((aws-sdk/generator/shape::shape remove-tags-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id)))
     (aws-sdk/generator/shape::to-query-params "tagKeys"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tag-keys)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tag-keys))))))
 (common-lisp:progn
  (common-lisp:defstruct (remove-tags-output (:copier common-lisp:nil)))
  (common-lisp:export
@@ -905,13 +989,15 @@
                           report-task-progress-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "taskId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'task-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'task-id)))
     (aws-sdk/generator/shape::to-query-params "fields"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'fields)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'fields))))))
 (common-lisp:progn
  (common-lisp:defstruct (report-task-progress-output (:copier common-lisp:nil))
    (canceled (common-lisp:error ":canceled is required") :type
@@ -925,9 +1011,10 @@
                           report-task-progress-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "canceled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'canceled)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'canceled))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (report-task-runner-heartbeat-input (:copier common-lisp:nil))
@@ -945,17 +1032,20 @@
                           report-task-runner-heartbeat-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "taskrunnerId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'taskrunner-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'taskrunner-id)))
     (aws-sdk/generator/shape::to-query-params "workerGroup"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'worker-group))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'worker-group)))
     (aws-sdk/generator/shape::to-query-params "hostname"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'hostname)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'hostname))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (report-task-runner-heartbeat-output (:copier common-lisp:nil))
@@ -970,9 +1060,10 @@
                           report-task-runner-heartbeat-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "terminate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'terminate)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'terminate))))))
 (common-lisp:progn
  (common-lisp:defstruct (selector (:copier common-lisp:nil))
    (field-name common-lisp:nil :type
@@ -983,13 +1074,15 @@
                         ((aws-sdk/generator/shape::shape selector))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "fieldName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'field-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'field-name)))
     (aws-sdk/generator/shape::to-query-params "operator"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'operator)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'operator))))))
 (common-lisp:progn
  (common-lisp:deftype selector-list () '(trivial-types:proper-list selector))
  (common-lisp:defun |make-selector-list|
@@ -1011,17 +1104,20 @@
                         ((aws-sdk/generator/shape::shape set-status-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id)))
     (aws-sdk/generator/shape::to-query-params "objectIds"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'object-ids))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'object-ids)))
     (aws-sdk/generator/shape::to-query-params "status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-task-status-input (:copier common-lisp:nil))
    (task-id (common-lisp:error ":taskid is required") :type
@@ -1042,25 +1138,30 @@
                           set-task-status-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "taskId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'task-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'task-id)))
     (aws-sdk/generator/shape::to-query-params "taskStatus"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'task-status))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'task-status)))
     (aws-sdk/generator/shape::to-query-params "errorId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'error-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'error-id)))
     (aws-sdk/generator/shape::to-query-params "errorMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'error-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'error-message)))
     (aws-sdk/generator/shape::to-query-params "errorStackTrace"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'error-stack-trace)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'error-stack-trace))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-task-status-output (:copier common-lisp:nil)))
  (common-lisp:export
@@ -1081,13 +1182,15 @@
                         ((aws-sdk/generator/shape::shape tag))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "key"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'key)))
     (aws-sdk/generator/shape::to-query-params "value"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'value))))))
 (common-lisp:progn
  (common-lisp:defstruct (task-not-found-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -1100,9 +1203,10 @@
                           task-not-found-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (task-object (:copier common-lisp:nil))
    (task-id common-lisp:nil :type (common-lisp:or |taskId| common-lisp:null))
@@ -1115,21 +1219,25 @@
                         ((aws-sdk/generator/shape::shape task-object))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "taskId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'task-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'task-id)))
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id)))
     (aws-sdk/generator/shape::to-query-params "attemptId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attempt-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attempt-id)))
     (aws-sdk/generator/shape::to-query-params "objects"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'objects)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'objects))))))
 (common-lisp:deftype task-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1151,21 +1259,25 @@
                           validate-pipeline-definition-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "pipelineId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-id)))
     (aws-sdk/generator/shape::to-query-params "pipelineObjects"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pipeline-objects))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pipeline-objects)))
     (aws-sdk/generator/shape::to-query-params "parameterObjects"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'parameter-objects))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'parameter-objects)))
     (aws-sdk/generator/shape::to-query-params "parameterValues"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'parameter-values)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'parameter-values))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (validate-pipeline-definition-output (:copier common-lisp:nil))
@@ -1184,17 +1296,20 @@
                           validate-pipeline-definition-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "validationErrors"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'validation-errors))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'validation-errors)))
     (aws-sdk/generator/shape::to-query-params "validationWarnings"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'validation-warnings))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'validation-warnings)))
     (aws-sdk/generator/shape::to-query-params "errored"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'errored)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'errored))))))
 (common-lisp:progn
  (common-lisp:defstruct (validation-error (:copier common-lisp:nil))
    (id common-lisp:nil :type (common-lisp:or |id| common-lisp:null))
@@ -1206,13 +1321,15 @@
                         ((aws-sdk/generator/shape::shape validation-error))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "errors"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'errors)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'errors))))))
 (common-lisp:progn
  (common-lisp:deftype validation-errors ()
    '(trivial-types:proper-list validation-error))
@@ -1232,13 +1349,15 @@
                         ((aws-sdk/generator/shape::shape validation-warning))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "warnings"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'warnings)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'warnings))))))
 (common-lisp:progn
  (common-lisp:deftype validation-warnings ()
    '(trivial-types:proper-list validation-warning))

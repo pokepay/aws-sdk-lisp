@@ -22,13 +22,15 @@
                           add-tags-to-certificate-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CertificateArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-arn)))
     (aws-sdk/generator/shape::to-query-params "Tags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags))))))
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:deftype certificate-body () 'common-lisp:string)
 (common-lisp:deftype certificate-body-blob ()
@@ -77,89 +79,110 @@
                         ((aws-sdk/generator/shape::shape certificate-detail))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CertificateArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-arn)))
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "SubjectAlternativeNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'subject-alternative-names))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'subject-alternative-names)))
     (aws-sdk/generator/shape::to-query-params "DomainValidationOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-validation-options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-validation-options)))
     (aws-sdk/generator/shape::to-query-params "Serial"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'serial))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'serial)))
     (aws-sdk/generator/shape::to-query-params "Subject"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'subject))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'subject)))
     (aws-sdk/generator/shape::to-query-params "Issuer"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'issuer))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'issuer)))
     (aws-sdk/generator/shape::to-query-params "CreatedAt"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'created-at))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'created-at)))
     (aws-sdk/generator/shape::to-query-params "IssuedAt"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'issued-at))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'issued-at)))
     (aws-sdk/generator/shape::to-query-params "ImportedAt"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'imported-at))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'imported-at)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status)))
     (aws-sdk/generator/shape::to-query-params "RevokedAt"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'revoked-at))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'revoked-at)))
     (aws-sdk/generator/shape::to-query-params "RevocationReason"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'revocation-reason))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'revocation-reason)))
     (aws-sdk/generator/shape::to-query-params "NotBefore"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'not-before))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'not-before)))
     (aws-sdk/generator/shape::to-query-params "NotAfter"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'not-after))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'not-after)))
     (aws-sdk/generator/shape::to-query-params "KeyAlgorithm"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'key-algorithm))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'key-algorithm)))
     (aws-sdk/generator/shape::to-query-params "SignatureAlgorithm"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'signature-algorithm))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'signature-algorithm)))
     (aws-sdk/generator/shape::to-query-params "InUseBy"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'in-use-by))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'in-use-by)))
     (aws-sdk/generator/shape::to-query-params "FailureReason"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'failure-reason))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'failure-reason)))
     (aws-sdk/generator/shape::to-query-params "Type"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'type)))
     (aws-sdk/generator/shape::to-query-params "RenewalSummary"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'renewal-summary)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'renewal-summary))))))
 (common-lisp:deftype certificate-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype certificate-statuses ()
@@ -181,13 +204,15 @@
                         ((aws-sdk/generator/shape::shape certificate-summary))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CertificateArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-arn)))
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name))))))
 (common-lisp:progn
  (common-lisp:deftype certificate-summary-list ()
    '(trivial-types:proper-list certificate-summary))
@@ -210,9 +235,10 @@
                           delete-certificate-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CertificateArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-arn)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-certificate-request (:copier common-lisp:nil))
@@ -227,9 +253,10 @@
                           describe-certificate-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CertificateArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-arn)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-certificate-response (:copier common-lisp:nil))
@@ -244,9 +271,10 @@
                           describe-certificate-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Certificate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate))))))
 (common-lisp:progn
  (common-lisp:deftype domain-list ()
    '(trivial-types:proper-list domain-name-string))
@@ -273,21 +301,25 @@
                         ((aws-sdk/generator/shape::shape domain-validation))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "ValidationEmails"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'validation-emails))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'validation-emails)))
     (aws-sdk/generator/shape::to-query-params "ValidationDomain"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'validation-domain))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'validation-domain)))
     (aws-sdk/generator/shape::to-query-params "ValidationStatus"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'validation-status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'validation-status))))))
 (common-lisp:progn
  (common-lisp:deftype domain-validation-list ()
    '(trivial-types:proper-list domain-validation))
@@ -310,13 +342,15 @@
                           domain-validation-option))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "ValidationDomain"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'validation-domain)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'validation-domain))))))
 (common-lisp:progn
  (common-lisp:deftype domain-validation-option-list ()
    '(trivial-types:proper-list domain-validation-option))
@@ -339,9 +373,10 @@
                           get-certificate-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CertificateArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-arn)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-certificate-response (:copier common-lisp:nil))
    (certificate common-lisp:nil :type
@@ -356,13 +391,15 @@
                           get-certificate-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Certificate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate)))
     (aws-sdk/generator/shape::to-query-params "CertificateChain"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-chain)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-chain))))))
 (common-lisp:deftype idempotency-token () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (import-certificate-request (:copier common-lisp:nil))
@@ -383,21 +420,25 @@
                           import-certificate-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CertificateArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-arn)))
     (aws-sdk/generator/shape::to-query-params "Certificate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate)))
     (aws-sdk/generator/shape::to-query-params "PrivateKey"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'private-key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'private-key)))
     (aws-sdk/generator/shape::to-query-params "CertificateChain"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-chain)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-chain))))))
 (common-lisp:progn
  (common-lisp:defstruct (import-certificate-response (:copier common-lisp:nil))
    (certificate-arn common-lisp:nil :type
@@ -411,9 +452,10 @@
                           import-certificate-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CertificateArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-arn)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-arn))))))
 (common-lisp:progn
  (common-lisp:deftype in-use-list () '(trivial-types:proper-list string))
  (common-lisp:defun |make-in-use-list|
@@ -432,9 +474,10 @@
                           invalid-arn-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-domain-validation-options-exception (:copier common-lisp:nil))
@@ -448,9 +491,10 @@
                           invalid-domain-validation-options-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-state-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -462,9 +506,10 @@
                           invalid-state-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-tag-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -476,9 +521,10 @@
                           invalid-tag-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype key-algorithm () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (limit-exceeded-exception (:copier common-lisp:nil))
@@ -491,9 +537,10 @@
                           limit-exceeded-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-certificates-request (:copier common-lisp:nil))
    (certificate-statuses common-lisp:nil :type
@@ -511,17 +558,20 @@
                           list-certificates-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CertificateStatuses"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-statuses))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-statuses)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token)))
     (aws-sdk/generator/shape::to-query-params "MaxItems"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-items)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-certificates-response (:copier common-lisp:nil))
    (next-token common-lisp:nil :type
@@ -537,13 +587,15 @@
                           list-certificates-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token)))
     (aws-sdk/generator/shape::to-query-params "CertificateSummaryList"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-summary-list)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-summary-list))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-certificate-request (:copier common-lisp:nil))
@@ -558,9 +610,10 @@
                           list-tags-for-certificate-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CertificateArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-arn)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-certificate-response (:copier common-lisp:nil))
@@ -574,9 +627,10 @@
                           list-tags-for-certificate-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Tags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags))))))
 (common-lisp:deftype max-items () 'common-lisp:integer)
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:deftype private-key-blob ()
@@ -597,13 +651,15 @@
                           remove-tags-from-certificate-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CertificateArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-arn)))
     (aws-sdk/generator/shape::to-query-params "Tags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags))))))
 (common-lisp:deftype renewal-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (renewal-summary (:copier common-lisp:nil))
@@ -617,13 +673,15 @@
                         ((aws-sdk/generator/shape::shape renewal-summary))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "RenewalStatus"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'renewal-status))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'renewal-status)))
     (aws-sdk/generator/shape::to-query-params "DomainValidationOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-validation-options)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-validation-options))))))
 (common-lisp:progn
  (common-lisp:defstruct (request-certificate-request (:copier common-lisp:nil))
    (domain-name (common-lisp:error ":domain-name is required") :type
@@ -643,21 +701,25 @@
                           request-certificate-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "SubjectAlternativeNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'subject-alternative-names))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'subject-alternative-names)))
     (aws-sdk/generator/shape::to-query-params "IdempotencyToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'idempotency-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'idempotency-token)))
     (aws-sdk/generator/shape::to-query-params "DomainValidationOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-validation-options)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-validation-options))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (request-certificate-response (:copier common-lisp:nil))
@@ -672,9 +734,10 @@
                           request-certificate-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CertificateArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-arn)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (request-in-progress-exception (:copier common-lisp:nil))
@@ -688,9 +751,10 @@
                           request-in-progress-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (resend-validation-email-request (:copier common-lisp:nil))
@@ -709,17 +773,20 @@
                           resend-validation-email-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CertificateArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'certificate-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'certificate-arn)))
     (aws-sdk/generator/shape::to-query-params "Domain"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain)))
     (aws-sdk/generator/shape::to-query-params "ValidationDomain"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'validation-domain)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'validation-domain))))))
 (common-lisp:progn
  (common-lisp:defstruct (resource-in-use-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -732,9 +799,10 @@
                           resource-in-use-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (resource-not-found-exception (:copier common-lisp:nil))
@@ -748,9 +816,10 @@
                           resource-not-found-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype revocation-reason () 'common-lisp:string)
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:deftype tstamp () 'common-lisp:string)
@@ -764,13 +833,15 @@
                         ((aws-sdk/generator/shape::shape tag))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Key"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'key)))
     (aws-sdk/generator/shape::to-query-params "Value"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'value))))))
 (common-lisp:deftype tag-key () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype tag-list () '(trivial-types:proper-list tag))
@@ -791,9 +862,10 @@
                           too-many-tags-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:deftype validation-email-list ()
    '(trivial-types:proper-list string))

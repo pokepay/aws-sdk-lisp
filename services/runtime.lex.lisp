@@ -19,9 +19,10 @@
                           bad-gateway-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (bad-request-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -33,9 +34,10 @@
                           bad-request-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype blob-stream ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:deftype bot-alias () 'common-lisp:string)
@@ -51,13 +53,15 @@
                         ((aws-sdk/generator/shape::shape button))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "text"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'text))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'text)))
     (aws-sdk/generator/shape::to-query-params "value"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'value))))))
 (common-lisp:deftype button-text-string-with-length () 'common-lisp:string)
 (common-lisp:deftype button-value-string-with-length () 'common-lisp:string)
 (common-lisp:progn
@@ -69,9 +73,10 @@
                         ((aws-sdk/generator/shape::shape conflict-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype content-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (dependency-failed-exception (:copier common-lisp:nil))
@@ -86,9 +91,10 @@
                           dependency-failed-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype dialog-state () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
@@ -109,25 +115,30 @@
                         ((aws-sdk/generator/shape::shape generic-attachment))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "title"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'title))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'title)))
     (aws-sdk/generator/shape::to-query-params "subTitle"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sub-title))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sub-title)))
     (aws-sdk/generator/shape::to-query-params "attachmentLinkUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attachment-link-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attachment-link-url)))
     (aws-sdk/generator/shape::to-query-params "imageUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'image-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'image-url)))
     (aws-sdk/generator/shape::to-query-params "buttons"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'buttons)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'buttons))))))
 (common-lisp:deftype http-content-type () 'common-lisp:string)
 (common-lisp:deftype intent-name () 'common-lisp:string)
 (common-lisp:progn
@@ -142,9 +153,10 @@
                           internal-failure-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (limit-exceeded-exception (:copier common-lisp:nil))
    (retry-after-seconds common-lisp:nil :type
@@ -158,13 +170,15 @@
                           limit-exceeded-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "retryAfterSeconds"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'retry-after-seconds))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'retry-after-seconds)))
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (loop-detected-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -177,9 +191,10 @@
                           loop-detected-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (not-acceptable-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -191,9 +206,10 @@
                           not-acceptable-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (not-found-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -203,9 +219,10 @@
                         ((aws-sdk/generator/shape::shape not-found-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (post-content-request (:copier common-lisp:nil))
    (bot-name (common-lisp:error ":botname is required") :type
@@ -227,33 +244,40 @@
                         ((aws-sdk/generator/shape::shape post-content-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "botName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'bot-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'bot-name)))
     (aws-sdk/generator/shape::to-query-params "botAlias"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'bot-alias))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'bot-alias)))
     (aws-sdk/generator/shape::to-query-params "userId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-id)))
     (aws-sdk/generator/shape::to-query-params "sessionAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'session-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'session-attributes)))
     (aws-sdk/generator/shape::to-query-params "contentType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'content-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'content-type)))
     (aws-sdk/generator/shape::to-query-params "accept"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'accept))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'accept)))
     (aws-sdk/generator/shape::to-query-params "inputStream"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'input-stream)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'input-stream))))))
 (common-lisp:progn
  (common-lisp:defstruct (post-content-response (:copier common-lisp:nil))
    (content-type common-lisp:nil :type
@@ -280,41 +304,50 @@
                           post-content-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "contentType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'content-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'content-type)))
     (aws-sdk/generator/shape::to-query-params "intentName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'intent-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'intent-name)))
     (aws-sdk/generator/shape::to-query-params "slots"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'slots))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'slots)))
     (aws-sdk/generator/shape::to-query-params "sessionAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'session-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'session-attributes)))
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message)))
     (aws-sdk/generator/shape::to-query-params "dialogState"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'dialog-state))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'dialog-state)))
     (aws-sdk/generator/shape::to-query-params "slotToElicit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'slot-to-elicit))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'slot-to-elicit)))
     (aws-sdk/generator/shape::to-query-params "inputTranscript"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'input-transcript))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'input-transcript)))
     (aws-sdk/generator/shape::to-query-params "audioStream"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'audio-stream)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'audio-stream))))))
 (common-lisp:progn
  (common-lisp:defstruct (post-text-request (:copier common-lisp:nil))
    (bot-name (common-lisp:error ":botname is required") :type
@@ -333,25 +366,30 @@
                         ((aws-sdk/generator/shape::shape post-text-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "botName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'bot-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'bot-name)))
     (aws-sdk/generator/shape::to-query-params "botAlias"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'bot-alias))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'bot-alias)))
     (aws-sdk/generator/shape::to-query-params "userId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-id)))
     (aws-sdk/generator/shape::to-query-params "sessionAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'session-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'session-attributes)))
     (aws-sdk/generator/shape::to-query-params "inputText"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'input-text)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'input-text))))))
 (common-lisp:progn
  (common-lisp:defstruct (post-text-response (:copier common-lisp:nil))
    (intent-name common-lisp:nil :type
@@ -372,33 +410,40 @@
                         ((aws-sdk/generator/shape::shape post-text-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "intentName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'intent-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'intent-name)))
     (aws-sdk/generator/shape::to-query-params "slots"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'slots))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'slots)))
     (aws-sdk/generator/shape::to-query-params "sessionAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'session-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'session-attributes)))
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message)))
     (aws-sdk/generator/shape::to-query-params "dialogState"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'dialog-state))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'dialog-state)))
     (aws-sdk/generator/shape::to-query-params "slotToElicit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'slot-to-elicit))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'slot-to-elicit)))
     (aws-sdk/generator/shape::to-query-params "responseCard"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'response-card)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'response-card))))))
 (common-lisp:progn
  (common-lisp:defstruct (request-timeout-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -411,9 +456,10 @@
                           request-timeout-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (response-card (:copier common-lisp:nil))
    (version common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -426,17 +472,20 @@
                         ((aws-sdk/generator/shape::shape response-card))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "version"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'version))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'version)))
     (aws-sdk/generator/shape::to-query-params "contentType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'content-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'content-type)))
     (aws-sdk/generator/shape::to-query-params "genericAttachments"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'generic-attachments)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'generic-attachments))))))
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:defstruct
     (string-map
@@ -460,9 +509,10 @@
                           unsupported-media-type-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype user-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype |genericAttachmentList| ()

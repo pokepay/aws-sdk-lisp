@@ -20,9 +20,10 @@
                         ((aws-sdk/generator/shape::shape delete-lexicon-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-lexicon-output (:copier common-lisp:nil)))
  (common-lisp:export
@@ -46,13 +47,15 @@
                           describe-voices-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "LanguageCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'language-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'language-code)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-voices-output (:copier common-lisp:nil))
    (voices common-lisp:nil :type (common-lisp:or voice-list common-lisp:null))
@@ -66,13 +69,15 @@
                           describe-voices-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Voices"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'voices))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'voices)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:deftype gender () 'common-lisp:string)
 (common-lisp:progn
@@ -85,9 +90,10 @@
                         ((aws-sdk/generator/shape::shape get-lexicon-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-lexicon-output (:copier common-lisp:nil))
    (lexicon common-lisp:nil :type (common-lisp:or lexicon common-lisp:null))
@@ -99,13 +105,15 @@
                         ((aws-sdk/generator/shape::shape get-lexicon-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Lexicon"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'lexicon))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'lexicon)))
     (aws-sdk/generator/shape::to-query-params "LexiconAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'lexicon-attributes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'lexicon-attributes))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-lexicon-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -119,9 +127,10 @@
                           invalid-lexicon-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-next-token-exception (:copier common-lisp:nil))
@@ -136,9 +145,10 @@
                           invalid-next-token-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-sample-rate-exception (:copier common-lisp:nil))
@@ -153,9 +163,10 @@
                           invalid-sample-rate-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-ssml-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -168,9 +179,10 @@
                           invalid-ssml-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype language-code () 'common-lisp:string)
 (common-lisp:deftype language-name () 'common-lisp:string)
 (common-lisp:deftype last-modified () 'common-lisp:string)
@@ -185,13 +197,15 @@
                         ((aws-sdk/generator/shape::shape lexicon))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Content"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'content))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'content)))
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name))))))
 (common-lisp:deftype lexicon-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (lexicon-attributes (:copier common-lisp:nil))
@@ -211,29 +225,35 @@
                         ((aws-sdk/generator/shape::shape lexicon-attributes))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Alphabet"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'alphabet))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'alphabet)))
     (aws-sdk/generator/shape::to-query-params "LanguageCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'language-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'language-code)))
     (aws-sdk/generator/shape::to-query-params "LastModified"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'last-modified))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'last-modified)))
     (aws-sdk/generator/shape::to-query-params "LexiconArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'lexicon-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'lexicon-arn)))
     (aws-sdk/generator/shape::to-query-params "LexemesCount"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'lexemes-count))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'lexemes-count)))
     (aws-sdk/generator/shape::to-query-params "Size"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'size)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'size))))))
 (common-lisp:deftype lexicon-content () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (lexicon-description (:copier common-lisp:nil))
@@ -246,13 +266,15 @@
                         ((aws-sdk/generator/shape::shape lexicon-description))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "Attributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attributes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attributes))))))
 (common-lisp:progn
  (common-lisp:deftype lexicon-description-list ()
    '(trivial-types:proper-list lexicon-description))
@@ -283,9 +305,10 @@
                           lexicon-not-found-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (lexicon-size-exceeded-exception (:copier common-lisp:nil))
@@ -300,9 +323,10 @@
                           lexicon-size-exceeded-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-lexicons-input (:copier common-lisp:nil))
    (next-token common-lisp:nil :type
@@ -313,9 +337,10 @@
                         ((aws-sdk/generator/shape::shape list-lexicons-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-lexicons-output (:copier common-lisp:nil))
    (lexicons common-lisp:nil :type
@@ -328,13 +353,15 @@
                         ((aws-sdk/generator/shape::shape list-lexicons-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Lexicons"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'lexicons))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'lexicons)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (marks-not-supported-for-format-exception (:copier common-lisp:nil))
@@ -349,9 +376,10 @@
                           marks-not-supported-for-format-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (max-lexeme-length-exceeded-exception (:copier common-lisp:nil))
@@ -366,9 +394,10 @@
                           max-lexeme-length-exceeded-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (max-lexicons-number-exceeded-exception (:copier common-lisp:nil))
@@ -383,9 +412,10 @@
                           max-lexicons-number-exceeded-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype next-token () 'common-lisp:string)
 (common-lisp:deftype output-format () 'common-lisp:string)
 (common-lisp:progn
@@ -400,13 +430,15 @@
                         ((aws-sdk/generator/shape::shape put-lexicon-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "Content"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'content)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'content))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-lexicon-output (:copier common-lisp:nil)))
  (common-lisp:export
@@ -429,9 +461,10 @@
                           service-failure-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype size () 'common-lisp:integer)
 (common-lisp:deftype speech-mark-type () 'common-lisp:string)
 (common-lisp:progn
@@ -457,9 +490,10 @@
                           ssml-marks-not-supported-for-text-type-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (synthesize-speech-input (:copier common-lisp:nil))
    (lexicon-names common-lisp:nil :type
@@ -484,33 +518,40 @@
                           synthesize-speech-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "LexiconNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'lexicon-names))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'lexicon-names)))
     (aws-sdk/generator/shape::to-query-params "OutputFormat"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'output-format))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'output-format)))
     (aws-sdk/generator/shape::to-query-params "SampleRate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sample-rate))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sample-rate)))
     (aws-sdk/generator/shape::to-query-params "SpeechMarkTypes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'speech-mark-types))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'speech-mark-types)))
     (aws-sdk/generator/shape::to-query-params "Text"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'text))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'text)))
     (aws-sdk/generator/shape::to-query-params "TextType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'text-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'text-type)))
     (aws-sdk/generator/shape::to-query-params "VoiceId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'voice-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'voice-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (synthesize-speech-output (:copier common-lisp:nil))
    (audio-stream common-lisp:nil :type
@@ -527,17 +568,20 @@
                           synthesize-speech-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AudioStream"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'audio-stream))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'audio-stream)))
     (aws-sdk/generator/shape::to-query-params "ContentType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'content-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'content-type)))
     (aws-sdk/generator/shape::to-query-params "RequestCharacters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'request-characters)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'request-characters))))))
 (common-lisp:deftype text () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -553,9 +597,10 @@
                           text-length-exceeded-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype text-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -571,9 +616,10 @@
                           unsupported-pls-alphabet-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (unsupported-pls-language-exception (:copier common-lisp:nil))
@@ -588,9 +634,10 @@
                           unsupported-pls-language-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (voice (:copier common-lisp:nil))
    (gender common-lisp:nil :type (common-lisp:or gender common-lisp:null))
@@ -605,25 +652,30 @@
                         ((aws-sdk/generator/shape::shape voice))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Gender"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'gender))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'gender)))
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "LanguageCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'language-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'language-code)))
     (aws-sdk/generator/shape::to-query-params "LanguageName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'language-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'language-name)))
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name))))))
 (common-lisp:deftype voice-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype voice-list () '(trivial-types:proper-list voice))

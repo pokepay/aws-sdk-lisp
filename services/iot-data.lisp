@@ -16,9 +16,10 @@
                         ((aws-sdk/generator/shape::shape conflict-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-thing-shadow-request (:copier common-lisp:nil))
    (thing-name (common-lisp:error ":thingname is required") :type
@@ -32,9 +33,10 @@
                           delete-thing-shadow-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "thingName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'thing-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'thing-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-thing-shadow-response (:copier common-lisp:nil))
@@ -49,9 +51,10 @@
                           delete-thing-shadow-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "payload"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'payload)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'payload))))))
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (get-thing-shadow-request (:copier common-lisp:nil))
@@ -65,9 +68,10 @@
                           get-thing-shadow-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "thingName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'thing-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'thing-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-thing-shadow-response (:copier common-lisp:nil))
    (payload common-lisp:nil :type
@@ -81,9 +85,10 @@
                           get-thing-shadow-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "payload"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'payload)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'payload))))))
 (common-lisp:progn
  (common-lisp:defstruct (internal-failure-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -97,9 +102,10 @@
                           internal-failure-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-request-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -113,9 +119,10 @@
                           invalid-request-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype json-document ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
@@ -132,9 +139,10 @@
                           method-not-allowed-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype payload ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
@@ -148,17 +156,20 @@
                         ((aws-sdk/generator/shape::shape publish-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "topic"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'topic))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'topic)))
     (aws-sdk/generator/shape::to-query-params "qos"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'qos))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'qos)))
     (aws-sdk/generator/shape::to-query-params "payload"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'payload)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'payload))))))
 (common-lisp:deftype qos () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -174,9 +185,10 @@
                           request-entity-too-large-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (resource-not-found-exception (:copier common-lisp:nil))
@@ -191,9 +203,10 @@
                           resource-not-found-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (service-unavailable-exception (:copier common-lisp:nil))
@@ -208,9 +221,10 @@
                           service-unavailable-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype thing-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (throttling-exception (:copier common-lisp:nil))
@@ -222,9 +236,10 @@
                         ((aws-sdk/generator/shape::shape throttling-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype topic () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (unauthorized-exception (:copier common-lisp:nil))
@@ -238,9 +253,10 @@
                           unauthorized-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (unsupported-document-encoding-exception (:copier common-lisp:nil))
@@ -255,9 +271,10 @@
                           unsupported-document-encoding-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-thing-shadow-request (:copier common-lisp:nil))
    (thing-name (common-lisp:error ":thingname is required") :type
@@ -273,13 +290,15 @@
                           update-thing-shadow-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "thingName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'thing-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'thing-name)))
     (aws-sdk/generator/shape::to-query-params "payload"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'payload)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'payload))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-thing-shadow-response (:copier common-lisp:nil))
@@ -294,9 +313,10 @@
                           update-thing-shadow-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "payload"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'payload)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'payload))))))
 (common-lisp:deftype |errorMessage| () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun delete-thing-shadow

@@ -23,13 +23,15 @@
                           add-custom-attributes-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "CustomAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'custom-attributes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'custom-attributes))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (add-custom-attributes-response (:copier common-lisp:nil)))
@@ -59,17 +61,20 @@
                           admin-add-user-to-group-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "GroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'group-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'group-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-confirm-sign-up-request (:copier common-lisp:nil))
@@ -86,13 +91,15 @@
                           admin-confirm-sign-up-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-confirm-sign-up-response (:copier common-lisp:nil)))
@@ -123,17 +130,20 @@
                           admin-create-user-config-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AllowAdminCreateUserOnly"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'allow-admin-create-user-only))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'allow-admin-create-user-only)))
     (aws-sdk/generator/shape::to-query-params "UnusedAccountValidityDays"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'unused-account-validity-days))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'unused-account-validity-days)))
     (aws-sdk/generator/shape::to-query-params "InviteMessageTemplate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'invite-message-template)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'invite-message-template))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-create-user-request (:copier common-lisp:nil))
    (user-pool-id (common-lisp:error ":user-pool-id is required") :type
@@ -161,37 +171,45 @@
                           admin-create-user-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "UserAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-attributes)))
     (aws-sdk/generator/shape::to-query-params "ValidationData"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'validation-data))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'validation-data)))
     (aws-sdk/generator/shape::to-query-params "TemporaryPassword"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'temporary-password))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'temporary-password)))
     (aws-sdk/generator/shape::to-query-params "ForceAliasCreation"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'force-alias-creation))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'force-alias-creation)))
     (aws-sdk/generator/shape::to-query-params "MessageAction"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-action))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-action)))
     (aws-sdk/generator/shape::to-query-params "DesiredDeliveryMediums"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'desired-delivery-mediums)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'desired-delivery-mediums))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-create-user-response (:copier common-lisp:nil))
    (user common-lisp:nil :type (common-lisp:or user-type common-lisp:null)))
@@ -204,9 +222,10 @@
                           admin-create-user-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "User"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user))))))
 (common-lisp:deftype admin-create-user-unused-account-validity-days-type ()
   'common-lisp:integer)
 (common-lisp:progn
@@ -228,17 +247,20 @@
                           admin-delete-user-attributes-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "UserAttributeNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-attribute-names)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-attribute-names))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-delete-user-attributes-response (:copier common-lisp:nil)))
@@ -265,13 +287,15 @@
                           admin-delete-user-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-disable-provider-for-user-request (:copier common-lisp:nil))
@@ -288,13 +312,15 @@
                           admin-disable-provider-for-user-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "User"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-disable-provider-for-user-response (:copier common-lisp:nil)))
@@ -321,13 +347,15 @@
                           admin-disable-user-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-disable-user-response (:copier common-lisp:nil)))
@@ -354,13 +382,15 @@
                           admin-enable-user-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-enable-user-response (:copier common-lisp:nil)))
  (common-lisp:export
@@ -388,17 +418,20 @@
                           admin-forget-device-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "DeviceKey"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-key)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-key))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-get-device-request (:copier common-lisp:nil))
    (device-key (common-lisp:error ":device-key is required") :type
@@ -415,17 +448,20 @@
                           admin-get-device-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DeviceKey"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-key)))
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-get-device-response (:copier common-lisp:nil))
    (device (common-lisp:error ":device is required") :type
@@ -439,9 +475,10 @@
                           admin-get-device-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Device"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-get-user-request (:copier common-lisp:nil))
    (user-pool-id (common-lisp:error ":user-pool-id is required") :type
@@ -456,13 +493,15 @@
                           admin-get-user-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-get-user-response (:copier common-lisp:nil))
    (username (common-lisp:error ":username is required") :type
@@ -487,33 +526,40 @@
                           admin-get-user-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "UserAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-attributes)))
     (aws-sdk/generator/shape::to-query-params "UserCreateDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-create-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-create-date)))
     (aws-sdk/generator/shape::to-query-params "UserLastModifiedDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-last-modified-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-last-modified-date)))
     (aws-sdk/generator/shape::to-query-params "Enabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'enabled)))
     (aws-sdk/generator/shape::to-query-params "UserStatus"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-status))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-status)))
     (aws-sdk/generator/shape::to-query-params "MFAOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'mfaoptions)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'mfaoptions))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-initiate-auth-request (:copier common-lisp:nil))
    (user-pool-id (common-lisp:error ":user-pool-id is required") :type
@@ -535,25 +581,30 @@
                           admin-initiate-auth-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id)))
     (aws-sdk/generator/shape::to-query-params "AuthFlow"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'auth-flow))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'auth-flow)))
     (aws-sdk/generator/shape::to-query-params "AuthParameters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'auth-parameters))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'auth-parameters)))
     (aws-sdk/generator/shape::to-query-params "ClientMetadata"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-metadata)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-metadata))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-initiate-auth-response (:copier common-lisp:nil))
@@ -574,21 +625,25 @@
                           admin-initiate-auth-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ChallengeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'challenge-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'challenge-name)))
     (aws-sdk/generator/shape::to-query-params "Session"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'session))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'session)))
     (aws-sdk/generator/shape::to-query-params "ChallengeParameters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'challenge-parameters))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'challenge-parameters)))
     (aws-sdk/generator/shape::to-query-params "AuthenticationResult"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'authentication-result)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'authentication-result))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-link-provider-for-user-request (:copier common-lisp:nil))
@@ -607,17 +662,20 @@
                           admin-link-provider-for-user-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "DestinationUser"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-user))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-user)))
     (aws-sdk/generator/shape::to-query-params "SourceUser"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-user)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-user))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-link-provider-for-user-response (:copier common-lisp:nil)))
@@ -648,21 +706,25 @@
                           admin-list-devices-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "Limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit)))
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-list-devices-response (:copier common-lisp:nil))
    (devices common-lisp:nil :type
@@ -678,13 +740,15 @@
                           admin-list-devices-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Devices"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'devices))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'devices)))
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-list-groups-for-user-request (:copier common-lisp:nil))
@@ -705,21 +769,25 @@
                           admin-list-groups-for-user-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-list-groups-for-user-response (:copier common-lisp:nil))
@@ -736,13 +804,15 @@
                           admin-list-groups-for-user-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Groups"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'groups))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'groups)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-remove-user-from-group-request (:copier common-lisp:nil))
@@ -761,17 +831,20 @@
                           admin-remove-user-from-group-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "GroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'group-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'group-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-reset-user-password-request (:copier common-lisp:nil))
@@ -788,13 +861,15 @@
                           admin-reset-user-password-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-reset-user-password-response (:copier common-lisp:nil)))
@@ -828,25 +903,30 @@
                           admin-respond-to-auth-challenge-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id)))
     (aws-sdk/generator/shape::to-query-params "ChallengeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'challenge-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'challenge-name)))
     (aws-sdk/generator/shape::to-query-params "ChallengeResponses"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'challenge-responses))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'challenge-responses)))
     (aws-sdk/generator/shape::to-query-params "Session"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'session)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'session))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-respond-to-auth-challenge-response (:copier common-lisp:nil))
@@ -867,21 +947,25 @@
                           admin-respond-to-auth-challenge-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ChallengeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'challenge-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'challenge-name)))
     (aws-sdk/generator/shape::to-query-params "Session"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'session))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'session)))
     (aws-sdk/generator/shape::to-query-params "ChallengeParameters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'challenge-parameters))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'challenge-parameters)))
     (aws-sdk/generator/shape::to-query-params "AuthenticationResult"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'authentication-result)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'authentication-result))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-set-user-settings-request (:copier common-lisp:nil))
@@ -900,17 +984,20 @@
                           admin-set-user-settings-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "MFAOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'mfaoptions)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'mfaoptions))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-set-user-settings-response (:copier common-lisp:nil)))
@@ -942,21 +1029,25 @@
                           admin-update-device-status-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "DeviceKey"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-key)))
     (aws-sdk/generator/shape::to-query-params "DeviceRememberedStatus"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-remembered-status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-remembered-status))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-update-device-status-response (:copier common-lisp:nil)))
@@ -986,17 +1077,20 @@
                           admin-update-user-attributes-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "UserAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-attributes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-attributes))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-update-user-attributes-response (:copier common-lisp:nil)))
@@ -1024,13 +1118,15 @@
                           admin-user-global-sign-out-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-user-global-sign-out-response (:copier common-lisp:nil)))
@@ -1063,9 +1159,10 @@
                           alias-exists-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype arn-type () 'common-lisp:string)
 (common-lisp:deftype attribute-data-type () 'common-lisp:string)
 (common-lisp:progn
@@ -1103,13 +1200,15 @@
                         ((aws-sdk/generator/shape::shape attribute-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "Value"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'value))))))
 (common-lisp:deftype attribute-value-type () 'common-lisp:string)
 (common-lisp:deftype auth-flow-type () 'common-lisp:string)
 (common-lisp:defstruct
@@ -1141,29 +1240,35 @@
                           authentication-result-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token)))
     (aws-sdk/generator/shape::to-query-params "ExpiresIn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'expires-in))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'expires-in)))
     (aws-sdk/generator/shape::to-query-params "TokenType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'token-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'token-type)))
     (aws-sdk/generator/shape::to-query-params "RefreshToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'refresh-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'refresh-token)))
     (aws-sdk/generator/shape::to-query-params "IdToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id-token)))
     (aws-sdk/generator/shape::to-query-params "NewDeviceMetadata"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'new-device-metadata)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'new-device-metadata))))))
 (common-lisp:deftype boolean-type () 'common-lisp:boolean)
 (common-lisp:deftype csstype () 'common-lisp:string)
 (common-lisp:deftype cssversion-type () 'common-lisp:string)
@@ -1204,17 +1309,20 @@
                           change-password-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "PreviousPassword"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'previous-password))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'previous-password)))
     (aws-sdk/generator/shape::to-query-params "ProposedPassword"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'proposed-password))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'proposed-password)))
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (change-password-response (:copier common-lisp:nil)))
  (common-lisp:export
@@ -1268,17 +1376,20 @@
                           code-delivery-details-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Destination"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination)))
     (aws-sdk/generator/shape::to-query-params "DeliveryMedium"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'delivery-medium))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'delivery-medium)))
     (aws-sdk/generator/shape::to-query-params "AttributeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attribute-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attribute-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (code-delivery-failure-exception (:copier common-lisp:nil))
@@ -1293,9 +1404,10 @@
                           code-delivery-failure-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (code-mismatch-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -1308,9 +1420,10 @@
                           code-mismatch-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype completion-message-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1326,9 +1439,10 @@
                           concurrent-modification-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (confirm-device-request (:copier common-lisp:nil))
    (access-token (common-lisp:error ":access-token is required") :type
@@ -1347,21 +1461,25 @@
                           confirm-device-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token)))
     (aws-sdk/generator/shape::to-query-params "DeviceKey"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-key)))
     (aws-sdk/generator/shape::to-query-params "DeviceSecretVerifierConfig"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-secret-verifier-config))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-secret-verifier-config)))
     (aws-sdk/generator/shape::to-query-params "DeviceName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (confirm-device-response (:copier common-lisp:nil))
    (user-confirmation-necessary common-lisp:nil :type
@@ -1374,9 +1492,10 @@
                           confirm-device-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserConfirmationNecessary"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-confirmation-necessary)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-confirmation-necessary))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (confirm-forgot-password-request (:copier common-lisp:nil))
@@ -1399,25 +1518,30 @@
                           confirm-forgot-password-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id)))
     (aws-sdk/generator/shape::to-query-params "SecretHash"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'secret-hash))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'secret-hash)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "ConfirmationCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'confirmation-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'confirmation-code)))
     (aws-sdk/generator/shape::to-query-params "Password"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'password)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'password))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (confirm-forgot-password-response (:copier common-lisp:nil)))
@@ -1449,25 +1573,30 @@
                           confirm-sign-up-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id)))
     (aws-sdk/generator/shape::to-query-params "SecretHash"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'secret-hash))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'secret-hash)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "ConfirmationCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'confirmation-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'confirmation-code)))
     (aws-sdk/generator/shape::to-query-params "ForceAliasCreation"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'force-alias-creation)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'force-alias-creation))))))
 (common-lisp:progn
  (common-lisp:defstruct (confirm-sign-up-response (:copier common-lisp:nil)))
  (common-lisp:export
@@ -1495,25 +1624,30 @@
                         ((aws-sdk/generator/shape::shape create-group-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "GroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'group-name)))
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Description"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'description))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'description)))
     (aws-sdk/generator/shape::to-query-params "RoleArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'role-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'role-arn)))
     (aws-sdk/generator/shape::to-query-params "Precedence"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'precedence)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'precedence))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-group-response (:copier common-lisp:nil))
    (group common-lisp:nil :type (common-lisp:or group-type common-lisp:null)))
@@ -1525,9 +1659,10 @@
                           create-group-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Group"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'group)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'group))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-identity-provider-request (:copier common-lisp:nil))
@@ -1552,29 +1687,35 @@
                           create-identity-provider-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ProviderName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-name)))
     (aws-sdk/generator/shape::to-query-params "ProviderType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-type)))
     (aws-sdk/generator/shape::to-query-params "ProviderDetails"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-details))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-details)))
     (aws-sdk/generator/shape::to-query-params "AttributeMapping"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attribute-mapping))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attribute-mapping)))
     (aws-sdk/generator/shape::to-query-params "IdpIdentifiers"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'idp-identifiers)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'idp-identifiers))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-identity-provider-response (:copier common-lisp:nil))
@@ -1589,9 +1730,10 @@
                           create-identity-provider-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "IdentityProvider"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'identity-provider)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'identity-provider))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-resource-server-request (:copier common-lisp:nil))
@@ -1612,21 +1754,25 @@
                           create-resource-server-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Identifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'identifier))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'identifier)))
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "Scopes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'scopes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'scopes))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-resource-server-response (:copier common-lisp:nil))
@@ -1641,9 +1787,10 @@
                           create-resource-server-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceServer"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-server)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-server))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-user-import-job-request (:copier common-lisp:nil))
@@ -1663,17 +1810,20 @@
                           create-user-import-job-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "JobName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'job-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'job-name)))
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "CloudWatchLogsRoleArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'cloud-watch-logs-role-arn)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'cloud-watch-logs-role-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-user-import-job-response (:copier common-lisp:nil))
@@ -1688,9 +1838,10 @@
                           create-user-import-job-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserImportJob"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-import-job)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-import-job))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-user-pool-client-request (:copier common-lisp:nil))
@@ -1731,61 +1882,75 @@
                           create-user-pool-client-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ClientName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-name)))
     (aws-sdk/generator/shape::to-query-params "GenerateSecret"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'generate-secret))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'generate-secret)))
     (aws-sdk/generator/shape::to-query-params "RefreshTokenValidity"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'refresh-token-validity))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'refresh-token-validity)))
     (aws-sdk/generator/shape::to-query-params "ReadAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'read-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'read-attributes)))
     (aws-sdk/generator/shape::to-query-params "WriteAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'write-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'write-attributes)))
     (aws-sdk/generator/shape::to-query-params "ExplicitAuthFlows"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'explicit-auth-flows))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'explicit-auth-flows)))
     (aws-sdk/generator/shape::to-query-params "SupportedIdentityProviders"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'supported-identity-providers))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'supported-identity-providers)))
     (aws-sdk/generator/shape::to-query-params "CallbackURLs"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'callback-urls))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'callback-urls)))
     (aws-sdk/generator/shape::to-query-params "LogoutURLs"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'logout-urls))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'logout-urls)))
     (aws-sdk/generator/shape::to-query-params "DefaultRedirectURI"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-redirect-uri))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-redirect-uri)))
     (aws-sdk/generator/shape::to-query-params "AllowedOAuthFlows"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'allowed-oauth-flows))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'allowed-oauth-flows)))
     (aws-sdk/generator/shape::to-query-params "AllowedOAuthScopes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'allowed-oauth-scopes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'allowed-oauth-scopes)))
     (aws-sdk/generator/shape::to-query-params "AllowedOAuthFlowsUserPoolClient"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'allowed-oauth-flows-user-pool-client)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'allowed-oauth-flows-user-pool-client))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-user-pool-client-response (:copier common-lisp:nil))
@@ -1800,9 +1965,10 @@
                           create-user-pool-client-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolClient"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-client)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-client))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-user-pool-domain-request (:copier common-lisp:nil))
@@ -1819,13 +1985,15 @@
                           create-user-pool-domain-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Domain"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain)))
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (create-user-pool-domain-response (:copier common-lisp:nil)))
@@ -1883,77 +2051,95 @@
                           create-user-pool-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "PoolName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pool-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pool-name)))
     (aws-sdk/generator/shape::to-query-params "Policies"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'policies))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'policies)))
     (aws-sdk/generator/shape::to-query-params "LambdaConfig"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'lambda-config))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'lambda-config)))
     (aws-sdk/generator/shape::to-query-params "AutoVerifiedAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'auto-verified-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'auto-verified-attributes)))
     (aws-sdk/generator/shape::to-query-params "AliasAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'alias-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'alias-attributes)))
     (aws-sdk/generator/shape::to-query-params "UsernameAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username-attributes)))
     (aws-sdk/generator/shape::to-query-params "SmsVerificationMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sms-verification-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sms-verification-message)))
     (aws-sdk/generator/shape::to-query-params "EmailVerificationMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-verification-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-verification-message)))
     (aws-sdk/generator/shape::to-query-params "EmailVerificationSubject"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-verification-subject))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-verification-subject)))
     (aws-sdk/generator/shape::to-query-params "VerificationMessageTemplate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'verification-message-template))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'verification-message-template)))
     (aws-sdk/generator/shape::to-query-params "SmsAuthenticationMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sms-authentication-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sms-authentication-message)))
     (aws-sdk/generator/shape::to-query-params "MfaConfiguration"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'mfa-configuration))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'mfa-configuration)))
     (aws-sdk/generator/shape::to-query-params "DeviceConfiguration"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-configuration))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-configuration)))
     (aws-sdk/generator/shape::to-query-params "EmailConfiguration"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-configuration))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-configuration)))
     (aws-sdk/generator/shape::to-query-params "SmsConfiguration"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sms-configuration))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sms-configuration)))
     (aws-sdk/generator/shape::to-query-params "UserPoolTags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-tags))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-tags)))
     (aws-sdk/generator/shape::to-query-params "AdminCreateUserConfig"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'admin-create-user-config))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'admin-create-user-config)))
     (aws-sdk/generator/shape::to-query-params "Schema"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'schema)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'schema))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-user-pool-response (:copier common-lisp:nil))
    (user-pool common-lisp:nil :type
@@ -1967,9 +2153,10 @@
                           create-user-pool-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPool"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool))))))
 (common-lisp:deftype custom-attribute-name-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype custom-attributes-list-type ()
@@ -1993,13 +2180,15 @@
                         ((aws-sdk/generator/shape::shape delete-group-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "GroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'group-name)))
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-identity-provider-request (:copier common-lisp:nil))
@@ -2016,13 +2205,15 @@
                           delete-identity-provider-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ProviderName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-resource-server-request (:copier common-lisp:nil))
@@ -2039,13 +2230,15 @@
                           delete-resource-server-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Identifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'identifier)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-user-attributes-request (:copier common-lisp:nil))
@@ -2063,13 +2256,15 @@
                           delete-user-attributes-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserAttributeNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-attribute-names))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-attribute-names)))
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-user-attributes-response (:copier common-lisp:nil)))
@@ -2097,13 +2292,15 @@
                           delete-user-pool-client-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-user-pool-domain-request (:copier common-lisp:nil))
@@ -2120,13 +2317,15 @@
                           delete-user-pool-domain-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Domain"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain)))
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-user-pool-domain-response (:copier common-lisp:nil)))
@@ -2150,9 +2349,10 @@
                           delete-user-pool-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-user-request (:copier common-lisp:nil))
    (access-token (common-lisp:error ":access-token is required") :type
@@ -2163,9 +2363,10 @@
                         ((aws-sdk/generator/shape::shape delete-user-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token))))))
 (common-lisp:progn
  (common-lisp:deftype delivery-medium-list-type ()
    '(trivial-types:proper-list delivery-medium-type))
@@ -2191,13 +2392,15 @@
                           describe-identity-provider-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ProviderName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-identity-provider-response (:copier common-lisp:nil))
@@ -2212,9 +2415,10 @@
                           describe-identity-provider-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "IdentityProvider"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'identity-provider)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'identity-provider))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-resource-server-request (:copier common-lisp:nil))
@@ -2231,13 +2435,15 @@
                           describe-resource-server-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Identifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'identifier)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-resource-server-response (:copier common-lisp:nil))
@@ -2252,9 +2458,10 @@
                           describe-resource-server-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceServer"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-server)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-server))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-user-import-job-request (:copier common-lisp:nil))
@@ -2271,13 +2478,15 @@
                           describe-user-import-job-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "JobId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'job-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'job-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-user-import-job-response (:copier common-lisp:nil))
@@ -2292,9 +2501,10 @@
                           describe-user-import-job-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserImportJob"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-import-job)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-import-job))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-user-pool-client-request (:copier common-lisp:nil))
@@ -2311,13 +2521,15 @@
                           describe-user-pool-client-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-user-pool-client-response (:copier common-lisp:nil))
@@ -2332,9 +2544,10 @@
                           describe-user-pool-client-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolClient"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-client)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-client))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-user-pool-domain-request (:copier common-lisp:nil))
@@ -2349,9 +2562,10 @@
                           describe-user-pool-domain-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Domain"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-user-pool-domain-response (:copier common-lisp:nil))
@@ -2366,9 +2580,10 @@
                           describe-user-pool-domain-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainDescription"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-description)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-description))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-user-pool-request (:copier common-lisp:nil))
    (user-pool-id (common-lisp:error ":user-pool-id is required") :type
@@ -2382,9 +2597,10 @@
                           describe-user-pool-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-user-pool-response (:copier common-lisp:nil))
    (user-pool common-lisp:nil :type
@@ -2398,9 +2614,10 @@
                           describe-user-pool-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPool"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool))))))
 (common-lisp:deftype description-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (device-configuration-type (:copier common-lisp:nil))
@@ -2417,13 +2634,15 @@
                           device-configuration-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ChallengeRequiredOnNewDevice"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'challenge-required-on-new-device))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'challenge-required-on-new-device)))
     (aws-sdk/generator/shape::to-query-params
      "DeviceOnlyRememberedOnUserPrompt"
-     (common-lisp:slot-value aws-sdk/generator/shape::shape
-                             'device-only-remembered-on-user-prompt)))))
+     (aws-sdk/generator/shape:shape-to-params
+      (common-lisp:slot-value aws-sdk/generator/shape::shape
+                              'device-only-remembered-on-user-prompt))))))
 (common-lisp:deftype device-key-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype device-list-type ()
@@ -2450,13 +2669,15 @@
                           device-secret-verifier-config-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "PasswordVerifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'password-verifier))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'password-verifier)))
     (aws-sdk/generator/shape::to-query-params "Salt"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'salt)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'salt))))))
 (common-lisp:progn
  (common-lisp:defstruct (device-type (:copier common-lisp:nil))
    (device-key common-lisp:nil :type
@@ -2474,25 +2695,30 @@
                         ((aws-sdk/generator/shape::shape device-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DeviceKey"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-key)))
     (aws-sdk/generator/shape::to-query-params "DeviceAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-attributes)))
     (aws-sdk/generator/shape::to-query-params "DeviceCreateDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-create-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-create-date)))
     (aws-sdk/generator/shape::to-query-params "DeviceLastModifiedDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-last-modified-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-last-modified-date)))
     (aws-sdk/generator/shape::to-query-params "DeviceLastAuthenticatedDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-last-authenticated-date)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-last-authenticated-date))))))
 (common-lisp:progn
  (common-lisp:defstruct (domain-description-type (:copier common-lisp:nil))
    (user-pool-id common-lisp:nil :type
@@ -2516,33 +2742,40 @@
                           domain-description-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "AWSAccountId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'awsaccount-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'awsaccount-id)))
     (aws-sdk/generator/shape::to-query-params "Domain"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain)))
     (aws-sdk/generator/shape::to-query-params "S3Bucket"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               's3bucket))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                's3bucket)))
     (aws-sdk/generator/shape::to-query-params "CloudFrontDistribution"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'cloud-front-distribution))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'cloud-front-distribution)))
     (aws-sdk/generator/shape::to-query-params "Version"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'version))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'version)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status))))))
 (common-lisp:deftype domain-status-type () 'common-lisp:string)
 (common-lisp:deftype domain-type () 'common-lisp:string)
 (common-lisp:deftype domain-version-type () 'common-lisp:string)
@@ -2560,9 +2793,10 @@
                           duplicate-provider-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype email-address-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (email-configuration-type (:copier common-lisp:nil))
@@ -2578,13 +2812,15 @@
                           email-configuration-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "SourceArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-arn)))
     (aws-sdk/generator/shape::to-query-params "ReplyToEmailAddress"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'reply-to-email-address)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'reply-to-email-address))))))
 (common-lisp:deftype email-verification-message-by-link-type ()
   'common-lisp:string)
 (common-lisp:deftype email-verification-message-type () 'common-lisp:string)
@@ -2603,9 +2839,10 @@
                           expired-code-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:deftype explicit-auth-flows-list-type ()
    '(trivial-types:proper-list explicit-auth-flows-type))
@@ -2631,13 +2868,15 @@
                           forget-device-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token)))
     (aws-sdk/generator/shape::to-query-params "DeviceKey"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-key)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-key))))))
 (common-lisp:progn
  (common-lisp:defstruct (forgot-password-request (:copier common-lisp:nil))
    (client-id (common-lisp:error ":client-id is required") :type
@@ -2654,17 +2893,20 @@
                           forgot-password-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id)))
     (aws-sdk/generator/shape::to-query-params "SecretHash"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'secret-hash))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'secret-hash)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username))))))
 (common-lisp:progn
  (common-lisp:defstruct (forgot-password-response (:copier common-lisp:nil))
    (code-delivery-details common-lisp:nil :type
@@ -2677,9 +2919,10 @@
                           forgot-password-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CodeDeliveryDetails"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'code-delivery-details)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'code-delivery-details))))))
 (common-lisp:deftype generate-secret () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (get-csvheader-request (:copier common-lisp:nil))
@@ -2693,9 +2936,10 @@
                           get-csvheader-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-csvheader-response (:copier common-lisp:nil))
    (user-pool-id common-lisp:nil :type
@@ -2710,13 +2954,15 @@
                           get-csvheader-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "CSVHeader"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'csvheader)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'csvheader))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-device-request (:copier common-lisp:nil))
    (device-key (common-lisp:error ":device-key is required") :type
@@ -2729,13 +2975,15 @@
                         ((aws-sdk/generator/shape::shape get-device-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DeviceKey"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-key)))
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-device-response (:copier common-lisp:nil))
    (device (common-lisp:error ":device is required") :type
@@ -2746,9 +2994,10 @@
                         ((aws-sdk/generator/shape::shape get-device-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Device"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-group-request (:copier common-lisp:nil))
    (group-name (common-lisp:error ":group-name is required") :type
@@ -2761,13 +3010,15 @@
                         ((aws-sdk/generator/shape::shape get-group-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "GroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'group-name)))
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-group-response (:copier common-lisp:nil))
    (group common-lisp:nil :type (common-lisp:or group-type common-lisp:null)))
@@ -2777,9 +3028,10 @@
                         ((aws-sdk/generator/shape::shape get-group-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Group"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'group)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'group))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-identity-provider-by-identifier-request (:copier common-lisp:nil))
@@ -2796,13 +3048,15 @@
                           get-identity-provider-by-identifier-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "IdpIdentifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'idp-identifier)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'idp-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-identity-provider-by-identifier-response (:copier common-lisp:nil))
@@ -2817,9 +3071,10 @@
                           get-identity-provider-by-identifier-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "IdentityProvider"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'identity-provider)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'identity-provider))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-uicustomization-request (:copier common-lisp:nil))
    (user-pool-id (common-lisp:error ":user-pool-id is required") :type
@@ -2835,13 +3090,15 @@
                           get-uicustomization-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-uicustomization-response (:copier common-lisp:nil))
@@ -2856,9 +3113,10 @@
                           get-uicustomization-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UICustomization"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'uicustomization)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'uicustomization))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-user-attribute-verification-code-request (:copier common-lisp:nil))
@@ -2875,13 +3133,15 @@
                           get-user-attribute-verification-code-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token)))
     (aws-sdk/generator/shape::to-query-params "AttributeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attribute-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attribute-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (get-user-attribute-verification-code-response (:copier common-lisp:nil))
@@ -2896,9 +3156,10 @@
                           get-user-attribute-verification-code-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CodeDeliveryDetails"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'code-delivery-details)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'code-delivery-details))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-user-request (:copier common-lisp:nil))
    (access-token (common-lisp:error ":access-token is required") :type
@@ -2909,9 +3170,10 @@
                         ((aws-sdk/generator/shape::shape get-user-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-user-response (:copier common-lisp:nil))
    (username (common-lisp:error ":username is required") :type
@@ -2926,17 +3188,20 @@
                         ((aws-sdk/generator/shape::shape get-user-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "UserAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-attributes)))
     (aws-sdk/generator/shape::to-query-params "MFAOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'mfaoptions)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'mfaoptions))))))
 (common-lisp:progn
  (common-lisp:defstruct (global-sign-out-request (:copier common-lisp:nil))
    (access-token (common-lisp:error ":access-token is required") :type
@@ -2949,9 +3214,10 @@
                           global-sign-out-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (global-sign-out-response (:copier common-lisp:nil)))
  (common-lisp:export
@@ -2973,9 +3239,10 @@
                           group-exists-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:deftype group-list-type ()
    '(trivial-types:proper-list group-type))
@@ -3005,33 +3272,40 @@
                         ((aws-sdk/generator/shape::shape group-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "GroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'group-name)))
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Description"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'description))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'description)))
     (aws-sdk/generator/shape::to-query-params "RoleArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'role-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'role-arn)))
     (aws-sdk/generator/shape::to-query-params "Precedence"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'precedence))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'precedence)))
     (aws-sdk/generator/shape::to-query-params "LastModifiedDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'last-modified-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'last-modified-date)))
     (aws-sdk/generator/shape::to-query-params "CreationDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-date)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-date))))))
 (common-lisp:progn
  (common-lisp:defstruct (identity-provider-type (:copier common-lisp:nil))
    (user-pool-id common-lisp:nil :type
@@ -3058,37 +3332,45 @@
                           identity-provider-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ProviderName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-name)))
     (aws-sdk/generator/shape::to-query-params "ProviderType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-type)))
     (aws-sdk/generator/shape::to-query-params "ProviderDetails"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-details))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-details)))
     (aws-sdk/generator/shape::to-query-params "AttributeMapping"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attribute-mapping))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attribute-mapping)))
     (aws-sdk/generator/shape::to-query-params "IdpIdentifiers"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'idp-identifiers))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'idp-identifiers)))
     (aws-sdk/generator/shape::to-query-params "LastModifiedDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'last-modified-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'last-modified-date)))
     (aws-sdk/generator/shape::to-query-params "CreationDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-date)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-date))))))
 (common-lisp:deftype identity-provider-type-type () 'common-lisp:string)
 (common-lisp:deftype idp-identifier-type () 'common-lisp:string)
 (common-lisp:progn
@@ -3120,21 +3402,25 @@
                           initiate-auth-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AuthFlow"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'auth-flow))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'auth-flow)))
     (aws-sdk/generator/shape::to-query-params "AuthParameters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'auth-parameters))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'auth-parameters)))
     (aws-sdk/generator/shape::to-query-params "ClientMetadata"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-metadata))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-metadata)))
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (initiate-auth-response (:copier common-lisp:nil))
    (challenge-name common-lisp:nil :type
@@ -3153,21 +3439,25 @@
                           initiate-auth-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ChallengeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'challenge-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'challenge-name)))
     (aws-sdk/generator/shape::to-query-params "Session"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'session))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'session)))
     (aws-sdk/generator/shape::to-query-params "ChallengeParameters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'challenge-parameters))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'challenge-parameters)))
     (aws-sdk/generator/shape::to-query-params "AuthenticationResult"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'authentication-result)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'authentication-result))))))
 (common-lisp:deftype integer-type () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (internal-error-exception (:copier common-lisp:nil))
@@ -3181,9 +3471,10 @@
                           internal-error-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-email-role-access-policy-exception (:copier common-lisp:nil))
@@ -3198,9 +3489,10 @@
                           invalid-email-role-access-policy-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-lambda-response-exception (:copier common-lisp:nil))
@@ -3215,9 +3507,10 @@
                           invalid-lambda-response-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-oauth-flow-exception (:copier common-lisp:nil))
@@ -3232,9 +3525,10 @@
                           invalid-oauth-flow-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-parameter-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -3248,9 +3542,10 @@
                           invalid-parameter-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-password-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -3264,9 +3559,10 @@
                           invalid-password-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-sms-role-access-policy-exception (:copier common-lisp:nil))
@@ -3281,9 +3577,10 @@
                           invalid-sms-role-access-policy-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-sms-role-trust-relationship-exception (:copier common-lisp:nil))
@@ -3298,9 +3595,10 @@
                           invalid-sms-role-trust-relationship-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-user-pool-configuration-exception (:copier common-lisp:nil))
@@ -3315,9 +3613,10 @@
                           invalid-user-pool-configuration-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (lambda-config-type (:copier common-lisp:nil))
    (pre-sign-up common-lisp:nil :type
@@ -3342,37 +3641,45 @@
                         ((aws-sdk/generator/shape::shape lambda-config-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "PreSignUp"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pre-sign-up))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pre-sign-up)))
     (aws-sdk/generator/shape::to-query-params "CustomMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'custom-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'custom-message)))
     (aws-sdk/generator/shape::to-query-params "PostConfirmation"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'post-confirmation))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'post-confirmation)))
     (aws-sdk/generator/shape::to-query-params "PreAuthentication"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pre-authentication))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pre-authentication)))
     (aws-sdk/generator/shape::to-query-params "PostAuthentication"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'post-authentication))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'post-authentication)))
     (aws-sdk/generator/shape::to-query-params "DefineAuthChallenge"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'define-auth-challenge))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'define-auth-challenge)))
     (aws-sdk/generator/shape::to-query-params "CreateAuthChallenge"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'create-auth-challenge))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'create-auth-challenge)))
     (aws-sdk/generator/shape::to-query-params "VerifyAuthChallengeResponse"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'verify-auth-challenge-response)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'verify-auth-challenge-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (limit-exceeded-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -3385,9 +3692,10 @@
                           limit-exceeded-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-devices-request (:copier common-lisp:nil))
    (access-token (common-lisp:error ":access-token is required") :type
@@ -3402,17 +3710,20 @@
                         ((aws-sdk/generator/shape::shape list-devices-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token)))
     (aws-sdk/generator/shape::to-query-params "Limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit)))
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-devices-response (:copier common-lisp:nil))
    (devices common-lisp:nil :type
@@ -3427,13 +3738,15 @@
                           list-devices-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Devices"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'devices))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'devices)))
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-groups-request (:copier common-lisp:nil))
    (user-pool-id (common-lisp:error ":user-pool-id is required") :type
@@ -3448,17 +3761,20 @@
                         ((aws-sdk/generator/shape::shape list-groups-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-groups-response (:copier common-lisp:nil))
    (groups common-lisp:nil :type
@@ -3471,13 +3787,15 @@
                         ((aws-sdk/generator/shape::shape list-groups-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Groups"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'groups))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'groups)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-identity-providers-request (:copier common-lisp:nil))
@@ -3496,17 +3814,20 @@
                           list-identity-providers-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-results))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-results)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-identity-providers-response (:copier common-lisp:nil))
@@ -3523,13 +3844,15 @@
                           list-identity-providers-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Providers"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'providers))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'providers)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:deftype list-of-string-types ()
    '(trivial-types:proper-list string-type))
@@ -3558,17 +3881,20 @@
                           list-resource-servers-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-results))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-results)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-resource-servers-response (:copier common-lisp:nil))
@@ -3585,13 +3911,15 @@
                           list-resource-servers-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceServers"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-servers))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-servers)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-user-import-jobs-request (:copier common-lisp:nil))
@@ -3610,17 +3938,20 @@
                           list-user-import-jobs-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-results))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-results)))
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-user-import-jobs-response (:copier common-lisp:nil))
@@ -3637,13 +3968,15 @@
                           list-user-import-jobs-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserImportJobs"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-import-jobs))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-import-jobs)))
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-user-pool-clients-request (:copier common-lisp:nil))
@@ -3662,17 +3995,20 @@
                           list-user-pool-clients-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-results))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-results)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-user-pool-clients-response (:copier common-lisp:nil))
@@ -3689,13 +4025,15 @@
                           list-user-pool-clients-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolClients"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-clients))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-clients)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-user-pools-request (:copier common-lisp:nil))
    (next-token common-lisp:nil :type
@@ -3710,13 +4048,15 @@
                           list-user-pools-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token)))
     (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-results)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-results))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-user-pools-response (:copier common-lisp:nil))
    (user-pools common-lisp:nil :type
@@ -3731,13 +4071,15 @@
                           list-user-pools-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPools"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pools))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pools)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-users-in-group-request (:copier common-lisp:nil))
    (user-pool-id (common-lisp:error ":user-pool-id is required") :type
@@ -3757,21 +4099,25 @@
                           list-users-in-group-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "GroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'group-name)))
     (aws-sdk/generator/shape::to-query-params "Limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-users-in-group-response (:copier common-lisp:nil))
@@ -3788,13 +4134,15 @@
                           list-users-in-group-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Users"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'users))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'users)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-users-request (:copier common-lisp:nil))
    (user-pool-id (common-lisp:error ":user-pool-id is required") :type
@@ -3813,25 +4161,30 @@
                         ((aws-sdk/generator/shape::shape list-users-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "AttributesToGet"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attributes-to-get))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attributes-to-get)))
     (aws-sdk/generator/shape::to-query-params "Limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit)))
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token)))
     (aws-sdk/generator/shape::to-query-params "Filter"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-users-response (:copier common-lisp:nil))
    (users common-lisp:nil :type
@@ -3844,13 +4197,15 @@
                         ((aws-sdk/generator/shape::shape list-users-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Users"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'users))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'users)))
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token))))))
 (common-lisp:progn
  (common-lisp:deftype logout-urls-list-type ()
    '(trivial-types:proper-list redirect-url-type))
@@ -3874,9 +4229,10 @@
                           mfamethod-not-found-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:deftype mfaoption-list-type ()
    '(trivial-types:proper-list mfaoption-type))
@@ -3896,13 +4252,15 @@
                         ((aws-sdk/generator/shape::shape mfaoption-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DeliveryMedium"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'delivery-medium))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'delivery-medium)))
     (aws-sdk/generator/shape::to-query-params "AttributeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attribute-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attribute-name))))))
 (common-lisp:deftype message-action-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (message-template-type (:copier common-lisp:nil))
@@ -3920,17 +4278,20 @@
                           message-template-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "SMSMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'smsmessage))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'smsmessage)))
     (aws-sdk/generator/shape::to-query-params "EmailMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-message)))
     (aws-sdk/generator/shape::to-query-params "EmailSubject"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-subject)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-subject))))))
 (common-lisp:deftype message-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (new-device-metadata-type (:copier common-lisp:nil))
@@ -3946,13 +4307,15 @@
                           new-device-metadata-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DeviceKey"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-key)))
     (aws-sdk/generator/shape::to-query-params "DeviceGroupKey"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-group-key)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-group-key))))))
 (common-lisp:progn
  (common-lisp:defstruct (not-authorized-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -3965,9 +4328,10 @@
                           not-authorized-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (number-attribute-constraints-type (:copier common-lisp:nil))
@@ -3984,13 +4348,15 @@
                           number-attribute-constraints-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "MinValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'min-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'min-value)))
     (aws-sdk/generator/shape::to-query-params "MaxValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-value))))))
 (common-lisp:deftype oauth-flow-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype oauth-flows-type ()
@@ -4021,25 +4387,30 @@
                         ((aws-sdk/generator/shape::shape password-policy-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "MinimumLength"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'minimum-length))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'minimum-length)))
     (aws-sdk/generator/shape::to-query-params "RequireUppercase"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'require-uppercase))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'require-uppercase)))
     (aws-sdk/generator/shape::to-query-params "RequireLowercase"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'require-lowercase))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'require-lowercase)))
     (aws-sdk/generator/shape::to-query-params "RequireNumbers"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'require-numbers))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'require-numbers)))
     (aws-sdk/generator/shape::to-query-params "RequireSymbols"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'require-symbols)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'require-symbols))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (password-reset-required-exception (:copier common-lisp:nil))
@@ -4054,9 +4425,10 @@
                           password-reset-required-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype password-type () 'common-lisp:string)
 (common-lisp:deftype pool-query-limit-type () 'common-lisp:integer)
 (common-lisp:deftype pre-signed-url-type () 'common-lisp:string)
@@ -4075,9 +4447,10 @@
                           precondition-not-met-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (provider-description (:copier common-lisp:nil))
    (provider-name common-lisp:nil :type
@@ -4094,21 +4467,25 @@
                         ((aws-sdk/generator/shape::shape provider-description))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ProviderName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-name)))
     (aws-sdk/generator/shape::to-query-params "ProviderType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-type)))
     (aws-sdk/generator/shape::to-query-params "LastModifiedDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'last-modified-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'last-modified-date)))
     (aws-sdk/generator/shape::to-query-params "CreationDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-date)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-date))))))
 (common-lisp:defstruct
     (provider-details-type
      (:constructor |make-provider-details-type|
@@ -4135,17 +4512,20 @@
                           provider-user-identifier-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ProviderName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-name)))
     (aws-sdk/generator/shape::to-query-params "ProviderAttributeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-attribute-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-attribute-name)))
     (aws-sdk/generator/shape::to-query-params "ProviderAttributeValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-attribute-value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-attribute-value))))))
 (common-lisp:progn
  (common-lisp:deftype providers-list-type ()
    '(trivial-types:proper-list provider-description))
@@ -4176,17 +4556,20 @@
                           resend-confirmation-code-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id)))
     (aws-sdk/generator/shape::to-query-params "SecretHash"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'secret-hash))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'secret-hash)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (resend-confirmation-code-response (:copier common-lisp:nil))
@@ -4201,9 +4584,10 @@
                           resend-confirmation-code-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CodeDeliveryDetails"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'code-delivery-details)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'code-delivery-details))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (resource-not-found-exception (:copier common-lisp:nil))
@@ -4218,9 +4602,10 @@
                           resource-not-found-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype resource-server-identifier-type () 'common-lisp:string)
 (common-lisp:deftype resource-server-name-type () 'common-lisp:string)
 (common-lisp:deftype resource-server-scope-description-type ()
@@ -4251,13 +4636,15 @@
                           resource-server-scope-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ScopeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'scope-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'scope-name)))
     (aws-sdk/generator/shape::to-query-params "ScopeDescription"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'scope-description)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'scope-description))))))
 (common-lisp:progn
  (common-lisp:defstruct (resource-server-type (:copier common-lisp:nil))
    (user-pool-id common-lisp:nil :type
@@ -4274,21 +4661,25 @@
                         ((aws-sdk/generator/shape::shape resource-server-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Identifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'identifier))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'identifier)))
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "Scopes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'scopes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'scopes))))))
 (common-lisp:progn
  (common-lisp:deftype resource-servers-list-type ()
    '(trivial-types:proper-list resource-server-type))
@@ -4317,21 +4708,25 @@
                           respond-to-auth-challenge-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id)))
     (aws-sdk/generator/shape::to-query-params "ChallengeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'challenge-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'challenge-name)))
     (aws-sdk/generator/shape::to-query-params "Session"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'session))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'session)))
     (aws-sdk/generator/shape::to-query-params "ChallengeResponses"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'challenge-responses)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'challenge-responses))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (respond-to-auth-challenge-response (:copier common-lisp:nil))
@@ -4352,21 +4747,25 @@
                           respond-to-auth-challenge-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ChallengeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'challenge-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'challenge-name)))
     (aws-sdk/generator/shape::to-query-params "Session"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'session))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'session)))
     (aws-sdk/generator/shape::to-query-params "ChallengeParameters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'challenge-parameters))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'challenge-parameters)))
     (aws-sdk/generator/shape::to-query-params "AuthenticationResult"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'authentication-result)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'authentication-result))))))
 (common-lisp:deftype s3bucket-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (schema-attribute-type (:copier common-lisp:nil))
@@ -4392,33 +4791,40 @@
                           schema-attribute-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "AttributeDataType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attribute-data-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attribute-data-type)))
     (aws-sdk/generator/shape::to-query-params "DeveloperOnlyAttribute"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'developer-only-attribute))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'developer-only-attribute)))
     (aws-sdk/generator/shape::to-query-params "Mutable"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'mutable))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'mutable)))
     (aws-sdk/generator/shape::to-query-params "Required"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'required))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'required)))
     (aws-sdk/generator/shape::to-query-params "NumberAttributeConstraints"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'number-attribute-constraints))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'number-attribute-constraints)))
     (aws-sdk/generator/shape::to-query-params "StringAttributeConstraints"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'string-attribute-constraints)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'string-attribute-constraints))))))
 (common-lisp:progn
  (common-lisp:deftype schema-attributes-list-type ()
    '(trivial-types:proper-list schema-attribute-type))
@@ -4441,9 +4847,10 @@
                           scope-does-not-exist-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:deftype scope-list-type ()
    '(trivial-types:proper-list scope-type))
@@ -4482,21 +4889,25 @@
                           set-uicustomization-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id)))
     (aws-sdk/generator/shape::to-query-params "CSS"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'css))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'css)))
     (aws-sdk/generator/shape::to-query-params "ImageFile"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'image-file)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'image-file))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (set-uicustomization-response (:copier common-lisp:nil))
@@ -4511,9 +4922,10 @@
                           set-uicustomization-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UICustomization"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'uicustomization)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'uicustomization))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-user-settings-request (:copier common-lisp:nil))
    (access-token (common-lisp:error ":access-token is required") :type
@@ -4529,13 +4941,15 @@
                           set-user-settings-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token)))
     (aws-sdk/generator/shape::to-query-params "MFAOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'mfaoptions)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'mfaoptions))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-user-settings-response (:copier common-lisp:nil)))
  (common-lisp:export
@@ -4565,29 +4979,35 @@
                         ((aws-sdk/generator/shape::shape sign-up-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id)))
     (aws-sdk/generator/shape::to-query-params "SecretHash"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'secret-hash))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'secret-hash)))
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "Password"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'password))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'password)))
     (aws-sdk/generator/shape::to-query-params "UserAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-attributes)))
     (aws-sdk/generator/shape::to-query-params "ValidationData"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'validation-data)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'validation-data))))))
 (common-lisp:progn
  (common-lisp:defstruct (sign-up-response (:copier common-lisp:nil))
    (user-confirmed (common-lisp:error ":user-confirmed is required") :type
@@ -4602,17 +5022,20 @@
                         ((aws-sdk/generator/shape::shape sign-up-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserConfirmed"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-confirmed))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-confirmed)))
     (aws-sdk/generator/shape::to-query-params "CodeDeliveryDetails"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'code-delivery-details))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'code-delivery-details)))
     (aws-sdk/generator/shape::to-query-params "UserSub"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-sub)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-sub))))))
 (common-lisp:progn
  (common-lisp:defstruct (sms-configuration-type (:copier common-lisp:nil))
    (sns-caller-arn (common-lisp:error ":sns-caller-arn is required") :type
@@ -4627,13 +5050,15 @@
                           sms-configuration-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "SnsCallerArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sns-caller-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sns-caller-arn)))
     (aws-sdk/generator/shape::to-query-params "ExternalId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'external-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'external-id))))))
 (common-lisp:deftype sms-verification-message-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4651,13 +5076,15 @@
                           start-user-import-job-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "JobId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'job-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'job-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (start-user-import-job-response (:copier common-lisp:nil))
@@ -4672,9 +5099,10 @@
                           start-user-import-job-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserImportJob"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-import-job)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-import-job))))))
 (common-lisp:deftype status-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -4692,13 +5120,15 @@
                           stop-user-import-job-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "JobId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'job-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'job-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (stop-user-import-job-response (:copier common-lisp:nil))
@@ -4713,9 +5143,10 @@
                           stop-user-import-job-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserImportJob"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-import-job)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-import-job))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (string-attribute-constraints-type (:copier common-lisp:nil))
@@ -4732,13 +5163,15 @@
                           string-attribute-constraints-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "MinLength"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'min-length))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'min-length)))
     (aws-sdk/generator/shape::to-query-params "MaxLength"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-length)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-length))))))
 (common-lisp:deftype string-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype supported-identity-providers-list-type ()
@@ -4763,9 +5196,10 @@
                           too-many-failed-attempts-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (too-many-requests-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -4779,9 +5213,10 @@
                           too-many-requests-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (uicustomization-type (:copier common-lisp:nil))
    (user-pool-id common-lisp:nil :type
@@ -4803,33 +5238,40 @@
                         ((aws-sdk/generator/shape::shape uicustomization-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id)))
     (aws-sdk/generator/shape::to-query-params "ImageUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'image-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'image-url)))
     (aws-sdk/generator/shape::to-query-params "CSS"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'css))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'css)))
     (aws-sdk/generator/shape::to-query-params "CSSVersion"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'cssversion))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'cssversion)))
     (aws-sdk/generator/shape::to-query-params "LastModifiedDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'last-modified-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'last-modified-date)))
     (aws-sdk/generator/shape::to-query-params "CreationDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-date)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-date))))))
 (common-lisp:progn
  (common-lisp:defstruct (unexpected-lambda-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -4843,9 +5285,10 @@
                           unexpected-lambda-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (unsupported-identity-provider-exception (:copier common-lisp:nil))
@@ -4860,9 +5303,10 @@
                           unsupported-identity-provider-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (unsupported-user-state-exception (:copier common-lisp:nil))
@@ -4877,9 +5321,10 @@
                           unsupported-user-state-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-device-status-request (:copier common-lisp:nil))
@@ -4898,17 +5343,20 @@
                           update-device-status-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token)))
     (aws-sdk/generator/shape::to-query-params "DeviceKey"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-key)))
     (aws-sdk/generator/shape::to-query-params "DeviceRememberedStatus"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-remembered-status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-remembered-status))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-device-status-response (:copier common-lisp:nil)))
@@ -4937,25 +5385,30 @@
                         ((aws-sdk/generator/shape::shape update-group-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "GroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'group-name)))
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Description"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'description))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'description)))
     (aws-sdk/generator/shape::to-query-params "RoleArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'role-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'role-arn)))
     (aws-sdk/generator/shape::to-query-params "Precedence"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'precedence)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'precedence))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-group-response (:copier common-lisp:nil))
    (group common-lisp:nil :type (common-lisp:or group-type common-lisp:null)))
@@ -4967,9 +5420,10 @@
                           update-group-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Group"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'group)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'group))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-identity-provider-request (:copier common-lisp:nil))
@@ -4992,25 +5446,30 @@
                           update-identity-provider-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ProviderName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-name)))
     (aws-sdk/generator/shape::to-query-params "ProviderDetails"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'provider-details))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'provider-details)))
     (aws-sdk/generator/shape::to-query-params "AttributeMapping"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attribute-mapping))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attribute-mapping)))
     (aws-sdk/generator/shape::to-query-params "IdpIdentifiers"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'idp-identifiers)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'idp-identifiers))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-identity-provider-response (:copier common-lisp:nil))
@@ -5025,9 +5484,10 @@
                           update-identity-provider-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "IdentityProvider"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'identity-provider)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'identity-provider))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-resource-server-request (:copier common-lisp:nil))
@@ -5048,21 +5508,25 @@
                           update-resource-server-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Identifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'identifier))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'identifier)))
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "Scopes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'scopes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'scopes))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-resource-server-response (:copier common-lisp:nil))
@@ -5077,9 +5541,10 @@
                           update-resource-server-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceServer"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-server)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-server))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-user-attributes-request (:copier common-lisp:nil))
@@ -5096,13 +5561,15 @@
                           update-user-attributes-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-attributes)))
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-user-attributes-response (:copier common-lisp:nil))
@@ -5117,9 +5584,10 @@
                           update-user-attributes-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CodeDeliveryDetailsList"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'code-delivery-details-list)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'code-delivery-details-list))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-user-pool-client-request (:copier common-lisp:nil))
@@ -5160,61 +5628,75 @@
                           update-user-pool-client-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id)))
     (aws-sdk/generator/shape::to-query-params "ClientName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-name)))
     (aws-sdk/generator/shape::to-query-params "RefreshTokenValidity"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'refresh-token-validity))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'refresh-token-validity)))
     (aws-sdk/generator/shape::to-query-params "ReadAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'read-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'read-attributes)))
     (aws-sdk/generator/shape::to-query-params "WriteAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'write-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'write-attributes)))
     (aws-sdk/generator/shape::to-query-params "ExplicitAuthFlows"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'explicit-auth-flows))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'explicit-auth-flows)))
     (aws-sdk/generator/shape::to-query-params "SupportedIdentityProviders"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'supported-identity-providers))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'supported-identity-providers)))
     (aws-sdk/generator/shape::to-query-params "CallbackURLs"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'callback-urls))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'callback-urls)))
     (aws-sdk/generator/shape::to-query-params "LogoutURLs"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'logout-urls))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'logout-urls)))
     (aws-sdk/generator/shape::to-query-params "DefaultRedirectURI"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-redirect-uri))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-redirect-uri)))
     (aws-sdk/generator/shape::to-query-params "AllowedOAuthFlows"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'allowed-oauth-flows))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'allowed-oauth-flows)))
     (aws-sdk/generator/shape::to-query-params "AllowedOAuthScopes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'allowed-oauth-scopes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'allowed-oauth-scopes)))
     (aws-sdk/generator/shape::to-query-params "AllowedOAuthFlowsUserPoolClient"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'allowed-oauth-flows-user-pool-client)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'allowed-oauth-flows-user-pool-client))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-user-pool-client-response (:copier common-lisp:nil))
@@ -5229,9 +5711,10 @@
                           update-user-pool-client-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolClient"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-client)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-client))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-user-pool-request (:copier common-lisp:nil))
    (user-pool-id (common-lisp:error ":user-pool-id is required") :type
@@ -5272,65 +5755,80 @@
                           update-user-pool-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "Policies"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'policies))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'policies)))
     (aws-sdk/generator/shape::to-query-params "LambdaConfig"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'lambda-config))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'lambda-config)))
     (aws-sdk/generator/shape::to-query-params "AutoVerifiedAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'auto-verified-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'auto-verified-attributes)))
     (aws-sdk/generator/shape::to-query-params "SmsVerificationMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sms-verification-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sms-verification-message)))
     (aws-sdk/generator/shape::to-query-params "EmailVerificationMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-verification-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-verification-message)))
     (aws-sdk/generator/shape::to-query-params "EmailVerificationSubject"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-verification-subject))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-verification-subject)))
     (aws-sdk/generator/shape::to-query-params "VerificationMessageTemplate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'verification-message-template))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'verification-message-template)))
     (aws-sdk/generator/shape::to-query-params "SmsAuthenticationMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sms-authentication-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sms-authentication-message)))
     (aws-sdk/generator/shape::to-query-params "MfaConfiguration"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'mfa-configuration))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'mfa-configuration)))
     (aws-sdk/generator/shape::to-query-params "DeviceConfiguration"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-configuration))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-configuration)))
     (aws-sdk/generator/shape::to-query-params "EmailConfiguration"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-configuration))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-configuration)))
     (aws-sdk/generator/shape::to-query-params "SmsConfiguration"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sms-configuration))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sms-configuration)))
     (aws-sdk/generator/shape::to-query-params "UserPoolTags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-tags))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-tags)))
     (aws-sdk/generator/shape::to-query-params "AdminCreateUserConfig"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'admin-create-user-config)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'admin-create-user-config))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-user-pool-response (:copier common-lisp:nil)))
  (common-lisp:export
@@ -5356,9 +5854,10 @@
                           user-import-in-progress-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype user-import-job-id-type () 'common-lisp:string)
 (common-lisp:deftype user-import-job-name-type () 'common-lisp:string)
 (common-lisp:deftype user-import-job-status-type () 'common-lisp:string)
@@ -5396,57 +5895,70 @@
                         ((aws-sdk/generator/shape::shape user-import-job-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "JobName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'job-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'job-name)))
     (aws-sdk/generator/shape::to-query-params "JobId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'job-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'job-id)))
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "PreSignedUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pre-signed-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pre-signed-url)))
     (aws-sdk/generator/shape::to-query-params "CreationDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-date)))
     (aws-sdk/generator/shape::to-query-params "StartDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'start-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'start-date)))
     (aws-sdk/generator/shape::to-query-params "CompletionDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'completion-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'completion-date)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status)))
     (aws-sdk/generator/shape::to-query-params "CloudWatchLogsRoleArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'cloud-watch-logs-role-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'cloud-watch-logs-role-arn)))
     (aws-sdk/generator/shape::to-query-params "ImportedUsers"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'imported-users))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'imported-users)))
     (aws-sdk/generator/shape::to-query-params "SkippedUsers"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'skipped-users))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'skipped-users)))
     (aws-sdk/generator/shape::to-query-params "FailedUsers"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'failed-users))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'failed-users)))
     (aws-sdk/generator/shape::to-query-params "CompletionMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'completion-message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'completion-message))))))
 (common-lisp:progn
  (common-lisp:deftype user-import-jobs-list-type ()
    '(trivial-types:proper-list user-import-job-type))
@@ -5469,9 +5981,10 @@
                           user-lambda-validation-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (user-not-confirmed-exception (:copier common-lisp:nil))
@@ -5486,9 +5999,10 @@
                           user-not-confirmed-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (user-not-found-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -5501,9 +6015,10 @@
                           user-not-found-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (user-pool-client-description (:copier common-lisp:nil))
@@ -5522,17 +6037,20 @@
                           user-pool-client-description))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id)))
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ClientName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-name))))))
 (common-lisp:progn
  (common-lisp:deftype user-pool-client-list-type ()
    '(trivial-types:proper-list user-pool-client-description))
@@ -5586,73 +6104,90 @@
                           user-pool-client-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UserPoolId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-id)))
     (aws-sdk/generator/shape::to-query-params "ClientName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-name)))
     (aws-sdk/generator/shape::to-query-params "ClientId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-id)))
     (aws-sdk/generator/shape::to-query-params "ClientSecret"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'client-secret))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'client-secret)))
     (aws-sdk/generator/shape::to-query-params "LastModifiedDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'last-modified-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'last-modified-date)))
     (aws-sdk/generator/shape::to-query-params "CreationDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-date)))
     (aws-sdk/generator/shape::to-query-params "RefreshTokenValidity"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'refresh-token-validity))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'refresh-token-validity)))
     (aws-sdk/generator/shape::to-query-params "ReadAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'read-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'read-attributes)))
     (aws-sdk/generator/shape::to-query-params "WriteAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'write-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'write-attributes)))
     (aws-sdk/generator/shape::to-query-params "ExplicitAuthFlows"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'explicit-auth-flows))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'explicit-auth-flows)))
     (aws-sdk/generator/shape::to-query-params "SupportedIdentityProviders"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'supported-identity-providers))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'supported-identity-providers)))
     (aws-sdk/generator/shape::to-query-params "CallbackURLs"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'callback-urls))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'callback-urls)))
     (aws-sdk/generator/shape::to-query-params "LogoutURLs"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'logout-urls))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'logout-urls)))
     (aws-sdk/generator/shape::to-query-params "DefaultRedirectURI"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-redirect-uri))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-redirect-uri)))
     (aws-sdk/generator/shape::to-query-params "AllowedOAuthFlows"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'allowed-oauth-flows))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'allowed-oauth-flows)))
     (aws-sdk/generator/shape::to-query-params "AllowedOAuthScopes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'allowed-oauth-scopes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'allowed-oauth-scopes)))
     (aws-sdk/generator/shape::to-query-params "AllowedOAuthFlowsUserPoolClient"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'allowed-oauth-flows-user-pool-client)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'allowed-oauth-flows-user-pool-client))))))
 (common-lisp:progn
  (common-lisp:defstruct (user-pool-description-type (:copier common-lisp:nil))
    (id common-lisp:nil :type
@@ -5675,29 +6210,35 @@
                           user-pool-description-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "LambdaConfig"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'lambda-config))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'lambda-config)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status)))
     (aws-sdk/generator/shape::to-query-params "LastModifiedDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'last-modified-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'last-modified-date)))
     (aws-sdk/generator/shape::to-query-params "CreationDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-date)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-date))))))
 (common-lisp:deftype user-pool-id-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype user-pool-list-type ()
@@ -5722,9 +6263,10 @@
                           user-pool-policy-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "PasswordPolicy"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'password-policy)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'password-policy))))))
 (common-lisp:progn
  (common-lisp:defstruct (user-pool-tagging-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -5738,9 +6280,10 @@
                           user-pool-tagging-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:defstruct
     (user-pool-tags-type
      (:constructor |make-user-pool-tags-type|
@@ -5803,105 +6346,130 @@
                         ((aws-sdk/generator/shape::shape user-pool-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "Name"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'name)))
     (aws-sdk/generator/shape::to-query-params "Policies"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'policies))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'policies)))
     (aws-sdk/generator/shape::to-query-params "LambdaConfig"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'lambda-config))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'lambda-config)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status)))
     (aws-sdk/generator/shape::to-query-params "LastModifiedDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'last-modified-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'last-modified-date)))
     (aws-sdk/generator/shape::to-query-params "CreationDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-date)))
     (aws-sdk/generator/shape::to-query-params "SchemaAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'schema-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'schema-attributes)))
     (aws-sdk/generator/shape::to-query-params "AutoVerifiedAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'auto-verified-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'auto-verified-attributes)))
     (aws-sdk/generator/shape::to-query-params "AliasAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'alias-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'alias-attributes)))
     (aws-sdk/generator/shape::to-query-params "UsernameAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username-attributes)))
     (aws-sdk/generator/shape::to-query-params "SmsVerificationMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sms-verification-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sms-verification-message)))
     (aws-sdk/generator/shape::to-query-params "EmailVerificationMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-verification-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-verification-message)))
     (aws-sdk/generator/shape::to-query-params "EmailVerificationSubject"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-verification-subject))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-verification-subject)))
     (aws-sdk/generator/shape::to-query-params "VerificationMessageTemplate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'verification-message-template))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'verification-message-template)))
     (aws-sdk/generator/shape::to-query-params "SmsAuthenticationMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sms-authentication-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sms-authentication-message)))
     (aws-sdk/generator/shape::to-query-params "MfaConfiguration"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'mfa-configuration))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'mfa-configuration)))
     (aws-sdk/generator/shape::to-query-params "DeviceConfiguration"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'device-configuration))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'device-configuration)))
     (aws-sdk/generator/shape::to-query-params "EstimatedNumberOfUsers"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'estimated-number-of-users))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'estimated-number-of-users)))
     (aws-sdk/generator/shape::to-query-params "EmailConfiguration"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-configuration))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-configuration)))
     (aws-sdk/generator/shape::to-query-params "SmsConfiguration"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sms-configuration))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sms-configuration)))
     (aws-sdk/generator/shape::to-query-params "UserPoolTags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-pool-tags))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-pool-tags)))
     (aws-sdk/generator/shape::to-query-params "SmsConfigurationFailure"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sms-configuration-failure))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sms-configuration-failure)))
     (aws-sdk/generator/shape::to-query-params "EmailConfigurationFailure"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-configuration-failure))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-configuration-failure)))
     (aws-sdk/generator/shape::to-query-params "AdminCreateUserConfig"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'admin-create-user-config)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'admin-create-user-config))))))
 (common-lisp:deftype user-status-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (user-type (:copier common-lisp:nil))
@@ -5924,33 +6492,40 @@
                         ((aws-sdk/generator/shape::shape user-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Username"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'username))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'username)))
     (aws-sdk/generator/shape::to-query-params "Attributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attributes)))
     (aws-sdk/generator/shape::to-query-params "UserCreateDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-create-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-create-date)))
     (aws-sdk/generator/shape::to-query-params "UserLastModifiedDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-last-modified-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-last-modified-date)))
     (aws-sdk/generator/shape::to-query-params "Enabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'enabled)))
     (aws-sdk/generator/shape::to-query-params "UserStatus"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'user-status))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'user-status)))
     (aws-sdk/generator/shape::to-query-params "MFAOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'mfaoptions)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'mfaoptions))))))
 (common-lisp:deftype username-attribute-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype username-attributes-list-type ()
@@ -5973,9 +6548,10 @@
                           username-exists-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype username-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype users-list-type ()
@@ -6009,29 +6585,35 @@
                           verification-message-template-type))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "SmsMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sms-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sms-message)))
     (aws-sdk/generator/shape::to-query-params "EmailMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-message)))
     (aws-sdk/generator/shape::to-query-params "EmailSubject"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-subject))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-subject)))
     (aws-sdk/generator/shape::to-query-params "EmailMessageByLink"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-message-by-link))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-message-by-link)))
     (aws-sdk/generator/shape::to-query-params "EmailSubjectByLink"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'email-subject-by-link))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'email-subject-by-link)))
     (aws-sdk/generator/shape::to-query-params "DefaultEmailOption"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-email-option)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-email-option))))))
 (common-lisp:deftype verified-attribute-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype verified-attributes-list-type ()
@@ -6059,17 +6641,20 @@
                           verify-user-attribute-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AccessToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-token)))
     (aws-sdk/generator/shape::to-query-params "AttributeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attribute-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attribute-name)))
     (aws-sdk/generator/shape::to-query-params "Code"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'code)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'code))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (verify-user-attribute-response (:copier common-lisp:nil)))

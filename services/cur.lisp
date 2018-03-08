@@ -31,9 +31,10 @@
                           delete-report-definition-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ReportName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'report-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'report-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-report-definition-response (:copier common-lisp:nil))
@@ -48,9 +49,10 @@
                           delete-report-definition-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResponseMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'response-message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'response-message))))))
 (common-lisp:deftype delete-response-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -68,13 +70,15 @@
                           describe-report-definitions-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "MaxResults"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-results))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-results)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-report-definitions-response (:copier common-lisp:nil))
@@ -91,13 +95,15 @@
                           describe-report-definitions-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ReportDefinitions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'report-definitions))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'report-definitions)))
     (aws-sdk/generator/shape::to-query-params "NextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (duplicate-report-name-exception (:copier common-lisp:nil))
@@ -112,9 +118,10 @@
                           duplicate-report-name-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:deftype generic-string () 'common-lisp:string)
 (common-lisp:progn
@@ -129,9 +136,10 @@
                           internal-error-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -147,9 +155,10 @@
                           put-report-definition-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ReportDefinition"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'report-definition)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'report-definition))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (put-report-definition-response (:copier common-lisp:nil)))
@@ -188,41 +197,50 @@
                         ((aws-sdk/generator/shape::shape report-definition))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ReportName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'report-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'report-name)))
     (aws-sdk/generator/shape::to-query-params "TimeUnit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'time-unit))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'time-unit)))
     (aws-sdk/generator/shape::to-query-params "Format"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'format))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'format)))
     (aws-sdk/generator/shape::to-query-params "Compression"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'compression))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'compression)))
     (aws-sdk/generator/shape::to-query-params "AdditionalSchemaElements"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'additional-schema-elements))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'additional-schema-elements)))
     (aws-sdk/generator/shape::to-query-params "S3Bucket"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               's3bucket))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                's3bucket)))
     (aws-sdk/generator/shape::to-query-params "S3Prefix"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               's3prefix))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                's3prefix)))
     (aws-sdk/generator/shape::to-query-params "S3Region"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               's3region))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                's3region)))
     (aws-sdk/generator/shape::to-query-params "AdditionalArtifacts"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'additional-artifacts)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'additional-artifacts))))))
 (common-lisp:progn
  (common-lisp:deftype report-definition-list ()
    '(trivial-types:proper-list report-definition))
@@ -246,9 +264,10 @@
                           report-limit-reached-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype report-name () 'common-lisp:string)
 (common-lisp:deftype s3bucket () 'common-lisp:string)
 (common-lisp:deftype s3prefix () 'common-lisp:string)
@@ -272,9 +291,10 @@
                         ((aws-sdk/generator/shape::shape validation-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defun delete-report-definition
                     (

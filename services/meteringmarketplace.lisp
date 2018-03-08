@@ -21,13 +21,15 @@
                           batch-meter-usage-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UsageRecords"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'usage-records))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'usage-records)))
     (aws-sdk/generator/shape::to-query-params "ProductCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'product-code)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'product-code))))))
 (common-lisp:progn
  (common-lisp:defstruct (batch-meter-usage-result (:copier common-lisp:nil))
    (results common-lisp:nil :type
@@ -42,13 +44,15 @@
                           batch-meter-usage-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Results"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'results))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'results)))
     (aws-sdk/generator/shape::to-query-params "UnprocessedRecords"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'unprocessed-records)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'unprocessed-records))))))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:deftype customer-identifier () 'common-lisp:string)
 (common-lisp:progn
@@ -64,9 +68,10 @@
                           duplicate-request-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (expired-token-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -79,9 +84,10 @@
                           expired-token-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (internal-service-error-exception (:copier common-lisp:nil))
@@ -96,9 +102,10 @@
                           internal-service-error-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-customer-identifier-exception (:copier common-lisp:nil))
@@ -113,9 +120,10 @@
                           invalid-customer-identifier-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-endpoint-region-exception (:copier common-lisp:nil))
@@ -130,9 +138,10 @@
                           invalid-endpoint-region-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-product-code-exception (:copier common-lisp:nil))
@@ -147,9 +156,10 @@
                           invalid-product-code-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-token-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -162,9 +172,10 @@
                           invalid-token-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-usage-dimension-exception (:copier common-lisp:nil))
@@ -179,9 +190,10 @@
                           invalid-usage-dimension-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (meter-usage-request (:copier common-lisp:nil))
    (product-code (common-lisp:error ":product-code is required") :type
@@ -200,25 +212,30 @@
                         ((aws-sdk/generator/shape::shape meter-usage-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ProductCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'product-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'product-code)))
     (aws-sdk/generator/shape::to-query-params "Timestamp"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'timestamp))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'timestamp)))
     (aws-sdk/generator/shape::to-query-params "UsageDimension"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'usage-dimension))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'usage-dimension)))
     (aws-sdk/generator/shape::to-query-params "UsageQuantity"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'usage-quantity))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'usage-quantity)))
     (aws-sdk/generator/shape::to-query-params "DryRun"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'dry-run)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'dry-run))))))
 (common-lisp:progn
  (common-lisp:defstruct (meter-usage-result (:copier common-lisp:nil))
    (metering-record-id common-lisp:nil :type
@@ -229,9 +246,10 @@
                         ((aws-sdk/generator/shape::shape meter-usage-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "MeteringRecordId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'metering-record-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'metering-record-id))))))
 (common-lisp:deftype non-empty-string () 'common-lisp:string)
 (common-lisp:deftype product-code () 'common-lisp:string)
 (common-lisp:progn
@@ -246,9 +264,10 @@
                           resolve-customer-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "RegistrationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'registration-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'registration-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (resolve-customer-result (:copier common-lisp:nil))
    (customer-identifier common-lisp:nil :type
@@ -263,13 +282,15 @@
                           resolve-customer-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CustomerIdentifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'customer-identifier))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'customer-identifier)))
     (aws-sdk/generator/shape::to-query-params "ProductCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'product-code)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'product-code))))))
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (throttling-exception (:copier common-lisp:nil))
@@ -281,9 +302,10 @@
                         ((aws-sdk/generator/shape::shape throttling-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -299,9 +321,10 @@
                           timestamp-out-of-bounds-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype usage-dimension () 'common-lisp:string)
 (common-lisp:deftype usage-quantity () 'common-lisp:integer)
 (common-lisp:progn
@@ -319,21 +342,25 @@
                         ((aws-sdk/generator/shape::shape usage-record))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Timestamp"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'timestamp))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'timestamp)))
     (aws-sdk/generator/shape::to-query-params "CustomerIdentifier"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'customer-identifier))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'customer-identifier)))
     (aws-sdk/generator/shape::to-query-params "Dimension"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'dimension))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'dimension)))
     (aws-sdk/generator/shape::to-query-params "Quantity"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'quantity)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'quantity))))))
 (common-lisp:progn
  (common-lisp:deftype usage-record-list ()
    '(trivial-types:proper-list usage-record))
@@ -356,17 +383,20 @@
                         ((aws-sdk/generator/shape::shape usage-record-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "UsageRecord"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'usage-record))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'usage-record)))
     (aws-sdk/generator/shape::to-query-params "MeteringRecordId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'metering-record-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'metering-record-id)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status))))))
 (common-lisp:progn
  (common-lisp:deftype usage-record-result-list ()
    '(trivial-types:proper-list usage-record-result))

@@ -29,17 +29,20 @@
                         ((aws-sdk/generator/shape::shape failure-info))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "StatusCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status-code)))
     (aws-sdk/generator/shape::to-query-params "ErrorCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'error-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'error-code)))
     (aws-sdk/generator/shape::to-query-params "ErrorMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'error-message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'error-message))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-resources-input (:copier common-lisp:nil))
    (pagination-token common-lisp:nil :type
@@ -58,25 +61,30 @@
                         ((aws-sdk/generator/shape::shape get-resources-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token)))
     (aws-sdk/generator/shape::to-query-params "TagFilters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tag-filters))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tag-filters)))
     (aws-sdk/generator/shape::to-query-params "ResourcesPerPage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resources-per-page))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resources-per-page)))
     (aws-sdk/generator/shape::to-query-params "TagsPerPage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags-per-page))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags-per-page)))
     (aws-sdk/generator/shape::to-query-params "ResourceTypeFilters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-type-filters)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-type-filters))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-resources-output (:copier common-lisp:nil))
    (pagination-token common-lisp:nil :type
@@ -89,13 +97,15 @@
                         ((aws-sdk/generator/shape::shape get-resources-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token)))
     (aws-sdk/generator/shape::to-query-params "ResourceTagMappingList"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-tag-mapping-list)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-tag-mapping-list))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-tag-keys-input (:copier common-lisp:nil))
    (pagination-token common-lisp:nil :type
@@ -106,9 +116,10 @@
                         ((aws-sdk/generator/shape::shape get-tag-keys-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-tag-keys-output (:copier common-lisp:nil))
    (pagination-token common-lisp:nil :type
@@ -121,13 +132,15 @@
                         ((aws-sdk/generator/shape::shape get-tag-keys-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token)))
     (aws-sdk/generator/shape::to-query-params "TagKeys"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tag-keys)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tag-keys))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-tag-values-input (:copier common-lisp:nil))
    (pagination-token common-lisp:nil :type
@@ -140,13 +153,15 @@
                         ((aws-sdk/generator/shape::shape get-tag-values-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token)))
     (aws-sdk/generator/shape::to-query-params "Key"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'key)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'key))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-tag-values-output (:copier common-lisp:nil))
    (pagination-token common-lisp:nil :type
@@ -161,13 +176,15 @@
                           get-tag-values-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "PaginationToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pagination-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pagination-token)))
     (aws-sdk/generator/shape::to-query-params "TagValues"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tag-values)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tag-values))))))
 (common-lisp:progn
  (common-lisp:defstruct (internal-service-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -181,9 +198,10 @@
                           internal-service-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-parameter-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -197,9 +215,10 @@
                           invalid-parameter-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype pagination-token () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -215,9 +234,10 @@
                           pagination-token-expired-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype resource-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype resource-arnlist ()
@@ -238,13 +258,15 @@
                         ((aws-sdk/generator/shape::shape resource-tag-mapping))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceARN"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-arn)))
     (aws-sdk/generator/shape::to-query-params "Tags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags))))))
 (common-lisp:progn
  (common-lisp:deftype resource-tag-mapping-list ()
    '(trivial-types:proper-list resource-tag-mapping))
@@ -274,13 +296,15 @@
                         ((aws-sdk/generator/shape::shape tag))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Key"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'key)))
     (aws-sdk/generator/shape::to-query-params "Value"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'value))))))
 (common-lisp:progn
  (common-lisp:defstruct (tag-filter (:copier common-lisp:nil))
    (key common-lisp:nil :type (common-lisp:or tag-key common-lisp:null))
@@ -291,13 +315,15 @@
                         ((aws-sdk/generator/shape::shape tag-filter))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Key"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'key))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'key)))
     (aws-sdk/generator/shape::to-query-params "Values"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'values)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'values))))))
 (common-lisp:progn
  (common-lisp:deftype tag-filter-list ()
    '(trivial-types:proper-list tag-filter))
@@ -347,13 +373,15 @@
                         ((aws-sdk/generator/shape::shape tag-resources-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceARNList"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-arnlist))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-arnlist)))
     (aws-sdk/generator/shape::to-query-params "Tags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (tag-resources-output (:copier common-lisp:nil))
    (failed-resources-map common-lisp:nil :type
@@ -364,9 +392,10 @@
                         ((aws-sdk/generator/shape::shape tag-resources-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "FailedResourcesMap"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'failed-resources-map)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'failed-resources-map))))))
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype tag-value-list () '(trivial-types:proper-list tag-value))
@@ -394,9 +423,10 @@
                         ((aws-sdk/generator/shape::shape throttled-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (untag-resources-input (:copier common-lisp:nil))
    (resource-arnlist (common-lisp:error ":resource-arnlist is required") :type
@@ -411,13 +441,15 @@
                           untag-resources-input))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ResourceARNList"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'resource-arnlist))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'resource-arnlist)))
     (aws-sdk/generator/shape::to-query-params "TagKeys"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tag-keys)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tag-keys))))))
 (common-lisp:progn
  (common-lisp:defstruct (untag-resources-output (:copier common-lisp:nil))
    (failed-resources-map common-lisp:nil :type
@@ -430,9 +462,10 @@
                           untag-resources-output))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "FailedResourcesMap"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'failed-resources-map)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'failed-resources-map))))))
 (common-lisp:progn
  (common-lisp:defun get-resources
                     (

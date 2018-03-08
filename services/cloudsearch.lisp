@@ -22,13 +22,15 @@
                           access-policies-status))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Options"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'options)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status))))))
 (common-lisp:deftype algorithmic-stemming () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (analysis-options (:copier common-lisp:nil))
@@ -46,25 +48,30 @@
                         ((aws-sdk/generator/shape::shape analysis-options))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Synonyms"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'synonyms))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'synonyms)))
     (aws-sdk/generator/shape::to-query-params "Stopwords"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'stopwords))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'stopwords)))
     (aws-sdk/generator/shape::to-query-params "StemmingDictionary"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'stemming-dictionary))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'stemming-dictionary)))
     (aws-sdk/generator/shape::to-query-params "JapaneseTokenizationDictionary"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'japanese-tokenization-dictionary))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'japanese-tokenization-dictionary)))
     (aws-sdk/generator/shape::to-query-params "AlgorithmicStemming"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'algorithmic-stemming)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'algorithmic-stemming))))))
 (common-lisp:progn
  (common-lisp:defstruct (analysis-scheme (:copier common-lisp:nil))
    (analysis-scheme-name
@@ -80,17 +87,20 @@
                         ((aws-sdk/generator/shape::shape analysis-scheme))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AnalysisSchemeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'analysis-scheme-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'analysis-scheme-name)))
     (aws-sdk/generator/shape::to-query-params "AnalysisSchemeLanguage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'analysis-scheme-language))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'analysis-scheme-language)))
     (aws-sdk/generator/shape::to-query-params "AnalysisOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'analysis-options)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'analysis-options))))))
 (common-lisp:deftype analysis-scheme-language () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (analysis-scheme-status (:copier common-lisp:nil))
@@ -106,13 +116,15 @@
                           analysis-scheme-status))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Options"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'options)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status))))))
 (common-lisp:progn
  (common-lisp:deftype analysis-scheme-status-list ()
    '(trivial-types:proper-list analysis-scheme-status))
@@ -136,13 +148,15 @@
                           availability-options-status))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Options"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'options)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status))))))
 (common-lisp:progn
  (common-lisp:defstruct (base-exception (:copier common-lisp:nil))
    (code common-lisp:nil :type (common-lisp:or error-code common-lisp:null))
@@ -153,13 +167,15 @@
                         ((aws-sdk/generator/shape::shape base-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Code"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'code)))
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (build-suggesters-request (:copier common-lisp:nil))
@@ -173,9 +189,10 @@
                           build-suggesters-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (build-suggesters-response (:copier common-lisp:nil))
    (field-names common-lisp:nil :type
@@ -189,9 +206,10 @@
                           build-suggesters-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "FieldNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'field-names)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'field-names))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-domain-request (:copier common-lisp:nil))
    (domain-name (common-lisp:error ":domain-name is required") :type
@@ -204,9 +222,10 @@
                           create-domain-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-domain-response (:copier common-lisp:nil))
    (domain-status common-lisp:nil :type
@@ -219,9 +238,10 @@
                           create-domain-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainStatus"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-status))))))
 (common-lisp:progn
  (common-lisp:defstruct (date-array-options (:copier common-lisp:nil))
    (default-value common-lisp:nil :type
@@ -240,25 +260,30 @@
                         ((aws-sdk/generator/shape::shape date-array-options))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DefaultValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-value)))
     (aws-sdk/generator/shape::to-query-params "SourceFields"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-fields))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-fields)))
     (aws-sdk/generator/shape::to-query-params "FacetEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'facet-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'facet-enabled)))
     (aws-sdk/generator/shape::to-query-params "SearchEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-enabled)))
     (aws-sdk/generator/shape::to-query-params "ReturnEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'return-enabled)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'return-enabled))))))
 (common-lisp:progn
  (common-lisp:defstruct (date-options (:copier common-lisp:nil))
    (default-value common-lisp:nil :type
@@ -278,29 +303,35 @@
                         ((aws-sdk/generator/shape::shape date-options))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DefaultValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-value)))
     (aws-sdk/generator/shape::to-query-params "SourceField"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-field))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-field)))
     (aws-sdk/generator/shape::to-query-params "FacetEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'facet-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'facet-enabled)))
     (aws-sdk/generator/shape::to-query-params "SearchEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-enabled)))
     (aws-sdk/generator/shape::to-query-params "ReturnEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'return-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'return-enabled)))
     (aws-sdk/generator/shape::to-query-params "SortEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sort-enabled)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sort-enabled))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (define-analysis-scheme-request (:copier common-lisp:nil))
@@ -317,13 +348,15 @@
                           define-analysis-scheme-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "AnalysisScheme"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'analysis-scheme)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'analysis-scheme))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (define-analysis-scheme-response (:copier common-lisp:nil))
@@ -338,9 +371,10 @@
                           define-analysis-scheme-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AnalysisScheme"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'analysis-scheme)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'analysis-scheme))))))
 (common-lisp:progn
  (common-lisp:defstruct (define-expression-request (:copier common-lisp:nil))
    (domain-name (common-lisp:error ":domain-name is required") :type
@@ -356,13 +390,15 @@
                           define-expression-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "Expression"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'expression)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'expression))))))
 (common-lisp:progn
  (common-lisp:defstruct (define-expression-response (:copier common-lisp:nil))
    (expression (common-lisp:error ":expression is required") :type
@@ -376,9 +412,10 @@
                           define-expression-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Expression"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'expression)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'expression))))))
 (common-lisp:progn
  (common-lisp:defstruct (define-index-field-request (:copier common-lisp:nil))
    (domain-name (common-lisp:error ":domain-name is required") :type
@@ -394,13 +431,15 @@
                           define-index-field-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "IndexField"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'index-field)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'index-field))))))
 (common-lisp:progn
  (common-lisp:defstruct (define-index-field-response (:copier common-lisp:nil))
    (index-field (common-lisp:error ":index-field is required") :type
@@ -414,9 +453,10 @@
                           define-index-field-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "IndexField"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'index-field)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'index-field))))))
 (common-lisp:progn
  (common-lisp:defstruct (define-suggester-request (:copier common-lisp:nil))
    (domain-name (common-lisp:error ":domain-name is required") :type
@@ -431,13 +471,15 @@
                           define-suggester-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "Suggester"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'suggester)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'suggester))))))
 (common-lisp:progn
  (common-lisp:defstruct (define-suggester-response (:copier common-lisp:nil))
    (suggester (common-lisp:error ":suggester is required") :type
@@ -451,9 +493,10 @@
                           define-suggester-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Suggester"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'suggester)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'suggester))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-analysis-scheme-request (:copier common-lisp:nil))
@@ -471,13 +514,15 @@
                           delete-analysis-scheme-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "AnalysisSchemeName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'analysis-scheme-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'analysis-scheme-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-analysis-scheme-response (:copier common-lisp:nil))
@@ -492,9 +537,10 @@
                           delete-analysis-scheme-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AnalysisScheme"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'analysis-scheme)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'analysis-scheme))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-domain-request (:copier common-lisp:nil))
    (domain-name (common-lisp:error ":domain-name is required") :type
@@ -507,9 +553,10 @@
                           delete-domain-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-domain-response (:copier common-lisp:nil))
    (domain-status common-lisp:nil :type
@@ -522,9 +569,10 @@
                           delete-domain-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainStatus"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-status))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-expression-request (:copier common-lisp:nil))
    (domain-name (common-lisp:error ":domain-name is required") :type
@@ -540,13 +588,15 @@
                           delete-expression-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "ExpressionName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'expression-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'expression-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-expression-response (:copier common-lisp:nil))
    (expression (common-lisp:error ":expression is required") :type
@@ -560,9 +610,10 @@
                           delete-expression-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Expression"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'expression)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'expression))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-index-field-request (:copier common-lisp:nil))
    (domain-name (common-lisp:error ":domain-name is required") :type
@@ -578,13 +629,15 @@
                           delete-index-field-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "IndexFieldName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'index-field-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'index-field-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-index-field-response (:copier common-lisp:nil))
    (index-field (common-lisp:error ":index-field is required") :type
@@ -598,9 +651,10 @@
                           delete-index-field-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "IndexField"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'index-field)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'index-field))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-suggester-request (:copier common-lisp:nil))
    (domain-name (common-lisp:error ":domain-name is required") :type
@@ -615,13 +669,15 @@
                           delete-suggester-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "SuggesterName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'suggester-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'suggester-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-suggester-response (:copier common-lisp:nil))
    (suggester (common-lisp:error ":suggester is required") :type
@@ -635,9 +691,10 @@
                           delete-suggester-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Suggester"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'suggester)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'suggester))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-analysis-schemes-request (:copier common-lisp:nil))
@@ -655,17 +712,20 @@
                           describe-analysis-schemes-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "AnalysisSchemeNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'analysis-scheme-names))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'analysis-scheme-names)))
     (aws-sdk/generator/shape::to-query-params "Deployed"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'deployed)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'deployed))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-analysis-schemes-response (:copier common-lisp:nil))
@@ -680,9 +740,10 @@
                           describe-analysis-schemes-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AnalysisSchemes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'analysis-schemes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'analysis-schemes))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-availability-options-request (:copier common-lisp:nil))
@@ -698,13 +759,15 @@
                           describe-availability-options-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "Deployed"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'deployed)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'deployed))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-availability-options-response (:copier common-lisp:nil))
@@ -719,9 +782,10 @@
                           describe-availability-options-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AvailabilityOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'availability-options)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'availability-options))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-domains-request (:copier common-lisp:nil))
    (domain-names common-lisp:nil :type
@@ -734,9 +798,10 @@
                           describe-domains-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-names)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-names))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-domains-response (:copier common-lisp:nil))
    (domain-status-list (common-lisp:error ":domain-status-list is required")
@@ -750,9 +815,10 @@
                           describe-domains-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainStatusList"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-status-list)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-status-list))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-expressions-request (:copier common-lisp:nil))
@@ -770,17 +836,20 @@
                           describe-expressions-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "ExpressionNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'expression-names))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'expression-names)))
     (aws-sdk/generator/shape::to-query-params "Deployed"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'deployed)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'deployed))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-expressions-response (:copier common-lisp:nil))
@@ -795,9 +864,10 @@
                           describe-expressions-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Expressions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'expressions)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'expressions))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-index-fields-request (:copier common-lisp:nil))
@@ -815,17 +885,20 @@
                           describe-index-fields-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "FieldNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'field-names))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'field-names)))
     (aws-sdk/generator/shape::to-query-params "Deployed"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'deployed)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'deployed))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-index-fields-response (:copier common-lisp:nil))
@@ -840,9 +913,10 @@
                           describe-index-fields-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "IndexFields"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'index-fields)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'index-fields))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-scaling-parameters-request (:copier common-lisp:nil))
@@ -857,9 +931,10 @@
                           describe-scaling-parameters-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-scaling-parameters-response (:copier common-lisp:nil))
@@ -874,9 +949,10 @@
                           describe-scaling-parameters-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ScalingParameters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'scaling-parameters)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'scaling-parameters))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-service-access-policies-request (:copier common-lisp:nil))
@@ -892,13 +968,15 @@
                           describe-service-access-policies-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "Deployed"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'deployed)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'deployed))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-service-access-policies-response (:copier common-lisp:nil))
@@ -913,9 +991,10 @@
                           describe-service-access-policies-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AccessPolicies"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-policies)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-policies))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-suggesters-request (:copier common-lisp:nil))
    (domain-name (common-lisp:error ":domain-name is required") :type
@@ -932,17 +1011,20 @@
                           describe-suggesters-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "SuggesterNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'suggester-names))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'suggester-names)))
     (aws-sdk/generator/shape::to-query-params "Deployed"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'deployed)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'deployed))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-suggesters-response (:copier common-lisp:nil))
@@ -957,9 +1039,10 @@
                           describe-suggesters-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Suggesters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'suggesters)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'suggesters))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (disabled-operation-exception (:copier common-lisp:nil)))
@@ -988,17 +1071,20 @@
                           document-suggester-options))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "SourceField"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-field))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-field)))
     (aws-sdk/generator/shape::to-query-params "FuzzyMatching"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'fuzzy-matching))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'fuzzy-matching)))
     (aws-sdk/generator/shape::to-query-params "SortExpression"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sort-expression)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sort-expression))))))
 (common-lisp:deftype domain-id () 'common-lisp:string)
 (common-lisp:deftype domain-name () 'common-lisp:string)
 (common-lisp:progn
@@ -1044,57 +1130,70 @@
                         ((aws-sdk/generator/shape::shape domain-status))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-id)))
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "ARN"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'arn)))
     (aws-sdk/generator/shape::to-query-params "Created"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'created))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'created)))
     (aws-sdk/generator/shape::to-query-params "Deleted"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'deleted))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'deleted)))
     (aws-sdk/generator/shape::to-query-params "DocService"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'doc-service))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'doc-service)))
     (aws-sdk/generator/shape::to-query-params "SearchService"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-service))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-service)))
     (aws-sdk/generator/shape::to-query-params "RequiresIndexDocuments"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'requires-index-documents))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'requires-index-documents)))
     (aws-sdk/generator/shape::to-query-params "Processing"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'processing))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'processing)))
     (aws-sdk/generator/shape::to-query-params "SearchInstanceType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-instance-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-instance-type)))
     (aws-sdk/generator/shape::to-query-params "SearchPartitionCount"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-partition-count))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-partition-count)))
     (aws-sdk/generator/shape::to-query-params "SearchInstanceCount"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-instance-count))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-instance-count)))
     (aws-sdk/generator/shape::to-query-params "Limits"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limits)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limits))))))
 (common-lisp:progn
  (common-lisp:deftype domain-status-list ()
    '(trivial-types:proper-list domain-status))
@@ -1122,25 +1221,30 @@
                         ((aws-sdk/generator/shape::shape double-array-options))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DefaultValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-value)))
     (aws-sdk/generator/shape::to-query-params "SourceFields"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-fields))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-fields)))
     (aws-sdk/generator/shape::to-query-params "FacetEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'facet-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'facet-enabled)))
     (aws-sdk/generator/shape::to-query-params "SearchEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-enabled)))
     (aws-sdk/generator/shape::to-query-params "ReturnEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'return-enabled)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'return-enabled))))))
 (common-lisp:progn
  (common-lisp:defstruct (double-options (:copier common-lisp:nil))
    (default-value common-lisp:nil :type
@@ -1160,29 +1264,35 @@
                         ((aws-sdk/generator/shape::shape double-options))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DefaultValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-value)))
     (aws-sdk/generator/shape::to-query-params "SourceField"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-field))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-field)))
     (aws-sdk/generator/shape::to-query-params "FacetEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'facet-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'facet-enabled)))
     (aws-sdk/generator/shape::to-query-params "SearchEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-enabled)))
     (aws-sdk/generator/shape::to-query-params "ReturnEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'return-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'return-enabled)))
     (aws-sdk/generator/shape::to-query-params "SortEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sort-enabled)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sort-enabled))))))
 (common-lisp:deftype dynamic-field-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype dynamic-field-name-list ()
@@ -1205,13 +1315,15 @@
                         ((aws-sdk/generator/shape::shape expression))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ExpressionName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'expression-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'expression-name)))
     (aws-sdk/generator/shape::to-query-params "ExpressionValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'expression-value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'expression-value))))))
 (common-lisp:progn
  (common-lisp:defstruct (expression-status (:copier common-lisp:nil))
    (options (common-lisp:error ":options is required") :type
@@ -1224,13 +1336,15 @@
                         ((aws-sdk/generator/shape::shape expression-status))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Options"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'options)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status))))))
 (common-lisp:progn
  (common-lisp:deftype expression-status-list ()
    '(trivial-types:proper-list expression-status))
@@ -1263,9 +1377,10 @@
                           index-documents-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (index-documents-response (:copier common-lisp:nil))
    (field-names common-lisp:nil :type
@@ -1278,9 +1393,10 @@
                           index-documents-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "FieldNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'field-names)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'field-names))))))
 (common-lisp:progn
  (common-lisp:defstruct (index-field (:copier common-lisp:nil))
    (index-field-name (common-lisp:error ":index-field-name is required") :type
@@ -1314,57 +1430,70 @@
                         ((aws-sdk/generator/shape::shape index-field))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "IndexFieldName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'index-field-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'index-field-name)))
     (aws-sdk/generator/shape::to-query-params "IndexFieldType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'index-field-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'index-field-type)))
     (aws-sdk/generator/shape::to-query-params "IntOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'int-options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'int-options)))
     (aws-sdk/generator/shape::to-query-params "DoubleOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'double-options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'double-options)))
     (aws-sdk/generator/shape::to-query-params "LiteralOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'literal-options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'literal-options)))
     (aws-sdk/generator/shape::to-query-params "TextOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'text-options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'text-options)))
     (aws-sdk/generator/shape::to-query-params "DateOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'date-options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'date-options)))
     (aws-sdk/generator/shape::to-query-params "LatLonOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'lat-lon-options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'lat-lon-options)))
     (aws-sdk/generator/shape::to-query-params "IntArrayOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'int-array-options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'int-array-options)))
     (aws-sdk/generator/shape::to-query-params "DoubleArrayOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'double-array-options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'double-array-options)))
     (aws-sdk/generator/shape::to-query-params "LiteralArrayOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'literal-array-options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'literal-array-options)))
     (aws-sdk/generator/shape::to-query-params "TextArrayOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'text-array-options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'text-array-options)))
     (aws-sdk/generator/shape::to-query-params "DateArrayOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'date-array-options)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'date-array-options))))))
 (common-lisp:progn
  (common-lisp:defstruct (index-field-status (:copier common-lisp:nil))
    (options (common-lisp:error ":options is required") :type
@@ -1377,13 +1506,15 @@
                         ((aws-sdk/generator/shape::shape index-field-status))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Options"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'options)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status))))))
 (common-lisp:progn
  (common-lisp:deftype index-field-status-list ()
    '(trivial-types:proper-list index-field-status))
@@ -1411,25 +1542,30 @@
                         ((aws-sdk/generator/shape::shape int-array-options))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DefaultValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-value)))
     (aws-sdk/generator/shape::to-query-params "SourceFields"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-fields))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-fields)))
     (aws-sdk/generator/shape::to-query-params "FacetEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'facet-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'facet-enabled)))
     (aws-sdk/generator/shape::to-query-params "SearchEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-enabled)))
     (aws-sdk/generator/shape::to-query-params "ReturnEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'return-enabled)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'return-enabled))))))
 (common-lisp:progn
  (common-lisp:defstruct (int-options (:copier common-lisp:nil))
    (default-value common-lisp:nil :type (common-lisp:or long common-lisp:null))
@@ -1448,29 +1584,35 @@
                         ((aws-sdk/generator/shape::shape int-options))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DefaultValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-value)))
     (aws-sdk/generator/shape::to-query-params "SourceField"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-field))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-field)))
     (aws-sdk/generator/shape::to-query-params "FacetEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'facet-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'facet-enabled)))
     (aws-sdk/generator/shape::to-query-params "SearchEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-enabled)))
     (aws-sdk/generator/shape::to-query-params "ReturnEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'return-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'return-enabled)))
     (aws-sdk/generator/shape::to-query-params "SortEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sort-enabled)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sort-enabled))))))
 (common-lisp:progn
  (common-lisp:defstruct (internal-exception (:copier common-lisp:nil)))
  (common-lisp:export
@@ -1506,29 +1648,35 @@
                         ((aws-sdk/generator/shape::shape lat-lon-options))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DefaultValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-value)))
     (aws-sdk/generator/shape::to-query-params "SourceField"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-field))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-field)))
     (aws-sdk/generator/shape::to-query-params "FacetEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'facet-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'facet-enabled)))
     (aws-sdk/generator/shape::to-query-params "SearchEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-enabled)))
     (aws-sdk/generator/shape::to-query-params "ReturnEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'return-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'return-enabled)))
     (aws-sdk/generator/shape::to-query-params "SortEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sort-enabled)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sort-enabled))))))
 (common-lisp:progn
  (common-lisp:defstruct (limit-exceeded-exception (:copier common-lisp:nil)))
  (common-lisp:export
@@ -1551,13 +1699,15 @@
                         ((aws-sdk/generator/shape::shape limits))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "MaximumReplicationCount"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'maximum-replication-count))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'maximum-replication-count)))
     (aws-sdk/generator/shape::to-query-params "MaximumPartitionCount"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'maximum-partition-count)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'maximum-partition-count))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-domain-names-response (:copier common-lisp:nil))
    (domain-names common-lisp:nil :type
@@ -1571,9 +1721,10 @@
                           list-domain-names-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-names)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-names))))))
 (common-lisp:progn
  (common-lisp:defstruct (literal-array-options (:copier common-lisp:nil))
    (default-value common-lisp:nil :type
@@ -1594,25 +1745,30 @@
                           literal-array-options))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DefaultValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-value)))
     (aws-sdk/generator/shape::to-query-params "SourceFields"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-fields))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-fields)))
     (aws-sdk/generator/shape::to-query-params "FacetEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'facet-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'facet-enabled)))
     (aws-sdk/generator/shape::to-query-params "SearchEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-enabled)))
     (aws-sdk/generator/shape::to-query-params "ReturnEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'return-enabled)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'return-enabled))))))
 (common-lisp:progn
  (common-lisp:defstruct (literal-options (:copier common-lisp:nil))
    (default-value common-lisp:nil :type
@@ -1632,29 +1788,35 @@
                         ((aws-sdk/generator/shape::shape literal-options))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DefaultValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-value)))
     (aws-sdk/generator/shape::to-query-params "SourceField"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-field))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-field)))
     (aws-sdk/generator/shape::to-query-params "FacetEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'facet-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'facet-enabled)))
     (aws-sdk/generator/shape::to-query-params "SearchEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'search-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'search-enabled)))
     (aws-sdk/generator/shape::to-query-params "ReturnEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'return-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'return-enabled)))
     (aws-sdk/generator/shape::to-query-params "SortEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sort-enabled)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sort-enabled))))))
 (common-lisp:deftype long () 'common-lisp:integer)
 (common-lisp:deftype maximum-partition-count () 'common-lisp:integer)
 (common-lisp:deftype maximum-replication-count () 'common-lisp:integer)
@@ -1677,25 +1839,30 @@
                         ((aws-sdk/generator/shape::shape option-status))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "CreationDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-date)))
     (aws-sdk/generator/shape::to-query-params "UpdateDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'update-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'update-date)))
     (aws-sdk/generator/shape::to-query-params "UpdateVersion"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'update-version))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'update-version)))
     (aws-sdk/generator/shape::to-query-params "State"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'state))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'state)))
     (aws-sdk/generator/shape::to-query-params "PendingDeletion"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'pending-deletion)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'pending-deletion))))))
 (common-lisp:deftype partition-count () 'common-lisp:integer)
 (common-lisp:deftype partition-instance-type () 'common-lisp:string)
 (common-lisp:deftype policy-document () 'common-lisp:string)
@@ -1724,17 +1891,20 @@
                         ((aws-sdk/generator/shape::shape scaling-parameters))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DesiredInstanceType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'desired-instance-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'desired-instance-type)))
     (aws-sdk/generator/shape::to-query-params "DesiredReplicationCount"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'desired-replication-count))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'desired-replication-count)))
     (aws-sdk/generator/shape::to-query-params "DesiredPartitionCount"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'desired-partition-count)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'desired-partition-count))))))
 (common-lisp:progn
  (common-lisp:defstruct (scaling-parameters-status (:copier common-lisp:nil))
    (options (common-lisp:error ":options is required") :type
@@ -1750,13 +1920,15 @@
                           scaling-parameters-status))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Options"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'options)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status))))))
 (common-lisp:deftype search-instance-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (service-endpoint (:copier common-lisp:nil))
@@ -1768,9 +1940,10 @@
                         ((aws-sdk/generator/shape::shape service-endpoint))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Endpoint"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'endpoint)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'endpoint))))))
 (common-lisp:deftype service-url () 'common-lisp:string)
 (common-lisp:deftype standard-name () 'common-lisp:string)
 (common-lisp:progn
@@ -1794,13 +1967,15 @@
                         ((aws-sdk/generator/shape::shape suggester))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "SuggesterName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'suggester-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'suggester-name)))
     (aws-sdk/generator/shape::to-query-params "DocumentSuggesterOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'document-suggester-options)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'document-suggester-options))))))
 (common-lisp:deftype suggester-fuzzy-matching () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (suggester-status (:copier common-lisp:nil))
@@ -1814,13 +1989,15 @@
                         ((aws-sdk/generator/shape::shape suggester-status))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Options"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'options))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'options)))
     (aws-sdk/generator/shape::to-query-params "Status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status))))))
 (common-lisp:progn
  (common-lisp:deftype suggester-status-list ()
    '(trivial-types:proper-list suggester-status))
@@ -1847,25 +2024,30 @@
                         ((aws-sdk/generator/shape::shape text-array-options))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DefaultValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-value)))
     (aws-sdk/generator/shape::to-query-params "SourceFields"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-fields))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-fields)))
     (aws-sdk/generator/shape::to-query-params "ReturnEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'return-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'return-enabled)))
     (aws-sdk/generator/shape::to-query-params "HighlightEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'highlight-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'highlight-enabled)))
     (aws-sdk/generator/shape::to-query-params "AnalysisScheme"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'analysis-scheme)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'analysis-scheme))))))
 (common-lisp:progn
  (common-lisp:defstruct (text-options (:copier common-lisp:nil))
    (default-value common-lisp:nil :type
@@ -1885,29 +2067,35 @@
                         ((aws-sdk/generator/shape::shape text-options))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DefaultValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-value)))
     (aws-sdk/generator/shape::to-query-params "SourceField"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'source-field))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'source-field)))
     (aws-sdk/generator/shape::to-query-params "ReturnEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'return-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'return-enabled)))
     (aws-sdk/generator/shape::to-query-params "SortEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sort-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sort-enabled)))
     (aws-sdk/generator/shape::to-query-params "HighlightEnabled"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'highlight-enabled))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'highlight-enabled)))
     (aws-sdk/generator/shape::to-query-params "AnalysisScheme"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'analysis-scheme)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'analysis-scheme))))))
 (common-lisp:deftype uint-value () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -1925,13 +2113,15 @@
                           update-availability-options-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "MultiAZ"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'multi-az)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'multi-az))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-availability-options-response (:copier common-lisp:nil))
@@ -1946,9 +2136,10 @@
                           update-availability-options-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AvailabilityOptions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'availability-options)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'availability-options))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-scaling-parameters-request (:copier common-lisp:nil))
@@ -1965,13 +2156,15 @@
                           update-scaling-parameters-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "ScalingParameters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'scaling-parameters)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'scaling-parameters))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-scaling-parameters-response (:copier common-lisp:nil))
@@ -1986,9 +2179,10 @@
                           update-scaling-parameters-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "ScalingParameters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'scaling-parameters)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'scaling-parameters))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-service-access-policies-request (:copier common-lisp:nil))
@@ -2005,13 +2199,15 @@
                           update-service-access-policies-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DomainName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'domain-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'domain-name)))
     (aws-sdk/generator/shape::to-query-params "AccessPolicies"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-policies)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-policies))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (update-service-access-policies-response (:copier common-lisp:nil))
@@ -2026,9 +2222,10 @@
                           update-service-access-policies-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "AccessPolicies"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-policies)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-policies))))))
 (common-lisp:deftype update-timestamp () 'common-lisp:string)
 (common-lisp:deftype word () 'common-lisp:string)
 (common-lisp:progn

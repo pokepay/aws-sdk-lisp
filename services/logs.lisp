@@ -21,9 +21,10 @@
                           cancel-export-task-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "taskId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'task-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'task-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-export-task-request (:copier common-lisp:nil))
    (task-name common-lisp:nil :type
@@ -49,33 +50,40 @@
                           create-export-task-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "taskName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'task-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'task-name)))
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "logStreamNamePrefix"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-stream-name-prefix))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-stream-name-prefix)))
     (aws-sdk/generator/shape::to-query-params "from"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'from))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'from)))
     (aws-sdk/generator/shape::to-query-params "to"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'to))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'to)))
     (aws-sdk/generator/shape::to-query-params "destination"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination)))
     (aws-sdk/generator/shape::to-query-params "destinationPrefix"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-prefix)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-prefix))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-export-task-response (:copier common-lisp:nil))
    (task-id common-lisp:nil :type
@@ -89,9 +97,10 @@
                           create-export-task-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "taskId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'task-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'task-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-log-group-request (:copier common-lisp:nil))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
@@ -105,13 +114,15 @@
                           create-log-group-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "tags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-log-stream-request (:copier common-lisp:nil))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
@@ -127,13 +138,15 @@
                           create-log-stream-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-stream-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-stream-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (data-already-accepted-exception (:copier common-lisp:nil))
@@ -148,9 +161,10 @@
                           data-already-accepted-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "expectedSequenceToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'expected-sequence-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'expected-sequence-token))))))
 (common-lisp:deftype days () 'common-lisp:integer)
 (common-lisp:deftype default-value () 'common-lisp:double-float)
 (common-lisp:progn
@@ -166,9 +180,10 @@
                           delete-destination-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "destinationName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-log-group-request (:copier common-lisp:nil))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
@@ -181,9 +196,10 @@
                           delete-log-group-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-log-stream-request (:copier common-lisp:nil))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
@@ -199,13 +215,15 @@
                           delete-log-stream-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-stream-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-stream-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-metric-filter-request (:copier common-lisp:nil))
@@ -222,13 +240,15 @@
                           delete-metric-filter-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "filterName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-retention-policy-request (:copier common-lisp:nil))
@@ -243,9 +263,10 @@
                           delete-retention-policy-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-subscription-filter-request (:copier common-lisp:nil))
@@ -262,13 +283,15 @@
                           delete-subscription-filter-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "filterName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-name))))))
 (common-lisp:deftype descending () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -288,17 +311,20 @@
                           describe-destinations-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "DestinationNamePrefix"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-name-prefix))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-name-prefix)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token)))
     (aws-sdk/generator/shape::to-query-params "limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-destinations-response (:copier common-lisp:nil))
@@ -315,13 +341,15 @@
                           describe-destinations-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "destinations"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destinations))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destinations)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-export-tasks-request (:copier common-lisp:nil))
@@ -342,21 +370,25 @@
                           describe-export-tasks-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "taskId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'task-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'task-id)))
     (aws-sdk/generator/shape::to-query-params "statusCode"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status-code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status-code)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token)))
     (aws-sdk/generator/shape::to-query-params "limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-export-tasks-response (:copier common-lisp:nil))
@@ -373,13 +405,15 @@
                           describe-export-tasks-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "exportTasks"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'export-tasks))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'export-tasks)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:deftype describe-limit () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (describe-log-groups-request (:copier common-lisp:nil))
@@ -398,17 +432,20 @@
                           describe-log-groups-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupNamePrefix"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name-prefix))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name-prefix)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token)))
     (aws-sdk/generator/shape::to-query-params "limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-log-groups-response (:copier common-lisp:nil))
@@ -425,13 +462,15 @@
                           describe-log-groups-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroups"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-groups))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-groups)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-log-streams-request (:copier common-lisp:nil))
@@ -455,29 +494,35 @@
                           describe-log-streams-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "logStreamNamePrefix"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-stream-name-prefix))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-stream-name-prefix)))
     (aws-sdk/generator/shape::to-query-params "orderBy"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'order-by))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'order-by)))
     (aws-sdk/generator/shape::to-query-params "descending"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'descending))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'descending)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token)))
     (aws-sdk/generator/shape::to-query-params "limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-log-streams-response (:copier common-lisp:nil))
@@ -494,13 +539,15 @@
                           describe-log-streams-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logStreams"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-streams))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-streams)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-metric-filters-request (:copier common-lisp:nil))
@@ -525,29 +572,35 @@
                           describe-metric-filters-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "filterNamePrefix"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-name-prefix))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-name-prefix)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token)))
     (aws-sdk/generator/shape::to-query-params "limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit)))
     (aws-sdk/generator/shape::to-query-params "metricName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'metric-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'metric-name)))
     (aws-sdk/generator/shape::to-query-params "metricNamespace"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'metric-namespace)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'metric-namespace))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-metric-filters-response (:copier common-lisp:nil))
@@ -564,13 +617,15 @@
                           describe-metric-filters-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "metricFilters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'metric-filters))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'metric-filters)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-subscription-filters-request (:copier common-lisp:nil))
@@ -591,21 +646,25 @@
                           describe-subscription-filters-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "filterNamePrefix"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-name-prefix))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-name-prefix)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token)))
     (aws-sdk/generator/shape::to-query-params "limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-subscription-filters-response (:copier common-lisp:nil))
@@ -622,13 +681,15 @@
                           describe-subscription-filters-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "subscriptionFilters"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'subscription-filters))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'subscription-filters)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (destination (:copier common-lisp:nil))
    (destination-name common-lisp:nil :type
@@ -646,29 +707,35 @@
                         ((aws-sdk/generator/shape::shape destination))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "destinationName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-name)))
     (aws-sdk/generator/shape::to-query-params "targetArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'target-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'target-arn)))
     (aws-sdk/generator/shape::to-query-params "roleArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'role-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'role-arn)))
     (aws-sdk/generator/shape::to-query-params "accessPolicy"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-policy))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-policy)))
     (aws-sdk/generator/shape::to-query-params "arn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'arn)))
     (aws-sdk/generator/shape::to-query-params "creationTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-time)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-time))))))
 (common-lisp:deftype destination-arn () 'common-lisp:string)
 (common-lisp:deftype destination-name () 'common-lisp:string)
 (common-lisp:progn
@@ -708,41 +775,50 @@
                         ((aws-sdk/generator/shape::shape export-task))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "taskId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'task-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'task-id)))
     (aws-sdk/generator/shape::to-query-params "taskName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'task-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'task-name)))
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "from"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'from))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'from)))
     (aws-sdk/generator/shape::to-query-params "to"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'to))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'to)))
     (aws-sdk/generator/shape::to-query-params "destination"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination)))
     (aws-sdk/generator/shape::to-query-params "destinationPrefix"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-prefix))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-prefix)))
     (aws-sdk/generator/shape::to-query-params "status"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'status))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'status)))
     (aws-sdk/generator/shape::to-query-params "executionInfo"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'execution-info)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'execution-info))))))
 (common-lisp:progn
  (common-lisp:defstruct (export-task-execution-info (:copier common-lisp:nil))
    (creation-time common-lisp:nil :type
@@ -758,13 +834,15 @@
                           export-task-execution-info))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "creationTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-time))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-time)))
     (aws-sdk/generator/shape::to-query-params "completionTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'completion-time)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'completion-time))))))
 (common-lisp:deftype export-task-id () 'common-lisp:string)
 (common-lisp:deftype export-task-name () 'common-lisp:string)
 (common-lisp:progn
@@ -779,13 +857,15 @@
                         ((aws-sdk/generator/shape::shape export-task-status))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "code"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'code)))
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype export-task-status-code () 'common-lisp:string)
 (common-lisp:deftype export-task-status-message () 'common-lisp:string)
 (common-lisp:progn
@@ -827,37 +907,45 @@
                           filter-log-events-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "logStreamNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-stream-names))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-stream-names)))
     (aws-sdk/generator/shape::to-query-params "startTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'start-time))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'start-time)))
     (aws-sdk/generator/shape::to-query-params "endTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'end-time))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'end-time)))
     (aws-sdk/generator/shape::to-query-params "filterPattern"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-pattern))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-pattern)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token)))
     (aws-sdk/generator/shape::to-query-params "limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit)))
     (aws-sdk/generator/shape::to-query-params "interleaved"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'interleaved)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'interleaved))))))
 (common-lisp:progn
  (common-lisp:defstruct (filter-log-events-response (:copier common-lisp:nil))
    (events common-lisp:nil :type
@@ -875,17 +963,20 @@
                           filter-log-events-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "events"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'events))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'events)))
     (aws-sdk/generator/shape::to-query-params "searchedLogStreams"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'searched-log-streams))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'searched-log-streams)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token))))))
 (common-lisp:deftype filter-name () 'common-lisp:string)
 (common-lisp:deftype filter-pattern () 'common-lisp:string)
 (common-lisp:progn
@@ -905,25 +996,30 @@
                         ((aws-sdk/generator/shape::shape filtered-log-event))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-stream-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-stream-name)))
     (aws-sdk/generator/shape::to-query-params "timestamp"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'timestamp))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'timestamp)))
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message)))
     (aws-sdk/generator/shape::to-query-params "ingestionTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'ingestion-time))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'ingestion-time)))
     (aws-sdk/generator/shape::to-query-params "eventId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'event-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'event-id))))))
 (common-lisp:progn
  (common-lisp:deftype filtered-log-events ()
    '(trivial-types:proper-list filtered-log-event))
@@ -954,33 +1050,40 @@
                           get-log-events-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-stream-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-stream-name)))
     (aws-sdk/generator/shape::to-query-params "startTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'start-time))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'start-time)))
     (aws-sdk/generator/shape::to-query-params "endTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'end-time))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'end-time)))
     (aws-sdk/generator/shape::to-query-params "nextToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-token)))
     (aws-sdk/generator/shape::to-query-params "limit"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'limit))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'limit)))
     (aws-sdk/generator/shape::to-query-params "startFromHead"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'start-from-head)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'start-from-head))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-log-events-response (:copier common-lisp:nil))
    (events common-lisp:nil :type
@@ -997,17 +1100,20 @@
                           get-log-events-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "events"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'events))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'events)))
     (aws-sdk/generator/shape::to-query-params "nextForwardToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-forward-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-forward-token)))
     (aws-sdk/generator/shape::to-query-params "nextBackwardToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-backward-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-backward-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (input-log-event (:copier common-lisp:nil))
    (timestamp (common-lisp:error ":string is required") :type
@@ -1019,13 +1125,15 @@
                         ((aws-sdk/generator/shape::shape input-log-event))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "timestamp"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'timestamp))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'timestamp)))
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:deftype input-log-events ()
    '(trivial-types:proper-list input-log-event))
@@ -1079,9 +1187,10 @@
                           invalid-sequence-token-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "expectedSequenceToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'expected-sequence-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'expected-sequence-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (limit-exceeded-exception (:copier common-lisp:nil)))
  (common-lisp:export
@@ -1104,9 +1213,10 @@
                           list-tags-log-group-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-log-group-response (:copier common-lisp:nil))
@@ -1120,9 +1230,10 @@
                           list-tags-log-group-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "tags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags))))))
 (common-lisp:deftype log-event-index () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (log-group (:copier common-lisp:nil))
@@ -1142,29 +1253,35 @@
                         ((aws-sdk/generator/shape::shape log-group))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "creationTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-time))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-time)))
     (aws-sdk/generator/shape::to-query-params "retentionInDays"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'retention-in-days))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'retention-in-days)))
     (aws-sdk/generator/shape::to-query-params "metricFilterCount"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'metric-filter-count))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'metric-filter-count)))
     (aws-sdk/generator/shape::to-query-params "arn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'arn)))
     (aws-sdk/generator/shape::to-query-params "storedBytes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'stored-bytes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'stored-bytes))))))
 (common-lisp:deftype log-group-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype log-groups () '(trivial-types:proper-list log-group))
@@ -1195,37 +1312,45 @@
                         ((aws-sdk/generator/shape::shape log-stream))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-stream-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-stream-name)))
     (aws-sdk/generator/shape::to-query-params "creationTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-time))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-time)))
     (aws-sdk/generator/shape::to-query-params "firstEventTimestamp"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'first-event-timestamp))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'first-event-timestamp)))
     (aws-sdk/generator/shape::to-query-params "lastEventTimestamp"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'last-event-timestamp))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'last-event-timestamp)))
     (aws-sdk/generator/shape::to-query-params "lastIngestionTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'last-ingestion-time))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'last-ingestion-time)))
     (aws-sdk/generator/shape::to-query-params "uploadSequenceToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'upload-sequence-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'upload-sequence-token)))
     (aws-sdk/generator/shape::to-query-params "arn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'arn)))
     (aws-sdk/generator/shape::to-query-params "storedBytes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'stored-bytes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'stored-bytes))))))
 (common-lisp:deftype log-stream-name () 'common-lisp:string)
 (common-lisp:deftype log-stream-searched-completely () 'common-lisp:boolean)
 (common-lisp:progn
@@ -1252,25 +1377,30 @@
                         ((aws-sdk/generator/shape::shape metric-filter))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "filterName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-name)))
     (aws-sdk/generator/shape::to-query-params "filterPattern"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-pattern))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-pattern)))
     (aws-sdk/generator/shape::to-query-params "metricTransformations"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'metric-transformations))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'metric-transformations)))
     (aws-sdk/generator/shape::to-query-params "creationTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-time))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-time)))
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (metric-filter-match-record (:copier common-lisp:nil))
    (event-number common-lisp:nil :type
@@ -1288,17 +1418,20 @@
                           metric-filter-match-record))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "eventNumber"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'event-number))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'event-number)))
     (aws-sdk/generator/shape::to-query-params "eventMessage"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'event-message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'event-message)))
     (aws-sdk/generator/shape::to-query-params "extractedValues"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'extracted-values)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'extracted-values))))))
 (common-lisp:progn
  (common-lisp:deftype metric-filter-matches ()
    '(trivial-types:proper-list metric-filter-match-record))
@@ -1336,21 +1469,25 @@
                           metric-transformation))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "metricName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'metric-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'metric-name)))
     (aws-sdk/generator/shape::to-query-params "metricNamespace"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'metric-namespace))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'metric-namespace)))
     (aws-sdk/generator/shape::to-query-params "metricValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'metric-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'metric-value)))
     (aws-sdk/generator/shape::to-query-params "defaultValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'default-value)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'default-value))))))
 (common-lisp:progn
  (common-lisp:deftype metric-transformations ()
    '(trivial-types:proper-list metric-transformation))
@@ -1387,17 +1524,20 @@
                         ((aws-sdk/generator/shape::shape output-log-event))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "timestamp"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'timestamp))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'timestamp)))
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message)))
     (aws-sdk/generator/shape::to-query-params "ingestionTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'ingestion-time)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'ingestion-time))))))
 (common-lisp:progn
  (common-lisp:deftype output-log-events ()
    '(trivial-types:proper-list output-log-event))
@@ -1422,13 +1562,15 @@
                           put-destination-policy-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "destinationName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-name)))
     (aws-sdk/generator/shape::to-query-params "accessPolicy"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'access-policy)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'access-policy))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-destination-request (:copier common-lisp:nil))
    (destination-name (common-lisp:error ":destinationname is required") :type
@@ -1445,17 +1587,20 @@
                           put-destination-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "destinationName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-name)))
     (aws-sdk/generator/shape::to-query-params "targetArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'target-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'target-arn)))
     (aws-sdk/generator/shape::to-query-params "roleArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'role-arn)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'role-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-destination-response (:copier common-lisp:nil))
    (destination common-lisp:nil :type
@@ -1468,9 +1613,10 @@
                           put-destination-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "destination"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-log-events-request (:copier common-lisp:nil))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
@@ -1489,21 +1635,25 @@
                           put-log-events-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-stream-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-stream-name)))
     (aws-sdk/generator/shape::to-query-params "logEvents"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-events))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-events)))
     (aws-sdk/generator/shape::to-query-params "sequenceToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sequence-token)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sequence-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-log-events-response (:copier common-lisp:nil))
    (next-sequence-token common-lisp:nil :type
@@ -1518,13 +1668,15 @@
                           put-log-events-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "nextSequenceToken"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'next-sequence-token))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'next-sequence-token)))
     (aws-sdk/generator/shape::to-query-params "rejectedLogEventsInfo"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'rejected-log-events-info)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'rejected-log-events-info))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-metric-filter-request (:copier common-lisp:nil))
    (log-group-name (common-lisp:error ":loggroupname is required") :type
@@ -1545,21 +1697,25 @@
                           put-metric-filter-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "filterName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-name)))
     (aws-sdk/generator/shape::to-query-params "filterPattern"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-pattern))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-pattern)))
     (aws-sdk/generator/shape::to-query-params "metricTransformations"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'metric-transformations)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'metric-transformations))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (put-retention-policy-request (:copier common-lisp:nil))
@@ -1576,13 +1732,15 @@
                           put-retention-policy-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "retentionInDays"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'retention-in-days)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'retention-in-days))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (put-subscription-filter-request (:copier common-lisp:nil))
@@ -1606,29 +1764,35 @@
                           put-subscription-filter-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "filterName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-name)))
     (aws-sdk/generator/shape::to-query-params "filterPattern"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-pattern))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-pattern)))
     (aws-sdk/generator/shape::to-query-params "destinationArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-arn)))
     (aws-sdk/generator/shape::to-query-params "roleArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'role-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'role-arn)))
     (aws-sdk/generator/shape::to-query-params "distribution"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'distribution)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'distribution))))))
 (common-lisp:progn
  (common-lisp:defstruct (rejected-log-events-info (:copier common-lisp:nil))
    (too-new-log-event-start-index common-lisp:nil :type
@@ -1645,17 +1809,20 @@
                           rejected-log-events-info))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "tooNewLogEventStartIndex"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'too-new-log-event-start-index))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'too-new-log-event-start-index)))
     (aws-sdk/generator/shape::to-query-params "tooOldLogEventEndIndex"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'too-old-log-event-end-index))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'too-old-log-event-end-index)))
     (aws-sdk/generator/shape::to-query-params "expiredLogEventEndIndex"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'expired-log-event-end-index)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'expired-log-event-end-index))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (resource-already-exists-exception (:copier common-lisp:nil)))
@@ -1691,13 +1858,15 @@
                         ((aws-sdk/generator/shape::shape searched-log-stream))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logStreamName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-stream-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-stream-name)))
     (aws-sdk/generator/shape::to-query-params "searchedCompletely"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'searched-completely)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'searched-completely))))))
 (common-lisp:progn
  (common-lisp:deftype searched-log-streams ()
    '(trivial-types:proper-list searched-log-stream))
@@ -1741,33 +1910,40 @@
                         ((aws-sdk/generator/shape::shape subscription-filter))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "filterName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-name)))
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "filterPattern"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-pattern))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-pattern)))
     (aws-sdk/generator/shape::to-query-params "destinationArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-arn)))
     (aws-sdk/generator/shape::to-query-params "roleArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'role-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'role-arn)))
     (aws-sdk/generator/shape::to-query-params "distribution"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'distribution))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'distribution)))
     (aws-sdk/generator/shape::to-query-params "creationTime"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'creation-time)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'creation-time))))))
 (common-lisp:progn
  (common-lisp:deftype subscription-filters ()
    '(trivial-types:proper-list subscription-filter))
@@ -1798,13 +1974,15 @@
                           tag-log-group-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "tags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags))))))
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:defstruct
     (tags
@@ -1836,13 +2014,15 @@
                           test-metric-filter-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "filterPattern"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'filter-pattern))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'filter-pattern)))
     (aws-sdk/generator/shape::to-query-params "logEventMessages"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-event-messages)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-event-messages))))))
 (common-lisp:progn
  (common-lisp:defstruct (test-metric-filter-response (:copier common-lisp:nil))
    (matches common-lisp:nil :type
@@ -1856,9 +2036,10 @@
                           test-metric-filter-response))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "matches"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'matches)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'matches))))))
 (common-lisp:deftype timestamp () 'common-lisp:integer)
 (common-lisp:deftype token () 'common-lisp:string)
 (common-lisp:progn
@@ -1875,13 +2056,15 @@
                           untag-log-group-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "logGroupName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'log-group-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'log-group-name)))
     (aws-sdk/generator/shape::to-query-params "tags"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'tags)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'tags))))))
 (common-lisp:deftype value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun cancel-export-task

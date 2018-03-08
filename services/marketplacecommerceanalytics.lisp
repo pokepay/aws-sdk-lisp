@@ -46,33 +46,40 @@
                           generate-data-set-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "dataSetType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'data-set-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'data-set-type)))
     (aws-sdk/generator/shape::to-query-params "dataSetPublicationDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'data-set-publication-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'data-set-publication-date)))
     (aws-sdk/generator/shape::to-query-params "roleNameArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'role-name-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'role-name-arn)))
     (aws-sdk/generator/shape::to-query-params "destinationS3BucketName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-s3bucket-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-s3bucket-name)))
     (aws-sdk/generator/shape::to-query-params "destinationS3Prefix"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-s3prefix))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-s3prefix)))
     (aws-sdk/generator/shape::to-query-params "snsTopicArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sns-topic-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sns-topic-arn)))
     (aws-sdk/generator/shape::to-query-params "customerDefinedValues"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'customer-defined-values)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'customer-defined-values))))))
 (common-lisp:progn
  (common-lisp:defstruct (generate-data-set-result (:copier common-lisp:nil))
    (data-set-request-id common-lisp:nil :type
@@ -85,9 +92,10 @@
                           generate-data-set-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "dataSetRequestId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'data-set-request-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'data-set-request-id))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (marketplace-commerce-analytics-exception (:copier common-lisp:nil))
@@ -102,9 +110,10 @@
                           marketplace-commerce-analytics-exception))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:deftype optional-key () 'common-lisp:string)
 (common-lisp:deftype optional-value () 'common-lisp:string)
 (common-lisp:deftype role-name-arn () 'common-lisp:string)
@@ -136,33 +145,40 @@
                           start-support-data-export-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "dataSetType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'data-set-type))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'data-set-type)))
     (aws-sdk/generator/shape::to-query-params "fromDate"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'from-date))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'from-date)))
     (aws-sdk/generator/shape::to-query-params "roleNameArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'role-name-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'role-name-arn)))
     (aws-sdk/generator/shape::to-query-params "destinationS3BucketName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-s3bucket-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-s3bucket-name)))
     (aws-sdk/generator/shape::to-query-params "destinationS3Prefix"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'destination-s3prefix))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'destination-s3prefix)))
     (aws-sdk/generator/shape::to-query-params "snsTopicArn"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sns-topic-arn))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sns-topic-arn)))
     (aws-sdk/generator/shape::to-query-params "customerDefinedValues"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'customer-defined-values)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'customer-defined-values))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (start-support-data-export-result (:copier common-lisp:nil))
@@ -177,9 +193,10 @@
                           start-support-data-export-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "dataSetRequestId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'data-set-request-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'data-set-request-id))))))
 (common-lisp:deftype support-data-set-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defun generate-data-set

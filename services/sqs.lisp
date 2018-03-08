@@ -39,21 +39,25 @@
                           add-permission-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url)))
     (aws-sdk/generator/shape::to-query-params "Label"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'label))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'label)))
     (aws-sdk/generator/shape::to-query-params "AWSAccountIds"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'awsaccount-ids))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'awsaccount-ids)))
     (aws-sdk/generator/shape::to-query-params "Actions"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'actions)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'actions))))))
 (common-lisp:progn
  (common-lisp:deftype attribute-name-list ()
    '(trivial-types:proper-list queue-attribute-name))
@@ -99,21 +103,25 @@
                           batch-result-error-entry))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "SenderFault"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sender-fault))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sender-fault)))
     (aws-sdk/generator/shape::to-query-params "Code"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'code))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'code)))
     (aws-sdk/generator/shape::to-query-params "Message"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message))))))
 (common-lisp:progn
  (common-lisp:deftype batch-result-error-entry-list ()
    '(trivial-types:proper-list batch-result-error-entry))
@@ -150,13 +158,15 @@
                           change-message-visibility-batch-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url)))
     (aws-sdk/generator/shape::to-query-params "Entries"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'entries)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'entries))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (change-message-visibility-batch-request-entry (:copier common-lisp:nil))
@@ -175,17 +185,20 @@
                           change-message-visibility-batch-request-entry))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "ReceiptHandle"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'receipt-handle))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'receipt-handle)))
     (aws-sdk/generator/shape::to-query-params "VisibilityTimeout"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'visibility-timeout)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'visibility-timeout))))))
 (common-lisp:progn
  (common-lisp:deftype change-message-visibility-batch-request-entry-list ()
    '(trivial-types:proper-list change-message-visibility-batch-request-entry))
@@ -212,13 +225,15 @@
                           change-message-visibility-batch-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Successful"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'successful))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'successful)))
     (aws-sdk/generator/shape::to-query-params "Failed"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'failed)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'failed))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (change-message-visibility-batch-result-entry (:copier common-lisp:nil))
@@ -233,9 +248,10 @@
                           change-message-visibility-batch-result-entry))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id))))))
 (common-lisp:progn
  (common-lisp:deftype change-message-visibility-batch-result-entry-list ()
    '(trivial-types:proper-list change-message-visibility-batch-result-entry))
@@ -263,17 +279,20 @@
                           change-message-visibility-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url)))
     (aws-sdk/generator/shape::to-query-params "ReceiptHandle"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'receipt-handle))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'receipt-handle)))
     (aws-sdk/generator/shape::to-query-params "VisibilityTimeout"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'visibility-timeout)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'visibility-timeout))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-queue-request (:copier common-lisp:nil))
    (queue-name (common-lisp:error ":queue-name is required") :type
@@ -286,13 +305,15 @@
                         ((aws-sdk/generator/shape::shape create-queue-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-name)))
     (aws-sdk/generator/shape::to-query-params "Attributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attributes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attributes))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-queue-result (:copier common-lisp:nil))
    (queue-url common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -302,9 +323,10 @@
                         ((aws-sdk/generator/shape::shape create-queue-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-message-batch-request (:copier common-lisp:nil))
@@ -321,13 +343,15 @@
                           delete-message-batch-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url)))
     (aws-sdk/generator/shape::to-query-params "Entries"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'entries)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'entries))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-message-batch-request-entry (:copier common-lisp:nil))
@@ -344,13 +368,15 @@
                           delete-message-batch-request-entry))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "ReceiptHandle"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'receipt-handle)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'receipt-handle))))))
 (common-lisp:progn
  (common-lisp:deftype delete-message-batch-request-entry-list ()
    '(trivial-types:proper-list delete-message-batch-request-entry))
@@ -375,13 +401,15 @@
                           delete-message-batch-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Successful"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'successful))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'successful)))
     (aws-sdk/generator/shape::to-query-params "Failed"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'failed)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'failed))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-message-batch-result-entry (:copier common-lisp:nil))
@@ -396,9 +424,10 @@
                           delete-message-batch-result-entry))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id))))))
 (common-lisp:progn
  (common-lisp:deftype delete-message-batch-result-entry-list ()
    '(trivial-types:proper-list delete-message-batch-result-entry))
@@ -422,13 +451,15 @@
                           delete-message-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url)))
     (aws-sdk/generator/shape::to-query-params "ReceiptHandle"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'receipt-handle)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'receipt-handle))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-queue-request (:copier common-lisp:nil))
    (queue-url (common-lisp:error ":queue-url is required") :type
@@ -439,9 +470,10 @@
                         ((aws-sdk/generator/shape::shape delete-queue-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url))))))
 (common-lisp:progn
  (common-lisp:defstruct (empty-batch-request (:copier common-lisp:nil)))
  (common-lisp:export
@@ -465,13 +497,15 @@
                           get-queue-attributes-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url)))
     (aws-sdk/generator/shape::to-query-params "AttributeNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attribute-names)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attribute-names))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-queue-attributes-result (:copier common-lisp:nil))
    (attributes common-lisp:nil :type
@@ -485,9 +519,10 @@
                           get-queue-attributes-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Attributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attributes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attributes))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-queue-url-request (:copier common-lisp:nil))
    (queue-name (common-lisp:error ":queue-name is required") :type
@@ -502,13 +537,15 @@
                           get-queue-url-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueName"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-name))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-name)))
     (aws-sdk/generator/shape::to-query-params "QueueOwnerAWSAccountId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-owner-awsaccount-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-owner-awsaccount-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-queue-url-result (:copier common-lisp:nil))
    (queue-url common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -518,9 +555,10 @@
                         ((aws-sdk/generator/shape::shape get-queue-url-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url))))))
 (common-lisp:deftype integer () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (invalid-attribute-name (:copier common-lisp:nil)))
@@ -570,9 +608,10 @@
                           list-dead-letter-source-queues-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (list-dead-letter-source-queues-result (:copier common-lisp:nil))
@@ -587,9 +626,10 @@
                           list-dead-letter-source-queues-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "queueUrls"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-urls)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-urls))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-queues-request (:copier common-lisp:nil))
    (queue-name-prefix common-lisp:nil :type
@@ -600,9 +640,10 @@
                         ((aws-sdk/generator/shape::shape list-queues-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueNamePrefix"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-name-prefix)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-name-prefix))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-queues-result (:copier common-lisp:nil))
    (queue-urls common-lisp:nil :type
@@ -613,9 +654,10 @@
                         ((aws-sdk/generator/shape::shape list-queues-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrls"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-urls)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-urls))))))
 (common-lisp:progn
  (common-lisp:defstruct (message (:copier common-lisp:nil))
    (message-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -634,33 +676,40 @@
                         ((aws-sdk/generator/shape::shape message))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "MessageId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-id)))
     (aws-sdk/generator/shape::to-query-params "ReceiptHandle"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'receipt-handle))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'receipt-handle)))
     (aws-sdk/generator/shape::to-query-params "MD5OfBody"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'md5of-body))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'md5of-body)))
     (aws-sdk/generator/shape::to-query-params "Body"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'body))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'body)))
     (aws-sdk/generator/shape::to-query-params "Attributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attributes)))
     (aws-sdk/generator/shape::to-query-params "MD5OfMessageAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'md5of-message-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'md5of-message-attributes)))
     (aws-sdk/generator/shape::to-query-params "MessageAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-attributes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-attributes))))))
 (common-lisp:deftype message-attribute-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype message-attribute-name-list ()
@@ -690,25 +739,30 @@
                           message-attribute-value))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "StringValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'string-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'string-value)))
     (aws-sdk/generator/shape::to-query-params "BinaryValue"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'binary-value))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'binary-value)))
     (aws-sdk/generator/shape::to-query-params "StringListValues"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'string-list-values))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'string-list-values)))
     (aws-sdk/generator/shape::to-query-params "BinaryListValues"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'binary-list-values))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'binary-list-values)))
     (aws-sdk/generator/shape::to-query-params "DataType"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'data-type)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'data-type))))))
 (common-lisp:defstruct
     (message-body-attribute-map
      (:constructor |make-message-body-attribute-map|
@@ -761,9 +815,10 @@
                         ((aws-sdk/generator/shape::shape purge-queue-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url))))))
 (common-lisp:defstruct
     (queue-attribute-map
      (:constructor |make-queue-attribute-map|
@@ -835,33 +890,40 @@
                           receive-message-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url)))
     (aws-sdk/generator/shape::to-query-params "AttributeNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attribute-names))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attribute-names)))
     (aws-sdk/generator/shape::to-query-params "MessageAttributeNames"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-attribute-names))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-attribute-names)))
     (aws-sdk/generator/shape::to-query-params "MaxNumberOfMessages"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'max-number-of-messages))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'max-number-of-messages)))
     (aws-sdk/generator/shape::to-query-params "VisibilityTimeout"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'visibility-timeout))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'visibility-timeout)))
     (aws-sdk/generator/shape::to-query-params "WaitTimeSeconds"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'wait-time-seconds))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'wait-time-seconds)))
     (aws-sdk/generator/shape::to-query-params "ReceiveRequestAttemptId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'receive-request-attempt-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'receive-request-attempt-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (receive-message-result (:copier common-lisp:nil))
    (messages common-lisp:nil :type
@@ -874,9 +936,10 @@
                           receive-message-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Messages"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'messages)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'messages))))))
 (common-lisp:progn
  (common-lisp:defstruct (remove-permission-request (:copier common-lisp:nil))
    (queue-url (common-lisp:error ":queue-url is required") :type
@@ -892,13 +955,15 @@
                           remove-permission-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url)))
     (aws-sdk/generator/shape::to-query-params "Label"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'label)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'label))))))
 (common-lisp:progn
  (common-lisp:defstruct (send-message-batch-request (:copier common-lisp:nil))
    (queue-url (common-lisp:error ":queue-url is required") :type
@@ -914,13 +979,15 @@
                           send-message-batch-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url)))
     (aws-sdk/generator/shape::to-query-params "Entries"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'entries)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'entries))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (send-message-batch-request-entry (:copier common-lisp:nil))
@@ -945,29 +1012,35 @@
                           send-message-batch-request-entry))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "MessageBody"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-body))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-body)))
     (aws-sdk/generator/shape::to-query-params "DelaySeconds"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'delay-seconds))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'delay-seconds)))
     (aws-sdk/generator/shape::to-query-params "MessageAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-attributes)))
     (aws-sdk/generator/shape::to-query-params "MessageDeduplicationId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-deduplication-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-deduplication-id)))
     (aws-sdk/generator/shape::to-query-params "MessageGroupId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-group-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-group-id))))))
 (common-lisp:progn
  (common-lisp:deftype send-message-batch-request-entry-list ()
    '(trivial-types:proper-list send-message-batch-request-entry))
@@ -992,13 +1065,15 @@
                           send-message-batch-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Successful"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'successful))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'successful)))
     (aws-sdk/generator/shape::to-query-params "Failed"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'failed)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'failed))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (send-message-batch-result-entry (:copier common-lisp:nil))
@@ -1021,25 +1096,30 @@
                           send-message-batch-result-entry))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "Id"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'id)))
     (aws-sdk/generator/shape::to-query-params "MessageId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-id)))
     (aws-sdk/generator/shape::to-query-params "MD5OfMessageBody"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'md5of-message-body))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'md5of-message-body)))
     (aws-sdk/generator/shape::to-query-params "MD5OfMessageAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'md5of-message-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'md5of-message-attributes)))
     (aws-sdk/generator/shape::to-query-params "SequenceNumber"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sequence-number)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sequence-number))))))
 (common-lisp:progn
  (common-lisp:deftype send-message-batch-result-entry-list ()
    '(trivial-types:proper-list send-message-batch-result-entry))
@@ -1069,29 +1149,35 @@
                         ((aws-sdk/generator/shape::shape send-message-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url)))
     (aws-sdk/generator/shape::to-query-params "MessageBody"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-body))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-body)))
     (aws-sdk/generator/shape::to-query-params "DelaySeconds"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'delay-seconds))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'delay-seconds)))
     (aws-sdk/generator/shape::to-query-params "MessageAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-attributes)))
     (aws-sdk/generator/shape::to-query-params "MessageDeduplicationId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-deduplication-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-deduplication-id)))
     (aws-sdk/generator/shape::to-query-params "MessageGroupId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-group-id)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-group-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (send-message-result (:copier common-lisp:nil))
    (md5of-message-body common-lisp:nil :type
@@ -1107,21 +1193,25 @@
                         ((aws-sdk/generator/shape::shape send-message-result))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "MD5OfMessageBody"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'md5of-message-body))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'md5of-message-body)))
     (aws-sdk/generator/shape::to-query-params "MD5OfMessageAttributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'md5of-message-attributes))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'md5of-message-attributes)))
     (aws-sdk/generator/shape::to-query-params "MessageId"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'message-id))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'message-id)))
     (aws-sdk/generator/shape::to-query-params "SequenceNumber"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'sequence-number)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'sequence-number))))))
 (common-lisp:progn
  (common-lisp:defstruct
      (set-queue-attributes-request (:copier common-lisp:nil))
@@ -1138,13 +1228,15 @@
                           set-queue-attributes-request))
    (common-lisp:append
     (aws-sdk/generator/shape::to-query-params "QueueUrl"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'queue-url))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'queue-url)))
     (aws-sdk/generator/shape::to-query-params "Attributes"
-                                              (common-lisp:slot-value
-                                               aws-sdk/generator/shape::shape
-                                               'attributes)))))
+                                              (aws-sdk/generator/shape:shape-to-params
+                                               (common-lisp:slot-value
+                                                aws-sdk/generator/shape::shape
+                                                'attributes))))))
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype string-list () '(trivial-types:proper-list string))
