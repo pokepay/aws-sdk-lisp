@@ -46,6 +46,7 @@
                      :method method
                      :headers `(("Authorization" . ,authorization)
                                 ("X-Amz-Date" . ,x-amz-date)
+				("x-amz-content-sha256" . ,(aws-sdk/utils::sha-256 (or payload "")))
                                 ,@(credential-headers credentials)
                                 ("Content-Type" . "application/x-amz-json-1.0")
                                 ,@headers)
