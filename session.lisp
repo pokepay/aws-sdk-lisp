@@ -5,7 +5,8 @@
   (:import-from #:aws-sdk/utils
                 #:getenv)
   (:import-from #:aws-sdk/utils/config
-                #:read-from-file)
+                #:read-from-file
+                #:*aws-profile*)
   (:import-from #:assoc-utils
                 #:aget)
   (:export #:session
@@ -19,7 +20,7 @@
       (and (probe-file #P"~/.aws/config")
            (aget (read-from-file #P"~/.aws/config"
                                  :profile (or (getenv "AWS_PROFILE")
-                                              "default"))
+                                              *aws-profile*))
                  "region"))))
 
 (defstruct session
