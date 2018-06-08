@@ -24,7 +24,7 @@
 
 (defun parse-response (response response-name wrapper-name)
   (when response-name
-    (let* ((output (xmls-to-alist (xmls:parse response)))
+    (let* ((output (xmls-to-alist (xmls:parse-to-list response)))
            (output ;; Unwrap the root element
              (cdr (first output))))
       (if wrapper-name
