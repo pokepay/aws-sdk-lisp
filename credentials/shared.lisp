@@ -6,7 +6,8 @@
                 #:retrieve
                 #:expiredp)
   (:import-from #:aws-sdk/utils/config
-                #:read-from-file)
+                #:read-from-file
+                #:*aws-profile*)
   (:import-from #:aws-sdk/utils
                 #:getenv)
   (:import-from #:assoc-utils
@@ -17,15 +18,14 @@
 (defclass shared-provider (provider)
   ((file :initarg :file
          :initform #P"~/.aws/credentials")
-   (profile :initarg :profile)
+   (profile :initarg :profile
+            :initform *aws-profile*)
 
    (retrievedp :initform nil)))
 
 (defun provider-profile (provider)
   (or (getenv "AWS_PROFILE")
-      (and (slot-boundp provider 'profile)
-           (slot-value provider 'profile))
-      "default"))
+      (slot-value provider 'profile)))
 
 (defun read-config (provider)
   (with-slots (file) provider

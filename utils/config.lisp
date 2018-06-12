@@ -1,6 +1,7 @@
 (defpackage #:aws-sdk/utils/config
   (:use #:cl)
   (:import-from #:parser.ini
+                #:*include-empty-sections?*
                 #:parse)
   (:export #:read-from-file
            #:*aws-profile*))
@@ -9,11 +10,11 @@
 (defvar *aws-profile* "default")
 
 (defun read-from-file (file &key (profile *aws-profile*))
-  (let* ((data (parser.ini:parse file 'list))
-         (section (getf (find-if (lambda (section)
-                                   (string= (first (getf section :name)) profile))
-                                 data)
-                        :section)))
+  (let* ((parser.ini:*include-empty-sections?* t)
+         (data (parser.ini:parse file 'list))
+         (section (find-if (lambda (section)
+                             (string= (first (getf section :name)) profile))
+                           data)))
     (unless section
       (error "Profile '~A' doesn't exist in '~A'." profile file))
 
@@ -21,4 +22,4 @@
               (cons
                (first (getf (first option) :name))
                (getf (first option) :value)))
-            (getf section :section-option))))
+            (getf (getf section :section) :section-option))))
