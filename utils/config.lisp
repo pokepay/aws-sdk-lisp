@@ -12,9 +12,13 @@
 (defun read-from-file (file &key (profile *aws-profile*))
   (let* ((parser.ini:*include-empty-sections?* t)
          (data (parser.ini:parse file 'list))
-         (section (find-if (lambda (section)
-                             (string= (first (getf section :name)) profile))
-                           data)))
+         (section (or (find-if (lambda (section)
+                                 (string= (first (getf section :name)) profile))
+                               data)
+                      ;; Fallback to 'profile <name>'
+                      (find-if (lambda (section)
+                                 (string= (first (getf section :name)) (format nil "profile ~A" profile)))
+                               data))))
     (unless section
       (error "Profile '~A' doesn't exist in '~A'." profile file))
 
