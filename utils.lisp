@@ -1,5 +1,9 @@
 (defpackage #:aws-sdk/utils
   (:use #:cl)
+  (:import-from #:ironclad
+                #:byte-array-to-hex-string
+                #:digest-sequence
+                #:ascii-string-to-byte-array)
   (:import-from #:kebab
                 #:to-lisp-case)
   (:export #:lispify))
