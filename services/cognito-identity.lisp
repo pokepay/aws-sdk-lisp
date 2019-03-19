@@ -1383,8 +1383,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateIdentityPool")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateIdentityPool")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "IdentityPool" common-lisp:nil)))
@@ -1401,8 +1402,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteIdentities")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteIdentities")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteIdentitiesResponse" common-lisp:nil)))
@@ -1419,8 +1421,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteIdentityPool")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteIdentityPool")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1437,8 +1440,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeIdentity")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeIdentity")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "IdentityDescription" common-lisp:nil)))
@@ -1455,8 +1459,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeIdentityPool")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeIdentityPool")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "IdentityPool" common-lisp:nil)))
@@ -1475,8 +1480,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetCredentialsForIdentity")
+                               (common-lisp:append
+                                `(("Action" ,@"GetCredentialsForIdentity")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetCredentialsForIdentityResponse" common-lisp:nil)))
@@ -1494,9 +1500,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"GetId")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetId")
+                                  ("Version" ,@"2014-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetIdResponse" common-lisp:nil)))
  (common-lisp:export 'get-id))
 (common-lisp:progn
@@ -1511,8 +1519,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetIdentityPoolRoles")
+                               (common-lisp:append
+                                `(("Action" ,@"GetIdentityPoolRoles")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetIdentityPoolRolesResponse" common-lisp:nil)))
@@ -1529,9 +1538,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"GetOpenIdToken")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetOpenIdToken")
+                                  ("Version" ,@"2014-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetOpenIdTokenResponse" common-lisp:nil)))
  (common-lisp:export 'get-open-id-token))
 (common-lisp:progn
@@ -1549,9 +1560,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"GetOpenIdTokenForDeveloperIdentity")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetOpenIdTokenForDeveloperIdentity")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetOpenIdTokenForDeveloperIdentityResponse" common-lisp:nil)))
@@ -1571,9 +1583,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"ListIdentities")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListIdentities")
+                                  ("Version" ,@"2014-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListIdentitiesResponse" common-lisp:nil)))
  (common-lisp:export 'list-identities))
 (common-lisp:progn
@@ -1588,8 +1602,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListIdentityPools")
+                               (common-lisp:append
+                                `(("Action" ,@"ListIdentityPools")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListIdentityPoolsResponse" common-lisp:nil)))
@@ -1609,8 +1624,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"LookupDeveloperIdentity")
+                               (common-lisp:append
+                                `(("Action" ,@"LookupDeveloperIdentity")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "LookupDeveloperIdentityResponse" common-lisp:nil)))
@@ -1631,8 +1647,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"MergeDeveloperIdentities")
+                               (common-lisp:append
+                                `(("Action" ,@"MergeDeveloperIdentities")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "MergeDeveloperIdentitiesResponse" common-lisp:nil)))
@@ -1650,8 +1667,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetIdentityPoolRoles")
+                               (common-lisp:append
+                                `(("Action" ,@"SetIdentityPoolRoles")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1671,8 +1689,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"UnlinkDeveloperIdentity")
+                               (common-lisp:append
+                                `(("Action" ,@"UnlinkDeveloperIdentity")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1690,9 +1709,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"UnlinkIdentity")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UnlinkIdentity")
+                                  ("Version" ,@"2014-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'unlink-identity))
 (common-lisp:progn
@@ -1714,8 +1735,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cognito-identity" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateIdentityPool")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateIdentityPool")
+                                  ("Version" ,@"2014-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "IdentityPool" common-lisp:nil)))

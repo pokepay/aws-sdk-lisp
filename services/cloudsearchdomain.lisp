@@ -629,9 +629,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearchdomain" :method :get
                                :params
-                               (common-lisp:cons `("Action" ,@"Search")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"Search")
+                                  ("Version" ,@"2013-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "SearchResponse" common-lisp:nil)))
  (common-lisp:export 'search))
 (common-lisp:progn
@@ -646,9 +648,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearchdomain" :method :get
                                :params
-                               (common-lisp:cons `("Action" ,@"Suggest")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"Suggest")
+                                  ("Version" ,@"2013-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "SuggestResponse" common-lisp:nil)))
  (common-lisp:export 'suggest))
 (common-lisp:progn
@@ -663,8 +667,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearchdomain" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"UploadDocuments")
+                               (common-lisp:append
+                                `(("Action" ,@"UploadDocuments")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UploadDocumentsResponse" common-lisp:nil)))

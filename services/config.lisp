@@ -2721,8 +2721,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteConfigRule")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteConfigRule")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2739,8 +2740,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteConfigurationRecorder")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteConfigurationRecorder")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2756,8 +2758,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDeliveryChannel")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDeliveryChannel")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2774,8 +2777,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteEvaluationResults")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteEvaluationResults")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteEvaluationResultsResponse" common-lisp:nil)))
@@ -2791,8 +2795,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeliverConfigSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"DeliverConfigSnapshot")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeliverConfigSnapshotResponse" common-lisp:nil)))
@@ -2811,8 +2816,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeComplianceByConfigRule")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeComplianceByConfigRule")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeComplianceByConfigRuleResponse" common-lisp:nil)))
@@ -2832,8 +2838,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeComplianceByResource")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeComplianceByResource")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeComplianceByResourceResponse" common-lisp:nil)))
@@ -2851,9 +2858,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeConfigRuleEvaluationStatus")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeConfigRuleEvaluationStatus")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeConfigRuleEvaluationStatusResponse" common-lisp:nil)))
@@ -2869,8 +2877,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeConfigRules")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeConfigRules")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeConfigRulesResponse" common-lisp:nil)))
@@ -2887,9 +2896,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeConfigurationRecorderStatus")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeConfigurationRecorderStatus")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeConfigurationRecorderStatusResponse" common-lisp:nil)))
@@ -2906,8 +2916,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeConfigurationRecorders")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeConfigurationRecorders")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeConfigurationRecordersResponse" common-lisp:nil)))
@@ -2924,8 +2935,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDeliveryChannelStatus")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDeliveryChannelStatus")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDeliveryChannelStatusResponse" common-lisp:nil)))
@@ -2942,8 +2954,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDeliveryChannels")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDeliveryChannels")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDeliveryChannelsResponse" common-lisp:nil)))
@@ -2962,9 +2975,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"GetComplianceDetailsByConfigRule")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetComplianceDetailsByConfigRule")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetComplianceDetailsByConfigRuleResponse" common-lisp:nil)))
@@ -2984,8 +2998,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetComplianceDetailsByResource")
+                               (common-lisp:append
+                                `(("Action" ,@"GetComplianceDetailsByResource")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetComplianceDetailsByResourceResponse" common-lisp:nil)))
@@ -3010,9 +3025,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"GetComplianceSummaryByResourceType")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetComplianceSummaryByResourceType")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetComplianceSummaryByResourceTypeResponse" common-lisp:nil)))
@@ -3030,8 +3046,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDiscoveredResourceCounts")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDiscoveredResourceCounts")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDiscoveredResourceCountsResponse" common-lisp:nil)))
@@ -3051,8 +3068,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetResourceConfigHistory")
+                               (common-lisp:append
+                                `(("Action" ,@"GetResourceConfigHistory")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetResourceConfigHistoryResponse" common-lisp:nil)))
@@ -3072,8 +3090,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDiscoveredResources")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDiscoveredResources")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDiscoveredResourcesResponse" common-lisp:nil)))
@@ -3089,9 +3108,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutConfigRule")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutConfigRule")
+                                  ("Version" ,@"2014-11-12"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-config-rule))
 (common-lisp:progn
@@ -3106,8 +3127,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutConfigurationRecorder")
+                               (common-lisp:append
+                                `(("Action" ,@"PutConfigurationRecorder")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3123,8 +3145,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutDeliveryChannel")
+                               (common-lisp:append
+                                `(("Action" ,@"PutDeliveryChannel")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3141,9 +3164,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutEvaluations")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutEvaluations")
+                                  ("Version" ,@"2014-11-12"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutEvaluationsResponse" common-lisp:nil)))
  (common-lisp:export 'put-evaluations))
 (common-lisp:progn
@@ -3158,8 +3183,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartConfigRulesEvaluation")
+                               (common-lisp:append
+                                `(("Action" ,@"StartConfigRulesEvaluation")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartConfigRulesEvaluationResponse" common-lisp:nil)))
@@ -3176,8 +3202,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartConfigurationRecorder")
+                               (common-lisp:append
+                                `(("Action" ,@"StartConfigurationRecorder")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3194,8 +3221,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "config" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StopConfigurationRecorder")
+                               (common-lisp:append
+                                `(("Action" ,@"StopConfigurationRecorder")
+                                  ("Version" ,@"2014-11-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))

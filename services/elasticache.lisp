@@ -4690,8 +4690,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddTagsToResource")
+                               (common-lisp:append
+                                `(("Action" ,@"AddTagsToResource")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "TagListMessage" "AddTagsToResourceResult")))
@@ -4711,9 +4712,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"AuthorizeCacheSecurityGroupIngress")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"AuthorizeCacheSecurityGroupIngress")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AuthorizeCacheSecurityGroupIngressResult"
@@ -4733,9 +4735,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CopySnapshot")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CopySnapshot")
+                                  ("Version" ,@"2015-02-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CopySnapshotResult" "CopySnapshotResult")))
  (common-lisp:export 'copy-snapshot))
 (common-lisp:progn
@@ -4764,8 +4768,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateCacheCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCacheCluster")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateCacheClusterResult" "CreateCacheClusterResult")))
@@ -4785,8 +4790,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateCacheParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCacheParameterGroup")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateCacheParameterGroupResult" "CreateCacheParameterGroupResult")))
@@ -4804,8 +4810,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateCacheSecurityGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCacheSecurityGroup")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateCacheSecurityGroupResult" "CreateCacheSecurityGroupResult")))
@@ -4825,8 +4832,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateCacheSubnetGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCacheSubnetGroup")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateCacheSubnetGroupResult" "CreateCacheSubnetGroupResult")))
@@ -4861,8 +4869,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateReplicationGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateReplicationGroup")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateReplicationGroupResult" "CreateReplicationGroupResult")))
@@ -4881,9 +4890,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateSnapshot")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateSnapshot")
+                                  ("Version" ,@"2015-02-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateSnapshotResult" "CreateSnapshotResult")))
  (common-lisp:export 'create-snapshot))
 (common-lisp:progn
@@ -4899,8 +4910,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteCacheCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCacheCluster")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteCacheClusterResult" "DeleteCacheClusterResult")))
@@ -4917,8 +4929,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteCacheParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCacheParameterGroup")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4935,8 +4948,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteCacheSecurityGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCacheSecurityGroup")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4953,8 +4967,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteCacheSubnetGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCacheSubnetGroup")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4973,8 +4988,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteReplicationGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteReplicationGroup")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteReplicationGroupResult" "DeleteReplicationGroupResult")))
@@ -4990,9 +5006,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteSnapshot")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteSnapshot")
+                                  ("Version" ,@"2015-02-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteSnapshotResult" "DeleteSnapshotResult")))
  (common-lisp:export 'delete-snapshot))
 (common-lisp:progn
@@ -5010,8 +5028,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCacheClusters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCacheClusters")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CacheClusterMessage" "DescribeCacheClustersResult")))
@@ -5032,8 +5051,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCacheEngineVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCacheEngineVersions")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CacheEngineVersionMessage" "DescribeCacheEngineVersionsResult")))
@@ -5052,8 +5072,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCacheParameterGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCacheParameterGroups")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CacheParameterGroupsMessage" "DescribeCacheParameterGroupsResult")))
@@ -5073,8 +5094,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCacheParameters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCacheParameters")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CacheParameterGroupDetails" "DescribeCacheParametersResult")))
@@ -5093,8 +5115,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCacheSecurityGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCacheSecurityGroups")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CacheSecurityGroupMessage" "DescribeCacheSecurityGroupsResult")))
@@ -5113,8 +5136,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCacheSubnetGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCacheSubnetGroups")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CacheSubnetGroupMessage" "DescribeCacheSubnetGroupsResult")))
@@ -5133,8 +5157,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEngineDefaultParameters")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeEngineDefaultParameters")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEngineDefaultParametersResult"
@@ -5154,9 +5180,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeEvents")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEvents")
+                                  ("Version" ,@"2015-02-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "EventsMessage" "DescribeEventsResult")))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
@@ -5172,8 +5200,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeReplicationGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeReplicationGroups")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ReplicationGroupMessage" "DescribeReplicationGroupsResult")))
@@ -5195,8 +5224,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeReservedCacheNodes")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeReservedCacheNodes")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ReservedCacheNodeMessage" "DescribeReservedCacheNodesResult")))
@@ -5217,9 +5247,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeReservedCacheNodesOfferings")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeReservedCacheNodesOfferings")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ReservedCacheNodesOfferingMessage"
@@ -5240,8 +5271,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeSnapshots")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeSnapshots")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeSnapshotsListMessage" "DescribeSnapshotsResult")))
@@ -5259,9 +5291,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"ListAllowedNodeTypeModifications")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ListAllowedNodeTypeModifications")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AllowedNodeTypeModificationsMessage"
@@ -5278,8 +5311,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsForResource")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsForResource")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "TagListMessage" "ListTagsForResourceResult")))
@@ -5309,8 +5343,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyCacheCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyCacheCluster")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyCacheClusterResult" "ModifyCacheClusterResult")))
@@ -5329,8 +5364,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyCacheParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyCacheParameterGroup")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CacheParameterGroupNameMessage" "ModifyCacheParameterGroupResult")))
@@ -5350,8 +5386,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyCacheSubnetGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyCacheSubnetGroup")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyCacheSubnetGroupResult" "ModifyCacheSubnetGroupResult")))
@@ -5382,8 +5419,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyReplicationGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyReplicationGroup")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyReplicationGroupResult" "ModifyReplicationGroupResult")))
@@ -5403,9 +5441,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"PurchaseReservedCacheNodesOffering")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"PurchaseReservedCacheNodesOffering")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PurchaseReservedCacheNodesOfferingResult"
@@ -5424,8 +5463,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RebootCacheCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"RebootCacheCluster")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RebootCacheClusterResult" "RebootCacheClusterResult")))
@@ -5442,8 +5482,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveTagsFromResource")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveTagsFromResource")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "TagListMessage" "RemoveTagsFromResourceResult")))
@@ -5463,8 +5504,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ResetCacheParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ResetCacheParameterGroup")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CacheParameterGroupNameMessage" "ResetCacheParameterGroupResult")))
@@ -5484,8 +5526,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RevokeCacheSecurityGroupIngress")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"RevokeCacheSecurityGroupIngress")
+                                  ("Version" ,@"2015-02-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RevokeCacheSecurityGroupIngressResult"
@@ -5503,8 +5547,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticache" :method :post :params
-                               (common-lisp:cons `("Action" ,@"TestFailover")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"TestFailover")
+                                  ("Version" ,@"2015-02-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "TestFailoverResult" "TestFailoverResult")))
  (common-lisp:export 'test-failover))

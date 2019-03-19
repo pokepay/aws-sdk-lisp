@@ -1045,8 +1045,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "health" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAffectedEntities")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAffectedEntities")
+                                  ("Version" ,@"2016-08-04"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAffectedEntitiesResponse" common-lisp:nil)))
@@ -1063,8 +1064,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "health" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEntityAggregates")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEntityAggregates")
+                                  ("Version" ,@"2016-08-04"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEntityAggregatesResponse" common-lisp:nil)))
@@ -1083,8 +1085,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "health" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEventAggregates")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEventAggregates")
+                                  ("Version" ,@"2016-08-04"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEventAggregatesResponse" common-lisp:nil)))
@@ -1100,8 +1103,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "health" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEventDetails")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEventDetails")
+                                  ("Version" ,@"2016-08-04"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEventDetailsResponse" common-lisp:nil)))
@@ -1118,8 +1122,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "health" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEventTypes")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEventTypes")
+                                  ("Version" ,@"2016-08-04"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEventTypesResponse" common-lisp:nil)))
@@ -1136,8 +1141,10 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "health" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeEvents")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEvents")
+                                  ("Version" ,@"2016-08-04"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeEventsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-events))

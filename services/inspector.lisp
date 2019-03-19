@@ -3087,8 +3087,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddAttributesToFindings")
+                               (common-lisp:append
+                                `(("Action" ,@"AddAttributesToFindings")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddAttributesToFindingsResponse" common-lisp:nil)))
@@ -3106,8 +3107,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateAssessmentTarget")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateAssessmentTarget")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateAssessmentTargetResponse" common-lisp:nil)))
@@ -3128,8 +3130,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateAssessmentTemplate")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateAssessmentTemplate")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateAssessmentTemplateResponse" common-lisp:nil)))
@@ -3145,8 +3148,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateResourceGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateResourceGroup")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateResourceGroupResponse" common-lisp:nil)))
@@ -3162,8 +3166,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteAssessmentRun")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteAssessmentRun")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3179,8 +3184,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteAssessmentTarget")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteAssessmentTarget")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3197,8 +3203,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteAssessmentTemplate")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteAssessmentTemplate")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3214,8 +3221,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAssessmentRuns")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAssessmentRuns")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAssessmentRunsResponse" common-lisp:nil)))
@@ -3232,8 +3240,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAssessmentTargets")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAssessmentTargets")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAssessmentTargetsResponse" common-lisp:nil)))
@@ -3250,8 +3259,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAssessmentTemplates")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAssessmentTemplates")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAssessmentTemplatesResponse" common-lisp:nil)))
@@ -3275,8 +3285,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeFindings")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeFindings")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeFindingsResponse" common-lisp:nil)))
@@ -3292,8 +3303,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeResourceGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeResourceGroups")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeResourceGroupsResponse" common-lisp:nil)))
@@ -3309,8 +3321,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeRulesPackages")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeRulesPackages")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeRulesPackagesResponse" common-lisp:nil)))
@@ -3328,8 +3341,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetAssessmentReport")
+                               (common-lisp:append
+                                `(("Action" ,@"GetAssessmentReport")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetAssessmentReportResponse" common-lisp:nil)))
@@ -3345,8 +3359,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetTelemetryMetadata")
+                               (common-lisp:append
+                                `(("Action" ,@"GetTelemetryMetadata")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetTelemetryMetadataResponse" common-lisp:nil)))
@@ -3365,8 +3380,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListAssessmentRunAgents")
+                               (common-lisp:append
+                                `(("Action" ,@"ListAssessmentRunAgents")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListAssessmentRunAgentsResponse" common-lisp:nil)))
@@ -3385,8 +3401,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListAssessmentRuns")
+                               (common-lisp:append
+                                `(("Action" ,@"ListAssessmentRuns")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListAssessmentRunsResponse" common-lisp:nil)))
@@ -3402,8 +3419,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListAssessmentTargets")
+                               (common-lisp:append
+                                `(("Action" ,@"ListAssessmentTargets")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListAssessmentTargetsResponse" common-lisp:nil)))
@@ -3423,8 +3441,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListAssessmentTemplates")
+                               (common-lisp:append
+                                `(("Action" ,@"ListAssessmentTemplates")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListAssessmentTemplatesResponse" common-lisp:nil)))
@@ -3441,8 +3460,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListEventSubscriptions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListEventSubscriptions")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListEventSubscriptionsResponse" common-lisp:nil)))
@@ -3460,9 +3480,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListFindings")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListFindings")
+                                  ("Version" ,@"2016-02-16"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListFindingsResponse" common-lisp:nil)))
  (common-lisp:export 'list-findings))
 (common-lisp:progn
@@ -3476,8 +3498,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListRulesPackages")
+                               (common-lisp:append
+                                `(("Action" ,@"ListRulesPackages")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListRulesPackagesResponse" common-lisp:nil)))
@@ -3493,8 +3516,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsForResource")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsForResource")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTagsForResourceResponse" common-lisp:nil)))
@@ -3512,9 +3536,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PreviewAgents")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PreviewAgents")
+                                  ("Version" ,@"2016-02-16"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PreviewAgentsResponse" common-lisp:nil)))
  (common-lisp:export 'preview-agents))
 (common-lisp:progn
@@ -3529,8 +3555,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterCrossAccountAccessRole")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterCrossAccountAccessRole")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3547,8 +3574,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveAttributesFromFindings")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveAttributesFromFindings")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RemoveAttributesFromFindingsResponse" common-lisp:nil)))
@@ -3564,8 +3592,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetTagsForResource")
+                               (common-lisp:append
+                                `(("Action" ,@"SetTagsForResource")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3583,8 +3612,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartAssessmentRun")
+                               (common-lisp:append
+                                `(("Action" ,@"StartAssessmentRun")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartAssessmentRunResponse" common-lisp:nil)))
@@ -3600,8 +3630,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StopAssessmentRun")
+                               (common-lisp:append
+                                `(("Action" ,@"StopAssessmentRun")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3617,8 +3648,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SubscribeToEvent")
+                               (common-lisp:append
+                                `(("Action" ,@"SubscribeToEvent")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3634,8 +3666,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UnsubscribeFromEvent")
+                               (common-lisp:append
+                                `(("Action" ,@"UnsubscribeFromEvent")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3654,8 +3687,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateAssessmentTarget")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateAssessmentTarget")
+                                  ("Version" ,@"2016-02-16"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))

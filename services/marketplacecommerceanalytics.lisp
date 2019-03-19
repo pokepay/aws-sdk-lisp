@@ -216,8 +216,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "marketplacecommerceanalytics" :method
                                :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GenerateDataSet")
+                               (common-lisp:append
+                                `(("Action" ,@"GenerateDataSet")
+                                  ("Version" ,@"2015-07-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GenerateDataSetResult" common-lisp:nil)))
@@ -240,8 +241,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "marketplacecommerceanalytics" :method
                                :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartSupportDataExport")
+                               (common-lisp:append
+                                `(("Action" ,@"StartSupportDataExport")
+                                  ("Version" ,@"2015-07-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartSupportDataExportResult" common-lisp:nil)))

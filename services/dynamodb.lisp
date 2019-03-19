@@ -2698,9 +2698,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"BatchGetItem")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"BatchGetItem")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "BatchGetItemOutput" common-lisp:nil)))
  (common-lisp:export 'batch-get-item))
 (common-lisp:progn
@@ -2717,9 +2719,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"BatchWriteItem")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"BatchWriteItem")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "BatchWriteItemOutput" common-lisp:nil)))
  (common-lisp:export 'batch-write-item))
 (common-lisp:progn
@@ -2739,9 +2743,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateTable")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateTable")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateTableOutput" common-lisp:nil)))
  (common-lisp:export 'create-table))
 (common-lisp:progn
@@ -2763,9 +2769,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteItem")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteItem")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteItemOutput" common-lisp:nil)))
  (common-lisp:export 'delete-item))
 (common-lisp:progn
@@ -2779,9 +2787,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteTable")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTable")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteTableOutput" common-lisp:nil)))
  (common-lisp:export 'delete-table))
 (common-lisp:progn
@@ -2802,9 +2812,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeTable")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTable")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeTableOutput" common-lisp:nil)))
  (common-lisp:export 'describe-table))
 (common-lisp:progn
@@ -2818,8 +2830,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeTimeToLive")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTimeToLive")
+                                  ("Version" ,@"2012-08-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeTimeToLiveOutput" common-lisp:nil)))
@@ -2840,9 +2853,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetItem")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetItem")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetItemOutput" common-lisp:nil)))
  (common-lisp:export 'get-item))
 (common-lisp:progn
@@ -2857,9 +2872,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListTables")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListTables")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListTablesOutput" common-lisp:nil)))
  (common-lisp:export 'list-tables))
 (common-lisp:progn
@@ -2873,8 +2890,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsOfResource")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsOfResource")
+                                  ("Version" ,@"2012-08-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTagsOfResourceOutput" common-lisp:nil)))
@@ -2897,9 +2915,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutItem")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutItem")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutItemOutput" common-lisp:nil)))
  (common-lisp:export 'put-item))
 (common-lisp:progn
@@ -2924,9 +2944,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"Query")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"Query")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "QueryOutput" common-lisp:nil)))
  (common-lisp:export 'query))
 (common-lisp:progn
@@ -2950,9 +2972,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"Scan")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"Scan")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ScanOutput" common-lisp:nil)))
  (common-lisp:export 'scan))
 (common-lisp:progn
@@ -2966,9 +2990,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"TagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"TagResource")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
@@ -2982,9 +3008,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UntagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UntagResource")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
@@ -3006,9 +3034,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateItem")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateItem")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateItemOutput" common-lisp:nil)))
  (common-lisp:export 'update-item))
 (common-lisp:progn
@@ -3027,9 +3057,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateTable")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateTable")
+                                  ("Version" ,@"2012-08-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateTableOutput" common-lisp:nil)))
  (common-lisp:export 'update-table))
 (common-lisp:progn
@@ -3044,8 +3076,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateTimeToLive")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateTimeToLive")
+                                  ("Version" ,@"2012-08-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateTimeToLiveOutput" common-lisp:nil)))

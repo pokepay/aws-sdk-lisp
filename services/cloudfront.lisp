@@ -4320,9 +4320,10 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"CreateCloudFrontOriginAccessIdentity")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"CreateCloudFrontOriginAccessIdentity")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateCloudFrontOriginAccessIdentityResult" common-lisp:nil)))
@@ -4338,8 +4339,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDistribution")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDistribution")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDistributionResult" common-lisp:nil)))
@@ -4356,8 +4358,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDistributionWithTags")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDistributionWithTags")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDistributionWithTagsResult" common-lisp:nil)))
@@ -4374,8 +4377,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateInvalidation")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateInvalidation")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateInvalidationResult" common-lisp:nil)))
@@ -4392,8 +4396,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateStreamingDistribution")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateStreamingDistribution")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateStreamingDistributionResult" common-lisp:nil)))
@@ -4411,9 +4416,10 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"CreateStreamingDistributionWithTags")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"CreateStreamingDistributionWithTags")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateStreamingDistributionWithTagsResult" common-lisp:nil)))
@@ -4430,9 +4436,10 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :delete :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DeleteCloudFrontOriginAccessIdentity")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DeleteCloudFrontOriginAccessIdentity")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4448,8 +4455,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDistribution")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDistribution")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4466,8 +4474,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteStreamingDistribution")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteStreamingDistribution")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4484,9 +4493,10 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"GetCloudFrontOriginAccessIdentity")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetCloudFrontOriginAccessIdentity")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetCloudFrontOriginAccessIdentityResult" common-lisp:nil)))
@@ -4503,9 +4513,10 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"GetCloudFrontOriginAccessIdentityConfig")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetCloudFrontOriginAccessIdentityConfig")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetCloudFrontOriginAccessIdentityConfigResult" common-lisp:nil)))
@@ -4521,8 +4532,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDistribution")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDistribution")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDistributionResult" common-lisp:nil)))
@@ -4538,8 +4550,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDistributionConfig")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDistributionConfig")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDistributionConfigResult" common-lisp:nil)))
@@ -4555,8 +4568,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetInvalidation")
+                               (common-lisp:append
+                                `(("Action" ,@"GetInvalidation")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetInvalidationResult" common-lisp:nil)))
@@ -4573,8 +4587,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetStreamingDistribution")
+                               (common-lisp:append
+                                `(("Action" ,@"GetStreamingDistribution")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetStreamingDistributionResult" common-lisp:nil)))
@@ -4591,8 +4606,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetStreamingDistributionConfig")
+                               (common-lisp:append
+                                `(("Action" ,@"GetStreamingDistributionConfig")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetStreamingDistributionConfigResult" common-lisp:nil)))
@@ -4609,9 +4625,10 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"ListCloudFrontOriginAccessIdentities")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ListCloudFrontOriginAccessIdentities")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListCloudFrontOriginAccessIdentitiesResult" common-lisp:nil)))
@@ -4627,8 +4644,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDistributions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDistributions")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDistributionsResult" common-lisp:nil)))
@@ -4645,8 +4663,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDistributionsByWebACLId")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDistributionsByWebACLId")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDistributionsByWebACLIdResult" common-lisp:nil)))
@@ -4663,8 +4682,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListInvalidations")
+                               (common-lisp:append
+                                `(("Action" ,@"ListInvalidations")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListInvalidationsResult" common-lisp:nil)))
@@ -4681,8 +4701,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListStreamingDistributions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListStreamingDistributions")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListStreamingDistributionsResult" common-lisp:nil)))
@@ -4698,8 +4719,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsForResource")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsForResource")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTagsForResourceResult" common-lisp:nil)))
@@ -4715,9 +4737,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
-                               (common-lisp:cons `("Action" ,@"TagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"TagResource")
+                                  ("Version" ,@"2017-03-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
@@ -4731,9 +4755,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UntagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UntagResource")
+                                  ("Version" ,@"2017-03-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
@@ -4751,9 +4777,10 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :put :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"UpdateCloudFrontOriginAccessIdentity")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"UpdateCloudFrontOriginAccessIdentity")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateCloudFrontOriginAccessIdentityResult" common-lisp:nil)))
@@ -4770,8 +4797,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDistribution")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDistribution")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateDistributionResult" common-lisp:nil)))
@@ -4790,8 +4818,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudfront" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateStreamingDistribution")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateStreamingDistribution")
+                                  ("Version" ,@"2017-03-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateStreamingDistributionResult" common-lisp:nil)))

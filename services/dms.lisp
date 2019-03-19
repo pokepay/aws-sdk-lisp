@@ -4047,8 +4047,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddTagsToResource")
+                               (common-lisp:append
+                                `(("Action" ,@"AddTagsToResource")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddTagsToResourceResponse" common-lisp:nil)))
@@ -4072,9 +4073,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateEndpoint")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateEndpoint")
+                                  ("Version" ,@"2016-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateEndpointResponse" common-lisp:nil)))
  (common-lisp:export 'create-endpoint))
 (common-lisp:progn
@@ -4092,8 +4095,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateEventSubscription")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateEventSubscription")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateEventSubscriptionResponse" common-lisp:nil)))
@@ -4121,8 +4125,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateReplicationInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateReplicationInstance")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateReplicationInstanceResponse" common-lisp:nil)))
@@ -4142,8 +4147,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateReplicationSubnetGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateReplicationSubnetGroup")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateReplicationSubnetGroupResponse" common-lisp:nil)))
@@ -4165,8 +4171,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateReplicationTask")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateReplicationTask")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateReplicationTaskResponse" common-lisp:nil)))
@@ -4182,8 +4189,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCertificate")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteCertificateResponse" common-lisp:nil)))
@@ -4199,9 +4207,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteEndpoint")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteEndpoint")
+                                  ("Version" ,@"2016-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteEndpointResponse" common-lisp:nil)))
  (common-lisp:export 'delete-endpoint))
 (common-lisp:progn
@@ -4216,8 +4226,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteEventSubscription")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteEventSubscription")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteEventSubscriptionResponse" common-lisp:nil)))
@@ -4234,8 +4245,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteReplicationInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteReplicationInstance")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteReplicationInstanceResponse" common-lisp:nil)))
@@ -4253,8 +4265,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteReplicationSubnetGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteReplicationSubnetGroup")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteReplicationSubnetGroupResponse" common-lisp:nil)))
@@ -4270,8 +4283,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteReplicationTask")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteReplicationTask")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteReplicationTaskResponse" common-lisp:nil)))
@@ -4295,8 +4309,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCertificates")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCertificates")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeCertificatesResponse" common-lisp:nil)))
@@ -4312,8 +4327,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeConnections")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeConnections")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeConnectionsResponse" common-lisp:nil)))
@@ -4329,8 +4345,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEndpointTypes")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEndpointTypes")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEndpointTypesResponse" common-lisp:nil)))
@@ -4346,8 +4363,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEndpoints")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEndpoints")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEndpointsResponse" common-lisp:nil)))
@@ -4364,8 +4382,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEventCategories")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEventCategories")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEventCategoriesResponse" common-lisp:nil)))
@@ -4384,8 +4403,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEventSubscriptions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEventSubscriptions")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEventSubscriptionsResponse" common-lisp:nil)))
@@ -4405,9 +4425,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeEvents")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEvents")
+                                  ("Version" ,@"2016-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeEventsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
@@ -4422,9 +4444,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeOrderableReplicationInstances")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeOrderableReplicationInstances")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeOrderableReplicationInstancesResponse" common-lisp:nil)))
@@ -4441,8 +4464,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeRefreshSchemasStatus")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeRefreshSchemasStatus")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeRefreshSchemasStatusResponse" common-lisp:nil)))
@@ -4459,8 +4483,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeReplicationInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeReplicationInstances")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeReplicationInstancesResponse" common-lisp:nil)))
@@ -4477,8 +4502,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeReplicationSubnetGroups")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeReplicationSubnetGroups")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeReplicationSubnetGroupsResponse" common-lisp:nil)))
@@ -4495,8 +4522,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeReplicationTasks")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeReplicationTasks")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeReplicationTasksResponse" common-lisp:nil)))
@@ -4513,8 +4541,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeSchemas")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeSchemas")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeSchemasResponse" common-lisp:nil)))
@@ -4532,8 +4561,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeTableStatistics")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTableStatistics")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeTableStatisticsResponse" common-lisp:nil)))
@@ -4552,8 +4582,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ImportCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"ImportCertificate")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ImportCertificateResponse" common-lisp:nil)))
@@ -4569,8 +4600,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsForResource")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsForResource")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTagsForResourceResponse" common-lisp:nil)))
@@ -4594,9 +4626,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ModifyEndpoint")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyEndpoint")
+                                  ("Version" ,@"2016-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ModifyEndpointResponse" common-lisp:nil)))
  (common-lisp:export 'modify-endpoint))
 (common-lisp:progn
@@ -4614,8 +4648,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyEventSubscription")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyEventSubscription")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyEventSubscriptionResponse" common-lisp:nil)))
@@ -4642,8 +4677,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyReplicationInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyReplicationInstance")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyReplicationInstanceResponse" common-lisp:nil)))
@@ -4663,8 +4699,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyReplicationSubnetGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyReplicationSubnetGroup")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyReplicationSubnetGroupResponse" common-lisp:nil)))
@@ -4684,8 +4721,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyReplicationTask")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyReplicationTask")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyReplicationTaskResponse" common-lisp:nil)))
@@ -4702,9 +4740,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RefreshSchemas")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RefreshSchemas")
+                                  ("Version" ,@"2016-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RefreshSchemasResponse" common-lisp:nil)))
  (common-lisp:export 'refresh-schemas))
 (common-lisp:progn
@@ -4719,9 +4759,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ReloadTables")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ReloadTables")
+                                  ("Version" ,@"2016-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ReloadTablesResponse" common-lisp:nil)))
  (common-lisp:export 'reload-tables))
 (common-lisp:progn
@@ -4736,8 +4778,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveTagsFromResource")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveTagsFromResource")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RemoveTagsFromResourceResponse" common-lisp:nil)))
@@ -4756,8 +4799,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartReplicationTask")
+                               (common-lisp:append
+                                `(("Action" ,@"StartReplicationTask")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartReplicationTaskResponse" common-lisp:nil)))
@@ -4773,8 +4817,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StopReplicationTask")
+                               (common-lisp:append
+                                `(("Action" ,@"StopReplicationTask")
+                                  ("Version" ,@"2016-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StopReplicationTaskResponse" common-lisp:nil)))
@@ -4791,8 +4836,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "dms" :method :post :params
-                               (common-lisp:cons `("Action" ,@"TestConnection")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"TestConnection")
+                                  ("Version" ,@"2016-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "TestConnectionResponse" common-lisp:nil)))
  (common-lisp:export 'test-connection))

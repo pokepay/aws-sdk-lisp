@@ -7546,8 +7546,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"AbortMultipartUpload")
+                               (common-lisp:append
+                                `(("Action" ,@"AbortMultipartUpload")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AbortMultipartUploadOutput" common-lisp:nil)))
@@ -7567,8 +7568,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CompleteMultipartUpload")
+                               (common-lisp:append
+                                `(("Action" ,@"CompleteMultipartUpload")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CompleteMultipartUploadOutput" common-lisp:nil)))
@@ -7606,9 +7608,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons `("Action" ,@"CopyObject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CopyObject")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CopyObjectOutput" common-lisp:nil)))
  (common-lisp:export 'copy-object))
 (common-lisp:progn
@@ -7626,9 +7630,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons `("Action" ,@"CreateBucket")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateBucket")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateBucketOutput" common-lisp:nil)))
  (common-lisp:export 'create-bucket))
 (common-lisp:progn
@@ -7655,8 +7661,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateMultipartUpload")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateMultipartUpload")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateMultipartUploadOutput" common-lisp:nil)))
@@ -7672,9 +7679,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteBucket")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBucket")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-bucket))
 (common-lisp:progn
@@ -7689,9 +7698,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :delete :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DeleteBucketAnalyticsConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DeleteBucketAnalyticsConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7707,8 +7717,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteBucketCors")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBucketCors")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7725,9 +7736,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :delete :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DeleteBucketInventoryConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DeleteBucketInventoryConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7743,8 +7755,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteBucketLifecycle")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBucketLifecycle")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7761,9 +7774,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :delete :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DeleteBucketMetricsConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DeleteBucketMetricsConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7779,8 +7793,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteBucketPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBucketPolicy")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7797,8 +7812,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteBucketReplication")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBucketReplication")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7814,8 +7830,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteBucketTagging")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBucketTagging")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7831,8 +7848,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteBucketWebsite")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBucketWebsite")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7849,9 +7867,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteObject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteObject")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteObjectOutput" common-lisp:nil)))
  (common-lisp:export 'delete-object))
 (common-lisp:progn
@@ -7865,8 +7885,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteObjectTagging")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteObjectTagging")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteObjectTaggingOutput" common-lisp:nil)))
@@ -7883,9 +7904,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteObjects")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteObjects")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteObjectsOutput" common-lisp:nil)))
  (common-lisp:export 'delete-objects))
 (common-lisp:progn
@@ -7900,9 +7923,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"GetBucketAccelerateConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetBucketAccelerateConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketAccelerateConfigurationOutput" common-lisp:nil)))
@@ -7918,9 +7942,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetBucketAcl")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetBucketAcl")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetBucketAclOutput" common-lisp:nil)))
  (common-lisp:export 'get-bucket-acl))
 (common-lisp:progn
@@ -7935,8 +7961,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketAnalyticsConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetBucketAnalyticsConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketAnalyticsConfigurationOutput" common-lisp:nil)))
@@ -7952,9 +7980,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetBucketCors")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetBucketCors")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetBucketCorsOutput" common-lisp:nil)))
  (common-lisp:export 'get-bucket-cors))
 (common-lisp:progn
@@ -7969,8 +7999,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketInventoryConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetBucketInventoryConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketInventoryConfigurationOutput" common-lisp:nil)))
@@ -7986,8 +8018,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketLifecycle")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBucketLifecycle")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketLifecycleOutput" common-lisp:nil)))
@@ -8004,8 +8037,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketLifecycleConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetBucketLifecycleConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketLifecycleConfigurationOutput" common-lisp:nil)))
@@ -8021,8 +8056,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketLocation")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBucketLocation")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketLocationOutput" common-lisp:nil)))
@@ -8038,8 +8074,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketLogging")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBucketLogging")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketLoggingOutput" common-lisp:nil)))
@@ -8056,8 +8093,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketMetricsConfiguration")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBucketMetricsConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketMetricsConfigurationOutput" common-lisp:nil)))
@@ -8074,8 +8112,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketNotification")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBucketNotification")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "NotificationConfigurationDeprecated" common-lisp:nil)))
@@ -8092,9 +8131,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"GetBucketNotificationConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetBucketNotificationConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "NotificationConfiguration" common-lisp:nil)))
@@ -8110,8 +8150,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBucketPolicy")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketPolicyOutput" common-lisp:nil)))
@@ -8127,8 +8168,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketReplication")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBucketReplication")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketReplicationOutput" common-lisp:nil)))
@@ -8145,8 +8187,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketRequestPayment")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBucketRequestPayment")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketRequestPaymentOutput" common-lisp:nil)))
@@ -8162,8 +8205,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketTagging")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBucketTagging")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketTaggingOutput" common-lisp:nil)))
@@ -8179,8 +8223,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketVersioning")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBucketVersioning")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketVersioningOutput" common-lisp:nil)))
@@ -8196,8 +8241,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBucketWebsite")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBucketWebsite")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBucketWebsiteOutput" common-lisp:nil)))
@@ -8225,9 +8271,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetObject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetObject")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetObjectOutput" common-lisp:nil)))
  (common-lisp:export 'get-object))
 (common-lisp:progn
@@ -8242,9 +8290,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetObjectAcl")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetObjectAcl")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetObjectAclOutput" common-lisp:nil)))
  (common-lisp:export 'get-object-acl))
 (common-lisp:progn
@@ -8258,8 +8308,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetObjectTagging")
+                               (common-lisp:append
+                                `(("Action" ,@"GetObjectTagging")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetObjectTaggingOutput" common-lisp:nil)))
@@ -8275,8 +8326,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetObjectTorrent")
+                               (common-lisp:append
+                                `(("Action" ,@"GetObjectTorrent")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetObjectTorrentOutput" common-lisp:nil)))
@@ -8292,9 +8344,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :head :params
-                               (common-lisp:cons `("Action" ,@"HeadBucket")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"HeadBucket")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'head-bucket))
 (common-lisp:progn
@@ -8314,9 +8368,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :head :params
-                               (common-lisp:cons `("Action" ,@"HeadObject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"HeadObject")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "HeadObjectOutput" common-lisp:nil)))
  (common-lisp:export 'head-object))
 (common-lisp:progn
@@ -8331,9 +8387,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"ListBucketAnalyticsConfigurations")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ListBucketAnalyticsConfigurations")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListBucketAnalyticsConfigurationsOutput" common-lisp:nil)))
@@ -8350,9 +8407,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"ListBucketInventoryConfigurations")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ListBucketInventoryConfigurations")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListBucketInventoryConfigurationsOutput" common-lisp:nil)))
@@ -8369,8 +8427,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListBucketMetricsConfigurations")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ListBucketMetricsConfigurations")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListBucketMetricsConfigurationsOutput" common-lisp:nil)))
@@ -8396,8 +8456,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListMultipartUploads")
+                               (common-lisp:append
+                                `(("Action" ,@"ListMultipartUploads")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListMultipartUploadsOutput" common-lisp:nil)))
@@ -8416,8 +8477,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListObjectVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListObjectVersions")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListObjectVersionsOutput" common-lisp:nil)))
@@ -8436,9 +8498,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListObjects")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListObjects")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListObjectsOutput" common-lisp:nil)))
  (common-lisp:export 'list-objects))
 (common-lisp:progn
@@ -8456,9 +8520,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListObjectsV2")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListObjectsV2")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListObjectsV2Output" common-lisp:nil)))
  (common-lisp:export 'list-objects-v2))
 (common-lisp:progn
@@ -8475,9 +8541,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListParts")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListParts")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListPartsOutput" common-lisp:nil)))
  (common-lisp:export 'list-parts))
 (common-lisp:progn
@@ -8493,9 +8561,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"PutBucketAccelerateConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"PutBucketAccelerateConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8515,9 +8584,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons `("Action" ,@"PutBucketAcl")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutBucketAcl")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-bucket-acl))
 (common-lisp:progn
@@ -8533,8 +8604,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutBucketAnalyticsConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"PutBucketAnalyticsConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8551,9 +8624,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons `("Action" ,@"PutBucketCors")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutBucketCors")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-bucket-cors))
 (common-lisp:progn
@@ -8569,8 +8644,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutBucketInventoryConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"PutBucketInventoryConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8588,8 +8665,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutBucketLifecycle")
+                               (common-lisp:append
+                                `(("Action" ,@"PutBucketLifecycle")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8606,8 +8684,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutBucketLifecycleConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"PutBucketLifecycleConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8624,8 +8704,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutBucketLogging")
+                               (common-lisp:append
+                                `(("Action" ,@"PutBucketLogging")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8643,8 +8724,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutBucketMetricsConfiguration")
+                               (common-lisp:append
+                                `(("Action" ,@"PutBucketMetricsConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8662,8 +8744,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutBucketNotification")
+                               (common-lisp:append
+                                `(("Action" ,@"PutBucketNotification")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8681,9 +8764,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"PutBucketNotificationConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"PutBucketNotificationConfiguration")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8699,8 +8783,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutBucketPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"PutBucketPolicy")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8718,8 +8803,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutBucketReplication")
+                               (common-lisp:append
+                                `(("Action" ,@"PutBucketReplication")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8738,8 +8824,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutBucketRequestPayment")
+                               (common-lisp:append
+                                `(("Action" ,@"PutBucketRequestPayment")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8755,8 +8842,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutBucketTagging")
+                               (common-lisp:append
+                                `(("Action" ,@"PutBucketTagging")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8774,8 +8862,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutBucketVersioning")
+                               (common-lisp:append
+                                `(("Action" ,@"PutBucketVersioning")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8792,8 +8881,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutBucketWebsite")
+                               (common-lisp:append
+                                `(("Action" ,@"PutBucketWebsite")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -8822,9 +8912,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons `("Action" ,@"PutObject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutObject")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutObjectOutput" common-lisp:nil)))
  (common-lisp:export 'put-object))
 (common-lisp:progn
@@ -8843,9 +8935,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons `("Action" ,@"PutObjectAcl")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutObjectAcl")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutObjectAclOutput" common-lisp:nil)))
  (common-lisp:export 'put-object-acl))
 (common-lisp:progn
@@ -8861,8 +8955,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutObjectTagging")
+                               (common-lisp:append
+                                `(("Action" ,@"PutObjectTagging")
+                                  ("Version" ,@"2006-03-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PutObjectTaggingOutput" common-lisp:nil)))
@@ -8881,9 +8976,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RestoreObject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RestoreObject")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RestoreObjectOutput" common-lisp:nil)))
  (common-lisp:export 'restore-object))
 (common-lisp:progn
@@ -8902,9 +8999,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons `("Action" ,@"UploadPart")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UploadPart")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UploadPartOutput" common-lisp:nil)))
  (common-lisp:export 'upload-part))
 (common-lisp:progn
@@ -8931,8 +9030,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "s3" :method :put :params
-                               (common-lisp:cons `("Action" ,@"UploadPartCopy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UploadPartCopy")
+                                  ("Version" ,@"2006-03-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UploadPartCopyOutput" common-lisp:nil)))
  (common-lisp:export 'upload-part-copy))

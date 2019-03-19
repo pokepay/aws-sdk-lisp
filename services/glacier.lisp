@@ -2297,8 +2297,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"AbortMultipartUpload")
+                               (common-lisp:append
+                                `(("Action" ,@"AbortMultipartUpload")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2314,9 +2315,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"AbortVaultLock")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AbortVaultLock")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'abort-vault-lock))
 (common-lisp:progn
@@ -2330,9 +2333,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :post :params
-                               (common-lisp:cons `("Action" ,@"AddTagsToVault")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AddTagsToVault")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'add-tags-to-vault))
 (common-lisp:progn
@@ -2349,8 +2354,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CompleteMultipartUpload")
+                               (common-lisp:append
+                                `(("Action" ,@"CompleteMultipartUpload")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ArchiveCreationOutput" common-lisp:nil)))
@@ -2366,8 +2372,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CompleteVaultLock")
+                               (common-lisp:append
+                                `(("Action" ,@"CompleteVaultLock")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2383,9 +2390,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :put :params
-                               (common-lisp:cons `("Action" ,@"CreateVault")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateVault")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateVaultOutput" common-lisp:nil)))
  (common-lisp:export 'create-vault))
 (common-lisp:progn
@@ -2400,9 +2409,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteArchive")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteArchive")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-archive))
 (common-lisp:progn
@@ -2416,9 +2427,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteVault")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteVault")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-vault))
 (common-lisp:progn
@@ -2432,8 +2445,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteVaultAccessPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteVaultAccessPolicy")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2449,8 +2463,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteVaultNotifications")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteVaultNotifications")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2466,9 +2481,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :get :params
-                               (common-lisp:cons `("Action" ,@"DescribeJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeJob")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GlacierJobDescription" common-lisp:nil)))
  (common-lisp:export 'describe-job))
 (common-lisp:progn
@@ -2482,9 +2499,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :get :params
-                               (common-lisp:cons `("Action" ,@"DescribeVault")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeVault")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeVaultOutput" common-lisp:nil)))
  (common-lisp:export 'describe-vault))
 (common-lisp:progn
@@ -2498,8 +2517,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDataRetrievalPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDataRetrievalPolicy")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDataRetrievalPolicyOutput" common-lisp:nil)))
@@ -2516,9 +2536,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetJobOutput")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetJobOutput")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetJobOutputOutput" common-lisp:nil)))
  (common-lisp:export 'get-job-output))
 (common-lisp:progn
@@ -2532,8 +2554,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetVaultAccessPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"GetVaultAccessPolicy")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetVaultAccessPolicyOutput" common-lisp:nil)))
@@ -2549,9 +2572,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetVaultLock")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetVaultLock")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetVaultLockOutput" common-lisp:nil)))
  (common-lisp:export 'get-vault-lock))
 (common-lisp:progn
@@ -2565,8 +2590,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetVaultNotifications")
+                               (common-lisp:append
+                                `(("Action" ,@"GetVaultNotifications")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetVaultNotificationsOutput" common-lisp:nil)))
@@ -2583,9 +2609,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :post :params
-                               (common-lisp:cons `("Action" ,@"InitiateJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"InitiateJob")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "InitiateJobOutput" common-lisp:nil)))
  (common-lisp:export 'initiate-job))
 (common-lisp:progn
@@ -2602,8 +2630,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"InitiateMultipartUpload")
+                               (common-lisp:append
+                                `(("Action" ,@"InitiateMultipartUpload")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "InitiateMultipartUploadOutput" common-lisp:nil)))
@@ -2619,8 +2648,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"InitiateVaultLock")
+                               (common-lisp:append
+                                `(("Action" ,@"InitiateVaultLock")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "InitiateVaultLockOutput" common-lisp:nil)))
@@ -2639,9 +2669,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListJobs")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListJobs")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListJobsOutput" common-lisp:nil)))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
@@ -2656,8 +2688,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListMultipartUploads")
+                               (common-lisp:append
+                                `(("Action" ,@"ListMultipartUploads")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListMultipartUploadsOutput" common-lisp:nil)))
@@ -2675,9 +2708,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListParts")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListParts")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListPartsOutput" common-lisp:nil)))
  (common-lisp:export 'list-parts))
 (common-lisp:progn
@@ -2691,8 +2726,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListProvisionedCapacity")
+                               (common-lisp:append
+                                `(("Action" ,@"ListProvisionedCapacity")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListProvisionedCapacityOutput" common-lisp:nil)))
@@ -2708,8 +2744,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsForVault")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsForVault")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTagsForVaultOutput" common-lisp:nil)))
@@ -2725,9 +2762,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListVaults")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListVaults")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListVaultsOutput" common-lisp:nil)))
  (common-lisp:export 'list-vaults))
 (common-lisp:progn
@@ -2742,8 +2781,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PurchaseProvisionedCapacity")
+                               (common-lisp:append
+                                `(("Action" ,@"PurchaseProvisionedCapacity")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PurchaseProvisionedCapacityOutput" common-lisp:nil)))
@@ -2759,8 +2799,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveTagsFromVault")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveTagsFromVault")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2776,8 +2817,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetDataRetrievalPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"SetDataRetrievalPolicy")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2793,8 +2835,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetVaultAccessPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"SetVaultAccessPolicy")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2812,8 +2855,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetVaultNotifications")
+                               (common-lisp:append
+                                `(("Action" ,@"SetVaultNotifications")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2832,9 +2876,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UploadArchive")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UploadArchive")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ArchiveCreationOutput" common-lisp:nil)))
  (common-lisp:export 'upload-archive))
 (common-lisp:progn
@@ -2851,8 +2897,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glacier" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UploadMultipartPart")
+                               (common-lisp:append
+                                `(("Action" ,@"UploadMultipartPart")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UploadMultipartPartOutput" common-lisp:nil)))

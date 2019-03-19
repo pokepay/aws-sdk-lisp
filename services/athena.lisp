@@ -1043,8 +1043,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "athena" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchGetNamedQuery")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchGetNamedQuery")
+                                  ("Version" ,@"2017-05-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchGetNamedQueryOutput" common-lisp:nil)))
@@ -1060,8 +1061,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "athena" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchGetQueryExecution")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchGetQueryExecution")
+                                  ("Version" ,@"2017-05-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchGetQueryExecutionOutput" common-lisp:nil)))
@@ -1080,8 +1082,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "athena" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateNamedQuery")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateNamedQuery")
+                                  ("Version" ,@"2017-05-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateNamedQueryOutput" common-lisp:nil)))
@@ -1097,8 +1100,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "athena" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteNamedQuery")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteNamedQuery")
+                                  ("Version" ,@"2017-05-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteNamedQueryOutput" common-lisp:nil)))
@@ -1114,9 +1118,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "athena" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetNamedQuery")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetNamedQuery")
+                                  ("Version" ,@"2017-05-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetNamedQueryOutput" common-lisp:nil)))
  (common-lisp:export 'get-named-query))
 (common-lisp:progn
@@ -1130,8 +1136,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "athena" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetQueryExecution")
+                               (common-lisp:append
+                                `(("Action" ,@"GetQueryExecution")
+                                  ("Version" ,@"2017-05-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetQueryExecutionOutput" common-lisp:nil)))
@@ -1149,8 +1156,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "athena" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetQueryResults")
+                               (common-lisp:append
+                                `(("Action" ,@"GetQueryResults")
+                                  ("Version" ,@"2017-05-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetQueryResultsOutput" common-lisp:nil)))
@@ -1166,8 +1174,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "athena" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListNamedQueries")
+                               (common-lisp:append
+                                `(("Action" ,@"ListNamedQueries")
+                                  ("Version" ,@"2017-05-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListNamedQueriesOutput" common-lisp:nil)))
@@ -1183,8 +1192,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "athena" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListQueryExecutions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListQueryExecutions")
+                                  ("Version" ,@"2017-05-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListQueryExecutionsOutput" common-lisp:nil)))
@@ -1203,8 +1213,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "athena" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartQueryExecution")
+                               (common-lisp:append
+                                `(("Action" ,@"StartQueryExecution")
+                                  ("Version" ,@"2017-05-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartQueryExecutionOutput" common-lisp:nil)))
@@ -1220,8 +1231,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "athena" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StopQueryExecution")
+                               (common-lisp:append
+                                `(("Action" ,@"StopQueryExecution")
+                                  ("Version" ,@"2017-05-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StopQueryExecutionOutput" common-lisp:nil)))

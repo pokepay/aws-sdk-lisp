@@ -5902,9 +5902,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateApiKey")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateApiKey")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ApiKey" common-lisp:nil)))
  (common-lisp:export 'create-api-key))
 (common-lisp:progn
@@ -5924,8 +5926,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateAuthorizer")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateAuthorizer")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Authorizer" common-lisp:nil)))
@@ -5942,8 +5945,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateBasePathMapping")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateBasePathMapping")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BasePathMapping" common-lisp:nil)))
@@ -5963,8 +5967,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDeployment")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDeployment")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Deployment" common-lisp:nil)))
@@ -5982,8 +5987,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDocumentationPart")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDocumentationPart")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DocumentationPart" common-lisp:nil)))
@@ -6003,8 +6009,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDocumentationVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDocumentationVersion")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DocumentationVersion" common-lisp:nil)))
@@ -6024,8 +6031,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDomainName")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDomainName")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DomainName" common-lisp:nil)))
@@ -6043,9 +6051,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateModel")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateModel")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Model" common-lisp:nil)))
  (common-lisp:export 'create-model))
 (common-lisp:progn
@@ -6062,8 +6072,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateRequestValidator")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateRequestValidator")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RequestValidator" common-lisp:nil)))
@@ -6080,9 +6091,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateResource")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Resource" common-lisp:nil)))
  (common-lisp:export 'create-resource))
 (common-lisp:progn
@@ -6099,9 +6112,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateRestApi")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateRestApi")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RestApi" common-lisp:nil)))
  (common-lisp:export 'create-rest-api))
 (common-lisp:progn
@@ -6119,9 +6134,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateStage")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateStage")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Stage" common-lisp:nil)))
  (common-lisp:export 'create-stage))
 (common-lisp:progn
@@ -6137,8 +6154,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateUsagePlan")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateUsagePlan")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UsagePlan" common-lisp:nil)))
@@ -6154,8 +6172,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateUsagePlanKey")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateUsagePlanKey")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UsagePlanKey" common-lisp:nil)))
@@ -6171,9 +6190,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteApiKey")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteApiKey")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-api-key))
 (common-lisp:progn
@@ -6187,8 +6208,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteAuthorizer")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteAuthorizer")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6204,8 +6226,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteBasePathMapping")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBasePathMapping")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6222,8 +6245,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteClientCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteClientCertificate")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6239,8 +6263,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDeployment")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDeployment")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6258,8 +6283,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDocumentationPart")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDocumentationPart")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6277,8 +6303,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDocumentationVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDocumentationVersion")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6294,8 +6321,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDomainName")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDomainName")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6311,8 +6339,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteGatewayResponse")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteGatewayResponse")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6329,8 +6358,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteIntegration")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteIntegration")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6349,8 +6379,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteIntegrationResponse")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteIntegrationResponse")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6367,9 +6398,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteMethod")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteMethod")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-method))
 (common-lisp:progn
@@ -6385,8 +6418,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteMethodResponse")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteMethodResponse")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6402,9 +6436,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteModel")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteModel")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-model))
 (common-lisp:progn
@@ -6419,8 +6455,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteRequestValidator")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteRequestValidator")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6436,9 +6473,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteResource")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-resource))
 (common-lisp:progn
@@ -6452,9 +6491,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteRestApi")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteRestApi")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-rest-api))
 (common-lisp:progn
@@ -6468,9 +6509,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteStage")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteStage")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-stage))
 (common-lisp:progn
@@ -6484,8 +6527,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteUsagePlan")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteUsagePlan")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6501,8 +6545,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteUsagePlanKey")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteUsagePlanKey")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6519,8 +6564,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"FlushStageAuthorizersCache")
+                               (common-lisp:append
+                                `(("Action" ,@"FlushStageAuthorizersCache")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6536,8 +6582,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"FlushStageCache")
+                               (common-lisp:append
+                                `(("Action" ,@"FlushStageCache")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6554,8 +6601,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GenerateClientCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"GenerateClientCertificate")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ClientCertificate" common-lisp:nil)))
@@ -6578,9 +6626,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetApiKey")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetApiKey")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ApiKey" common-lisp:nil)))
  (common-lisp:export 'get-api-key))
 (common-lisp:progn
@@ -6597,9 +6647,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetApiKeys")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetApiKeys")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ApiKeys" common-lisp:nil)))
  (common-lisp:export 'get-api-keys))
 (common-lisp:progn
@@ -6613,9 +6665,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetAuthorizer")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetAuthorizer")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Authorizer" common-lisp:nil)))
  (common-lisp:export 'get-authorizer))
 (common-lisp:progn
@@ -6629,9 +6683,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetAuthorizers")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetAuthorizers")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Authorizers" common-lisp:nil)))
  (common-lisp:export 'get-authorizers))
 (common-lisp:progn
@@ -6645,8 +6701,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBasePathMapping")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBasePathMapping")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BasePathMapping" common-lisp:nil)))
@@ -6662,8 +6719,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBasePathMappings")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBasePathMappings")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BasePathMappings" common-lisp:nil)))
@@ -6679,8 +6737,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetClientCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"GetClientCertificate")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ClientCertificate" common-lisp:nil)))
@@ -6696,8 +6755,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetClientCertificates")
+                               (common-lisp:append
+                                `(("Action" ,@"GetClientCertificates")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ClientCertificates" common-lisp:nil)))
@@ -6714,9 +6774,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetDeployment")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDeployment")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Deployment" common-lisp:nil)))
  (common-lisp:export 'get-deployment))
 (common-lisp:progn
@@ -6730,9 +6792,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetDeployments")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDeployments")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Deployments" common-lisp:nil)))
  (common-lisp:export 'get-deployments))
 (common-lisp:progn
@@ -6747,8 +6811,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDocumentationPart")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDocumentationPart")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DocumentationPart" common-lisp:nil)))
@@ -6766,8 +6831,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDocumentationParts")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDocumentationParts")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DocumentationParts" common-lisp:nil)))
@@ -6785,8 +6851,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDocumentationVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDocumentationVersion")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DocumentationVersion" common-lisp:nil)))
@@ -6803,8 +6870,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDocumentationVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDocumentationVersions")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DocumentationVersions" common-lisp:nil)))
@@ -6820,9 +6888,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetDomainName")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDomainName")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DomainName" common-lisp:nil)))
  (common-lisp:export 'get-domain-name))
 (common-lisp:progn
@@ -6836,9 +6906,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetDomainNames")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDomainNames")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DomainNames" common-lisp:nil)))
  (common-lisp:export 'get-domain-names))
 (common-lisp:progn
@@ -6855,9 +6927,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetExport")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetExport")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ExportResponse" common-lisp:nil)))
  (common-lisp:export 'get-export))
 (common-lisp:progn
@@ -6871,8 +6945,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetGatewayResponse")
+                               (common-lisp:append
+                                `(("Action" ,@"GetGatewayResponse")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GatewayResponse" common-lisp:nil)))
@@ -6888,8 +6963,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetGatewayResponses")
+                               (common-lisp:append
+                                `(("Action" ,@"GetGatewayResponses")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GatewayResponses" common-lisp:nil)))
@@ -6906,9 +6982,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetIntegration")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetIntegration")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Integration" common-lisp:nil)))
  (common-lisp:export 'get-integration))
 (common-lisp:progn
@@ -6924,8 +7002,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetIntegrationResponse")
+                               (common-lisp:append
+                                `(("Action" ,@"GetIntegrationResponse")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "IntegrationResponse" common-lisp:nil)))
@@ -6942,9 +7021,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetMethod")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetMethod")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Method" common-lisp:nil)))
  (common-lisp:export 'get-method))
 (common-lisp:progn
@@ -6960,8 +7041,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetMethodResponse")
+                               (common-lisp:append
+                                `(("Action" ,@"GetMethodResponse")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "MethodResponse" common-lisp:nil)))
@@ -6977,9 +7059,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetModel")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetModel")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Model" common-lisp:nil)))
  (common-lisp:export 'get-model))
 (common-lisp:progn
@@ -6993,8 +7077,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetModelTemplate")
+                               (common-lisp:append
+                                `(("Action" ,@"GetModelTemplate")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Template" common-lisp:nil)))
@@ -7010,9 +7095,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetModels")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetModels")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Models" common-lisp:nil)))
  (common-lisp:export 'get-models))
 (common-lisp:progn
@@ -7027,8 +7114,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetRequestValidator")
+                               (common-lisp:append
+                                `(("Action" ,@"GetRequestValidator")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RequestValidator" common-lisp:nil)))
@@ -7044,8 +7132,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetRequestValidators")
+                               (common-lisp:append
+                                `(("Action" ,@"GetRequestValidators")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RequestValidators" common-lisp:nil)))
@@ -7061,9 +7150,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetResource")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Resource" common-lisp:nil)))
  (common-lisp:export 'get-resource))
 (common-lisp:progn
@@ -7078,9 +7169,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetResources")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetResources")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Resources" common-lisp:nil)))
  (common-lisp:export 'get-resources))
 (common-lisp:progn
@@ -7094,9 +7187,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetRestApi")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetRestApi")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RestApi" common-lisp:nil)))
  (common-lisp:export 'get-rest-api))
 (common-lisp:progn
@@ -7110,9 +7205,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetRestApis")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetRestApis")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RestApis" common-lisp:nil)))
  (common-lisp:export 'get-rest-apis))
 (common-lisp:progn
@@ -7128,9 +7225,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetSdk")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetSdk")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "SdkResponse" common-lisp:nil)))
  (common-lisp:export 'get-sdk))
 (common-lisp:progn
@@ -7144,9 +7243,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetSdkType")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetSdkType")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "SdkType" common-lisp:nil)))
  (common-lisp:export 'get-sdk-type))
 (common-lisp:progn
@@ -7160,9 +7261,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetSdkTypes")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetSdkTypes")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "SdkTypes" common-lisp:nil)))
  (common-lisp:export 'get-sdk-types))
 (common-lisp:progn
@@ -7176,9 +7279,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetStage")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetStage")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Stage" common-lisp:nil)))
  (common-lisp:export 'get-stage))
 (common-lisp:progn
@@ -7192,9 +7297,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetStages")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetStages")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Stages" common-lisp:nil)))
  (common-lisp:export 'get-stages))
 (common-lisp:progn
@@ -7211,9 +7318,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetUsage")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetUsage")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Usage" common-lisp:nil)))
  (common-lisp:export 'get-usage))
 (common-lisp:progn
@@ -7227,9 +7336,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetUsagePlan")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetUsagePlan")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UsagePlan" common-lisp:nil)))
  (common-lisp:export 'get-usage-plan))
 (common-lisp:progn
@@ -7243,8 +7354,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetUsagePlanKey")
+                               (common-lisp:append
+                                `(("Action" ,@"GetUsagePlanKey")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UsagePlanKey" common-lisp:nil)))
@@ -7261,8 +7373,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetUsagePlanKeys")
+                               (common-lisp:append
+                                `(("Action" ,@"GetUsagePlanKeys")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UsagePlanKeys" common-lisp:nil)))
@@ -7278,9 +7391,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetUsagePlans")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetUsagePlans")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UsagePlans" common-lisp:nil)))
  (common-lisp:export 'get-usage-plans))
 (common-lisp:progn
@@ -7294,9 +7409,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ImportApiKeys")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ImportApiKeys")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ApiKeyIds" common-lisp:nil)))
  (common-lisp:export 'import-api-keys))
 (common-lisp:progn
@@ -7312,8 +7429,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"ImportDocumentationParts")
+                               (common-lisp:append
+                                `(("Action" ,@"ImportDocumentationParts")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DocumentationPartIds" common-lisp:nil)))
@@ -7330,9 +7448,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ImportRestApi")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ImportRestApi")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RestApi" common-lisp:nil)))
  (common-lisp:export 'import-rest-api))
 (common-lisp:progn
@@ -7349,8 +7469,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutGatewayResponse")
+                               (common-lisp:append
+                                `(("Action" ,@"PutGatewayResponse")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GatewayResponse" common-lisp:nil)))
@@ -7373,9 +7494,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :put :params
-                               (common-lisp:cons `("Action" ,@"PutIntegration")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutIntegration")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Integration" common-lisp:nil)))
  (common-lisp:export 'put-integration))
 (common-lisp:progn
@@ -7394,8 +7517,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutIntegrationResponse")
+                               (common-lisp:append
+                                `(("Action" ,@"PutIntegrationResponse")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "IntegrationResponse" common-lisp:nil)))
@@ -7417,9 +7541,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :put :params
-                               (common-lisp:cons `("Action" ,@"PutMethod")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutMethod")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Method" common-lisp:nil)))
  (common-lisp:export 'put-method))
 (common-lisp:progn
@@ -7436,8 +7562,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutMethodResponse")
+                               (common-lisp:append
+                                `(("Action" ,@"PutMethodResponse")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "MethodResponse" common-lisp:nil)))
@@ -7455,9 +7582,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :put :params
-                               (common-lisp:cons `("Action" ,@"PutRestApi")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutRestApi")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RestApi" common-lisp:nil)))
  (common-lisp:export 'put-rest-api))
 (common-lisp:progn
@@ -7475,8 +7604,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"TestInvokeAuthorizer")
+                               (common-lisp:append
+                                `(("Action" ,@"TestInvokeAuthorizer")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "TestInvokeAuthorizerResponse" common-lisp:nil)))
@@ -7497,8 +7627,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"TestInvokeMethod")
+                               (common-lisp:append
+                                `(("Action" ,@"TestInvokeMethod")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "TestInvokeMethodResponse" common-lisp:nil)))
@@ -7514,9 +7645,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons `("Action" ,@"UpdateAccount")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateAccount")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Account" common-lisp:nil)))
  (common-lisp:export 'update-account))
 (common-lisp:progn
@@ -7530,9 +7663,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons `("Action" ,@"UpdateApiKey")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateApiKey")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ApiKey" common-lisp:nil)))
  (common-lisp:export 'update-api-key))
 (common-lisp:progn
@@ -7548,8 +7683,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateAuthorizer")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateAuthorizer")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Authorizer" common-lisp:nil)))
@@ -7566,8 +7702,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateBasePathMapping")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateBasePathMapping")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BasePathMapping" common-lisp:nil)))
@@ -7585,8 +7722,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateClientCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateClientCertificate")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ClientCertificate" common-lisp:nil)))
@@ -7604,8 +7742,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDeployment")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDeployment")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Deployment" common-lisp:nil)))
@@ -7624,8 +7763,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDocumentationPart")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDocumentationPart")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DocumentationPart" common-lisp:nil)))
@@ -7644,8 +7784,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDocumentationVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDocumentationVersion")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DocumentationVersion" common-lisp:nil)))
@@ -7661,8 +7802,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDomainName")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDomainName")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DomainName" common-lisp:nil)))
@@ -7680,8 +7822,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateGatewayResponse")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateGatewayResponse")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GatewayResponse" common-lisp:nil)))
@@ -7700,8 +7843,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateIntegration")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateIntegration")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Integration" common-lisp:nil)))
@@ -7721,8 +7865,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateIntegrationResponse")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateIntegrationResponse")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "IntegrationResponse" common-lisp:nil)))
@@ -7741,9 +7886,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons `("Action" ,@"UpdateMethod")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateMethod")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Method" common-lisp:nil)))
  (common-lisp:export 'update-method))
 (common-lisp:progn
@@ -7760,8 +7907,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateMethodResponse")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateMethodResponse")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "MethodResponse" common-lisp:nil)))
@@ -7778,9 +7926,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons `("Action" ,@"UpdateModel")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateModel")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Model" common-lisp:nil)))
  (common-lisp:export 'update-model))
 (common-lisp:progn
@@ -7796,8 +7946,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateRequestValidator")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateRequestValidator")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RequestValidator" common-lisp:nil)))
@@ -7814,9 +7965,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons `("Action" ,@"UpdateResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateResource")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Resource" common-lisp:nil)))
  (common-lisp:export 'update-resource))
 (common-lisp:progn
@@ -7830,9 +7983,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons `("Action" ,@"UpdateRestApi")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateRestApi")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RestApi" common-lisp:nil)))
  (common-lisp:export 'update-rest-api))
 (common-lisp:progn
@@ -7847,9 +8002,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons `("Action" ,@"UpdateStage")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateStage")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Stage" common-lisp:nil)))
  (common-lisp:export 'update-stage))
 (common-lisp:progn
@@ -7864,9 +8021,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons `("Action" ,@"UpdateUsage")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateUsage")
+                                  ("Version" ,@"2015-07-09"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Usage" common-lisp:nil)))
  (common-lisp:export 'update-usage))
 (common-lisp:progn
@@ -7880,8 +8039,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateUsagePlan")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateUsagePlan")
+                                  ("Version" ,@"2015-07-09"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UsagePlan" common-lisp:nil)))

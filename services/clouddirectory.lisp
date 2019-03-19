@@ -6258,8 +6258,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddFacetToObject")
+                               (common-lisp:append
+                                `(("Action" ,@"AddFacetToObject")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddFacetToObjectResponse" common-lisp:nil)))
@@ -6276,9 +6277,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"ApplySchema")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ApplySchema")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ApplySchemaResponse" common-lisp:nil)))
  (common-lisp:export 'apply-schema))
 (common-lisp:progn
@@ -6295,9 +6298,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"AttachObject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AttachObject")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AttachObjectResponse" common-lisp:nil)))
  (common-lisp:export 'attach-object))
 (common-lisp:progn
@@ -6313,9 +6318,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"AttachPolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AttachPolicy")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AttachPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'attach-policy))
 (common-lisp:progn
@@ -6331,9 +6338,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"AttachToIndex")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AttachToIndex")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AttachToIndexResponse" common-lisp:nil)))
  (common-lisp:export 'attach-to-index))
 (common-lisp:progn
@@ -6350,8 +6359,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"AttachTypedLink")
+                               (common-lisp:append
+                                `(("Action" ,@"AttachTypedLink")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AttachTypedLinkResponse" common-lisp:nil)))
@@ -6369,9 +6379,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons `("Action" ,@"BatchRead")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"BatchRead")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "BatchReadResponse" common-lisp:nil)))
  (common-lisp:export 'batch-read))
 (common-lisp:progn
@@ -6385,9 +6397,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"BatchWrite")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"BatchWrite")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "BatchWriteResponse" common-lisp:nil)))
  (common-lisp:export 'batch-write))
 (common-lisp:progn
@@ -6401,8 +6415,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDirectory")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDirectory")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDirectoryResponse" common-lisp:nil)))
@@ -6419,9 +6434,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"CreateFacet")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateFacet")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateFacetResponse" common-lisp:nil)))
  (common-lisp:export 'create-facet))
 (common-lisp:progn
@@ -6439,9 +6456,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"CreateIndex")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateIndex")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateIndexResponse" common-lisp:nil)))
  (common-lisp:export 'create-index))
 (common-lisp:progn
@@ -6458,9 +6477,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"CreateObject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateObject")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateObjectResponse" common-lisp:nil)))
  (common-lisp:export 'create-object))
 (common-lisp:progn
@@ -6474,9 +6495,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"CreateSchema")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateSchema")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateSchemaResponse" common-lisp:nil)))
  (common-lisp:export 'create-schema))
 (common-lisp:progn
@@ -6490,8 +6513,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateTypedLinkFacet")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateTypedLinkFacet")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateTypedLinkFacetResponse" common-lisp:nil)))
@@ -6507,8 +6531,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDirectory")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDirectory")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteDirectoryResponse" common-lisp:nil)))
@@ -6524,9 +6549,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"DeleteFacet")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteFacet")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteFacetResponse" common-lisp:nil)))
  (common-lisp:export 'delete-facet))
 (common-lisp:progn
@@ -6540,9 +6567,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"DeleteObject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteObject")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteObjectResponse" common-lisp:nil)))
  (common-lisp:export 'delete-object))
 (common-lisp:progn
@@ -6556,9 +6585,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"DeleteSchema")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteSchema")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteSchemaResponse" common-lisp:nil)))
  (common-lisp:export 'delete-schema))
 (common-lisp:progn
@@ -6572,8 +6603,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteTypedLinkFacet")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTypedLinkFacet")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteTypedLinkFacetResponse" common-lisp:nil)))
@@ -6591,8 +6623,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"DetachFromIndex")
+                               (common-lisp:append
+                                `(("Action" ,@"DetachFromIndex")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DetachFromIndexResponse" common-lisp:nil)))
@@ -6609,9 +6642,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"DetachObject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DetachObject")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DetachObjectResponse" common-lisp:nil)))
  (common-lisp:export 'detach-object))
 (common-lisp:progn
@@ -6627,9 +6662,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"DetachPolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DetachPolicy")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DetachPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'detach-policy))
 (common-lisp:progn
@@ -6644,8 +6681,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"DetachTypedLink")
+                               (common-lisp:append
+                                `(("Action" ,@"DetachTypedLink")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6661,8 +6699,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisableDirectory")
+                               (common-lisp:append
+                                `(("Action" ,@"DisableDirectory")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisableDirectoryResponse" common-lisp:nil)))
@@ -6678,8 +6717,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"EnableDirectory")
+                               (common-lisp:append
+                                `(("Action" ,@"EnableDirectory")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EnableDirectoryResponse" common-lisp:nil)))
@@ -6695,9 +6735,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetDirectory")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDirectory")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDirectoryResponse" common-lisp:nil)))
  (common-lisp:export 'get-directory))
 (common-lisp:progn
@@ -6711,9 +6753,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetFacet")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetFacet")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetFacetResponse" common-lisp:nil)))
  (common-lisp:export 'get-facet))
 (common-lisp:progn
@@ -6729,8 +6773,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetObjectInformation")
+                               (common-lisp:append
+                                `(("Action" ,@"GetObjectInformation")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetObjectInformationResponse" common-lisp:nil)))
@@ -6746,8 +6791,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetSchemaAsJson")
+                               (common-lisp:append
+                                `(("Action" ,@"GetSchemaAsJson")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetSchemaAsJsonResponse" common-lisp:nil)))
@@ -6764,8 +6810,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetTypedLinkFacetInformation")
+                               (common-lisp:append
+                                `(("Action" ,@"GetTypedLinkFacetInformation")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetTypedLinkFacetInformationResponse" common-lisp:nil)))
@@ -6782,8 +6829,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListAppliedSchemaArns")
+                               (common-lisp:append
+                                `(("Action" ,@"ListAppliedSchemaArns")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListAppliedSchemaArnsResponse" common-lisp:nil)))
@@ -6802,8 +6850,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListAttachedIndices")
+                               (common-lisp:append
+                                `(("Action" ,@"ListAttachedIndices")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListAttachedIndicesResponse" common-lisp:nil)))
@@ -6820,8 +6869,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDevelopmentSchemaArns")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDevelopmentSchemaArns")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDevelopmentSchemaArnsResponse" common-lisp:nil)))
@@ -6837,8 +6887,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDirectories")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDirectories")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDirectoriesResponse" common-lisp:nil)))
@@ -6855,8 +6906,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListFacetAttributes")
+                               (common-lisp:append
+                                `(("Action" ,@"ListFacetAttributes")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListFacetAttributesResponse" common-lisp:nil)))
@@ -6873,9 +6925,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListFacetNames")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListFacetNames")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListFacetNamesResponse" common-lisp:nil)))
  (common-lisp:export 'list-facet-names))
 (common-lisp:progn
@@ -6895,8 +6949,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListIncomingTypedLinks")
+                               (common-lisp:append
+                                `(("Action" ,@"ListIncomingTypedLinks")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListIncomingTypedLinksResponse" common-lisp:nil)))
@@ -6915,9 +6970,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListIndex")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListIndex")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListIndexResponse" common-lisp:nil)))
  (common-lisp:export 'list-index))
 (common-lisp:progn
@@ -6934,8 +6991,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListObjectAttributes")
+                               (common-lisp:append
+                                `(("Action" ,@"ListObjectAttributes")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListObjectAttributesResponse" common-lisp:nil)))
@@ -6954,8 +7012,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListObjectChildren")
+                               (common-lisp:append
+                                `(("Action" ,@"ListObjectChildren")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListObjectChildrenResponse" common-lisp:nil)))
@@ -6974,8 +7033,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListObjectParentPaths")
+                               (common-lisp:append
+                                `(("Action" ,@"ListObjectParentPaths")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListObjectParentPathsResponse" common-lisp:nil)))
@@ -6994,8 +7054,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListObjectParents")
+                               (common-lisp:append
+                                `(("Action" ,@"ListObjectParents")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListObjectParentsResponse" common-lisp:nil)))
@@ -7014,8 +7075,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListObjectPolicies")
+                               (common-lisp:append
+                                `(("Action" ,@"ListObjectPolicies")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListObjectPoliciesResponse" common-lisp:nil)))
@@ -7037,8 +7099,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListOutgoingTypedLinks")
+                               (common-lisp:append
+                                `(("Action" ,@"ListOutgoingTypedLinks")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListOutgoingTypedLinksResponse" common-lisp:nil)))
@@ -7057,8 +7120,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListPolicyAttachments")
+                               (common-lisp:append
+                                `(("Action" ,@"ListPolicyAttachments")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListPolicyAttachmentsResponse" common-lisp:nil)))
@@ -7075,8 +7139,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListPublishedSchemaArns")
+                               (common-lisp:append
+                                `(("Action" ,@"ListPublishedSchemaArns")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListPublishedSchemaArnsResponse" common-lisp:nil)))
@@ -7093,8 +7158,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsForResource")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsForResource")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTagsForResourceResponse" common-lisp:nil)))
@@ -7112,8 +7178,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTypedLinkFacetAttributes")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTypedLinkFacetAttributes")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTypedLinkFacetAttributesResponse" common-lisp:nil)))
@@ -7131,8 +7198,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTypedLinkFacetNames")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTypedLinkFacetNames")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTypedLinkFacetNamesResponse" common-lisp:nil)))
@@ -7151,9 +7219,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
-                               (common-lisp:cons `("Action" ,@"LookupPolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"LookupPolicy")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "LookupPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'lookup-policy))
 (common-lisp:progn
@@ -7168,9 +7238,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"PublishSchema")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PublishSchema")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PublishSchemaResponse" common-lisp:nil)))
  (common-lisp:export 'publish-schema))
 (common-lisp:progn
@@ -7184,8 +7256,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutSchemaFromJson")
+                               (common-lisp:append
+                                `(("Action" ,@"PutSchemaFromJson")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PutSchemaFromJsonResponse" common-lisp:nil)))
@@ -7203,8 +7276,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveFacetFromObject")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveFacetFromObject")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RemoveFacetFromObjectResponse" common-lisp:nil)))
@@ -7220,9 +7294,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"TagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"TagResource")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "TagResourceResponse" common-lisp:nil)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
@@ -7236,9 +7312,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"UntagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UntagResource")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UntagResourceResponse" common-lisp:nil)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
@@ -7254,9 +7332,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"UpdateFacet")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateFacet")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateFacetResponse" common-lisp:nil)))
  (common-lisp:export 'update-facet))
 (common-lisp:progn
@@ -7272,8 +7352,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateObjectAttributes")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateObjectAttributes")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateObjectAttributesResponse" common-lisp:nil)))
@@ -7289,9 +7370,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons `("Action" ,@"UpdateSchema")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateSchema")
+                                  ("Version" ,@"2016-05-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateSchemaResponse" common-lisp:nil)))
  (common-lisp:export 'update-schema))
 (common-lisp:progn
@@ -7308,8 +7391,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateTypedLinkFacet")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateTypedLinkFacet")
+                                  ("Version" ,@"2016-05-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateTypedLinkFacetResponse" common-lisp:nil)))

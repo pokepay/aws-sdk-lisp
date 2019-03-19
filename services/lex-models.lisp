@@ -3229,8 +3229,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateBotVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateBotVersion")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateBotVersionResponse" common-lisp:nil)))
@@ -3246,8 +3247,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateIntentVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateIntentVersion")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateIntentVersionResponse" common-lisp:nil)))
@@ -3263,8 +3265,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateSlotTypeVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateSlotTypeVersion")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateSlotTypeVersionResponse" common-lisp:nil)))
@@ -3280,9 +3283,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteBot")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBot")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-bot))
 (common-lisp:progn
@@ -3296,9 +3301,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteBotAlias")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBotAlias")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-bot-alias))
 (common-lisp:progn
@@ -3313,8 +3320,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteBotChannelAssociation")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBotChannelAssociation")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3330,8 +3338,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteBotVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBotVersion")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3347,9 +3356,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteIntent")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteIntent")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-intent))
 (common-lisp:progn
@@ -3363,8 +3374,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteIntentVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteIntentVersion")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3380,9 +3392,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteSlotType")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteSlotType")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-slot-type))
 (common-lisp:progn
@@ -3396,8 +3410,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteSlotTypeVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteSlotTypeVersion")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3413,8 +3428,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteUtterances")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteUtterances")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3430,9 +3446,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetBot")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetBot")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetBotResponse" common-lisp:nil)))
  (common-lisp:export 'get-bot))
 (common-lisp:progn
@@ -3446,9 +3464,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetBotAlias")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetBotAlias")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetBotAliasResponse" common-lisp:nil)))
  (common-lisp:export 'get-bot-alias))
 (common-lisp:progn
@@ -3464,9 +3484,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetBotAliases")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetBotAliases")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetBotAliasesResponse" common-lisp:nil)))
  (common-lisp:export 'get-bot-aliases))
 (common-lisp:progn
@@ -3481,8 +3503,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBotChannelAssociation")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBotChannelAssociation")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBotChannelAssociationResponse" common-lisp:nil)))
@@ -3502,8 +3525,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBotChannelAssociations")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBotChannelAssociations")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBotChannelAssociationsResponse" common-lisp:nil)))
@@ -3519,9 +3543,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetBotVersions")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetBotVersions")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetBotVersionsResponse" common-lisp:nil)))
  (common-lisp:export 'get-bot-versions))
 (common-lisp:progn
@@ -3536,9 +3562,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetBots")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetBots")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetBotsResponse" common-lisp:nil)))
  (common-lisp:export 'get-bots))
 (common-lisp:progn
@@ -3552,8 +3580,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBuiltinIntent")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBuiltinIntent")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBuiltinIntentResponse" common-lisp:nil)))
@@ -3571,8 +3600,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBuiltinIntents")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBuiltinIntents")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBuiltinIntentsResponse" common-lisp:nil)))
@@ -3590,8 +3620,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBuiltinSlotTypes")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBuiltinSlotTypes")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBuiltinSlotTypesResponse" common-lisp:nil)))
@@ -3607,9 +3638,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetIntent")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetIntent")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetIntentResponse" common-lisp:nil)))
  (common-lisp:export 'get-intent))
 (common-lisp:progn
@@ -3623,8 +3656,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetIntentVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"GetIntentVersions")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetIntentVersionsResponse" common-lisp:nil)))
@@ -3641,9 +3675,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetIntents")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetIntents")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetIntentsResponse" common-lisp:nil)))
  (common-lisp:export 'get-intents))
 (common-lisp:progn
@@ -3657,9 +3693,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetSlotType")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetSlotType")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetSlotTypeResponse" common-lisp:nil)))
  (common-lisp:export 'get-slot-type))
 (common-lisp:progn
@@ -3673,8 +3711,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetSlotTypeVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"GetSlotTypeVersions")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetSlotTypeVersionsResponse" common-lisp:nil)))
@@ -3691,9 +3730,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetSlotTypes")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetSlotTypes")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetSlotTypesResponse" common-lisp:nil)))
  (common-lisp:export 'get-slot-types))
 (common-lisp:progn
@@ -3708,8 +3749,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetUtterancesView")
+                               (common-lisp:append
+                                `(("Action" ,@"GetUtterancesView")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetUtterancesViewResponse" common-lisp:nil)))
@@ -3731,9 +3773,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :put :params
-                               (common-lisp:cons `("Action" ,@"PutBot")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutBot")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutBotResponse" common-lisp:nil)))
  (common-lisp:export 'put-bot))
 (common-lisp:progn
@@ -3749,9 +3793,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :put :params
-                               (common-lisp:cons `("Action" ,@"PutBotAlias")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutBotAlias")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutBotAliasResponse" common-lisp:nil)))
  (common-lisp:export 'put-bot-alias))
 (common-lisp:progn
@@ -3772,9 +3818,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :put :params
-                               (common-lisp:cons `("Action" ,@"PutIntent")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutIntent")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutIntentResponse" common-lisp:nil)))
  (common-lisp:export 'put-intent))
 (common-lisp:progn
@@ -3790,8 +3838,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lex-models" :method :put :params
-                               (common-lisp:cons `("Action" ,@"PutSlotType")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutSlotType")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutSlotTypeResponse" common-lisp:nil)))
  (common-lisp:export 'put-slot-type))

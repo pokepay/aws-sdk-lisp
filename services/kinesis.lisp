@@ -1428,8 +1428,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddTagsToStream")
+                               (common-lisp:append
+                                `(("Action" ,@"AddTagsToStream")
+                                  ("Version" ,@"2013-12-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1445,9 +1446,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateStream")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateStream")
+                                  ("Version" ,@"2013-12-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'create-stream))
 (common-lisp:progn
@@ -1463,8 +1466,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DecreaseStreamRetentionPeriod")
+                               (common-lisp:append
+                                `(("Action" ,@"DecreaseStreamRetentionPeriod")
+                                  ("Version" ,@"2013-12-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1480,9 +1484,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteStream")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteStream")
+                                  ("Version" ,@"2013-12-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-stream))
 (common-lisp:progn
@@ -1505,9 +1511,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeStream")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeStream")
+                                  ("Version" ,@"2013-12-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeStreamOutput" common-lisp:nil)))
  (common-lisp:export 'describe-stream))
 (common-lisp:progn
@@ -1523,8 +1531,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisableEnhancedMonitoring")
+                               (common-lisp:append
+                                `(("Action" ,@"DisableEnhancedMonitoring")
+                                  ("Version" ,@"2013-12-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EnhancedMonitoringOutput" common-lisp:nil)))
@@ -1541,8 +1550,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"EnableEnhancedMonitoring")
+                               (common-lisp:append
+                                `(("Action" ,@"EnableEnhancedMonitoring")
+                                  ("Version" ,@"2013-12-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EnhancedMonitoringOutput" common-lisp:nil)))
@@ -1558,9 +1568,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetRecords")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetRecords")
+                                  ("Version" ,@"2013-12-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetRecordsOutput" common-lisp:nil)))
  (common-lisp:export 'get-records))
 (common-lisp:progn
@@ -1577,8 +1589,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetShardIterator")
+                               (common-lisp:append
+                                `(("Action" ,@"GetShardIterator")
+                                  ("Version" ,@"2013-12-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetShardIteratorOutput" common-lisp:nil)))
@@ -1596,8 +1609,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"IncreaseStreamRetentionPeriod")
+                               (common-lisp:append
+                                `(("Action" ,@"IncreaseStreamRetentionPeriod")
+                                  ("Version" ,@"2013-12-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1614,9 +1628,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListStreams")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListStreams")
+                                  ("Version" ,@"2013-12-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListStreamsOutput" common-lisp:nil)))
  (common-lisp:export 'list-streams))
 (common-lisp:progn
@@ -1632,8 +1648,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsForStream")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsForStream")
+                                  ("Version" ,@"2013-12-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTagsForStreamOutput" common-lisp:nil)))
@@ -1651,9 +1668,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons `("Action" ,@"MergeShards")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"MergeShards")
+                                  ("Version" ,@"2013-12-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'merge-shards))
 (common-lisp:progn
@@ -1670,9 +1689,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutRecord")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutRecord")
+                                  ("Version" ,@"2013-12-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutRecordOutput" common-lisp:nil)))
  (common-lisp:export 'put-record))
 (common-lisp:progn
@@ -1686,9 +1707,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutRecords")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutRecords")
+                                  ("Version" ,@"2013-12-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutRecordsOutput" common-lisp:nil)))
  (common-lisp:export 'put-records))
 (common-lisp:progn
@@ -1702,8 +1725,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveTagsFromStream")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveTagsFromStream")
+                                  ("Version" ,@"2013-12-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1721,9 +1745,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons `("Action" ,@"SplitShard")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"SplitShard")
+                                  ("Version" ,@"2013-12-02"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'split-shard))
 (common-lisp:progn
@@ -1738,8 +1764,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartStreamEncryption")
+                               (common-lisp:append
+                                `(("Action" ,@"StartStreamEncryption")
+                                  ("Version" ,@"2013-12-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1756,8 +1783,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StopStreamEncryption")
+                               (common-lisp:append
+                                `(("Action" ,@"StopStreamEncryption")
+                                  ("Version" ,@"2013-12-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1775,8 +1803,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateShardCount")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateShardCount")
+                                  ("Version" ,@"2013-12-02"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateShardCountOutput" common-lisp:nil)))

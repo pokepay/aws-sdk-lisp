@@ -329,8 +329,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot-data" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteThingShadow")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteThingShadow")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteThingShadowResponse" common-lisp:nil)))
@@ -346,9 +347,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot-data" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetThingShadow")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetThingShadow")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetThingShadowResponse" common-lisp:nil)))
  (common-lisp:export 'get-thing-shadow))
 (common-lisp:progn
@@ -362,9 +365,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot-data" :method :post :params
-                               (common-lisp:cons `("Action" ,@"Publish")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"Publish")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'publish))
 (common-lisp:progn
@@ -378,8 +383,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot-data" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateThingShadow")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateThingShadow")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateThingShadowResponse" common-lisp:nil)))

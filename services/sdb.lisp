@@ -882,8 +882,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sdb" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchDeleteAttributes")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchDeleteAttributes")
+                                  ("Version" ,@"2009-04-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -899,8 +900,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sdb" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchPutAttributes")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchPutAttributes")
+                                  ("Version" ,@"2009-04-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -916,9 +918,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sdb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateDomain")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDomain")
+                                  ("Version" ,@"2009-04-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'create-domain))
 (common-lisp:progn
@@ -934,8 +938,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sdb" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteAttributes")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteAttributes")
+                                  ("Version" ,@"2009-04-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -951,9 +956,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sdb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteDomain")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDomain")
+                                  ("Version" ,@"2009-04-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-domain))
 (common-lisp:progn
@@ -967,9 +974,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sdb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DomainMetadata")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DomainMetadata")
+                                  ("Version" ,@"2009-04-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DomainMetadataResult" "DomainMetadataResult")))
  (common-lisp:export 'domain-metadata))
 (common-lisp:progn
@@ -986,9 +995,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sdb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetAttributes")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetAttributes")
+                                  ("Version" ,@"2009-04-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetAttributesResult" "GetAttributesResult")))
  (common-lisp:export 'get-attributes))
 (common-lisp:progn
@@ -1003,9 +1014,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sdb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListDomains")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListDomains")
+                                  ("Version" ,@"2009-04-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListDomainsResult" "ListDomainsResult")))
  (common-lisp:export 'list-domains))
 (common-lisp:progn
@@ -1021,9 +1034,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sdb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutAttributes")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutAttributes")
+                                  ("Version" ,@"2009-04-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-attributes))
 (common-lisp:progn
@@ -1039,8 +1054,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sdb" :method :post :params
-                               (common-lisp:cons `("Action" ,@"Select")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"Select")
+                                  ("Version" ,@"2009-04-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "SelectResult" "SelectResult")))
  (common-lisp:export 'select))

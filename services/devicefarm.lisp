@@ -3964,8 +3964,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDevicePool")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDevicePool")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDevicePoolResult" common-lisp:nil)))
@@ -3989,8 +3990,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateNetworkProfile")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateNetworkProfile")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateNetworkProfileResult" common-lisp:nil)))
@@ -4007,9 +4009,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateProject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateProject")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateProjectResult" common-lisp:nil)))
  (common-lisp:export 'create-project))
 (common-lisp:progn
@@ -4026,8 +4030,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateRemoteAccessSession")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateRemoteAccessSession")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateRemoteAccessSessionResult" common-lisp:nil)))
@@ -4044,9 +4049,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateUpload")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateUpload")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateUploadResult" common-lisp:nil)))
  (common-lisp:export 'create-upload))
 (common-lisp:progn
@@ -4060,8 +4067,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDevicePool")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDevicePool")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteDevicePoolResult" common-lisp:nil)))
@@ -4077,8 +4085,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteNetworkProfile")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteNetworkProfile")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteNetworkProfileResult" common-lisp:nil)))
@@ -4094,9 +4103,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteProject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteProject")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteProjectResult" common-lisp:nil)))
  (common-lisp:export 'delete-project))
 (common-lisp:progn
@@ -4111,8 +4122,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteRemoteAccessSession")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteRemoteAccessSession")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteRemoteAccessSessionResult" common-lisp:nil)))
@@ -4128,9 +4140,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteRun")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteRun")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteRunResult" common-lisp:nil)))
  (common-lisp:export 'delete-run))
 (common-lisp:progn
@@ -4144,9 +4158,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteUpload")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteUpload")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteUploadResult" common-lisp:nil)))
  (common-lisp:export 'delete-upload))
 (common-lisp:progn
@@ -4167,9 +4183,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetDevice")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDevice")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDeviceResult" common-lisp:nil)))
  (common-lisp:export 'get-device))
 (common-lisp:progn
@@ -4183,9 +4201,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetDevicePool")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDevicePool")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDevicePoolResult" common-lisp:nil)))
  (common-lisp:export 'get-device-pool))
 (common-lisp:progn
@@ -4201,8 +4221,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDevicePoolCompatibility")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDevicePoolCompatibility")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDevicePoolCompatibilityResult" common-lisp:nil)))
@@ -4218,9 +4239,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetJob")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetJobResult" common-lisp:nil)))
  (common-lisp:export 'get-job))
 (common-lisp:progn
@@ -4234,8 +4257,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetNetworkProfile")
+                               (common-lisp:append
+                                `(("Action" ,@"GetNetworkProfile")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetNetworkProfileResult" common-lisp:nil)))
@@ -4251,8 +4275,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetOfferingStatus")
+                               (common-lisp:append
+                                `(("Action" ,@"GetOfferingStatus")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetOfferingStatusResult" common-lisp:nil)))
@@ -4268,9 +4293,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetProject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetProject")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetProjectResult" common-lisp:nil)))
  (common-lisp:export 'get-project))
 (common-lisp:progn
@@ -4285,8 +4312,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetRemoteAccessSession")
+                               (common-lisp:append
+                                `(("Action" ,@"GetRemoteAccessSession")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetRemoteAccessSessionResult" common-lisp:nil)))
@@ -4302,9 +4330,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetRun")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetRun")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetRunResult" common-lisp:nil)))
  (common-lisp:export 'get-run))
 (common-lisp:progn
@@ -4318,9 +4348,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetSuite")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetSuite")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetSuiteResult" common-lisp:nil)))
  (common-lisp:export 'get-suite))
 (common-lisp:progn
@@ -4334,9 +4366,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetTest")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetTest")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetTestResult" common-lisp:nil)))
  (common-lisp:export 'get-test))
 (common-lisp:progn
@@ -4350,9 +4384,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetUpload")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetUpload")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetUploadResult" common-lisp:nil)))
  (common-lisp:export 'get-upload))
 (common-lisp:progn
@@ -4368,8 +4404,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"InstallToRemoteAccessSession")
+                               (common-lisp:append
+                                `(("Action" ,@"InstallToRemoteAccessSession")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "InstallToRemoteAccessSessionResult" common-lisp:nil)))
@@ -4385,9 +4422,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListArtifacts")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListArtifacts")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListArtifactsResult" common-lisp:nil)))
  (common-lisp:export 'list-artifacts))
 (common-lisp:progn
@@ -4401,8 +4440,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDevicePools")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDevicePools")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDevicePoolsResult" common-lisp:nil)))
@@ -4418,9 +4458,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListDevices")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListDevices")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListDevicesResult" common-lisp:nil)))
  (common-lisp:export 'list-devices))
 (common-lisp:progn
@@ -4434,9 +4476,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListJobs")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListJobs")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListJobsResult" common-lisp:nil)))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
@@ -4450,8 +4494,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListNetworkProfiles")
+                               (common-lisp:append
+                                `(("Action" ,@"ListNetworkProfiles")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListNetworkProfilesResult" common-lisp:nil)))
@@ -4467,8 +4512,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListOfferingPromotions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListOfferingPromotions")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListOfferingPromotionsResult" common-lisp:nil)))
@@ -4485,8 +4531,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListOfferingTransactions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListOfferingTransactions")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListOfferingTransactionsResult" common-lisp:nil)))
@@ -4502,9 +4549,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListOfferings")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListOfferings")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListOfferingsResult" common-lisp:nil)))
  (common-lisp:export 'list-offerings))
 (common-lisp:progn
@@ -4518,9 +4567,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListProjects")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListProjects")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListProjectsResult" common-lisp:nil)))
  (common-lisp:export 'list-projects))
 (common-lisp:progn
@@ -4535,8 +4586,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListRemoteAccessSessions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListRemoteAccessSessions")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListRemoteAccessSessionsResult" common-lisp:nil)))
@@ -4552,9 +4604,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListRuns")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListRuns")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListRunsResult" common-lisp:nil)))
  (common-lisp:export 'list-runs))
 (common-lisp:progn
@@ -4568,9 +4622,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListSamples")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListSamples")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListSamplesResult" common-lisp:nil)))
  (common-lisp:export 'list-samples))
 (common-lisp:progn
@@ -4584,9 +4640,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListSuites")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListSuites")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListSuitesResult" common-lisp:nil)))
  (common-lisp:export 'list-suites))
 (common-lisp:progn
@@ -4600,9 +4658,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListTests")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListTests")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListTestsResult" common-lisp:nil)))
  (common-lisp:export 'list-tests))
 (common-lisp:progn
@@ -4616,8 +4676,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListUniqueProblems")
+                               (common-lisp:append
+                                `(("Action" ,@"ListUniqueProblems")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListUniqueProblemsResult" common-lisp:nil)))
@@ -4633,9 +4694,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListUploads")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListUploads")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListUploadsResult" common-lisp:nil)))
  (common-lisp:export 'list-uploads))
 (common-lisp:progn
@@ -4651,8 +4714,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PurchaseOffering")
+                               (common-lisp:append
+                                `(("Action" ,@"PurchaseOffering")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PurchaseOfferingResult" common-lisp:nil)))
@@ -4668,9 +4732,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RenewOffering")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RenewOffering")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RenewOfferingResult" common-lisp:nil)))
  (common-lisp:export 'renew-offering))
 (common-lisp:progn
@@ -4687,9 +4753,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ScheduleRun")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ScheduleRun")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ScheduleRunResult" common-lisp:nil)))
  (common-lisp:export 'schedule-run))
 (common-lisp:progn
@@ -4704,8 +4772,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StopRemoteAccessSession")
+                               (common-lisp:append
+                                `(("Action" ,@"StopRemoteAccessSession")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StopRemoteAccessSessionResult" common-lisp:nil)))
@@ -4721,9 +4790,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StopRun")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StopRun")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StopRunResult" common-lisp:nil)))
  (common-lisp:export 'stop-run))
 (common-lisp:progn
@@ -4737,8 +4808,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDevicePool")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDevicePool")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateDevicePoolResult" common-lisp:nil)))
@@ -4761,8 +4833,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateNetworkProfile")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateNetworkProfile")
+                                  ("Version" ,@"2015-06-23"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateNetworkProfileResult" common-lisp:nil)))
@@ -4779,8 +4852,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateProject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateProject")
+                                  ("Version" ,@"2015-06-23"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateProjectResult" common-lisp:nil)))
  (common-lisp:export 'update-project))

@@ -1541,9 +1541,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateTags")
+                                  ("Version" ,@"2015-04-08"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateTagsResult" common-lisp:nil)))
  (common-lisp:export 'create-tags))
 (common-lisp:progn
@@ -1557,8 +1559,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateWorkspaces")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateWorkspaces")
+                                  ("Version" ,@"2015-04-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateWorkspacesResult" common-lisp:nil)))
@@ -1574,9 +1577,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTags")
+                                  ("Version" ,@"2015-04-08"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteTagsResult" common-lisp:nil)))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
@@ -1590,9 +1595,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTags")
+                                  ("Version" ,@"2015-04-08"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeTagsResult" common-lisp:nil)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
@@ -1607,8 +1614,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeWorkspaceBundles")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeWorkspaceBundles")
+                                  ("Version" ,@"2015-04-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeWorkspaceBundlesResult" common-lisp:nil)))
@@ -1625,8 +1633,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeWorkspaceDirectories")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeWorkspaceDirectories")
+                                  ("Version" ,@"2015-04-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeWorkspaceDirectoriesResult" common-lisp:nil)))
@@ -1645,8 +1654,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeWorkspaces")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeWorkspaces")
+                                  ("Version" ,@"2015-04-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeWorkspacesResult" common-lisp:nil)))
@@ -1663,9 +1673,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeWorkspacesConnectionStatus")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeWorkspacesConnectionStatus")
+                                  ("Version" ,@"2015-04-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeWorkspacesConnectionStatusResult" common-lisp:nil)))
@@ -1683,8 +1694,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyWorkspaceProperties")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyWorkspaceProperties")
+                                  ("Version" ,@"2015-04-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyWorkspacePropertiesResult" common-lisp:nil)))
@@ -1700,8 +1712,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RebootWorkspaces")
+                               (common-lisp:append
+                                `(("Action" ,@"RebootWorkspaces")
+                                  ("Version" ,@"2015-04-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RebootWorkspacesResult" common-lisp:nil)))
@@ -1717,8 +1730,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RebuildWorkspaces")
+                               (common-lisp:append
+                                `(("Action" ,@"RebuildWorkspaces")
+                                  ("Version" ,@"2015-04-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RebuildWorkspacesResult" common-lisp:nil)))
@@ -1734,8 +1748,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartWorkspaces")
+                               (common-lisp:append
+                                `(("Action" ,@"StartWorkspaces")
+                                  ("Version" ,@"2015-04-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartWorkspacesResult" common-lisp:nil)))
@@ -1751,9 +1766,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StopWorkspaces")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StopWorkspaces")
+                                  ("Version" ,@"2015-04-08"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StopWorkspacesResult" common-lisp:nil)))
  (common-lisp:export 'stop-workspaces))
 (common-lisp:progn
@@ -1767,8 +1784,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workspaces" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"TerminateWorkspaces")
+                               (common-lisp:append
+                                `(("Action" ,@"TerminateWorkspaces")
+                                  ("Version" ,@"2015-04-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "TerminateWorkspacesResult" common-lisp:nil)))

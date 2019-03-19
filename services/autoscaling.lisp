@@ -4116,8 +4116,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AttachInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"AttachInstances")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4136,8 +4137,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AttachLoadBalancerTargetGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"AttachLoadBalancerTargetGroups")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AttachLoadBalancerTargetGroupsResultType"
@@ -4156,8 +4158,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AttachLoadBalancers")
+                               (common-lisp:append
+                                `(("Action" ,@"AttachLoadBalancers")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AttachLoadBalancersResultType" "AttachLoadBalancersResult")))
@@ -4177,8 +4180,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CompleteLifecycleAction")
+                               (common-lisp:append
+                                `(("Action" ,@"CompleteLifecycleAction")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CompleteLifecycleActionAnswer" "CompleteLifecycleActionResult")))
@@ -4205,8 +4209,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateAutoScalingGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateAutoScalingGroup")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4233,8 +4238,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateLaunchConfiguration")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateLaunchConfiguration")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4250,8 +4256,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateOrUpdateTags")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateOrUpdateTags")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4268,8 +4275,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteAutoScalingGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteAutoScalingGroup")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4285,8 +4293,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteLaunchConfiguration")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteLaunchConfiguration")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4304,8 +4313,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteLifecycleHook")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteLifecycleHook")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteLifecycleHookAnswer" "DeleteLifecycleHookResult")))
@@ -4323,8 +4333,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteNotificationConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DeleteNotificationConfiguration")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4341,9 +4353,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeletePolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeletePolicy")
+                                  ("Version" ,@"2011-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-policy))
 (common-lisp:progn
@@ -4359,8 +4373,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteScheduledAction")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteScheduledAction")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4376,9 +4391,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTags")
+                                  ("Version" ,@"2011-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
@@ -4410,8 +4427,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAutoScalingGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAutoScalingGroups")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AutoScalingGroupsType" "DescribeAutoScalingGroupsResult")))
@@ -4429,8 +4447,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAutoScalingInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAutoScalingInstances")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AutoScalingInstancesType" "DescribeAutoScalingInstancesResult")))
@@ -4457,8 +4476,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeLaunchConfigurations")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeLaunchConfigurations")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "LaunchConfigurationsType" "DescribeLaunchConfigurationsResult")))
@@ -4484,8 +4504,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeLifecycleHooks")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeLifecycleHooks")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeLifecycleHooksAnswer" "DescribeLifecycleHooksResult")))
@@ -4504,9 +4525,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeLoadBalancerTargetGroups")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeLoadBalancerTargetGroups")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeLoadBalancerTargetGroupsResponse"
@@ -4525,8 +4547,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeLoadBalancers")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeLoadBalancers")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeLoadBalancersResponse" "DescribeLoadBalancersResult")))
@@ -4554,9 +4577,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeNotificationConfigurations")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeNotificationConfigurations")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeNotificationConfigurationsAnswer"
@@ -4576,8 +4600,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribePolicies")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribePolicies")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PoliciesType" "DescribePoliciesResult")))
@@ -4596,8 +4621,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeScalingActivities")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeScalingActivities")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ActivitiesType" "DescribeScalingActivitiesResult")))
@@ -4625,8 +4651,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeScheduledActions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeScheduledActions")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ScheduledActionsType" "DescribeScheduledActionsResult")))
@@ -4642,9 +4669,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTags")
+                                  ("Version" ,@"2011-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "TagsType" "DescribeTagsResult")))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
@@ -4670,8 +4699,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DetachInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"DetachInstances")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DetachInstancesAnswer" "DetachInstancesResult")))
@@ -4690,8 +4720,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DetachLoadBalancerTargetGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DetachLoadBalancerTargetGroups")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DetachLoadBalancerTargetGroupsResultType"
@@ -4710,8 +4741,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DetachLoadBalancers")
+                               (common-lisp:append
+                                `(("Action" ,@"DetachLoadBalancers")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DetachLoadBalancersResultType" "DetachLoadBalancersResult")))
@@ -4728,8 +4760,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisableMetricsCollection")
+                               (common-lisp:append
+                                `(("Action" ,@"DisableMetricsCollection")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4747,8 +4780,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"EnableMetricsCollection")
+                               (common-lisp:append
+                                `(("Action" ,@"EnableMetricsCollection")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4767,9 +4801,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons `("Action" ,@"EnterStandby")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"EnterStandby")
+                                  ("Version" ,@"2011-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "EnterStandbyAnswer" "EnterStandbyResult")))
  (common-lisp:export 'enter-standby))
 (common-lisp:progn
@@ -4786,9 +4822,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ExecutePolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ExecutePolicy")
+                                  ("Version" ,@"2011-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'execute-policy))
 (common-lisp:progn
@@ -4803,9 +4841,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ExitStandby")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ExitStandby")
+                                  ("Version" ,@"2011-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ExitStandbyAnswer" "ExitStandbyResult")))
  (common-lisp:export 'exit-standby))
 (common-lisp:progn
@@ -4825,8 +4865,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutLifecycleHook")
+                               (common-lisp:append
+                                `(("Action" ,@"PutLifecycleHook")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PutLifecycleHookAnswer" "PutLifecycleHookResult")))
@@ -4846,8 +4887,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutNotificationConfiguration")
+                               (common-lisp:append
+                                `(("Action" ,@"PutNotificationConfiguration")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4871,8 +4913,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutScalingPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"PutScalingPolicy")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PolicyARNType" "PutScalingPolicyResult")))
@@ -4893,8 +4936,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutScheduledUpdateGroupAction")
+                               (common-lisp:append
+                                `(("Action" ,@"PutScheduledUpdateGroupAction")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4915,8 +4959,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RecordLifecycleActionHeartbeat")
+                               (common-lisp:append
+                                `(("Action" ,@"RecordLifecycleActionHeartbeat")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RecordLifecycleActionHeartbeatAnswer"
@@ -4935,8 +4980,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ResumeProcesses")
+                               (common-lisp:append
+                                `(("Action" ,@"ResumeProcesses")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4955,8 +5001,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetDesiredCapacity")
+                               (common-lisp:append
+                                `(("Action" ,@"SetDesiredCapacity")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4975,8 +5022,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetInstanceHealth")
+                               (common-lisp:append
+                                `(("Action" ,@"SetInstanceHealth")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4995,8 +5043,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetInstanceProtection")
+                               (common-lisp:append
+                                `(("Action" ,@"SetInstanceProtection")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SetInstanceProtectionAnswer" "SetInstanceProtectionResult")))
@@ -5014,8 +5063,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SuspendProcesses")
+                               (common-lisp:append
+                                `(("Action" ,@"SuspendProcesses")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -5034,9 +5084,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"TerminateInstanceInAutoScalingGroup")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"TerminateInstanceInAutoScalingGroup")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ActivityType" "TerminateInstanceInAutoScalingGroupResult")))
@@ -5062,8 +5113,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateAutoScalingGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateAutoScalingGroup")
+                                  ("Version" ,@"2011-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))

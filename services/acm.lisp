@@ -885,8 +885,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "acm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddTagsToCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"AddTagsToCertificate")
+                                  ("Version" ,@"2015-12-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -902,8 +903,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "acm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCertificate")
+                                  ("Version" ,@"2015-12-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -919,8 +921,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "acm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCertificate")
+                                  ("Version" ,@"2015-12-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeCertificateResponse" common-lisp:nil)))
@@ -936,9 +939,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "acm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetCertificate")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetCertificate")
+                                  ("Version" ,@"2015-12-08"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetCertificateResponse" common-lisp:nil)))
  (common-lisp:export 'get-certificate))
 (common-lisp:progn
@@ -955,8 +960,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "acm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ImportCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"ImportCertificate")
+                                  ("Version" ,@"2015-12-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ImportCertificateResponse" common-lisp:nil)))
@@ -974,8 +980,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "acm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListCertificates")
+                               (common-lisp:append
+                                `(("Action" ,@"ListCertificates")
+                                  ("Version" ,@"2015-12-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListCertificatesResponse" common-lisp:nil)))
@@ -992,8 +999,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "acm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsForCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsForCertificate")
+                                  ("Version" ,@"2015-12-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTagsForCertificateResponse" common-lisp:nil)))
@@ -1010,8 +1018,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "acm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveTagsFromCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveTagsFromCertificate")
+                                  ("Version" ,@"2015-12-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1030,8 +1039,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "acm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RequestCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"RequestCertificate")
+                                  ("Version" ,@"2015-12-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RequestCertificateResponse" common-lisp:nil)))
@@ -1048,8 +1058,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "acm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ResendValidationEmail")
+                               (common-lisp:append
+                                `(("Action" ,@"ResendValidationEmail")
+                                  ("Version" ,@"2015-12-08"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))

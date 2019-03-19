@@ -3481,8 +3481,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AllocateStaticIp")
+                               (common-lisp:append
+                                `(("Action" ,@"AllocateStaticIp")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AllocateStaticIpResult" common-lisp:nil)))
@@ -3498,9 +3499,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"AttachStaticIp")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AttachStaticIp")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AttachStaticIpResult" common-lisp:nil)))
  (common-lisp:export 'attach-static-ip))
 (common-lisp:progn
@@ -3515,8 +3518,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CloseInstancePublicPorts")
+                               (common-lisp:append
+                                `(("Action" ,@"CloseInstancePublicPorts")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CloseInstancePublicPortsResult" common-lisp:nil)))
@@ -3532,9 +3536,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateDomain")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDomain")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateDomainResult" common-lisp:nil)))
  (common-lisp:export 'create-domain))
 (common-lisp:progn
@@ -3548,8 +3554,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDomainEntry")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDomainEntry")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDomainEntryResult" common-lisp:nil)))
@@ -3566,8 +3573,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateInstanceSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateInstanceSnapshot")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateInstanceSnapshotResult" common-lisp:nil)))
@@ -3587,8 +3595,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateInstances")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateInstancesResult" common-lisp:nil)))
@@ -3608,8 +3617,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateInstancesFromSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateInstancesFromSnapshot")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateInstancesFromSnapshotResult" common-lisp:nil)))
@@ -3625,9 +3635,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateKeyPair")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateKeyPair")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateKeyPairResult" common-lisp:nil)))
  (common-lisp:export 'create-key-pair))
 (common-lisp:progn
@@ -3641,9 +3653,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteDomain")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDomain")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteDomainResult" common-lisp:nil)))
  (common-lisp:export 'delete-domain))
 (common-lisp:progn
@@ -3657,8 +3671,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDomainEntry")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDomainEntry")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteDomainEntryResult" common-lisp:nil)))
@@ -3674,9 +3689,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteInstance")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteInstance")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteInstanceResult" common-lisp:nil)))
  (common-lisp:export 'delete-instance))
 (common-lisp:progn
@@ -3690,8 +3707,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteInstanceSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteInstanceSnapshot")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteInstanceSnapshotResult" common-lisp:nil)))
@@ -3707,9 +3725,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteKeyPair")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteKeyPair")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteKeyPairResult" common-lisp:nil)))
  (common-lisp:export 'delete-key-pair))
 (common-lisp:progn
@@ -3723,9 +3743,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DetachStaticIp")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DetachStaticIp")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DetachStaticIpResult" common-lisp:nil)))
  (common-lisp:export 'detach-static-ip))
 (common-lisp:progn
@@ -3747,9 +3769,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetActiveNames")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetActiveNames")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetActiveNamesResult" common-lisp:nil)))
  (common-lisp:export 'get-active-names))
 (common-lisp:progn
@@ -3763,9 +3787,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetBlueprints")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetBlueprints")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetBlueprintsResult" common-lisp:nil)))
  (common-lisp:export 'get-blueprints))
 (common-lisp:progn
@@ -3779,9 +3805,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetBundles")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetBundles")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetBundlesResult" common-lisp:nil)))
  (common-lisp:export 'get-bundles))
 (common-lisp:progn
@@ -3795,9 +3823,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetDomain")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDomain")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDomainResult" common-lisp:nil)))
  (common-lisp:export 'get-domain))
 (common-lisp:progn
@@ -3811,9 +3841,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetDomains")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDomains")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDomainsResult" common-lisp:nil)))
  (common-lisp:export 'get-domains))
 (common-lisp:progn
@@ -3827,9 +3859,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetInstance")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetInstance")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetInstanceResult" common-lisp:nil)))
  (common-lisp:export 'get-instance))
 (common-lisp:progn
@@ -3844,8 +3878,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetInstanceAccessDetails")
+                               (common-lisp:append
+                                `(("Action" ,@"GetInstanceAccessDetails")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetInstanceAccessDetailsResult" common-lisp:nil)))
@@ -3864,8 +3899,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetInstanceMetricData")
+                               (common-lisp:append
+                                `(("Action" ,@"GetInstanceMetricData")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetInstanceMetricDataResult" common-lisp:nil)))
@@ -3881,8 +3917,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetInstancePortStates")
+                               (common-lisp:append
+                                `(("Action" ,@"GetInstancePortStates")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetInstancePortStatesResult" common-lisp:nil)))
@@ -3898,8 +3935,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetInstanceSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"GetInstanceSnapshot")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetInstanceSnapshotResult" common-lisp:nil)))
@@ -3915,8 +3953,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetInstanceSnapshots")
+                               (common-lisp:append
+                                `(("Action" ,@"GetInstanceSnapshots")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetInstanceSnapshotsResult" common-lisp:nil)))
@@ -3932,8 +3971,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetInstanceState")
+                               (common-lisp:append
+                                `(("Action" ,@"GetInstanceState")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetInstanceStateResult" common-lisp:nil)))
@@ -3949,9 +3989,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetInstances")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetInstances")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetInstancesResult" common-lisp:nil)))
  (common-lisp:export 'get-instances))
 (common-lisp:progn
@@ -3965,9 +4007,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetKeyPair")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetKeyPair")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetKeyPairResult" common-lisp:nil)))
  (common-lisp:export 'get-key-pair))
 (common-lisp:progn
@@ -3981,9 +4025,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetKeyPairs")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetKeyPairs")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetKeyPairsResult" common-lisp:nil)))
  (common-lisp:export 'get-key-pairs))
 (common-lisp:progn
@@ -3997,9 +4043,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetOperation")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetOperation")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetOperationResult" common-lisp:nil)))
  (common-lisp:export 'get-operation))
 (common-lisp:progn
@@ -4013,9 +4061,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetOperations")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetOperations")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetOperationsResult" common-lisp:nil)))
  (common-lisp:export 'get-operations))
 (common-lisp:progn
@@ -4030,8 +4080,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetOperationsForResource")
+                               (common-lisp:append
+                                `(("Action" ,@"GetOperationsForResource")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetOperationsForResourceResult" common-lisp:nil)))
@@ -4047,9 +4098,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetRegions")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetRegions")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetRegionsResult" common-lisp:nil)))
  (common-lisp:export 'get-regions))
 (common-lisp:progn
@@ -4063,9 +4116,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetStaticIp")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetStaticIp")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetStaticIpResult" common-lisp:nil)))
  (common-lisp:export 'get-static-ip))
 (common-lisp:progn
@@ -4079,9 +4134,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetStaticIps")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetStaticIps")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetStaticIpsResult" common-lisp:nil)))
  (common-lisp:export 'get-static-ips))
 (common-lisp:progn
@@ -4096,9 +4153,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ImportKeyPair")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ImportKeyPair")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ImportKeyPairResult" common-lisp:nil)))
  (common-lisp:export 'import-key-pair))
 (common-lisp:progn
@@ -4120,8 +4179,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"OpenInstancePublicPorts")
+                               (common-lisp:append
+                                `(("Action" ,@"OpenInstancePublicPorts")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "OpenInstancePublicPortsResult" common-lisp:nil)))
@@ -4145,8 +4205,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutInstancePublicPorts")
+                               (common-lisp:append
+                                `(("Action" ,@"PutInstancePublicPorts")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PutInstancePublicPortsResult" common-lisp:nil)))
@@ -4162,9 +4223,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RebootInstance")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RebootInstance")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RebootInstanceResult" common-lisp:nil)))
  (common-lisp:export 'reboot-instance))
 (common-lisp:progn
@@ -4178,8 +4241,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ReleaseStaticIp")
+                               (common-lisp:append
+                                `(("Action" ,@"ReleaseStaticIp")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ReleaseStaticIpResult" common-lisp:nil)))
@@ -4195,9 +4259,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StartInstance")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StartInstance")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StartInstanceResult" common-lisp:nil)))
  (common-lisp:export 'start-instance))
 (common-lisp:progn
@@ -4211,9 +4277,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StopInstance")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StopInstance")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StopInstanceResult" common-lisp:nil)))
  (common-lisp:export 'stop-instance))
 (common-lisp:progn
@@ -4234,8 +4302,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDomainEntry")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDomainEntry")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateDomainEntryResult" common-lisp:nil)))

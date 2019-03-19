@@ -4456,8 +4456,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AcceptPortfolioShare")
+                               (common-lisp:append
+                                `(("Action" ,@"AcceptPortfolioShare")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AcceptPortfolioShareOutput" common-lisp:nil)))
@@ -4477,8 +4478,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssociatePrincipalWithPortfolio")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"AssociatePrincipalWithPortfolio")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AssociatePrincipalWithPortfolioOutput" common-lisp:nil)))
@@ -4498,8 +4501,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssociateProductWithPortfolio")
+                               (common-lisp:append
+                                `(("Action" ,@"AssociateProductWithPortfolio")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AssociateProductWithPortfolioOutput" common-lisp:nil)))
@@ -4516,8 +4520,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssociateTagOptionWithResource")
+                               (common-lisp:append
+                                `(("Action" ,@"AssociateTagOptionWithResource")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AssociateTagOptionWithResourceOutput" common-lisp:nil)))
@@ -4536,8 +4541,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateConstraint")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateConstraint")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateConstraintOutput" common-lisp:nil)))
@@ -4556,8 +4562,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreatePortfolio")
+                               (common-lisp:append
+                                `(("Action" ,@"CreatePortfolio")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreatePortfolioOutput" common-lisp:nil)))
@@ -4574,8 +4581,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreatePortfolioShare")
+                               (common-lisp:append
+                                `(("Action" ,@"CreatePortfolioShare")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreatePortfolioShareOutput" common-lisp:nil)))
@@ -4597,9 +4605,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateProduct")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateProduct")
+                                  ("Version" ,@"2015-12-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateProductOutput" common-lisp:nil)))
  (common-lisp:export 'create-product))
 (common-lisp:progn
@@ -4617,8 +4627,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateProvisioningArtifact")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateProvisioningArtifact")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateProvisioningArtifactOutput" common-lisp:nil)))
@@ -4634,8 +4645,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateTagOption")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateTagOption")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateTagOptionOutput" common-lisp:nil)))
@@ -4651,8 +4663,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteConstraint")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteConstraint")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteConstraintOutput" common-lisp:nil)))
@@ -4668,8 +4681,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeletePortfolio")
+                               (common-lisp:append
+                                `(("Action" ,@"DeletePortfolio")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeletePortfolioOutput" common-lisp:nil)))
@@ -4686,8 +4700,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeletePortfolioShare")
+                               (common-lisp:append
+                                `(("Action" ,@"DeletePortfolioShare")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeletePortfolioShareOutput" common-lisp:nil)))
@@ -4703,9 +4718,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteProduct")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteProduct")
+                                  ("Version" ,@"2015-12-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteProductOutput" common-lisp:nil)))
  (common-lisp:export 'delete-product))
 (common-lisp:progn
@@ -4723,8 +4740,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteProvisioningArtifact")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteProvisioningArtifact")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteProvisioningArtifactOutput" common-lisp:nil)))
@@ -4740,8 +4758,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeConstraint")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeConstraint")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeConstraintOutput" common-lisp:nil)))
@@ -4757,8 +4776,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribePortfolio")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribePortfolio")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribePortfolioOutput" common-lisp:nil)))
@@ -4774,8 +4794,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeProduct")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeProduct")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeProductOutput" common-lisp:nil)))
@@ -4791,8 +4812,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeProductAsAdmin")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeProductAsAdmin")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeProductAsAdminOutput" common-lisp:nil)))
@@ -4808,8 +4830,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeProductView")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeProductView")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeProductViewOutput" common-lisp:nil)))
@@ -4826,8 +4849,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeProvisionedProduct")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeProvisionedProduct")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeProvisionedProductOutput" common-lisp:nil)))
@@ -4847,8 +4871,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeProvisioningArtifact")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeProvisioningArtifact")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeProvisioningArtifactOutput" common-lisp:nil)))
@@ -4868,8 +4893,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeProvisioningParameters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeProvisioningParameters")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeProvisioningParametersOutput" common-lisp:nil)))
@@ -4886,9 +4912,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeRecord")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeRecord")
+                                  ("Version" ,@"2015-12-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeRecordOutput" common-lisp:nil)))
  (common-lisp:export 'describe-record))
 (common-lisp:progn
@@ -4902,8 +4930,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeTagOption")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTagOption")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeTagOptionOutput" common-lisp:nil)))
@@ -4922,9 +4951,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DisassociatePrincipalFromPortfolio")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DisassociatePrincipalFromPortfolio")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisassociatePrincipalFromPortfolioOutput" common-lisp:nil)))
@@ -4942,9 +4972,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DisassociateProductFromPortfolio")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DisassociateProductFromPortfolio")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisassociateProductFromPortfolioOutput" common-lisp:nil)))
@@ -4961,9 +4992,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DisassociateTagOptionFromResource")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DisassociateTagOptionFromResource")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisassociateTagOptionFromResourceOutput" common-lisp:nil)))
@@ -4981,8 +5013,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListAcceptedPortfolioShares")
+                               (common-lisp:append
+                                `(("Action" ,@"ListAcceptedPortfolioShares")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListAcceptedPortfolioSharesOutput" common-lisp:nil)))
@@ -5002,8 +5035,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListConstraintsForPortfolio")
+                               (common-lisp:append
+                                `(("Action" ,@"ListConstraintsForPortfolio")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListConstraintsForPortfolioOutput" common-lisp:nil)))
@@ -5021,8 +5055,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListLaunchPaths")
+                               (common-lisp:append
+                                `(("Action" ,@"ListLaunchPaths")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListLaunchPathsOutput" common-lisp:nil)))
@@ -5038,8 +5073,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListPortfolioAccess")
+                               (common-lisp:append
+                                `(("Action" ,@"ListPortfolioAccess")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListPortfolioAccessOutput" common-lisp:nil)))
@@ -5056,9 +5092,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListPortfolios")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListPortfolios")
+                                  ("Version" ,@"2015-12-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListPortfoliosOutput" common-lisp:nil)))
  (common-lisp:export 'list-portfolios))
 (common-lisp:progn
@@ -5075,8 +5113,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListPortfoliosForProduct")
+                               (common-lisp:append
+                                `(("Action" ,@"ListPortfoliosForProduct")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListPortfoliosForProductOutput" common-lisp:nil)))
@@ -5095,8 +5134,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListPrincipalsForPortfolio")
+                               (common-lisp:append
+                                `(("Action" ,@"ListPrincipalsForPortfolio")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListPrincipalsForPortfolioOutput" common-lisp:nil)))
@@ -5113,8 +5153,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListProvisioningArtifacts")
+                               (common-lisp:append
+                                `(("Action" ,@"ListProvisioningArtifacts")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListProvisioningArtifactsOutput" common-lisp:nil)))
@@ -5133,8 +5174,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListRecordHistory")
+                               (common-lisp:append
+                                `(("Action" ,@"ListRecordHistory")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListRecordHistoryOutput" common-lisp:nil)))
@@ -5153,8 +5195,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListResourcesForTagOption")
+                               (common-lisp:append
+                                `(("Action" ,@"ListResourcesForTagOption")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListResourcesForTagOptionOutput" common-lisp:nil)))
@@ -5170,9 +5213,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListTagOptions")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagOptions")
+                                  ("Version" ,@"2015-12-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListTagOptionsOutput" common-lisp:nil)))
  (common-lisp:export 'list-tag-options))
 (common-lisp:progn
@@ -5192,8 +5237,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ProvisionProduct")
+                               (common-lisp:append
+                                `(("Action" ,@"ProvisionProduct")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ProvisionProductOutput" common-lisp:nil)))
@@ -5209,8 +5255,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RejectPortfolioShare")
+                               (common-lisp:append
+                                `(("Action" ,@"RejectPortfolioShare")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RejectPortfolioShareOutput" common-lisp:nil)))
@@ -5229,8 +5276,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ScanProvisionedProducts")
+                               (common-lisp:append
+                                `(("Action" ,@"ScanProvisionedProducts")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ScanProvisionedProductsOutput" common-lisp:nil)))
@@ -5249,9 +5297,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons `("Action" ,@"SearchProducts")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"SearchProducts")
+                                  ("Version" ,@"2015-12-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "SearchProductsOutput" common-lisp:nil)))
  (common-lisp:export 'search-products))
 (common-lisp:progn
@@ -5268,8 +5318,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SearchProductsAsAdmin")
+                               (common-lisp:append
+                                `(("Action" ,@"SearchProductsAsAdmin")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SearchProductsAsAdminOutput" common-lisp:nil)))
@@ -5290,8 +5341,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"TerminateProvisionedProduct")
+                               (common-lisp:append
+                                `(("Action" ,@"TerminateProvisionedProduct")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "TerminateProvisionedProductOutput" common-lisp:nil)))
@@ -5307,8 +5359,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateConstraint")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateConstraint")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateConstraintOutput" common-lisp:nil)))
@@ -5327,8 +5380,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdatePortfolio")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdatePortfolio")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdatePortfolioOutput" common-lisp:nil)))
@@ -5349,9 +5403,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateProduct")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateProduct")
+                                  ("Version" ,@"2015-12-10"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateProductOutput" common-lisp:nil)))
  (common-lisp:export 'update-product))
 (common-lisp:progn
@@ -5370,8 +5426,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateProvisionedProduct")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateProvisionedProduct")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateProvisionedProductOutput" common-lisp:nil)))
@@ -5391,8 +5448,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateProvisioningArtifact")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateProvisioningArtifact")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateProvisioningArtifactOutput" common-lisp:nil)))
@@ -5408,8 +5466,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateTagOption")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateTagOption")
+                                  ("Version" ,@"2015-12-10"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateTagOptionOutput" common-lisp:nil)))

@@ -1765,8 +1765,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchCheckLayerAvailability")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchCheckLayerAvailability")
+                                  ("Version" ,@"2015-09-21"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchCheckLayerAvailabilityResponse" common-lisp:nil)))
@@ -1783,8 +1784,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchDeleteImage")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchDeleteImage")
+                                  ("Version" ,@"2015-09-21"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchDeleteImageResponse" common-lisp:nil)))
@@ -1803,9 +1805,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons `("Action" ,@"BatchGetImage")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"BatchGetImage")
+                                  ("Version" ,@"2015-09-21"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "BatchGetImageResponse" common-lisp:nil)))
  (common-lisp:export 'batch-get-image))
 (common-lisp:progn
@@ -1822,8 +1826,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CompleteLayerUpload")
+                               (common-lisp:append
+                                `(("Action" ,@"CompleteLayerUpload")
+                                  ("Version" ,@"2015-09-21"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CompleteLayerUploadResponse" common-lisp:nil)))
@@ -1839,8 +1844,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateRepository")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateRepository")
+                                  ("Version" ,@"2015-09-21"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateRepositoryResponse" common-lisp:nil)))
@@ -1857,8 +1863,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteRepository")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteRepository")
+                                  ("Version" ,@"2015-09-21"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteRepositoryResponse" common-lisp:nil)))
@@ -1874,8 +1881,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteRepositoryPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteRepositoryPolicy")
+                                  ("Version" ,@"2015-09-21"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteRepositoryPolicyResponse" common-lisp:nil)))
@@ -1894,9 +1902,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeImages")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeImages")
+                                  ("Version" ,@"2015-09-21"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeImagesResponse" common-lisp:nil)))
  (common-lisp:export 'describe-images))
 (common-lisp:progn
@@ -1913,8 +1923,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeRepositories")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeRepositories")
+                                  ("Version" ,@"2015-09-21"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeRepositoriesResponse" common-lisp:nil)))
@@ -1930,8 +1941,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetAuthorizationToken")
+                               (common-lisp:append
+                                `(("Action" ,@"GetAuthorizationToken")
+                                  ("Version" ,@"2015-09-21"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetAuthorizationTokenResponse" common-lisp:nil)))
@@ -1949,8 +1961,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDownloadUrlForLayer")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDownloadUrlForLayer")
+                                  ("Version" ,@"2015-09-21"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDownloadUrlForLayerResponse" common-lisp:nil)))
@@ -1966,8 +1979,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetRepositoryPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"GetRepositoryPolicy")
+                                  ("Version" ,@"2015-09-21"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetRepositoryPolicyResponse" common-lisp:nil)))
@@ -1983,8 +1997,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"InitiateLayerUpload")
+                               (common-lisp:append
+                                `(("Action" ,@"InitiateLayerUpload")
+                                  ("Version" ,@"2015-09-21"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "InitiateLayerUploadResponse" common-lisp:nil)))
@@ -2003,9 +2018,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListImages")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListImages")
+                                  ("Version" ,@"2015-09-21"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListImagesResponse" common-lisp:nil)))
  (common-lisp:export 'list-images))
 (common-lisp:progn
@@ -2022,9 +2039,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutImage")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutImage")
+                                  ("Version" ,@"2015-09-21"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutImageResponse" common-lisp:nil)))
  (common-lisp:export 'put-image))
 (common-lisp:progn
@@ -2040,8 +2059,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetRepositoryPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"SetRepositoryPolicy")
+                                  ("Version" ,@"2015-09-21"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SetRepositoryPolicyResponse" common-lisp:nil)))
@@ -2060,8 +2080,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecr" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UploadLayerPart")
+                               (common-lisp:append
+                                `(("Action" ,@"UploadLayerPart")
+                                  ("Version" ,@"2015-09-21"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UploadLayerPartResponse" common-lisp:nil)))

@@ -3363,9 +3363,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateCluster")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCluster")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateClusterResponse" common-lisp:nil)))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
@@ -3385,9 +3387,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateService")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateService")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateServiceResponse" common-lisp:nil)))
  (common-lisp:export 'create-service))
 (common-lisp:progn
@@ -3401,8 +3405,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteAttributes")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteAttributes")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteAttributesResponse" common-lisp:nil)))
@@ -3418,9 +3423,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteCluster")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCluster")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteClusterResponse" common-lisp:nil)))
  (common-lisp:export 'delete-cluster))
 (common-lisp:progn
@@ -3434,9 +3441,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteService")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteService")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteServiceResponse" common-lisp:nil)))
  (common-lisp:export 'delete-service))
 (common-lisp:progn
@@ -3452,8 +3461,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeregisterContainerInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"DeregisterContainerInstance")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeregisterContainerInstanceResponse" common-lisp:nil)))
@@ -3470,8 +3480,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeregisterTaskDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"DeregisterTaskDefinition")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeregisterTaskDefinitionResponse" common-lisp:nil)))
@@ -3487,8 +3498,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeClusters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeClusters")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeClustersResponse" common-lisp:nil)))
@@ -3505,8 +3517,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeContainerInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeContainerInstances")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeContainerInstancesResponse" common-lisp:nil)))
@@ -3522,8 +3535,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeServices")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeServices")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeServicesResponse" common-lisp:nil)))
@@ -3539,8 +3553,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeTaskDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTaskDefinition")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeTaskDefinitionResponse" common-lisp:nil)))
@@ -3556,9 +3571,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeTasks")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTasks")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeTasksResponse" common-lisp:nil)))
  (common-lisp:export 'describe-tasks))
 (common-lisp:progn
@@ -3572,8 +3589,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DiscoverPollEndpoint")
+                               (common-lisp:append
+                                `(("Action" ,@"DiscoverPollEndpoint")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DiscoverPollEndpointResponse" common-lisp:nil)))
@@ -3592,9 +3610,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListAttributes")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListAttributes")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListAttributesResponse" common-lisp:nil)))
  (common-lisp:export 'list-attributes))
 (common-lisp:progn
@@ -3608,9 +3628,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListClusters")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListClusters")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListClustersResponse" common-lisp:nil)))
  (common-lisp:export 'list-clusters))
 (common-lisp:progn
@@ -3626,8 +3648,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListContainerInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"ListContainerInstances")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListContainerInstancesResponse" common-lisp:nil)))
@@ -3643,9 +3666,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListServices")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListServices")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListServicesResponse" common-lisp:nil)))
  (common-lisp:export 'list-services))
 (common-lisp:progn
@@ -3662,8 +3687,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTaskDefinitionFamilies")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTaskDefinitionFamilies")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTaskDefinitionFamiliesResponse" common-lisp:nil)))
@@ -3681,8 +3707,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTaskDefinitions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTaskDefinitions")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTaskDefinitionsResponse" common-lisp:nil)))
@@ -3702,9 +3729,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListTasks")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListTasks")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListTasksResponse" common-lisp:nil)))
  (common-lisp:export 'list-tasks))
 (common-lisp:progn
@@ -3718,9 +3747,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutAttributes")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutAttributes")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutAttributesResponse" common-lisp:nil)))
  (common-lisp:export 'put-attributes))
 (common-lisp:progn
@@ -3740,8 +3771,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterContainerInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterContainerInstance")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RegisterContainerInstanceResponse" common-lisp:nil)))
@@ -3760,8 +3792,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterTaskDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterTaskDefinition")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RegisterTaskDefinitionResponse" common-lisp:nil)))
@@ -3780,9 +3813,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RunTask")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RunTask")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RunTaskResponse" common-lisp:nil)))
  (common-lisp:export 'run-task))
 (common-lisp:progn
@@ -3799,9 +3834,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StartTask")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StartTask")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StartTaskResponse" common-lisp:nil)))
  (common-lisp:export 'start-task))
 (common-lisp:progn
@@ -3815,9 +3852,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StopTask")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StopTask")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StopTaskResponse" common-lisp:nil)))
  (common-lisp:export 'stop-task))
 (common-lisp:progn
@@ -3835,8 +3874,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SubmitContainerStateChange")
+                               (common-lisp:append
+                                `(("Action" ,@"SubmitContainerStateChange")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SubmitContainerStateChangeResponse" common-lisp:nil)))
@@ -3852,8 +3892,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SubmitTaskStateChange")
+                               (common-lisp:append
+                                `(("Action" ,@"SubmitTaskStateChange")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SubmitTaskStateChangeResponse" common-lisp:nil)))
@@ -3869,8 +3910,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateContainerAgent")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateContainerAgent")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateContainerAgentResponse" common-lisp:nil)))
@@ -3888,8 +3930,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateContainerInstancesState")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateContainerInstancesState")
+                                  ("Version" ,@"2014-11-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateContainerInstancesStateResponse" common-lisp:nil)))
@@ -3908,8 +3951,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ecs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateService")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateService")
+                                  ("Version" ,@"2014-11-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateServiceResponse" common-lisp:nil)))
  (common-lisp:export 'update-service))

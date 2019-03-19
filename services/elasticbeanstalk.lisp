@@ -4728,8 +4728,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"AbortEnvironmentUpdate")
+                               (common-lisp:append
+                                `(("Action" ,@"AbortEnvironmentUpdate")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4749,8 +4750,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ApplyEnvironmentManagedAction")
+                               (common-lisp:append
+                                `(("Action" ,@"ApplyEnvironmentManagedAction")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ApplyEnvironmentManagedActionResult"
@@ -4768,8 +4770,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CheckDNSAvailability")
+                               (common-lisp:append
+                                `(("Action" ,@"CheckDNSAvailability")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CheckDNSAvailabilityResultMessage" "CheckDNSAvailabilityResult")))
@@ -4788,8 +4791,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ComposeEnvironments")
+                               (common-lisp:append
+                                `(("Action" ,@"ComposeEnvironments")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EnvironmentDescriptionsMessage" "ComposeEnvironmentsResult")))
@@ -4809,8 +4813,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateApplication")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ApplicationDescriptionMessage" "CreateApplicationResult")))
@@ -4833,8 +4838,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateApplicationVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateApplicationVersion")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ApplicationVersionDescriptionMessage"
@@ -4858,8 +4864,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateConfigurationTemplate")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateConfigurationTemplate")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ConfigurationSettingsDescription" "CreateConfigurationTemplateResult")))
@@ -4882,8 +4889,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateEnvironment")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateEnvironment")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EnvironmentDescription" "CreateEnvironmentResult")))
@@ -4904,8 +4912,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreatePlatformVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"CreatePlatformVersion")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreatePlatformVersionResult" "CreatePlatformVersionResult")))
@@ -4931,8 +4940,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteApplication")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4953,8 +4963,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteApplicationVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteApplicationVersion")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4972,8 +4983,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteConfigurationTemplate")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteConfigurationTemplate")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4992,8 +5004,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteEnvironmentConfiguration")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteEnvironmentConfiguration")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -5010,8 +5023,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeletePlatformVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"DeletePlatformVersion")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeletePlatformVersionResult" "DeletePlatformVersionResult")))
@@ -5032,8 +5046,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeApplicationVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeApplicationVersions")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ApplicationVersionDescriptionsMessage"
@@ -5051,8 +5066,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeApplications")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeApplications")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ApplicationDescriptionsMessage" "DescribeApplicationsResult")))
@@ -5073,8 +5089,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeConfigurationOptions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeConfigurationOptions")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ConfigurationOptionsDescription" "DescribeConfigurationOptionsResult")))
@@ -5094,8 +5111,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeConfigurationSettings")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeConfigurationSettings")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ConfigurationSettingsDescriptions"
@@ -5116,8 +5134,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEnvironmentHealth")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEnvironmentHealth")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEnvironmentHealthResult" "DescribeEnvironmentHealthResult")))
@@ -5138,9 +5157,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeEnvironmentManagedActionHistory")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeEnvironmentManagedActionHistory")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEnvironmentManagedActionHistoryResult"
@@ -5160,9 +5180,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeEnvironmentManagedActions")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeEnvironmentManagedActions")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEnvironmentManagedActionsResult"
@@ -5182,8 +5203,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEnvironmentResources")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEnvironmentResources")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EnvironmentResourceDescriptionsMessage"
@@ -5206,8 +5228,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEnvironments")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEnvironments")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EnvironmentDescriptionsMessage" "DescribeEnvironmentsResult")))
@@ -5230,9 +5253,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"DescribeEvents")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEvents")
+                                  ("Version" ,@"2010-12-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "EventDescriptionsMessage" "DescribeEventsResult")))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
@@ -5251,8 +5276,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeInstancesHealth")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeInstancesHealth")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeInstancesHealthResult" "DescribeInstancesHealthResult")))
@@ -5270,8 +5296,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribePlatformVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribePlatformVersion")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribePlatformVersionResult" "DescribePlatformVersionResult")))
@@ -5297,8 +5324,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListPlatformVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListPlatformVersions")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListPlatformVersionsResult" "ListPlatformVersionsResult")))
@@ -5316,8 +5344,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"RebuildEnvironment")
+                               (common-lisp:append
+                                `(("Action" ,@"RebuildEnvironment")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -5336,8 +5365,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"RequestEnvironmentInfo")
+                               (common-lisp:append
+                                `(("Action" ,@"RequestEnvironmentInfo")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -5355,8 +5385,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"RestartAppServer")
+                               (common-lisp:append
+                                `(("Action" ,@"RestartAppServer")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -5376,8 +5407,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"RetrieveEnvironmentInfo")
+                               (common-lisp:append
+                                `(("Action" ,@"RetrieveEnvironmentInfo")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RetrieveEnvironmentInfoResultMessage" "RetrieveEnvironmentInfoResult")))
@@ -5398,8 +5430,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"SwapEnvironmentCNAMEs")
+                               (common-lisp:append
+                                `(("Action" ,@"SwapEnvironmentCNAMEs")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -5419,8 +5452,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"TerminateEnvironment")
+                               (common-lisp:append
+                                `(("Action" ,@"TerminateEnvironment")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EnvironmentDescription" "TerminateEnvironmentResult")))
@@ -5437,8 +5471,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateApplication")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ApplicationDescriptionMessage" "UpdateApplicationResult")))
@@ -5458,9 +5493,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"UpdateApplicationResourceLifecycle")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"UpdateApplicationResourceLifecycle")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ApplicationResourceLifecycleDescriptionMessage"
@@ -5481,8 +5517,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateApplicationVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateApplicationVersion")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ApplicationVersionDescriptionMessage"
@@ -5504,8 +5541,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateConfigurationTemplate")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateConfigurationTemplate")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ConfigurationSettingsDescription" "UpdateConfigurationTemplateResult")))
@@ -5528,8 +5566,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateEnvironment")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateEnvironment")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EnvironmentDescription" "UpdateEnvironmentResult")))
@@ -5550,8 +5589,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ValidateConfigurationSettings")
+                               (common-lisp:append
+                                `(("Action" ,@"ValidateConfigurationSettings")
+                                  ("Version" ,@"2010-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ConfigurationSettingsValidationMessages"

@@ -2108,8 +2108,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "firehose" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDeliveryStream")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDeliveryStream")
+                                  ("Version" ,@"2015-08-04"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDeliveryStreamOutput" common-lisp:nil)))
@@ -2125,8 +2126,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "firehose" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDeliveryStream")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDeliveryStream")
+                                  ("Version" ,@"2015-08-04"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteDeliveryStreamOutput" common-lisp:nil)))
@@ -2145,8 +2147,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "firehose" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDeliveryStream")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDeliveryStream")
+                                  ("Version" ,@"2015-08-04"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDeliveryStreamOutput" common-lisp:nil)))
@@ -2162,8 +2165,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "firehose" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetKinesisStream")
+                               (common-lisp:append
+                                `(("Action" ,@"GetKinesisStream")
+                                  ("Version" ,@"2015-08-04"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetKinesisStreamOutput" common-lisp:nil)))
@@ -2182,8 +2186,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "firehose" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDeliveryStreams")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDeliveryStreams")
+                                  ("Version" ,@"2015-08-04"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDeliveryStreamsOutput" common-lisp:nil)))
@@ -2199,9 +2204,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "firehose" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutRecord")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutRecord")
+                                  ("Version" ,@"2015-08-04"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutRecordOutput" common-lisp:nil)))
  (common-lisp:export 'put-record))
 (common-lisp:progn
@@ -2215,9 +2222,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "firehose" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutRecordBatch")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutRecordBatch")
+                                  ("Version" ,@"2015-08-04"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutRecordBatchOutput" common-lisp:nil)))
  (common-lisp:export 'put-record-batch))
 (common-lisp:progn
@@ -2239,8 +2248,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "firehose" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDestination")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDestination")
+                                  ("Version" ,@"2015-08-04"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateDestinationOutput" common-lisp:nil)))

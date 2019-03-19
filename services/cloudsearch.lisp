@@ -2239,8 +2239,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BuildSuggesters")
+                               (common-lisp:append
+                                `(("Action" ,@"BuildSuggesters")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BuildSuggestersResponse" "BuildSuggestersResult")))
@@ -2256,9 +2257,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateDomain")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDomain")
+                                  ("Version" ,@"2013-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateDomainResponse" "CreateDomainResult")))
  (common-lisp:export 'create-domain))
 (common-lisp:progn
@@ -2272,8 +2275,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DefineAnalysisScheme")
+                               (common-lisp:append
+                                `(("Action" ,@"DefineAnalysisScheme")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DefineAnalysisSchemeResponse" "DefineAnalysisSchemeResult")))
@@ -2289,8 +2293,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DefineExpression")
+                               (common-lisp:append
+                                `(("Action" ,@"DefineExpression")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DefineExpressionResponse" "DefineExpressionResult")))
@@ -2306,8 +2311,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DefineIndexField")
+                               (common-lisp:append
+                                `(("Action" ,@"DefineIndexField")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DefineIndexFieldResponse" "DefineIndexFieldResult")))
@@ -2323,8 +2329,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DefineSuggester")
+                               (common-lisp:append
+                                `(("Action" ,@"DefineSuggester")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DefineSuggesterResponse" "DefineSuggesterResult")))
@@ -2341,8 +2348,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteAnalysisScheme")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteAnalysisScheme")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteAnalysisSchemeResponse" "DeleteAnalysisSchemeResult")))
@@ -2358,9 +2366,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteDomain")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDomain")
+                                  ("Version" ,@"2013-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteDomainResponse" "DeleteDomainResult")))
  (common-lisp:export 'delete-domain))
 (common-lisp:progn
@@ -2374,8 +2384,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteExpression")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteExpression")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteExpressionResponse" "DeleteExpressionResult")))
@@ -2391,8 +2402,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteIndexField")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteIndexField")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteIndexFieldResponse" "DeleteIndexFieldResult")))
@@ -2408,8 +2420,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteSuggester")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteSuggester")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteSuggesterResponse" "DeleteSuggesterResult")))
@@ -2428,8 +2441,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAnalysisSchemes")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAnalysisSchemes")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAnalysisSchemesResponse" "DescribeAnalysisSchemesResult")))
@@ -2446,8 +2460,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAvailabilityOptions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAvailabilityOptions")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAvailabilityOptionsResponse"
@@ -2464,8 +2479,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDomains")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDomains")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDomainsResponse" "DescribeDomainsResult")))
@@ -2482,8 +2498,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeExpressions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeExpressions")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeExpressionsResponse" "DescribeExpressionsResult")))
@@ -2500,8 +2517,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeIndexFields")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeIndexFields")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeIndexFieldsResponse" "DescribeIndexFieldsResult")))
@@ -2518,8 +2536,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeScalingParameters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeScalingParameters")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeScalingParametersResponse" "DescribeScalingParametersResult")))
@@ -2536,8 +2555,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeServiceAccessPolicies")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeServiceAccessPolicies")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeServiceAccessPoliciesResponse"
@@ -2555,8 +2575,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeSuggesters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeSuggesters")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeSuggestersResponse" "DescribeSuggestersResult")))
@@ -2572,9 +2593,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons `("Action" ,@"IndexDocuments")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"IndexDocuments")
+                                  ("Version" ,@"2013-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "IndexDocumentsResponse" "IndexDocumentsResult")))
  (common-lisp:export 'index-documents))
 (common-lisp:progn
@@ -2596,8 +2619,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateAvailabilityOptions")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateAvailabilityOptions")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateAvailabilityOptionsResponse" "UpdateAvailabilityOptionsResult")))
@@ -2614,8 +2638,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateScalingParameters")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateScalingParameters")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateScalingParametersResponse" "UpdateScalingParametersResult")))
@@ -2632,8 +2657,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateServiceAccessPolicies")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateServiceAccessPolicies")
+                                  ("Version" ,@"2013-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateServiceAccessPoliciesResponse"

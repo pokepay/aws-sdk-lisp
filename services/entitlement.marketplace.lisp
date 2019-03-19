@@ -237,8 +237,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "entitlement.marketplace" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetEntitlements")
+                               (common-lisp:append
+                                `(("Action" ,@"GetEntitlements")
+                                  ("Version" ,@"2017-01-11"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetEntitlementsResult" common-lisp:nil)))

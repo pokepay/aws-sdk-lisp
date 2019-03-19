@@ -2849,8 +2849,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AcceptHandshake")
+                               (common-lisp:append
+                                `(("Action" ,@"AcceptHandshake")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AcceptHandshakeResponse" common-lisp:nil)))
@@ -2866,9 +2867,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons `("Action" ,@"AttachPolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AttachPolicy")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'attach-policy))
 (common-lisp:progn
@@ -2882,8 +2885,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CancelHandshake")
+                               (common-lisp:append
+                                `(("Action" ,@"CancelHandshake")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CancelHandshakeResponse" common-lisp:nil)))
@@ -2902,9 +2906,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateAccount")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateAccount")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateAccountResponse" common-lisp:nil)))
  (common-lisp:export 'create-account))
 (common-lisp:progn
@@ -2918,8 +2924,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateOrganization")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateOrganization")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateOrganizationResponse" common-lisp:nil)))
@@ -2936,8 +2943,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateOrganizationalUnit")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateOrganizationalUnit")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateOrganizationalUnitResponse" common-lisp:nil)))
@@ -2953,9 +2961,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreatePolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreatePolicy")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreatePolicyResponse" common-lisp:nil)))
  (common-lisp:export 'create-policy))
 (common-lisp:progn
@@ -2969,8 +2979,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeclineHandshake")
+                               (common-lisp:append
+                                `(("Action" ,@"DeclineHandshake")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeclineHandshakeResponse" common-lisp:nil)))
@@ -2994,8 +3005,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteOrganizationalUnit")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteOrganizationalUnit")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3011,9 +3023,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeletePolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeletePolicy")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-policy))
 (common-lisp:progn
@@ -3027,8 +3041,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAccount")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAccount")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAccountResponse" common-lisp:nil)))
@@ -3045,8 +3060,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCreateAccountStatus")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCreateAccountStatus")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeCreateAccountStatusResponse" common-lisp:nil)))
@@ -3062,8 +3078,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeHandshake")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeHandshake")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeHandshakeResponse" common-lisp:nil)))
@@ -3088,8 +3105,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeOrganizationalUnit")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeOrganizationalUnit")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeOrganizationalUnitResponse" common-lisp:nil)))
@@ -3105,9 +3123,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribePolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribePolicy")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribePolicyResponse" common-lisp:nil)))
  (common-lisp:export 'describe-policy))
 (common-lisp:progn
@@ -3121,9 +3141,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DetachPolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DetachPolicy")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'detach-policy))
 (common-lisp:progn
@@ -3137,8 +3159,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisablePolicyType")
+                               (common-lisp:append
+                                `(("Action" ,@"DisablePolicyType")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisablePolicyTypeResponse" common-lisp:nil)))
@@ -3161,8 +3184,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"EnablePolicyType")
+                               (common-lisp:append
+                                `(("Action" ,@"EnablePolicyType")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EnablePolicyTypeResponse" common-lisp:nil)))
@@ -3179,8 +3203,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"InviteAccountToOrganization")
+                               (common-lisp:append
+                                `(("Action" ,@"InviteAccountToOrganization")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "InviteAccountToOrganizationResponse" common-lisp:nil)))
@@ -3203,9 +3228,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListAccounts")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListAccounts")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListAccountsResponse" common-lisp:nil)))
  (common-lisp:export 'list-accounts))
 (common-lisp:progn
@@ -3220,8 +3247,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListAccountsForParent")
+                               (common-lisp:append
+                                `(("Action" ,@"ListAccountsForParent")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListAccountsForParentResponse" common-lisp:nil)))
@@ -3239,9 +3267,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListChildren")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListChildren")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListChildrenResponse" common-lisp:nil)))
  (common-lisp:export 'list-children))
 (common-lisp:progn
@@ -3256,8 +3286,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListCreateAccountStatus")
+                               (common-lisp:append
+                                `(("Action" ,@"ListCreateAccountStatus")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListCreateAccountStatusResponse" common-lisp:nil)))
@@ -3274,8 +3305,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListHandshakesForAccount")
+                               (common-lisp:append
+                                `(("Action" ,@"ListHandshakesForAccount")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListHandshakesForAccountResponse" common-lisp:nil)))
@@ -3292,8 +3324,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListHandshakesForOrganization")
+                               (common-lisp:append
+                                `(("Action" ,@"ListHandshakesForOrganization")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListHandshakesForOrganizationResponse" common-lisp:nil)))
@@ -3311,9 +3344,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"ListOrganizationalUnitsForParent")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ListOrganizationalUnitsForParent")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListOrganizationalUnitsForParentResponse" common-lisp:nil)))
@@ -3330,9 +3364,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListParents")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListParents")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListParentsResponse" common-lisp:nil)))
  (common-lisp:export 'list-parents))
 (common-lisp:progn
@@ -3346,9 +3382,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListPolicies")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListPolicies")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListPoliciesResponse" common-lisp:nil)))
  (common-lisp:export 'list-policies))
 (common-lisp:progn
@@ -3363,8 +3401,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListPoliciesForTarget")
+                               (common-lisp:append
+                                `(("Action" ,@"ListPoliciesForTarget")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListPoliciesForTargetResponse" common-lisp:nil)))
@@ -3380,9 +3419,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListRoots")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListRoots")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListRootsResponse" common-lisp:nil)))
  (common-lisp:export 'list-roots))
 (common-lisp:progn
@@ -3397,8 +3438,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTargetsForPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTargetsForPolicy")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTargetsForPolicyResponse" common-lisp:nil)))
@@ -3416,9 +3458,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons `("Action" ,@"MoveAccount")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"MoveAccount")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'move-account))
 (common-lisp:progn
@@ -3433,8 +3477,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveAccountFromOrganization")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveAccountFromOrganization")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3451,8 +3496,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateOrganizationalUnit")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateOrganizationalUnit")
+                                  ("Version" ,@"2016-11-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateOrganizationalUnitResponse" common-lisp:nil)))
@@ -3469,8 +3515,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdatePolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdatePolicy")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdatePolicyResponse" common-lisp:nil)))
  (common-lisp:export 'update-policy))

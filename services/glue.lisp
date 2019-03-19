@@ -6416,8 +6416,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchCreatePartition")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchCreatePartition")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchCreatePartitionResponse" common-lisp:nil)))
@@ -6434,8 +6435,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchDeleteConnection")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchDeleteConnection")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchDeleteConnectionResponse" common-lisp:nil)))
@@ -6454,8 +6456,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchDeletePartition")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchDeletePartition")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchDeletePartitionResponse" common-lisp:nil)))
@@ -6473,8 +6476,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchDeleteTable")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchDeleteTable")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchDeleteTableResponse" common-lisp:nil)))
@@ -6493,8 +6497,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchGetPartition")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchGetPartition")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchGetPartitionResponse" common-lisp:nil)))
@@ -6510,8 +6515,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateClassifier")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateClassifier")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateClassifierResponse" common-lisp:nil)))
@@ -6527,8 +6533,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateConnection")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateConnection")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateConnectionResponse" common-lisp:nil)))
@@ -6548,9 +6555,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateCrawler")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCrawler")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateCrawlerResponse" common-lisp:nil)))
  (common-lisp:export 'create-crawler))
 (common-lisp:progn
@@ -6564,9 +6573,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateDatabase")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDatabase")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateDatabaseResponse" common-lisp:nil)))
  (common-lisp:export 'create-database))
 (common-lisp:progn
@@ -6584,8 +6595,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDevEndpoint")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDevEndpoint")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDevEndpointResponse" common-lisp:nil)))
@@ -6605,9 +6617,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateJob")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateJobResponse" common-lisp:nil)))
  (common-lisp:export 'create-job))
 (common-lisp:progn
@@ -6624,8 +6638,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreatePartition")
+                               (common-lisp:append
+                                `(("Action" ,@"CreatePartition")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreatePartitionResponse" common-lisp:nil)))
@@ -6641,9 +6656,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateScript")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateScript")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateScriptResponse" common-lisp:nil)))
  (common-lisp:export 'create-script))
 (common-lisp:progn
@@ -6658,9 +6675,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateTable")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateTable")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateTableResponse" common-lisp:nil)))
  (common-lisp:export 'create-table))
 (common-lisp:progn
@@ -6676,9 +6695,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateTrigger")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateTrigger")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateTriggerResponse" common-lisp:nil)))
  (common-lisp:export 'create-trigger))
 (common-lisp:progn
@@ -6694,8 +6715,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateUserDefinedFunction")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateUserDefinedFunction")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateUserDefinedFunctionResponse" common-lisp:nil)))
@@ -6711,8 +6733,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteClassifier")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteClassifier")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteClassifierResponse" common-lisp:nil)))
@@ -6728,8 +6751,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteConnection")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteConnection")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteConnectionResponse" common-lisp:nil)))
@@ -6745,9 +6769,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteCrawler")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCrawler")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteCrawlerResponse" common-lisp:nil)))
  (common-lisp:export 'delete-crawler))
 (common-lisp:progn
@@ -6761,9 +6787,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteDatabase")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDatabase")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteDatabaseResponse" common-lisp:nil)))
  (common-lisp:export 'delete-database))
 (common-lisp:progn
@@ -6777,8 +6805,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDevEndpoint")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDevEndpoint")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteDevEndpointResponse" common-lisp:nil)))
@@ -6794,9 +6823,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteJob")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteJobResponse" common-lisp:nil)))
  (common-lisp:export 'delete-job))
 (common-lisp:progn
@@ -6813,8 +6844,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeletePartition")
+                               (common-lisp:append
+                                `(("Action" ,@"DeletePartition")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeletePartitionResponse" common-lisp:nil)))
@@ -6830,9 +6862,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteTable")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTable")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteTableResponse" common-lisp:nil)))
  (common-lisp:export 'delete-table))
 (common-lisp:progn
@@ -6846,9 +6880,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteTrigger")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTrigger")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteTriggerResponse" common-lisp:nil)))
  (common-lisp:export 'delete-trigger))
 (common-lisp:progn
@@ -6864,8 +6900,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteUserDefinedFunction")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteUserDefinedFunction")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteUserDefinedFunctionResponse" common-lisp:nil)))
@@ -6882,8 +6919,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetCatalogImportStatus")
+                               (common-lisp:append
+                                `(("Action" ,@"GetCatalogImportStatus")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetCatalogImportStatusResponse" common-lisp:nil)))
@@ -6899,9 +6937,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetClassifier")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetClassifier")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetClassifierResponse" common-lisp:nil)))
  (common-lisp:export 'get-classifier))
 (common-lisp:progn
@@ -6915,9 +6955,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetClassifiers")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetClassifiers")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetClassifiersResponse" common-lisp:nil)))
  (common-lisp:export 'get-classifiers))
 (common-lisp:progn
@@ -6931,9 +6973,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetConnection")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetConnection")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetConnectionResponse" common-lisp:nil)))
  (common-lisp:export 'get-connection))
 (common-lisp:progn
@@ -6948,9 +6992,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetConnections")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetConnections")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetConnectionsResponse" common-lisp:nil)))
  (common-lisp:export 'get-connections))
 (common-lisp:progn
@@ -6964,9 +7010,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetCrawler")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetCrawler")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetCrawlerResponse" common-lisp:nil)))
  (common-lisp:export 'get-crawler))
 (common-lisp:progn
@@ -6981,8 +7029,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetCrawlerMetrics")
+                               (common-lisp:append
+                                `(("Action" ,@"GetCrawlerMetrics")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetCrawlerMetricsResponse" common-lisp:nil)))
@@ -6998,9 +7047,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetCrawlers")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetCrawlers")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetCrawlersResponse" common-lisp:nil)))
  (common-lisp:export 'get-crawlers))
 (common-lisp:progn
@@ -7014,9 +7065,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetDatabase")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDatabase")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDatabaseResponse" common-lisp:nil)))
  (common-lisp:export 'get-database))
 (common-lisp:progn
@@ -7031,9 +7084,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetDatabases")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDatabases")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDatabasesResponse" common-lisp:nil)))
  (common-lisp:export 'get-databases))
 (common-lisp:progn
@@ -7047,8 +7102,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDataflowGraph")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDataflowGraph")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDataflowGraphResponse" common-lisp:nil)))
@@ -7064,9 +7120,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetDevEndpoint")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDevEndpoint")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDevEndpointResponse" common-lisp:nil)))
  (common-lisp:export 'get-dev-endpoint))
 (common-lisp:progn
@@ -7080,8 +7138,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDevEndpoints")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDevEndpoints")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDevEndpointsResponse" common-lisp:nil)))
@@ -7097,9 +7156,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetJob")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetJobResponse" common-lisp:nil)))
  (common-lisp:export 'get-job))
 (common-lisp:progn
@@ -7114,9 +7175,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetJobRun")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetJobRun")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetJobRunResponse" common-lisp:nil)))
  (common-lisp:export 'get-job-run))
 (common-lisp:progn
@@ -7131,9 +7194,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetJobRuns")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetJobRuns")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetJobRunsResponse" common-lisp:nil)))
  (common-lisp:export 'get-job-runs))
 (common-lisp:progn
@@ -7147,9 +7212,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetJobs")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetJobs")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetJobsResponse" common-lisp:nil)))
  (common-lisp:export 'get-jobs))
 (common-lisp:progn
@@ -7163,9 +7230,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetMapping")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetMapping")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetMappingResponse" common-lisp:nil)))
  (common-lisp:export 'get-mapping))
 (common-lisp:progn
@@ -7182,9 +7251,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetPartition")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetPartition")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetPartitionResponse" common-lisp:nil)))
  (common-lisp:export 'get-partition))
 (common-lisp:progn
@@ -7201,9 +7272,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetPartitions")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetPartitions")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetPartitionsResponse" common-lisp:nil)))
  (common-lisp:export 'get-partitions))
 (common-lisp:progn
@@ -7217,9 +7290,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetPlan")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetPlan")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetPlanResponse" common-lisp:nil)))
  (common-lisp:export 'get-plan))
 (common-lisp:progn
@@ -7233,9 +7308,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetTable")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetTable")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetTableResponse" common-lisp:nil)))
  (common-lisp:export 'get-table))
 (common-lisp:progn
@@ -7252,8 +7329,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetTableVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"GetTableVersions")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetTableVersionsResponse" common-lisp:nil)))
@@ -7272,9 +7350,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetTables")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetTables")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetTablesResponse" common-lisp:nil)))
  (common-lisp:export 'get-tables))
 (common-lisp:progn
@@ -7288,9 +7368,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetTrigger")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetTrigger")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetTriggerResponse" common-lisp:nil)))
  (common-lisp:export 'get-trigger))
 (common-lisp:progn
@@ -7306,9 +7388,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetTriggers")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetTriggers")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetTriggersResponse" common-lisp:nil)))
  (common-lisp:export 'get-triggers))
 (common-lisp:progn
@@ -7324,8 +7408,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetUserDefinedFunction")
+                               (common-lisp:append
+                                `(("Action" ,@"GetUserDefinedFunction")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetUserDefinedFunctionResponse" common-lisp:nil)))
@@ -7345,8 +7430,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetUserDefinedFunctions")
+                               (common-lisp:append
+                                `(("Action" ,@"GetUserDefinedFunctions")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetUserDefinedFunctionsResponse" common-lisp:nil)))
@@ -7362,8 +7448,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ImportCatalogToGlue")
+                               (common-lisp:append
+                                `(("Action" ,@"ImportCatalogToGlue")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ImportCatalogToGlueResponse" common-lisp:nil)))
@@ -7379,8 +7466,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ResetJobBookmark")
+                               (common-lisp:append
+                                `(("Action" ,@"ResetJobBookmark")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ResetJobBookmarkResponse" common-lisp:nil)))
@@ -7396,9 +7484,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StartCrawler")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StartCrawler")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StartCrawlerResponse" common-lisp:nil)))
  (common-lisp:export 'start-crawler))
 (common-lisp:progn
@@ -7412,8 +7502,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartCrawlerSchedule")
+                               (common-lisp:append
+                                `(("Action" ,@"StartCrawlerSchedule")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartCrawlerScheduleResponse" common-lisp:nil)))
@@ -7431,9 +7522,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StartJobRun")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StartJobRun")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StartJobRunResponse" common-lisp:nil)))
  (common-lisp:export 'start-job-run))
 (common-lisp:progn
@@ -7447,9 +7540,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StartTrigger")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StartTrigger")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StartTriggerResponse" common-lisp:nil)))
  (common-lisp:export 'start-trigger))
 (common-lisp:progn
@@ -7463,9 +7558,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StopCrawler")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StopCrawler")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StopCrawlerResponse" common-lisp:nil)))
  (common-lisp:export 'stop-crawler))
 (common-lisp:progn
@@ -7479,8 +7576,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StopCrawlerSchedule")
+                               (common-lisp:append
+                                `(("Action" ,@"StopCrawlerSchedule")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StopCrawlerScheduleResponse" common-lisp:nil)))
@@ -7496,9 +7594,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StopTrigger")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StopTrigger")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StopTriggerResponse" common-lisp:nil)))
  (common-lisp:export 'stop-trigger))
 (common-lisp:progn
@@ -7512,8 +7612,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateClassifier")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateClassifier")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateClassifierResponse" common-lisp:nil)))
@@ -7530,8 +7631,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateConnection")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateConnection")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateConnectionResponse" common-lisp:nil)))
@@ -7551,9 +7653,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateCrawler")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateCrawler")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateCrawlerResponse" common-lisp:nil)))
  (common-lisp:export 'update-crawler))
 (common-lisp:progn
@@ -7567,8 +7671,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateCrawlerSchedule")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateCrawlerSchedule")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateCrawlerScheduleResponse" common-lisp:nil)))
@@ -7584,9 +7689,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateDatabase")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDatabase")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateDatabaseResponse" common-lisp:nil)))
  (common-lisp:export 'update-database))
 (common-lisp:progn
@@ -7602,8 +7709,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDevEndpoint")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDevEndpoint")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateDevEndpointResponse" common-lisp:nil)))
@@ -7619,9 +7727,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateJob")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateJobResponse" common-lisp:nil)))
  (common-lisp:export 'update-job))
 (common-lisp:progn
@@ -7638,8 +7748,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdatePartition")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdatePartition")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdatePartitionResponse" common-lisp:nil)))
@@ -7656,9 +7767,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateTable")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateTable")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateTableResponse" common-lisp:nil)))
  (common-lisp:export 'update-table))
 (common-lisp:progn
@@ -7672,9 +7785,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateTrigger")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateTrigger")
+                                  ("Version" ,@"2017-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateTriggerResponse" common-lisp:nil)))
  (common-lisp:export 'update-trigger))
 (common-lisp:progn
@@ -7692,8 +7807,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "glue" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateUserDefinedFunction")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateUserDefinedFunction")
+                                  ("Version" ,@"2017-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateUserDefinedFunctionResponse" common-lisp:nil)))

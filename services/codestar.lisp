@@ -1194,8 +1194,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssociateTeamMember")
+                               (common-lisp:append
+                                `(("Action" ,@"AssociateTeamMember")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AssociateTeamMemberResult" common-lisp:nil)))
@@ -1212,9 +1213,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateProject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateProject")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateProjectResult" common-lisp:nil)))
  (common-lisp:export 'create-project))
 (common-lisp:progn
@@ -1230,8 +1233,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateUserProfile")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateUserProfile")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateUserProfileResult" common-lisp:nil)))
@@ -1248,9 +1252,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteProject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteProject")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteProjectResult" common-lisp:nil)))
  (common-lisp:export 'delete-project))
 (common-lisp:progn
@@ -1264,8 +1270,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteUserProfile")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteUserProfile")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteUserProfileResult" common-lisp:nil)))
@@ -1281,8 +1288,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeProject")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeProject")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeProjectResult" common-lisp:nil)))
@@ -1298,8 +1306,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeUserProfile")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeUserProfile")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeUserProfileResult" common-lisp:nil)))
@@ -1315,8 +1324,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisassociateTeamMember")
+                               (common-lisp:append
+                                `(("Action" ,@"DisassociateTeamMember")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisassociateTeamMemberResult" common-lisp:nil)))
@@ -1332,9 +1342,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListProjects")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListProjects")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListProjectsResult" common-lisp:nil)))
  (common-lisp:export 'list-projects))
 (common-lisp:progn
@@ -1349,9 +1361,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListResources")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListResources")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListResourcesResult" common-lisp:nil)))
  (common-lisp:export 'list-resources))
 (common-lisp:progn
@@ -1366,8 +1380,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTeamMembers")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTeamMembers")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTeamMembersResult" common-lisp:nil)))
@@ -1383,8 +1398,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListUserProfiles")
+                               (common-lisp:append
+                                `(("Action" ,@"ListUserProfiles")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListUserProfilesResult" common-lisp:nil)))
@@ -1400,9 +1416,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateProject")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateProject")
+                                  ("Version" ,@"2017-04-19"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateProjectResult" common-lisp:nil)))
  (common-lisp:export 'update-project))
 (common-lisp:progn
@@ -1419,8 +1437,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateTeamMember")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateTeamMember")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateTeamMemberResult" common-lisp:nil)))
@@ -1438,8 +1457,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codestar" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateUserProfile")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateUserProfile")
+                                  ("Version" ,@"2017-04-19"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateUserProfileResult" common-lisp:nil)))

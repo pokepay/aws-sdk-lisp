@@ -35,7 +35,8 @@
             for input = (gethash "input" options)
             do (format stream "~&~S~%"
                        (compile-operation
-                        service action options
+                        service action (gethash "apiVersion"
+                                                (gethash "metadata" hash)) options
                         (and input
                              (loop for key being each hash-key of (gethash "members"
                                                                            (gethash (gethash "shape" input)

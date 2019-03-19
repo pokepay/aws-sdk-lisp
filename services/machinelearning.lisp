@@ -3244,9 +3244,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons `("Action" ,@"AddTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AddTags")
+                                  ("Version" ,@"2014-12-12"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AddTagsOutput" common-lisp:nil)))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
@@ -3263,8 +3265,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateBatchPrediction")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateBatchPrediction")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateBatchPredictionOutput" common-lisp:nil)))
@@ -3283,8 +3286,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDataSourceFromRDS")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDataSourceFromRDS")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDataSourceFromRDSOutput" common-lisp:nil)))
@@ -3304,8 +3308,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDataSourceFromRedshift")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDataSourceFromRedshift")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDataSourceFromRedshiftOutput" common-lisp:nil)))
@@ -3324,8 +3329,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDataSourceFromS3")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDataSourceFromS3")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDataSourceFromS3Output" common-lisp:nil)))
@@ -3344,8 +3350,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateEvaluation")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateEvaluation")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateEvaluationOutput" common-lisp:nil)))
@@ -3364,9 +3371,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateMLModel")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateMLModel")
+                                  ("Version" ,@"2014-12-12"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateMLModelOutput" common-lisp:nil)))
  (common-lisp:export 'create-mlmodel))
 (common-lisp:progn
@@ -3380,8 +3389,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateRealtimeEndpoint")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateRealtimeEndpoint")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateRealtimeEndpointOutput" common-lisp:nil)))
@@ -3397,8 +3407,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteBatchPrediction")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBatchPrediction")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteBatchPredictionOutput" common-lisp:nil)))
@@ -3414,8 +3425,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDataSource")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDataSource")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteDataSourceOutput" common-lisp:nil)))
@@ -3431,8 +3443,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteEvaluation")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteEvaluation")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteEvaluationOutput" common-lisp:nil)))
@@ -3448,9 +3461,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteMLModel")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteMLModel")
+                                  ("Version" ,@"2014-12-12"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteMLModelOutput" common-lisp:nil)))
  (common-lisp:export 'delete-mlmodel))
 (common-lisp:progn
@@ -3464,8 +3479,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteRealtimeEndpoint")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteRealtimeEndpoint")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteRealtimeEndpointOutput" common-lisp:nil)))
@@ -3482,9 +3498,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTags")
+                                  ("Version" ,@"2014-12-12"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteTagsOutput" common-lisp:nil)))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
@@ -3501,8 +3519,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeBatchPredictions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeBatchPredictions")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeBatchPredictionsOutput" common-lisp:nil)))
@@ -3521,8 +3540,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDataSources")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDataSources")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDataSourcesOutput" common-lisp:nil)))
@@ -3541,8 +3561,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEvaluations")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEvaluations")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEvaluationsOutput" common-lisp:nil)))
@@ -3561,8 +3582,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeMLModels")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeMLModels")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeMLModelsOutput" common-lisp:nil)))
@@ -3578,9 +3600,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTags")
+                                  ("Version" ,@"2014-12-12"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeTagsOutput" common-lisp:nil)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
@@ -3594,8 +3618,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetBatchPrediction")
+                               (common-lisp:append
+                                `(("Action" ,@"GetBatchPrediction")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetBatchPredictionOutput" common-lisp:nil)))
@@ -3611,9 +3636,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetDataSource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDataSource")
+                                  ("Version" ,@"2014-12-12"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDataSourceOutput" common-lisp:nil)))
  (common-lisp:export 'get-data-source))
 (common-lisp:progn
@@ -3627,9 +3654,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetEvaluation")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetEvaluation")
+                                  ("Version" ,@"2014-12-12"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetEvaluationOutput" common-lisp:nil)))
  (common-lisp:export 'get-evaluation))
 (common-lisp:progn
@@ -3643,9 +3672,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetMLModel")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetMLModel")
+                                  ("Version" ,@"2014-12-12"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetMLModelOutput" common-lisp:nil)))
  (common-lisp:export 'get-mlmodel))
 (common-lisp:progn
@@ -3660,9 +3691,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons `("Action" ,@"Predict")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"Predict")
+                                  ("Version" ,@"2014-12-12"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PredictOutput" common-lisp:nil)))
  (common-lisp:export 'predict))
 (common-lisp:progn
@@ -3678,8 +3711,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateBatchPrediction")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateBatchPrediction")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateBatchPredictionOutput" common-lisp:nil)))
@@ -3696,8 +3730,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDataSource")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDataSource")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateDataSourceOutput" common-lisp:nil)))
@@ -3713,8 +3748,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateEvaluation")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateEvaluation")
+                                  ("Version" ,@"2014-12-12"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateEvaluationOutput" common-lisp:nil)))
@@ -3731,8 +3767,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateMLModel")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateMLModel")
+                                  ("Version" ,@"2014-12-12"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateMLModelOutput" common-lisp:nil)))
  (common-lisp:export 'update-mlmodel))

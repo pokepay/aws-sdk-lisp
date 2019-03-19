@@ -5798,9 +5798,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"AssignInstance")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AssignInstance")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'assign-instance))
 (common-lisp:progn
@@ -5814,9 +5816,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"AssignVolume")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AssignVolume")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'assign-volume))
 (common-lisp:progn
@@ -5830,8 +5834,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssociateElasticIp")
+                               (common-lisp:append
+                                `(("Action" ,@"AssociateElasticIp")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -5849,8 +5854,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AttachElasticLoadBalancer")
+                               (common-lisp:append
+                                `(("Action" ,@"AttachElasticLoadBalancer")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -5879,9 +5885,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CloneStack")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CloneStack")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CloneStackResult" common-lisp:nil)))
  (common-lisp:export 'clone-stack))
 (common-lisp:progn
@@ -5900,9 +5908,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateApp")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateApp")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateAppResult" common-lisp:nil)))
  (common-lisp:export 'create-app))
 (common-lisp:progn
@@ -5919,8 +5929,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDeployment")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDeployment")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDeploymentResult" common-lisp:nil)))
@@ -5945,9 +5956,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateInstance")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateInstance")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateInstanceResult" common-lisp:nil)))
  (common-lisp:export 'create-instance))
 (common-lisp:progn
@@ -5973,9 +5986,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateLayer")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateLayer")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateLayerResult" common-lisp:nil)))
  (common-lisp:export 'create-layer))
 (common-lisp:progn
@@ -6001,9 +6016,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateStack")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateStack")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateStackResult" common-lisp:nil)))
  (common-lisp:export 'create-stack))
 (common-lisp:progn
@@ -6020,8 +6037,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateUserProfile")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateUserProfile")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateUserProfileResult" common-lisp:nil)))
@@ -6037,9 +6055,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteApp")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteApp")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-app))
 (common-lisp:progn
@@ -6055,9 +6075,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteInstance")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteInstance")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-instance))
 (common-lisp:progn
@@ -6071,9 +6093,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteLayer")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteLayer")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-layer))
 (common-lisp:progn
@@ -6087,9 +6111,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteStack")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteStack")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-stack))
 (common-lisp:progn
@@ -6103,8 +6129,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteUserProfile")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteUserProfile")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6120,8 +6147,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeregisterEcsCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"DeregisterEcsCluster")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6137,8 +6165,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeregisterElasticIp")
+                               (common-lisp:append
+                                `(("Action" ,@"DeregisterElasticIp")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6154,8 +6183,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeregisterInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"DeregisterInstance")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6172,8 +6202,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeregisterRdsDbInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"DeregisterRdsDbInstance")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6189,8 +6220,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeregisterVolume")
+                               (common-lisp:append
+                                `(("Action" ,@"DeregisterVolume")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6206,8 +6238,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAgentVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAgentVersions")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAgentVersionsResult" common-lisp:nil)))
@@ -6223,9 +6256,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeApps")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeApps")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeAppsResult" common-lisp:nil)))
  (common-lisp:export 'describe-apps))
 (common-lisp:progn
@@ -6240,8 +6275,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCommands")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCommands")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeCommandsResult" common-lisp:nil)))
@@ -6257,8 +6293,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDeployments")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDeployments")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDeploymentsResult" common-lisp:nil)))
@@ -6276,8 +6313,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEcsClusters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEcsClusters")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEcsClustersResult" common-lisp:nil)))
@@ -6293,8 +6331,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeElasticIps")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeElasticIps")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeElasticIpsResult" common-lisp:nil)))
@@ -6311,8 +6350,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeElasticLoadBalancers")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeElasticLoadBalancers")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeElasticLoadBalancersResult" common-lisp:nil)))
@@ -6328,8 +6368,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeInstances")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeInstancesResult" common-lisp:nil)))
@@ -6345,9 +6386,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeLayers")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeLayers")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeLayersResult" common-lisp:nil)))
  (common-lisp:export 'describe-layers))
 (common-lisp:progn
@@ -6362,8 +6405,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeLoadBasedAutoScaling")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeLoadBasedAutoScaling")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeLoadBasedAutoScalingResult" common-lisp:nil)))
@@ -6387,8 +6431,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribePermissions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribePermissions")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribePermissionsResult" common-lisp:nil)))
@@ -6405,8 +6450,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeRaidArrays")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeRaidArrays")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeRaidArraysResult" common-lisp:nil)))
@@ -6423,8 +6469,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeRdsDbInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeRdsDbInstances")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeRdsDbInstancesResult" common-lisp:nil)))
@@ -6441,8 +6488,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeServiceErrors")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeServiceErrors")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeServiceErrorsResult" common-lisp:nil)))
@@ -6459,9 +6507,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeStackProvisioningParameters")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeStackProvisioningParameters")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeStackProvisioningParametersResult" common-lisp:nil)))
@@ -6477,8 +6526,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeStackSummary")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeStackSummary")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeStackSummaryResult" common-lisp:nil)))
@@ -6494,9 +6544,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeStacks")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeStacks")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeStacksResult" common-lisp:nil)))
  (common-lisp:export 'describe-stacks))
 (common-lisp:progn
@@ -6511,8 +6563,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeTimeBasedAutoScaling")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTimeBasedAutoScaling")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeTimeBasedAutoScalingResult" common-lisp:nil)))
@@ -6528,8 +6581,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeUserProfiles")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeUserProfiles")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeUserProfilesResult" common-lisp:nil)))
@@ -6547,8 +6601,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeVolumes")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeVolumes")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeVolumesResult" common-lisp:nil)))
@@ -6566,8 +6621,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DetachElasticLoadBalancer")
+                               (common-lisp:append
+                                `(("Action" ,@"DetachElasticLoadBalancer")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6583,8 +6639,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisassociateElasticIp")
+                               (common-lisp:append
+                                `(("Action" ,@"DisassociateElasticIp")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6600,8 +6657,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetHostnameSuggestion")
+                               (common-lisp:append
+                                `(("Action" ,@"GetHostnameSuggestion")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetHostnameSuggestionResult" common-lisp:nil)))
@@ -6618,9 +6676,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GrantAccess")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GrantAccess")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GrantAccessResult" common-lisp:nil)))
  (common-lisp:export 'grant-access))
 (common-lisp:progn
@@ -6635,9 +6695,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListTags")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListTagsResult" common-lisp:nil)))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
@@ -6651,9 +6713,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RebootInstance")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RebootInstance")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'reboot-instance))
 (common-lisp:progn
@@ -6667,8 +6731,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterEcsCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterEcsCluster")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RegisterEcsClusterResult" common-lisp:nil)))
@@ -6684,8 +6749,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterElasticIp")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterElasticIp")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RegisterElasticIpResult" common-lisp:nil)))
@@ -6705,8 +6771,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterInstance")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RegisterInstanceResult" common-lisp:nil)))
@@ -6724,8 +6791,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterRdsDbInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterRdsDbInstance")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6741,9 +6809,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RegisterVolume")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterVolume")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RegisterVolumeResult" common-lisp:nil)))
  (common-lisp:export 'register-volume))
 (common-lisp:progn
@@ -6759,8 +6829,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetLoadBasedAutoScaling")
+                               (common-lisp:append
+                                `(("Action" ,@"SetLoadBasedAutoScaling")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6778,9 +6849,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"SetPermission")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"SetPermission")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-permission))
 (common-lisp:progn
@@ -6796,8 +6869,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetTimeBasedAutoScaling")
+                               (common-lisp:append
+                                `(("Action" ,@"SetTimeBasedAutoScaling")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6813,9 +6887,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StartInstance")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StartInstance")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'start-instance))
 (common-lisp:progn
@@ -6829,9 +6905,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StartStack")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StartStack")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'start-stack))
 (common-lisp:progn
@@ -6845,9 +6923,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StopInstance")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StopInstance")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'stop-instance))
 (common-lisp:progn
@@ -6861,9 +6941,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StopStack")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StopStack")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'stop-stack))
 (common-lisp:progn
@@ -6877,9 +6959,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"TagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"TagResource")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
@@ -6893,8 +6977,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UnassignInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"UnassignInstance")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6910,9 +6995,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UnassignVolume")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UnassignVolume")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'unassign-volume))
 (common-lisp:progn
@@ -6926,9 +7013,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UntagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UntagResource")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
@@ -6946,9 +7035,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateApp")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateApp")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-app))
 (common-lisp:progn
@@ -6962,8 +7053,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateElasticIp")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateElasticIp")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6985,9 +7077,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateInstance")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateInstance")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-instance))
 (common-lisp:progn
@@ -7013,9 +7107,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateLayer")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateLayer")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-layer))
 (common-lisp:progn
@@ -7029,8 +7125,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateMyUserProfile")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateMyUserProfile")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7047,8 +7144,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateRdsDbInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateRdsDbInstance")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7076,9 +7174,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateStack")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateStack")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-stack))
 (common-lisp:progn
@@ -7095,8 +7195,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateUserProfile")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateUserProfile")
+                                  ("Version" ,@"2013-02-18"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7112,8 +7213,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateVolume")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateVolume")
+                                  ("Version" ,@"2013-02-18"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-volume))

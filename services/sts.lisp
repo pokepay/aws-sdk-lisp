@@ -760,9 +760,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sts" :method :post :params
-                               (common-lisp:cons `("Action" ,@"AssumeRole")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AssumeRole")
+                                  ("Version" ,@"2011-06-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AssumeRoleResponse" "AssumeRoleResult")))
  (common-lisp:export 'assume-role))
 (common-lisp:progn
@@ -779,8 +781,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sts" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssumeRoleWithSAML")
+                               (common-lisp:append
+                                `(("Action" ,@"AssumeRoleWithSAML")
+                                  ("Version" ,@"2011-06-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AssumeRoleWithSAMLResponse" "AssumeRoleWithSAMLResult")))
@@ -800,8 +803,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sts" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssumeRoleWithWebIdentity")
+                               (common-lisp:append
+                                `(("Action" ,@"AssumeRoleWithWebIdentity")
+                                  ("Version" ,@"2011-06-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AssumeRoleWithWebIdentityResponse" "AssumeRoleWithWebIdentityResult")))
@@ -818,8 +822,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sts" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DecodeAuthorizationMessage")
+                               (common-lisp:append
+                                `(("Action" ,@"DecodeAuthorizationMessage")
+                                  ("Version" ,@"2011-06-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DecodeAuthorizationMessageResponse"
@@ -843,8 +848,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sts" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetFederationToken")
+                               (common-lisp:append
+                                `(("Action" ,@"GetFederationToken")
+                                  ("Version" ,@"2011-06-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetFederationTokenResponse" "GetFederationTokenResult")))
@@ -862,8 +868,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sts" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetSessionToken")
+                               (common-lisp:append
+                                `(("Action" ,@"GetSessionToken")
+                                  ("Version" ,@"2011-06-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetSessionTokenResponse" "GetSessionTokenResult")))

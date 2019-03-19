@@ -1652,9 +1652,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CancelCluster")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CancelCluster")
+                                  ("Version" ,@"2016-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CancelClusterResult" common-lisp:nil)))
  (common-lisp:export 'cancel-cluster))
 (common-lisp:progn
@@ -1668,9 +1670,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CancelJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CancelJob")
+                                  ("Version" ,@"2016-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CancelJobResult" common-lisp:nil)))
  (common-lisp:export 'cancel-job))
 (common-lisp:progn
@@ -1684,9 +1688,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateAddress")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateAddress")
+                                  ("Version" ,@"2016-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateAddressResult" common-lisp:nil)))
  (common-lisp:export 'create-address))
 (common-lisp:progn
@@ -1705,9 +1711,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateCluster")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCluster")
+                                  ("Version" ,@"2016-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateClusterResult" common-lisp:nil)))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
@@ -1727,9 +1735,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateJob")
+                                  ("Version" ,@"2016-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateJobResult" common-lisp:nil)))
  (common-lisp:export 'create-job))
 (common-lisp:progn
@@ -1743,8 +1753,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAddress")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAddress")
+                                  ("Version" ,@"2016-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAddressResult" common-lisp:nil)))
@@ -1760,8 +1771,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAddresses")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAddresses")
+                                  ("Version" ,@"2016-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAddressesResult" common-lisp:nil)))
@@ -1777,8 +1789,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCluster")
+                                  ("Version" ,@"2016-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeClusterResult" common-lisp:nil)))
@@ -1794,9 +1807,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeJob")
+                                  ("Version" ,@"2016-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeJobResult" common-lisp:nil)))
  (common-lisp:export 'describe-job))
 (common-lisp:progn
@@ -1810,9 +1825,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetJobManifest")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetJobManifest")
+                                  ("Version" ,@"2016-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetJobManifestResult" common-lisp:nil)))
  (common-lisp:export 'get-job-manifest))
 (common-lisp:progn
@@ -1826,8 +1843,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetJobUnlockCode")
+                               (common-lisp:append
+                                `(("Action" ,@"GetJobUnlockCode")
+                                  ("Version" ,@"2016-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetJobUnlockCodeResult" common-lisp:nil)))
@@ -1851,8 +1869,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListClusterJobs")
+                               (common-lisp:append
+                                `(("Action" ,@"ListClusterJobs")
+                                  ("Version" ,@"2016-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListClusterJobsResult" common-lisp:nil)))
@@ -1868,9 +1887,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListClusters")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListClusters")
+                                  ("Version" ,@"2016-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListClustersResult" common-lisp:nil)))
  (common-lisp:export 'list-clusters))
 (common-lisp:progn
@@ -1884,9 +1905,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListJobs")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListJobs")
+                                  ("Version" ,@"2016-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListJobsResult" common-lisp:nil)))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
@@ -1904,9 +1927,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateCluster")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateCluster")
+                                  ("Version" ,@"2016-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateClusterResult" common-lisp:nil)))
  (common-lisp:export 'update-cluster))
 (common-lisp:progn
@@ -1925,8 +1950,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateJob")
+                                  ("Version" ,@"2016-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateJobResult" common-lisp:nil)))
  (common-lisp:export 'update-job))

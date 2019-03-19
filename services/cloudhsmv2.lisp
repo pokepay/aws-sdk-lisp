@@ -873,9 +873,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateCluster")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCluster")
+                                  ("Version" ,@"2017-04-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateClusterResponse" common-lisp:nil)))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
@@ -890,9 +892,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateHsm")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateHsm")
+                                  ("Version" ,@"2017-04-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateHsmResponse" common-lisp:nil)))
  (common-lisp:export 'create-hsm))
 (common-lisp:progn
@@ -906,9 +910,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteCluster")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCluster")
+                                  ("Version" ,@"2017-04-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteClusterResponse" common-lisp:nil)))
  (common-lisp:export 'delete-cluster))
 (common-lisp:progn
@@ -923,9 +929,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteHsm")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteHsm")
+                                  ("Version" ,@"2017-04-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteHsmResponse" common-lisp:nil)))
  (common-lisp:export 'delete-hsm))
 (common-lisp:progn
@@ -939,8 +947,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeBackups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeBackups")
+                                  ("Version" ,@"2017-04-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeBackupsResponse" common-lisp:nil)))
@@ -956,8 +965,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeClusters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeClusters")
+                                  ("Version" ,@"2017-04-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeClustersResponse" common-lisp:nil)))
@@ -974,8 +984,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"InitializeCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"InitializeCluster")
+                                  ("Version" ,@"2017-04-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "InitializeClusterResponse" common-lisp:nil)))
@@ -992,9 +1003,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListTags")
+                                  ("Version" ,@"2017-04-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListTagsResponse" common-lisp:nil)))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
@@ -1008,9 +1021,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
-                               (common-lisp:cons `("Action" ,@"TagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"TagResource")
+                                  ("Version" ,@"2017-04-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "TagResourceResponse" common-lisp:nil)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
@@ -1024,8 +1039,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UntagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UntagResource")
+                                  ("Version" ,@"2017-04-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UntagResourceResponse" common-lisp:nil)))
  (common-lisp:export 'untag-resource))

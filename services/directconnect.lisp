@@ -2214,9 +2214,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"AllocateConnectionOnInterconnect")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"AllocateConnectionOnInterconnect")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Connection" common-lisp:nil)))
@@ -2236,8 +2237,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AllocateHostedConnection")
+                               (common-lisp:append
+                                `(("Action" ,@"AllocateHostedConnection")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Connection" common-lisp:nil)))
@@ -2257,8 +2259,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AllocatePrivateVirtualInterface")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"AllocatePrivateVirtualInterface")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "VirtualInterface" common-lisp:nil)))
@@ -2278,8 +2282,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AllocatePublicVirtualInterface")
+                               (common-lisp:append
+                                `(("Action" ,@"AllocatePublicVirtualInterface")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "VirtualInterface" common-lisp:nil)))
@@ -2296,8 +2301,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssociateConnectionWithLag")
+                               (common-lisp:append
+                                `(("Action" ,@"AssociateConnectionWithLag")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Connection" common-lisp:nil)))
@@ -2315,8 +2321,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssociateHostedConnection")
+                               (common-lisp:append
+                                `(("Action" ,@"AssociateHostedConnection")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Connection" common-lisp:nil)))
@@ -2334,8 +2341,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssociateVirtualInterface")
+                               (common-lisp:append
+                                `(("Action" ,@"AssociateVirtualInterface")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "VirtualInterface" common-lisp:nil)))
@@ -2351,8 +2359,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ConfirmConnection")
+                               (common-lisp:append
+                                `(("Action" ,@"ConfirmConnection")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ConfirmConnectionResponse" common-lisp:nil)))
@@ -2370,8 +2379,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ConfirmPrivateVirtualInterface")
+                               (common-lisp:append
+                                `(("Action" ,@"ConfirmPrivateVirtualInterface")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ConfirmPrivateVirtualInterfaceResponse" common-lisp:nil)))
@@ -2388,8 +2398,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ConfirmPublicVirtualInterface")
+                               (common-lisp:append
+                                `(("Action" ,@"ConfirmPublicVirtualInterface")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ConfirmPublicVirtualInterfaceResponse" common-lisp:nil)))
@@ -2406,9 +2417,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateBGPPeer")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateBGPPeer")
+                                  ("Version" ,@"2012-10-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateBGPPeerResponse" common-lisp:nil)))
  (common-lisp:export 'create-bgppeer))
 (common-lisp:progn
@@ -2424,8 +2437,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateConnection")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateConnection")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Connection" common-lisp:nil)))
@@ -2443,8 +2457,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateInterconnect")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateInterconnect")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Interconnect" common-lisp:nil)))
@@ -2463,9 +2478,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateLag")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateLag")
+                                  ("Version" ,@"2012-10-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Lag" common-lisp:nil)))
  (common-lisp:export 'create-lag))
 (common-lisp:progn
@@ -2482,8 +2499,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreatePrivateVirtualInterface")
+                               (common-lisp:append
+                                `(("Action" ,@"CreatePrivateVirtualInterface")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "VirtualInterface" common-lisp:nil)))
@@ -2502,8 +2520,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreatePublicVirtualInterface")
+                               (common-lisp:append
+                                `(("Action" ,@"CreatePublicVirtualInterface")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "VirtualInterface" common-lisp:nil)))
@@ -2521,9 +2540,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteBGPPeer")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBGPPeer")
+                                  ("Version" ,@"2012-10-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteBGPPeerResponse" common-lisp:nil)))
  (common-lisp:export 'delete-bgppeer))
 (common-lisp:progn
@@ -2537,8 +2558,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteConnection")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteConnection")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Connection" common-lisp:nil)))
@@ -2554,8 +2576,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteInterconnect")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteInterconnect")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteInterconnectResponse" common-lisp:nil)))
@@ -2571,9 +2594,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteLag")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteLag")
+                                  ("Version" ,@"2012-10-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Lag" common-lisp:nil)))
  (common-lisp:export 'delete-lag))
 (common-lisp:progn
@@ -2587,8 +2612,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteVirtualInterface")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteVirtualInterface")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteVirtualInterfaceResponse" common-lisp:nil)))
@@ -2606,8 +2632,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeConnectionLoa")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeConnectionLoa")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeConnectionLoaResponse" common-lisp:nil)))
@@ -2623,8 +2650,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeConnections")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeConnections")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Connections" common-lisp:nil)))
@@ -2641,9 +2669,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeConnectionsOnInterconnect")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeConnectionsOnInterconnect")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Connections" common-lisp:nil)))
@@ -2660,8 +2689,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeHostedConnections")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeHostedConnections")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Connections" common-lisp:nil)))
@@ -2680,8 +2710,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeInterconnectLoa")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeInterconnectLoa")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeInterconnectLoaResponse" common-lisp:nil)))
@@ -2697,8 +2728,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeInterconnects")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeInterconnects")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Interconnects" common-lisp:nil)))
@@ -2714,9 +2746,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeLags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeLags")
+                                  ("Version" ,@"2012-10-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Lags" common-lisp:nil)))
  (common-lisp:export 'describe-lags))
 (common-lisp:progn
@@ -2732,9 +2766,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeLoa")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeLoa")
+                                  ("Version" ,@"2012-10-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Loa" common-lisp:nil)))
  (common-lisp:export 'describe-loa))
 (common-lisp:progn
@@ -2755,9 +2791,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTags")
+                                  ("Version" ,@"2012-10-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeTagsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
@@ -2781,8 +2819,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeVirtualInterfaces")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeVirtualInterfaces")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "VirtualInterfaces" common-lisp:nil)))
@@ -2799,8 +2838,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisassociateConnectionFromLag")
+                               (common-lisp:append
+                                `(("Action" ,@"DisassociateConnectionFromLag")
+                                  ("Version" ,@"2012-10-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Connection" common-lisp:nil)))
@@ -2816,9 +2856,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons `("Action" ,@"TagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"TagResource")
+                                  ("Version" ,@"2012-10-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "TagResourceResponse" common-lisp:nil)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
@@ -2832,9 +2874,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UntagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UntagResource")
+                                  ("Version" ,@"2012-10-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UntagResourceResponse" common-lisp:nil)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
@@ -2848,8 +2892,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateLag")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateLag")
+                                  ("Version" ,@"2012-10-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "Lag" common-lisp:nil)))
  (common-lisp:export 'update-lag))

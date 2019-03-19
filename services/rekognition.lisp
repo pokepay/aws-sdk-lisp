@@ -1642,9 +1642,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CompareFaces")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CompareFaces")
+                                  ("Version" ,@"2016-06-27"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CompareFacesResponse" common-lisp:nil)))
  (common-lisp:export 'compare-faces))
 (common-lisp:progn
@@ -1658,8 +1660,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateCollection")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCollection")
+                                  ("Version" ,@"2016-06-27"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateCollectionResponse" common-lisp:nil)))
@@ -1675,8 +1678,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteCollection")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCollection")
+                                  ("Version" ,@"2016-06-27"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteCollectionResponse" common-lisp:nil)))
@@ -1692,9 +1696,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteFaces")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteFaces")
+                                  ("Version" ,@"2016-06-27"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteFacesResponse" common-lisp:nil)))
  (common-lisp:export 'delete-faces))
 (common-lisp:progn
@@ -1708,9 +1714,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DetectFaces")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DetectFaces")
+                                  ("Version" ,@"2016-06-27"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DetectFacesResponse" common-lisp:nil)))
  (common-lisp:export 'detect-faces))
 (common-lisp:progn
@@ -1725,9 +1733,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DetectLabels")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DetectLabels")
+                                  ("Version" ,@"2016-06-27"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DetectLabelsResponse" common-lisp:nil)))
  (common-lisp:export 'detect-labels))
 (common-lisp:progn
@@ -1741,8 +1751,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DetectModerationLabels")
+                               (common-lisp:append
+                                `(("Action" ,@"DetectModerationLabels")
+                                  ("Version" ,@"2016-06-27"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DetectModerationLabelsResponse" common-lisp:nil)))
@@ -1758,8 +1769,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetCelebrityInfo")
+                               (common-lisp:append
+                                `(("Action" ,@"GetCelebrityInfo")
+                                  ("Version" ,@"2016-06-27"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetCelebrityInfoResponse" common-lisp:nil)))
@@ -1778,9 +1790,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons `("Action" ,@"IndexFaces")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"IndexFaces")
+                                  ("Version" ,@"2016-06-27"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "IndexFacesResponse" common-lisp:nil)))
  (common-lisp:export 'index-faces))
 (common-lisp:progn
@@ -1794,8 +1808,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListCollections")
+                               (common-lisp:append
+                                `(("Action" ,@"ListCollections")
+                                  ("Version" ,@"2016-06-27"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListCollectionsResponse" common-lisp:nil)))
@@ -1812,9 +1827,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListFaces")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListFaces")
+                                  ("Version" ,@"2016-06-27"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListFacesResponse" common-lisp:nil)))
  (common-lisp:export 'list-faces))
 (common-lisp:progn
@@ -1828,8 +1845,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RecognizeCelebrities")
+                               (common-lisp:append
+                                `(("Action" ,@"RecognizeCelebrities")
+                                  ("Version" ,@"2016-06-27"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RecognizeCelebritiesResponse" common-lisp:nil)))
@@ -1848,9 +1866,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons `("Action" ,@"SearchFaces")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"SearchFaces")
+                                  ("Version" ,@"2016-06-27"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "SearchFacesResponse" common-lisp:nil)))
  (common-lisp:export 'search-faces))
 (common-lisp:progn
@@ -1866,8 +1886,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rekognition" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SearchFacesByImage")
+                               (common-lisp:append
+                                `(("Action" ,@"SearchFacesByImage")
+                                  ("Version" ,@"2016-06-27"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SearchFacesByImageResponse" common-lisp:nil)))

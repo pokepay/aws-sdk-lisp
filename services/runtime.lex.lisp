@@ -543,9 +543,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "runtime.lex" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PostContent")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PostContent")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PostContentResponse" common-lisp:nil)))
  (common-lisp:export 'post-content))
 (common-lisp:progn
@@ -562,8 +564,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "runtime.lex" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PostText")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PostText")
+                                  ("Version" ,@"2016-11-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PostTextResponse" common-lisp:nil)))
  (common-lisp:export 'post-text))

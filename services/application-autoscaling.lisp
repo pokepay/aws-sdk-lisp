@@ -1124,8 +1124,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "application-autoscaling" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteScalingPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteScalingPolicy")
+                                  ("Version" ,@"2016-02-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteScalingPolicyResponse" common-lisp:nil)))
@@ -1145,8 +1146,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "application-autoscaling" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeregisterScalableTarget")
+                               (common-lisp:append
+                                `(("Action" ,@"DeregisterScalableTarget")
+                                  ("Version" ,@"2016-02-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeregisterScalableTargetResponse" common-lisp:nil)))
@@ -1167,8 +1169,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "application-autoscaling" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeScalableTargets")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeScalableTargets")
+                                  ("Version" ,@"2016-02-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeScalableTargetsResponse" common-lisp:nil)))
@@ -1189,8 +1192,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "application-autoscaling" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeScalingActivities")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeScalingActivities")
+                                  ("Version" ,@"2016-02-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeScalingActivitiesResponse" common-lisp:nil)))
@@ -1211,8 +1215,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "application-autoscaling" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeScalingPolicies")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeScalingPolicies")
+                                  ("Version" ,@"2016-02-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeScalingPoliciesResponse" common-lisp:nil)))
@@ -1235,8 +1240,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "application-autoscaling" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutScalingPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"PutScalingPolicy")
+                                  ("Version" ,@"2016-02-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PutScalingPolicyResponse" common-lisp:nil)))
@@ -1256,8 +1262,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "application-autoscaling" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterScalableTarget")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterScalableTarget")
+                                  ("Version" ,@"2016-02-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RegisterScalableTargetResponse" common-lisp:nil)))

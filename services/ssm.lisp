@@ -12487,8 +12487,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddTagsToResource")
+                               (common-lisp:append
+                                `(("Action" ,@"AddTagsToResource")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddTagsToResourceResult" common-lisp:nil)))
@@ -12504,9 +12505,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CancelCommand")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CancelCommand")
+                                  ("Version" ,@"2014-11-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CancelCommandResult" common-lisp:nil)))
  (common-lisp:export 'cancel-command))
 (common-lisp:progn
@@ -12523,8 +12526,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateActivation")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateActivation")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateActivationResult" common-lisp:nil)))
@@ -12544,8 +12548,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateAssociation")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateAssociation")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateAssociationResult" common-lisp:nil)))
@@ -12561,8 +12566,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateAssociationBatch")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateAssociationBatch")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateAssociationBatchResult" common-lisp:nil)))
@@ -12578,9 +12584,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateDocument")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDocument")
+                                  ("Version" ,@"2014-11-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateDocumentResult" common-lisp:nil)))
  (common-lisp:export 'create-document))
 (common-lisp:progn
@@ -12598,8 +12606,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateMaintenanceWindow")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateMaintenanceWindow")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateMaintenanceWindowResult" common-lisp:nil)))
@@ -12621,8 +12630,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreatePatchBaseline")
+                               (common-lisp:append
+                                `(("Action" ,@"CreatePatchBaseline")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreatePatchBaselineResult" common-lisp:nil)))
@@ -12639,8 +12649,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateResourceDataSync")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateResourceDataSync")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateResourceDataSyncResult" common-lisp:nil)))
@@ -12656,8 +12667,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteActivation")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteActivation")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteActivationResult" common-lisp:nil)))
@@ -12674,8 +12686,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteAssociation")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteAssociation")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteAssociationResult" common-lisp:nil)))
@@ -12691,9 +12704,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteDocument")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDocument")
+                                  ("Version" ,@"2014-11-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteDocumentResult" common-lisp:nil)))
  (common-lisp:export 'delete-document))
 (common-lisp:progn
@@ -12708,8 +12723,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteMaintenanceWindow")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteMaintenanceWindow")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteMaintenanceWindowResult" common-lisp:nil)))
@@ -12725,8 +12741,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteParameter")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteParameter")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteParameterResult" common-lisp:nil)))
@@ -12742,8 +12759,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteParameters")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteParameters")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteParametersResult" common-lisp:nil)))
@@ -12759,8 +12777,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeletePatchBaseline")
+                               (common-lisp:append
+                                `(("Action" ,@"DeletePatchBaseline")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeletePatchBaselineResult" common-lisp:nil)))
@@ -12777,8 +12796,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteResourceDataSync")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteResourceDataSync")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteResourceDataSyncResult" common-lisp:nil)))
@@ -12795,8 +12815,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeregisterManagedInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"DeregisterManagedInstance")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeregisterManagedInstanceResult" common-lisp:nil)))
@@ -12813,9 +12834,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DeregisterPatchBaselineForPatchGroup")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DeregisterPatchBaselineForPatchGroup")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeregisterPatchBaselineForPatchGroupResult" common-lisp:nil)))
@@ -12833,9 +12855,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DeregisterTargetFromMaintenanceWindow")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DeregisterTargetFromMaintenanceWindow")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeregisterTargetFromMaintenanceWindowResult" common-lisp:nil)))
@@ -12852,9 +12875,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DeregisterTaskFromMaintenanceWindow")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DeregisterTaskFromMaintenanceWindow")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeregisterTaskFromMaintenanceWindowResult" common-lisp:nil)))
@@ -12870,8 +12894,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeActivations")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeActivations")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeActivationsResult" common-lisp:nil)))
@@ -12890,8 +12915,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAssociation")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAssociation")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAssociationResult" common-lisp:nil)))
@@ -12908,8 +12934,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAutomationExecutions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAutomationExecutions")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAutomationExecutionsResult" common-lisp:nil)))
@@ -12926,8 +12953,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAvailablePatches")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAvailablePatches")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAvailablePatchesResult" common-lisp:nil)))
@@ -12943,8 +12971,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDocument")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDocument")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDocumentResult" common-lisp:nil)))
@@ -12961,8 +12990,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDocumentPermission")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDocumentPermission")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDocumentPermissionResponse" common-lisp:nil)))
@@ -12980,9 +13010,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeEffectiveInstanceAssociations")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeEffectiveInstanceAssociations")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEffectiveInstanceAssociationsResult" common-lisp:nil)))
@@ -13000,9 +13031,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeEffectivePatchesForPatchBaseline")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeEffectivePatchesForPatchBaseline")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEffectivePatchesForPatchBaselineResult" common-lisp:nil)))
@@ -13020,9 +13052,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeInstanceAssociationsStatus")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeInstanceAssociationsStatus")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeInstanceAssociationsStatusResult" common-lisp:nil)))
@@ -13042,8 +13075,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeInstanceInformation")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeInstanceInformation")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeInstanceInformationResult" common-lisp:nil)))
@@ -13061,8 +13095,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeInstancePatchStates")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeInstancePatchStates")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeInstancePatchStatesResult" common-lisp:nil)))
@@ -13081,9 +13116,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeInstancePatchStatesForPatchGroup")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeInstancePatchStatesForPatchGroup")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeInstancePatchStatesForPatchGroupResult" common-lisp:nil)))
@@ -13102,8 +13138,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeInstancePatches")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeInstancePatches")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeInstancePatchesResult" common-lisp:nil)))
@@ -13123,9 +13160,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeMaintenanceWindowExecutionTaskInvocations")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeMaintenanceWindowExecutionTaskInvocations")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeMaintenanceWindowExecutionTaskInvocationsResult"
@@ -13145,9 +13183,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeMaintenanceWindowExecutionTasks")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeMaintenanceWindowExecutionTasks")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeMaintenanceWindowExecutionTasksResult" common-lisp:nil)))
@@ -13165,9 +13204,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeMaintenanceWindowExecutions")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeMaintenanceWindowExecutions")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeMaintenanceWindowExecutionsResult" common-lisp:nil)))
@@ -13185,9 +13225,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeMaintenanceWindowTargets")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeMaintenanceWindowTargets")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeMaintenanceWindowTargetsResult" common-lisp:nil)))
@@ -13205,8 +13246,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeMaintenanceWindowTasks")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeMaintenanceWindowTasks")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeMaintenanceWindowTasksResult" common-lisp:nil)))
@@ -13223,8 +13265,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeMaintenanceWindows")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeMaintenanceWindows")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeMaintenanceWindowsResult" common-lisp:nil)))
@@ -13242,8 +13285,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeParameters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeParameters")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeParametersResult" common-lisp:nil)))
@@ -13259,8 +13303,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribePatchBaselines")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribePatchBaselines")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribePatchBaselinesResult" common-lisp:nil)))
@@ -13277,8 +13322,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribePatchGroupState")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribePatchGroupState")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribePatchGroupStateResult" common-lisp:nil)))
@@ -13294,8 +13340,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribePatchGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribePatchGroups")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribePatchGroupsResult" common-lisp:nil)))
@@ -13311,8 +13358,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetAutomationExecution")
+                               (common-lisp:append
+                                `(("Action" ,@"GetAutomationExecution")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetAutomationExecutionResult" common-lisp:nil)))
@@ -13329,8 +13377,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetCommandInvocation")
+                               (common-lisp:append
+                                `(("Action" ,@"GetCommandInvocation")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetCommandInvocationResult" common-lisp:nil)))
@@ -13347,8 +13396,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDefaultPatchBaseline")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDefaultPatchBaseline")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDefaultPatchBaselineResult" common-lisp:nil)))
@@ -13365,9 +13415,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"GetDeployablePatchSnapshotForInstance")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetDeployablePatchSnapshotForInstance")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDeployablePatchSnapshotForInstanceResult" common-lisp:nil)))
@@ -13383,9 +13434,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetDocument")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDocument")
+                                  ("Version" ,@"2014-11-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDocumentResult" common-lisp:nil)))
  (common-lisp:export 'get-document))
 (common-lisp:progn
@@ -13401,9 +13454,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetInventory")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetInventory")
+                                  ("Version" ,@"2014-11-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetInventoryResult" common-lisp:nil)))
  (common-lisp:export 'get-inventory))
 (common-lisp:progn
@@ -13419,8 +13474,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetInventorySchema")
+                               (common-lisp:append
+                                `(("Action" ,@"GetInventorySchema")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetInventorySchemaResult" common-lisp:nil)))
@@ -13436,8 +13492,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetMaintenanceWindow")
+                               (common-lisp:append
+                                `(("Action" ,@"GetMaintenanceWindow")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetMaintenanceWindowResult" common-lisp:nil)))
@@ -13454,8 +13511,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetMaintenanceWindowExecution")
+                               (common-lisp:append
+                                `(("Action" ,@"GetMaintenanceWindowExecution")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetMaintenanceWindowExecutionResult" common-lisp:nil)))
@@ -13472,9 +13530,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"GetMaintenanceWindowExecutionTask")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetMaintenanceWindowExecutionTask")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetMaintenanceWindowExecutionTaskResult" common-lisp:nil)))
@@ -13493,9 +13552,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"GetMaintenanceWindowExecutionTaskInvocation")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetMaintenanceWindowExecutionTaskInvocation")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetMaintenanceWindowExecutionTaskInvocationResult" common-lisp:nil)))
@@ -13512,8 +13572,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetMaintenanceWindowTask")
+                               (common-lisp:append
+                                `(("Action" ,@"GetMaintenanceWindowTask")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetMaintenanceWindowTaskResult" common-lisp:nil)))
@@ -13529,9 +13590,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetParameter")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetParameter")
+                                  ("Version" ,@"2014-11-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetParameterResult" common-lisp:nil)))
  (common-lisp:export 'get-parameter))
 (common-lisp:progn
@@ -13547,8 +13610,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetParameterHistory")
+                               (common-lisp:append
+                                `(("Action" ,@"GetParameterHistory")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetParameterHistoryResult" common-lisp:nil)))
@@ -13564,9 +13628,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetParameters")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetParameters")
+                                  ("Version" ,@"2014-11-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetParametersResult" common-lisp:nil)))
  (common-lisp:export 'get-parameters))
 (common-lisp:progn
@@ -13583,8 +13649,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetParametersByPath")
+                               (common-lisp:append
+                                `(("Action" ,@"GetParametersByPath")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetParametersByPathResult" common-lisp:nil)))
@@ -13600,8 +13667,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetPatchBaseline")
+                               (common-lisp:append
+                                `(("Action" ,@"GetPatchBaseline")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetPatchBaselineResult" common-lisp:nil)))
@@ -13618,8 +13686,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetPatchBaselineForPatchGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"GetPatchBaselineForPatchGroup")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetPatchBaselineForPatchGroupResult" common-lisp:nil)))
@@ -13637,8 +13706,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListAssociationVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListAssociationVersions")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListAssociationVersionsResult" common-lisp:nil)))
@@ -13656,8 +13726,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListAssociations")
+                               (common-lisp:append
+                                `(("Action" ,@"ListAssociations")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListAssociationsResult" common-lisp:nil)))
@@ -13676,8 +13747,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListCommandInvocations")
+                               (common-lisp:append
+                                `(("Action" ,@"ListCommandInvocations")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListCommandInvocationsResult" common-lisp:nil)))
@@ -13696,9 +13768,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListCommands")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListCommands")
+                                  ("Version" ,@"2014-11-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListCommandsResult" common-lisp:nil)))
  (common-lisp:export 'list-commands))
 (common-lisp:progn
@@ -13715,8 +13789,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListComplianceItems")
+                               (common-lisp:append
+                                `(("Action" ,@"ListComplianceItems")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListComplianceItemsResult" common-lisp:nil)))
@@ -13733,8 +13808,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListComplianceSummaries")
+                               (common-lisp:append
+                                `(("Action" ,@"ListComplianceSummaries")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListComplianceSummariesResult" common-lisp:nil)))
@@ -13750,8 +13826,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDocumentVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDocumentVersions")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDocumentVersionsResult" common-lisp:nil)))
@@ -13769,9 +13846,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListDocuments")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListDocuments")
+                                  ("Version" ,@"2014-11-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListDocumentsResult" common-lisp:nil)))
  (common-lisp:export 'list-documents))
 (common-lisp:progn
@@ -13788,8 +13867,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListInventoryEntries")
+                               (common-lisp:append
+                                `(("Action" ,@"ListInventoryEntries")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListInventoryEntriesResult" common-lisp:nil)))
@@ -13806,8 +13886,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListResourceComplianceSummaries")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ListResourceComplianceSummaries")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListResourceComplianceSummariesResult" common-lisp:nil)))
@@ -13823,8 +13905,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListResourceDataSync")
+                               (common-lisp:append
+                                `(("Action" ,@"ListResourceDataSync")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListResourceDataSyncResult" common-lisp:nil)))
@@ -13840,8 +13923,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsForResource")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsForResource")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTagsForResourceResult" common-lisp:nil)))
@@ -13861,8 +13945,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyDocumentPermission")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyDocumentPermission")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyDocumentPermissionResponse" common-lisp:nil)))
@@ -13881,8 +13966,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutComplianceItems")
+                               (common-lisp:append
+                                `(("Action" ,@"PutComplianceItems")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PutComplianceItemsResult" common-lisp:nil)))
@@ -13898,9 +13984,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutInventory")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutInventory")
+                                  ("Version" ,@"2014-11-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutInventoryResult" common-lisp:nil)))
  (common-lisp:export 'put-inventory))
 (common-lisp:progn
@@ -13917,9 +14005,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutParameter")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutParameter")
+                                  ("Version" ,@"2014-11-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutParameterResult" common-lisp:nil)))
  (common-lisp:export 'put-parameter))
 (common-lisp:progn
@@ -13934,8 +14024,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterDefaultPatchBaseline")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterDefaultPatchBaseline")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RegisterDefaultPatchBaselineResult" common-lisp:nil)))
@@ -13952,9 +14043,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"RegisterPatchBaselineForPatchGroup")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"RegisterPatchBaselineForPatchGroup")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RegisterPatchBaselineForPatchGroupResult" common-lisp:nil)))
@@ -13974,9 +14066,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"RegisterTargetWithMaintenanceWindow")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"RegisterTargetWithMaintenanceWindow")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RegisterTargetWithMaintenanceWindowResult" common-lisp:nil)))
@@ -13999,9 +14092,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"RegisterTaskWithMaintenanceWindow")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"RegisterTaskWithMaintenanceWindow")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RegisterTaskWithMaintenanceWindowResult" common-lisp:nil)))
@@ -14019,8 +14113,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveTagsFromResource")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveTagsFromResource")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RemoveTagsFromResourceResult" common-lisp:nil)))
@@ -14038,8 +14133,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SendAutomationSignal")
+                               (common-lisp:append
+                                `(("Action" ,@"SendAutomationSignal")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SendAutomationSignalResult" common-lisp:nil)))
@@ -14063,9 +14159,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"SendCommand")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"SendCommand")
+                                  ("Version" ,@"2014-11-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "SendCommandResult" common-lisp:nil)))
  (common-lisp:export 'send-command))
 (common-lisp:progn
@@ -14082,8 +14180,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartAutomationExecution")
+                               (common-lisp:append
+                                `(("Action" ,@"StartAutomationExecution")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartAutomationExecutionResult" common-lisp:nil)))
@@ -14100,8 +14199,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StopAutomationExecution")
+                               (common-lisp:append
+                                `(("Action" ,@"StopAutomationExecution")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StopAutomationExecutionResult" common-lisp:nil)))
@@ -14122,8 +14222,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateAssociation")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateAssociation")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateAssociationResult" common-lisp:nil)))
@@ -14141,8 +14242,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateAssociationStatus")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateAssociationStatus")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateAssociationStatusResult" common-lisp:nil)))
@@ -14158,9 +14260,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateDocument")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDocument")
+                                  ("Version" ,@"2014-11-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateDocumentResult" common-lisp:nil)))
  (common-lisp:export 'update-document))
 (common-lisp:progn
@@ -14175,8 +14279,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDocumentDefaultVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDocumentDefaultVersion")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateDocumentDefaultVersionResult" common-lisp:nil)))
@@ -14197,8 +14302,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateMaintenanceWindow")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateMaintenanceWindow")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateMaintenanceWindowResult" common-lisp:nil)))
@@ -14218,8 +14324,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateMaintenanceWindowTarget")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateMaintenanceWindowTarget")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateMaintenanceWindowTargetResult" common-lisp:nil)))
@@ -14242,8 +14349,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateMaintenanceWindowTask")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateMaintenanceWindowTask")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateMaintenanceWindowTaskResult" common-lisp:nil)))
@@ -14260,8 +14368,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateManagedInstanceRole")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateManagedInstanceRole")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateManagedInstanceRoleResult" common-lisp:nil)))
@@ -14283,8 +14392,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "ssm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdatePatchBaseline")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdatePatchBaseline")
+                                  ("Version" ,@"2014-11-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdatePatchBaselineResult" common-lisp:nil)))

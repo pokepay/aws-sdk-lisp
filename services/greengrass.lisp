@@ -4479,8 +4479,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssociateRoleToGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"AssociateRoleToGroup")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AssociateRoleToGroupResponse" common-lisp:nil)))
@@ -4497,8 +4498,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssociateServiceRoleToAccount")
+                               (common-lisp:append
+                                `(("Action" ,@"AssociateServiceRoleToAccount")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AssociateServiceRoleToAccountResponse" common-lisp:nil)))
@@ -4515,8 +4517,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateCoreDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCoreDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateCoreDefinitionResponse" common-lisp:nil)))
@@ -4535,8 +4538,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateCoreDefinitionVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCoreDefinitionVersion")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateCoreDefinitionVersionResponse" common-lisp:nil)))
@@ -4555,8 +4559,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDeployment")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDeployment")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDeploymentResponse" common-lisp:nil)))
@@ -4573,8 +4578,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDeviceDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDeviceDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDeviceDefinitionResponse" common-lisp:nil)))
@@ -4593,8 +4599,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDeviceDefinitionVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDeviceDefinitionVersion")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDeviceDefinitionVersionResponse" common-lisp:nil)))
@@ -4612,8 +4619,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateFunctionDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateFunctionDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateFunctionDefinitionResponse" common-lisp:nil)))
@@ -4632,8 +4640,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateFunctionDefinitionVersion")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"CreateFunctionDefinitionVersion")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateFunctionDefinitionVersionResponse" common-lisp:nil)))
@@ -4650,9 +4660,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateGroup")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateGroup")
+                                  ("Version" ,@"2017-06-07"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateGroupResponse" common-lisp:nil)))
  (common-lisp:export 'create-group))
 (common-lisp:progn
@@ -4667,8 +4679,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateGroupCertificateAuthority")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"CreateGroupCertificateAuthority")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateGroupCertificateAuthorityResponse" common-lisp:nil)))
@@ -4691,8 +4705,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateGroupVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateGroupVersion")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateGroupVersionResponse" common-lisp:nil)))
@@ -4709,8 +4724,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateLoggerDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateLoggerDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateLoggerDefinitionResponse" common-lisp:nil)))
@@ -4729,8 +4745,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateLoggerDefinitionVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateLoggerDefinitionVersion")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateLoggerDefinitionVersionResponse" common-lisp:nil)))
@@ -4748,8 +4765,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateSubscriptionDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateSubscriptionDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateSubscriptionDefinitionResponse" common-lisp:nil)))
@@ -4769,9 +4787,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"CreateSubscriptionDefinitionVersion")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"CreateSubscriptionDefinitionVersion")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateSubscriptionDefinitionVersionResponse" common-lisp:nil)))
@@ -4787,8 +4806,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteCoreDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCoreDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteCoreDefinitionResponse" common-lisp:nil)))
@@ -4804,8 +4824,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDeviceDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDeviceDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteDeviceDefinitionResponse" common-lisp:nil)))
@@ -4822,8 +4843,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteFunctionDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteFunctionDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteFunctionDefinitionResponse" common-lisp:nil)))
@@ -4839,9 +4861,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteGroup")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteGroup")
+                                  ("Version" ,@"2017-06-07"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteGroupResponse" common-lisp:nil)))
  (common-lisp:export 'delete-group))
 (common-lisp:progn
@@ -4855,8 +4879,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteLoggerDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteLoggerDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteLoggerDefinitionResponse" common-lisp:nil)))
@@ -4873,8 +4898,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteSubscriptionDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteSubscriptionDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteSubscriptionDefinitionResponse" common-lisp:nil)))
@@ -4891,8 +4917,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisassociateRoleFromGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DisassociateRoleFromGroup")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisassociateRoleFromGroupResponse" common-lisp:nil)))
@@ -4916,8 +4943,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetAssociatedRole")
+                               (common-lisp:append
+                                `(("Action" ,@"GetAssociatedRole")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetAssociatedRoleResponse" common-lisp:nil)))
@@ -4933,8 +4961,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetConnectivityInfo")
+                               (common-lisp:append
+                                `(("Action" ,@"GetConnectivityInfo")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetConnectivityInfoResponse" common-lisp:nil)))
@@ -4950,8 +4979,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetCoreDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"GetCoreDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetCoreDefinitionResponse" common-lisp:nil)))
@@ -4970,8 +5000,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetCoreDefinitionVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"GetCoreDefinitionVersion")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetCoreDefinitionVersionResponse" common-lisp:nil)))
@@ -4987,8 +5018,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDeploymentStatus")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDeploymentStatus")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDeploymentStatusResponse" common-lisp:nil)))
@@ -5004,8 +5036,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDeviceDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDeviceDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDeviceDefinitionResponse" common-lisp:nil)))
@@ -5024,8 +5057,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDeviceDefinitionVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDeviceDefinitionVersion")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDeviceDefinitionVersionResponse" common-lisp:nil)))
@@ -5041,8 +5075,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetFunctionDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"GetFunctionDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetFunctionDefinitionResponse" common-lisp:nil)))
@@ -5062,8 +5097,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetFunctionDefinitionVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"GetFunctionDefinitionVersion")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetFunctionDefinitionVersionResponse" common-lisp:nil)))
@@ -5079,9 +5115,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetGroup")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetGroup")
+                                  ("Version" ,@"2017-06-07"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetGroupResponse" common-lisp:nil)))
  (common-lisp:export 'get-group))
 (common-lisp:progn
@@ -5097,8 +5135,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetGroupCertificateAuthority")
+                               (common-lisp:append
+                                `(("Action" ,@"GetGroupCertificateAuthority")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetGroupCertificateAuthorityResponse" common-lisp:nil)))
@@ -5115,9 +5154,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"GetGroupCertificateConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetGroupCertificateConfiguration")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetGroupCertificateConfigurationResponse" common-lisp:nil)))
@@ -5133,8 +5173,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetGroupVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"GetGroupVersion")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetGroupVersionResponse" common-lisp:nil)))
@@ -5150,8 +5191,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetLoggerDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"GetLoggerDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetLoggerDefinitionResponse" common-lisp:nil)))
@@ -5170,8 +5212,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetLoggerDefinitionVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"GetLoggerDefinitionVersion")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetLoggerDefinitionVersionResponse" common-lisp:nil)))
@@ -5196,8 +5239,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetSubscriptionDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"GetSubscriptionDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetSubscriptionDefinitionResponse" common-lisp:nil)))
@@ -5217,9 +5261,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"GetSubscriptionDefinitionVersion")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"GetSubscriptionDefinitionVersion")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetSubscriptionDefinitionVersionResponse" common-lisp:nil)))
@@ -5238,8 +5283,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListCoreDefinitionVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListCoreDefinitionVersions")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListCoreDefinitionVersionsResponse" common-lisp:nil)))
@@ -5255,8 +5301,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListCoreDefinitions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListCoreDefinitions")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListCoreDefinitionsResponse" common-lisp:nil)))
@@ -5273,8 +5320,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDeployments")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDeployments")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDeploymentsResponse" common-lisp:nil)))
@@ -5293,8 +5341,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDeviceDefinitionVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDeviceDefinitionVersions")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDeviceDefinitionVersionsResponse" common-lisp:nil)))
@@ -5310,8 +5359,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDeviceDefinitions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDeviceDefinitions")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDeviceDefinitionsResponse" common-lisp:nil)))
@@ -5330,8 +5380,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListFunctionDefinitionVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListFunctionDefinitionVersions")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListFunctionDefinitionVersionsResponse" common-lisp:nil)))
@@ -5348,8 +5399,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListFunctionDefinitions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListFunctionDefinitions")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListFunctionDefinitionsResponse" common-lisp:nil)))
@@ -5366,8 +5418,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListGroupCertificateAuthorities")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ListGroupCertificateAuthorities")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListGroupCertificateAuthoritiesResponse" common-lisp:nil)))
@@ -5384,8 +5438,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListGroupVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListGroupVersions")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListGroupVersionsResponse" common-lisp:nil)))
@@ -5401,9 +5456,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListGroups")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListGroups")
+                                  ("Version" ,@"2017-06-07"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListGroupsResponse" common-lisp:nil)))
  (common-lisp:export 'list-groups))
 (common-lisp:progn
@@ -5420,8 +5477,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListLoggerDefinitionVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListLoggerDefinitionVersions")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListLoggerDefinitionVersionsResponse" common-lisp:nil)))
@@ -5437,8 +5495,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListLoggerDefinitions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListLoggerDefinitions")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListLoggerDefinitionsResponse" common-lisp:nil)))
@@ -5457,9 +5516,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"ListSubscriptionDefinitionVersions")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ListSubscriptionDefinitionVersions")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListSubscriptionDefinitionVersionsResponse" common-lisp:nil)))
@@ -5476,8 +5536,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListSubscriptionDefinitions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListSubscriptionDefinitions")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListSubscriptionDefinitionsResponse" common-lisp:nil)))
@@ -5493,8 +5554,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateConnectivityInfo")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateConnectivityInfo")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateConnectivityInfoResponse" common-lisp:nil)))
@@ -5510,8 +5572,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateCoreDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateCoreDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateCoreDefinitionResponse" common-lisp:nil)))
@@ -5527,8 +5590,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDeviceDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDeviceDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateDeviceDefinitionResponse" common-lisp:nil)))
@@ -5545,8 +5609,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateFunctionDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateFunctionDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateFunctionDefinitionResponse" common-lisp:nil)))
@@ -5562,9 +5627,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :put :params
-                               (common-lisp:cons `("Action" ,@"UpdateGroup")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateGroup")
+                                  ("Version" ,@"2017-06-07"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateGroupResponse" common-lisp:nil)))
  (common-lisp:export 'update-group))
 (common-lisp:progn
@@ -5581,9 +5648,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :put :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"UpdateGroupCertificateConfiguration")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"UpdateGroupCertificateConfiguration")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateGroupCertificateConfigurationResponse" common-lisp:nil)))
@@ -5599,8 +5667,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateLoggerDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateLoggerDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateLoggerDefinitionResponse" common-lisp:nil)))
@@ -5618,8 +5687,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "greengrass" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateSubscriptionDefinition")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateSubscriptionDefinition")
+                                  ("Version" ,@"2017-06-07"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateSubscriptionDefinitionResponse" common-lisp:nil)))

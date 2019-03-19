@@ -1208,8 +1208,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssociateCreatedArtifact")
+                               (common-lisp:append
+                                `(("Action" ,@"AssociateCreatedArtifact")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AssociateCreatedArtifactResult" common-lisp:nil)))
@@ -1229,8 +1230,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AssociateDiscoveredResource")
+                               (common-lisp:append
+                                `(("Action" ,@"AssociateDiscoveredResource")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AssociateDiscoveredResourceResult" common-lisp:nil)))
@@ -1248,8 +1250,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateProgressUpdateStream")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateProgressUpdateStream")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateProgressUpdateStreamResult" common-lisp:nil)))
@@ -1267,8 +1270,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteProgressUpdateStream")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteProgressUpdateStream")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteProgressUpdateStreamResult" common-lisp:nil)))
@@ -1285,8 +1289,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeApplicationState")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeApplicationState")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeApplicationStateResult" common-lisp:nil)))
@@ -1304,8 +1309,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeMigrationTask")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeMigrationTask")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeMigrationTaskResult" common-lisp:nil)))
@@ -1325,8 +1331,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisassociateCreatedArtifact")
+                               (common-lisp:append
+                                `(("Action" ,@"DisassociateCreatedArtifact")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisassociateCreatedArtifactResult" common-lisp:nil)))
@@ -1346,8 +1353,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisassociateDiscoveredResource")
+                               (common-lisp:append
+                                `(("Action" ,@"DisassociateDiscoveredResource")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisassociateDiscoveredResourceResult" common-lisp:nil)))
@@ -1365,8 +1373,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ImportMigrationTask")
+                               (common-lisp:append
+                                `(("Action" ,@"ImportMigrationTask")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ImportMigrationTaskResult" common-lisp:nil)))
@@ -1385,8 +1394,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListCreatedArtifacts")
+                               (common-lisp:append
+                                `(("Action" ,@"ListCreatedArtifacts")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListCreatedArtifactsResult" common-lisp:nil)))
@@ -1406,8 +1416,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDiscoveredResources")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDiscoveredResources")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDiscoveredResourcesResult" common-lisp:nil)))
@@ -1424,8 +1435,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListMigrationTasks")
+                               (common-lisp:append
+                                `(("Action" ,@"ListMigrationTasks")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListMigrationTasksResult" common-lisp:nil)))
@@ -1442,8 +1454,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListProgressUpdateStreams")
+                               (common-lisp:append
+                                `(("Action" ,@"ListProgressUpdateStreams")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListProgressUpdateStreamsResult" common-lisp:nil)))
@@ -1459,8 +1472,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"NotifyApplicationState")
+                               (common-lisp:append
+                                `(("Action" ,@"NotifyApplicationState")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "NotifyApplicationStateResult" common-lisp:nil)))
@@ -1481,8 +1495,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"NotifyMigrationTaskState")
+                               (common-lisp:append
+                                `(("Action" ,@"NotifyMigrationTaskState")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "NotifyMigrationTaskStateResult" common-lisp:nil)))
@@ -1501,8 +1516,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mgh" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutResourceAttributes")
+                               (common-lisp:append
+                                `(("Action" ,@"PutResourceAttributes")
+                                  ("Version" ,@"2017-05-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PutResourceAttributesResult" common-lisp:nil)))

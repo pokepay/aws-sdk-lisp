@@ -1672,9 +1672,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"AssociateConfigurationItemsToApplication")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"AssociateConfigurationItemsToApplication")
+                                  ("Version" ,@"2015-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AssociateConfigurationItemsToApplicationResponse" common-lisp:nil)))
@@ -1690,8 +1691,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateApplication")
+                                  ("Version" ,@"2015-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateApplicationResponse" common-lisp:nil)))
@@ -1707,9 +1709,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateTags")
+                                  ("Version" ,@"2015-11-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateTagsResponse" common-lisp:nil)))
  (common-lisp:export 'create-tags))
 (common-lisp:progn
@@ -1723,8 +1727,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteApplications")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteApplications")
+                                  ("Version" ,@"2015-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteApplicationsResponse" common-lisp:nil)))
@@ -1740,9 +1745,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTags")
+                                  ("Version" ,@"2015-11-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteTagsResponse" common-lisp:nil)))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
@@ -1757,9 +1764,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeAgents")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAgents")
+                                  ("Version" ,@"2015-11-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeAgentsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-agents))
 (common-lisp:progn
@@ -1773,8 +1782,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeConfigurations")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeConfigurations")
+                                  ("Version" ,@"2015-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeConfigurationsResponse" common-lisp:nil)))
@@ -1792,8 +1802,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeExportConfigurations")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeExportConfigurations")
+                                  ("Version" ,@"2015-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeExportConfigurationsResponse" common-lisp:nil)))
@@ -1811,8 +1822,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeExportTasks")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeExportTasks")
+                                  ("Version" ,@"2015-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeExportTasksResponse" common-lisp:nil)))
@@ -1828,9 +1840,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTags")
+                                  ("Version" ,@"2015-11-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeTagsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
@@ -1847,9 +1861,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DisassociateConfigurationItemsFromApplication")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DisassociateConfigurationItemsFromApplication")
+                                  ("Version" ,@"2015-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisassociateConfigurationItemsFromApplicationResponse"
@@ -1884,8 +1899,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListConfigurations")
+                               (common-lisp:append
+                                `(("Action" ,@"ListConfigurations")
+                                  ("Version" ,@"2015-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListConfigurationsResponse" common-lisp:nil)))
@@ -1904,8 +1920,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListServerNeighbors")
+                               (common-lisp:append
+                                `(("Action" ,@"ListServerNeighbors")
+                                  ("Version" ,@"2015-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListServerNeighborsResponse" common-lisp:nil)))
@@ -1922,8 +1939,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartDataCollectionByAgentIds")
+                               (common-lisp:append
+                                `(("Action" ,@"StartDataCollectionByAgentIds")
+                                  ("Version" ,@"2015-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartDataCollectionByAgentIdsResponse" common-lisp:nil)))
@@ -1941,8 +1959,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartExportTask")
+                               (common-lisp:append
+                                `(("Action" ,@"StartExportTask")
+                                  ("Version" ,@"2015-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartExportTaskResponse" common-lisp:nil)))
@@ -1959,8 +1978,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StopDataCollectionByAgentIds")
+                               (common-lisp:append
+                                `(("Action" ,@"StopDataCollectionByAgentIds")
+                                  ("Version" ,@"2015-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StopDataCollectionByAgentIdsResponse" common-lisp:nil)))
@@ -1977,8 +1997,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateApplication")
+                                  ("Version" ,@"2015-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateApplicationResponse" common-lisp:nil)))

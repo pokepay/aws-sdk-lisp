@@ -1763,8 +1763,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CheckDomainAvailability")
+                               (common-lisp:append
+                                `(("Action" ,@"CheckDomainAvailability")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CheckDomainAvailabilityResponse" common-lisp:nil)))
@@ -1780,8 +1781,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteTagsForDomain")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTagsForDomain")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteTagsForDomainResponse" common-lisp:nil)))
@@ -1798,8 +1800,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisableDomainAutoRenew")
+                               (common-lisp:append
+                                `(("Action" ,@"DisableDomainAutoRenew")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisableDomainAutoRenewResponse" common-lisp:nil)))
@@ -1816,8 +1819,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisableDomainTransferLock")
+                               (common-lisp:append
+                                `(("Action" ,@"DisableDomainTransferLock")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisableDomainTransferLockResponse" common-lisp:nil)))
@@ -1833,8 +1837,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"EnableDomainAutoRenew")
+                               (common-lisp:append
+                                `(("Action" ,@"EnableDomainAutoRenew")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EnableDomainAutoRenewResponse" common-lisp:nil)))
@@ -1851,8 +1856,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"EnableDomainTransferLock")
+                               (common-lisp:append
+                                `(("Action" ,@"EnableDomainTransferLock")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EnableDomainTransferLockResponse" common-lisp:nil)))
@@ -1869,8 +1875,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetContactReachabilityStatus")
+                               (common-lisp:append
+                                `(("Action" ,@"GetContactReachabilityStatus")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetContactReachabilityStatusResponse" common-lisp:nil)))
@@ -1886,8 +1893,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDomainDetail")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDomainDetail")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDomainDetailResponse" common-lisp:nil)))
@@ -1905,8 +1913,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDomainSuggestions")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDomainSuggestions")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDomainSuggestionsResponse" common-lisp:nil)))
@@ -1922,8 +1931,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetOperationDetail")
+                               (common-lisp:append
+                                `(("Action" ,@"GetOperationDetail")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetOperationDetailResponse" common-lisp:nil)))
@@ -1939,9 +1949,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListDomains")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListDomains")
+                                  ("Version" ,@"2014-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListDomainsResponse" common-lisp:nil)))
  (common-lisp:export 'list-domains))
 (common-lisp:progn
@@ -1955,9 +1967,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListOperations")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListOperations")
+                                  ("Version" ,@"2014-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListOperationsResponse" common-lisp:nil)))
  (common-lisp:export 'list-operations))
 (common-lisp:progn
@@ -1971,8 +1985,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsForDomain")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsForDomain")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTagsForDomainResponse" common-lisp:nil)))
@@ -1997,9 +2012,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RegisterDomain")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterDomain")
+                                  ("Version" ,@"2014-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RegisterDomainResponse" common-lisp:nil)))
  (common-lisp:export 'register-domain))
 (common-lisp:progn
@@ -2015,9 +2032,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RenewDomain")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RenewDomain")
+                                  ("Version" ,@"2014-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RenewDomainResponse" common-lisp:nil)))
  (common-lisp:export 'renew-domain))
 (common-lisp:progn
@@ -2032,8 +2051,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ResendContactReachabilityEmail")
+                               (common-lisp:append
+                                `(("Action" ,@"ResendContactReachabilityEmail")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ResendContactReachabilityEmailResponse" common-lisp:nil)))
@@ -2050,8 +2070,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RetrieveDomainAuthCode")
+                               (common-lisp:append
+                                `(("Action" ,@"RetrieveDomainAuthCode")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RetrieveDomainAuthCodeResponse" common-lisp:nil)))
@@ -2076,9 +2097,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons `("Action" ,@"TransferDomain")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"TransferDomain")
+                                  ("Version" ,@"2014-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "TransferDomainResponse" common-lisp:nil)))
  (common-lisp:export 'transfer-domain))
 (common-lisp:progn
@@ -2095,8 +2118,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDomainContact")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDomainContact")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateDomainContactResponse" common-lisp:nil)))
@@ -2116,8 +2140,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDomainContactPrivacy")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDomainContactPrivacy")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateDomainContactPrivacyResponse" common-lisp:nil)))
@@ -2135,8 +2160,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDomainNameservers")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDomainNameservers")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateDomainNameserversResponse" common-lisp:nil)))
@@ -2152,8 +2178,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateTagsForDomain")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateTagsForDomain")
+                                  ("Version" ,@"2014-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateTagsForDomainResponse" common-lisp:nil)))
@@ -2169,8 +2196,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "route53domains" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ViewBilling")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ViewBilling")
+                                  ("Version" ,@"2014-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ViewBillingResponse" common-lisp:nil)))
  (common-lisp:export 'view-billing))

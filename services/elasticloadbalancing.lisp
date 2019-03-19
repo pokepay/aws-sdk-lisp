@@ -2466,9 +2466,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"AddTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AddTags")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AddTagsOutput" "AddTagsResult")))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
@@ -2485,9 +2487,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"ApplySecurityGroupsToLoadBalancer")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ApplySecurityGroupsToLoadBalancer")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ApplySecurityGroupsToLoadBalancerOutput"
@@ -2506,8 +2509,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"AttachLoadBalancerToSubnets")
+                               (common-lisp:append
+                                `(("Action" ,@"AttachLoadBalancerToSubnets")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AttachLoadBalancerToSubnetsOutput"
@@ -2526,8 +2530,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ConfigureHealthCheck")
+                               (common-lisp:append
+                                `(("Action" ,@"ConfigureHealthCheck")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ConfigureHealthCheckOutput" "ConfigureHealthCheckResult")))
@@ -2547,8 +2552,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateAppCookieStickinessPolicy")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"CreateAppCookieStickinessPolicy")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateAppCookieStickinessPolicyOutput"
@@ -2570,8 +2577,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateLBCookieStickinessPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateLBCookieStickinessPolicy")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateLBCookieStickinessPolicyOutput"
@@ -2592,8 +2600,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateLoadBalancer")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateLoadBalancer")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateAccessPointOutput" "CreateLoadBalancerResult")))
@@ -2611,8 +2620,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateLoadBalancerListeners")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateLoadBalancerListeners")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateLoadBalancerListenerOutput" "CreateLoadBalancerListenersResult")))
@@ -2633,8 +2643,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateLoadBalancerPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateLoadBalancerPolicy")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateLoadBalancerPolicyOutput" "CreateLoadBalancerPolicyResult")))
@@ -2651,8 +2662,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteLoadBalancer")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteLoadBalancer")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteAccessPointOutput" "DeleteLoadBalancerResult")))
@@ -2671,8 +2683,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteLoadBalancerListeners")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteLoadBalancerListeners")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteLoadBalancerListenerOutput" "DeleteLoadBalancerListenersResult")))
@@ -2690,8 +2703,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteLoadBalancerPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteLoadBalancerPolicy")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteLoadBalancerPolicyOutput" "DeleteLoadBalancerPolicyResult")))
@@ -2708,9 +2722,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DeregisterInstancesFromLoadBalancer")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DeregisterInstancesFromLoadBalancer")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeregisterEndPointsOutput"
@@ -2728,8 +2743,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAccountLimits")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAccountLimits")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAccountLimitsOutput" "DescribeAccountLimitsResult")))
@@ -2746,8 +2762,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeInstanceHealth")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeInstanceHealth")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEndPointStateOutput" "DescribeInstanceHealthResult")))
@@ -2765,8 +2782,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeLoadBalancerAttributes")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeLoadBalancerAttributes")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeLoadBalancerAttributesOutput"
@@ -2786,8 +2804,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeLoadBalancerPolicies")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeLoadBalancerPolicies")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeLoadBalancerPoliciesOutput"
@@ -2806,8 +2825,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeLoadBalancerPolicyTypes")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeLoadBalancerPolicyTypes")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeLoadBalancerPolicyTypesOutput"
@@ -2826,8 +2847,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeLoadBalancers")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeLoadBalancers")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAccessPointsOutput" "DescribeLoadBalancersResult")))
@@ -2844,9 +2866,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"DescribeTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTags")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeTagsOutput" "DescribeTagsResult")))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
@@ -2862,8 +2886,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DetachLoadBalancerFromSubnets")
+                               (common-lisp:append
+                                `(("Action" ,@"DetachLoadBalancerFromSubnets")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DetachLoadBalancerFromSubnetsOutput"
@@ -2882,9 +2907,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DisableAvailabilityZonesForLoadBalancer")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DisableAvailabilityZonesForLoadBalancer")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RemoveAvailabilityZonesOutput"
@@ -2903,9 +2929,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"EnableAvailabilityZonesForLoadBalancer")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"EnableAvailabilityZonesForLoadBalancer")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddAvailabilityZonesOutput"
@@ -2926,8 +2953,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyLoadBalancerAttributes")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyLoadBalancerAttributes")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyLoadBalancerAttributesOutput"
@@ -2945,9 +2973,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"RegisterInstancesWithLoadBalancer")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"RegisterInstancesWithLoadBalancer")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RegisterEndPointsOutput" "RegisterInstancesWithLoadBalancerResult")))
@@ -2964,9 +2993,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"RemoveTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveTags")
+                                  ("Version" ,@"2012-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RemoveTagsOutput" "RemoveTagsResult")))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
@@ -2985,9 +3016,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"SetLoadBalancerListenerSSLCertificate")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"SetLoadBalancerListenerSSLCertificate")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SetLoadBalancerListenerSSLCertificateOutput"
@@ -3008,9 +3040,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"SetLoadBalancerPoliciesForBackendServer")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"SetLoadBalancerPoliciesForBackendServer")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SetLoadBalancerPoliciesForBackendServerOutput"
@@ -3031,9 +3064,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"SetLoadBalancerPoliciesOfListener")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"SetLoadBalancerPoliciesOfListener")
+                                  ("Version" ,@"2012-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SetLoadBalancerPoliciesOfListenerOutput"

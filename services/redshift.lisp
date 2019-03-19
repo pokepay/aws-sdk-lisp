@@ -6698,9 +6698,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"AuthorizeClusterSecurityGroupIngress")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"AuthorizeClusterSecurityGroupIngress")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AuthorizeClusterSecurityGroupIngressResult"
@@ -6721,8 +6722,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AuthorizeSnapshotAccess")
+                               (common-lisp:append
+                                `(("Action" ,@"AuthorizeSnapshotAccess")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AuthorizeSnapshotAccessResult" "AuthorizeSnapshotAccessResult")))
@@ -6742,8 +6744,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CopyClusterSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"CopyClusterSnapshot")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CopyClusterSnapshotResult" "CopyClusterSnapshotResult")))
@@ -6776,9 +6779,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateCluster")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCluster")
+                                  ("Version" ,@"2012-12-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateClusterResult" "CreateClusterResult")))
  (common-lisp:export 'create-cluster))
 (common-lisp:progn
@@ -6796,8 +6801,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateClusterParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateClusterParameterGroup")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateClusterParameterGroupResult"
@@ -6817,8 +6823,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateClusterSecurityGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateClusterSecurityGroup")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateClusterSecurityGroupResult" "CreateClusterSecurityGroupResult")))
@@ -6836,8 +6843,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateClusterSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateClusterSnapshot")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateClusterSnapshotResult" "CreateClusterSnapshotResult")))
@@ -6857,8 +6865,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateClusterSubnetGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateClusterSubnetGroup")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateClusterSubnetGroupResult" "CreateClusterSubnetGroupResult")))
@@ -6879,8 +6888,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateEventSubscription")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateEventSubscription")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateEventSubscriptionResult" "CreateEventSubscriptionResult")))
@@ -6898,8 +6908,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateHsmClientCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateHsmClientCertificate")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateHsmClientCertificateResult" "CreateHsmClientCertificateResult")))
@@ -6920,8 +6931,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateHsmConfiguration")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateHsmConfiguration")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateHsmConfigurationResult" "CreateHsmConfigurationResult")))
@@ -6939,8 +6951,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateSnapshotCopyGrant")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateSnapshotCopyGrant")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateSnapshotCopyGrantResult" "CreateSnapshotCopyGrantResult")))
@@ -6956,9 +6969,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateTags")
+                                  ("Version" ,@"2012-12-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'create-tags))
 (common-lisp:progn
@@ -6976,9 +6991,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteCluster")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCluster")
+                                  ("Version" ,@"2012-12-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteClusterResult" "DeleteClusterResult")))
  (common-lisp:export 'delete-cluster))
 (common-lisp:progn
@@ -6993,8 +7010,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteClusterParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteClusterParameterGroup")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7011,8 +7029,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteClusterSecurityGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteClusterSecurityGroup")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7030,8 +7049,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteClusterSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteClusterSnapshot")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteClusterSnapshotResult" "DeleteClusterSnapshotResult")))
@@ -7048,8 +7068,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteClusterSubnetGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteClusterSubnetGroup")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7066,8 +7087,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteEventSubscription")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteEventSubscription")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7085,8 +7107,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteHsmClientCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteHsmClientCertificate")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7102,8 +7125,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteHsmConfiguration")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteHsmConfiguration")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7120,8 +7144,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteSnapshotCopyGrant")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteSnapshotCopyGrant")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -7137,9 +7162,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTags")
+                                  ("Version" ,@"2012-12-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
@@ -7157,8 +7184,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeClusterParameterGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeClusterParameterGroups")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ClusterParameterGroupsMessage" "DescribeClusterParameterGroupsResult")))
@@ -7177,8 +7205,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeClusterParameters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeClusterParameters")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ClusterParameterGroupDetails" "DescribeClusterParametersResult")))
@@ -7198,8 +7227,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeClusterSecurityGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeClusterSecurityGroups")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ClusterSecurityGroupMessage" "DescribeClusterSecurityGroupsResult")))
@@ -7220,8 +7250,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeClusterSnapshots")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeClusterSnapshots")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SnapshotMessage" "DescribeClusterSnapshotsResult")))
@@ -7241,8 +7272,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeClusterSubnetGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeClusterSubnetGroups")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ClusterSubnetGroupMessage" "DescribeClusterSubnetGroupsResult")))
@@ -7262,8 +7294,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeClusterVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeClusterVersions")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ClusterVersionsMessage" "DescribeClusterVersionsResult")))
@@ -7282,8 +7315,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeClusters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeClusters")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ClustersMessage" "DescribeClustersResult")))
@@ -7302,9 +7336,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeDefaultClusterParameters")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeDefaultClusterParameters")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDefaultClusterParametersResult"
@@ -7322,8 +7357,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEventCategories")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEventCategories")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EventCategoriesMessage" "DescribeEventCategoriesResult")))
@@ -7341,8 +7377,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEventSubscriptions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEventSubscriptions")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EventSubscriptionsMessage" "DescribeEventSubscriptionsResult")))
@@ -7361,9 +7398,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeEvents")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEvents")
+                                  ("Version" ,@"2012-12-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "EventsMessage" "DescribeEventsResult")))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
@@ -7381,8 +7420,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeHsmClientCertificates")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeHsmClientCertificates")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "HsmClientCertificateMessage" "DescribeHsmClientCertificatesResult")))
@@ -7402,8 +7442,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeHsmConfigurations")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeHsmConfigurations")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "HsmConfigurationMessage" "DescribeHsmConfigurationsResult")))
@@ -7419,8 +7460,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeLoggingStatus")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeLoggingStatus")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "LoggingStatus" "DescribeLoggingStatusResult")))
@@ -7439,8 +7481,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeOrderableClusterOptions")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeOrderableClusterOptions")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "OrderableClusterOptionsMessage"
@@ -7460,8 +7504,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeReservedNodeOfferings")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeReservedNodeOfferings")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ReservedNodeOfferingsMessage" "DescribeReservedNodeOfferingsResult")))
@@ -7478,8 +7523,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeReservedNodes")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeReservedNodes")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ReservedNodesMessage" "DescribeReservedNodesResult")))
@@ -7495,9 +7541,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeResize")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeResize")
+                                  ("Version" ,@"2012-12-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ResizeProgressMessage" "DescribeResizeResult")))
  (common-lisp:export 'describe-resize))
 (common-lisp:progn
@@ -7515,8 +7563,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeSnapshotCopyGrants")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeSnapshotCopyGrants")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SnapshotCopyGrantMessage" "DescribeSnapshotCopyGrantsResult")))
@@ -7536,8 +7585,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeTableRestoreStatus")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTableRestoreStatus")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "TableRestoreStatusMessage" "DescribeTableRestoreStatusResult")))
@@ -7556,9 +7606,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTags")
+                                  ("Version" ,@"2012-12-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "TaggedResourceListMessage" "DescribeTagsResult")))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
@@ -7572,9 +7624,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DisableLogging")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DisableLogging")
+                                  ("Version" ,@"2012-12-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "LoggingStatus" "DisableLoggingResult")))
  (common-lisp:export 'disable-logging))
 (common-lisp:progn
@@ -7588,8 +7642,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisableSnapshotCopy")
+                               (common-lisp:append
+                                `(("Action" ,@"DisableSnapshotCopy")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisableSnapshotCopyResult" "DisableSnapshotCopyResult")))
@@ -7607,9 +7662,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons `("Action" ,@"EnableLogging")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"EnableLogging")
+                                  ("Version" ,@"2012-12-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "LoggingStatus" "EnableLoggingResult")))
  (common-lisp:export 'enable-logging))
 (common-lisp:progn
@@ -7626,8 +7683,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"EnableSnapshotCopy")
+                               (common-lisp:append
+                                `(("Action" ,@"EnableSnapshotCopy")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EnableSnapshotCopyResult" "EnableSnapshotCopyResult")))
@@ -7646,8 +7704,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetClusterCredentials")
+                               (common-lisp:append
+                                `(("Action" ,@"GetClusterCredentials")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ClusterCredentials" "GetClusterCredentialsResult")))
@@ -7678,9 +7737,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ModifyCluster")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyCluster")
+                                  ("Version" ,@"2012-12-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ModifyClusterResult" "ModifyClusterResult")))
  (common-lisp:export 'modify-cluster))
 (common-lisp:progn
@@ -7696,8 +7757,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyClusterIamRoles")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyClusterIamRoles")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyClusterIamRolesResult" "ModifyClusterIamRolesResult")))
@@ -7715,8 +7777,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyClusterParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyClusterParameterGroup")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ClusterParameterGroupNameMessage" "ModifyClusterParameterGroupResult")))
@@ -7735,8 +7798,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyClusterSubnetGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyClusterSubnetGroup")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyClusterSubnetGroupResult" "ModifyClusterSubnetGroupResult")))
@@ -7756,8 +7820,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyEventSubscription")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyEventSubscription")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyEventSubscriptionResult" "ModifyEventSubscriptionResult")))
@@ -7775,9 +7840,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"ModifySnapshotCopyRetentionPeriod")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ModifySnapshotCopyRetentionPeriod")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifySnapshotCopyRetentionPeriodResult"
@@ -7796,8 +7862,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PurchaseReservedNodeOffering")
+                               (common-lisp:append
+                                `(("Action" ,@"PurchaseReservedNodeOffering")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PurchaseReservedNodeOfferingResult"
@@ -7814,9 +7881,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RebootCluster")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RebootCluster")
+                                  ("Version" ,@"2012-12-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RebootClusterResult" "RebootClusterResult")))
  (common-lisp:export 'reboot-cluster))
 (common-lisp:progn
@@ -7834,8 +7903,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ResetClusterParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ResetClusterParameterGroup")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ClusterParameterGroupNameMessage" "ResetClusterParameterGroupResult")))
@@ -7869,8 +7939,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RestoreFromClusterSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"RestoreFromClusterSnapshot")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RestoreFromClusterSnapshotResult" "RestoreFromClusterSnapshotResult")))
@@ -7892,8 +7963,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RestoreTableFromClusterSnapshot")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"RestoreTableFromClusterSnapshot")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RestoreTableFromClusterSnapshotResult"
@@ -7914,9 +7987,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"RevokeClusterSecurityGroupIngress")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"RevokeClusterSecurityGroupIngress")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RevokeClusterSecurityGroupIngressResult"
@@ -7936,8 +8010,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RevokeSnapshotAccess")
+                               (common-lisp:append
+                                `(("Action" ,@"RevokeSnapshotAccess")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RevokeSnapshotAccessResult" "RevokeSnapshotAccessResult")))
@@ -7953,8 +8028,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "redshift" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RotateEncryptionKey")
+                               (common-lisp:append
+                                `(("Action" ,@"RotateEncryptionKey")
+                                  ("Version" ,@"2012-12-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RotateEncryptionKeyResult" "RotateEncryptionKeyResult")))

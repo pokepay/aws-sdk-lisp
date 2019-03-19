@@ -3531,8 +3531,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"AbortDocumentVersionUpload")
+                               (common-lisp:append
+                                `(("Action" ,@"AbortDocumentVersionUpload")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3548,9 +3549,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ActivateUser")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ActivateUser")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ActivateUserResponse" common-lisp:nil)))
  (common-lisp:export 'activate-user))
 (common-lisp:progn
@@ -3566,8 +3569,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddResourcePermissions")
+                               (common-lisp:append
+                                `(("Action" ,@"AddResourcePermissions")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddResourcePermissionsResponse" common-lisp:nil)))
@@ -3587,9 +3591,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateComment")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateComment")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateCommentResponse" common-lisp:nil)))
  (common-lisp:export 'create-comment))
 (common-lisp:progn
@@ -3606,8 +3612,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateCustomMetadata")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCustomMetadata")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateCustomMetadataResponse" common-lisp:nil)))
@@ -3625,9 +3632,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateFolder")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateFolder")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateFolderResponse" common-lisp:nil)))
  (common-lisp:export 'create-folder))
 (common-lisp:progn
@@ -3642,9 +3651,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :put :params
-                               (common-lisp:cons `("Action" ,@"CreateLabels")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateLabels")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateLabelsResponse" common-lisp:nil)))
  (common-lisp:export 'create-labels))
 (common-lisp:progn
@@ -3662,8 +3673,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateNotificationSubscription")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateNotificationSubscription")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateNotificationSubscriptionResponse" common-lisp:nil)))
@@ -3683,9 +3695,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateUser")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateUser")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateUserResponse" common-lisp:nil)))
  (common-lisp:export 'create-user))
 (common-lisp:progn
@@ -3699,9 +3713,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeactivateUser")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeactivateUser")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'deactivate-user))
 (common-lisp:progn
@@ -3718,9 +3734,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteComment")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteComment")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-comment))
 (common-lisp:progn
@@ -3737,8 +3755,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteCustomMetadata")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCustomMetadata")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteCustomMetadataResponse" common-lisp:nil)))
@@ -3755,9 +3774,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteDocument")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDocument")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-document))
 (common-lisp:progn
@@ -3771,9 +3792,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteFolder")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteFolder")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-folder))
 (common-lisp:progn
@@ -3787,8 +3810,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteFolderContents")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteFolderContents")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3806,9 +3830,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteLabels")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteLabels")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteLabelsResponse" common-lisp:nil)))
  (common-lisp:export 'delete-labels))
 (common-lisp:progn
@@ -3824,8 +3850,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteNotificationSubscription")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteNotificationSubscription")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -3841,9 +3868,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteUser")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteUser")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-user))
 (common-lisp:progn
@@ -3860,8 +3889,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeActivities")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeActivities")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeActivitiesResponse" common-lisp:nil)))
@@ -3880,8 +3910,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeComments")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeComments")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeCommentsResponse" common-lisp:nil)))
@@ -3901,8 +3932,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDocumentVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDocumentVersions")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDocumentVersionsResponse" common-lisp:nil)))
@@ -3921,8 +3953,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeFolderContents")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeFolderContents")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeFolderContentsResponse" common-lisp:nil)))
@@ -3939,9 +3972,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeNotificationSubscriptions")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeNotificationSubscriptions")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeNotificationSubscriptionsResponse" common-lisp:nil)))
@@ -3960,8 +3994,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeResourcePermissions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeResourcePermissions")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeResourcePermissionsResponse" common-lisp:nil)))
@@ -3978,8 +4013,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeRootFolders")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeRootFolders")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeRootFoldersResponse" common-lisp:nil)))
@@ -3998,9 +4034,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons `("Action" ,@"DescribeUsers")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeUsers")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeUsersResponse" common-lisp:nil)))
  (common-lisp:export 'describe-users))
 (common-lisp:progn
@@ -4014,9 +4052,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetCurrentUser")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetCurrentUser")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetCurrentUserResponse" common-lisp:nil)))
  (common-lisp:export 'get-current-user))
 (common-lisp:progn
@@ -4033,9 +4073,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetDocument")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDocument")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDocumentResponse" common-lisp:nil)))
  (common-lisp:export 'get-document))
 (common-lisp:progn
@@ -4052,8 +4094,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDocumentPath")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDocumentPath")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDocumentPathResponse" common-lisp:nil)))
@@ -4072,8 +4115,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDocumentVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDocumentVersion")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDocumentVersionResponse" common-lisp:nil)))
@@ -4092,9 +4136,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetFolder")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetFolder")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetFolderResponse" common-lisp:nil)))
  (common-lisp:export 'get-folder))
 (common-lisp:progn
@@ -4110,9 +4156,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetFolderPath")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetFolderPath")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetFolderPathResponse" common-lisp:nil)))
  (common-lisp:export 'get-folder-path))
 (common-lisp:progn
@@ -4132,8 +4180,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"InitiateDocumentVersionUpload")
+                               (common-lisp:append
+                                `(("Action" ,@"InitiateDocumentVersionUpload")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "InitiateDocumentVersionUploadResponse" common-lisp:nil)))
@@ -4151,8 +4200,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveAllResourcePermissions")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveAllResourcePermissions")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4172,8 +4222,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveResourcePermission")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveResourcePermission")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4192,9 +4243,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :patch :params
-                               (common-lisp:cons `("Action" ,@"UpdateDocument")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDocument")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-document))
 (common-lisp:progn
@@ -4211,8 +4264,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDocumentVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDocumentVersion")
+                                  ("Version" ,@"2016-05-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4231,9 +4285,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :patch :params
-                               (common-lisp:cons `("Action" ,@"UpdateFolder")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateFolder")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'update-folder))
 (common-lisp:progn
@@ -4250,8 +4306,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "workdocs" :method :patch :params
-                               (common-lisp:cons `("Action" ,@"UpdateUser")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateUser")
+                                  ("Version" ,@"2016-05-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateUserResponse" common-lisp:nil)))
  (common-lisp:export 'update-user))

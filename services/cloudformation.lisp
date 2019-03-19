@@ -4067,8 +4067,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CancelUpdateStack")
+                               (common-lisp:append
+                                `(("Action" ,@"CancelUpdateStack")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4087,8 +4088,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ContinueUpdateRollback")
+                               (common-lisp:append
+                                `(("Action" ,@"ContinueUpdateRollback")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ContinueUpdateRollbackOutput" "ContinueUpdateRollbackResult")))
@@ -4111,8 +4113,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateChangeSet")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateChangeSet")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateChangeSetOutput" "CreateChangeSetResult")))
@@ -4136,9 +4139,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateStack")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateStack")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateStackOutput" "CreateStackResult")))
  (common-lisp:export 'create-stack))
 (common-lisp:progn
@@ -4155,8 +4160,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateStackInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateStackInstances")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateStackInstancesOutput" "CreateStackInstancesResult")))
@@ -4176,9 +4182,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateStackSet")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateStackSet")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateStackSetOutput" "CreateStackSetResult")))
  (common-lisp:export 'create-stack-set))
 (common-lisp:progn
@@ -4192,8 +4200,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteChangeSet")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteChangeSet")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteChangeSetOutput" "DeleteChangeSetResult")))
@@ -4212,9 +4221,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteStack")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteStack")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-stack))
 (common-lisp:progn
@@ -4231,8 +4242,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteStackInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteStackInstances")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteStackInstancesOutput" "DeleteStackInstancesResult")))
@@ -4248,9 +4260,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteStackSet")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteStackSet")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteStackSetOutput" "DeleteStackSetResult")))
  (common-lisp:export 'delete-stack-set))
 (common-lisp:progn
@@ -4264,8 +4278,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAccountLimits")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAccountLimits")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAccountLimitsOutput" "DescribeAccountLimitsResult")))
@@ -4282,8 +4297,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeChangeSet")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeChangeSet")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeChangeSetOutput" "DescribeChangeSetResult")))
@@ -4299,8 +4315,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeStackEvents")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeStackEvents")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeStackEventsOutput" "DescribeStackEventsResult")))
@@ -4319,8 +4336,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeStackInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeStackInstance")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeStackInstanceOutput" "DescribeStackInstanceResult")))
@@ -4336,8 +4354,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeStackResource")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeStackResource")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeStackResourceOutput" "DescribeStackResourceResult")))
@@ -4356,8 +4375,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeStackResources")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeStackResources")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeStackResourcesOutput" "DescribeStackResourcesResult")))
@@ -4373,8 +4393,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeStackSet")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeStackSet")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeStackSetOutput" "DescribeStackSetResult")))
@@ -4391,8 +4412,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeStackSetOperation")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeStackSetOperation")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeStackSetOperationOutput" "DescribeStackSetOperationResult")))
@@ -4408,9 +4430,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeStacks")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeStacks")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeStacksOutput" "DescribeStacksResult")))
  (common-lisp:export 'describe-stacks))
 (common-lisp:progn
@@ -4425,8 +4449,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"EstimateTemplateCost")
+                               (common-lisp:append
+                                `(("Action" ,@"EstimateTemplateCost")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EstimateTemplateCostOutput" "EstimateTemplateCostResult")))
@@ -4444,8 +4469,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ExecuteChangeSet")
+                               (common-lisp:append
+                                `(("Action" ,@"ExecuteChangeSet")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ExecuteChangeSetOutput" "ExecuteChangeSetResult")))
@@ -4461,9 +4487,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetStackPolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetStackPolicy")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetStackPolicyOutput" "GetStackPolicyResult")))
  (common-lisp:export 'get-stack-policy))
 (common-lisp:progn
@@ -4479,9 +4507,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetTemplate")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetTemplate")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetTemplateOutput" "GetTemplateResult")))
  (common-lisp:export 'get-template))
 (common-lisp:progn
@@ -4498,8 +4528,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetTemplateSummary")
+                               (common-lisp:append
+                                `(("Action" ,@"GetTemplateSummary")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetTemplateSummaryOutput" "GetTemplateSummaryResult")))
@@ -4515,9 +4546,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListChangeSets")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListChangeSets")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListChangeSetsOutput" "ListChangeSetsResult")))
  (common-lisp:export 'list-change-sets))
 (common-lisp:progn
@@ -4531,9 +4564,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListExports")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListExports")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListExportsOutput" "ListExportsResult")))
  (common-lisp:export 'list-exports))
 (common-lisp:progn
@@ -4547,9 +4582,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListImports")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListImports")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListImportsOutput" "ListImportsResult")))
  (common-lisp:export 'list-imports))
 (common-lisp:progn
@@ -4566,8 +4603,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListStackInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"ListStackInstances")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListStackInstancesOutput" "ListStackInstancesResult")))
@@ -4583,8 +4621,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListStackResources")
+                               (common-lisp:append
+                                `(("Action" ,@"ListStackResources")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListStackResourcesOutput" "ListStackResourcesResult")))
@@ -4603,8 +4642,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListStackSetOperationResults")
+                               (common-lisp:append
+                                `(("Action" ,@"ListStackSetOperationResults")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListStackSetOperationResultsOutput"
@@ -4622,8 +4662,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListStackSetOperations")
+                               (common-lisp:append
+                                `(("Action" ,@"ListStackSetOperations")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListStackSetOperationsOutput" "ListStackSetOperationsResult")))
@@ -4639,9 +4680,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListStackSets")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListStackSets")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListStackSetsOutput" "ListStackSetsResult")))
  (common-lisp:export 'list-stack-sets))
 (common-lisp:progn
@@ -4655,9 +4698,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListStacks")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListStacks")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListStacksOutput" "ListStacksResult")))
  (common-lisp:export 'list-stacks))
 (common-lisp:progn
@@ -4673,9 +4718,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"SetStackPolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"SetStackPolicy")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-stack-policy))
 (common-lisp:progn
@@ -4691,9 +4738,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"SignalResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"SignalResource")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'signal-resource))
 (common-lisp:progn
@@ -4707,8 +4756,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StopStackSetOperation")
+                               (common-lisp:append
+                                `(("Action" ,@"StopStackSetOperation")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StopStackSetOperationOutput" "StopStackSetOperationResult")))
@@ -4733,9 +4783,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateStack")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateStack")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateStackOutput" "UpdateStackResult")))
  (common-lisp:export 'update-stack))
 (common-lisp:progn
@@ -4754,9 +4806,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateStackSet")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateStackSet")
+                                  ("Version" ,@"2010-05-15"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateStackSetOutput" "UpdateStackSetResult")))
  (common-lisp:export 'update-stack-set))
 (common-lisp:progn
@@ -4770,8 +4824,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ValidateTemplate")
+                               (common-lisp:append
+                                `(("Action" ,@"ValidateTemplate")
+                                  ("Version" ,@"2010-05-15"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ValidateTemplateOutput" "ValidateTemplateResult")))

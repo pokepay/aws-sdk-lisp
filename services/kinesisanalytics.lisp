@@ -2317,9 +2317,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"AddApplicationCloudWatchLoggingOption")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"AddApplicationCloudWatchLoggingOption")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddApplicationCloudWatchLoggingOptionResponse" common-lisp:nil)))
@@ -2339,8 +2340,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddApplicationInput")
+                               (common-lisp:append
+                                `(("Action" ,@"AddApplicationInput")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddApplicationInputResponse" common-lisp:nil)))
@@ -2360,8 +2362,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddApplicationOutput")
+                               (common-lisp:append
+                                `(("Action" ,@"AddApplicationOutput")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddApplicationOutputResponse" common-lisp:nil)))
@@ -2382,9 +2385,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"AddApplicationReferenceDataSource")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"AddApplicationReferenceDataSource")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddApplicationReferenceDataSourceResponse" common-lisp:nil)))
@@ -2405,8 +2409,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateApplication")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateApplicationResponse" common-lisp:nil)))
@@ -2424,8 +2429,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteApplication")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteApplicationResponse" common-lisp:nil)))
@@ -2447,9 +2453,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DeleteApplicationCloudWatchLoggingOption")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DeleteApplicationCloudWatchLoggingOption")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteApplicationCloudWatchLoggingOptionResponse" common-lisp:nil)))
@@ -2470,8 +2477,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteApplicationOutput")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteApplicationOutput")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteApplicationOutputResponse" common-lisp:nil)))
@@ -2492,9 +2500,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DeleteApplicationReferenceDataSource")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DeleteApplicationReferenceDataSource")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteApplicationReferenceDataSourceResponse" common-lisp:nil)))
@@ -2511,8 +2520,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeApplication")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeApplicationResponse" common-lisp:nil)))
@@ -2532,8 +2542,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DiscoverInputSchema")
+                               (common-lisp:append
+                                `(("Action" ,@"DiscoverInputSchema")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DiscoverInputSchemaResponse" common-lisp:nil)))
@@ -2551,8 +2562,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListApplications")
+                               (common-lisp:append
+                                `(("Action" ,@"ListApplications")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListApplicationsResponse" common-lisp:nil)))
@@ -2570,8 +2582,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"StartApplication")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartApplicationResponse" common-lisp:nil)))
@@ -2588,8 +2601,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"StopApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"StopApplication")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StopApplicationResponse" common-lisp:nil)))
@@ -2609,8 +2623,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateApplication")
+                                  ("Version" ,@"2015-08-14"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateApplicationResponse" common-lisp:nil)))

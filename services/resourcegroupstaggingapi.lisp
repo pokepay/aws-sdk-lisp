@@ -481,9 +481,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "resourcegroupstaggingapi" :method
                                :post :params
-                               (common-lisp:cons `("Action" ,@"GetResources")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetResources")
+                                  ("Version" ,@"2017-01-26"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetResourcesOutput" common-lisp:nil)))
  (common-lisp:export 'get-resources))
 (common-lisp:progn
@@ -498,9 +500,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "resourcegroupstaggingapi" :method
                                :post :params
-                               (common-lisp:cons `("Action" ,@"GetTagKeys")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetTagKeys")
+                                  ("Version" ,@"2017-01-26"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetTagKeysOutput" common-lisp:nil)))
  (common-lisp:export 'get-tag-keys))
 (common-lisp:progn
@@ -515,9 +519,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "resourcegroupstaggingapi" :method
                                :post :params
-                               (common-lisp:cons `("Action" ,@"GetTagValues")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetTagValues")
+                                  ("Version" ,@"2017-01-26"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetTagValuesOutput" common-lisp:nil)))
  (common-lisp:export 'get-tag-values))
 (common-lisp:progn
@@ -532,9 +538,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "resourcegroupstaggingapi" :method
                                :post :params
-                               (common-lisp:cons `("Action" ,@"TagResources")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"TagResources")
+                                  ("Version" ,@"2017-01-26"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "TagResourcesOutput" common-lisp:nil)))
  (common-lisp:export 'tag-resources))
 (common-lisp:progn
@@ -549,8 +557,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "resourcegroupstaggingapi" :method
                                :post :params
-                               (common-lisp:cons `("Action" ,@"UntagResources")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UntagResources")
+                                  ("Version" ,@"2017-01-26"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UntagResourcesOutput" common-lisp:nil)))
  (common-lisp:export 'untag-resources))

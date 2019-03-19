@@ -2358,9 +2358,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :post :params
-                               (common-lisp:cons `("Action" ,@"AddPermission")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AddPermission")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AddPermissionResponse" common-lisp:nil)))
  (common-lisp:export 'add-permission))
 (common-lisp:progn
@@ -2376,9 +2378,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateAlias")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateAlias")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AliasConfiguration" common-lisp:nil)))
  (common-lisp:export 'create-alias))
 (common-lisp:progn
@@ -2396,8 +2400,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateEventSourceMapping")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateEventSourceMapping")
+                                  ("Version" ,@"2015-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EventSourceMappingConfiguration" common-lisp:nil)))
@@ -2419,9 +2424,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateFunction")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateFunction")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "FunctionConfiguration" common-lisp:nil)))
  (common-lisp:export 'create-function))
 (common-lisp:progn
@@ -2435,9 +2442,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteAlias")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteAlias")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-alias))
 (common-lisp:progn
@@ -2452,8 +2461,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteEventSourceMapping")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteEventSourceMapping")
+                                  ("Version" ,@"2015-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EventSourceMappingConfiguration" common-lisp:nil)))
@@ -2469,9 +2479,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteFunction")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteFunction")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-function))
 (common-lisp:progn
@@ -2492,9 +2504,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetAlias")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetAlias")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AliasConfiguration" common-lisp:nil)))
  (common-lisp:export 'get-alias))
 (common-lisp:progn
@@ -2508,8 +2522,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetEventSourceMapping")
+                               (common-lisp:append
+                                `(("Action" ,@"GetEventSourceMapping")
+                                  ("Version" ,@"2015-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EventSourceMappingConfiguration" common-lisp:nil)))
@@ -2525,9 +2540,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetFunction")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetFunction")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetFunctionResponse" common-lisp:nil)))
  (common-lisp:export 'get-function))
 (common-lisp:progn
@@ -2542,8 +2559,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetFunctionConfiguration")
+                               (common-lisp:append
+                                `(("Action" ,@"GetFunctionConfiguration")
+                                  ("Version" ,@"2015-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "FunctionConfiguration" common-lisp:nil)))
@@ -2559,9 +2577,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetPolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetPolicy")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'get-policy))
 (common-lisp:progn
@@ -2578,9 +2598,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :post :params
-                               (common-lisp:cons `("Action" ,@"Invoke")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"Invoke")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "InvocationResponse" common-lisp:nil)))
  (common-lisp:export 'invoke))
 (common-lisp:progn
@@ -2594,9 +2616,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :post :params
-                               (common-lisp:cons `("Action" ,@"InvokeAsync")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"InvokeAsync")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "InvokeAsyncResponse" common-lisp:nil)))
  (common-lisp:export 'invoke-async))
 (common-lisp:progn
@@ -2612,9 +2636,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListAliases")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListAliases")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListAliasesResponse" common-lisp:nil)))
  (common-lisp:export 'list-aliases))
 (common-lisp:progn
@@ -2631,8 +2657,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListEventSourceMappings")
+                               (common-lisp:append
+                                `(("Action" ,@"ListEventSourceMappings")
+                                  ("Version" ,@"2015-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListEventSourceMappingsResponse" common-lisp:nil)))
@@ -2650,9 +2677,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListFunctions")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListFunctions")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListFunctionsResponse" common-lisp:nil)))
  (common-lisp:export 'list-functions))
 (common-lisp:progn
@@ -2666,9 +2695,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListTags")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListTagsResponse" common-lisp:nil)))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
@@ -2683,8 +2714,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListVersionsByFunction")
+                               (common-lisp:append
+                                `(("Action" ,@"ListVersionsByFunction")
+                                  ("Version" ,@"2015-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListVersionsByFunctionResponse" common-lisp:nil)))
@@ -2701,9 +2733,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PublishVersion")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PublishVersion")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "FunctionConfiguration" common-lisp:nil)))
  (common-lisp:export 'publish-version))
 (common-lisp:progn
@@ -2718,8 +2752,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemovePermission")
+                               (common-lisp:append
+                                `(("Action" ,@"RemovePermission")
+                                  ("Version" ,@"2015-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2735,9 +2770,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :post :params
-                               (common-lisp:cons `("Action" ,@"TagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"TagResource")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'tag-resource))
 (common-lisp:progn
@@ -2751,9 +2788,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"UntagResource")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UntagResource")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'untag-resource))
 (common-lisp:progn
@@ -2769,9 +2808,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :put :params
-                               (common-lisp:cons `("Action" ,@"UpdateAlias")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateAlias")
+                                  ("Version" ,@"2015-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AliasConfiguration" common-lisp:nil)))
  (common-lisp:export 'update-alias))
 (common-lisp:progn
@@ -2787,8 +2828,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateEventSourceMapping")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateEventSourceMapping")
+                                  ("Version" ,@"2015-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EventSourceMappingConfiguration" common-lisp:nil)))
@@ -2807,8 +2849,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateFunctionCode")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateFunctionCode")
+                                  ("Version" ,@"2015-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "FunctionConfiguration" common-lisp:nil)))
@@ -2830,8 +2873,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "lambda" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateFunctionConfiguration")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateFunctionConfiguration")
+                                  ("Version" ,@"2015-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "FunctionConfiguration" common-lisp:nil)))

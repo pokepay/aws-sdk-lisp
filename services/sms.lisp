@@ -1109,8 +1109,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateReplicationJob")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateReplicationJob")
+                                  ("Version" ,@"2016-10-24"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateReplicationJobResponse" common-lisp:nil)))
@@ -1126,8 +1127,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteReplicationJob")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteReplicationJob")
+                                  ("Version" ,@"2016-10-24"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteReplicationJobResponse" common-lisp:nil)))
@@ -1150,8 +1152,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisassociateConnector")
+                               (common-lisp:append
+                                `(("Action" ,@"DisassociateConnector")
+                                  ("Version" ,@"2016-10-24"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisassociateConnectorResponse" common-lisp:nil)))
@@ -1167,9 +1170,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sms" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetConnectors")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetConnectors")
+                                  ("Version" ,@"2016-10-24"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetConnectorsResponse" common-lisp:nil)))
  (common-lisp:export 'get-connectors))
 (common-lisp:progn
@@ -1185,8 +1190,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetReplicationJobs")
+                               (common-lisp:append
+                                `(("Action" ,@"GetReplicationJobs")
+                                  ("Version" ,@"2016-10-24"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetReplicationJobsResponse" common-lisp:nil)))
@@ -1204,8 +1210,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetReplicationRuns")
+                               (common-lisp:append
+                                `(("Action" ,@"GetReplicationRuns")
+                                  ("Version" ,@"2016-10-24"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetReplicationRunsResponse" common-lisp:nil)))
@@ -1221,9 +1228,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sms" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetServers")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetServers")
+                                  ("Version" ,@"2016-10-24"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetServersResponse" common-lisp:nil)))
  (common-lisp:export 'get-servers))
 (common-lisp:progn
@@ -1245,8 +1254,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartOnDemandReplicationRun")
+                               (common-lisp:append
+                                `(("Action" ,@"StartOnDemandReplicationRun")
+                                  ("Version" ,@"2016-10-24"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartOnDemandReplicationRunResponse" common-lisp:nil)))
@@ -1266,8 +1276,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "sms" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateReplicationJob")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateReplicationJob")
+                                  ("Version" ,@"2016-10-24"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateReplicationJobResponse" common-lisp:nil)))

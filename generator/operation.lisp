@@ -32,7 +32,7 @@
                   (aget output "ResponseMetadata"))
           output))))
 
-(defun compile-operation (service name options params)
+(defun compile-operation (service name version options params)
   (let ((output (gethash "output" options)))
     (if params
         (let ((input-shape-name (lispify (gethash "shape" (gethash "input" options)))))
@@ -43,8 +43,8 @@
                  (parse-response
                   (aws-request :service ,service
                                :method ,(intern (gethash "method" (gethash "http" options)) :keyword)
-                               :params (cons `("Action" . ,,name)
-                                             (shape-to-params input)))
+                               :params (append `(("Action" . ,,name) ("Version" . ,,version))
+                                               (shape-to-params input)))
                   ,(and output
                         (gethash "shape" output))
                   ,(and output

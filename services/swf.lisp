@@ -5727,8 +5727,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CountClosedWorkflowExecutions")
+                               (common-lisp:append
+                                `(("Action" ,@"CountClosedWorkflowExecutions")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "WorkflowExecutionCount" common-lisp:nil)))
@@ -5748,8 +5749,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CountOpenWorkflowExecutions")
+                               (common-lisp:append
+                                `(("Action" ,@"CountOpenWorkflowExecutions")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "WorkflowExecutionCount" common-lisp:nil)))
@@ -5766,8 +5768,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CountPendingActivityTasks")
+                               (common-lisp:append
+                                `(("Action" ,@"CountPendingActivityTasks")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PendingTaskCount" common-lisp:nil)))
@@ -5784,8 +5787,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CountPendingDecisionTasks")
+                               (common-lisp:append
+                                `(("Action" ,@"CountPendingDecisionTasks")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PendingTaskCount" common-lisp:nil)))
@@ -5801,8 +5805,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeprecateActivityType")
+                               (common-lisp:append
+                                `(("Action" ,@"DeprecateActivityType")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -5818,8 +5823,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeprecateDomain")
+                               (common-lisp:append
+                                `(("Action" ,@"DeprecateDomain")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -5835,8 +5841,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeprecateWorkflowType")
+                               (common-lisp:append
+                                `(("Action" ,@"DeprecateWorkflowType")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -5852,8 +5859,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeActivityType")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeActivityType")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ActivityTypeDetail" common-lisp:nil)))
@@ -5869,9 +5877,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeDomain")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDomain")
+                                  ("Version" ,@"2012-01-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DomainDetail" common-lisp:nil)))
  (common-lisp:export 'describe-domain))
 (common-lisp:progn
@@ -5886,8 +5896,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeWorkflowExecution")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeWorkflowExecution")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "WorkflowExecutionDetail" common-lisp:nil)))
@@ -5903,8 +5914,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeWorkflowType")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeWorkflowType")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "WorkflowTypeDetail" common-lisp:nil)))
@@ -5924,8 +5936,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetWorkflowExecutionHistory")
+                               (common-lisp:append
+                                `(("Action" ,@"GetWorkflowExecutionHistory")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "History" common-lisp:nil)))
@@ -5944,8 +5957,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListActivityTypes")
+                               (common-lisp:append
+                                `(("Action" ,@"ListActivityTypes")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ActivityTypeInfos" common-lisp:nil)))
@@ -5968,8 +5982,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListClosedWorkflowExecutions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListClosedWorkflowExecutions")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "WorkflowExecutionInfos" common-lisp:nil)))
@@ -5988,9 +6003,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListDomains")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListDomains")
+                                  ("Version" ,@"2012-01-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DomainInfos" common-lisp:nil)))
  (common-lisp:export 'list-domains))
 (common-lisp:progn
@@ -6009,8 +6026,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListOpenWorkflowExecutions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListOpenWorkflowExecutions")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "WorkflowExecutionInfos" common-lisp:nil)))
@@ -6029,8 +6047,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListWorkflowTypes")
+                               (common-lisp:append
+                                `(("Action" ,@"ListWorkflowTypes")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "WorkflowTypeInfos" common-lisp:nil)))
@@ -6046,8 +6065,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PollForActivityTask")
+                               (common-lisp:append
+                                `(("Action" ,@"PollForActivityTask")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ActivityTask" common-lisp:nil)))
@@ -6066,8 +6086,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PollForDecisionTask")
+                               (common-lisp:append
+                                `(("Action" ,@"PollForDecisionTask")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DecisionTask" common-lisp:nil)))
@@ -6084,8 +6105,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RecordActivityTaskHeartbeat")
+                               (common-lisp:append
+                                `(("Action" ,@"RecordActivityTaskHeartbeat")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ActivityTaskStatus" common-lisp:nil)))
@@ -6111,8 +6133,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterActivityType")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterActivityType")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6131,9 +6154,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RegisterDomain")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterDomain")
+                                  ("Version" ,@"2012-01-25"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'register-domain))
 (common-lisp:progn
@@ -6155,8 +6180,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterWorkflowType")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterWorkflowType")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6173,8 +6199,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RequestCancelWorkflowExecution")
+                               (common-lisp:append
+                                `(("Action" ,@"RequestCancelWorkflowExecution")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6191,8 +6218,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RespondActivityTaskCanceled")
+                               (common-lisp:append
+                                `(("Action" ,@"RespondActivityTaskCanceled")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6209,8 +6237,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RespondActivityTaskCompleted")
+                               (common-lisp:append
+                                `(("Action" ,@"RespondActivityTaskCompleted")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6227,8 +6256,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RespondActivityTaskFailed")
+                               (common-lisp:append
+                                `(("Action" ,@"RespondActivityTaskFailed")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6246,8 +6276,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RespondDecisionTaskCompleted")
+                               (common-lisp:append
+                                `(("Action" ,@"RespondDecisionTaskCompleted")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6265,8 +6296,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SignalWorkflowExecution")
+                               (common-lisp:append
+                                `(("Action" ,@"SignalWorkflowExecution")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -6288,8 +6320,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartWorkflowExecution")
+                               (common-lisp:append
+                                `(("Action" ,@"StartWorkflowExecution")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "Run" common-lisp:nil)))
@@ -6309,8 +6342,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "swf" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"TerminateWorkflowExecution")
+                               (common-lisp:append
+                                `(("Action" ,@"TerminateWorkflowExecution")
+                                  ("Version" ,@"2012-01-25"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))

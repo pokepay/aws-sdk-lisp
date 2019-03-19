@@ -1040,9 +1040,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "budgets" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateBudget")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateBudget")
+                                  ("Version" ,@"2016-10-20"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateBudgetResponse" common-lisp:nil)))
  (common-lisp:export 'create-budget))
 (common-lisp:progn
@@ -1058,8 +1060,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "budgets" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateNotification")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateNotification")
+                                  ("Version" ,@"2016-10-20"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateNotificationResponse" common-lisp:nil)))
@@ -1077,8 +1080,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "budgets" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateSubscriber")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateSubscriber")
+                                  ("Version" ,@"2016-10-20"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateSubscriberResponse" common-lisp:nil)))
@@ -1094,9 +1098,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "budgets" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteBudget")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBudget")
+                                  ("Version" ,@"2016-10-20"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteBudgetResponse" common-lisp:nil)))
  (common-lisp:export 'delete-budget))
 (common-lisp:progn
@@ -1111,8 +1117,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "budgets" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteNotification")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteNotification")
+                                  ("Version" ,@"2016-10-20"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteNotificationResponse" common-lisp:nil)))
@@ -1130,8 +1137,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "budgets" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteSubscriber")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteSubscriber")
+                                  ("Version" ,@"2016-10-20"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteSubscriberResponse" common-lisp:nil)))
@@ -1147,9 +1155,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "budgets" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeBudget")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeBudget")
+                                  ("Version" ,@"2016-10-20"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeBudgetResponse" common-lisp:nil)))
  (common-lisp:export 'describe-budget))
 (common-lisp:progn
@@ -1164,8 +1174,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "budgets" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeBudgets")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeBudgets")
+                                  ("Version" ,@"2016-10-20"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeBudgetsResponse" common-lisp:nil)))
@@ -1184,8 +1195,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "budgets" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeNotificationsForBudget")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeNotificationsForBudget")
+                                  ("Version" ,@"2016-10-20"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeNotificationsForBudgetResponse" common-lisp:nil)))
@@ -1205,9 +1217,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "budgets" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeSubscribersForNotification")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeSubscribersForNotification")
+                                  ("Version" ,@"2016-10-20"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeSubscribersForNotificationResponse" common-lisp:nil)))
@@ -1223,9 +1236,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "budgets" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateBudget")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateBudget")
+                                  ("Version" ,@"2016-10-20"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateBudgetResponse" common-lisp:nil)))
  (common-lisp:export 'update-budget))
 (common-lisp:progn
@@ -1242,8 +1257,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "budgets" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateNotification")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateNotification")
+                                  ("Version" ,@"2016-10-20"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateNotificationResponse" common-lisp:nil)))
@@ -1262,8 +1278,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "budgets" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateSubscriber")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateSubscriber")
+                                  ("Version" ,@"2016-10-20"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateSubscriberResponse" common-lisp:nil)))

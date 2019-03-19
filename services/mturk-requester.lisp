@@ -3171,8 +3171,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AcceptQualificationRequest")
+                               (common-lisp:append
+                                `(("Action" ,@"AcceptQualificationRequest")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AcceptQualificationRequestResponse" common-lisp:nil)))
@@ -3191,8 +3192,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ApproveAssignment")
+                               (common-lisp:append
+                                `(("Action" ,@"ApproveAssignment")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ApproveAssignmentResponse" common-lisp:nil)))
@@ -3212,9 +3214,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"AssociateQualificationWithWorker")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"AssociateQualificationWithWorker")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AssociateQualificationWithWorkerResponse" common-lisp:nil)))
@@ -3234,9 +3237,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"CreateAdditionalAssignmentsForHIT")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"CreateAdditionalAssignmentsForHIT")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateAdditionalAssignmentsForHITResponse" common-lisp:nil)))
@@ -3263,9 +3267,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateHIT")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateHIT")
+                                  ("Version" ,@"2017-01-17"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateHITResponse" common-lisp:nil)))
  (common-lisp:export 'create-hit))
 (common-lisp:progn
@@ -3284,9 +3290,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateHITType")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateHITType")
+                                  ("Version" ,@"2017-01-17"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateHITTypeResponse" common-lisp:nil)))
  (common-lisp:export 'create-hittype))
 (common-lisp:progn
@@ -3307,8 +3315,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateHITWithHITType")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateHITWithHITType")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateHITWithHITTypeResponse" common-lisp:nil)))
@@ -3331,8 +3340,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateQualificationType")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateQualificationType")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateQualificationTypeResponse" common-lisp:nil)))
@@ -3348,8 +3358,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateWorkerBlock")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateWorkerBlock")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateWorkerBlockResponse" common-lisp:nil)))
@@ -3365,9 +3376,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteHIT")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteHIT")
+                                  ("Version" ,@"2017-01-17"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteHITResponse" common-lisp:nil)))
  (common-lisp:export 'delete-hit))
 (common-lisp:progn
@@ -3382,8 +3395,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteQualificationType")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteQualificationType")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteQualificationTypeResponse" common-lisp:nil)))
@@ -3399,8 +3413,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteWorkerBlock")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteWorkerBlock")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteWorkerBlockResponse" common-lisp:nil)))
@@ -3418,9 +3433,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DisassociateQualificationFromWorker")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DisassociateQualificationFromWorker")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisassociateQualificationFromWorkerResponse" common-lisp:nil)))
@@ -3443,9 +3459,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetAssignment")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetAssignment")
+                                  ("Version" ,@"2017-01-17"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetAssignmentResponse" common-lisp:nil)))
  (common-lisp:export 'get-assignment))
 (common-lisp:progn
@@ -3460,8 +3478,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetFileUploadURL")
+                               (common-lisp:append
+                                `(("Action" ,@"GetFileUploadURL")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetFileUploadURLResponse" common-lisp:nil)))
@@ -3477,9 +3496,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetHIT")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetHIT")
+                                  ("Version" ,@"2017-01-17"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetHITResponse" common-lisp:nil)))
  (common-lisp:export 'get-hit))
 (common-lisp:progn
@@ -3494,8 +3515,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetQualificationScore")
+                               (common-lisp:append
+                                `(("Action" ,@"GetQualificationScore")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetQualificationScoreResponse" common-lisp:nil)))
@@ -3511,8 +3533,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetQualificationType")
+                               (common-lisp:append
+                                `(("Action" ,@"GetQualificationType")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetQualificationTypeResponse" common-lisp:nil)))
@@ -3530,8 +3553,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListAssignmentsForHIT")
+                               (common-lisp:append
+                                `(("Action" ,@"ListAssignmentsForHIT")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListAssignmentsForHITResponse" common-lisp:nil)))
@@ -3549,8 +3573,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListBonusPayments")
+                               (common-lisp:append
+                                `(("Action" ,@"ListBonusPayments")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListBonusPaymentsResponse" common-lisp:nil)))
@@ -3566,9 +3591,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListHITs")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListHITs")
+                                  ("Version" ,@"2017-01-17"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListHITsResponse" common-lisp:nil)))
  (common-lisp:export 'list-hits))
 (common-lisp:progn
@@ -3585,8 +3612,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListHITsForQualificationType")
+                               (common-lisp:append
+                                `(("Action" ,@"ListHITsForQualificationType")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListHITsForQualificationTypeResponse" common-lisp:nil)))
@@ -3605,8 +3633,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListQualificationRequests")
+                               (common-lisp:append
+                                `(("Action" ,@"ListQualificationRequests")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListQualificationRequestsResponse" common-lisp:nil)))
@@ -3625,8 +3654,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListQualificationTypes")
+                               (common-lisp:append
+                                `(("Action" ,@"ListQualificationTypes")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListQualificationTypesResponse" common-lisp:nil)))
@@ -3646,8 +3676,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListReviewPolicyResultsForHIT")
+                               (common-lisp:append
+                                `(("Action" ,@"ListReviewPolicyResultsForHIT")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListReviewPolicyResultsForHITResponse" common-lisp:nil)))
@@ -3664,8 +3695,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListReviewableHITs")
+                               (common-lisp:append
+                                `(("Action" ,@"ListReviewableHITs")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListReviewableHITsResponse" common-lisp:nil)))
@@ -3681,8 +3713,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListWorkerBlocks")
+                               (common-lisp:append
+                                `(("Action" ,@"ListWorkerBlocks")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListWorkerBlocksResponse" common-lisp:nil)))
@@ -3702,9 +3735,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"ListWorkersWithQualificationType")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ListWorkersWithQualificationType")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListWorkersWithQualificationTypeResponse" common-lisp:nil)))
@@ -3721,9 +3755,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons `("Action" ,@"NotifyWorkers")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"NotifyWorkers")
+                                  ("Version" ,@"2017-01-17"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "NotifyWorkersResponse" common-lisp:nil)))
  (common-lisp:export 'notify-workers))
 (common-lisp:progn
@@ -3738,8 +3774,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RejectAssignment")
+                               (common-lisp:append
+                                `(("Action" ,@"RejectAssignment")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RejectAssignmentResponse" common-lisp:nil)))
@@ -3757,8 +3794,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RejectQualificationRequest")
+                               (common-lisp:append
+                                `(("Action" ,@"RejectQualificationRequest")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RejectQualificationRequestResponse" common-lisp:nil)))
@@ -3777,9 +3815,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons `("Action" ,@"SendBonus")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"SendBonus")
+                                  ("Version" ,@"2017-01-17"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "SendBonusResponse" common-lisp:nil)))
  (common-lisp:export 'send-bonus))
 (common-lisp:progn
@@ -3794,8 +3834,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SendTestEventNotification")
+                               (common-lisp:append
+                                `(("Action" ,@"SendTestEventNotification")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SendTestEventNotificationResponse" common-lisp:nil)))
@@ -3811,8 +3852,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateExpirationForHIT")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateExpirationForHIT")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateExpirationForHITResponse" common-lisp:nil)))
@@ -3828,8 +3870,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateHITReviewStatus")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateHITReviewStatus")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateHITReviewStatusResponse" common-lisp:nil)))
@@ -3845,8 +3888,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateHITTypeOfHIT")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateHITTypeOfHIT")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateHITTypeOfHITResponse" common-lisp:nil)))
@@ -3863,8 +3907,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateNotificationSettings")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateNotificationSettings")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateNotificationSettingsResponse" common-lisp:nil)))
@@ -3887,8 +3932,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateQualificationType")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateQualificationType")
+                                  ("Version" ,@"2017-01-17"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateQualificationTypeResponse" common-lisp:nil)))

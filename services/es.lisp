@@ -1366,9 +1366,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "es" :method :post :params
-                               (common-lisp:cons `("Action" ,@"AddTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AddTags")
+                                  ("Version" ,@"2015-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
@@ -1388,8 +1390,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "es" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateElasticsearchDomain")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateElasticsearchDomain")
+                                  ("Version" ,@"2015-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateElasticsearchDomainResponse" common-lisp:nil)))
@@ -1406,8 +1409,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "es" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteElasticsearchDomain")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteElasticsearchDomain")
+                                  ("Version" ,@"2015-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteElasticsearchDomainResponse" common-lisp:nil)))
@@ -1424,8 +1428,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "es" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeElasticsearchDomain")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeElasticsearchDomain")
+                                  ("Version" ,@"2015-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeElasticsearchDomainResponse" common-lisp:nil)))
@@ -1442,9 +1447,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "es" :method :get :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeElasticsearchDomainConfig")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeElasticsearchDomainConfig")
+                                  ("Version" ,@"2015-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeElasticsearchDomainConfigResponse" common-lisp:nil)))
@@ -1461,8 +1467,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "es" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeElasticsearchDomains")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeElasticsearchDomains")
+                                  ("Version" ,@"2015-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeElasticsearchDomainsResponse" common-lisp:nil)))
@@ -1481,9 +1488,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "es" :method :get :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeElasticsearchInstanceTypeLimits")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeElasticsearchInstanceTypeLimits")
+                                  ("Version" ,@"2015-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeElasticsearchInstanceTypeLimitsResponse" common-lisp:nil)))
@@ -1510,8 +1518,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "es" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListElasticsearchInstanceTypes")
+                               (common-lisp:append
+                                `(("Action" ,@"ListElasticsearchInstanceTypes")
+                                  ("Version" ,@"2015-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListElasticsearchInstanceTypesResponse" common-lisp:nil)))
@@ -1528,8 +1537,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "es" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListElasticsearchVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListElasticsearchVersions")
+                                  ("Version" ,@"2015-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListElasticsearchVersionsResponse" common-lisp:nil)))
@@ -1545,9 +1555,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "es" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListTags")
+                                  ("Version" ,@"2015-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListTagsResponse" common-lisp:nil)))
  (common-lisp:export 'list-tags))
 (common-lisp:progn
@@ -1561,9 +1573,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "es" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RemoveTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveTags")
+                                  ("Version" ,@"2015-01-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
@@ -1582,8 +1596,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "es" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateElasticsearchDomainConfig")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"UpdateElasticsearchDomainConfig")
+                                  ("Version" ,@"2015-01-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateElasticsearchDomainConfigResponse" common-lisp:nil)))

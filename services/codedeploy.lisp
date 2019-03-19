@@ -4280,8 +4280,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddTagsToOnPremisesInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"AddTagsToOnPremisesInstances")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4298,8 +4299,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchGetApplicationRevisions")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchGetApplicationRevisions")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchGetApplicationRevisionsOutput" common-lisp:nil)))
@@ -4315,8 +4317,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchGetApplications")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchGetApplications")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchGetApplicationsOutput" common-lisp:nil)))
@@ -4334,8 +4337,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchGetDeploymentGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchGetDeploymentGroups")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchGetDeploymentGroupsOutput" common-lisp:nil)))
@@ -4352,8 +4356,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchGetDeploymentInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchGetDeploymentInstances")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchGetDeploymentInstancesOutput" common-lisp:nil)))
@@ -4369,8 +4374,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchGetDeployments")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchGetDeployments")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchGetDeploymentsOutput" common-lisp:nil)))
@@ -4387,8 +4393,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchGetOnPremisesInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchGetOnPremisesInstances")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchGetOnPremisesInstancesOutput" common-lisp:nil)))
@@ -4404,8 +4411,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ContinueDeployment")
+                               (common-lisp:append
+                                `(("Action" ,@"ContinueDeployment")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4421,8 +4429,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateApplication")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateApplicationOutput" common-lisp:nil)))
@@ -4446,8 +4455,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDeployment")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDeployment")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDeploymentOutput" common-lisp:nil)))
@@ -4465,8 +4475,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDeploymentConfig")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDeploymentConfig")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDeploymentConfigOutput" common-lisp:nil)))
@@ -4494,8 +4505,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDeploymentGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDeploymentGroup")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDeploymentGroupOutput" common-lisp:nil)))
@@ -4511,8 +4523,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteApplication")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4528,8 +4541,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDeploymentConfig")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDeploymentConfig")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4546,8 +4560,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDeploymentGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDeploymentGroup")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteDeploymentGroupOutput" common-lisp:nil)))
@@ -4564,8 +4579,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeregisterOnPremisesInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"DeregisterOnPremisesInstance")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4581,9 +4597,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetApplication")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetApplication")
+                                  ("Version" ,@"2014-10-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetApplicationOutput" common-lisp:nil)))
  (common-lisp:export 'get-application))
 (common-lisp:progn
@@ -4597,8 +4615,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetApplicationRevision")
+                               (common-lisp:append
+                                `(("Action" ,@"GetApplicationRevision")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetApplicationRevisionOutput" common-lisp:nil)))
@@ -4614,9 +4633,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetDeployment")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDeployment")
+                                  ("Version" ,@"2014-10-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDeploymentOutput" common-lisp:nil)))
  (common-lisp:export 'get-deployment))
 (common-lisp:progn
@@ -4630,8 +4651,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDeploymentConfig")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDeploymentConfig")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDeploymentConfigOutput" common-lisp:nil)))
@@ -4648,8 +4670,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDeploymentGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDeploymentGroup")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDeploymentGroupOutput" common-lisp:nil)))
@@ -4665,8 +4688,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetDeploymentInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"GetDeploymentInstance")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetDeploymentInstanceOutput" common-lisp:nil)))
@@ -4682,8 +4706,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetOnPremisesInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"GetOnPremisesInstance")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetOnPremisesInstanceOutput" common-lisp:nil)))
@@ -4702,8 +4727,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListApplicationRevisions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListApplicationRevisions")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListApplicationRevisionsOutput" common-lisp:nil)))
@@ -4719,8 +4745,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListApplications")
+                               (common-lisp:append
+                                `(("Action" ,@"ListApplications")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListApplicationsOutput" common-lisp:nil)))
@@ -4736,8 +4763,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDeploymentConfigs")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDeploymentConfigs")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDeploymentConfigsOutput" common-lisp:nil)))
@@ -4753,8 +4781,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDeploymentGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDeploymentGroups")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDeploymentGroupsOutput" common-lisp:nil)))
@@ -4773,8 +4802,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDeploymentInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDeploymentInstances")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDeploymentInstancesOutput" common-lisp:nil)))
@@ -4793,8 +4823,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListDeployments")
+                               (common-lisp:append
+                                `(("Action" ,@"ListDeployments")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListDeploymentsOutput" common-lisp:nil)))
@@ -4811,8 +4842,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListGitHubAccountTokenNames")
+                               (common-lisp:append
+                                `(("Action" ,@"ListGitHubAccountTokenNames")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListGitHubAccountTokenNamesOutput" common-lisp:nil)))
@@ -4830,8 +4862,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListOnPremisesInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"ListOnPremisesInstances")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListOnPremisesInstancesOutput" common-lisp:nil)))
@@ -4849,8 +4882,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterApplicationRevision")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterApplicationRevision")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4869,8 +4903,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterOnPremisesInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterOnPremisesInstance")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4887,9 +4922,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"RemoveTagsFromOnPremisesInstances")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"RemoveTagsFromOnPremisesInstances")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4906,9 +4942,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"SkipWaitTimeForInstanceTermination")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"SkipWaitTimeForInstanceTermination")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4925,9 +4962,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StopDeployment")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StopDeployment")
+                                  ("Version" ,@"2014-10-06"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StopDeploymentOutput" common-lisp:nil)))
  (common-lisp:export 'stop-deployment))
 (common-lisp:progn
@@ -4942,8 +4981,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateApplication")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateApplication")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4972,8 +5012,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDeploymentGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDeploymentGroup")
+                                  ("Version" ,@"2014-10-06"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateDeploymentGroupOutput" common-lisp:nil)))

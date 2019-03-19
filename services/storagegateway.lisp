@@ -4348,8 +4348,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ActivateGateway")
+                               (common-lisp:append
+                                `(("Action" ,@"ActivateGateway")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ActivateGatewayOutput" common-lisp:nil)))
@@ -4365,9 +4366,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"AddCache")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AddCache")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AddCacheOutput" common-lisp:nil)))
  (common-lisp:export 'add-cache))
 (common-lisp:progn
@@ -4381,8 +4384,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddTagsToResource")
+                               (common-lisp:append
+                                `(("Action" ,@"AddTagsToResource")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddTagsToResourceOutput" common-lisp:nil)))
@@ -4398,8 +4402,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddUploadBuffer")
+                               (common-lisp:append
+                                `(("Action" ,@"AddUploadBuffer")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddUploadBufferOutput" common-lisp:nil)))
@@ -4415,8 +4420,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddWorkingStorage")
+                               (common-lisp:append
+                                `(("Action" ,@"AddWorkingStorage")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddWorkingStorageOutput" common-lisp:nil)))
@@ -4432,9 +4438,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CancelArchival")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CancelArchival")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CancelArchivalOutput" common-lisp:nil)))
  (common-lisp:export 'cancel-archival))
 (common-lisp:progn
@@ -4448,8 +4456,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CancelRetrieval")
+                               (common-lisp:append
+                                `(("Action" ,@"CancelRetrieval")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CancelRetrievalOutput" common-lisp:nil)))
@@ -4469,8 +4478,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateCachediSCSIVolume")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCachediSCSIVolume")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateCachediSCSIVolumeOutput" common-lisp:nil)))
@@ -4491,8 +4501,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateNFSFileShare")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateNFSFileShare")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateNFSFileShareOutput" common-lisp:nil)))
@@ -4509,9 +4520,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateSnapshot")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateSnapshot")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateSnapshotOutput" common-lisp:nil)))
  (common-lisp:export 'create-snapshot))
 (common-lisp:progn
@@ -4527,9 +4540,10 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"CreateSnapshotFromVolumeRecoveryPoint")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"CreateSnapshotFromVolumeRecoveryPoint")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateSnapshotFromVolumeRecoveryPointOutput" common-lisp:nil)))
@@ -4548,8 +4562,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateStorediSCSIVolume")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateStorediSCSIVolume")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateStorediSCSIVolumeOutput" common-lisp:nil)))
@@ -4567,8 +4582,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateTapeWithBarcode")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateTapeWithBarcode")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateTapeWithBarcodeOutput" common-lisp:nil)))
@@ -4587,9 +4603,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateTapes")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateTapes")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateTapesOutput" common-lisp:nil)))
  (common-lisp:export 'create-tapes))
 (common-lisp:progn
@@ -4604,8 +4622,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteBandwidthRateLimit")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBandwidthRateLimit")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteBandwidthRateLimitOutput" common-lisp:nil)))
@@ -4621,8 +4640,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteChapCredentials")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteChapCredentials")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteChapCredentialsOutput" common-lisp:nil)))
@@ -4638,8 +4658,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteFileShare")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteFileShare")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteFileShareOutput" common-lisp:nil)))
@@ -4655,9 +4676,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteGateway")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteGateway")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteGatewayOutput" common-lisp:nil)))
  (common-lisp:export 'delete-gateway))
 (common-lisp:progn
@@ -4671,8 +4694,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteSnapshotSchedule")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteSnapshotSchedule")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteSnapshotScheduleOutput" common-lisp:nil)))
@@ -4688,9 +4712,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteTape")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTape")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteTapeOutput" common-lisp:nil)))
  (common-lisp:export 'delete-tape))
 (common-lisp:progn
@@ -4704,8 +4730,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteTapeArchive")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTapeArchive")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteTapeArchiveOutput" common-lisp:nil)))
@@ -4721,9 +4748,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteVolume")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteVolume")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteVolumeOutput" common-lisp:nil)))
  (common-lisp:export 'delete-volume))
 (common-lisp:progn
@@ -4738,8 +4767,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeBandwidthRateLimit")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeBandwidthRateLimit")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeBandwidthRateLimitOutput" common-lisp:nil)))
@@ -4755,9 +4785,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeCache")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCache")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeCacheOutput" common-lisp:nil)))
  (common-lisp:export 'describe-cache))
 (common-lisp:progn
@@ -4772,8 +4804,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCachediSCSIVolumes")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCachediSCSIVolumes")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeCachediSCSIVolumesOutput" common-lisp:nil)))
@@ -4789,8 +4822,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeChapCredentials")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeChapCredentials")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeChapCredentialsOutput" common-lisp:nil)))
@@ -4807,8 +4841,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeGatewayInformation")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeGatewayInformation")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeGatewayInformationOutput" common-lisp:nil)))
@@ -4825,8 +4860,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeMaintenanceStartTime")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeMaintenanceStartTime")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeMaintenanceStartTimeOutput" common-lisp:nil)))
@@ -4842,8 +4878,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeNFSFileShares")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeNFSFileShares")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeNFSFileSharesOutput" common-lisp:nil)))
@@ -4859,8 +4896,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeSnapshotSchedule")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeSnapshotSchedule")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeSnapshotScheduleOutput" common-lisp:nil)))
@@ -4877,8 +4915,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeStorediSCSIVolumes")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeStorediSCSIVolumes")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeStorediSCSIVolumesOutput" common-lisp:nil)))
@@ -4894,8 +4933,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeTapeArchives")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTapeArchives")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeTapeArchivesOutput" common-lisp:nil)))
@@ -4912,8 +4952,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeTapeRecoveryPoints")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTapeRecoveryPoints")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeTapeRecoveryPointsOutput" common-lisp:nil)))
@@ -4930,9 +4971,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeTapes")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTapes")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeTapesOutput" common-lisp:nil)))
  (common-lisp:export 'describe-tapes))
 (common-lisp:progn
@@ -4946,8 +4989,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeUploadBuffer")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeUploadBuffer")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeUploadBufferOutput" common-lisp:nil)))
@@ -4964,8 +5008,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeVTLDevices")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeVTLDevices")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeVTLDevicesOutput" common-lisp:nil)))
@@ -4981,8 +5026,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeWorkingStorage")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeWorkingStorage")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeWorkingStorageOutput" common-lisp:nil)))
@@ -4998,9 +5044,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DisableGateway")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DisableGateway")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DisableGatewayOutput" common-lisp:nil)))
  (common-lisp:export 'disable-gateway))
 (common-lisp:progn
@@ -5014,9 +5062,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListFileShares")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListFileShares")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListFileSharesOutput" common-lisp:nil)))
  (common-lisp:export 'list-file-shares))
 (common-lisp:progn
@@ -5030,9 +5080,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListGateways")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListGateways")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListGatewaysOutput" common-lisp:nil)))
  (common-lisp:export 'list-gateways))
 (common-lisp:progn
@@ -5046,9 +5098,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListLocalDisks")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListLocalDisks")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListLocalDisksOutput" common-lisp:nil)))
  (common-lisp:export 'list-local-disks))
 (common-lisp:progn
@@ -5062,8 +5116,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsForResource")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsForResource")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTagsForResourceOutput" common-lisp:nil)))
@@ -5079,9 +5134,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListTapes")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListTapes")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListTapesOutput" common-lisp:nil)))
  (common-lisp:export 'list-tapes))
 (common-lisp:progn
@@ -5095,8 +5152,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListVolumeInitiators")
+                               (common-lisp:append
+                                `(("Action" ,@"ListVolumeInitiators")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListVolumeInitiatorsOutput" common-lisp:nil)))
@@ -5113,8 +5171,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListVolumeRecoveryPoints")
+                               (common-lisp:append
+                                `(("Action" ,@"ListVolumeRecoveryPoints")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListVolumeRecoveryPointsOutput" common-lisp:nil)))
@@ -5130,9 +5189,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListVolumes")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListVolumes")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListVolumesOutput" common-lisp:nil)))
  (common-lisp:export 'list-volumes))
 (common-lisp:progn
@@ -5146,9 +5207,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RefreshCache")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RefreshCache")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RefreshCacheOutput" common-lisp:nil)))
  (common-lisp:export 'refresh-cache))
 (common-lisp:progn
@@ -5162,8 +5225,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveTagsFromResource")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveTagsFromResource")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RemoveTagsFromResourceOutput" common-lisp:nil)))
@@ -5179,9 +5243,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ResetCache")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ResetCache")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ResetCacheOutput" common-lisp:nil)))
  (common-lisp:export 'reset-cache))
 (common-lisp:progn
@@ -5195,8 +5261,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RetrieveTapeArchive")
+                               (common-lisp:append
+                                `(("Action" ,@"RetrieveTapeArchive")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RetrieveTapeArchiveOutput" common-lisp:nil)))
@@ -5213,8 +5280,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RetrieveTapeRecoveryPoint")
+                               (common-lisp:append
+                                `(("Action" ,@"RetrieveTapeRecoveryPoint")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RetrieveTapeRecoveryPointOutput" common-lisp:nil)))
@@ -5231,8 +5299,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetLocalConsolePassword")
+                               (common-lisp:append
+                                `(("Action" ,@"SetLocalConsolePassword")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SetLocalConsolePasswordOutput" common-lisp:nil)))
@@ -5248,8 +5317,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ShutdownGateway")
+                               (common-lisp:append
+                                `(("Action" ,@"ShutdownGateway")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ShutdownGatewayOutput" common-lisp:nil)))
@@ -5265,9 +5335,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StartGateway")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StartGateway")
+                                  ("Version" ,@"2013-06-30"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StartGatewayOutput" common-lisp:nil)))
  (common-lisp:export 'start-gateway))
 (common-lisp:progn
@@ -5287,8 +5359,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateBandwidthRateLimit")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateBandwidthRateLimit")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateBandwidthRateLimitOutput" common-lisp:nil)))
@@ -5308,8 +5381,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateChapCredentials")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateChapCredentials")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateChapCredentialsOutput" common-lisp:nil)))
@@ -5327,8 +5401,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateGatewayInformation")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateGatewayInformation")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateGatewayInformationOutput" common-lisp:nil)))
@@ -5345,8 +5420,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateGatewaySoftwareNow")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateGatewaySoftwareNow")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateGatewaySoftwareNowOutput" common-lisp:nil)))
@@ -5365,8 +5441,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateMaintenanceStartTime")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateMaintenanceStartTime")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateMaintenanceStartTimeOutput" common-lisp:nil)))
@@ -5387,8 +5464,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateNFSFileShare")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateNFSFileShare")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateNFSFileShareOutput" common-lisp:nil)))
@@ -5407,8 +5485,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateSnapshotSchedule")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateSnapshotSchedule")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateSnapshotScheduleOutput" common-lisp:nil)))
@@ -5424,8 +5503,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateVTLDeviceType")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateVTLDeviceType")
+                                  ("Version" ,@"2013-06-30"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateVTLDeviceTypeOutput" common-lisp:nil)))

@@ -1601,9 +1601,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteAlarms")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteAlarms")
+                                  ("Version" ,@"2010-08-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-alarms))
 (common-lisp:progn
@@ -1617,8 +1619,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDashboards")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDashboards")
+                                  ("Version" ,@"2010-08-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteDashboardsOutput" "DeleteDashboardsResult")))
@@ -1637,8 +1640,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAlarmHistory")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAlarmHistory")
+                                  ("Version" ,@"2010-08-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAlarmHistoryOutput" "DescribeAlarmHistoryResult")))
@@ -1657,9 +1661,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeAlarms")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAlarms")
+                                  ("Version" ,@"2010-08-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeAlarmsOutput" "DescribeAlarmsResult")))
  (common-lisp:export 'describe-alarms))
 (common-lisp:progn
@@ -1676,8 +1682,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeAlarmsForMetric")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeAlarmsForMetric")
+                                  ("Version" ,@"2010-08-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeAlarmsForMetricOutput" "DescribeAlarmsForMetricResult")))
@@ -1693,8 +1700,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisableAlarmActions")
+                               (common-lisp:append
+                                `(("Action" ,@"DisableAlarmActions")
+                                  ("Version" ,@"2010-08-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1710,8 +1718,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"EnableAlarmActions")
+                               (common-lisp:append
+                                `(("Action" ,@"EnableAlarmActions")
+                                  ("Version" ,@"2010-08-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1727,9 +1736,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetDashboard")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDashboard")
+                                  ("Version" ,@"2010-08-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDashboardOutput" "GetDashboardResult")))
  (common-lisp:export 'get-dashboard))
 (common-lisp:progn
@@ -1747,8 +1758,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetMetricStatistics")
+                               (common-lisp:append
+                                `(("Action" ,@"GetMetricStatistics")
+                                  ("Version" ,@"2010-08-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetMetricStatisticsOutput" "GetMetricStatisticsResult")))
@@ -1765,9 +1777,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListDashboards")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListDashboards")
+                                  ("Version" ,@"2010-08-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListDashboardsOutput" "ListDashboardsResult")))
  (common-lisp:export 'list-dashboards))
 (common-lisp:progn
@@ -1783,9 +1797,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListMetrics")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListMetrics")
+                                  ("Version" ,@"2010-08-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListMetricsOutput" "ListMetricsResult")))
  (common-lisp:export 'list-metrics))
 (common-lisp:progn
@@ -1799,9 +1815,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutDashboard")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutDashboard")
+                                  ("Version" ,@"2010-08-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutDashboardOutput" "PutDashboardResult")))
  (common-lisp:export 'put-dashboard))
 (common-lisp:progn
@@ -1825,9 +1843,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutMetricAlarm")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutMetricAlarm")
+                                  ("Version" ,@"2010-08-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-metric-alarm))
 (common-lisp:progn
@@ -1841,9 +1861,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutMetricData")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutMetricData")
+                                  ("Version" ,@"2010-08-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'put-metric-data))
 (common-lisp:progn
@@ -1860,8 +1882,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "monitoring" :method :post :params
-                               (common-lisp:cons `("Action" ,@"SetAlarmState")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"SetAlarmState")
+                                  ("Version" ,@"2010-08-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'set-alarm-state))

@@ -957,9 +957,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "importexport" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CancelJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CancelJob")
+                                  ("Version" ,@"2010-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CancelJobOutput" "CancelJobResult")))
  (common-lisp:export 'cancel-job))
 (common-lisp:progn
@@ -976,9 +978,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "importexport" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateJob")
+                                  ("Version" ,@"2010-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateJobOutput" "CreateJobResult")))
  (common-lisp:export 'create-job))
 (common-lisp:progn
@@ -996,8 +1000,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "importexport" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetShippingLabel")
+                               (common-lisp:append
+                                `(("Action" ,@"GetShippingLabel")
+                                  ("Version" ,@"2010-06-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetShippingLabelOutput" "GetShippingLabelResult")))
@@ -1013,9 +1018,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "importexport" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetStatus")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetStatus")
+                                  ("Version" ,@"2010-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetStatusOutput" "GetStatusResult")))
  (common-lisp:export 'get-status))
 (common-lisp:progn
@@ -1029,9 +1036,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "importexport" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListJobs")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListJobs")
+                                  ("Version" ,@"2010-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListJobsOutput" "ListJobsResult")))
  (common-lisp:export 'list-jobs))
 (common-lisp:progn
@@ -1047,8 +1056,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "importexport" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateJob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateJob")
+                                  ("Version" ,@"2010-06-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateJobOutput" "UpdateJobResult")))
  (common-lisp:export 'update-job))

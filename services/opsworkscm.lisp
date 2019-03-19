@@ -1330,9 +1330,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"AssociateNode")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AssociateNode")
+                                  ("Version" ,@"2016-11-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AssociateNodeResponse" common-lisp:nil)))
  (common-lisp:export 'associate-node))
 (common-lisp:progn
@@ -1346,9 +1348,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateBackup")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateBackup")
+                                  ("Version" ,@"2016-11-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateBackupResponse" common-lisp:nil)))
  (common-lisp:export 'create-backup))
 (common-lisp:progn
@@ -1372,9 +1376,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateServer")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateServer")
+                                  ("Version" ,@"2016-11-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateServerResponse" common-lisp:nil)))
  (common-lisp:export 'create-server))
 (common-lisp:progn
@@ -1388,9 +1394,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteBackup")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteBackup")
+                                  ("Version" ,@"2016-11-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteBackupResponse" common-lisp:nil)))
  (common-lisp:export 'delete-backup))
 (common-lisp:progn
@@ -1404,9 +1412,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteServer")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteServer")
+                                  ("Version" ,@"2016-11-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteServerResponse" common-lisp:nil)))
  (common-lisp:export 'delete-server))
 (common-lisp:progn
@@ -1430,8 +1440,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeBackups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeBackups")
+                                  ("Version" ,@"2016-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeBackupsResponse" common-lisp:nil)))
@@ -1448,9 +1459,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeEvents")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEvents")
+                                  ("Version" ,@"2016-11-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeEventsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
@@ -1467,8 +1480,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeNodeAssociationStatus")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeNodeAssociationStatus")
+                                  ("Version" ,@"2016-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeNodeAssociationStatusResponse" common-lisp:nil)))
@@ -1485,8 +1499,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeServers")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeServers")
+                                  ("Version" ,@"2016-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeServersResponse" common-lisp:nil)))
@@ -1503,8 +1518,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisassociateNode")
+                               (common-lisp:append
+                                `(("Action" ,@"DisassociateNode")
+                                  ("Version" ,@"2016-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DisassociateNodeResponse" common-lisp:nil)))
@@ -1522,9 +1538,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"RestoreServer")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RestoreServer")
+                                  ("Version" ,@"2016-11-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RestoreServerResponse" common-lisp:nil)))
  (common-lisp:export 'restore-server))
 (common-lisp:progn
@@ -1538,8 +1556,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartMaintenance")
+                               (common-lisp:append
+                                `(("Action" ,@"StartMaintenance")
+                                  ("Version" ,@"2016-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartMaintenanceResponse" common-lisp:nil)))
@@ -1559,9 +1578,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UpdateServer")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateServer")
+                                  ("Version" ,@"2016-11-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateServerResponse" common-lisp:nil)))
  (common-lisp:export 'update-server))
 (common-lisp:progn
@@ -1578,8 +1599,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "opsworkscm" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateServerEngineAttributes")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateServerEngineAttributes")
+                                  ("Version" ,@"2016-11-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "UpdateServerEngineAttributesResponse" common-lisp:nil)))

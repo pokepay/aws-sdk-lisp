@@ -1608,8 +1608,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"BatchGetRepositories")
+                               (common-lisp:append
+                                `(("Action" ,@"BatchGetRepositories")
+                                  ("Version" ,@"2015-04-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "BatchGetRepositoriesOutput" common-lisp:nil)))
@@ -1626,9 +1627,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateBranch")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateBranch")
+                                  ("Version" ,@"2015-04-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'create-branch))
 (common-lisp:progn
@@ -1643,8 +1646,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateRepository")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateRepository")
+                                  ("Version" ,@"2015-04-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateRepositoryOutput" common-lisp:nil)))
@@ -1660,8 +1664,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteRepository")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteRepository")
+                                  ("Version" ,@"2015-04-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteRepositoryOutput" common-lisp:nil)))
@@ -1677,9 +1682,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetBlob")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetBlob")
+                                  ("Version" ,@"2015-04-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetBlobOutput" common-lisp:nil)))
  (common-lisp:export 'get-blob))
 (common-lisp:progn
@@ -1693,9 +1700,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetBranch")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetBranch")
+                                  ("Version" ,@"2015-04-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetBranchOutput" common-lisp:nil)))
  (common-lisp:export 'get-branch))
 (common-lisp:progn
@@ -1709,9 +1718,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetCommit")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetCommit")
+                                  ("Version" ,@"2015-04-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetCommitOutput" common-lisp:nil)))
  (common-lisp:export 'get-commit))
 (common-lisp:progn
@@ -1729,9 +1740,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetDifferences")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetDifferences")
+                                  ("Version" ,@"2015-04-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetDifferencesOutput" common-lisp:nil)))
  (common-lisp:export 'get-differences))
 (common-lisp:progn
@@ -1745,9 +1758,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetRepository")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetRepository")
+                                  ("Version" ,@"2015-04-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetRepositoryOutput" common-lisp:nil)))
  (common-lisp:export 'get-repository))
 (common-lisp:progn
@@ -1761,8 +1776,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetRepositoryTriggers")
+                               (common-lisp:append
+                                `(("Action" ,@"GetRepositoryTriggers")
+                                  ("Version" ,@"2015-04-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetRepositoryTriggersOutput" common-lisp:nil)))
@@ -1778,9 +1794,11 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons `("Action" ,@"ListBranches")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListBranches")
+                                  ("Version" ,@"2015-04-13"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListBranchesOutput" common-lisp:nil)))
  (common-lisp:export 'list-branches))
 (common-lisp:progn
@@ -1794,8 +1812,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListRepositories")
+                               (common-lisp:append
+                                `(("Action" ,@"ListRepositories")
+                                  ("Version" ,@"2015-04-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListRepositoriesOutput" common-lisp:nil)))
@@ -1811,8 +1830,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutRepositoryTriggers")
+                               (common-lisp:append
+                                `(("Action" ,@"PutRepositoryTriggers")
+                                  ("Version" ,@"2015-04-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PutRepositoryTriggersOutput" common-lisp:nil)))
@@ -1828,8 +1848,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"TestRepositoryTriggers")
+                               (common-lisp:append
+                                `(("Action" ,@"TestRepositoryTriggers")
+                                  ("Version" ,@"2015-04-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "TestRepositoryTriggersOutput" common-lisp:nil)))
@@ -1846,8 +1867,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateDefaultBranch")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateDefaultBranch")
+                                  ("Version" ,@"2015-04-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1865,8 +1887,9 @@ common-lisp:nil
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateRepositoryDescription")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateRepositoryDescription")
+                                  ("Version" ,@"2015-04-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1882,8 +1905,9 @@ common-lisp:nil
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "codecommit" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateRepositoryName")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateRepositoryName")
+                                  ("Version" ,@"2015-04-13"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))

@@ -4047,8 +4047,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"AcceptCertificateTransfer")
+                               (common-lisp:append
+                                `(("Action" ,@"AcceptCertificateTransfer")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4064,8 +4065,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"AttachPrincipalPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"AttachPrincipalPolicy")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4081,8 +4083,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"AttachThingPrincipal")
+                               (common-lisp:append
+                                `(("Action" ,@"AttachThingPrincipal")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AttachThingPrincipalResponse" common-lisp:nil)))
@@ -4099,8 +4102,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"CancelCertificateTransfer")
+                               (common-lisp:append
+                                `(("Action" ,@"CancelCertificateTransfer")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4119,8 +4123,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateCertificateFromCsr")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateCertificateFromCsr")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateCertificateFromCsrResponse" common-lisp:nil)))
@@ -4137,8 +4142,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateKeysAndCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateKeysAndCertificate")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateKeysAndCertificateResponse" common-lisp:nil)))
@@ -4154,9 +4160,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreatePolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreatePolicy")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreatePolicyResponse" common-lisp:nil)))
  (common-lisp:export 'create-policy))
 (common-lisp:progn
@@ -4172,8 +4180,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreatePolicyVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"CreatePolicyVersion")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreatePolicyVersionResponse" common-lisp:nil)))
@@ -4191,9 +4200,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateThing")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateThing")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CreateThingResponse" common-lisp:nil)))
  (common-lisp:export 'create-thing))
 (common-lisp:progn
@@ -4208,8 +4219,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateThingType")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateThingType")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateThingTypeResponse" common-lisp:nil)))
@@ -4225,8 +4237,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateTopicRule")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateTopicRule")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4242,8 +4255,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteCACertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCACertificate")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteCACertificateResponse" common-lisp:nil)))
@@ -4259,8 +4273,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteCertificate")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4276,9 +4291,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeletePolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeletePolicy")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-policy))
 (common-lisp:progn
@@ -4292,8 +4309,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeletePolicyVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"DeletePolicyVersion")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4317,9 +4335,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :delete :params
-                               (common-lisp:cons `("Action" ,@"DeleteThing")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteThing")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DeleteThingResponse" common-lisp:nil)))
  (common-lisp:export 'delete-thing))
 (common-lisp:progn
@@ -4333,8 +4353,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteThingType")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteThingType")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteThingTypeResponse" common-lisp:nil)))
@@ -4350,8 +4371,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteTopicRule")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTopicRule")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4367,8 +4389,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeprecateThingType")
+                               (common-lisp:append
+                                `(("Action" ,@"DeprecateThingType")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeprecateThingTypeResponse" common-lisp:nil)))
@@ -4384,8 +4407,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCACertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCACertificate")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeCACertificateResponse" common-lisp:nil)))
@@ -4401,8 +4425,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCertificate")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeCertificateResponse" common-lisp:nil)))
@@ -4425,9 +4450,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons `("Action" ,@"DescribeThing")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeThing")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeThingResponse" common-lisp:nil)))
  (common-lisp:export 'describe-thing))
 (common-lisp:progn
@@ -4441,8 +4468,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeThingType")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeThingType")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeThingTypeResponse" common-lisp:nil)))
@@ -4458,8 +4486,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DetachPrincipalPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"DetachPrincipalPolicy")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4475,8 +4504,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :delete :params
-                               (common-lisp:cons
-                                `("Action" ,@"DetachThingPrincipal")
+                               (common-lisp:append
+                                `(("Action" ,@"DetachThingPrincipal")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DetachThingPrincipalResponse" common-lisp:nil)))
@@ -4492,8 +4522,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DisableTopicRule")
+                               (common-lisp:append
+                                `(("Action" ,@"DisableTopicRule")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4509,8 +4540,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"EnableTopicRule")
+                               (common-lisp:append
+                                `(("Action" ,@"EnableTopicRule")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4533,9 +4565,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetPolicy")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetPolicy")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetPolicyResponse" common-lisp:nil)))
  (common-lisp:export 'get-policy))
 (common-lisp:progn
@@ -4549,8 +4583,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"GetPolicyVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"GetPolicyVersion")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "GetPolicyVersionResponse" common-lisp:nil)))
@@ -4573,9 +4608,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons `("Action" ,@"GetTopicRule")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetTopicRule")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetTopicRuleResponse" common-lisp:nil)))
  (common-lisp:export 'get-topic-rule))
 (common-lisp:progn
@@ -4590,8 +4627,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListCACertificates")
+                               (common-lisp:append
+                                `(("Action" ,@"ListCACertificates")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListCACertificatesResponse" common-lisp:nil)))
@@ -4608,8 +4646,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListCertificates")
+                               (common-lisp:append
+                                `(("Action" ,@"ListCertificates")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListCertificatesResponse" common-lisp:nil)))
@@ -4627,8 +4666,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListCertificatesByCA")
+                               (common-lisp:append
+                                `(("Action" ,@"ListCertificatesByCA")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListCertificatesByCAResponse" common-lisp:nil)))
@@ -4646,8 +4686,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListOutgoingCertificates")
+                               (common-lisp:append
+                                `(("Action" ,@"ListOutgoingCertificates")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListOutgoingCertificatesResponse" common-lisp:nil)))
@@ -4664,9 +4705,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListPolicies")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListPolicies")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListPoliciesResponse" common-lisp:nil)))
  (common-lisp:export 'list-policies))
 (common-lisp:progn
@@ -4682,8 +4725,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListPolicyPrincipals")
+                               (common-lisp:append
+                                `(("Action" ,@"ListPolicyPrincipals")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListPolicyPrincipalsResponse" common-lisp:nil)))
@@ -4699,8 +4743,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListPolicyVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListPolicyVersions")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListPolicyVersionsResponse" common-lisp:nil)))
@@ -4718,8 +4763,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListPrincipalPolicies")
+                               (common-lisp:append
+                                `(("Action" ,@"ListPrincipalPolicies")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListPrincipalPoliciesResponse" common-lisp:nil)))
@@ -4736,8 +4782,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListPrincipalThings")
+                               (common-lisp:append
+                                `(("Action" ,@"ListPrincipalThings")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListPrincipalThingsResponse" common-lisp:nil)))
@@ -4753,8 +4800,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListThingPrincipals")
+                               (common-lisp:append
+                                `(("Action" ,@"ListThingPrincipals")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListThingPrincipalsResponse" common-lisp:nil)))
@@ -4771,9 +4819,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListThingTypes")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListThingTypes")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListThingTypesResponse" common-lisp:nil)))
  (common-lisp:export 'list-thing-types))
 (common-lisp:progn
@@ -4790,9 +4840,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListThings")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListThings")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListThingsResponse" common-lisp:nil)))
  (common-lisp:export 'list-things))
 (common-lisp:progn
@@ -4808,9 +4860,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :get :params
-                               (common-lisp:cons `("Action" ,@"ListTopicRules")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListTopicRules")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListTopicRulesResponse" common-lisp:nil)))
  (common-lisp:export 'list-topic-rules))
 (common-lisp:progn
@@ -4827,8 +4881,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterCACertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterCACertificate")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RegisterCACertificateResponse" common-lisp:nil)))
@@ -4847,8 +4902,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RegisterCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"RegisterCertificate")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RegisterCertificateResponse" common-lisp:nil)))
@@ -4865,8 +4921,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"RejectCertificateTransfer")
+                               (common-lisp:append
+                                `(("Action" ,@"RejectCertificateTransfer")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4882,8 +4939,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"ReplaceTopicRule")
+                               (common-lisp:append
+                                `(("Action" ,@"ReplaceTopicRule")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4900,8 +4958,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetDefaultPolicyVersion")
+                               (common-lisp:append
+                                `(("Action" ,@"SetDefaultPolicyVersion")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4917,8 +4976,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetLoggingOptions")
+                               (common-lisp:append
+                                `(("Action" ,@"SetLoggingOptions")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4936,8 +4996,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :patch :params
-                               (common-lisp:cons
-                                `("Action" ,@"TransferCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"TransferCertificate")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "TransferCertificateResponse" common-lisp:nil)))
@@ -4956,8 +5017,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateCACertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateCACertificate")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4973,8 +5035,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :put :params
-                               (common-lisp:cons
-                                `("Action" ,@"UpdateCertificate")
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateCertificate")
+                                  ("Version" ,@"2015-05-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4993,8 +5056,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "iot" :method :patch :params
-                               (common-lisp:cons `("Action" ,@"UpdateThing")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UpdateThing")
+                                  ("Version" ,@"2015-05-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "UpdateThingResponse" common-lisp:nil)))
  (common-lisp:export 'update-thing))

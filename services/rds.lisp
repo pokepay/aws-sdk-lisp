@@ -10320,8 +10320,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddRoleToDBCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"AddRoleToDBCluster")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -10339,9 +10340,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"AddSourceIdentifierToSubscription")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"AddSourceIdentifierToSubscription")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddSourceIdentifierToSubscriptionResult"
@@ -10358,8 +10360,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddTagsToResource")
+                               (common-lisp:append
+                                `(("Action" ,@"AddTagsToResource")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -10378,8 +10381,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ApplyPendingMaintenanceAction")
+                               (common-lisp:append
+                                `(("Action" ,@"ApplyPendingMaintenanceAction")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ApplyPendingMaintenanceActionResult"
@@ -10401,8 +10405,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"AuthorizeDBSecurityGroupIngress")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"AuthorizeDBSecurityGroupIngress")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AuthorizeDBSecurityGroupIngressResult"
@@ -10426,8 +10432,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CopyDBClusterParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CopyDBClusterParameterGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CopyDBClusterParameterGroupResult"
@@ -10449,8 +10456,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CopyDBClusterSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"CopyDBClusterSnapshot")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CopyDBClusterSnapshotResult" "CopyDBClusterSnapshotResult")))
@@ -10471,8 +10479,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CopyDBParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CopyDBParameterGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CopyDBParameterGroupResult" "CopyDBParameterGroupResult")))
@@ -10493,9 +10502,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CopyDBSnapshot")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CopyDBSnapshot")
+                                  ("Version" ,@"2014-10-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CopyDBSnapshotResult" "CopyDBSnapshotResult")))
  (common-lisp:export 'copy-dbsnapshot))
 (common-lisp:progn
@@ -10513,8 +10524,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CopyOptionGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CopyOptionGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CopyOptionGroupResult" "CopyOptionGroupResult")))
@@ -10545,8 +10557,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDBCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDBCluster")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDBClusterResult" "CreateDBClusterResult")))
@@ -10566,8 +10579,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDBClusterParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDBClusterParameterGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDBClusterParameterGroupResult"
@@ -10588,8 +10602,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDBClusterSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDBClusterSnapshot")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDBClusterSnapshotResult" "CreateDBClusterSnapshotResult")))
@@ -10630,8 +10645,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDBInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDBInstance")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDBInstanceResult" "CreateDBInstanceResult")))
@@ -10659,8 +10675,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDBInstanceReadReplica")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDBInstanceReadReplica")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDBInstanceReadReplicaResult"
@@ -10680,8 +10697,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDBParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDBParameterGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDBParameterGroupResult" "CreateDBParameterGroupResult")))
@@ -10700,8 +10718,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDBSecurityGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDBSecurityGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDBSecurityGroupResult" "CreateDBSecurityGroupResult")))
@@ -10719,8 +10738,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDBSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDBSnapshot")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDBSnapshotResult" "CreateDBSnapshotResult")))
@@ -10739,8 +10759,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateDBSubnetGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateDBSubnetGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateDBSubnetGroupResult" "CreateDBSubnetGroupResult")))
@@ -10760,8 +10781,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateEventSubscription")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateEventSubscription")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateEventSubscriptionResult" "CreateEventSubscriptionResult")))
@@ -10780,8 +10802,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateOptionGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateOptionGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateOptionGroupResult" "CreateOptionGroupResult")))
@@ -10800,8 +10823,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDBCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDBCluster")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteDBClusterResult" "DeleteDBClusterResult")))
@@ -10818,8 +10842,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDBClusterParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDBClusterParameterGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -10836,8 +10861,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDBClusterSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDBClusterSnapshot")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteDBClusterSnapshotResult" "DeleteDBClusterSnapshotResult")))
@@ -10856,8 +10882,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDBInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDBInstance")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteDBInstanceResult" "DeleteDBInstanceResult")))
@@ -10873,8 +10900,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDBParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDBParameterGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -10890,8 +10918,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDBSecurityGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDBSecurityGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -10907,8 +10936,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDBSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDBSnapshot")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteDBSnapshotResult" "DeleteDBSnapshotResult")))
@@ -10924,8 +10954,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDBSubnetGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDBSubnetGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -10942,8 +10973,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteEventSubscription")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteEventSubscription")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteEventSubscriptionResult" "DeleteEventSubscriptionResult")))
@@ -10959,8 +10991,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteOptionGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteOptionGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -10986,8 +11019,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCertificates")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCertificates")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CertificateMessage" "DescribeCertificatesResult")))
@@ -11007,9 +11041,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeDBClusterParameterGroups")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeDBClusterParameterGroups")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBClusterParameterGroupsMessage"
@@ -11030,8 +11065,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDBClusterParameters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDBClusterParameters")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBClusterParameterGroupDetails" "DescribeDBClusterParametersResult")))
@@ -11048,9 +11084,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeDBClusterSnapshotAttributes")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeDBClusterSnapshotAttributes")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDBClusterSnapshotAttributesResult"
@@ -11072,8 +11109,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDBClusterSnapshots")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDBClusterSnapshots")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBClusterSnapshotMessage" "DescribeDBClusterSnapshotsResult")))
@@ -11091,8 +11129,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDBClusters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDBClusters")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBClusterMessage" "DescribeDBClustersResult")))
@@ -11115,8 +11154,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDBEngineVersions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDBEngineVersions")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBEngineVersionMessage" "DescribeDBEngineVersionsResult")))
@@ -11134,8 +11174,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDBInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDBInstances")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBInstanceMessage" "DescribeDBInstancesResult")))
@@ -11154,8 +11195,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDBLogFiles")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDBLogFiles")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDBLogFilesResponse" "DescribeDBLogFilesResult")))
@@ -11174,8 +11216,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDBParameterGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDBParameterGroups")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBParameterGroupsMessage" "DescribeDBParameterGroupsResult")))
@@ -11194,8 +11237,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDBParameters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDBParameters")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBParameterGroupDetails" "DescribeDBParametersResult")))
@@ -11214,8 +11258,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDBSecurityGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDBSecurityGroups")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBSecurityGroupMessage" "DescribeDBSecurityGroupsResult")))
@@ -11232,8 +11277,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDBSnapshotAttributes")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDBSnapshotAttributes")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDBSnapshotAttributesResult"
@@ -11254,8 +11300,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDBSnapshots")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDBSnapshots")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBSnapshotMessage" "DescribeDBSnapshotsResult")))
@@ -11273,8 +11320,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDBSubnetGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDBSubnetGroups")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBSubnetGroupMessage" "DescribeDBSubnetGroupsResult")))
@@ -11294,9 +11342,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeEngineDefaultClusterParameters")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeEngineDefaultClusterParameters")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEngineDefaultClusterParametersResult"
@@ -11317,8 +11366,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEngineDefaultParameters")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeEngineDefaultParameters")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeEngineDefaultParametersResult"
@@ -11336,8 +11387,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEventCategories")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEventCategories")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EventCategoriesMessage" "DescribeEventCategoriesResult")))
@@ -11356,8 +11408,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeEventSubscriptions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEventSubscriptions")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "EventSubscriptionsMessage" "DescribeEventSubscriptionsResult")))
@@ -11377,9 +11430,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DescribeEvents")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeEvents")
+                                  ("Version" ,@"2014-10-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "EventsMessage" "DescribeEventsResult")))
  (common-lisp:export 'describe-events))
 (common-lisp:progn
@@ -11397,8 +11452,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeOptionGroupOptions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeOptionGroupOptions")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "OptionGroupOptionsMessage" "DescribeOptionGroupOptionsResult")))
@@ -11417,8 +11473,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeOptionGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeOptionGroups")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "OptionGroups" "DescribeOptionGroupsResult")))
@@ -11438,9 +11495,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeOrderableDBInstanceOptions")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeOrderableDBInstanceOptions")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "OrderableDBInstanceOptionsMessage"
@@ -11460,9 +11518,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribePendingMaintenanceActions")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribePendingMaintenanceActions")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PendingMaintenanceActionsMessage"
@@ -11486,8 +11545,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeReservedDBInstances")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeReservedDBInstances")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ReservedDBInstanceMessage" "DescribeReservedDBInstancesResult")))
@@ -11509,9 +11569,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeReservedDBInstancesOfferings")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeReservedDBInstancesOfferings")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ReservedDBInstancesOfferingMessage"
@@ -11529,8 +11590,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeSourceRegions")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeSourceRegions")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "SourceRegionMessage" "DescribeSourceRegionsResult")))
@@ -11550,8 +11612,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DownloadDBLogFilePortion")
+                               (common-lisp:append
+                                `(("Action" ,@"DownloadDBLogFilePortion")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DownloadDBLogFilePortionDetails" "DownloadDBLogFilePortionResult")))
@@ -11569,8 +11632,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"FailoverDBCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"FailoverDBCluster")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "FailoverDBClusterResult" "FailoverDBClusterResult")))
@@ -11586,8 +11650,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsForResource")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsForResource")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "TagListMessage" "ListTagsForResourceResult")))
@@ -11614,8 +11679,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyDBCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyDBCluster")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyDBClusterResult" "ModifyDBClusterResult")))
@@ -11634,8 +11700,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyDBClusterParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyDBClusterParameterGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBClusterParameterGroupNameMessage"
@@ -11656,9 +11723,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"ModifyDBClusterSnapshotAttribute")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ModifyDBClusterSnapshotAttribute")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyDBClusterSnapshotAttributeResult"
@@ -11699,8 +11767,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyDBInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyDBInstance")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyDBInstanceResult" "ModifyDBInstanceResult")))
@@ -11717,8 +11786,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyDBParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyDBParameterGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBParameterGroupNameMessage" "ModifyDBParameterGroupResult")))
@@ -11735,8 +11805,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyDBSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyDBSnapshot")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyDBSnapshotResult" "ModifyDBSnapshotResult")))
@@ -11756,8 +11827,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyDBSnapshotAttribute")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyDBSnapshotAttribute")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyDBSnapshotAttributeResult" "ModifyDBSnapshotAttributeResult")))
@@ -11776,8 +11848,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyDBSubnetGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyDBSubnetGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyDBSubnetGroupResult" "ModifyDBSubnetGroupResult")))
@@ -11797,8 +11870,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyEventSubscription")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyEventSubscription")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyEventSubscriptionResult" "ModifyEventSubscriptionResult")))
@@ -11817,8 +11891,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyOptionGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyOptionGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ModifyOptionGroupResult" "ModifyOptionGroupResult")))
@@ -11837,8 +11912,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PromoteReadReplica")
+                               (common-lisp:append
+                                `(("Action" ,@"PromoteReadReplica")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PromoteReadReplicaResult" "PromoteReadReplicaResult")))
@@ -11855,8 +11931,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PromoteReadReplicaDBCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"PromoteReadReplicaDBCluster")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PromoteReadReplicaDBClusterResult"
@@ -11877,9 +11954,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"PurchaseReservedDBInstancesOffering")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"PurchaseReservedDBInstancesOffering")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PurchaseReservedDBInstancesOfferingResult"
@@ -11897,8 +11975,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RebootDBInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"RebootDBInstance")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RebootDBInstanceResult" "RebootDBInstanceResult")))
@@ -11915,8 +11994,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveRoleFromDBCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveRoleFromDBCluster")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -11934,9 +12014,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"RemoveSourceIdentifierFromSubscription")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"RemoveSourceIdentifierFromSubscription")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RemoveSourceIdentifierFromSubscriptionResult"
@@ -11954,8 +12035,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveTagsFromResource")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveTagsFromResource")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -11975,8 +12057,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ResetDBClusterParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ResetDBClusterParameterGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBClusterParameterGroupNameMessage"
@@ -11996,8 +12079,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ResetDBParameterGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ResetDBParameterGroup")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DBParameterGroupNameMessage" "ResetDBParameterGroupResult")))
@@ -12030,8 +12114,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RestoreDBClusterFromS3")
+                               (common-lisp:append
+                                `(("Action" ,@"RestoreDBClusterFromS3")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RestoreDBClusterFromS3Result" "RestoreDBClusterFromS3Result")))
@@ -12056,8 +12141,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RestoreDBClusterFromSnapshot")
+                               (common-lisp:append
+                                `(("Action" ,@"RestoreDBClusterFromSnapshot")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RestoreDBClusterFromSnapshotResult"
@@ -12083,8 +12169,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RestoreDBClusterToPointInTime")
+                               (common-lisp:append
+                                `(("Action" ,@"RestoreDBClusterToPointInTime")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RestoreDBClusterToPointInTimeResult"
@@ -12115,8 +12202,10 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RestoreDBInstanceFromDBSnapshot")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"RestoreDBInstanceFromDBSnapshot")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RestoreDBInstanceFromDBSnapshotResult"
@@ -12149,8 +12238,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RestoreDBInstanceToPointInTime")
+                               (common-lisp:append
+                                `(("Action" ,@"RestoreDBInstanceToPointInTime")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RestoreDBInstanceToPointInTimeResult"
@@ -12172,8 +12262,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"RevokeDBSecurityGroupIngress")
+                               (common-lisp:append
+                                `(("Action" ,@"RevokeDBSecurityGroupIngress")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RevokeDBSecurityGroupIngressResult"
@@ -12190,8 +12281,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"StartDBInstance")
+                               (common-lisp:append
+                                `(("Action" ,@"StartDBInstance")
+                                  ("Version" ,@"2014-10-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "StartDBInstanceResult" "StartDBInstanceResult")))
@@ -12209,8 +12301,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "rds" :method :post :params
-                               (common-lisp:cons `("Action" ,@"StopDBInstance")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"StopDBInstance")
+                                  ("Version" ,@"2014-10-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "StopDBInstanceResult" "StopDBInstanceResult")))
  (common-lisp:export 'stop-dbinstance))

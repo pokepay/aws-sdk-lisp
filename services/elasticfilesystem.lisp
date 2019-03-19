@@ -1098,8 +1098,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticfilesystem" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateFileSystem")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateFileSystem")
+                                  ("Version" ,@"2015-02-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "FileSystemDescription" common-lisp:nil)))
@@ -1119,8 +1120,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticfilesystem" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateMountTarget")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateMountTarget")
+                                  ("Version" ,@"2015-02-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "MountTargetDescription" common-lisp:nil)))
@@ -1137,9 +1139,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticfilesystem" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"CreateTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateTags")
+                                  ("Version" ,@"2015-02-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'create-tags))
 (common-lisp:progn
@@ -1154,8 +1158,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticfilesystem" :method :delete
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteFileSystem")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteFileSystem")
+                                  ("Version" ,@"2015-02-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1172,8 +1177,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticfilesystem" :method :delete
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteMountTarget")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteMountTarget")
+                                  ("Version" ,@"2015-02-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -1190,9 +1196,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticfilesystem" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"DeleteTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteTags")
+                                  ("Version" ,@"2015-02-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-tags))
 (common-lisp:progn
@@ -1209,8 +1217,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticfilesystem" :method :get
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeFileSystems")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeFileSystems")
+                                  ("Version" ,@"2015-02-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeFileSystemsResponse" common-lisp:nil)))
@@ -1228,9 +1237,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticfilesystem" :method :get
                                :params
-                               (common-lisp:cons
-                                `("Action"
-                                  ,@"DescribeMountTargetSecurityGroups")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"DescribeMountTargetSecurityGroups")
+                                  ("Version" ,@"2015-02-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeMountTargetSecurityGroupsResponse" common-lisp:nil)))
@@ -1249,8 +1259,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticfilesystem" :method :get
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeMountTargets")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeMountTargets")
+                                  ("Version" ,@"2015-02-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeMountTargetsResponse" common-lisp:nil)))
@@ -1268,9 +1279,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticfilesystem" :method :get
                                :params
-                               (common-lisp:cons `("Action" ,@"DescribeTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeTags")
+                                  ("Version" ,@"2015-02-01"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeTagsResponse" common-lisp:nil)))
  (common-lisp:export 'describe-tags))
 (common-lisp:progn
@@ -1287,8 +1300,10 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticfilesystem" :method :put
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyMountTargetSecurityGroups")
+                               (common-lisp:append
+                                `(("Action"
+                                   ,@"ModifyMountTargetSecurityGroups")
+                                  ("Version" ,@"2015-02-01"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))

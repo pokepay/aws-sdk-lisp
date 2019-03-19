@@ -4517,8 +4517,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddInstanceFleet")
+                               (common-lisp:append
+                                `(("Action" ,@"AddInstanceFleet")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddInstanceFleetOutput" common-lisp:nil)))
@@ -4535,8 +4536,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddInstanceGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"AddInstanceGroups")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddInstanceGroupsOutput" common-lisp:nil)))
@@ -4553,8 +4555,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"AddJobFlowSteps")
+                               (common-lisp:append
+                                `(("Action" ,@"AddJobFlowSteps")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "AddJobFlowStepsOutput" common-lisp:nil)))
@@ -4571,9 +4574,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"AddTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"AddTags")
+                                  ("Version" ,@"2009-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "AddTagsOutput" common-lisp:nil)))
  (common-lisp:export 'add-tags))
 (common-lisp:progn
@@ -4588,9 +4593,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"CancelSteps")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CancelSteps")
+                                  ("Version" ,@"2009-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "CancelStepsOutput" common-lisp:nil)))
  (common-lisp:export 'cancel-steps))
 (common-lisp:progn
@@ -4606,8 +4613,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateSecurityConfiguration")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateSecurityConfiguration")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateSecurityConfigurationOutput" common-lisp:nil)))
@@ -4625,8 +4633,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteSecurityConfiguration")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteSecurityConfiguration")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DeleteSecurityConfigurationOutput" common-lisp:nil)))
@@ -4643,8 +4652,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeCluster")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeCluster")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeClusterOutput" common-lisp:nil)))
@@ -4664,8 +4674,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeJobFlows")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeJobFlows")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeJobFlowsOutput" common-lisp:nil)))
@@ -4683,8 +4694,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeSecurityConfiguration")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeSecurityConfiguration")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeSecurityConfigurationOutput" common-lisp:nil)))
@@ -4701,9 +4713,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"DescribeStep")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeStep")
+                                  ("Version" ,@"2009-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "DescribeStepOutput" common-lisp:nil)))
  (common-lisp:export 'describe-step))
 (common-lisp:progn
@@ -4718,8 +4732,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListBootstrapActions")
+                               (common-lisp:append
+                                `(("Action" ,@"ListBootstrapActions")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListBootstrapActionsOutput" common-lisp:nil)))
@@ -4738,9 +4753,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"ListClusters")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListClusters")
+                                  ("Version" ,@"2009-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListClustersOutput" common-lisp:nil)))
  (common-lisp:export 'list-clusters))
 (common-lisp:progn
@@ -4755,8 +4772,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListInstanceFleets")
+                               (common-lisp:append
+                                `(("Action" ,@"ListInstanceFleets")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListInstanceFleetsOutput" common-lisp:nil)))
@@ -4773,8 +4791,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListInstanceGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"ListInstanceGroups")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListInstanceGroupsOutput" common-lisp:nil)))
@@ -4795,9 +4814,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"ListInstances")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListInstances")
+                                  ("Version" ,@"2009-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListInstancesOutput" common-lisp:nil)))
  (common-lisp:export 'list-instances))
 (common-lisp:progn
@@ -4813,8 +4834,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListSecurityConfigurations")
+                               (common-lisp:append
+                                `(("Action" ,@"ListSecurityConfigurations")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListSecurityConfigurationsOutput" common-lisp:nil)))
@@ -4832,9 +4854,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"ListSteps")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"ListSteps")
+                                  ("Version" ,@"2009-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "ListStepsOutput" common-lisp:nil)))
  (common-lisp:export 'list-steps))
 (common-lisp:progn
@@ -4849,8 +4873,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyInstanceFleet")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyInstanceFleet")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4867,8 +4892,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"ModifyInstanceGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"ModifyInstanceGroups")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4887,8 +4913,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutAutoScalingPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"PutAutoScalingPolicy")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "PutAutoScalingPolicyOutput" common-lisp:nil)))
@@ -4905,8 +4932,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"RemoveAutoScalingPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveAutoScalingPolicy")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "RemoveAutoScalingPolicyOutput" common-lisp:nil)))
@@ -4923,9 +4951,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"RemoveTags")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RemoveTags")
+                                  ("Version" ,@"2009-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RemoveTagsOutput" common-lisp:nil)))
  (common-lisp:export 'remove-tags))
 (common-lisp:progn
@@ -4952,9 +4982,11 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons `("Action" ,@"RunJobFlow")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"RunJobFlow")
+                                  ("Version" ,@"2009-03-31"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "RunJobFlowOutput" common-lisp:nil)))
  (common-lisp:export 'run-job-flow))
 (common-lisp:progn
@@ -4970,8 +5002,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetTerminationProtection")
+                               (common-lisp:append
+                                `(("Action" ,@"SetTerminationProtection")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -4989,8 +5022,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"SetVisibleToAllUsers")
+                               (common-lisp:append
+                                `(("Action" ,@"SetVisibleToAllUsers")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -5007,8 +5041,9 @@
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
                                :params
-                               (common-lisp:cons
-                                `("Action" ,@"TerminateJobFlows")
+                               (common-lisp:append
+                                `(("Action" ,@"TerminateJobFlows")
+                                  ("Version" ,@"2009-03-31"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))

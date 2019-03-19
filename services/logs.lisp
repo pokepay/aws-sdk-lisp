@@ -2077,8 +2077,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CancelExportTask")
+                               (common-lisp:append
+                                `(("Action" ,@"CancelExportTask")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2098,8 +2099,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateExportTask")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateExportTask")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "CreateExportTaskResponse" common-lisp:nil)))
@@ -2115,9 +2117,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"CreateLogGroup")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"CreateLogGroup")
+                                  ("Version" ,@"2014-03-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'create-log-group))
 (common-lisp:progn
@@ -2131,8 +2135,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"CreateLogStream")
+                               (common-lisp:append
+                                `(("Action" ,@"CreateLogStream")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2148,8 +2153,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteDestination")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteDestination")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2165,9 +2171,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"DeleteLogGroup")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteLogGroup")
+                                  ("Version" ,@"2014-03-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'delete-log-group))
 (common-lisp:progn
@@ -2181,8 +2189,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteLogStream")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteLogStream")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2198,8 +2207,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteMetricFilter")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteMetricFilter")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2215,8 +2225,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteRetentionPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteRetentionPolicy")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2233,8 +2244,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DeleteSubscriptionFilter")
+                               (common-lisp:append
+                                `(("Action" ,@"DeleteSubscriptionFilter")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2251,8 +2263,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeDestinations")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeDestinations")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeDestinationsResponse" common-lisp:nil)))
@@ -2269,8 +2282,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeExportTasks")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeExportTasks")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeExportTasksResponse" common-lisp:nil)))
@@ -2287,8 +2301,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeLogGroups")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeLogGroups")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeLogGroupsResponse" common-lisp:nil)))
@@ -2307,8 +2322,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeLogStreams")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeLogStreams")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeLogStreamsResponse" common-lisp:nil)))
@@ -2327,8 +2343,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeMetricFilters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeMetricFilters")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeMetricFiltersResponse" common-lisp:nil)))
@@ -2347,8 +2364,9 @@
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"DescribeSubscriptionFilters")
+                               (common-lisp:append
+                                `(("Action" ,@"DescribeSubscriptionFilters")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "DescribeSubscriptionFiltersResponse" common-lisp:nil)))
@@ -2368,8 +2386,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"FilterLogEvents")
+                               (common-lisp:append
+                                `(("Action" ,@"FilterLogEvents")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "FilterLogEventsResponse" common-lisp:nil)))
@@ -2388,9 +2407,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"GetLogEvents")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"GetLogEvents")
+                                  ("Version" ,@"2014-03-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "GetLogEventsResponse" common-lisp:nil)))
  (common-lisp:export 'get-log-events))
 (common-lisp:progn
@@ -2404,8 +2425,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"ListTagsLogGroup")
+                               (common-lisp:append
+                                `(("Action" ,@"ListTagsLogGroup")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "ListTagsLogGroupResponse" common-lisp:nil)))
@@ -2422,9 +2444,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutDestination")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutDestination")
+                                  ("Version" ,@"2014-03-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutDestinationResponse" common-lisp:nil)))
  (common-lisp:export 'put-destination))
 (common-lisp:progn
@@ -2438,8 +2462,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutDestinationPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"PutDestinationPolicy")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2458,9 +2483,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"PutLogEvents")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"PutLogEvents")
+                                  ("Version" ,@"2014-03-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       "PutLogEventsResponse" common-lisp:nil)))
  (common-lisp:export 'put-log-events))
 (common-lisp:progn
@@ -2477,8 +2504,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutMetricFilter")
+                               (common-lisp:append
+                                `(("Action" ,@"PutMetricFilter")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2495,8 +2523,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutRetentionPolicy")
+                               (common-lisp:append
+                                `(("Action" ,@"PutRetentionPolicy")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2515,8 +2544,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"PutSubscriptionFilter")
+                               (common-lisp:append
+                                `(("Action" ,@"PutSubscriptionFilter")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
@@ -2532,9 +2562,11 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"TagLogGroup")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"TagLogGroup")
+                                  ("Version" ,@"2014-03-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'tag-log-group))
 (common-lisp:progn
@@ -2549,8 +2581,9 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons
-                                `("Action" ,@"TestMetricFilter")
+                               (common-lisp:append
+                                `(("Action" ,@"TestMetricFilter")
+                                  ("Version" ,@"2014-03-28"))
                                 (aws-sdk/generator/shape:shape-to-params
                                  aws-sdk/generator/operation::input)))
       "TestMetricFilterResponse" common-lisp:nil)))
@@ -2566,8 +2599,10 @@
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
       (aws-sdk/api:aws-request :service "logs" :method :post :params
-                               (common-lisp:cons `("Action" ,@"UntagLogGroup")
-                                                 (aws-sdk/generator/shape:shape-to-params
-                                                  aws-sdk/generator/operation::input)))
+                               (common-lisp:append
+                                `(("Action" ,@"UntagLogGroup")
+                                  ("Version" ,@"2014-03-28"))
+                                (aws-sdk/generator/shape:shape-to-params
+                                 aws-sdk/generator/operation::input)))
       common-lisp:nil common-lisp:nil)))
  (common-lisp:export 'untag-log-group))
