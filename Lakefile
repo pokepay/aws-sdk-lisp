@@ -8,5 +8,6 @@
 (task "default" ("generate"))
 
 (task "generate" ()
+  (push *default-pathname-defaults* asdf:*central-registry*)
   (ql:quickload :aws-sdk/generator)
   (uiop:symbol-call :aws-sdk/generator :generate-all-services))
