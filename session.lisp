@@ -1,7 +1,8 @@
 (defpackage #:aws-sdk/session
   (:use #:cl)
   (:import-from #:aws-sdk/credentials
-                #:credentials)
+                #:credentials
+                #:aws-credentials)
   (:import-from #:aws-sdk/utils
                 #:getenv)
   (:import-from #:aws-sdk/utils/config
@@ -23,6 +24,10 @@
                                               *aws-profile*))
                  "region"))))
 
-(defstruct session
+(defstruct (session (:constructor %make-session))
   (credentials nil :type (or credentials null))
-  (region (aws-region) :type (or string null)))
+  (region nil :type (or string null)))
+
+(defun make-session (&key credentials region)
+  (%make-session :credentials (aws-credentials)
+                 :region (or region (aws-region))))
