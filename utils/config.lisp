@@ -36,12 +36,13 @@
             (cons (file-write-date file) data))
       data)))
 
-(defun read-from-file (file &key (profile *aws-profile*))
+(defun read-from-file (file &key (profile *aws-profile*) allow-no-profile)
   (let* ((data (parse-file file))
          (section
            (or (assoc profile data :test 'equal)
                ;; Fallback to 'profile <name>'
                (assoc (format nil "profile ~A" profile) data :test 'equal))))
-    (unless section
+    (when (and (null section)
+               (not allow-no-profile))
       (error "Profile '~A' doesn't exist in '~A'." profile file))
     (cdr section)))
