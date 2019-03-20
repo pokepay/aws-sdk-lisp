@@ -4,7 +4,6 @@
                 #:make-credentials
                 #:provider
                 #:retrieve
-                #:expiredp
                 #:provider-expiration)
   (:import-from #:aws-sdk/ec2metadata
                 #:ec2metadata)

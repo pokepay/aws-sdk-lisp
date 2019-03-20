@@ -1,5 +1,7 @@
 (defpackage #:aws-sdk/utils/config
   (:use #:cl)
+  (:import-from #:aws-sdk/utils
+                #:getenv)
   (:import-from #:parser.ini
                 #:*include-empty-sections?*
                 #:parse)
@@ -7,8 +9,9 @@
            #:*aws-profile*))
 (in-package #:aws-sdk/utils/config)
 
-(defvar *aws-profile* "default")
+(defvar *aws-profile* (or (getenv "AWS_PROFILE") "default"))
 
+;; TODO: Cache the parsed data
 (defun read-from-file (file &key (profile *aws-profile*))
   (let* ((parser.ini:*include-empty-sections?* t)
          (data (parser.ini:parse file 'list))
