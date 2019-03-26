@@ -4,11 +4,11 @@
   (:import-from #:aws-sdk/utils/config
                 #:*aws-profile*)
   (:import-from #:aws-sdk/session
-                #:session
+                #:session)
+  (:import-from #:aws-sdk/make-session
                 #:make-session)
   (:import-from #:aws-sdk/credentials
-                #:make-credentials
-                #:aws-credentials)
+                #:make-credentials)
   (:import-from #:aws-sdk/api
                 #:*session*
                 #:aws-request)
@@ -17,6 +17,5 @@
            #:session
            #:make-session
            #:make-credentials
-           #:aws-credentials
            #:aws-request))
 (in-package #:aws-sdk)

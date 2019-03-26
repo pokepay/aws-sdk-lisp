@@ -4,8 +4,8 @@
                 #:make-credentials
                 #:credentials
                 #:retrieve
-                #:credential-keys
-                #:credential-headers)
+                #:credentials-keys
+                #:credentials-headers)
   (:import-from #:aws-sdk/credentials/env
                 #:env-provider)
   (:import-from #:aws-sdk/credentials/shared
@@ -14,9 +14,9 @@
                 #:ec2role-provider)
   (:export #:credentials
            #:make-credentials
-           #:aws-credentials
-           #:credential-keys
-           #:credential-headers))
+           #:default-aws-credentials
+           #:credentials-keys
+           #:credentials-headers))
 (in-package #:aws-sdk/credentials)
 
 (defvar *chained-providers*
@@ -24,7 +24,7 @@
         (make-instance 'shared-provider)
         (make-instance 'ec2role-provider)))
 
-(defun aws-credentials ()
+(defun default-aws-credentials ()
   (loop for provider in *chained-providers*
         for credentials = (retrieve provider)
         when credentials

@@ -11,7 +11,9 @@ AWS-SDK provides interfaces for each AWS services as individual systems under "a
 Here's an example to send an SMS via Amazon Simple Notification Service:
 
 ```common-lisp
-(ql:quickload :aws-sdk/services/sns)
+(ql:quickload '(:aws-sdk :aws-sdk/services/sns))
+
+(setf aws:*session* (aws:make-session))
 
 ;; Sending 
 (aws/sns:publish :phone-number "+8190xxxxxxxx" :message "Hi, there")
