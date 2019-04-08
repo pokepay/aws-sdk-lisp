@@ -32,4 +32,4 @@
              :secret-access-key (gethash "SecretAccessKey" res)
              :session-token (gethash "Token" res)
              :provider-name "ec2role-provider"))))
-    (timeout-error () nil)))
+    ((or usocket:socket-error timeout-error) () nil)))
