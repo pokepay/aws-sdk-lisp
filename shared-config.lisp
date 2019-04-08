@@ -44,9 +44,11 @@
   (declare (ignore credentials-path config-path))
   (let ((shared-config (apply #'%make-shared-config args)))
     (let ((section (with-slots (credentials-path profile) shared-config
-                     (read-from-file credentials-path
-                                     :profile profile
-                                     :allow-no-profile t))))
+                     (when (and credentials-path
+                                (probe-file credentials-path))
+                       (read-from-file credentials-path
+                                       :profile profile
+                                       :allow-no-profile t)))))
       (let ((access-key-id (aget section "aws_access_key_id"))
             (secret-access-key (aget section "aws_secret_access_key")))
         (when (and access-key-id secret-access-key)
@@ -59,9 +61,11 @@
                                         (shared-config-config-path shared-config)))))))
 
     (let ((section (with-slots (config-path profile) shared-config
-                     (read-from-file config-path
-                                     :profile profile
-                                     :allow-no-profile t))))
+                     (when (and config-path
+                                (probe-file config-path))
+                       (read-from-file config-path
+                                       :profile profile
+                                       :allow-no-profile t)))))
       (let ((role-arn (aget section "role_arn"))
             (source-profile (aget section "source_profile"))
             (credential-source (aget section "credential_source")))
