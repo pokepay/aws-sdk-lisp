@@ -4,8 +4,7 @@
                 #:%make-session)
   (:import-from #:aws-sdk/credentials
                 #:credentials
-                #:make-credentials
-                #:default-aws-credentials)
+                #:make-credentials)
   (:import-from #:aws-sdk/shared-config
                 #:make-shared-config
                 #:shared-config-credentials
@@ -48,7 +47,7 @@
                               :serial-number (assume-role-serial-number assume-role)
                               :role-session-name (assume-role-role-session-name assume-role)))))
            ((shared-config-credentials shared-config))
-           (t (default-aws-credentials))))
+           (t nil)))
      :region (or region
                  (shared-config-region shared-config)
                  (getenv "AWS_REGION")))))
