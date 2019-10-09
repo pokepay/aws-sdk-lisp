@@ -12,11 +12,25 @@
   (:import-from #:dexador)
   (:import-from #:quri)
   (:export #:*session*
-           #:aws-request))
+           #:aws-request
+           #:aws-session-error
+           #:no-credentials
+           #:no-region))
 (in-package #:aws-sdk/api)
 
 (defun aws-host (service region)
   (format nil "~(~A~).~(~A~).amazonaws.com" service region))
+
+(define-condition aws-session-error (error)
+  ())
+
+(define-condition no-credentials (aws-session-error)
+  ()
+  (:report "No credentials are found"))
+
+(define-condition no-region (aws-session-error)
+  ()
+  (:report "AWS region is not configured"))
 
 (defun aws-request (&key (path "/") service method params headers payload
                       (session *session*))
@@ -24,9 +38,9 @@
                          (default-aws-credentials)))
         (region (session-region session)))
     (unless credentials
-      (error "No credentials are found"))
+      (error 'no-credentials))
     (unless region
-      (error "AWS region is not configured"))
+      (error 'no-region))
     (let ((host (aws-host service region))
           (aws-sign4:*aws-credentials* (lambda () (credentials-keys credentials))))
       (setf headers
