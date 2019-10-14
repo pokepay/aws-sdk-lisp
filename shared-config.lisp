@@ -34,7 +34,7 @@
 (defstruct (shared-config (:constructor %make-shared-config))
   (credentials-path (merge-pathnames ".aws/credentials"
                                      (user-homedir-pathname)))
-  (config-path (merge-pathnames ".aws/credentials"
+  (config-path (merge-pathnames ".aws/config"
                                 (user-homedir-pathname)))
   profile
 
