@@ -63,8 +63,7 @@
   "shapes": {
     "AcceptCertificateTransferRequest": {
       "base": "<p>The input for the AcceptCertificateTransfer operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Action": {
       "base": "<p>Describes the actions associated with a rule.</p>",
@@ -105,18 +104,15 @@
     },
     "AttachPrincipalPolicyRequest": {
       "base": "<p>The input for the AttachPrincipalPolicy operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachThingPrincipalRequest": {
       "base": "<p>The input for the AttachThingPrincipal operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachThingPrincipalResponse": {
       "base": "<p>The output from the AttachThingPrincipal operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttributeName": {
       "base": null,
@@ -231,8 +227,7 @@
     },
     "CancelCertificateTransferRequest": {
       "base": "<p>The input for the CancelCertificateTransfer operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CannedAccessControlList": {
       "base": null,
@@ -263,8 +258,7 @@
     },
     "CertificateConflictException": {
       "base": "<p>Unable to verify the CA certificate used to sign the device certificate you are attempting to register. This is happens when you have registered more than one CA certificate that has the same subject field and public key.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CertificateDescription": {
       "base": "<p>Describes a certificate.</p>",
@@ -319,8 +313,7 @@
     },
     "CertificateStateException": {
       "base": "<p>The certificate operation is not allowed.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CertificateStatus": {
       "base": null,
@@ -333,8 +326,7 @@
     },
     "CertificateValidationException": {
       "base": "<p>The certificate is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Certificates": {
       "base": null,
@@ -363,68 +355,55 @@
     },
     "CreateCertificateFromCsrRequest": {
       "base": "<p>The input for the CreateCertificateFromCsr operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCertificateFromCsrResponse": {
       "base": "<p>The output from the CreateCertificateFromCsr operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateKeysAndCertificateRequest": {
       "base": "<p>The input for the CreateKeysAndCertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateKeysAndCertificateResponse": {
       "base": "<p>The output of the CreateKeysAndCertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePolicyRequest": {
       "base": "<p>The input for the CreatePolicy operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePolicyResponse": {
       "base": "<p>The output from the CreatePolicy operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePolicyVersionRequest": {
       "base": "<p>The input for the CreatePolicyVersion operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePolicyVersionResponse": {
       "base": "<p>The output of the CreatePolicyVersion operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateThingRequest": {
       "base": "<p>The input for the CreateThing operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateThingResponse": {
       "base": "<p>The output of the CreateThing operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateThingTypeRequest": {
       "base": "<p>The input for the CreateThingType operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateThingTypeResponse": {
       "base": "<p>The output of the CreateThingType operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTopicRuleRequest": {
       "base": "<p>The input for the CreateTopicRule operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatedAtDate": {
       "base": null,
@@ -457,68 +436,55 @@
     },
     "DeleteCACertificateRequest": {
       "base": "<p>Input for the DeleteCACertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteCACertificateResponse": {
       "base": "<p>The output for the DeleteCACertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteCertificateRequest": {
       "base": "<p>The input for the DeleteCertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteConflictException": {
       "base": "<p>You can't delete the resource because it is attached to one or more resources.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePolicyRequest": {
       "base": "<p>The input for the DeletePolicy operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePolicyVersionRequest": {
       "base": "<p>The input for the DeletePolicyVersion operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRegistrationCodeRequest": {
       "base": "<p>The input for the DeleteRegistrationCode operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRegistrationCodeResponse": {
       "base": "<p>The output for the DeleteRegistrationCode operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteThingRequest": {
       "base": "<p>The input for the DeleteThing operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteThingResponse": {
       "base": "<p>The output of the DeleteThing operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteThingTypeRequest": {
       "base": "<p>The input for the DeleteThingType operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteThingTypeResponse": {
       "base": "<p>The output for the DeleteThingType operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTopicRuleRequest": {
       "base": "<p>The input for the DeleteTopicRule operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeliveryStreamName": {
       "base": null,
@@ -528,13 +494,11 @@
     },
     "DeprecateThingTypeRequest": {
       "base": "<p>The input for the DeprecateThingType operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeprecateThingTypeResponse": {
       "base": "<p>The output for the DeprecateThingType operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeprecationDate": {
       "base": null,
@@ -544,53 +508,43 @@
     },
     "DescribeCACertificateRequest": {
       "base": "<p>The input for the DescribeCACertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCACertificateResponse": {
       "base": "<p>The output from the DescribeCACertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCertificateRequest": {
       "base": "<p>The input for the DescribeCertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCertificateResponse": {
       "base": "<p>The output of the DescribeCertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEndpointRequest": {
       "base": "<p>The input for the DescribeEndpoint operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEndpointResponse": {
       "base": "<p>The output from the DescribeEndpoint operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeThingRequest": {
       "base": "<p>The input for the DescribeThing operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeThingResponse": {
       "base": "<p>The output from the DescribeThing operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeThingTypeRequest": {
       "base": "<p>The input for the DescribeThingType operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeThingTypeResponse": {
       "base": "<p>The output for the DescribeThingType operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Description": {
       "base": null,
@@ -601,23 +555,19 @@
     },
     "DetachPrincipalPolicyRequest": {
       "base": "<p>The input for the DetachPrincipalPolicy operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachThingPrincipalRequest": {
       "base": "<p>The input for the DetachThingPrincipal operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachThingPrincipalResponse": {
       "base": "<p>The output from the DetachThingPrincipal operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableTopicRuleRequest": {
       "base": "<p>The input for the DisableTopicRuleRequest operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DynamoDBAction": {
       "base": "<p>Describes an action to write to a DynamoDB table.</p> <p>The <code>tableName</code>, <code>hashKeyField</code>, and <code>rangeKeyField</code> values must match the values used when you created the table.</p> <p>The <code>hashKeyValue</code> and <code>rangeKeyvalue</code> fields use a substitution template syntax. These templates provide data at runtime. The syntax is as follows: ${<i>sql-expression</i>}.</p> <p>You can specify any valid expression in a WHERE or SELECT clause, including JSON properties, comparisons, calculations, and functions. For example, the following field uses the third level of the topic:</p> <p> <code>\"hashKeyValue\": \"${topic(3)}\"</code> </p> <p>The following field uses the timestamp:</p> <p> <code>\"rangeKeyValue\": \"${timestamp()}\"</code> </p>",
@@ -676,8 +626,7 @@
     },
     "EnableTopicRuleRequest": {
       "base": "<p>The input for the EnableTopicRuleRequest operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EndpointAddress": {
       "base": null,
@@ -711,53 +660,43 @@
     },
     "GetLoggingOptionsRequest": {
       "base": "<p>The input for the GetLoggingOptions operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetLoggingOptionsResponse": {
       "base": "<p>The output from the GetLoggingOptions operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPolicyRequest": {
       "base": "<p>The input for the GetPolicy operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPolicyResponse": {
       "base": "<p>The output from the GetPolicy operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPolicyVersionRequest": {
       "base": "<p>The input for the GetPolicyVersion operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPolicyVersionResponse": {
       "base": "<p>The output from the GetPolicyVersion operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRegistrationCodeRequest": {
       "base": "<p>The input to the GetRegistrationCode operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRegistrationCodeResponse": {
       "base": "<p>The output from the GetRegistrationCode operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTopicRuleRequest": {
       "base": "<p>The input for the GetTopicRule operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTopicRuleResponse": {
       "base": "<p>The output from the GetTopicRule operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "HashKeyField": {
       "base": null,
@@ -773,18 +712,15 @@
     },
     "InternalException": {
       "base": "<p>An unexpected error has occurred.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InternalFailureException": {
       "base": "<p>An unexpected error has occurred.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRequestException": {
       "base": "<p>The request is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IsDefaultVersion": {
       "base": null,
@@ -829,138 +765,111 @@
     },
     "LimitExceededException": {
       "base": "<p>The number of attached entities exceeds the limit.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListCACertificatesRequest": {
       "base": "<p>Input for the ListCACertificates operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListCACertificatesResponse": {
       "base": "<p>The output from the ListCACertificates operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListCertificatesByCARequest": {
       "base": "<p>The input to the ListCertificatesByCA operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListCertificatesByCAResponse": {
       "base": "<p>The output of the ListCertificatesByCA operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListCertificatesRequest": {
       "base": "<p>The input for the ListCertificates operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListCertificatesResponse": {
       "base": "<p>The output of the ListCertificates operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListOutgoingCertificatesRequest": {
       "base": "<p>The input to the ListOutgoingCertificates operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListOutgoingCertificatesResponse": {
       "base": "<p>The output from the ListOutgoingCertificates operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPoliciesRequest": {
       "base": "<p>The input for the ListPolicies operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPoliciesResponse": {
       "base": "<p>The output from the ListPolicies operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPolicyPrincipalsRequest": {
       "base": "<p>The input for the ListPolicyPrincipals operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPolicyPrincipalsResponse": {
       "base": "<p>The output from the ListPolicyPrincipals operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPolicyVersionsRequest": {
       "base": "<p>The input for the ListPolicyVersions operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPolicyVersionsResponse": {
       "base": "<p>The output from the ListPolicyVersions operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPrincipalPoliciesRequest": {
       "base": "<p>The input for the ListPrincipalPolicies operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPrincipalPoliciesResponse": {
       "base": "<p>The output from the ListPrincipalPolicies operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPrincipalThingsRequest": {
       "base": "<p>The input for the ListPrincipalThings operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPrincipalThingsResponse": {
       "base": "<p>The output from the ListPrincipalThings operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListThingPrincipalsRequest": {
       "base": "<p>The input for the ListThingPrincipal operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListThingPrincipalsResponse": {
       "base": "<p>The output from the ListThingPrincipals operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListThingTypesRequest": {
       "base": "<p>The input for the ListThingTypes operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListThingTypesResponse": {
       "base": "<p>The output for the ListThingTypes operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListThingsRequest": {
       "base": "<p>The input for the ListThings operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListThingsResponse": {
       "base": "<p>The output from the ListThings operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTopicRulesRequest": {
       "base": "<p>The input for the ListTopicRules operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTopicRulesResponse": {
       "base": "<p>The output from the ListTopicRules operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LogLevel": {
       "base": null,
@@ -977,8 +886,7 @@
     },
     "MalformedPolicyException": {
       "base": "<p>The policy documentation is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Marker": {
       "base": null,
@@ -1248,23 +1156,19 @@
     },
     "RegisterCACertificateRequest": {
       "base": "<p>The input to the RegisterCACertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterCACertificateResponse": {
       "base": "<p>The output from the RegisterCACertificateResponse operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterCertificateRequest": {
       "base": "<p>The input to the RegisterCertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterCertificateResponse": {
       "base": "<p>The output from the RegisterCertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegistrationCode": {
       "base": null,
@@ -1274,8 +1178,7 @@
     },
     "RegistrationCodeValidationException": {
       "base": "<p>The registration code is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegistryMaxResults": {
       "base": null,
@@ -1287,8 +1190,7 @@
     },
     "RejectCertificateTransferRequest": {
       "base": "<p>The input for the RejectCertificateTransfer operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveThingType": {
       "base": null,
@@ -1298,8 +1200,7 @@
     },
     "ReplaceTopicRuleRequest": {
       "base": "<p>The input for the ReplaceTopicRule operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RepublishAction": {
       "base": "<p>Describes an action to republish to another topic.</p>",
@@ -1309,13 +1210,11 @@
     },
     "ResourceAlreadyExistsException": {
       "base": "<p>The resource already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The specified resource does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RuleArn": {
       "base": null,
@@ -1376,8 +1275,7 @@
     },
     "ServiceUnavailableException": {
       "base": "<p>The service is temporarily unavailable.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetAsActive": {
       "base": null,
@@ -1402,13 +1300,11 @@
     },
     "SetDefaultPolicyVersionRequest": {
       "base": "<p>The input for the SetDefaultPolicyVersion operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetLoggingOptionsRequest": {
       "base": "<p>The input for the SetLoggingOptions operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SnsAction": {
       "base": "<p>Describes an action to publish to an Amazon SNS topic.</p>",
@@ -1418,8 +1314,7 @@
     },
     "SqlParseException": {
       "base": "<p>The Rule-SQL expression can't be parsed correctly.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SqsAction": {
       "base": "<p>Describes an action to publish data to an Amazon SQS queue.</p>",
@@ -1551,8 +1446,7 @@
     },
     "ThrottlingException": {
       "base": "<p>The rate exceeds the limit.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Topic": {
       "base": null,
@@ -1594,23 +1488,19 @@
     },
     "TransferAlreadyCompletedException": {
       "base": "<p>You can't revert the certificate transfer because the transfer is already complete.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TransferCertificateRequest": {
       "base": "<p>The input for the TransferCertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TransferCertificateResponse": {
       "base": "<p>The output from the TransferCertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TransferConflictException": {
       "base": "<p>You can't transfer the certificate because authorization policies are still attached.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TransferData": {
       "base": "<p>Data used to transfer a certificate to an AWS account.</p>",
@@ -1620,8 +1510,7 @@
     },
     "UnauthorizedException": {
       "base": "<p>You are not authorized to perform this operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UndoDeprecate": {
       "base": null,
@@ -1631,23 +1520,19 @@
     },
     "UpdateCACertificateRequest": {
       "base": "<p>The input to the UpdateCACertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateCertificateRequest": {
       "base": "<p>The input for the UpdateCertificate operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateThingRequest": {
       "base": "<p>The input for the UpdateThing operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateThingResponse": {
       "base": "<p>The output from the UpdateThing operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UseBase64": {
       "base": null,
@@ -1664,13 +1549,11 @@
     },
     "VersionConflictException": {
       "base": "<p>An exception thrown when the version of a thing passed to a command is different than the version specified with the --version parameter.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "VersionsLimitExceededException": {
       "base": "<p>The number of policy versions exceeds the limit.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "errorMessage": {
       "base": null,

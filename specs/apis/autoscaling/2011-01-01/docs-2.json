@@ -67,8 +67,7 @@
     },
     "ActivitiesType": {
       "base": "<p>Contains the output of DescribeScalingActivities.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Activity": {
       "base": "<p>Describes scaling activity, which is a long-running process that represents a change to your Auto Scaling group, such as changing its size or replacing an instance.</p>",
@@ -85,8 +84,7 @@
     },
     "ActivityType": {
       "base": "<p>Contains the output of TerminateInstancesInAutoScalingGroup.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AdjustmentType": {
       "base": "<p>Describes a policy adjustment type.</p> <p>For more information, see <a href=\"http://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html\">Dynamic Scaling</a> in the <i>Auto Scaling User Guide</i>.</p>",
@@ -115,8 +113,7 @@
     },
     "AlreadyExistsFault": {
       "base": "<p>You already have an Auto Scaling group or launch configuration with this name.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AsciiStringMaxLen255": {
       "base": null,
@@ -138,28 +135,23 @@
     },
     "AttachInstancesQuery": {
       "base": "<p>Contains the parameters for AttachInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachLoadBalancerTargetGroupsResultType": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachLoadBalancerTargetGroupsType": {
       "base": "<p>Contains the parameters for AttachLoadBalancerTargetGroups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachLoadBalancersResultType": {
       "base": "<p>Contains the output of AttachLoadBalancers.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachLoadBalancersType": {
       "base": "<p>Contains the parameters for AttachLoadBalancers.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AutoScalingGroup": {
       "base": "<p>Describes an Auto Scaling group.</p>",
@@ -207,8 +199,7 @@
     },
     "AutoScalingGroupNamesType": {
       "base": "<p>Contains the parameters for DescribeAutoScalingGroups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AutoScalingGroups": {
       "base": null,
@@ -218,8 +209,7 @@
     },
     "AutoScalingGroupsType": {
       "base": "<p>Contains the output for DescribeAutoScalingGroups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AutoScalingInstanceDetails": {
       "base": "<p>Describes an EC2 instance associated with an Auto Scaling group.</p>",
@@ -235,8 +225,7 @@
     },
     "AutoScalingInstancesType": {
       "base": "<p>Contains the output of DescribeAutoScalingInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AutoScalingNotificationTypes": {
       "base": null,
@@ -306,13 +295,11 @@
     },
     "CompleteLifecycleActionAnswer": {
       "base": "<p>Contains the output of CompleteLifecycleAction.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CompleteLifecycleActionType": {
       "base": "<p>Contains the parameters for CompleteLifecycleAction.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Cooldown": {
       "base": null,
@@ -326,18 +313,15 @@
     },
     "CreateAutoScalingGroupType": {
       "base": "<p>Contains the parameters for CreateAutoScalingGroup.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateLaunchConfigurationType": {
       "base": "<p>Contains the parameters for CreateLaunchConfiguration.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateOrUpdateTagsType": {
       "base": "<p>Contains the parameters for CreateOrUpdateTags.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CustomizedMetricSpecification": {
       "base": "<p>Configures a customized metric for a target tracking policy.</p>",
@@ -347,168 +331,135 @@
     },
     "DeleteAutoScalingGroupType": {
       "base": "<p>Contains the parameters for DeleteAutoScalingGroup.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteLifecycleHookAnswer": {
       "base": "<p>Contains the output of DeleteLifecycleHook.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteLifecycleHookType": {
       "base": "<p>Contains the parameters for DeleteLifecycleHook.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNotificationConfigurationType": {
       "base": "<p>Contains the parameters for DeleteNotificationConfiguration.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePolicyType": {
       "base": "<p>Contains the parameters for DeletePolicy.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteScheduledActionType": {
       "base": "<p>Contains the parameters for DeleteScheduledAction.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTagsType": {
       "base": "<p>Contains the parameters for DeleteTags.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountLimitsAnswer": {
       "base": "<p>Contains the parameters for DescribeAccountLimits.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAdjustmentTypesAnswer": {
       "base": "<p>Contains the parameters for DescribeAdjustmentTypes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAutoScalingInstancesType": {
       "base": "<p>Contains the parameters for DescribeAutoScalingInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAutoScalingNotificationTypesAnswer": {
       "base": "<p>Contains the output of DescribeAutoScalingNotificationTypes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLifecycleHookTypesAnswer": {
       "base": "<p>Contains the output of DescribeLifecycleHookTypes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLifecycleHooksAnswer": {
       "base": "<p>Contains the output of DescribeLifecycleHooks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLifecycleHooksType": {
       "base": "<p>Contains the parameters for DescribeLifecycleHooks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLoadBalancerTargetGroupsRequest": {
       "base": "<p>Contains the parameters for DescribeLoadBalancerTargetGroups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLoadBalancerTargetGroupsResponse": {
       "base": "<p>Contains the output of DescribeLoadBalancerTargetGroups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLoadBalancersRequest": {
       "base": "<p>Contains the parameters for DescribeLoadBalancers.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLoadBalancersResponse": {
       "base": "<p>Contains the output of DescribeLoadBalancers.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMetricCollectionTypesAnswer": {
       "base": "<p>Contains the output of DescribeMetricsCollectionTypes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNotificationConfigurationsAnswer": {
       "base": "<p>Contains the output from DescribeNotificationConfigurations.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNotificationConfigurationsType": {
       "base": "<p>Contains the parameters for DescribeNotificationConfigurations.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePoliciesType": {
       "base": "<p>Contains the parameters for DescribePolicies.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScalingActivitiesType": {
       "base": "<p>Contains the parameters for DescribeScalingActivities.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScheduledActionsType": {
       "base": "<p>Contains the parameters for DescribeScheduledActions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsType": {
       "base": "<p>Contains the parameters for DescribeTags.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTerminationPolicyTypesAnswer": {
       "base": "<p>Contains the output of DescribeTerminationPolicyTypes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachInstancesAnswer": {
       "base": "<p>Contains the output of DetachInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachInstancesQuery": {
       "base": "<p>Contains the parameters for DetachInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachLoadBalancerTargetGroupsResultType": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachLoadBalancerTargetGroupsType": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachLoadBalancersResultType": {
       "base": "<p>Contains the output for DetachLoadBalancers.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachLoadBalancersType": {
       "base": "<p>Contains the parameters for DetachLoadBalancers.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableMetricsCollectionQuery": {
       "base": "<p>Contains the parameters for DisableMetricsCollection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableScaleIn": {
       "base": null,
@@ -531,8 +482,7 @@
     },
     "EnableMetricsCollectionQuery": {
       "base": "<p>Contains the parameters for EnableMetricsCollection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnabledMetric": {
       "base": "<p>Describes an enabled metric.</p>",
@@ -548,13 +498,11 @@
     },
     "EnterStandbyAnswer": {
       "base": "<p>Contains the output of EnterStandby.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnterStandbyQuery": {
       "base": "<p>Contains the parameters for EnteStandby.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EstimatedInstanceWarmup": {
       "base": null,
@@ -565,18 +513,15 @@
     },
     "ExecutePolicyType": {
       "base": "<p>Contains the parameters for ExecutePolicy.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ExitStandbyAnswer": {
       "base": "<p>Contains the parameters for ExitStandby.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ExitStandbyQuery": {
       "base": "<p>Contains the parameters for ExitStandby.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Filter": {
       "base": "<p>Describes a filter.</p>",
@@ -666,8 +611,7 @@
     },
     "InvalidNextToken": {
       "base": "<p>The <code>NextToken</code> value is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LaunchConfiguration": {
       "base": "<p>Describes a launch configuration.</p>",
@@ -677,8 +621,7 @@
     },
     "LaunchConfigurationNameType": {
       "base": "<p>Contains the parameters for DeleteLaunchConfiguration.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LaunchConfigurationNames": {
       "base": null,
@@ -688,8 +631,7 @@
     },
     "LaunchConfigurationNamesType": {
       "base": "<p>Contains the parameters for DescribeLaunchConfigurations.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LaunchConfigurations": {
       "base": null,
@@ -699,8 +641,7 @@
     },
     "LaunchConfigurationsType": {
       "base": "<p>Contains the output of DescribeLaunchConfigurations.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LifecycleActionResult": {
       "base": null,
@@ -750,8 +691,7 @@
     },
     "LimitExceededFault": {
       "base": "<p>You have already reached a limit for your Auto Scaling resources (for example, groups, launch configurations, or lifecycle hooks). For more information, see <a>DescribeAccountLimits</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LoadBalancerNames": {
       "base": null,
@@ -966,13 +906,11 @@
     },
     "PoliciesType": {
       "base": "<p>Contains the output of DescribePolicies.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PolicyARNType": {
       "base": "<p>Contains the output of PutScalingPolicy.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PolicyIncrement": {
       "base": null,
@@ -1020,8 +958,7 @@
     },
     "ProcessesType": {
       "base": "<p>Contains the output of DescribeScalingProcessTypes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Progress": {
       "base": null,
@@ -1044,48 +981,39 @@
     },
     "PutLifecycleHookAnswer": {
       "base": "<p>Contains the output of PutLifecycleHook.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutLifecycleHookType": {
       "base": "<p>Contains the parameters for PutLifecycleHook.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutNotificationConfigurationType": {
       "base": "<p>Contains the parameters for PutNotificationConfiguration.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutScalingPolicyType": {
       "base": "<p>Contains the parameters for PutScalingPolicy.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutScheduledUpdateGroupActionType": {
       "base": "<p>Contains the parameters for PutScheduledUpdateGroupAction.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RecordLifecycleActionHeartbeatAnswer": {
       "base": "<p>Contains the output of RecordLifecycleActionHeartBeat.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RecordLifecycleActionHeartbeatType": {
       "base": "<p>Contains the parameters for RecordLifecycleActionHeartbeat.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceContentionFault": {
       "base": "<p>You already have a pending update to an Auto Scaling resource (for example, a group, instance, or load balancer).</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceInUseFault": {
       "base": "<p>The operation can't be performed because the resource is in use.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceName": {
       "base": null,
@@ -1150,8 +1078,7 @@
     },
     "ScalingActivityInProgressFault": {
       "base": "<p>The operation can't be performed because there are scaling activities in progress.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ScalingActivityStatusCode": {
       "base": null,
@@ -1173,8 +1100,7 @@
     },
     "ScalingProcessQuery": {
       "base": "<p>Contains the parameters for SuspendProcesses and ResumeProcesses.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ScheduledActionNames": {
       "base": null,
@@ -1184,8 +1110,7 @@
     },
     "ScheduledActionsType": {
       "base": "<p>Contains the output of DescribeScheduledActions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ScheduledUpdateGroupAction": {
       "base": "<p>Describes a scheduled update to an Auto Scaling group.</p>",
@@ -1208,23 +1133,19 @@
     },
     "SetDesiredCapacityType": {
       "base": "<p>Contains the parameters for SetDesiredCapacity.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetInstanceHealthQuery": {
       "base": "<p>Contains the parameters for SetInstanceHealth.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetInstanceProtectionAnswer": {
       "base": "<p>Contains the output of SetInstanceProtection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetInstanceProtectionQuery": {
       "base": "<p>Contains the parameters for SetInstanceProtection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ShouldDecrementDesiredCapacity": {
       "base": null,
@@ -1315,8 +1236,7 @@
     },
     "TagsType": {
       "base": "<p>Contains the output of DescribeTags.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TargetGroupARNs": {
       "base": null,
@@ -1336,8 +1256,7 @@
     },
     "TerminateInstanceInAutoScalingGroupType": {
       "base": "<p>Contains the parameters for TerminateInstanceInAutoScalingGroup.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TerminationPolicies": {
       "base": null,
@@ -1367,8 +1286,7 @@
     },
     "UpdateAutoScalingGroupType": {
       "base": "<p>Contains the parameters for UpdateAutoScalingGroup.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Values": {
       "base": null,

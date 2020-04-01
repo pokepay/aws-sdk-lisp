@@ -30,23 +30,19 @@
     },
     "DeleteLexiconInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteLexiconOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVoicesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVoicesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorMessage": {
       "base": null,
@@ -75,33 +71,27 @@
     },
     "GetLexiconInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetLexiconOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidLexiconException": {
       "base": "<p>Amazon Polly can't find the specified lexicon. Verify that the lexicon's name is spelled correctly, and then try again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidNextTokenException": {
       "base": "<p>The NextToken is invalid. Verify that it's spelled correctly, and then try again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSampleRateException": {
       "base": "<p>The specified sample rate is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSsmlException": {
       "base": "<p>The SSML you provided is invalid. Verify the SSML syntax, spelling of tags and values, and then try again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LanguageCode": {
       "base": null,
@@ -186,38 +176,31 @@
     },
     "LexiconNotFoundException": {
       "base": "<p>Amazon Polly can't find the specified lexicon. This could be caused by a lexicon that is missing, its name is misspelled or specifying a lexicon that is in a different region.</p> <p>Verify that the lexicon exists, is in the region (see <a>ListLexicons</a>) and that you spelled its name is spelled correctly. Then try again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LexiconSizeExceededException": {
       "base": "<p>The maximum size of the specified lexicon would be exceeded by this operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListLexiconsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListLexiconsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "MarksNotSupportedForFormatException": {
       "base": "<p>Speech marks are not supported for the <code>OutputFormat</code> selected. Speech marks are only available for content in <code>json</code> format.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxLexemeLengthExceededException": {
       "base": "<p>The maximum size of the lexeme would be exceeded by this operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxLexiconsNumberExceededException": {
       "base": "<p>The maximum number of lexicons would be exceeded by this operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NextToken": {
       "base": null,
@@ -236,13 +219,11 @@
     },
     "PutLexiconInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutLexiconOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RequestCharacters": {
       "base": null,
@@ -258,8 +239,7 @@
     },
     "ServiceFailureException": {
       "base": "<p>An unknown condition has caused a service failure.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Size": {
       "base": null,
@@ -281,18 +261,15 @@
     },
     "SsmlMarksNotSupportedForTextTypeException": {
       "base": "<p>SSML speech marks are not supported for plain text-type input.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SynthesizeSpeechInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SynthesizeSpeechOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Text": {
       "base": null,
@@ -302,8 +279,7 @@
     },
     "TextLengthExceededException": {
       "base": "<p>The value of the \"Text\" parameter is longer than the accepted limits. The limit for input text is a maximum of 3000 characters total, of which no more than 1500 can be billed characters. SSML tags are not counted as billed characters.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TextType": {
       "base": null,
@@ -313,13 +289,11 @@
     },
     "UnsupportedPlsAlphabetException": {
       "base": "<p>The alphabet specified by the lexicon is not a supported alphabet. Valid values are <code>x-sampa</code> and <code>ipa</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnsupportedPlsLanguageException": {
       "base": "<p>The language specified in the lexicon is unsupported. For a list of supported languages, see <a href=\"http://docs.aws.amazon.com/polly/latest/dg/API_LexiconAttributes.html\">Lexicon Attributes</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Voice": {
       "base": "<p>Description of the voice.</p>",

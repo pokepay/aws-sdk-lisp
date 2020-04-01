@@ -60,13 +60,11 @@
     },
     "AddTagsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddTagsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AvailabilityZone": {
       "base": "<p>Information about an Availability Zone.</p>",
@@ -109,8 +107,7 @@
     },
     "CertificateNotFoundException": {
       "base": "<p>The specified certificate does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Cipher": {
       "base": "<p>Information about a cipher used in a policy.</p>",
@@ -144,43 +141,35 @@
     },
     "CreateListenerInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateListenerOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateLoadBalancerInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateLoadBalancerOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRuleInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRuleOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTargetGroupInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTargetGroupOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatedTime": {
       "base": null,
@@ -196,153 +185,123 @@
     },
     "DeleteListenerInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteListenerOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteLoadBalancerInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteLoadBalancerOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRuleInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRuleOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTargetGroupInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTargetGroupOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterTargetsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterTargetsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountLimitsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountLimitsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeListenersInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeListenersOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLoadBalancerAttributesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLoadBalancerAttributesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLoadBalancersInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLoadBalancersOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRulesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRulesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSSLPoliciesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSSLPoliciesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTargetGroupAttributesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTargetGroupAttributesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTargetGroupsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTargetGroupsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTargetHealthInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTargetHealthOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Description": {
       "base": null,
@@ -352,23 +311,19 @@
     },
     "DuplicateListenerException": {
       "base": "<p>A listener with the specified port already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DuplicateLoadBalancerNameException": {
       "base": "<p>A load balancer with the specified name already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DuplicateTagKeysException": {
       "base": "<p>A tag key was specified more than once.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DuplicateTargetGroupNameException": {
       "base": "<p>A target group with the specified name already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "HealthCheckIntervalSeconds": {
       "base": null,
@@ -408,8 +363,7 @@
     },
     "HealthUnavailableException": {
       "base": "<p>The health of the specified targets could not be retrieved due to an internal error.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "HttpCode": {
       "base": null,
@@ -419,33 +373,27 @@
     },
     "IncompatibleProtocolsException": {
       "base": "<p>The specified configuration is not valid with this protocol.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidConfigurationRequestException": {
       "base": "<p>The requested configuration is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSchemeException": {
       "base": "<p>The requested scheme is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSecurityGroupException": {
       "base": "<p>The specified security group does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSubnetException": {
       "base": "<p>The specified subnet is out of available addresses.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidTargetException": {
       "base": "<p>The specified target does not exist or is not in the same VPC as the target group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IpAddressType": {
       "base": null,
@@ -505,8 +453,7 @@
     },
     "ListenerNotFoundException": {
       "base": "<p>The specified listener does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Listeners": {
       "base": null,
@@ -588,8 +535,7 @@
     },
     "LoadBalancerNotFoundException": {
       "base": "<p>The specified load balancer does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LoadBalancerSchemeEnum": {
       "base": null,
@@ -656,53 +602,43 @@
     },
     "ModifyListenerInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyListenerOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyLoadBalancerAttributesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyLoadBalancerAttributesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyRuleInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyRuleOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyTargetGroupAttributesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyTargetGroupAttributesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyTargetGroupInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyTargetGroupOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Name": {
       "base": null,
@@ -712,8 +648,7 @@
     },
     "OperationNotPermittedException": {
       "base": "<p>This operation is not allowed.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PageSize": {
       "base": null,
@@ -747,8 +682,7 @@
     },
     "PriorityInUseException": {
       "base": "<p>The specified priority is in use.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ProtocolEnum": {
       "base": null,
@@ -765,23 +699,19 @@
     },
     "RegisterTargetsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterTargetsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTagsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTagsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceArn": {
       "base": null,
@@ -800,8 +730,7 @@
     },
     "ResourceInUseException": {
       "base": "<p>A specified resource is in use.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Rule": {
       "base": "<p>Information about a rule.</p>",
@@ -841,8 +770,7 @@
     },
     "RuleNotFoundException": {
       "base": "<p>The specified rule does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RulePriority": {
       "base": null,
@@ -874,8 +802,7 @@
     },
     "SSLPolicyNotFoundException": {
       "base": "<p>The specified SSL policy does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SecurityGroupId": {
       "base": null,
@@ -894,43 +821,35 @@
     },
     "SetIpAddressTypeInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SetIpAddressTypeOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SetRulePrioritiesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SetRulePrioritiesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SetSecurityGroupsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SetSecurityGroupsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SetSubnetsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SetSubnetsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SslPolicies": {
       "base": null,
@@ -999,8 +918,7 @@
     },
     "SubnetNotFoundException": {
       "base": "<p>The specified subnet does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Subnets": {
       "base": null,
@@ -1098,8 +1016,7 @@
     },
     "TargetGroupAssociationLimitException": {
       "base": "<p>You've reached the limit on the number of load balancers per target group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TargetGroupAttribute": {
       "base": "<p>Information about a target group attribute.</p>",
@@ -1143,8 +1060,7 @@
     },
     "TargetGroupNotFoundException": {
       "base": "<p>The specified target group does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TargetGroups": {
       "base": null,
@@ -1192,48 +1108,39 @@
     },
     "TooManyCertificatesException": {
       "base": "<p>You've reached the limit on the number of certificates per listener.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TooManyListenersException": {
       "base": "<p>You've reached the limit on the number of listeners per load balancer.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TooManyLoadBalancersException": {
       "base": "<p>You've reached the limit on the number of load balancers for your AWS account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TooManyRegistrationsForTargetIdException": {
       "base": "<p>You've reached the limit on the number of times a target can be registered with a load balancer.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TooManyRulesException": {
       "base": "<p>You've reached the limit on the number of rules per load balancer.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TooManyTagsException": {
       "base": "<p>You've reached the limit on the number of tags per load balancer.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TooManyTargetGroupsException": {
       "base": "<p>You've reached the limit on the number of target groups for your AWS account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TooManyTargetsException": {
       "base": "<p>You've reached the limit on the number of targets.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnsupportedProtocolException": {
       "base": "<p>The specified protocol is not supported.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "VpcId": {
       "base": null,

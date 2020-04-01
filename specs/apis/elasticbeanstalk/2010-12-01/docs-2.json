@@ -53,8 +53,7 @@
     },
     "AbortEnvironmentUpdateMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AbortableOperationInProgress": {
       "base": null,
@@ -98,13 +97,11 @@
     },
     "ApplicationDescriptionMessage": {
       "base": "<p>Result message containing a single description of an application.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ApplicationDescriptionsMessage": {
       "base": "<p>Result message containing a list of application descriptions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ApplicationMetrics": {
       "base": "<p>Application request metrics for an AWS Elastic Beanstalk environment.</p>",
@@ -163,8 +160,7 @@
     },
     "ApplicationResourceLifecycleDescriptionMessage": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ApplicationVersionDescription": {
       "base": "<p>Describes the properties of an application version.</p>",
@@ -181,13 +177,11 @@
     },
     "ApplicationVersionDescriptionMessage": {
       "base": "<p>Result message wrapping a single description of an application version.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ApplicationVersionDescriptionsMessage": {
       "base": "<p>Result message wrapping a list of application version descriptions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ApplicationVersionLifecycleConfig": {
       "base": "<p>The application version lifecycle settings for an application. Defines the rules that Elastic Beanstalk applies to an application's versions in order to avoid hitting the per-region limit for application versions.</p> <p>When Elastic Beanstalk deletes an application version from its database, you can no longer deploy that version to an environment. The source bundle remains in S3 unless you configure the rule to delete it.</p>",
@@ -209,13 +203,11 @@
     },
     "ApplyEnvironmentManagedActionRequest": {
       "base": "<p>Request to execute a scheduled managed action immediately.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ApplyEnvironmentManagedActionResult": {
       "base": "<p>The result message containing information about the managed action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AutoCreateApplication": {
       "base": null,
@@ -297,13 +289,11 @@
     },
     "CheckDNSAvailabilityMessage": {
       "base": "<p>Results message indicating whether a CNAME is available.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CheckDNSAvailabilityResultMessage": {
       "base": "<p>Indicates if the specified CNAME is available.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CnameAvailability": {
       "base": null,
@@ -313,13 +303,11 @@
     },
     "CodeBuildNotInServiceRegionException": {
       "base": "<p>AWS CodeBuild is not available in the specified region.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ComposeEnvironmentsMessage": {
       "base": "<p>Request to create or update a group of environments.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ComputeType": {
       "base": null,
@@ -410,8 +398,7 @@
     },
     "ConfigurationOptionsDescription": {
       "base": "<p>Describes the settings for a specified configuration set.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConfigurationSettingsDescription": {
       "base": "<p>Describes the settings for a configuration set.</p>",
@@ -427,13 +414,11 @@
     },
     "ConfigurationSettingsDescriptions": {
       "base": "<p>The results from a request to change the configuration settings of an environment.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConfigurationSettingsValidationMessages": {
       "base": "<p>Provides a list of validation messages.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConfigurationTemplateName": {
       "base": null,
@@ -462,38 +447,31 @@
     },
     "CreateApplicationMessage": {
       "base": "<p>Request to create an application.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateApplicationVersionMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateConfigurationTemplateMessage": {
       "base": "<p>Request to create a configuration template.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateEnvironmentMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePlatformVersionRequest": {
       "base": "<p>Request to create a new platform version.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePlatformVersionResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStorageLocationResultMessage": {
       "base": "<p>Results of a <a>CreateStorageLocationResult</a> call.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreationDate": {
       "base": null,
@@ -533,33 +511,27 @@
     },
     "DeleteApplicationMessage": {
       "base": "<p>Request to delete an application.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteApplicationVersionMessage": {
       "base": "<p>Request to delete an application version.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteConfigurationTemplateMessage": {
       "base": "<p>Request to delete a configuration template.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteEnvironmentConfigurationMessage": {
       "base": "<p>Request to delete a draft environment configuration.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePlatformVersionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePlatformVersionResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSourceBundle": {
       "base": null,
@@ -581,88 +553,71 @@
     },
     "DescribeApplicationVersionsMessage": {
       "base": "<p>Request to describe application versions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeApplicationsMessage": {
       "base": "<p>Request to describe one or more applications.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConfigurationOptionsMessage": {
       "base": "<p>Result message containing a list of application version descriptions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConfigurationSettingsMessage": {
       "base": "<p>Result message containing all of the configuration settings for a specified solution stack or configuration template.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEnvironmentHealthRequest": {
       "base": "<p>See the example below to learn how to create a request body.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEnvironmentHealthResult": {
       "base": "<p>Health details for an AWS Elastic Beanstalk environment.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEnvironmentManagedActionHistoryRequest": {
       "base": "<p>Request to list completed and failed managed actions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEnvironmentManagedActionHistoryResult": {
       "base": "<p>A result message containing a list of completed and failed managed actions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEnvironmentManagedActionsRequest": {
       "base": "<p>Request to list an environment's upcoming and in-progress managed actions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEnvironmentManagedActionsResult": {
       "base": "<p>The result message containing a list of managed actions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEnvironmentResourcesMessage": {
       "base": "<p>Request to describe the resources in an environment.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEnvironmentsMessage": {
       "base": "<p>Request to describe one or more environments.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventsMessage": {
       "base": "<p>Request to retrieve a list of events for an environment.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstancesHealthRequest": {
       "base": "<p>Parameters for a call to <code>DescribeInstancesHealth</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstancesHealthResult": {
       "base": "<p>Detailed health information about the Amazon EC2 instances in an AWS Elastic Beanstalk environment.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePlatformVersionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePlatformVersionResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Description": {
       "base": null,
@@ -690,8 +645,7 @@
     },
     "ElasticBeanstalkServiceException": {
       "base": "<p>A generic service exception has occurred.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EndpointURL": {
       "base": null,
@@ -719,8 +673,7 @@
     },
     "EnvironmentDescriptionsMessage": {
       "base": "<p>Result message containing a list of environment descriptions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnvironmentHealth": {
       "base": null,
@@ -852,8 +805,7 @@
     },
     "EnvironmentResourceDescriptionsMessage": {
       "base": "<p>Result message containing a list of environment resource descriptions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnvironmentResourcesDescription": {
       "base": "<p>Describes the AWS resources in use by this environment. This data is not live data.</p>",
@@ -895,8 +847,7 @@
     },
     "EventDescriptionsMessage": {
       "base": "<p>Result message wrapping a list of event descriptions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EventMessage": {
       "base": null,
@@ -1005,8 +956,7 @@
     },
     "InsufficientPrivilegesException": {
       "base": "<p>The specified account does not have sufficient privileges for one of more AWS services.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Integer": {
       "base": null,
@@ -1017,8 +967,7 @@
     },
     "InvalidRequestException": {
       "base": "<p>One or more input parameters is not valid. Please correct the input parameters and try the operation again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Latency": {
       "base": "<p>Represents the average latency for the slowest X percent of requests over the last 10 seconds.</p>",
@@ -1046,18 +995,15 @@
     },
     "ListAvailableSolutionStacksResultMessage": {
       "base": "<p>A list of available AWS Elastic Beanstalk solution stacks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPlatformVersionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPlatformVersionsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Listener": {
       "base": "<p>Describes the properties of a Listener for the LoadBalancer.</p>",
@@ -1127,8 +1073,7 @@
     },
     "ManagedActionInvalidStateException": {
       "base": "<p>Cannot modify the managed action in its current state.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ManagedActions": {
       "base": null,
@@ -1236,8 +1181,7 @@
     },
     "OperationInProgressException": {
       "base": "<p>Unable to perform the specified operation because another operation that effects an element in this activity is already in progress.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OptionNamespace": {
       "base": null,
@@ -1428,8 +1372,7 @@
     },
     "PlatformVersionStillReferencedException": {
       "base": "<p>You cannot delete the platform version because there are still environments running on it.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Queue": {
       "base": "<p>Describes a queue.</p>",
@@ -1445,8 +1388,7 @@
     },
     "RebuildEnvironmentMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RefreshedAt": {
       "base": null,
@@ -1475,8 +1417,7 @@
     },
     "RequestEnvironmentInfoMessage": {
       "base": "<p>Request to retrieve logs from an environment and store them in your Elastic Beanstalk storage bucket.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RequestId": {
       "base": null,
@@ -1504,18 +1445,15 @@
     },
     "RestartAppServerMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RetrieveEnvironmentInfoMessage": {
       "base": "<p>Request to download logs retrieved with <a>RequestEnvironmentInfo</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RetrieveEnvironmentInfoResultMessage": {
       "base": "<p>Result message containing a description of the requested environment info.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "S3Bucket": {
       "base": null,
@@ -1540,13 +1478,11 @@
     },
     "S3LocationNotInServiceRegionException": {
       "base": "<p>The specified S3 bucket does not belong to the S3 region in which the service is running. The following regions are supported:</p> <ul> <li> <p>IAD/us-east-1</p> </li> <li> <p>PDX/us-west-2</p> </li> <li> <p>DUB/eu-west-1</p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "S3SubscriptionRequiredException": {
       "base": "<p>The specified account does not have a subscription to Amazon S3.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SampleTimestamp": {
       "base": null,
@@ -1596,8 +1532,7 @@
     },
     "SourceBundleDeletionException": {
       "base": "<p>Unable to delete the Amazon S3 source bundle associated with the application version. The application version was deleted successfully.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SourceConfiguration": {
       "base": "<p>A specification for an environment configuration</p>",
@@ -1702,8 +1637,7 @@
     },
     "SwapEnvironmentCNAMEsMessage": {
       "base": "<p>Swaps the CNAMEs of two environments.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SystemStatus": {
       "base": "<p>CPU utilization and load average metrics for an Amazon EC2 instance.</p>",
@@ -1743,8 +1677,7 @@
     },
     "TerminateEnvironmentMessage": {
       "base": "<p>Request to terminate an environment.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TerminateEnvironmentResources": {
       "base": null,
@@ -1787,33 +1720,27 @@
     },
     "TooManyApplicationVersionsException": {
       "base": "<p>The specified account has reached its limit of application versions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TooManyApplicationsException": {
       "base": "<p>The specified account has reached its limit of applications.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TooManyBucketsException": {
       "base": "<p>The specified account has reached its limit of Amazon S3 buckets.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TooManyConfigurationTemplatesException": {
       "base": "<p>The specified account has reached its limit of configuration templates.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TooManyEnvironmentsException": {
       "base": "<p>The specified account has reached its limit of environments.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TooManyPlatformsException": {
       "base": "<p>You have exceeded the maximum number of allowed platforms associated with the account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Trigger": {
       "base": "<p>Describes a trigger.</p>",
@@ -1829,23 +1756,19 @@
     },
     "UpdateApplicationMessage": {
       "base": "<p>Request to update an application.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateApplicationResourceLifecycleMessage": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateApplicationVersionMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateConfigurationTemplateMessage": {
       "base": "<p>The result message containing the options for the specified solution stack.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDate": {
       "base": null,
@@ -1859,8 +1782,7 @@
     },
     "UpdateEnvironmentMessage": {
       "base": "<p>Request to update an environment.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UserDefinedOption": {
       "base": null,
@@ -1870,8 +1792,7 @@
     },
     "ValidateConfigurationSettingsMessage": {
       "base": "<p>A list of validation messages for a specified configuration template.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ValidationMessage": {
       "base": "<p>An error or warning for a desired configuration option value.</p>",

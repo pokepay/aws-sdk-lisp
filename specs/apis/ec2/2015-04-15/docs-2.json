@@ -188,13 +188,11 @@
   "shapes": {
     "AcceptVpcPeeringConnectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AcceptVpcPeeringConnectionResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AccountAttribute": {
       "base": "<p>Describes an account attribute.</p>",
@@ -258,13 +256,11 @@
     },
     "AllocateAddressRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AllocateAddressResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AllocationIdList": {
       "base": null,
@@ -289,73 +285,59 @@
     },
     "AssignPrivateIpAddressesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateAddressRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateAddressResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateDhcpOptionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateRouteTableRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateRouteTableResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachClassicLinkVpcRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachClassicLinkVpcResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachInternetGatewayRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachNetworkInterfaceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachNetworkInterfaceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachVolumeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachVpnGatewayRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachVpnGatewayResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachmentStatus": {
       "base": null,
@@ -414,13 +396,11 @@
     },
     "AuthorizeSecurityGroupEgressRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AuthorizeSecurityGroupIngressRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AvailabilityZone": {
       "base": "<p>Describes an Availability Zone.</p>",
@@ -727,13 +707,11 @@
     },
     "BundleInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BundleInstanceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BundleTask": {
       "base": "<p>Describes a bundle task.</p>",
@@ -769,43 +747,35 @@
     },
     "CancelBundleTaskRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelBundleTaskResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelConversionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelExportTaskRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelImportTaskRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelImportTaskResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelReservedInstancesListingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelReservedInstancesListingResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelSpotFleetRequestsError": {
       "base": "<p>Describes a Spot fleet error.</p>",
@@ -827,13 +797,11 @@
     },
     "CancelSpotFleetRequestsRequest": {
       "base": "<p>Contains the parameters for CancelSpotFleetRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelSpotFleetRequestsResponse": {
       "base": "<p>Contains the output of CancelSpotFleetRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelSpotFleetRequestsSuccessItem": {
       "base": "<p>Describes a Spot fleet request that was successfully canceled.</p>",
@@ -855,13 +823,11 @@
     },
     "CancelSpotInstanceRequestsRequest": {
       "base": "<p>Contains the parameters for CancelSpotInstanceRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelSpotInstanceRequestsResult": {
       "base": "<p>Contains the output of CancelSpotInstanceRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelledSpotInstanceRequest": {
       "base": "<p>Describes a request to cancel a Spot instance.</p>",
@@ -896,13 +862,11 @@
     },
     "ConfirmProductInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ConfirmProductInstanceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ContainerFormat": {
       "base": null,
@@ -933,188 +897,151 @@
     },
     "CopyImageRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CopyImageResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CopySnapshotRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CopySnapshotResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCustomerGatewayRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCustomerGatewayResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDhcpOptionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDhcpOptionsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateFlowLogsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateFlowLogsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateImageRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateImageResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstanceExportTaskRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstanceExportTaskResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInternetGatewayRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInternetGatewayResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateKeyPairRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNetworkAclEntryRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNetworkAclRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNetworkAclResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNetworkInterfaceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNetworkInterfaceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePlacementGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateReservedInstancesListingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateReservedInstancesListingResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRouteRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRouteResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRouteTableRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRouteTableResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSecurityGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSecurityGroupResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSnapshotRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSpotDatafeedSubscriptionRequest": {
       "base": "<p>Contains the parameters for CreateSpotDatafeedSubscription.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSpotDatafeedSubscriptionResult": {
       "base": "<p>Contains the output of CreateSpotDatafeedSubscription.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSubnetRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSubnetResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTagsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVolumePermission": {
       "base": "<p>Describes the user or group to be added or removed from the permissions for a volume.</p>",
@@ -1138,63 +1065,51 @@
     },
     "CreateVolumeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpcEndpointRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpcEndpointResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpcPeeringConnectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpcPeeringConnectionResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpcRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpcResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpnConnectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpnConnectionResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpnConnectionRouteRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpnGatewayRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpnGatewayResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CurrencyCodeValues": {
       "base": null,
@@ -1284,188 +1199,151 @@
     },
     "DeleteCustomerGatewayRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDhcpOptionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteFlowLogsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteFlowLogsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteInternetGatewayRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteKeyPairRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNetworkAclEntryRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNetworkAclRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNetworkInterfaceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePlacementGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRouteRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRouteTableRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSecurityGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSnapshotRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSpotDatafeedSubscriptionRequest": {
       "base": "<p>Contains the parameters for DeleteSpotDatafeedSubscription.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSubnetRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTagsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVolumeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpcEndpointsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpcEndpointsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpcPeeringConnectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpcPeeringConnectionResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpcRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpnConnectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpnConnectionRouteRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpnGatewayRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterImageRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountAttributesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountAttributesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAddressesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAddressesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAvailabilityZonesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAvailabilityZonesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBundleTasksRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBundleTasksResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeClassicLinkInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeClassicLinkInstancesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConversionTaskList": {
       "base": null,
@@ -1475,503 +1353,403 @@
     },
     "DescribeConversionTasksRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConversionTasksResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCustomerGatewaysRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCustomerGatewaysResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDhcpOptionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDhcpOptionsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeExportTasksRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeExportTasksResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFlowLogsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFlowLogsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImageAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImagesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImagesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImportImageTasksRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImportImageTasksResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImportSnapshotTasksRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImportSnapshotTasksResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstanceAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstanceStatusRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstanceStatusResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstancesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInternetGatewaysRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInternetGatewaysResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeKeyPairsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeKeyPairsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMovingAddressesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMovingAddressesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkAclsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkAclsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkInterfaceAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkInterfaceAttributeResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkInterfacesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkInterfacesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePlacementGroupsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePlacementGroupsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePrefixListsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePrefixListsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRegionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRegionsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesListingsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesListingsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesModificationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesModificationsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesOfferingsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesOfferingsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRouteTablesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRouteTablesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSecurityGroupsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSecurityGroupsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotAttributeResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotDatafeedSubscriptionRequest": {
       "base": "<p>Contains the parameters for DescribeSpotDatafeedSubscription.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotDatafeedSubscriptionResult": {
       "base": "<p>Contains the output of DescribeSpotDatafeedSubscription.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotFleetInstancesRequest": {
       "base": "<p>Contains the parameters for DescribeSpotFleetInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotFleetInstancesResponse": {
       "base": "<p>Contains the output of DescribeSpotFleetInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotFleetRequestHistoryRequest": {
       "base": "<p>Contains the parameters for DescribeSpotFleetRequestHistory.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotFleetRequestHistoryResponse": {
       "base": "<p>Contains the output of DescribeSpotFleetRequestHistory.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotFleetRequestsRequest": {
       "base": "<p>Contains the parameters for DescribeSpotFleetRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotFleetRequestsResponse": {
       "base": "<p>Contains the output of DescribeSpotFleetRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotInstanceRequestsRequest": {
       "base": "<p>Contains the parameters for DescribeSpotInstanceRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotInstanceRequestsResult": {
       "base": "<p>Contains the output of DescribeSpotInstanceRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotPriceHistoryRequest": {
       "base": "<p>Contains the parameters for DescribeSpotPriceHistory.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotPriceHistoryResult": {
       "base": "<p>Contains the output of DescribeSpotPriceHistory.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSubnetsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSubnetsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumeAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumeAttributeResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumeStatusRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumeStatusResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcAttributeResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcClassicLinkRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcClassicLinkResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcEndpointServicesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcEndpointServicesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcEndpointsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcEndpointsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcPeeringConnectionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcPeeringConnectionsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpnConnectionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpnConnectionsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpnGatewaysRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpnGatewaysResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachClassicLinkVpcRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachClassicLinkVpcResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachInternetGatewayRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachNetworkInterfaceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachVolumeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachVpnGatewayRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeviceType": {
       "base": null,
@@ -2013,28 +1791,23 @@
     },
     "DisableVgwRoutePropagationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableVpcClassicLinkRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableVpcClassicLinkResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateAddressRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateRouteTableRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DiskImage": {
       "base": "<p>Describes a disk image.</p>",
@@ -2120,23 +1893,19 @@
     },
     "EnableVgwRoutePropagationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableVolumeIORequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableVpcClassicLinkRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableVpcClassicLinkResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EventCode": {
       "base": null,
@@ -2296,23 +2065,19 @@
     },
     "GetConsoleOutputRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetConsoleOutputResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPasswordDataRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPasswordDataResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GroupIdStringList": {
       "base": null,
@@ -2399,8 +2164,7 @@
     },
     "ImageAttribute": {
       "base": "<p>Describes an image attribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ImageAttributeName": {
       "base": null,
@@ -2446,13 +2210,11 @@
     },
     "ImportImageRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportImageResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportImageTask": {
       "base": "<p>Describes an import image task.</p>",
@@ -2474,13 +2236,11 @@
     },
     "ImportInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportInstanceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportInstanceTaskDetails": {
       "base": "<p>Describes an import instance task.</p>",
@@ -2502,23 +2262,19 @@
     },
     "ImportKeyPairRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportKeyPairResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportSnapshotRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportSnapshotResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportSnapshotTask": {
       "base": "<p>Describes an import snapshot task.</p>",
@@ -2541,13 +2297,11 @@
     },
     "ImportVolumeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportVolumeResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportVolumeTaskDetails": {
       "base": "<p>Describes an import volume task.</p>",
@@ -2563,8 +2317,7 @@
     },
     "InstanceAttribute": {
       "base": "<p>Describes an instance attribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InstanceAttributeName": {
       "base": null,
@@ -2938,8 +2691,7 @@
     },
     "KeyPair": {
       "base": "<p>Describes a key pair.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KeyPairInfo": {
       "base": "<p>Describes a key pair.</p>",
@@ -3016,68 +2768,55 @@
     },
     "ModifyImageAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyInstanceAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyNetworkInterfaceAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyReservedInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyReservedInstancesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifySnapshotAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifySubnetAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyVolumeAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyVpcAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyVpcEndpointRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyVpcEndpointResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "MonitorInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "MonitorInstancesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Monitoring": {
       "base": "<p>Describes the monitoring for the instance.</p>",
@@ -3094,13 +2833,11 @@
     },
     "MoveAddressToVpcRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "MoveAddressToVpcResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "MoveStatus": {
       "base": null,
@@ -3442,13 +3179,11 @@
     },
     "PurchaseReservedInstancesOfferingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PurchaseReservedInstancesOfferingResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RIProductDescription": {
       "base": null,
@@ -3468,8 +3203,7 @@
     },
     "RebootInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RecurringCharge": {
       "base": "<p>Describes a recurring charge.</p>",
@@ -3510,58 +3244,47 @@
     },
     "RegisterImageRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterImageResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RejectVpcPeeringConnectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RejectVpcPeeringConnectionResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReleaseAddressRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceNetworkAclAssociationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceNetworkAclAssociationResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceNetworkAclEntryRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceRouteRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceRouteTableAssociationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceRouteTableAssociationResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReportInstanceReasonCodes": {
       "base": null,
@@ -3571,8 +3294,7 @@
     },
     "ReportInstanceStatusRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReportStatusType": {
       "base": null,
@@ -3582,23 +3304,19 @@
     },
     "RequestSpotFleetRequest": {
       "base": "<p>Contains the parameters for RequestSpotFleet.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RequestSpotFleetResponse": {
       "base": "<p>Contains the output of RequestSpotFleet.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RequestSpotInstancesRequest": {
       "base": "<p>Contains the parameters for RequestSpotInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RequestSpotInstancesResult": {
       "base": "<p>Contains the output of RequestSpotInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Reservation": {
       "base": "<p>Describes a reservation.</p>",
@@ -3738,23 +3456,19 @@
     },
     "ResetImageAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResetInstanceAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResetNetworkInterfaceAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResetSnapshotAttributeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceIdList": {
       "base": null,
@@ -3777,23 +3491,19 @@
     },
     "RestoreAddressToClassicRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RestoreAddressToClassicResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RevokeSecurityGroupEgressRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RevokeSecurityGroupIngressRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Route": {
       "base": "<p>Describes a route in a route table.</p>",
@@ -3862,8 +3572,7 @@
     },
     "RunInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "S3Storage": {
       "base": "<p>Describes the storage parameters for S3 and S3 buckets for an instance store-backed AMI.</p>",
@@ -4071,13 +3780,11 @@
     },
     "StartInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartInstancesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "State": {
       "base": null,
@@ -4113,13 +3820,11 @@
     },
     "StopInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopInstancesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Storage": {
       "base": "<p>Describes the storage location for an instance store-backed AMI.</p>",
@@ -4990,13 +4695,11 @@
     },
     "TerminateInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TerminateInstancesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TrafficType": {
       "base": null,
@@ -5007,18 +4710,15 @@
     },
     "UnassignPrivateIpAddressesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UnmonitorInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UnmonitorInstancesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UnsuccessfulItem": {
       "base": "<p>Information about items that were not successfully processed in a batch call.</p>",

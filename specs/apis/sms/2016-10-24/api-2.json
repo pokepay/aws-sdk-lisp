@@ -1,491 +1,465 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "uid":"sms-2016-10-24",
-    "apiVersion":"2016-10-24",
-    "endpointPrefix":"sms",
-    "jsonVersion":"1.1",
-    "protocol":"json",
-    "serviceAbbreviation":"SMS",
-    "serviceFullName":"AWS Server Migration Service",
-    "signatureVersion":"v4",
-    "targetPrefix":"AWSServerMigrationService_V2016_10_24"
+  "version": "2.0",
+  "metadata": {
+    "uid": "sms-2016-10-24",
+    "apiVersion": "2016-10-24",
+    "endpointPrefix": "sms",
+    "jsonVersion": "1.1",
+    "protocol": "json",
+    "serviceAbbreviation": "SMS",
+    "serviceFullName": "AWS Server Migration Service",
+    "signatureVersion": "v4",
+    "targetPrefix": "AWSServerMigrationService_V2016_10_24"
   },
-  "operations":{
-    "CreateReplicationJob":{
-      "name":"CreateReplicationJob",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+  "operations": {
+    "CreateReplicationJob": {
+      "name": "CreateReplicationJob",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"CreateReplicationJobRequest"},
-      "output":{"shape":"CreateReplicationJobResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"MissingRequiredParameterException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"OperationNotPermittedException"},
-        {"shape":"ServerCannotBeReplicatedException"},
-        {"shape":"ReplicationJobAlreadyExistsException"},
-        {"shape":"NoConnectorsAvailableException"},
-        {"shape":"InternalError"}
+      "input": { "shape": "CreateReplicationJobRequest" },
+      "output": { "shape": "CreateReplicationJobResponse" },
+      "errors": [
+        { "shape": "InvalidParameterException" },
+        { "shape": "MissingRequiredParameterException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "OperationNotPermittedException" },
+        { "shape": "ServerCannotBeReplicatedException" },
+        { "shape": "ReplicationJobAlreadyExistsException" },
+        { "shape": "NoConnectorsAvailableException" },
+        { "shape": "InternalError" }
       ]
     },
-    "DeleteReplicationJob":{
-      "name":"DeleteReplicationJob",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteReplicationJob": {
+      "name": "DeleteReplicationJob",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteReplicationJobRequest"},
-      "output":{"shape":"DeleteReplicationJobResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"MissingRequiredParameterException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"OperationNotPermittedException"},
-        {"shape":"ReplicationJobNotFoundException"}
+      "input": { "shape": "DeleteReplicationJobRequest" },
+      "output": { "shape": "DeleteReplicationJobResponse" },
+      "errors": [
+        { "shape": "InvalidParameterException" },
+        { "shape": "MissingRequiredParameterException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "OperationNotPermittedException" },
+        { "shape": "ReplicationJobNotFoundException" }
       ]
     },
-    "DeleteServerCatalog":{
-      "name":"DeleteServerCatalog",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteServerCatalog": {
+      "name": "DeleteServerCatalog",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteServerCatalogRequest"},
-      "output":{"shape":"DeleteServerCatalogResponse"},
-      "errors":[
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"OperationNotPermittedException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"MissingRequiredParameterException"}
+      "input": { "shape": "DeleteServerCatalogRequest" },
+      "output": { "shape": "DeleteServerCatalogResponse" },
+      "errors": [
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "OperationNotPermittedException" },
+        { "shape": "InvalidParameterException" },
+        { "shape": "MissingRequiredParameterException" }
       ]
     },
-    "DisassociateConnector":{
-      "name":"DisassociateConnector",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DisassociateConnector": {
+      "name": "DisassociateConnector",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DisassociateConnectorRequest"},
-      "output":{"shape":"DisassociateConnectorResponse"},
-      "errors":[
-        {"shape":"MissingRequiredParameterException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"OperationNotPermittedException"},
-        {"shape":"InvalidParameterException"}
+      "input": { "shape": "DisassociateConnectorRequest" },
+      "output": { "shape": "DisassociateConnectorResponse" },
+      "errors": [
+        { "shape": "MissingRequiredParameterException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "OperationNotPermittedException" },
+        { "shape": "InvalidParameterException" }
       ]
     },
-    "GetConnectors":{
-      "name":"GetConnectors",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "GetConnectors": {
+      "name": "GetConnectors",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"GetConnectorsRequest"},
-      "output":{"shape":"GetConnectorsResponse"},
-      "errors":[
-        {"shape":"UnauthorizedOperationException"}
+      "input": { "shape": "GetConnectorsRequest" },
+      "output": { "shape": "GetConnectorsResponse" },
+      "errors": [{ "shape": "UnauthorizedOperationException" }]
+    },
+    "GetReplicationJobs": {
+      "name": "GetReplicationJobs",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": { "shape": "GetReplicationJobsRequest" },
+      "output": { "shape": "GetReplicationJobsResponse" },
+      "errors": [
+        { "shape": "InvalidParameterException" },
+        { "shape": "MissingRequiredParameterException" },
+        { "shape": "UnauthorizedOperationException" }
       ]
     },
-    "GetReplicationJobs":{
-      "name":"GetReplicationJobs",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "GetReplicationRuns": {
+      "name": "GetReplicationRuns",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"GetReplicationJobsRequest"},
-      "output":{"shape":"GetReplicationJobsResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"MissingRequiredParameterException"},
-        {"shape":"UnauthorizedOperationException"}
+      "input": { "shape": "GetReplicationRunsRequest" },
+      "output": { "shape": "GetReplicationRunsResponse" },
+      "errors": [
+        { "shape": "InvalidParameterException" },
+        { "shape": "MissingRequiredParameterException" },
+        { "shape": "UnauthorizedOperationException" }
       ]
     },
-    "GetReplicationRuns":{
-      "name":"GetReplicationRuns",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "GetServers": {
+      "name": "GetServers",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"GetReplicationRunsRequest"},
-      "output":{"shape":"GetReplicationRunsResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"MissingRequiredParameterException"},
-        {"shape":"UnauthorizedOperationException"}
+      "input": { "shape": "GetServersRequest" },
+      "output": { "shape": "GetServersResponse" },
+      "errors": [{ "shape": "UnauthorizedOperationException" }]
+    },
+    "ImportServerCatalog": {
+      "name": "ImportServerCatalog",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": { "shape": "ImportServerCatalogRequest" },
+      "output": { "shape": "ImportServerCatalogResponse" },
+      "errors": [
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "OperationNotPermittedException" },
+        { "shape": "InvalidParameterException" },
+        { "shape": "MissingRequiredParameterException" },
+        { "shape": "NoConnectorsAvailableException" }
       ]
     },
-    "GetServers":{
-      "name":"GetServers",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "StartOnDemandReplicationRun": {
+      "name": "StartOnDemandReplicationRun",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"GetServersRequest"},
-      "output":{"shape":"GetServersResponse"},
-      "errors":[
-        {"shape":"UnauthorizedOperationException"}
+      "input": { "shape": "StartOnDemandReplicationRunRequest" },
+      "output": { "shape": "StartOnDemandReplicationRunResponse" },
+      "errors": [
+        { "shape": "InvalidParameterException" },
+        { "shape": "MissingRequiredParameterException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "OperationNotPermittedException" },
+        { "shape": "ReplicationRunLimitExceededException" }
       ]
     },
-    "ImportServerCatalog":{
-      "name":"ImportServerCatalog",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "UpdateReplicationJob": {
+      "name": "UpdateReplicationJob",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ImportServerCatalogRequest"},
-      "output":{"shape":"ImportServerCatalogResponse"},
-      "errors":[
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"OperationNotPermittedException"},
-        {"shape":"InvalidParameterException"},
-        {"shape":"MissingRequiredParameterException"},
-        {"shape":"NoConnectorsAvailableException"}
-      ]
-    },
-    "StartOnDemandReplicationRun":{
-      "name":"StartOnDemandReplicationRun",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"StartOnDemandReplicationRunRequest"},
-      "output":{"shape":"StartOnDemandReplicationRunResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"MissingRequiredParameterException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"OperationNotPermittedException"},
-        {"shape":"ReplicationRunLimitExceededException"}
-      ]
-    },
-    "UpdateReplicationJob":{
-      "name":"UpdateReplicationJob",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateReplicationJobRequest"},
-      "output":{"shape":"UpdateReplicationJobResponse"},
-      "errors":[
-        {"shape":"InvalidParameterException"},
-        {"shape":"MissingRequiredParameterException"},
-        {"shape":"OperationNotPermittedException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"ServerCannotBeReplicatedException"},
-        {"shape":"ReplicationJobNotFoundException"},
-        {"shape":"InternalError"}
+      "input": { "shape": "UpdateReplicationJobRequest" },
+      "output": { "shape": "UpdateReplicationJobResponse" },
+      "errors": [
+        { "shape": "InvalidParameterException" },
+        { "shape": "MissingRequiredParameterException" },
+        { "shape": "OperationNotPermittedException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "ServerCannotBeReplicatedException" },
+        { "shape": "ReplicationJobNotFoundException" },
+        { "shape": "InternalError" }
       ]
     }
   },
-  "shapes":{
-    "AmiId":{"type":"string"},
-    "Connector":{
-      "type":"structure",
-      "members":{
-        "connectorId":{"shape":"ConnectorId"},
-        "version":{"shape":"ConnectorVersion"},
-        "status":{"shape":"ConnectorStatus"},
-        "capabilityList":{"shape":"ConnectorCapabilityList"},
-        "vmManagerName":{"shape":"VmManagerName"},
-        "vmManagerType":{"shape":"VmManagerType"},
-        "vmManagerId":{"shape":"VmManagerId"},
-        "ipAddress":{"shape":"IpAddress"},
-        "macAddress":{"shape":"MacAddress"},
-        "associatedOn":{"shape":"Timestamp"}
+  "shapes": {
+    "AmiId": { "type": "string" },
+    "Connector": {
+      "type": "structure",
+      "members": {
+        "connectorId": { "shape": "ConnectorId" },
+        "version": { "shape": "ConnectorVersion" },
+        "status": { "shape": "ConnectorStatus" },
+        "capabilityList": { "shape": "ConnectorCapabilityList" },
+        "vmManagerName": { "shape": "VmManagerName" },
+        "vmManagerType": { "shape": "VmManagerType" },
+        "vmManagerId": { "shape": "VmManagerId" },
+        "ipAddress": { "shape": "IpAddress" },
+        "macAddress": { "shape": "MacAddress" },
+        "associatedOn": { "shape": "Timestamp" }
       }
     },
-    "ConnectorCapability":{
-      "type":"string",
-      "enum":["VSPHERE"]
+    "ConnectorCapability": {
+      "type": "string",
+      "enum": ["VSPHERE"]
     },
-    "ConnectorCapabilityList":{
-      "type":"list",
-      "member":{
-        "shape":"ConnectorCapability",
-        "locationName":"item"
+    "ConnectorCapabilityList": {
+      "type": "list",
+      "member": {
+        "shape": "ConnectorCapability",
+        "locationName": "item"
       }
     },
-    "ConnectorId":{"type":"string"},
-    "ConnectorList":{
-      "type":"list",
-      "member":{
-        "shape":"Connector",
-        "locationName":"item"
+    "ConnectorId": { "type": "string" },
+    "ConnectorList": {
+      "type": "list",
+      "member": {
+        "shape": "Connector",
+        "locationName": "item"
       }
     },
-    "ConnectorStatus":{
-      "type":"string",
-      "enum":[
-        "HEALTHY",
-        "UNHEALTHY"
-      ]
+    "ConnectorStatus": {
+      "type": "string",
+      "enum": ["HEALTHY", "UNHEALTHY"]
     },
-    "ConnectorVersion":{"type":"string"},
-    "CreateReplicationJobRequest":{
-      "type":"structure",
-      "required":[
-        "serverId",
-        "seedReplicationTime",
-        "frequency"
-      ],
-      "members":{
-        "serverId":{"shape":"ServerId"},
-        "seedReplicationTime":{"shape":"Timestamp"},
-        "frequency":{"shape":"Frequency"},
-        "licenseType":{"shape":"LicenseType"},
-        "roleName":{"shape":"RoleName"},
-        "description":{"shape":"Description"}
+    "ConnectorVersion": { "type": "string" },
+    "CreateReplicationJobRequest": {
+      "type": "structure",
+      "required": ["serverId", "seedReplicationTime", "frequency"],
+      "members": {
+        "serverId": { "shape": "ServerId" },
+        "seedReplicationTime": { "shape": "Timestamp" },
+        "frequency": { "shape": "Frequency" },
+        "licenseType": { "shape": "LicenseType" },
+        "roleName": { "shape": "RoleName" },
+        "description": { "shape": "Description" }
       }
     },
-    "CreateReplicationJobResponse":{
-      "type":"structure",
-      "members":{
-        "replicationJobId":{"shape":"ReplicationJobId"}
+    "CreateReplicationJobResponse": {
+      "type": "structure",
+      "members": {
+        "replicationJobId": { "shape": "ReplicationJobId" }
       }
     },
-    "DeleteReplicationJobRequest":{
-      "type":"structure",
-      "required":["replicationJobId"],
-      "members":{
-        "replicationJobId":{"shape":"ReplicationJobId"}
+    "DeleteReplicationJobRequest": {
+      "type": "structure",
+      "required": ["replicationJobId"],
+      "members": {
+        "replicationJobId": { "shape": "ReplicationJobId" }
       }
     },
-    "DeleteReplicationJobResponse":{
-      "type":"structure",
-      "members":{
+    "DeleteReplicationJobResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "DeleteServerCatalogRequest": {
+      "type": "structure",
+      "members": {}
+    },
+    "DeleteServerCatalogResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "Description": { "type": "string" },
+    "DisassociateConnectorRequest": {
+      "type": "structure",
+      "required": ["connectorId"],
+      "members": {
+        "connectorId": { "shape": "ConnectorId" }
       }
     },
-    "DeleteServerCatalogRequest":{
-      "type":"structure",
-      "members":{
+    "DisassociateConnectorResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "ErrorMessage": { "type": "string" },
+    "Frequency": { "type": "integer" },
+    "GetConnectorsRequest": {
+      "type": "structure",
+      "members": {
+        "nextToken": { "shape": "NextToken" },
+        "maxResults": { "shape": "MaxResults" }
       }
     },
-    "DeleteServerCatalogResponse":{
-      "type":"structure",
-      "members":{
+    "GetConnectorsResponse": {
+      "type": "structure",
+      "members": {
+        "connectorList": { "shape": "ConnectorList" },
+        "nextToken": { "shape": "NextToken" }
       }
     },
-    "Description":{"type":"string"},
-    "DisassociateConnectorRequest":{
-      "type":"structure",
-      "required":["connectorId"],
-      "members":{
-        "connectorId":{"shape":"ConnectorId"}
+    "GetReplicationJobsRequest": {
+      "type": "structure",
+      "members": {
+        "replicationJobId": { "shape": "ReplicationJobId" },
+        "nextToken": { "shape": "NextToken" },
+        "maxResults": { "shape": "MaxResults" }
       }
     },
-    "DisassociateConnectorResponse":{
-      "type":"structure",
-      "members":{
+    "GetReplicationJobsResponse": {
+      "type": "structure",
+      "members": {
+        "replicationJobList": { "shape": "ReplicationJobList" },
+        "nextToken": { "shape": "NextToken" }
       }
     },
-    "ErrorMessage":{"type":"string"},
-    "Frequency":{"type":"integer"},
-    "GetConnectorsRequest":{
-      "type":"structure",
-      "members":{
-        "nextToken":{"shape":"NextToken"},
-        "maxResults":{"shape":"MaxResults"}
+    "GetReplicationRunsRequest": {
+      "type": "structure",
+      "required": ["replicationJobId"],
+      "members": {
+        "replicationJobId": { "shape": "ReplicationJobId" },
+        "nextToken": { "shape": "NextToken" },
+        "maxResults": { "shape": "MaxResults" }
       }
     },
-    "GetConnectorsResponse":{
-      "type":"structure",
-      "members":{
-        "connectorList":{"shape":"ConnectorList"},
-        "nextToken":{"shape":"NextToken"}
+    "GetReplicationRunsResponse": {
+      "type": "structure",
+      "members": {
+        "replicationJob": { "shape": "ReplicationJob" },
+        "replicationRunList": { "shape": "ReplicationRunList" },
+        "nextToken": { "shape": "NextToken" }
       }
     },
-    "GetReplicationJobsRequest":{
-      "type":"structure",
-      "members":{
-        "replicationJobId":{"shape":"ReplicationJobId"},
-        "nextToken":{"shape":"NextToken"},
-        "maxResults":{"shape":"MaxResults"}
+    "GetServersRequest": {
+      "type": "structure",
+      "members": {
+        "nextToken": { "shape": "NextToken" },
+        "maxResults": { "shape": "MaxResults" }
       }
     },
-    "GetReplicationJobsResponse":{
-      "type":"structure",
-      "members":{
-        "replicationJobList":{"shape":"ReplicationJobList"},
-        "nextToken":{"shape":"NextToken"}
+    "GetServersResponse": {
+      "type": "structure",
+      "members": {
+        "lastModifiedOn": { "shape": "Timestamp" },
+        "serverCatalogStatus": { "shape": "ServerCatalogStatus" },
+        "serverList": { "shape": "ServerList" },
+        "nextToken": { "shape": "NextToken" }
       }
     },
-    "GetReplicationRunsRequest":{
-      "type":"structure",
-      "required":["replicationJobId"],
-      "members":{
-        "replicationJobId":{"shape":"ReplicationJobId"},
-        "nextToken":{"shape":"NextToken"},
-        "maxResults":{"shape":"MaxResults"}
-      }
+    "ImportServerCatalogRequest": {
+      "type": "structure",
+      "members": {}
     },
-    "GetReplicationRunsResponse":{
-      "type":"structure",
-      "members":{
-        "replicationJob":{"shape":"ReplicationJob"},
-        "replicationRunList":{"shape":"ReplicationRunList"},
-        "nextToken":{"shape":"NextToken"}
-      }
+    "ImportServerCatalogResponse": {
+      "type": "structure",
+      "members": {}
     },
-    "GetServersRequest":{
-      "type":"structure",
-      "members":{
-        "nextToken":{"shape":"NextToken"},
-        "maxResults":{"shape":"MaxResults"}
-      }
-    },
-    "GetServersResponse":{
-      "type":"structure",
-      "members":{
-        "lastModifiedOn":{"shape":"Timestamp"},
-        "serverCatalogStatus":{"shape":"ServerCatalogStatus"},
-        "serverList":{"shape":"ServerList"},
-        "nextToken":{"shape":"NextToken"}
-      }
-    },
-    "ImportServerCatalogRequest":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "ImportServerCatalogResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "InternalError":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "InternalError": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessage" }
       },
-      "exception":true,
-      "fault":true
+      "exception": true,
+      "fault": true
     },
-    "InvalidParameterException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "InvalidParameterException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "IpAddress":{"type":"string"},
-    "LicenseType":{
-      "type":"string",
-      "enum":[
-        "AWS",
-        "BYOL"
-      ]
+    "IpAddress": { "type": "string" },
+    "LicenseType": {
+      "type": "string",
+      "enum": ["AWS", "BYOL"]
     },
-    "MacAddress":{"type":"string"},
-    "MaxResults":{"type":"integer"},
-    "MissingRequiredParameterException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "MacAddress": { "type": "string" },
+    "MaxResults": { "type": "integer" },
+    "MissingRequiredParameterException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "NextToken":{"type":"string"},
-    "NoConnectorsAvailableException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "NextToken": { "type": "string" },
+    "NoConnectorsAvailableException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "OperationNotPermittedException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "OperationNotPermittedException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "ReplicationJob":{
-      "type":"structure",
-      "members":{
-        "replicationJobId":{"shape":"ReplicationJobId"},
-        "serverId":{"shape":"ServerId"},
-        "serverType":{"shape":"ServerType"},
-        "vmServer":{"shape":"VmServer"},
-        "seedReplicationTime":{"shape":"Timestamp"},
-        "frequency":{"shape":"Frequency"},
-        "nextReplicationRunStartTime":{"shape":"Timestamp"},
-        "licenseType":{"shape":"LicenseType"},
-        "roleName":{"shape":"RoleName"},
-        "latestAmiId":{"shape":"AmiId"},
-        "state":{"shape":"ReplicationJobState"},
-        "statusMessage":{"shape":"ReplicationJobStatusMessage"},
-        "description":{"shape":"Description"},
-        "replicationRunList":{"shape":"ReplicationRunList"}
+    "ReplicationJob": {
+      "type": "structure",
+      "members": {
+        "replicationJobId": { "shape": "ReplicationJobId" },
+        "serverId": { "shape": "ServerId" },
+        "serverType": { "shape": "ServerType" },
+        "vmServer": { "shape": "VmServer" },
+        "seedReplicationTime": { "shape": "Timestamp" },
+        "frequency": { "shape": "Frequency" },
+        "nextReplicationRunStartTime": { "shape": "Timestamp" },
+        "licenseType": { "shape": "LicenseType" },
+        "roleName": { "shape": "RoleName" },
+        "latestAmiId": { "shape": "AmiId" },
+        "state": { "shape": "ReplicationJobState" },
+        "statusMessage": { "shape": "ReplicationJobStatusMessage" },
+        "description": { "shape": "Description" },
+        "replicationRunList": { "shape": "ReplicationRunList" }
       }
     },
-    "ReplicationJobAlreadyExistsException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "ReplicationJobAlreadyExistsException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "ReplicationJobId":{"type":"string"},
-    "ReplicationJobList":{
-      "type":"list",
-      "member":{
-        "shape":"ReplicationJob",
-        "locationName":"item"
+    "ReplicationJobId": { "type": "string" },
+    "ReplicationJobList": {
+      "type": "list",
+      "member": {
+        "shape": "ReplicationJob",
+        "locationName": "item"
       }
     },
-    "ReplicationJobNotFoundException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "ReplicationJobNotFoundException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "ReplicationJobState":{
-      "type":"string",
-      "enum":[
-        "PENDING",
-        "ACTIVE",
-        "FAILED",
-        "DELETING",
-        "DELETED"
-      ]
+    "ReplicationJobState": {
+      "type": "string",
+      "enum": ["PENDING", "ACTIVE", "FAILED", "DELETING", "DELETED"]
     },
-    "ReplicationJobStatusMessage":{"type":"string"},
-    "ReplicationJobTerminated":{"type":"boolean"},
-    "ReplicationRun":{
-      "type":"structure",
-      "members":{
-        "replicationRunId":{"shape":"ReplicationRunId"},
-        "state":{"shape":"ReplicationRunState"},
-        "type":{"shape":"ReplicationRunType"},
-        "statusMessage":{"shape":"ReplicationRunStatusMessage"},
-        "amiId":{"shape":"AmiId"},
-        "scheduledStartTime":{"shape":"Timestamp"},
-        "completedTime":{"shape":"Timestamp"},
-        "description":{"shape":"Description"}
+    "ReplicationJobStatusMessage": { "type": "string" },
+    "ReplicationJobTerminated": { "type": "boolean" },
+    "ReplicationRun": {
+      "type": "structure",
+      "members": {
+        "replicationRunId": { "shape": "ReplicationRunId" },
+        "state": { "shape": "ReplicationRunState" },
+        "type": { "shape": "ReplicationRunType" },
+        "statusMessage": { "shape": "ReplicationRunStatusMessage" },
+        "amiId": { "shape": "AmiId" },
+        "scheduledStartTime": { "shape": "Timestamp" },
+        "completedTime": { "shape": "Timestamp" },
+        "description": { "shape": "Description" }
       }
     },
-    "ReplicationRunId":{"type":"string"},
-    "ReplicationRunLimitExceededException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "ReplicationRunId": { "type": "string" },
+    "ReplicationRunLimitExceededException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "ReplicationRunList":{
-      "type":"list",
-      "member":{
-        "shape":"ReplicationRun",
-        "locationName":"item"
+    "ReplicationRunList": {
+      "type": "list",
+      "member": {
+        "shape": "ReplicationRun",
+        "locationName": "item"
       }
     },
-    "ReplicationRunState":{
-      "type":"string",
-      "enum":[
+    "ReplicationRunState": {
+      "type": "string",
+      "enum": [
         "PENDING",
         "MISSED",
         "ACTIVE",
@@ -495,117 +469,107 @@
         "DELETED"
       ]
     },
-    "ReplicationRunStatusMessage":{"type":"string"},
-    "ReplicationRunType":{
-      "type":"string",
-      "enum":[
-        "ON_DEMAND",
-        "AUTOMATIC"
-      ]
+    "ReplicationRunStatusMessage": { "type": "string" },
+    "ReplicationRunType": {
+      "type": "string",
+      "enum": ["ON_DEMAND", "AUTOMATIC"]
     },
-    "RoleName":{"type":"string"},
-    "Server":{
-      "type":"structure",
-      "members":{
-        "serverId":{"shape":"ServerId"},
-        "serverType":{"shape":"ServerType"},
-        "vmServer":{"shape":"VmServer"},
-        "replicationJobId":{"shape":"ReplicationJobId"},
-        "replicationJobTerminated":{"shape":"ReplicationJobTerminated"}
+    "RoleName": { "type": "string" },
+    "Server": {
+      "type": "structure",
+      "members": {
+        "serverId": { "shape": "ServerId" },
+        "serverType": { "shape": "ServerType" },
+        "vmServer": { "shape": "VmServer" },
+        "replicationJobId": { "shape": "ReplicationJobId" },
+        "replicationJobTerminated": { "shape": "ReplicationJobTerminated" }
       }
     },
-    "ServerCannotBeReplicatedException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "ServerCannotBeReplicatedException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "ServerCatalogStatus":{
-      "type":"string",
-      "enum":[
-        "NOT_IMPORTED",
-        "IMPORTING",
-        "AVAILABLE",
-        "DELETED",
-        "EXPIRED"
-      ]
+    "ServerCatalogStatus": {
+      "type": "string",
+      "enum": ["NOT_IMPORTED", "IMPORTING", "AVAILABLE", "DELETED", "EXPIRED"]
     },
-    "ServerId":{"type":"string"},
-    "ServerList":{
-      "type":"list",
-      "member":{
-        "shape":"Server",
-        "locationName":"item"
+    "ServerId": { "type": "string" },
+    "ServerList": {
+      "type": "list",
+      "member": {
+        "shape": "Server",
+        "locationName": "item"
       }
     },
-    "ServerType":{
-      "type":"string",
-      "enum":["VIRTUAL_MACHINE"]
+    "ServerType": {
+      "type": "string",
+      "enum": ["VIRTUAL_MACHINE"]
     },
-    "StartOnDemandReplicationRunRequest":{
-      "type":"structure",
-      "required":["replicationJobId"],
-      "members":{
-        "replicationJobId":{"shape":"ReplicationJobId"},
-        "description":{"shape":"Description"}
+    "StartOnDemandReplicationRunRequest": {
+      "type": "structure",
+      "required": ["replicationJobId"],
+      "members": {
+        "replicationJobId": { "shape": "ReplicationJobId" },
+        "description": { "shape": "Description" }
       }
     },
-    "StartOnDemandReplicationRunResponse":{
-      "type":"structure",
-      "members":{
-        "replicationRunId":{"shape":"ReplicationRunId"}
+    "StartOnDemandReplicationRunResponse": {
+      "type": "structure",
+      "members": {
+        "replicationRunId": { "shape": "ReplicationRunId" }
       }
     },
-    "Timestamp":{"type":"timestamp"},
-    "UnauthorizedOperationException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessage"}
+    "Timestamp": { "type": "timestamp" },
+    "UnauthorizedOperationException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "UpdateReplicationJobRequest":{
-      "type":"structure",
-      "required":["replicationJobId"],
-      "members":{
-        "replicationJobId":{"shape":"ReplicationJobId"},
-        "frequency":{"shape":"Frequency"},
-        "nextReplicationRunStartTime":{"shape":"Timestamp"},
-        "licenseType":{"shape":"LicenseType"},
-        "roleName":{"shape":"RoleName"},
-        "description":{"shape":"Description"}
+    "UpdateReplicationJobRequest": {
+      "type": "structure",
+      "required": ["replicationJobId"],
+      "members": {
+        "replicationJobId": { "shape": "ReplicationJobId" },
+        "frequency": { "shape": "Frequency" },
+        "nextReplicationRunStartTime": { "shape": "Timestamp" },
+        "licenseType": { "shape": "LicenseType" },
+        "roleName": { "shape": "RoleName" },
+        "description": { "shape": "Description" }
       }
     },
-    "UpdateReplicationJobResponse":{
-      "type":"structure",
-      "members":{
+    "UpdateReplicationJobResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "VmId": { "type": "string" },
+    "VmManagerId": { "type": "string" },
+    "VmManagerName": { "type": "string" },
+    "VmManagerType": {
+      "type": "string",
+      "enum": ["VSPHERE"]
+    },
+    "VmName": { "type": "string" },
+    "VmPath": { "type": "string" },
+    "VmServer": {
+      "type": "structure",
+      "members": {
+        "vmServerAddress": { "shape": "VmServerAddress" },
+        "vmName": { "shape": "VmName" },
+        "vmManagerName": { "shape": "VmManagerName" },
+        "vmManagerType": { "shape": "VmManagerType" },
+        "vmPath": { "shape": "VmPath" }
       }
     },
-    "VmId":{"type":"string"},
-    "VmManagerId":{"type":"string"},
-    "VmManagerName":{"type":"string"},
-    "VmManagerType":{
-      "type":"string",
-      "enum":["VSPHERE"]
-    },
-    "VmName":{"type":"string"},
-    "VmPath":{"type":"string"},
-    "VmServer":{
-      "type":"structure",
-      "members":{
-        "vmServerAddress":{"shape":"VmServerAddress"},
-        "vmName":{"shape":"VmName"},
-        "vmManagerName":{"shape":"VmManagerName"},
-        "vmManagerType":{"shape":"VmManagerType"},
-        "vmPath":{"shape":"VmPath"}
-      }
-    },
-    "VmServerAddress":{
-      "type":"structure",
-      "members":{
-        "vmManagerId":{"shape":"VmManagerId"},
-        "vmId":{"shape":"VmId"}
+    "VmServerAddress": {
+      "type": "structure",
+      "members": {
+        "vmManagerId": { "shape": "VmManagerId" },
+        "vmId": { "shape": "VmId" }
       }
     }
   }

@@ -32,8 +32,7 @@
     },
     "ConcurrentUpdateException": {
       "base": "<p>Concurrent updates caused an exception, for example, if you request an update to an Application Auto Scaling resource that already has a pending update.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Cooldown": {
       "base": null,
@@ -51,53 +50,43 @@
     },
     "DeleteScalingPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteScalingPolicyResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterScalableTargetRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterScalableTargetResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScalableTargetsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScalableTargetsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScalingActivitiesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScalingActivitiesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScalingPoliciesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScalingPoliciesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorMessage": {
       "base": null,
@@ -113,23 +102,19 @@
     },
     "FailedResourceAccessException": {
       "base": "<p>Failed access to resources caused an exception. This exception is thrown when Application Auto Scaling is unable to retrieve the alarms associated with a scaling policy due to a client error, for example, if the role ARN specified for a scalable target does not have permission to call the CloudWatch <a href=\"http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeAlarms.html\">DescribeAlarms</a> API operation on behalf of your account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InternalServiceException": {
       "base": "<p>The service encountered an internal error.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidNextTokenException": {
       "base": "<p>The next token supplied was invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LimitExceededException": {
       "base": "<p>Your account exceeded a limit. This exception is thrown when a per-account resource limit is exceeded. For more information, see <a href=\"http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_as-app\">Application Auto Scaling Limits</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxResults": {
       "base": null,
@@ -215,8 +200,7 @@
     },
     "ObjectNotFoundException": {
       "base": "<p>The specified object could not be found. For any <code>Put</code> or <code>Register</code> API operation, which depends on the existence of a scalable target, this exception is thrown if the scalable target with the specified service namespace, resource ID, and scalable dimension does not exist. For any <code>Delete</code> or <code>Deregister</code> API operation, this exception is thrown if the resource that is to be deleted or deregistered cannot be found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PolicyName": {
       "base": null,
@@ -240,23 +224,19 @@
     },
     "PutScalingPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutScalingPolicyResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterScalableTargetRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterScalableTargetResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceCapacity": {
       "base": null,
@@ -423,8 +403,7 @@
     },
     "ValidationException": {
       "base": "<p>An exception was thrown for a validation issue. Review the available parameters for the API request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "XmlString": {
       "base": null,

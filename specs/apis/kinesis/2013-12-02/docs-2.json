@@ -27,8 +27,7 @@
   "shapes": {
     "AddTagsToStreamInput": {
       "base": "<p>Represents the input for <code>AddTagsToStream</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BooleanObject": {
       "base": null,
@@ -40,8 +39,7 @@
     },
     "CreateStreamInput": {
       "base": "<p>Represents the input for <code>CreateStream</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Data": {
       "base": null,
@@ -53,28 +51,23 @@
     },
     "DecreaseStreamRetentionPeriodInput": {
       "base": "<p>Represents the input for <a>DecreaseStreamRetentionPeriod</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteStreamInput": {
       "base": "<p>Represents the input for <a>DeleteStream</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLimitsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLimitsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStreamInput": {
       "base": "<p>Represents the input for <code>DescribeStream</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStreamInputLimit": {
       "base": null,
@@ -84,18 +77,15 @@
     },
     "DescribeStreamOutput": {
       "base": "<p>Represents the output for <code>DescribeStream</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableEnhancedMonitoringInput": {
       "base": "<p>Represents the input for <a>DisableEnhancedMonitoring</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableEnhancedMonitoringInput": {
       "base": "<p>Represents the input for <a>EnableEnhancedMonitoring</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EncryptionType": {
       "base": null,
@@ -122,8 +112,7 @@
     },
     "EnhancedMonitoringOutput": {
       "base": "<p>Represents the output for <a>EnableEnhancedMonitoring</a> and <a>DisableEnhancedMonitoring</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorCode": {
       "base": null,
@@ -151,13 +140,11 @@
     },
     "ExpiredIteratorException": {
       "base": "<p>The provided iterator exceeds the maximum age allowed.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRecordsInput": {
       "base": "<p>Represents the input for <a>GetRecords</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRecordsInputLimit": {
       "base": null,
@@ -167,18 +154,15 @@
     },
     "GetRecordsOutput": {
       "base": "<p>Represents the output for <a>GetRecords</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetShardIteratorInput": {
       "base": "<p>Represents the input for <code>GetShardIterator</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetShardIteratorOutput": {
       "base": "<p>Represents the output for <code>GetShardIterator</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "HashKey": {
       "base": null,
@@ -198,43 +182,35 @@
     },
     "IncreaseStreamRetentionPeriodInput": {
       "base": "<p>Represents the input for <a>IncreaseStreamRetentionPeriod</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidArgumentException": {
       "base": "<p>A specified parameter exceeds its restrictions, is not supported, or can't be used. For more information, see the returned message.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSAccessDeniedException": {
       "base": "<p>The ciphertext references a key that doesn't exist or that you don't have access to.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSDisabledException": {
       "base": "<p>The request was rejected because the specified CMK isn't enabled.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSInvalidStateException": {
       "base": "<p>The request was rejected because the state of the specified resource isn't valid for this request. For more information, see <a href=\"http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html\">How Key State Affects Use of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSNotFoundException": {
       "base": "<p>The request was rejected because the specified entity or resource couldn't be found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSOptInRequired": {
       "base": "<p>The AWS access key ID needs a subscription for the service.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSThrottlingException": {
       "base": "<p>The request was denied due to request throttling. For more information about throttling, see <a href=\"http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#requests-per-second\">Limits</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KeyId": {
       "base": null,
@@ -246,13 +222,11 @@
     },
     "LimitExceededException": {
       "base": "<p>The requested resource exceeds the maximum number allowed, or the number of concurrent stream requests exceeds the maximum number allowed (5).</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStreamsInput": {
       "base": "<p>Represents the input for <code>ListStreams</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStreamsInputLimit": {
       "base": null,
@@ -262,13 +236,11 @@
     },
     "ListStreamsOutput": {
       "base": "<p>Represents the output for <code>ListStreams</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForStreamInput": {
       "base": "<p>Represents the input for <code>ListTagsForStream</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForStreamInputLimit": {
       "base": null,
@@ -278,13 +250,11 @@
     },
     "ListTagsForStreamOutput": {
       "base": "<p>Represents the output for <code>ListTagsForStream</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MergeShardsInput": {
       "base": "<p>Represents the input for <code>MergeShards</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MetricsName": {
       "base": null,
@@ -331,28 +301,23 @@
     },
     "ProvisionedThroughputExceededException": {
       "base": "<p>The request rate for the stream is too high, or the requested data is too large for the available throughput. Reduce the frequency or size of your requests. For more information, see <a href=\"http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html\">Streams Limits</a> in the <i>Amazon Kinesis Streams Developer Guide</i>, and <a href=\"http://docs.aws.amazon.com/general/latest/gr/api-retries.html\">Error Retries and Exponential Backoff in AWS</a> in the <i>AWS General Reference</i>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRecordInput": {
       "base": "<p>Represents the input for <code>PutRecord</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRecordOutput": {
       "base": "<p>Represents the output for <code>PutRecord</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRecordsInput": {
       "base": "<p>A <code>PutRecords</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRecordsOutput": {
       "base": "<p> <code>PutRecords</code> results.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRecordsRequestEntry": {
       "base": "<p>Represents the output for <code>PutRecords</code>.</p>",
@@ -392,18 +357,15 @@
     },
     "RemoveTagsFromStreamInput": {
       "base": "<p>Represents the input for <code>RemoveTagsFromStream</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceInUseException": {
       "base": "<p>The resource is not available for this operation. For successful operation, the resource needs to be in the <code>ACTIVE</code> state.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The requested resource could not be found. The stream might not be specified correctly.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ScalingType": {
       "base": null,
@@ -479,18 +441,15 @@
     },
     "SplitShardInput": {
       "base": "<p>Represents the input for <code>SplitShard</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StartStreamEncryptionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopStreamEncryptionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StreamARN": {
       "base": null,
@@ -594,13 +553,11 @@
     },
     "UpdateShardCountInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateShardCountOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     }
   }
 }

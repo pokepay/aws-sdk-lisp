@@ -46,8 +46,7 @@
   "shapes": {
     "AccessDeniedFault": {
       "base": "<p>AWS DMS was denied access to the endpoint.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AccountQuota": {
       "base": "<p>Describes a quota for an AWS account, for example, the number of replication instances allowed.</p>",
@@ -63,13 +62,11 @@
     },
     "AddTagsToResourceMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AddTagsToResourceResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AuthMechanismValue": {
       "base": null,
@@ -156,263 +153,211 @@
     },
     "CreateEndpointMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateEndpointResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateEventSubscriptionMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateEventSubscriptionResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateReplicationInstanceMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateReplicationInstanceResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateReplicationSubnetGroupMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateReplicationSubnetGroupResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateReplicationTaskMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateReplicationTaskResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteCertificateMessage": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteCertificateResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteEndpointMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteEndpointResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteEventSubscriptionMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteEventSubscriptionResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteReplicationInstanceMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteReplicationInstanceResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteReplicationSubnetGroupMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteReplicationSubnetGroupResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteReplicationTaskMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteReplicationTaskResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountAttributesMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountAttributesResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCertificatesMessage": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCertificatesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConnectionsMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConnectionsResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEndpointTypesMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEndpointTypesResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEndpointsMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEndpointsResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventCategoriesMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventCategoriesResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventSubscriptionsMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventSubscriptionsResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventsMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventsResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeOrderableReplicationInstancesMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeOrderableReplicationInstancesResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRefreshSchemasStatusMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRefreshSchemasStatusResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReplicationInstancesMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReplicationInstancesResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReplicationSubnetGroupsMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReplicationSubnetGroupsResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReplicationTasksMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReplicationTasksResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSchemasMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSchemasResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTableStatisticsMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTableStatisticsResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DmsSslModeValue": {
       "base": null,
@@ -544,18 +489,15 @@
     },
     "ImportCertificateMessage": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportCertificateResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "InsufficientResourceCapacityFault": {
       "base": "<p>There are not enough resources allocated to the database migration.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Integer": {
       "base": null,
@@ -600,23 +542,19 @@
     },
     "InvalidCertificateFault": {
       "base": "<p>The certificate was not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidResourceStateFault": {
       "base": "<p>The resource is in a state that prevents it from being used for database migration.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSubnet": {
       "base": "<p>The subnet provided is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSKeyNotAccessibleFault": {
       "base": "<p>AWS DMS cannot access the KMS key.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KeyList": {
       "base": null,
@@ -626,13 +564,11 @@
     },
     "ListTagsForResourceMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForResourceResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Long": {
       "base": null,
@@ -659,53 +595,43 @@
     },
     "ModifyEndpointMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyEndpointResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyEventSubscriptionMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyEventSubscriptionResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyReplicationInstanceMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyReplicationInstanceResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyReplicationSubnetGroupMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyReplicationSubnetGroupResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyReplicationTaskMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyReplicationTaskResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MongoDbSettings": {
       "base": "<p/>",
@@ -735,13 +661,11 @@
     },
     "RefreshSchemasMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RefreshSchemasResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RefreshSchemasStatus": {
       "base": "<p/>",
@@ -758,23 +682,19 @@
     },
     "ReloadTablesMessage": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReloadTablesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTagsFromResourceMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTagsFromResourceResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplicationEndpointTypeValue": {
       "base": null,
@@ -829,8 +749,7 @@
     },
     "ReplicationSubnetGroupDoesNotCoverEnoughAZs": {
       "base": "<p>The replication subnet group does not cover enough Availability Zones (AZs). Edit the replication subnet group and add more AZs.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplicationSubnetGroups": {
       "base": null,
@@ -863,18 +782,15 @@
     },
     "ResourceAlreadyExistsFault": {
       "base": "<p>The resource you are attempting to create already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundFault": {
       "base": "<p>The resource could not be found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceQuotaExceededFault": {
       "base": "<p>The quota for this resource quota has been exceeded.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "S3Settings": {
       "base": "<p/>",
@@ -886,13 +802,11 @@
     },
     "SNSInvalidTopicFault": {
       "base": "<p>The SNS topic is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SNSNoAuthorizationFault": {
       "base": "<p>You are not authorized for the SNS subscription.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SchemaList": {
       "base": null,
@@ -924,13 +838,11 @@
     },
     "StartReplicationTaskMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StartReplicationTaskResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StartReplicationTaskTypeValue": {
       "base": null,
@@ -940,18 +852,15 @@
     },
     "StopReplicationTaskMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StopReplicationTaskResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StorageQuotaExceededFault": {
       "base": "<p>The storage quota has been exceeded.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "String": {
       "base": null,
@@ -1165,8 +1074,7 @@
     },
     "SubnetAlreadyInUse": {
       "base": "<p>The specified subnet is already in use.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SubnetIdentifierList": {
       "base": null,
@@ -1257,18 +1165,15 @@
     },
     "TestConnectionMessage": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TestConnectionResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpgradeDependencyFailureFault": {
       "base": "<p>An upgrade dependency is preventing the database migration.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "VpcSecurityGroupIdList": {
       "base": null,

@@ -34,8 +34,7 @@
     },
     "AddTagsRequest": {
       "base": "<p>Container for the parameters to the <code><a>AddTags</a></code> operation. Specify the tags that you want to attach to the Elasticsearch domain.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AdditionalLimit": {
       "base": "<p> List of limits that are specific to a given InstanceType and for each of it's <code> <a>InstanceRole</a> </code> . </p>",
@@ -66,8 +65,7 @@
     },
     "BaseException": {
       "base": "<p>An error occurred while processing the request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Boolean": {
       "base": null,
@@ -83,68 +81,55 @@
     },
     "CreateElasticsearchDomainRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateElasticsearchDomainResponse": {
       "base": "<p>The result of a <code>CreateElasticsearchDomain</code> operation. Contains the status of the newly created Elasticsearch domain.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteElasticsearchDomainRequest": {
       "base": "<p>Container for the parameters to the <code><a>DeleteElasticsearchDomain</a></code> operation. Specifies the name of the Elasticsearch domain that you want to delete.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteElasticsearchDomainResponse": {
       "base": "<p>The result of a <code>DeleteElasticsearchDomain</code> request. Contains the status of the pending deletion, or no status if the domain and all of its resources have been deleted.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticsearchDomainConfigRequest": {
       "base": "<p> Container for the parameters to the <code>DescribeElasticsearchDomainConfig</code> operation. Specifies the domain name for which you want configuration information.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticsearchDomainConfigResponse": {
       "base": "<p>The result of a <code>DescribeElasticsearchDomainConfig</code> request. Contains the configuration information of the requested domain.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticsearchDomainRequest": {
       "base": "<p>Container for the parameters to the <code><a>DescribeElasticsearchDomain</a></code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticsearchDomainResponse": {
       "base": "<p>The result of a <code>DescribeElasticsearchDomain</code> request. Contains the status of the domain specified in the request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticsearchDomainsRequest": {
       "base": "<p>Container for the parameters to the <code><a>DescribeElasticsearchDomains</a></code> operation. By default, the API returns the status of all Elasticsearch domains.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticsearchDomainsResponse": {
       "base": "<p>The result of a <code>DescribeElasticsearchDomains</code> request. Contains the status of the specified domains or all domains owned by the account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticsearchInstanceTypeLimitsRequest": {
       "base": "<p> Container for the parameters to <code> <a>DescribeElasticsearchInstanceTypeLimits</a> </code> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticsearchInstanceTypeLimitsResponse": {
       "base": "<p> Container for the parameters received from <code> <a>DescribeElasticsearchInstanceTypeLimits</a> </code> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisabledOperationException": {
       "base": "<p>An error occured because the client wanted to access a not supported operation. Gives http status code of 409.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DomainId": {
       "base": "<p>Unique identifier for an Elasticsearch domain.</p>",
@@ -311,18 +296,15 @@
     },
     "InternalException": {
       "base": "<p>The request processing has failed because of an unknown error, exception or failure (the failure is internal to the service) . Gives http status code of 500.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidTypeException": {
       "base": "<p>An exception for trying to create or access sub-resource that is either invalid or not supported. Gives http status code of 409.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LimitExceededException": {
       "base": "<p>An exception for trying to create more than allowed resources or sub-resources. Gives http status code of 409.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LimitName": {
       "base": null,
@@ -358,38 +340,31 @@
     },
     "ListDomainNamesResponse": {
       "base": "<p>The result of a <code>ListDomainNames</code> operation. Contains the names of all Elasticsearch domains owned by this account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListElasticsearchInstanceTypesRequest": {
       "base": "<p> Container for the parameters to the <code> <a>ListElasticsearchInstanceTypes</a> </code> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListElasticsearchInstanceTypesResponse": {
       "base": "<p> Container for the parameters returned by <code> <a>ListElasticsearchInstanceTypes</a> </code> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListElasticsearchVersionsRequest": {
       "base": "<p> Container for the parameters to the <code> <a>ListElasticsearchVersions</a> </code> operation. <p> Use <code> <a>MaxResults</a> </code> to control the maximum number of results to retrieve in a single call. </p> <p> Use <code> <a>NextToken</a> </code> in response to retrieve more results. If the received response does not contain a NextToken, then there are no more results to retrieve. </p> </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListElasticsearchVersionsResponse": {
       "base": "<p> Container for the parameters for response received from <code> <a>ListElasticsearchVersions</a> </code> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsRequest": {
       "base": "<p>Container for the parameters to the <code><a>ListTags</a></code> operation. Specify the <code>ARN</code> for the Elasticsearch domain to which the tags are attached that you want to view are attached.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsResponse": {
       "base": "<p>The result of a <code>ListTags</code> operation. Contains tags for all requested Elasticsearch domains.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxResults": {
       "base": "<p> Set this value to limit the number of results returned. </p>",
@@ -447,18 +422,15 @@
     },
     "RemoveTagsRequest": {
       "base": "<p>Container for the parameters to the <code><a>RemoveTags</a></code> operation. Specify the <code>ARN</code> for the Elasticsearch domain from which you want to remove the specified <code>TagKey</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceAlreadyExistsException": {
       "base": "<p>An exception for creating a resource that already exists. Gives http status code of 400.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>An exception for accessing or deleting a resource that does not exist. Gives http status code of 400.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ServiceUrl": {
       "base": "<p>The endpoint to which service requests are submitted. For example, <code>search-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com</code> or <code>doc-imdb-movies-oopcnjfn6ugofer3zx5iadxxca.eu-west-1.es.amazonaws.com</code>.</p>",
@@ -564,13 +536,11 @@
     },
     "UpdateElasticsearchDomainConfigRequest": {
       "base": "<p>Container for the parameters to the <code><a>UpdateElasticsearchDomain</a></code> operation. Specifies the type and number of instances in the domain cluster.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateElasticsearchDomainConfigResponse": {
       "base": "<p>The result of an <code>UpdateElasticsearchDomain</code> request. Contains the status of the Elasticsearch domain being updated.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTimestamp": {
       "base": null,
@@ -581,8 +551,7 @@
     },
     "ValidationException": {
       "base": "<p>An exception for missing / invalid input fields. Gives http status code of 400.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "VolumeType": {
       "base": "<p> The type of EBS volume, standard, gp2, or io1. See <a href=\"http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs\" target=\"_blank\">Configuring EBS-based Storage</a>for more information.</p>",

@@ -93,8 +93,7 @@
     },
     "ConcurrentModificationException": {
       "base": "<p>Another modification has already happened. Fetch <b>VersionId</b> again and use it to update the destination.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CopyCommand": {
       "base": "<p>Describes a <code>COPY</code> command for Amazon Redshift.</p>",
@@ -112,13 +111,11 @@
     },
     "CreateDeliveryStreamInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDeliveryStreamOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Data": {
       "base": null,
@@ -140,13 +137,11 @@
     },
     "DeleteDeliveryStreamInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDeliveryStreamOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeliveryStartTimestamp": {
       "base": null,
@@ -211,8 +206,7 @@
     },
     "DescribeDeliveryStreamInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDeliveryStreamInputLimit": {
       "base": null,
@@ -222,8 +216,7 @@
     },
     "DescribeDeliveryStreamOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DestinationDescription": {
       "base": "<p>Describes the destination for a delivery stream.</p>",
@@ -392,13 +385,11 @@
     },
     "GetKinesisStreamInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetKinesisStreamOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "IntervalInSeconds": {
       "base": null,
@@ -408,13 +399,11 @@
     },
     "InvalidArgumentException": {
       "base": "<p>The specified input parameter has a value that is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidStreamTypeException": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSEncryptionConfig": {
       "base": "<p>Describes an encryption key for a destination in Amazon S3.</p>",
@@ -444,13 +433,11 @@
     },
     "LimitExceededException": {
       "base": "<p>You have already reached the limit for a requested resource.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListDeliveryStreamsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListDeliveryStreamsInputLimit": {
       "base": null,
@@ -460,8 +447,7 @@
     },
     "ListDeliveryStreamsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "LogGroupName": {
       "base": null,
@@ -563,13 +549,11 @@
     },
     "PutRecordBatchInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRecordBatchOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRecordBatchRequestEntryList": {
       "base": null,
@@ -591,13 +575,11 @@
     },
     "PutRecordInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRecordOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutResponseRecordId": {
       "base": null,
@@ -655,13 +637,11 @@
     },
     "ResourceInUseException": {
       "base": "<p>The resource is already in use and not available for this operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The specified resource could not be found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RoleARN": {
       "base": null,
@@ -728,8 +708,7 @@
     },
     "ServiceUnavailableException": {
       "base": "<p>The service is unavailable, back off and retry the operation. If you continue to see the exception, throughput limits for the delivery stream may have been exceeded. For more information about limits and how to request an increase, see <a href=\"http://docs.aws.amazon.com/firehose/latest/dev/limits.html\">Amazon Kinesis Firehose Limits</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SessionCredentials": {
       "base": null,
@@ -765,13 +744,11 @@
     },
     "UpdateDestinationInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDestinationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Username": {
       "base": null,

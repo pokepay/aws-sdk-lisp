@@ -52,13 +52,11 @@
     },
     "AddPermissionRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AddPermissionResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Alias": {
       "base": null,
@@ -124,23 +122,19 @@
     },
     "CodeStorageExceededException": {
       "base": "<p>You have exceeded your maximum total code size per account. <a href=\"http://docs.aws.amazon.com/lambda/latest/dg/limits.html\">Limits</a> </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateAliasRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateEventSourceMappingRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateFunctionRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Date": {
       "base": null,
@@ -159,18 +153,15 @@
     },
     "DeleteAliasRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteEventSourceMappingRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteFunctionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Description": {
       "base": null,
@@ -186,23 +177,19 @@
     },
     "EC2AccessDeniedException": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EC2ThrottledException": {
       "base": "<p>AWS Lambda was throttled by Amazon EC2 during Lambda function initialization using the execution role provided for the Lambda function.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EC2UnexpectedException": {
       "base": "<p>AWS Lambda received an unexpected EC2 client exception while setting up for the Lambda function.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ENILimitReachedException": {
       "base": "<p>AWS Lambda was not able to create an Elastic Network Interface (ENI) in the VPC, specified as part of Lambda function configuration, because the limit for network interfaces has been reached.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Enabled": {
       "base": null,
@@ -338,48 +325,39 @@
     },
     "GetAccountSettingsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetAccountSettingsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetAliasRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetEventSourceMappingRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetFunctionConfigurationRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetFunctionRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetFunctionResponse": {
       "base": "<p>This response contains the object for the Lambda function location (see <a>FunctionCodeLocation</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPolicyRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPolicyResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Handler": {
       "base": null,
@@ -404,43 +382,35 @@
     },
     "InvalidParameterValueException": {
       "base": "<p>One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda to assume in the <code>CreateFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that AWS Lambda is unable to assume you will get this exception. You will also get this exception if you have selected a deprecated runtime, such as Node v0.10.42. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRequestContentException": {
       "base": "<p>The request body could not be parsed as JSON.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRuntimeException": {
       "base": "<p>The runtime or runtime version specified is not supported.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSecurityGroupIDException": {
       "base": "<p>The Security Group ID provided in the Lambda function VPC configuration is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSubnetIDException": {
       "base": "<p>The Subnet ID provided in the Lambda function VPC configuration is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidZipFileException": {
       "base": "<p>AWS Lambda could not unzip the function zip file.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvocationRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvocationResponse": {
       "base": "<p>Upon success, returns an empty response. Otherwise, throws an exception.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvocationType": {
       "base": null,
@@ -450,28 +420,23 @@
     },
     "InvokeAsyncRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvokeAsyncResponse": {
       "base": "<p>Upon success, it returns empty response. Otherwise, throws an exception.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSAccessDeniedException": {
       "base": "<p>Lambda was unable to decrypt the environment variables because KMS access was denied. Check the Lambda function's KMS permissions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSDisabledException": {
       "base": "<p>Lambda was unable to decrypt the environment variables because the KMS key used is disabled. Check the Lambda function's KMS key settings.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSInvalidStateException": {
       "base": "<p>Lambda was unable to decrypt the environment variables because the KMS key used is in an invalid state for Decrypt. Check the function's KMS key settings.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSKeyArn": {
       "base": null,
@@ -483,58 +448,47 @@
     },
     "KMSNotFoundException": {
       "base": "<p>Lambda was unable to decrypt the environment variables because the KMS key was not found. Check the function's KMS key settings. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAliasesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAliasesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListEventSourceMappingsRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListEventSourceMappingsResponse": {
       "base": "<p>Contains a list of event sources (see <a>EventSourceMappingConfiguration</a>)</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListFunctionsRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListFunctionsResponse": {
       "base": "<p>Contains a list of AWS Lambda function configurations (see <a>FunctionConfiguration</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListVersionsByFunctionRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListVersionsByFunctionResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LogType": {
       "base": null,
@@ -602,8 +556,7 @@
     },
     "PolicyLengthExceededException": {
       "base": "<p>Lambda function access policy is limited to 20 KB.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Principal": {
       "base": null,
@@ -613,8 +566,7 @@
     },
     "PublishVersionRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Qualifier": {
       "base": null,
@@ -630,13 +582,11 @@
     },
     "RemovePermissionRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RequestTooLargeException": {
       "base": "<p>The request payload exceeded the <code>Invoke</code> request body JSON input limit. For more information, see <a href=\"http://docs.aws.amazon.com/lambda/latest/dg/limits.html\">Limits</a>. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceArn": {
       "base": null,
@@ -646,13 +596,11 @@
     },
     "ResourceConflictException": {
       "base": "<p>The resource already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The resource (for example, a Lambda function or access policy statement) specified in the request does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RoleArn": {
       "base": null,
@@ -712,8 +660,7 @@
     },
     "ServiceException": {
       "base": "<p>The AWS Lambda service encountered an internal error.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SourceOwner": {
       "base": null,
@@ -807,8 +754,7 @@
     },
     "SubnetIPAddressLimitReachedException": {
       "base": "<p>AWS Lambda was not able to set up VPC access for the Lambda function because one or more configured subnets has no available IP addresses.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SubnetId": {
       "base": null,
@@ -838,8 +784,7 @@
     },
     "TagResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TagValue": {
       "base": null,
@@ -878,8 +823,7 @@
     },
     "TooManyRequestsException": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TracingConfig": {
       "base": "<p>The parent object that contains your function's tracing settings.</p>",
@@ -903,33 +847,27 @@
     },
     "UnsupportedMediaTypeException": {
       "base": "<p>The content type of the <code>Invoke</code> request body is not JSON.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UntagResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateAliasRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateEventSourceMappingRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateFunctionCodeRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateFunctionConfigurationRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Version": {
       "base": null,

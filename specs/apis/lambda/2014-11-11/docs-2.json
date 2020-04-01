@@ -16,8 +16,7 @@
   "shapes": {
     "AddEventSourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Blob": {
       "base": null,
@@ -28,8 +27,7 @@
     },
     "DeleteFunctionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Description": {
       "base": null,
@@ -93,23 +91,19 @@
     },
     "GetEventSourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetFunctionConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetFunctionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetFunctionResponse": {
       "base": "<p>This response contains the object for AWS Lambda function location (see <a>API_FunctionCodeLocation</a></p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Handler": {
       "base": null,
@@ -134,43 +128,35 @@
     },
     "InvalidParameterValueException": {
       "base": "<p>One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda to assume in the <code>UploadFunction</code> or the <code>UpdateFunctionConfiguration</code> API, that AWS Lambda is unable to assume you will get this exception. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRequestContentException": {
       "base": "<p>The request body could not be parsed as JSON.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvokeAsyncRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "InvokeAsyncResponse": {
       "base": "<p>Upon success, it returns empty response. Otherwise, throws an exception.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListEventSourcesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListEventSourcesResponse": {
       "base": "<p>Contains a list of event sources (see <a>API_EventSourceConfiguration</a>)</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListFunctionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListFunctionsResponse": {
       "base": "<p>Contains a list of AWS Lambda function configurations (see <a>API_FunctionConfiguration</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Long": {
       "base": null,
@@ -209,13 +195,11 @@
     },
     "RemoveEventSourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The function or the event source specified in the request does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RoleArn": {
       "base": null,
@@ -236,8 +220,7 @@
     },
     "ServiceException": {
       "base": "<p>The AWS Lambda service encountered an internal error.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "String": {
       "base": null,
@@ -285,13 +268,11 @@
     },
     "UpdateFunctionConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UploadFunctionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Boolean": {
       "base": null,

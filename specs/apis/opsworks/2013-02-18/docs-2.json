@@ -133,23 +133,19 @@
     },
     "AssignInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssignVolumeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateElasticIpRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachElasticLoadBalancerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AutoScalingThresholds": {
       "base": "<p>Describes a load-based auto scaling upscaling or downscaling threshold configuration, which specifies when AWS OpsWorks Stacks starts or stops load-based instances.</p>",
@@ -247,13 +243,11 @@
     },
     "CloneStackRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CloneStackResult": {
       "base": "<p>Contains the response to a <code>CloneStack</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CloudWatchLogsConfiguration": {
       "base": "<p>Describes the Amazon CloudWatch logs configuration for a layer.</p>",
@@ -307,63 +301,51 @@
     },
     "CreateAppRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateAppResult": {
       "base": "<p>Contains the response to a <code>CreateApp</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDeploymentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDeploymentResult": {
       "base": "<p>Contains the response to a <code>CreateDeployment</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstanceResult": {
       "base": "<p>Contains the response to a <code>CreateInstance</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateLayerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateLayerResult": {
       "base": "<p>Contains the response to a <code>CreateLayer</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStackRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStackResult": {
       "base": "<p>Contains the response to a <code>CreateStack</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateUserProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateUserProfileResult": {
       "base": "<p>Contains the response to a <code>CreateUserProfile</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DailyAutoScalingSchedule": {
       "base": null,
@@ -409,28 +391,23 @@
     },
     "DeleteAppRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteLayerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteStackRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteUserProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Deployment": {
       "base": "<p>Describes a deployment of a stack or app.</p>",
@@ -465,243 +442,195 @@
     },
     "DeregisterEcsClusterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterElasticIpRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterRdsDbInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterVolumeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAgentVersionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAgentVersionsResult": {
       "base": "<p>Contains the response to a <code>DescribeAgentVersions</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAppsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAppsResult": {
       "base": "<p>Contains the response to a <code>DescribeApps</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCommandsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCommandsResult": {
       "base": "<p>Contains the response to a <code>DescribeCommands</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDeploymentsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDeploymentsResult": {
       "base": "<p>Contains the response to a <code>DescribeDeployments</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEcsClustersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEcsClustersResult": {
       "base": "<p>Contains the response to a <code>DescribeEcsClusters</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticIpsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticIpsResult": {
       "base": "<p>Contains the response to a <code>DescribeElasticIps</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticLoadBalancersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticLoadBalancersResult": {
       "base": "<p>Contains the response to a <code>DescribeElasticLoadBalancers</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstancesResult": {
       "base": "<p>Contains the response to a <code>DescribeInstances</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLayersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLayersResult": {
       "base": "<p>Contains the response to a <code>DescribeLayers</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLoadBasedAutoScalingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLoadBasedAutoScalingResult": {
       "base": "<p>Contains the response to a <code>DescribeLoadBasedAutoScaling</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMyUserProfileResult": {
       "base": "<p>Contains the response to a <code>DescribeMyUserProfile</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePermissionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePermissionsResult": {
       "base": "<p>Contains the response to a <code>DescribePermissions</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRaidArraysRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRaidArraysResult": {
       "base": "<p>Contains the response to a <code>DescribeRaidArrays</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRdsDbInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRdsDbInstancesResult": {
       "base": "<p>Contains the response to a <code>DescribeRdsDbInstances</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeServiceErrorsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeServiceErrorsResult": {
       "base": "<p>Contains the response to a <code>DescribeServiceErrors</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackProvisioningParametersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackProvisioningParametersResult": {
       "base": "<p>Contains the response to a <code>DescribeStackProvisioningParameters</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackSummaryRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackSummaryResult": {
       "base": "<p>Contains the response to a <code>DescribeStackSummary</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStacksRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStacksResult": {
       "base": "<p>Contains the response to a <code>DescribeStacks</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTimeBasedAutoScalingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTimeBasedAutoScalingResult": {
       "base": "<p>Contains the response to a <code>DescribeTimeBasedAutoScaling</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeUserProfilesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeUserProfilesResult": {
       "base": "<p>Contains the response to a <code>DescribeUserProfiles</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumesResult": {
       "base": "<p>Contains the response to a <code>DescribeVolumes</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachElasticLoadBalancerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateElasticIpRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Double": {
       "base": null,
@@ -769,23 +698,19 @@
     },
     "GetHostnameSuggestionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetHostnameSuggestionResult": {
       "base": "<p>Contains the response to a <code>GetHostnameSuggestion</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GrantAccessRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GrantAccessResult": {
       "base": "<p>Contains the response to a <code>GrantAccess</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Hour": {
       "base": null,
@@ -907,13 +832,11 @@
     },
     "ListTagsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsResult": {
       "base": "<p>Contains the response to a <code>ListTags</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LoadBasedAutoScalingConfiguration": {
       "base": "<p>Describes a layer's load-based auto scaling configuration.</p>",
@@ -991,8 +914,7 @@
     },
     "RebootInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Recipes": {
       "base": "<p>AWS OpsWorks Stacks supports five lifecycle events: <b>setup</b>, <b>configuration</b>, <b>deploy</b>, <b>undeploy</b>, and <b>shutdown</b>. For each layer, AWS OpsWorks Stacks runs a set of standard recipes for each event. In addition, you can provide custom recipes for any or all layers and events. AWS OpsWorks Stacks runs custom event recipes after the standard recipes. <code>LayerCustomRecipes</code> specifies the custom recipes for a particular layer to be run in response to each of the five events. </p> <p>To specify a recipe, use the cookbook's directory name in the repository followed by two colons and the recipe name, which is the recipe's file name without the .rb extension. For example: phpapp2::dbsetup specifies the dbsetup.rb recipe in the repository's phpapp2 folder.</p>",
@@ -1005,48 +927,39 @@
     },
     "RegisterEcsClusterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterEcsClusterResult": {
       "base": "<p>Contains the response to a <code>RegisterEcsCluster</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterElasticIpRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterElasticIpResult": {
       "base": "<p>Contains the response to a <code>RegisterElasticIp</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterInstanceResult": {
       "base": "<p>Contains the response to a <code>RegisterInstanceResult</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterRdsDbInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterVolumeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterVolumeResult": {
       "base": "<p>Contains the response to a <code>RegisterVolume</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReportedOs": {
       "base": "<p>A registered instance's reported operating system.</p>",
@@ -1064,8 +977,7 @@
     },
     "ResourceNotFoundException": {
       "base": "<p>Indicates that a resource was not found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RootDeviceType": {
       "base": null,
@@ -1098,18 +1010,15 @@
     },
     "SetLoadBasedAutoScalingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SetPermissionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SetTimeBasedAutoScalingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ShutdownEventConfiguration": {
       "base": "<p>The Shutdown event configuration.</p>",
@@ -1189,23 +1098,19 @@
     },
     "StartInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartStackRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopStackRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "String": {
       "base": null,
@@ -1641,8 +1546,7 @@
     },
     "TagResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TagValue": {
       "base": null,
@@ -1677,63 +1581,51 @@
     },
     "UnassignInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UnassignVolumeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UntagResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateAppRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateElasticIpRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateLayerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateMyUserProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateRdsDbInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateStackRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateUserProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateVolumeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UserProfile": {
       "base": "<p>Describes a user's SSH information.</p>",
@@ -1755,8 +1647,7 @@
     },
     "ValidationException": {
       "base": "<p>Indicates that a request was not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "VirtualizationType": {
       "base": null,

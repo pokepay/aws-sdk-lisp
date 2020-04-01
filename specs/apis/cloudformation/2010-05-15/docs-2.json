@@ -105,13 +105,11 @@
     },
     "AlreadyExistsException": {
       "base": "<p>The resource with the name requested already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelUpdateStackInput": {
       "base": "<p>The input for the <a>CancelUpdateStack</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Capabilities": {
       "base": null,
@@ -187,8 +185,7 @@
     },
     "ChangeSetNotFoundException": {
       "base": "<p>The specified change set name or ID doesn't exit. To view valid change sets for a stack, use the <code>ListChangeSets</code> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ChangeSetStatus": {
       "base": null,
@@ -272,58 +269,47 @@
     },
     "ContinueUpdateRollbackInput": {
       "base": "<p>The input for the <a>ContinueUpdateRollback</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ContinueUpdateRollbackOutput": {
       "base": "<p>The output for a <a>ContinueUpdateRollback</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateChangeSetInput": {
       "base": "<p>The input for the <a>CreateChangeSet</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateChangeSetOutput": {
       "base": "<p>The output for the <a>CreateChangeSet</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStackInput": {
       "base": "<p>The input for <a>CreateStack</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStackInstancesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStackInstancesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStackOutput": {
       "base": "<p>The output for a <a>CreateStack</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStackSetInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStackSetOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatedButModifiedException": {
       "base": "<p>The specified resource exists, but has been changed.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreationTime": {
       "base": null,
@@ -336,38 +322,31 @@
     },
     "DeleteChangeSetInput": {
       "base": "<p>The input for the <a>DeleteChangeSet</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteChangeSetOutput": {
       "base": "<p>The output for the <a>DeleteChangeSet</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteStackInput": {
       "base": "<p>The input for <a>DeleteStack</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteStackInstancesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteStackInstancesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteStackSetInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteStackSetOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletionTime": {
       "base": null,
@@ -377,93 +356,75 @@
     },
     "DescribeAccountLimitsInput": {
       "base": "<p>The input for the <a>DescribeAccountLimits</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountLimitsOutput": {
       "base": "<p>The output for the <a>DescribeAccountLimits</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeChangeSetInput": {
       "base": "<p>The input for the <a>DescribeChangeSet</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeChangeSetOutput": {
       "base": "<p>The output for the <a>DescribeChangeSet</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackEventsInput": {
       "base": "<p>The input for <a>DescribeStackEvents</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackEventsOutput": {
       "base": "<p>The output for a <a>DescribeStackEvents</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackInstanceInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackInstanceOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackResourceInput": {
       "base": "<p>The input for <a>DescribeStackResource</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackResourceOutput": {
       "base": "<p>The output for a <a>DescribeStackResource</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackResourcesInput": {
       "base": "<p>The input for <a>DescribeStackResources</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackResourcesOutput": {
       "base": "<p>The output for a <a>DescribeStackResources</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackSetInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackSetOperationInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackSetOperationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStackSetOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStacksInput": {
       "base": "<p>The input for <a>DescribeStacks</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStacksOutput": {
       "base": "<p>The output for a <a>DescribeStacks</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Description": {
       "base": null,
@@ -494,13 +455,11 @@
     },
     "EstimateTemplateCostInput": {
       "base": "<p>The input for an <a>EstimateTemplateCost</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EstimateTemplateCostOutput": {
       "base": "<p>The output for a <a>EstimateTemplateCost</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EvaluationType": {
       "base": null,
@@ -516,13 +475,11 @@
     },
     "ExecuteChangeSetInput": {
       "base": "<p>The input for the <a>ExecuteChangeSet</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ExecuteChangeSetOutput": {
       "base": "<p>The output for the <a>ExecuteChangeSet</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ExecutionStatus": {
       "base": null,
@@ -571,33 +528,27 @@
     },
     "GetStackPolicyInput": {
       "base": "<p>The input for the <a>GetStackPolicy</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetStackPolicyOutput": {
       "base": "<p>The output for the <a>GetStackPolicy</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTemplateInput": {
       "base": "<p>The input for a <a>GetTemplate</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTemplateOutput": {
       "base": "<p>The output for <a>GetTemplate</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTemplateSummaryInput": {
       "base": "<p>The input for the <a>GetTemplateSummary</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTemplateSummaryOutput": {
       "base": "<p>The output for the <a>GetTemplateSummary</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Imports": {
       "base": null,
@@ -607,18 +558,15 @@
     },
     "InsufficientCapabilitiesException": {
       "base": "<p>The template contains resources with capabilities that weren't specified in the Capabilities parameter.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidChangeSetStatusException": {
       "base": "<p>The specified change set can't be used to update the stack. For example, the change set status might be <code>CREATE_IN_PROGRESS</code>, or the stack status might be <code>UPDATE_IN_PROGRESS</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidOperationException": {
       "base": "<p>The specified operation isn't valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LastUpdatedTime": {
       "base": null,
@@ -629,8 +577,7 @@
     },
     "LimitExceededException": {
       "base": "<p>The quota for the resource has already been reached.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LimitName": {
       "base": null,
@@ -646,93 +593,75 @@
     },
     "ListChangeSetsInput": {
       "base": "<p>The input for the <a>ListChangeSets</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListChangeSetsOutput": {
       "base": "<p>The output for the <a>ListChangeSets</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListExportsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListExportsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListImportsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListImportsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStackInstancesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStackInstancesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStackResourcesInput": {
       "base": "<p>The input for the <a>ListStackResource</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStackResourcesOutput": {
       "base": "<p>The output for a <a>ListStackResources</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStackSetOperationResultsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStackSetOperationResultsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStackSetOperationsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStackSetOperationsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStackSetsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStackSetsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStacksInput": {
       "base": "<p>The input for <a>ListStacks</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStacksOutput": {
       "base": "<p>The output for <a>ListStacks</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LogicalResourceId": {
       "base": null,
@@ -778,8 +707,7 @@
     },
     "NameAlreadyExistsException": {
       "base": "<p>The specified name is already in use.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NextToken": {
       "base": null,
@@ -843,18 +771,15 @@
     },
     "OperationIdAlreadyExistsException": {
       "base": "<p>The specified operation ID already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OperationInProgressException": {
       "base": "<p>Another operation is currently in progress for this stack set. Only one operation can be performed for a stack set at a given time.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OperationNotFoundException": {
       "base": "<p>The specified ID refers to an operation that doesn't exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Output": {
       "base": "<p>The Output data type.</p>",
@@ -1132,13 +1057,11 @@
     },
     "SetStackPolicyInput": {
       "base": "<p>The input for the <a>SetStackPolicy</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SignalResourceInput": {
       "base": "<p>The input for the <a>SignalResource</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Stack": {
       "base": "<p>The Stack data type.</p>",
@@ -1184,8 +1107,7 @@
     },
     "StackInstanceNotFoundException": {
       "base": "<p>The specified stack instance doesn't exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StackInstanceStatus": {
       "base": null,
@@ -1347,13 +1269,11 @@
     },
     "StackSetNotEmptyException": {
       "base": "<p>You can't yet delete this stack set, because it still contains one or more stack instances. Delete all stack instances from the stack set before deleting the stack set.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StackSetNotFoundException": {
       "base": "<p>The specified stack set doesn't exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StackSetOperation": {
       "base": "<p>The structure that contains information about a stack set operation. </p>",
@@ -1481,18 +1401,15 @@
     },
     "StaleRequestException": {
       "base": "<p>Another operation has been performed on this stack set since the specified operation was performed. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StopStackSetOperationInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopStackSetOperationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Tag": {
       "base": "<p>The Tag type enables you to specify a key-value pair that can be used to store information about an AWS CloudFormation stack.</p>",
@@ -1600,8 +1517,7 @@
     },
     "TokenAlreadyExistsException": {
       "base": "<p>A client request token already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TransformName": {
       "base": null,
@@ -1618,23 +1534,19 @@
     },
     "UpdateStackInput": {
       "base": "<p>The input for an <a>UpdateStack</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateStackOutput": {
       "base": "<p>The output for an <a>UpdateStack</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateStackSetInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateStackSetOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Url": {
       "base": null,
@@ -1658,13 +1570,11 @@
     },
     "ValidateTemplateInput": {
       "base": "<p>The input for <a>ValidateTemplate</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ValidateTemplateOutput": {
       "base": "<p>The output for <a>ValidateTemplate</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Version": {
       "base": null,

@@ -94,13 +94,11 @@
     },
     "AbortMultipartUploadOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AbortMultipartUploadRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AbortRuleId": {
       "base": null,
@@ -249,13 +247,11 @@
     },
     "BucketAlreadyExists": {
       "base": "The requested bucket name is not available. The bucket namespace is shared by all users of the system. Please select a different name and try again.",
-      "refs": {
-      }
+      "refs": {}
     },
     "BucketAlreadyOwnedByYou": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BucketCannedACL": {
       "base": null,
@@ -460,13 +456,11 @@
     },
     "CompleteMultipartUploadOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CompleteMultipartUploadRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CompletedMultipartUpload": {
       "base": null,
@@ -569,13 +563,11 @@
     },
     "CopyObjectOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CopyObjectRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CopyObjectResult": {
       "base": null,
@@ -666,23 +658,19 @@
     },
     "CreateBucketOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateBucketRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateMultipartUploadOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateMultipartUploadRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreationDate": {
       "base": null,
@@ -721,53 +709,43 @@
     },
     "DeleteBucketAnalyticsConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBucketCorsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBucketInventoryConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBucketLifecycleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBucketMetricsConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBucketPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBucketReplicationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBucketRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBucketTaggingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBucketWebsiteRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteMarker": {
       "base": null,
@@ -798,33 +776,27 @@
     },
     "DeleteObjectOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteObjectRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteObjectTaggingOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteObjectTaggingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteObjectsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteObjectsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletedObject": {
       "base": null,
@@ -1016,208 +988,167 @@
     },
     "GetBucketAccelerateConfigurationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketAccelerateConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketAclOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketAclRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketAnalyticsConfigurationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketAnalyticsConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketCorsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketCorsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketInventoryConfigurationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketInventoryConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketLifecycleConfigurationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketLifecycleConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketLifecycleOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketLifecycleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketLocationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketLocationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketLoggingOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketLoggingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketMetricsConfigurationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketMetricsConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketNotificationConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketPolicyOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketReplicationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketReplicationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketRequestPaymentOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketRequestPaymentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketTaggingOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketTaggingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketVersioningOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketVersioningRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketWebsiteOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBucketWebsiteRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetObjectAclOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetObjectAclRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetObjectOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetObjectRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetObjectTaggingOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetObjectTaggingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetObjectTorrentOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetObjectTorrentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GlacierJobParameters": {
       "base": null,
@@ -1300,18 +1231,15 @@
     },
     "HeadBucketRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "HeadObjectOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "HeadObjectRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "HostName": {
       "base": null,
@@ -1586,88 +1514,71 @@
     },
     "ListBucketAnalyticsConfigurationsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListBucketAnalyticsConfigurationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListBucketInventoryConfigurationsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListBucketInventoryConfigurationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListBucketMetricsConfigurationsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListBucketMetricsConfigurationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListBucketsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListMultipartUploadsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListMultipartUploadsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListObjectVersionsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListObjectVersionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListObjectsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListObjectsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListObjectsV2Output": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListObjectsV2Request": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPartsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPartsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Location": {
       "base": null,
@@ -1884,18 +1795,15 @@
     },
     "NoSuchBucket": {
       "base": "The specified bucket does not exist.",
-      "refs": {
-      }
+      "refs": {}
     },
     "NoSuchKey": {
       "base": "The specified key does not exist.",
-      "refs": {
-      }
+      "refs": {}
     },
     "NoSuchUpload": {
       "base": "The specified multipart upload does not exist.",
-      "refs": {
-      }
+      "refs": {}
     },
     "NoncurrentVersionExpiration": {
       "base": "Specifies when noncurrent object versions expire. Upon expiration, Amazon S3 permanently deletes the noncurrent object versions. You set this lifecycle configuration action on a bucket that has versioning enabled (or suspended) to request that Amazon S3 delete noncurrent object versions at a specific period in the object's lifetime.",
@@ -1956,8 +1864,7 @@
     },
     "ObjectAlreadyInActiveTierError": {
       "base": "This operation is not allowed against this storage tier",
-      "refs": {
-      }
+      "refs": {}
     },
     "ObjectCannedACL": {
       "base": null,
@@ -2024,8 +1931,7 @@
     },
     "ObjectNotInActiveTierError": {
       "base": "The source object of the COPY operation is not in the active tier and is only stored in Amazon Glacier.",
-      "refs": {
-      }
+      "refs": {}
     },
     "ObjectStorageClass": {
       "base": null,
@@ -2185,118 +2091,95 @@
     },
     "PutBucketAccelerateConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketAclRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketAnalyticsConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketCorsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketInventoryConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketLifecycleConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketLifecycleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketLoggingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketMetricsConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketNotificationConfigurationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketNotificationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketReplicationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketRequestPaymentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketTaggingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketVersioningRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutBucketWebsiteRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutObjectAclOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutObjectAclRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutObjectOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutObjectRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutObjectTaggingOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutObjectTaggingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "QueueArn": {
       "base": null,
@@ -2488,13 +2371,11 @@
     },
     "RestoreObjectOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RestoreObjectRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RestoreRequest": {
       "base": null,
@@ -2830,23 +2711,19 @@
     },
     "UploadPartCopyOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UploadPartCopyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UploadPartOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UploadPartRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Value": {
       "base": null,

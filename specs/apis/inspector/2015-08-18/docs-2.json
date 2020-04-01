@@ -42,18 +42,15 @@
   "shapes": {
     "AccessDeniedException": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddAttributesToFindingsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddAttributesToFindingsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Agent": {
       "base": "<p>Contains information about an Inspector agent. This data type is used as a response element in the <a>ListAssessmentAgents</a> action.</p>",
@@ -230,13 +227,11 @@
     },
     "AttachAssessmentAndRulesPackageRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachAssessmentAndRulesPackageResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Attribute": {
       "base": "<p>This data type is used as a response element in the <a>AddAttributesToFindings</a> action and a request parameter in the <a>CreateAssessment</a> action.</p>",
@@ -299,138 +294,111 @@
     },
     "CreateApplicationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateApplicationResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateAssessmentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateAssessmentResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateResourceGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateResourceGroupResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteApplicationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteApplicationResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteAssessmentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteAssessmentResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRunRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRunResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeApplicationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeApplicationResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAssessmentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAssessmentResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCrossAccountAccessRoleResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFindingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFindingResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeResourceGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeResourceGroupResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRulesPackageRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRulesPackageResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRunRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRunResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachAssessmentAndRulesPackageRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachAssessmentAndRulesPackageResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Duration": {
       "base": null,
@@ -468,13 +436,11 @@
     },
     "GetAssessmentTelemetryRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetAssessmentTelemetryResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Integer": {
       "base": null,
@@ -492,108 +458,87 @@
     },
     "InternalException": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidCrossAccountRoleException": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidInputException": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListApplicationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListApplicationsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAssessmentAgentsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAssessmentAgentsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAssessmentsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAssessmentsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAttachedAssessmentsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAttachedAssessmentsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAttachedRulesPackagesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAttachedRulesPackagesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListFindingsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListFindingsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRulesPackagesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRulesPackagesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRunsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRunsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForResourceResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Locale": {
       "base": null,
@@ -603,13 +548,11 @@
     },
     "LocalizeTextRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "LocalizeTextResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "LocalizedFacility": {
       "base": null,
@@ -728,13 +671,11 @@
     },
     "NoSuchEntityException": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "OperationInProgressException": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PaginationToken": {
       "base": null,
@@ -785,33 +726,27 @@
     },
     "PreviewAgentsForResourceGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PreviewAgentsForResourceGroupResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterCrossAccountAccessRoleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterCrossAccountAccessRoleResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveAttributesFromFindingsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveAttributesFromFindingsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceGroup": {
       "base": "<p>Contains information about a resource group. The resource group defines a set of tags that, when queried, identify the AWS resources that comprise the application.</p> <p>This data type is used as the response element in the <a>DescribeResourceGroup</a> action.</p>",
@@ -840,13 +775,11 @@
     },
     "RunAssessmentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RunAssessmentResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RunState": {
       "base": null,
@@ -869,13 +802,11 @@
     },
     "SetTagsForResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SetTagsForResourceResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Severity": {
       "base": null,
@@ -892,23 +823,19 @@
     },
     "StartDataCollectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartDataCollectionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopDataCollectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopDataCollectionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Tag": {
       "base": "<p>A key and value pair.</p> <p>This data type is used as a request parameter in the <a>SetTagsForResource</a> action and a response element in the <a>ListTagsForResource</a> action.</p>",
@@ -988,23 +915,19 @@
     },
     "UpdateApplicationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateApplicationResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateAssessmentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateAssessmentResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Version": {
       "base": null,

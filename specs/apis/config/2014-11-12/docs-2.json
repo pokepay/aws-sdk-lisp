@@ -323,38 +323,31 @@
     },
     "DeleteConfigRuleRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteConfigurationRecorderRequest": {
       "base": "<p>The request object for the <code>DeleteConfigurationRecorder</code> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDeliveryChannelRequest": {
       "base": "<p>The input for the <a>DeleteDeliveryChannel</a> action. The action accepts the following data in JSON format. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteEvaluationResultsRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteEvaluationResultsResponse": {
       "base": "<p>The output when you delete the evaluation results for the specified Config rule.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeliverConfigSnapshotRequest": {
       "base": "<p>The input for the <a>DeliverConfigSnapshot</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeliverConfigSnapshotResponse": {
       "base": "<p>The output for the <a>DeliverConfigSnapshot</a> action in JSON format.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeliveryChannel": {
       "base": "<p>The channel through which AWS Config delivers notifications and updated configuration states.</p>",
@@ -397,83 +390,67 @@
     },
     "DescribeComplianceByConfigRuleRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeComplianceByConfigRuleResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeComplianceByResourceRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeComplianceByResourceResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConfigRuleEvaluationStatusRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConfigRuleEvaluationStatusResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConfigRulesRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConfigRulesResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConfigurationRecorderStatusRequest": {
       "base": "<p>The input for the <a>DescribeConfigurationRecorderStatus</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConfigurationRecorderStatusResponse": {
       "base": "<p>The output for the <a>DescribeConfigurationRecorderStatus</a> action in JSON format.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConfigurationRecordersRequest": {
       "base": "<p>The input for the <a>DescribeConfigurationRecorders</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConfigurationRecordersResponse": {
       "base": "<p>The output for the <a>DescribeConfigurationRecorders</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDeliveryChannelStatusRequest": {
       "base": "<p>The input for the <a>DeliveryChannelStatus</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDeliveryChannelStatusResponse": {
       "base": "<p>The output for the <a>DescribeDeliveryChannelStatus</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDeliveryChannelsRequest": {
       "base": "<p>The input for the <a>DescribeDeliveryChannels</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDeliveryChannelsResponse": {
       "base": "<p>The output for the <a>DescribeDeliveryChannels</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EarlierTime": {
       "base": null,
@@ -533,58 +510,47 @@
     },
     "GetComplianceDetailsByConfigRuleRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetComplianceDetailsByConfigRuleResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetComplianceDetailsByResourceRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetComplianceDetailsByResourceResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetComplianceSummaryByConfigRuleResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetComplianceSummaryByResourceTypeRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetComplianceSummaryByResourceTypeResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDiscoveredResourceCountsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDiscoveredResourceCountsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetResourceConfigHistoryRequest": {
       "base": "<p>The input for the <a>GetResourceConfigHistory</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetResourceConfigHistoryResponse": {
       "base": "<p>The output for the <a>GetResourceConfigHistory</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IncludeGlobalResourceTypes": {
       "base": null,
@@ -594,13 +560,11 @@
     },
     "InsufficientDeliveryPolicyException": {
       "base": "<p>Your Amazon S3 bucket policy does not permit AWS Config to write to it.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InsufficientPermissionsException": {
       "base": "<p>Indicates one of the following errors:</p> <ul> <li> <p>The rule cannot be created because the IAM role assigned to AWS Config lacks permissions to perform the config:Put* action.</p> </li> <li> <p>The AWS Lambda function cannot be invoked. Check the function ARN, and check the function's permissions.</p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Integer": {
       "base": null,
@@ -610,63 +574,51 @@
     },
     "InvalidConfigurationRecorderNameException": {
       "base": "<p>You have provided a configuration recorder name that is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidDeliveryChannelNameException": {
       "base": "<p>The specified delivery channel name is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidLimitException": {
       "base": "<p>The specified limit is outside the allowable range.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidNextTokenException": {
       "base": "<p>The specified next token is invalid. Specify the <code>NextToken</code> string that was returned in the previous response to get the next page of results.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterValueException": {
       "base": "<p>One or more of the specified parameters are invalid. Verify that your parameters are valid and try again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRecordingGroupException": {
       "base": "<p>AWS Config throws an exception if the recording group does not contain a valid list of resource types. Invalid values could also be incorrectly formatted.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidResultTokenException": {
       "base": "<p>The specified <code>ResultToken</code> is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRoleException": {
       "base": "<p>You have provided a null or empty role ARN.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidS3KeyPrefixException": {
       "base": "<p>The specified Amazon S3 key prefix is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSNSTopicARNException": {
       "base": "<p>The specified Amazon SNS topic does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidTimeRangeException": {
       "base": "<p>The specified time range is not valid. The earlier time is not chronologically before the later time.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LastDeliveryChannelDeleteFailedException": {
       "base": "<p>You cannot delete the delivery channel you specified because the configuration recorder is running.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LaterTime": {
       "base": null,
@@ -686,18 +638,15 @@
     },
     "LimitExceededException": {
       "base": "<p>This exception is thrown if an evaluation is in progress or if you call the <a>StartConfigRulesEvaluation</a> API more than once per minute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListDiscoveredResourcesRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListDiscoveredResourcesResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Long": {
       "base": null,
@@ -708,18 +657,15 @@
     },
     "MaxNumberOfConfigRulesExceededException": {
       "base": "<p>Failed to add the AWS Config rule because the account already contains the maximum number of 50 rules. Consider deleting any deactivated rules before adding new rules.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxNumberOfConfigurationRecordersExceededException": {
       "base": "<p>You have reached the limit on the number of recorders you can create.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxNumberOfDeliveryChannelsExceededException": {
       "base": "<p>You have reached the limit on the number of delivery channels you can create.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaximumExecutionFrequency": {
       "base": null,
@@ -758,38 +704,31 @@
     },
     "NoAvailableConfigurationRecorderException": {
       "base": "<p>There are no configuration recorders available to provide the role needed to describe your resources. Create a configuration recorder.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NoAvailableDeliveryChannelException": {
       "base": "<p>There is no delivery channel available to record configurations.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NoRunningConfigurationRecorderException": {
       "base": "<p>There is no configuration recorder running.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NoSuchBucketException": {
       "base": "<p>The specified Amazon S3 bucket does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NoSuchConfigRuleException": {
       "base": "<p>One or more AWS Config rules in the request are invalid. Verify that the rule names are correct and try again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NoSuchConfigurationRecorderException": {
       "base": "<p>You have specified a configuration recorder that does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NoSuchDeliveryChannelException": {
       "base": "<p>You have specified a delivery channel that does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OrderingTimestamp": {
       "base": null,
@@ -805,28 +744,23 @@
     },
     "PutConfigRuleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutConfigurationRecorderRequest": {
       "base": "<p>The input for the <a>PutConfigurationRecorder</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutDeliveryChannelRequest": {
       "base": "<p>The input for the <a>PutDeliveryChannel</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutEvaluationsRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutEvaluationsResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RecorderName": {
       "base": null,
@@ -940,8 +874,7 @@
     },
     "ResourceInUseException": {
       "base": "<p>The rule is currently being deleted or the rule is deleting your evaluation results. Try your request again later.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceName": {
       "base": null,
@@ -954,8 +887,7 @@
     },
     "ResourceNotDiscoveredException": {
       "base": "<p>You have specified a resource that is either unknown or has not been discovered.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceType": {
       "base": null,
@@ -1014,23 +946,19 @@
     },
     "StartConfigRulesEvaluationRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StartConfigRulesEvaluationResponse": {
       "base": "<p>The output when you start the evaluation for the specified Config rule.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StartConfigurationRecorderRequest": {
       "base": "<p>The input for the <a>StartConfigurationRecorder</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StopConfigurationRecorderRequest": {
       "base": "<p>The input for the <a>StopConfigurationRecorder</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "String": {
       "base": null,
@@ -1141,8 +1069,7 @@
     },
     "ValidationException": {
       "base": "<p>The requested action is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Value": {
       "base": null,

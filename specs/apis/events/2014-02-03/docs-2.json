@@ -24,33 +24,27 @@
     },
     "ConcurrentModificationException": {
       "base": "<p>This exception occurs if there is concurrent modification on rule or target.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRuleRequest": {
       "base": "<p>Container for the parameters to the <a>DeleteRule</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRuleRequest": {
       "base": "<p>Container for the parameters to the <a>DescribeRule</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRuleResponse": {
       "base": "<p>The result of the <a>DescribeRule</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableRuleRequest": {
       "base": "<p>Container for the parameters to the <a>DisableRule</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableRuleRequest": {
       "base": "<p>Container for the parameters to the <a>EnableRule</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorCode": {
       "base": null,
@@ -111,18 +105,15 @@
     },
     "InternalException": {
       "base": "<p>This exception occurs due to unexpected causes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidEventPatternException": {
       "base": "<p>The event pattern is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LimitExceededException": {
       "base": "<p>This exception occurs if you try to create more rules or add more targets to a rule than allowed by default.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LimitMax100": {
       "base": null,
@@ -134,33 +125,27 @@
     },
     "ListRuleNamesByTargetRequest": {
       "base": "<p>Container for the parameters to the <a>ListRuleNamesByTarget</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRuleNamesByTargetResponse": {
       "base": "<p>The result of the <a>ListRuleNamesByTarget</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRulesRequest": {
       "base": "<p>Container for the parameters to the <a>ListRules</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRulesResponse": {
       "base": "<p>The result of the <a>ListRules</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTargetsByRuleRequest": {
       "base": "<p>Container for the parameters to the <a>ListTargetsByRule</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTargetsByRuleResponse": {
       "base": "<p>The result of the <a>ListTargetsByRule</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NextToken": {
       "base": null,
@@ -175,8 +160,7 @@
     },
     "PutEventsRequest": {
       "base": "<p>Container for the parameters to the <a>PutEvents</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutEventsRequestEntry": {
       "base": "<p>Contains information about the event to be used in the PutEvents action.</p>",
@@ -192,8 +176,7 @@
     },
     "PutEventsResponse": {
       "base": "<p>The result of the <a>PutEvents</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutEventsResultEntry": {
       "base": "<p>A PutEventsResult contains a list of PutEventsResultEntry.</p>",
@@ -209,23 +192,19 @@
     },
     "PutRuleRequest": {
       "base": "<p>Container for the parameters to the <a>PutRule</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRuleResponse": {
       "base": "<p>The result of the <a>PutRule</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutTargetsRequest": {
       "base": "<p>Container for the parameters to the <a>PutTargets</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutTargetsResponse": {
       "base": "<p>The result of the <a>PutTargets</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutTargetsResultEntry": {
       "base": "<p>A PutTargetsResult contains a list of PutTargetsResultEntry.</p>",
@@ -241,13 +220,11 @@
     },
     "RemoveTargetsRequest": {
       "base": "<p>Container for the parameters to the <a>RemoveTargets</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTargetsResponse": {
       "base": "<p>The result of the <a>RemoveTargets</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTargetsResultEntry": {
       "base": "<p>The ID of the target requested to be removed from the rule by Amazon CloudWatch Events.</p>",
@@ -263,8 +240,7 @@
     },
     "ResourceNotFoundException": {
       "base": "<p>The rule does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RoleArn": {
       "base": null,
@@ -399,13 +375,11 @@
     },
     "TestEventPatternRequest": {
       "base": "<p>Container for the parameters to the <a>TestEventPattern</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TestEventPatternResponse": {
       "base": "<p>The result of the <a>TestEventPattern</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     }
   }
 }

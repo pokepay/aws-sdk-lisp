@@ -35,8 +35,7 @@
     },
     "AddPermissionRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttributeNameList": {
       "base": null,
@@ -47,13 +46,11 @@
     },
     "BatchEntryIdsNotDistinct": {
       "base": "<p>Two or more batch entries in the request have the same <code>Id</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchRequestTooLong": {
       "base": "<p>The length of all the messages put together is more than the limit.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchResultErrorEntry": {
       "base": "<p>This is used in the responses of batch API to give a detailed description of the result of an action on each entry in the request.</p>",
@@ -90,8 +87,7 @@
     },
     "ChangeMessageVisibilityBatchRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ChangeMessageVisibilityBatchRequestEntry": {
       "base": "<p>Encloses a receipt handle and an entry id for each message in <code> <a>ChangeMessageVisibilityBatch</a>.</code> </p> <important> <p>All of the following list parameters must be prefixed with <code>ChangeMessageVisibilityBatchRequestEntry.n</code>, where <code>n</code> is an integer value starting with <code>1</code>. For example, a parameter list for this action might look like this:</p> </important> <p> <code>&amp;amp;ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2</code> </p> <p> <code>&amp;amp;ChangeMessageVisibilityBatchRequestEntry.1.ReceiptHandle=&lt;replaceable&gt;Your_Receipt_Handle&lt;/replaceable&gt;</code> </p> <p> <code>&amp;amp;ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45</code> </p>",
@@ -107,8 +103,7 @@
     },
     "ChangeMessageVisibilityBatchResult": {
       "base": "<p>For each message in the batch, the response contains a <code> <a>ChangeMessageVisibilityBatchResultEntry</a> </code> tag if the message succeeds or a <code> <a>BatchResultErrorEntry</a> </code> tag if the message fails.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ChangeMessageVisibilityBatchResultEntry": {
       "base": "<p>Encloses the <code>Id</code> of an entry in <code> <a>ChangeMessageVisibilityBatch</a>.</code> </p>",
@@ -124,23 +119,19 @@
     },
     "ChangeMessageVisibilityRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateQueueRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateQueueResult": {
       "base": "<p>Returns the <code>QueueUrl</code> attribute of the created queue.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteMessageBatchRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteMessageBatchRequestEntry": {
       "base": "<p>Encloses a receipt handle and an identifier for it.</p>",
@@ -156,8 +147,7 @@
     },
     "DeleteMessageBatchResult": {
       "base": "<p>For each message in the batch, the response contains a <code> <a>DeleteMessageBatchResultEntry</a> </code> tag if the message is deleted or a <code> <a>BatchResultErrorEntry</a> </code> tag if the message can't be deleted.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteMessageBatchResultEntry": {
       "base": "<p>Encloses the <code>Id</code> of an entry in <code> <a>DeleteMessageBatch</a>.</code> </p>",
@@ -173,38 +163,31 @@
     },
     "DeleteMessageRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteQueueRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EmptyBatchRequest": {
       "base": "<p>The batch request doesn't contain any entries.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetQueueAttributesRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetQueueAttributesResult": {
       "base": "<p>A list of returned queue attributes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetQueueUrlRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetQueueUrlResult": {
       "base": "<p>For more information, see <a href=\"http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/UnderstandingResponses.html\">Responses</a> in the <i>Amazon SQS Developer Guide</i>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Integer": {
       "base": null,
@@ -220,43 +203,35 @@
     },
     "InvalidAttributeName": {
       "base": "<p>The attribute referred to doesn't exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidBatchEntryId": {
       "base": "<p>The <code>Id</code> of a batch entry in a batch request doesn't abide by the specification.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidIdFormat": {
       "base": "<p>The receipt handle isn't valid for the current version.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidMessageContents": {
       "base": "<p>The message contains characters outside the allowed set.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListDeadLetterSourceQueuesRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListDeadLetterSourceQueuesResult": {
       "base": "<p>A list of your dead letter source queues.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListQueuesRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListQueuesResult": {
       "base": "<p>A list of your queues.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Message": {
       "base": "<p>An Amazon SQS message.</p>",
@@ -298,8 +273,7 @@
     },
     "MessageNotInflight": {
       "base": "<p>The message referred to isn't in flight.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MessageSystemAttributeMap": {
       "base": null,
@@ -315,18 +289,15 @@
     },
     "OverLimit": {
       "base": "<p>The action that you requested would violate a limit. For example, <code>ReceiveMessage</code> returns this error if the maximum number of inflight messages is reached. <code> <a>AddPermission</a> </code> returns this error if the maximum number of permissions for the queue is reached.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PurgeQueueInProgress": {
       "base": "<p>Indicates that the specified queue previously received a <code>PurgeQueue</code> request within the last 60 seconds (the time it can take to delete the messages in the queue).</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PurgeQueueRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "QueueAttributeMap": {
       "base": null,
@@ -345,18 +316,15 @@
     },
     "QueueDeletedRecently": {
       "base": "<p>You must wait 60 seconds after deleting a queue before you can create another one with the same name.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "QueueDoesNotExist": {
       "base": "<p>The queue referred to doesn't exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "QueueNameExists": {
       "base": "<p>A queue already exists with this name. Amazon SQS returns this error only if the request includes attributes whose values differ from those of the existing queue.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "QueueUrlList": {
       "base": null,
@@ -367,28 +335,23 @@
     },
     "ReceiptHandleIsInvalid": {
       "base": "<p>The receipt handle provided isn't valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReceiveMessageRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReceiveMessageResult": {
       "base": "<p>A list of received messages.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RemovePermissionRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SendMessageBatchRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SendMessageBatchRequestEntry": {
       "base": "<p>Contains the details of a single Amazon SQS message along with an <code>Id</code>.</p>",
@@ -404,8 +367,7 @@
     },
     "SendMessageBatchResult": {
       "base": "<p>For each message in the batch, the response contains a <code> <a>SendMessageBatchResultEntry</a> </code> tag if the message succeeds or a <code> <a>BatchResultErrorEntry</a> </code> tag if the message fails.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SendMessageBatchResultEntry": {
       "base": "<p>Encloses a <code>MessageId</code> for a successfully-enqueued message in a <code> <a>SendMessageBatch</a>.</code> </p>",
@@ -421,18 +383,15 @@
     },
     "SendMessageRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SendMessageResult": {
       "base": "<p>The <code>MD5OfMessageBody</code> and <code>MessageId</code> elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetQueueAttributesRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "String": {
       "base": null,
@@ -511,13 +470,11 @@
     },
     "TooManyEntriesInBatchRequest": {
       "base": "<p>The batch request contains more entries than permissible.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnsupportedOperation": {
       "base": "<p>Error code 400. Unsupported operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     }
   }
 }

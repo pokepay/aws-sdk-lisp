@@ -42,13 +42,11 @@
     },
     "AddPermissionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AuthorizationErrorException": {
       "base": "<p>Indicates that the user has been denied access to the requested resource.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Binary": {
       "base": null,
@@ -58,53 +56,43 @@
     },
     "CheckIfPhoneNumberIsOptedOutInput": {
       "base": "<p>The input for the <code>CheckIfPhoneNumberIsOptedOut</code> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CheckIfPhoneNumberIsOptedOutResponse": {
       "base": "<p>The response from the <code>CheckIfPhoneNumberIsOptedOut</code> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConfirmSubscriptionInput": {
       "base": "<p>Input for ConfirmSubscription action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConfirmSubscriptionResponse": {
       "base": "<p>Response for ConfirmSubscriptions action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateEndpointResponse": {
       "base": "<p>Response from CreateEndpoint action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePlatformApplicationInput": {
       "base": "<p>Input for CreatePlatformApplication action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePlatformApplicationResponse": {
       "base": "<p>Response from CreatePlatformApplication action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePlatformEndpointInput": {
       "base": "<p>Input for CreatePlatformEndpoint action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTopicInput": {
       "base": "<p>Input for CreateTopic action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTopicResponse": {
       "base": "<p>Response from CreateTopic action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DelegatesList": {
       "base": null,
@@ -114,18 +102,15 @@
     },
     "DeleteEndpointInput": {
       "base": "<p>Input for DeleteEndpoint action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePlatformApplicationInput": {
       "base": "<p>Input for DeletePlatformApplication action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTopicInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Endpoint": {
       "base": "<p>Endpoint for mobile app and device.</p>",
@@ -135,83 +120,67 @@
     },
     "EndpointDisabledException": {
       "base": "<p>Exception error indicating endpoint disabled.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetEndpointAttributesInput": {
       "base": "<p>Input for GetEndpointAttributes action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetEndpointAttributesResponse": {
       "base": "<p>Response from GetEndpointAttributes of the EndpointArn.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPlatformApplicationAttributesInput": {
       "base": "<p>Input for GetPlatformApplicationAttributes action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPlatformApplicationAttributesResponse": {
       "base": "<p>Response for GetPlatformApplicationAttributes action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetSMSAttributesInput": {
       "base": "<p>The input for the <code>GetSMSAttributes</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetSMSAttributesResponse": {
       "base": "<p>The response from the <code>GetSMSAttributes</code> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetSubscriptionAttributesInput": {
       "base": "<p>Input for GetSubscriptionAttributes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetSubscriptionAttributesResponse": {
       "base": "<p>Response for GetSubscriptionAttributes action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTopicAttributesInput": {
       "base": "<p>Input for GetTopicAttributes action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTopicAttributesResponse": {
       "base": "<p>Response for GetTopicAttributes action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InternalErrorException": {
       "base": "<p>Indicates an internal service error.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterException": {
       "base": "<p>Indicates that a request parameter does not comply with the associated constraints.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterValueException": {
       "base": "<p>Indicates that a request parameter does not comply with the associated constraints.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListEndpointsByPlatformApplicationInput": {
       "base": "<p>Input for ListEndpointsByPlatformApplication action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListEndpointsByPlatformApplicationResponse": {
       "base": "<p>Response for ListEndpointsByPlatformApplication action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListOfEndpoints": {
       "base": null,
@@ -227,23 +196,19 @@
     },
     "ListPhoneNumbersOptedOutInput": {
       "base": "<p>The input for the <code>ListPhoneNumbersOptedOut</code> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPhoneNumbersOptedOutResponse": {
       "base": "<p>The response from the <code>ListPhoneNumbersOptedOut</code> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPlatformApplicationsInput": {
       "base": "<p>Input for ListPlatformApplications action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPlatformApplicationsResponse": {
       "base": "<p>Response for ListPlatformApplications action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListString": {
       "base": null,
@@ -253,33 +218,27 @@
     },
     "ListSubscriptionsByTopicInput": {
       "base": "<p>Input for ListSubscriptionsByTopic action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListSubscriptionsByTopicResponse": {
       "base": "<p>Response for ListSubscriptionsByTopic action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListSubscriptionsInput": {
       "base": "<p>Input for ListSubscriptions action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListSubscriptionsResponse": {
       "base": "<p>Response for ListSubscriptions action</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTopicsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTopicsResponse": {
       "base": "<p>Response for ListTopics action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MapStringToString": {
       "base": null,
@@ -310,18 +269,15 @@
     },
     "NotFoundException": {
       "base": "<p>Indicates that the requested resource does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OptInPhoneNumberInput": {
       "base": "<p>Input for the OptInPhoneNumber action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OptInPhoneNumberResponse": {
       "base": "<p>The response for the OptInPhoneNumber action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PhoneNumber": {
       "base": null,
@@ -345,53 +301,43 @@
     },
     "PlatformApplicationDisabledException": {
       "base": "<p>Exception error indicating platform application disabled.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PublishInput": {
       "base": "<p>Input for Publish action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PublishResponse": {
       "base": "<p>Response for Publish action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RemovePermissionInput": {
       "base": "<p>Input for RemovePermission action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetEndpointAttributesInput": {
       "base": "<p>Input for SetEndpointAttributes action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetPlatformApplicationAttributesInput": {
       "base": "<p>Input for SetPlatformApplicationAttributes action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetSMSAttributesInput": {
       "base": "<p>The input for the SetSMSAttributes action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetSMSAttributesResponse": {
       "base": "<p>The response for the SetSMSAttributes action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetSubscriptionAttributesInput": {
       "base": "<p>Input for SetSubscriptionAttributes action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetTopicAttributesInput": {
       "base": "<p>Input for SetTopicAttributes action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "String": {
       "base": null,
@@ -428,13 +374,11 @@
     },
     "SubscribeInput": {
       "base": "<p>Input for Subscribe action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SubscribeResponse": {
       "base": "<p>Response for Subscribe action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Subscription": {
       "base": "<p>A wrapper type for the attributes of an Amazon SNS subscription.</p>",
@@ -450,8 +394,7 @@
     },
     "SubscriptionLimitExceededException": {
       "base": "<p>Indicates that the customer already owns the maximum allowed number of subscriptions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SubscriptionsList": {
       "base": null,
@@ -462,8 +405,7 @@
     },
     "ThrottledException": {
       "base": "<p>Indicates that the rate at which requests have been submitted for this action exceeds the limit for your account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Topic": {
       "base": "<p>A wrapper type for the topic's Amazon Resource Name (ARN). To retrieve a topic's attributes, use <code>GetTopicAttributes</code>.</p>",
@@ -479,8 +421,7 @@
     },
     "TopicLimitExceededException": {
       "base": "<p>Indicates that the customer already owns the maximum allowed number of topics.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TopicsList": {
       "base": null,
@@ -490,8 +431,7 @@
     },
     "UnsubscribeInput": {
       "base": "<p>Input for Unsubscribe action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "account": {
       "base": null,

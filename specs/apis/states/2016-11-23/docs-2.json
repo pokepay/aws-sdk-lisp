@@ -23,8 +23,7 @@
   "shapes": {
     "ActivityDoesNotExist": {
       "base": "<p>The specified activity does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ActivityFailedEventDetails": {
       "base": null,
@@ -34,8 +33,7 @@
     },
     "ActivityLimitExceeded": {
       "base": "<p>The maximum number of activities has been reached. Existing activities must be deleted before a new activity can be created.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ActivityList": {
       "base": null,
@@ -81,8 +79,7 @@
     },
     "ActivityWorkerLimitExceeded": {
       "base": "<p>The maximum number of workers concurrently polling for activity tasks has been reached.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Arn": {
       "base": null,
@@ -134,23 +131,19 @@
     },
     "CreateActivityInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateActivityOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStateMachineInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStateMachineOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Data": {
       "base": null,
@@ -179,53 +172,43 @@
     },
     "DeleteActivityInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteActivityOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteStateMachineInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteStateMachineOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeActivityInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeActivityOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeExecutionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeExecutionOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStateMachineInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStateMachineOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Error": {
       "base": null,
@@ -282,13 +265,11 @@
     },
     "ExecutionAlreadyExists": {
       "base": "<p>An execution with the same name already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ExecutionDoesNotExist": {
       "base": "<p>The specified execution does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ExecutionFailedEventDetails": {
       "base": null,
@@ -298,8 +279,7 @@
     },
     "ExecutionLimitExceeded": {
       "base": "<p>The maximum number of running executions has been reached. Running executions must end or be stopped before a new execution can be started.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ExecutionList": {
       "base": null,
@@ -341,23 +321,19 @@
     },
     "GetActivityTaskInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetActivityTaskOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetExecutionHistoryInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetExecutionHistoryOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "HistoryEvent": {
       "base": null,
@@ -385,33 +361,27 @@
     },
     "InvalidArn": {
       "base": "<p>The provided Amazon Resource Name (ARN) is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidDefinition": {
       "base": "<p>The provided Amazon States Language definition is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidExecutionInput": {
       "base": "<p>The provided JSON input data is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidName": {
       "base": "<p>The provided name is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidOutput": {
       "base": "<p>The provided JSON output data is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidToken": {
       "base": "<p>The provided token is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LambdaFunctionFailedEventDetails": {
       "base": null,
@@ -451,33 +421,27 @@
     },
     "ListActivitiesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListActivitiesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListExecutionsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListExecutionsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStateMachinesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStateMachinesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Name": {
       "base": null,
@@ -526,43 +490,35 @@
     },
     "SendTaskFailureInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SendTaskFailureOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SendTaskHeartbeatInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SendTaskHeartbeatOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SendTaskSuccessInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SendTaskSuccessOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartExecutionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartExecutionOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StateEnteredEventDetails": {
       "base": null,
@@ -578,23 +534,19 @@
     },
     "StateMachineAlreadyExists": {
       "base": "<p>A state machine with the same name but a different definition or role ARN already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StateMachineDeleting": {
       "base": "<p>The specified state machine is being deleted.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StateMachineDoesNotExist": {
       "base": "<p>The specified state machine does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StateMachineLimitExceeded": {
       "base": "<p>The maximum number of state machines has been reached. Existing state machines must be deleted before a new state machine can be created.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StateMachineList": {
       "base": null,
@@ -616,23 +568,19 @@
     },
     "StopExecutionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopExecutionOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TaskDoesNotExist": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TaskTimedOut": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TaskToken": {
       "base": null,

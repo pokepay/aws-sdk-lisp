@@ -158,33 +158,27 @@
     },
     "AddClientIDToOpenIDConnectProviderRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddRoleToInstanceProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddUserToGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachGroupPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachRolePolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachUserPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachedPolicy": {
       "base": "<p>Contains information about an attached policy.</p> <p>An attached policy is a managed policy that has been attached to a user, group, or role. This data type is used as a response element in the <a>ListAttachedGroupPolicies</a>, <a>ListAttachedRolePolicies</a>, <a>ListAttachedUserPolicies</a>, and <a>GetAccountAuthorizationDetails</a> actions. </p> <p>For more information about managed policies, refer to <a href=\"http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html\">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>",
@@ -201,8 +195,7 @@
     },
     "ChangePasswordRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ColumnNumber": {
       "base": null,
@@ -258,298 +251,239 @@
     },
     "CreateAccessKeyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateAccessKeyResponse": {
       "base": "<p>Contains the response to a successful <a>CreateAccessKey</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateAccountAliasRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateGroupResponse": {
       "base": "<p>Contains the response to a successful <a>CreateGroup</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstanceProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstanceProfileResponse": {
       "base": "<p>Contains the response to a successful <a>CreateInstanceProfile</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateLoginProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateLoginProfileResponse": {
       "base": "<p>Contains the response to a successful <a>CreateLoginProfile</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateOpenIDConnectProviderRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateOpenIDConnectProviderResponse": {
       "base": "<p>Contains the response to a successful <a>CreateOpenIDConnectProvider</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePolicyResponse": {
       "base": "<p>Contains the response to a successful <a>CreatePolicy</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePolicyVersionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePolicyVersionResponse": {
       "base": "<p>Contains the response to a successful <a>CreatePolicyVersion</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRoleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRoleResponse": {
       "base": "<p>Contains the response to a successful <a>CreateRole</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSAMLProviderRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSAMLProviderResponse": {
       "base": "<p>Contains the response to a successful <a>CreateSAMLProvider</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateServiceLinkedRoleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateServiceLinkedRoleResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateServiceSpecificCredentialRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateServiceSpecificCredentialResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateUserRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateUserResponse": {
       "base": "<p>Contains the response to a successful <a>CreateUser</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVirtualMFADeviceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVirtualMFADeviceResponse": {
       "base": "<p>Contains the response to a successful <a>CreateVirtualMFADevice</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CredentialReportExpiredException": {
       "base": "<p>The request was rejected because the most recent credential report has expired. To generate a new credential report, use <a>GenerateCredentialReport</a>. For more information about credential report expiration, see <a href=\"http://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html\">Getting Credential Reports</a> in the <i>IAM User Guide</i>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CredentialReportNotPresentException": {
       "base": "<p>The request was rejected because the credential report does not exist. To generate a credential report, use <a>GenerateCredentialReport</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CredentialReportNotReadyException": {
       "base": "<p>The request was rejected because the credential report is still being generated.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeactivateMFADeviceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteAccessKeyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteAccountAliasRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteConflictException": {
       "base": "<p>The request was rejected because it attempted to delete a resource that has attached subordinate entities. The error message describes these entities.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteGroupPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteInstanceProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteLoginProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteOpenIDConnectProviderRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePolicyVersionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRolePolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRoleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSAMLProviderRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSSHPublicKeyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteServerCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteServiceSpecificCredentialRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSigningCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteUserPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteUserRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVirtualMFADeviceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachGroupPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachRolePolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachUserPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DuplicateCertificateException": {
       "base": "<p>The request was rejected because the same certificate is associated with an IAM user in the account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DuplicateSSHPublicKeyException": {
       "base": "<p>The request was rejected because the SSH public key is already associated with the specified IAM user.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableMFADeviceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EntityAlreadyExistsException": {
       "base": "<p>The request was rejected because it attempted to create a resource that already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EntityTemporarilyUnmodifiableException": {
       "base": "<p>The request was rejected because it referenced an entity that is temporarily unmodifiable, such as a user name that was deleted and then recreated. The error indicates that the request is likely to succeed if you try again after waiting several minutes. The error message describes the entity.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EntityType": {
       "base": null,
@@ -585,198 +519,159 @@
     },
     "GenerateCredentialReportResponse": {
       "base": "<p>Contains the response to a successful <a>GenerateCredentialReport</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetAccessKeyLastUsedRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetAccessKeyLastUsedResponse": {
       "base": "<p>Contains the response to a successful <a>GetAccessKeyLastUsed</a> request. It is also returned as a member of the <a>AccessKeyMetaData</a> structure returned by the <a>ListAccessKeys</a> action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetAccountAuthorizationDetailsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetAccountAuthorizationDetailsResponse": {
       "base": "<p>Contains the response to a successful <a>GetAccountAuthorizationDetails</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetAccountPasswordPolicyResponse": {
       "base": "<p>Contains the response to a successful <a>GetAccountPasswordPolicy</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetAccountSummaryResponse": {
       "base": "<p>Contains the response to a successful <a>GetAccountSummary</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetContextKeysForCustomPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetContextKeysForPolicyResponse": {
       "base": "<p>Contains the response to a successful <a>GetContextKeysForPrincipalPolicy</a> or <a>GetContextKeysForCustomPolicy</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetContextKeysForPrincipalPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetCredentialReportResponse": {
       "base": "<p>Contains the response to a successful <a>GetCredentialReport</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetGroupPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetGroupPolicyResponse": {
       "base": "<p>Contains the response to a successful <a>GetGroupPolicy</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetGroupResponse": {
       "base": "<p>Contains the response to a successful <a>GetGroup</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceProfileResponse": {
       "base": "<p>Contains the response to a successful <a>GetInstanceProfile</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetLoginProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetLoginProfileResponse": {
       "base": "<p>Contains the response to a successful <a>GetLoginProfile</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetOpenIDConnectProviderRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetOpenIDConnectProviderResponse": {
       "base": "<p>Contains the response to a successful <a>GetOpenIDConnectProvider</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPolicyResponse": {
       "base": "<p>Contains the response to a successful <a>GetPolicy</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPolicyVersionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPolicyVersionResponse": {
       "base": "<p>Contains the response to a successful <a>GetPolicyVersion</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRolePolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRolePolicyResponse": {
       "base": "<p>Contains the response to a successful <a>GetRolePolicy</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRoleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRoleResponse": {
       "base": "<p>Contains the response to a successful <a>GetRole</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetSAMLProviderRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetSAMLProviderResponse": {
       "base": "<p>Contains the response to a successful <a>GetSAMLProvider</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetSSHPublicKeyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetSSHPublicKeyResponse": {
       "base": "<p>Contains the response to a successful <a>GetSSHPublicKey</a> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetServerCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetServerCertificateResponse": {
       "base": "<p>Contains the response to a successful <a>GetServerCertificate</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetUserPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetUserPolicyResponse": {
       "base": "<p>Contains the response to a successful <a>GetUserPolicy</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetUserRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetUserResponse": {
       "base": "<p>Contains the response to a successful <a>GetUser</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Group": {
       "base": "<p>Contains information about an IAM group entity.</p> <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>CreateGroup</a> </p> </li> <li> <p> <a>GetGroup</a> </p> </li> <li> <p> <a>ListGroups</a> </p> </li> </ul>",
@@ -802,38 +697,31 @@
     },
     "InvalidAuthenticationCodeException": {
       "base": "<p>The request was rejected because the authentication code was not recognized. The error message describes the specific error.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidCertificateException": {
       "base": "<p>The request was rejected because the certificate is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidInputException": {
       "base": "<p>The request was rejected because an invalid or out-of-range value was supplied for an input parameter.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidPublicKeyException": {
       "base": "<p>The request was rejected because the public key is malformed or otherwise invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidUserTypeException": {
       "base": "<p>The request was rejected because the type of user for the transaction was incorrect.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KeyPairMismatchException": {
       "base": "<p>The request was rejected because the public key certificate and the private key do not match.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LimitExceededException": {
       "base": "<p>The request was rejected because it attempted to create resources beyond the current AWS account limits. The error message describes the limit exceeded.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LineNumber": {
       "base": null,
@@ -843,253 +731,203 @@
     },
     "ListAccessKeysRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAccessKeysResponse": {
       "base": "<p>Contains the response to a successful <a>ListAccessKeys</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAccountAliasesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAccountAliasesResponse": {
       "base": "<p>Contains the response to a successful <a>ListAccountAliases</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAttachedGroupPoliciesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAttachedGroupPoliciesResponse": {
       "base": "<p>Contains the response to a successful <a>ListAttachedGroupPolicies</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAttachedRolePoliciesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAttachedRolePoliciesResponse": {
       "base": "<p>Contains the response to a successful <a>ListAttachedRolePolicies</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAttachedUserPoliciesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAttachedUserPoliciesResponse": {
       "base": "<p>Contains the response to a successful <a>ListAttachedUserPolicies</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListEntitiesForPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListEntitiesForPolicyResponse": {
       "base": "<p>Contains the response to a successful <a>ListEntitiesForPolicy</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListGroupPoliciesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListGroupPoliciesResponse": {
       "base": "<p>Contains the response to a successful <a>ListGroupPolicies</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListGroupsForUserRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListGroupsForUserResponse": {
       "base": "<p>Contains the response to a successful <a>ListGroupsForUser</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListGroupsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListGroupsResponse": {
       "base": "<p>Contains the response to a successful <a>ListGroups</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListInstanceProfilesForRoleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListInstanceProfilesForRoleResponse": {
       "base": "<p>Contains the response to a successful <a>ListInstanceProfilesForRole</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListInstanceProfilesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListInstanceProfilesResponse": {
       "base": "<p>Contains the response to a successful <a>ListInstanceProfiles</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListMFADevicesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListMFADevicesResponse": {
       "base": "<p>Contains the response to a successful <a>ListMFADevices</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListOpenIDConnectProvidersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListOpenIDConnectProvidersResponse": {
       "base": "<p>Contains the response to a successful <a>ListOpenIDConnectProviders</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPoliciesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPoliciesResponse": {
       "base": "<p>Contains the response to a successful <a>ListPolicies</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPolicyVersionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPolicyVersionsResponse": {
       "base": "<p>Contains the response to a successful <a>ListPolicyVersions</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRolePoliciesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRolePoliciesResponse": {
       "base": "<p>Contains the response to a successful <a>ListRolePolicies</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRolesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRolesResponse": {
       "base": "<p>Contains the response to a successful <a>ListRoles</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListSAMLProvidersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListSAMLProvidersResponse": {
       "base": "<p>Contains the response to a successful <a>ListSAMLProviders</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListSSHPublicKeysRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListSSHPublicKeysResponse": {
       "base": "<p>Contains the response to a successful <a>ListSSHPublicKeys</a> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListServerCertificatesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListServerCertificatesResponse": {
       "base": "<p>Contains the response to a successful <a>ListServerCertificates</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListServiceSpecificCredentialsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListServiceSpecificCredentialsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListSigningCertificatesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListSigningCertificatesResponse": {
       "base": "<p>Contains the response to a successful <a>ListSigningCertificates</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListUserPoliciesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListUserPoliciesResponse": {
       "base": "<p>Contains the response to a successful <a>ListUserPolicies</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListUsersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListUsersResponse": {
       "base": "<p>Contains the response to a successful <a>ListUsers</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListVirtualMFADevicesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListVirtualMFADevicesResponse": {
       "base": "<p>Contains the response to a successful <a>ListVirtualMFADevices</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LoginProfile": {
       "base": "<p>Contains the user name and password create date for a user.</p> <p> This data type is used as a response element in the <a>CreateLoginProfile</a> and <a>GetLoginProfile</a> actions. </p>",
@@ -1106,13 +944,11 @@
     },
     "MalformedCertificateException": {
       "base": "<p>The request was rejected because the certificate was malformed or expired. The error message describes the specific error.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MalformedPolicyDocumentException": {
       "base": "<p>The request was rejected because the policy document was malformed. The error message describes the specific error.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ManagedPolicyDetail": {
       "base": "<p>Contains information about a managed policy, including the policy's ARN, versions, and the number of principal entities (users, groups, and roles) that the policy is attached to.</p> <p>This data type is used as a response element in the <a>GetAccountAuthorizationDetails</a> action.</p> <p>For more information about managed policies, see <a href=\"http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html\">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>",
@@ -1128,8 +964,7 @@
     },
     "NoSuchEntityException": {
       "base": "<p>The request was rejected because it referenced an entity that does not exist. The error message describes the entity.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OpenIDConnectProviderListEntry": {
       "base": "<p>Contains the Amazon Resource Name (ARN) for an IAM OpenID Connect provider.</p>",
@@ -1164,8 +999,7 @@
     },
     "PasswordPolicyViolationException": {
       "base": "<p>The request was rejected because the provided password did not meet the requirements imposed by the account password policy.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Policy": {
       "base": "<p>Contains information about a managed policy.</p> <p>This data type is used as a response element in the <a>CreatePolicy</a>, <a>GetPolicy</a>, and <a>ListPolicies</a> actions. </p> <p>For more information about managed policies, refer to <a href=\"http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html\">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>",
@@ -1191,8 +1025,7 @@
     },
     "PolicyEvaluationException": {
       "base": "<p>The request failed because a provided policy could not be successfully evaluated. An additional detail message indicates the source of the failure.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PolicyGroup": {
       "base": "<p>Contains information about a group that a managed policy is attached to.</p> <p>This data type is used as a response element in the <a>ListEntitiesForPolicy</a> action. </p> <p>For more information about managed policies, refer to <a href=\"http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html\">Managed Policies and Inline Policies</a> in the <i>Using IAM</i> guide. </p>",
@@ -1259,33 +1092,27 @@
     },
     "PutGroupPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRolePolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutUserPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveClientIDFromOpenIDConnectProviderRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveRoleFromInstanceProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveUserFromGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReportContentType": {
       "base": null,
@@ -1313,13 +1140,11 @@
     },
     "ResetServiceSpecificCredentialRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResetServiceSpecificCredentialResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceHandlingOptionType": {
       "base": null,
@@ -1361,8 +1186,7 @@
     },
     "ResyncMFADeviceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Role": {
       "base": "<p>Contains information about an IAM role. This structure is returned as a response element in several APIs that interact with roles.</p>",
@@ -1441,13 +1265,11 @@
     },
     "ServiceFailureException": {
       "base": "<p>The request processing has failed because of an unknown error, exception or failure.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ServiceNotSupportedException": {
       "base": "<p>The specified service does not support service-specific credentials.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ServiceSpecificCredential": {
       "base": "<p>Contains the details of a service specific credential.</p>",
@@ -1470,8 +1292,7 @@
     },
     "SetDefaultPolicyVersionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SigningCertificate": {
       "base": "<p>Contains information about an X.509 signing certificate.</p> <p>This data type is used as a response element in the <a>UploadSigningCertificate</a> and <a>ListSigningCertificates</a> actions. </p>",
@@ -1482,18 +1303,15 @@
     },
     "SimulateCustomPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SimulatePolicyResponse": {
       "base": "<p>Contains the response to a successful <a>SimulatePrincipalPolicy</a> or <a>SimulateCustomPolicy</a> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SimulatePrincipalPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SimulationPolicyListType": {
       "base": null,
@@ -1519,118 +1337,95 @@
     },
     "UnmodifiableEntityException": {
       "base": "<p>The request was rejected because only the service that depends on the service-linked role can modify or delete the role on your behalf. The error message includes the name of the service that depends on this service-linked role. You must request the change through that service.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnrecognizedPublicKeyEncodingException": {
       "base": "<p>The request was rejected because the public key encoding format is unsupported or unrecognized.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateAccessKeyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateAccountPasswordPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateAssumeRolePolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateLoginProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateOpenIDConnectProviderThumbprintRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateRoleDescriptionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateRoleDescriptionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateSAMLProviderRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateSAMLProviderResponse": {
       "base": "<p>Contains the response to a successful <a>UpdateSAMLProvider</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateSSHPublicKeyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateServerCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateServiceSpecificCredentialRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateSigningCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateUserRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UploadSSHPublicKeyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UploadSSHPublicKeyResponse": {
       "base": "<p>Contains the response to a successful <a>UploadSSHPublicKey</a> request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UploadServerCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UploadServerCertificateResponse": {
       "base": "<p>Contains the response to a successful <a>UploadServerCertificate</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UploadSigningCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UploadSigningCertificateResponse": {
       "base": "<p>Contains the response to a successful <a>UploadSigningCertificate</a> request. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "User": {
       "base": "<p>Contains information about an IAM user entity.</p> <p>This data type is used as a response element in the following actions:</p> <ul> <li> <p> <a>CreateUser</a> </p> </li> <li> <p> <a>GetUser</a> </p> </li> <li> <p> <a>ListUsers</a> </p> </li> </ul>",

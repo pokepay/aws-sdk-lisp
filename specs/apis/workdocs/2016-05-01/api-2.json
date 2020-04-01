@@ -1,763 +1,760 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2016-05-01",
-    "endpointPrefix":"workdocs",
-    "jsonVersion":"1.1",
-    "protocol":"rest-json",
-    "serviceFullName":"Amazon WorkDocs",
-    "signatureVersion":"v4",
-    "uid":"workdocs-2016-05-01"
+  "version": "2.0",
+  "metadata": {
+    "apiVersion": "2016-05-01",
+    "endpointPrefix": "workdocs",
+    "jsonVersion": "1.1",
+    "protocol": "rest-json",
+    "serviceFullName": "Amazon WorkDocs",
+    "signatureVersion": "v4",
+    "uid": "workdocs-2016-05-01"
   },
-  "operations":{
-    "AbortDocumentVersionUpload":{
-      "name":"AbortDocumentVersionUpload",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/api/v1/documents/{DocumentId}/versions/{VersionId}",
-        "responseCode":204
+  "operations": {
+    "AbortDocumentVersionUpload": {
+      "name": "AbortDocumentVersionUpload",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/api/v1/documents/{DocumentId}/versions/{VersionId}",
+        "responseCode": 204
       },
-      "input":{"shape":"AbortDocumentVersionUploadRequest"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"ProhibitedStateException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "AbortDocumentVersionUploadRequest" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "ProhibitedStateException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "ActivateUser":{
-      "name":"ActivateUser",
-      "http":{
-        "method":"POST",
-        "requestUri":"/api/v1/users/{UserId}/activation",
-        "responseCode":200
+    "ActivateUser": {
+      "name": "ActivateUser",
+      "http": {
+        "method": "POST",
+        "requestUri": "/api/v1/users/{UserId}/activation",
+        "responseCode": 200
       },
-      "input":{"shape":"ActivateUserRequest"},
-      "output":{"shape":"ActivateUserResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "ActivateUserRequest" },
+      "output": { "shape": "ActivateUserResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "AddResourcePermissions":{
-      "name":"AddResourcePermissions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/api/v1/resources/{ResourceId}/permissions",
-        "responseCode":201
+    "AddResourcePermissions": {
+      "name": "AddResourcePermissions",
+      "http": {
+        "method": "POST",
+        "requestUri": "/api/v1/resources/{ResourceId}/permissions",
+        "responseCode": 201
       },
-      "input":{"shape":"AddResourcePermissionsRequest"},
-      "output":{"shape":"AddResourcePermissionsResponse"},
-      "errors":[
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "AddResourcePermissionsRequest" },
+      "output": { "shape": "AddResourcePermissionsResponse" },
+      "errors": [
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "CreateComment":{
-      "name":"CreateComment",
-      "http":{
-        "method":"POST",
-        "requestUri":"/api/v1/documents/{DocumentId}/versions/{VersionId}/comment",
-        "responseCode":201
+    "CreateComment": {
+      "name": "CreateComment",
+      "http": {
+        "method": "POST",
+        "requestUri": "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment",
+        "responseCode": 201
       },
-      "input":{"shape":"CreateCommentRequest"},
-      "output":{"shape":"CreateCommentResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"ProhibitedStateException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"DocumentLockedForCommentsException"}
+      "input": { "shape": "CreateCommentRequest" },
+      "output": { "shape": "CreateCommentResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "ProhibitedStateException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" },
+        { "shape": "DocumentLockedForCommentsException" }
       ]
     },
-    "CreateCustomMetadata":{
-      "name":"CreateCustomMetadata",
-      "http":{
-        "method":"PUT",
-        "requestUri":"/api/v1/resources/{ResourceId}/customMetadata",
-        "responseCode":200
+    "CreateCustomMetadata": {
+      "name": "CreateCustomMetadata",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/api/v1/resources/{ResourceId}/customMetadata",
+        "responseCode": 200
       },
-      "input":{"shape":"CreateCustomMetadataRequest"},
-      "output":{"shape":"CreateCustomMetadataResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"ProhibitedStateException"},
-        {"shape":"CustomMetadataLimitExceededException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "CreateCustomMetadataRequest" },
+      "output": { "shape": "CreateCustomMetadataResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "ProhibitedStateException" },
+        { "shape": "CustomMetadataLimitExceededException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "CreateFolder":{
-      "name":"CreateFolder",
-      "http":{
-        "method":"POST",
-        "requestUri":"/api/v1/folders",
-        "responseCode":201
+    "CreateFolder": {
+      "name": "CreateFolder",
+      "http": {
+        "method": "POST",
+        "requestUri": "/api/v1/folders",
+        "responseCode": 201
       },
-      "input":{"shape":"CreateFolderRequest"},
-      "output":{"shape":"CreateFolderResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"EntityAlreadyExistsException"},
-        {"shape":"ProhibitedStateException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "CreateFolderRequest" },
+      "output": { "shape": "CreateFolderResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "EntityAlreadyExistsException" },
+        { "shape": "ProhibitedStateException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "CreateLabels":{
-      "name":"CreateLabels",
-      "http":{
-        "method":"PUT",
-        "requestUri":"/api/v1/resources/{ResourceId}/labels",
-        "responseCode":200
+    "CreateLabels": {
+      "name": "CreateLabels",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/api/v1/resources/{ResourceId}/labels",
+        "responseCode": 200
       },
-      "input":{"shape":"CreateLabelsRequest"},
-      "output":{"shape":"CreateLabelsResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"TooManyLabelsException"}
+      "input": { "shape": "CreateLabelsRequest" },
+      "output": { "shape": "CreateLabelsResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" },
+        { "shape": "TooManyLabelsException" }
       ]
     },
-    "CreateNotificationSubscription":{
-      "name":"CreateNotificationSubscription",
-      "http":{
-        "method":"POST",
-        "requestUri":"/api/v1/organizations/{OrganizationId}/subscriptions",
-        "responseCode":200
+    "CreateNotificationSubscription": {
+      "name": "CreateNotificationSubscription",
+      "http": {
+        "method": "POST",
+        "requestUri": "/api/v1/organizations/{OrganizationId}/subscriptions",
+        "responseCode": 200
       },
-      "input":{"shape":"CreateNotificationSubscriptionRequest"},
-      "output":{"shape":"CreateNotificationSubscriptionResponse"},
-      "errors":[
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"TooManySubscriptionsException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "CreateNotificationSubscriptionRequest" },
+      "output": { "shape": "CreateNotificationSubscriptionResponse" },
+      "errors": [
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "TooManySubscriptionsException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "CreateUser":{
-      "name":"CreateUser",
-      "http":{
-        "method":"POST",
-        "requestUri":"/api/v1/users",
-        "responseCode":201
+    "CreateUser": {
+      "name": "CreateUser",
+      "http": {
+        "method": "POST",
+        "requestUri": "/api/v1/users",
+        "responseCode": 201
       },
-      "input":{"shape":"CreateUserRequest"},
-      "output":{"shape":"CreateUserResponse"},
-      "errors":[
-        {"shape":"EntityAlreadyExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "CreateUserRequest" },
+      "output": { "shape": "CreateUserResponse" },
+      "errors": [
+        { "shape": "EntityAlreadyExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "DeactivateUser":{
-      "name":"DeactivateUser",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/api/v1/users/{UserId}/activation",
-        "responseCode":204
+    "DeactivateUser": {
+      "name": "DeactivateUser",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/api/v1/users/{UserId}/activation",
+        "responseCode": 204
       },
-      "input":{"shape":"DeactivateUserRequest"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "DeactivateUserRequest" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "DeleteComment":{
-      "name":"DeleteComment",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/api/v1/documents/{DocumentId}/versions/{VersionId}/comment/{CommentId}",
-        "responseCode":204
+    "DeleteComment": {
+      "name": "DeleteComment",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment/{CommentId}",
+        "responseCode": 204
       },
-      "input":{"shape":"DeleteCommentRequest"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"ProhibitedStateException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"DocumentLockedForCommentsException"}
+      "input": { "shape": "DeleteCommentRequest" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "ProhibitedStateException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" },
+        { "shape": "DocumentLockedForCommentsException" }
       ]
     },
-    "DeleteCustomMetadata":{
-      "name":"DeleteCustomMetadata",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/api/v1/resources/{ResourceId}/customMetadata",
-        "responseCode":200
+    "DeleteCustomMetadata": {
+      "name": "DeleteCustomMetadata",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/api/v1/resources/{ResourceId}/customMetadata",
+        "responseCode": 200
       },
-      "input":{"shape":"DeleteCustomMetadataRequest"},
-      "output":{"shape":"DeleteCustomMetadataResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"ProhibitedStateException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "DeleteCustomMetadataRequest" },
+      "output": { "shape": "DeleteCustomMetadataResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "ProhibitedStateException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "DeleteDocument":{
-      "name":"DeleteDocument",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/api/v1/documents/{DocumentId}",
-        "responseCode":204
+    "DeleteDocument": {
+      "name": "DeleteDocument",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/api/v1/documents/{DocumentId}",
+        "responseCode": 204
       },
-      "input":{"shape":"DeleteDocumentRequest"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"ProhibitedStateException"},
-        {"shape":"ConcurrentModificationException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "DeleteDocumentRequest" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "ProhibitedStateException" },
+        { "shape": "ConcurrentModificationException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "DeleteFolder":{
-      "name":"DeleteFolder",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/api/v1/folders/{FolderId}",
-        "responseCode":204
+    "DeleteFolder": {
+      "name": "DeleteFolder",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/api/v1/folders/{FolderId}",
+        "responseCode": 204
       },
-      "input":{"shape":"DeleteFolderRequest"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"ProhibitedStateException"},
-        {"shape":"ConcurrentModificationException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "DeleteFolderRequest" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "ProhibitedStateException" },
+        { "shape": "ConcurrentModificationException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "DeleteFolderContents":{
-      "name":"DeleteFolderContents",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/api/v1/folders/{FolderId}/contents",
-        "responseCode":204
+    "DeleteFolderContents": {
+      "name": "DeleteFolderContents",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/api/v1/folders/{FolderId}/contents",
+        "responseCode": 204
       },
-      "input":{"shape":"DeleteFolderContentsRequest"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "DeleteFolderContentsRequest" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "DeleteLabels":{
-      "name":"DeleteLabels",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/api/v1/resources/{ResourceId}/labels",
-        "responseCode":200
+    "DeleteLabels": {
+      "name": "DeleteLabels",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/api/v1/resources/{ResourceId}/labels",
+        "responseCode": 200
       },
-      "input":{"shape":"DeleteLabelsRequest"},
-      "output":{"shape":"DeleteLabelsResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "DeleteLabelsRequest" },
+      "output": { "shape": "DeleteLabelsResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "DeleteNotificationSubscription":{
-      "name":"DeleteNotificationSubscription",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/api/v1/organizations/{OrganizationId}/subscriptions/{SubscriptionId}",
-        "responseCode":200
+    "DeleteNotificationSubscription": {
+      "name": "DeleteNotificationSubscription",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/api/v1/organizations/{OrganizationId}/subscriptions/{SubscriptionId}",
+        "responseCode": 200
       },
-      "input":{"shape":"DeleteNotificationSubscriptionRequest"},
-      "errors":[
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"EntityNotExistsException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"ProhibitedStateException"}
+      "input": { "shape": "DeleteNotificationSubscriptionRequest" },
+      "errors": [
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "EntityNotExistsException" },
+        { "shape": "ServiceUnavailableException" },
+        { "shape": "ProhibitedStateException" }
       ]
     },
-    "DeleteUser":{
-      "name":"DeleteUser",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/api/v1/users/{UserId}",
-        "responseCode":204
+    "DeleteUser": {
+      "name": "DeleteUser",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/api/v1/users/{UserId}",
+        "responseCode": 204
       },
-      "input":{"shape":"DeleteUserRequest"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "DeleteUserRequest" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "DescribeActivities":{
-      "name":"DescribeActivities",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/activities",
-        "responseCode":200
+    "DescribeActivities": {
+      "name": "DescribeActivities",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/activities",
+        "responseCode": 200
       },
-      "input":{"shape":"DescribeActivitiesRequest"},
-      "output":{"shape":"DescribeActivitiesResponse"},
-      "errors":[
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"InvalidArgumentException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "DescribeActivitiesRequest" },
+      "output": { "shape": "DescribeActivitiesResponse" },
+      "errors": [
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "InvalidArgumentException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "DescribeComments":{
-      "name":"DescribeComments",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/documents/{DocumentId}/versions/{VersionId}/comments",
-        "responseCode":200
+    "DescribeComments": {
+      "name": "DescribeComments",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/documents/{DocumentId}/versions/{VersionId}/comments",
+        "responseCode": 200
       },
-      "input":{"shape":"DescribeCommentsRequest"},
-      "output":{"shape":"DescribeCommentsResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"ProhibitedStateException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "DescribeCommentsRequest" },
+      "output": { "shape": "DescribeCommentsResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "ProhibitedStateException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "DescribeDocumentVersions":{
-      "name":"DescribeDocumentVersions",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/documents/{DocumentId}/versions",
-        "responseCode":200
+    "DescribeDocumentVersions": {
+      "name": "DescribeDocumentVersions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/documents/{DocumentId}/versions",
+        "responseCode": 200
       },
-      "input":{"shape":"DescribeDocumentVersionsRequest"},
-      "output":{"shape":"DescribeDocumentVersionsResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"InvalidArgumentException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"ProhibitedStateException"}
+      "input": { "shape": "DescribeDocumentVersionsRequest" },
+      "output": { "shape": "DescribeDocumentVersionsResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "InvalidArgumentException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" },
+        { "shape": "ProhibitedStateException" }
       ]
     },
-    "DescribeFolderContents":{
-      "name":"DescribeFolderContents",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/folders/{FolderId}/contents",
-        "responseCode":200
+    "DescribeFolderContents": {
+      "name": "DescribeFolderContents",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/folders/{FolderId}/contents",
+        "responseCode": 200
       },
-      "input":{"shape":"DescribeFolderContentsRequest"},
-      "output":{"shape":"DescribeFolderContentsResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"InvalidArgumentException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"ProhibitedStateException"}
+      "input": { "shape": "DescribeFolderContentsRequest" },
+      "output": { "shape": "DescribeFolderContentsResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "InvalidArgumentException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" },
+        { "shape": "ProhibitedStateException" }
       ]
     },
-    "DescribeNotificationSubscriptions":{
-      "name":"DescribeNotificationSubscriptions",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/organizations/{OrganizationId}/subscriptions",
-        "responseCode":200
+    "DescribeNotificationSubscriptions": {
+      "name": "DescribeNotificationSubscriptions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/organizations/{OrganizationId}/subscriptions",
+        "responseCode": 200
       },
-      "input":{"shape":"DescribeNotificationSubscriptionsRequest"},
-      "output":{"shape":"DescribeNotificationSubscriptionsResponse"},
-      "errors":[
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"EntityNotExistsException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "DescribeNotificationSubscriptionsRequest" },
+      "output": { "shape": "DescribeNotificationSubscriptionsResponse" },
+      "errors": [
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "EntityNotExistsException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "DescribeResourcePermissions":{
-      "name":"DescribeResourcePermissions",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/resources/{ResourceId}/permissions",
-        "responseCode":200
+    "DescribeResourcePermissions": {
+      "name": "DescribeResourcePermissions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/resources/{ResourceId}/permissions",
+        "responseCode": 200
       },
-      "input":{"shape":"DescribeResourcePermissionsRequest"},
-      "output":{"shape":"DescribeResourcePermissionsResponse"},
-      "errors":[
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "DescribeResourcePermissionsRequest" },
+      "output": { "shape": "DescribeResourcePermissionsResponse" },
+      "errors": [
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "DescribeRootFolders":{
-      "name":"DescribeRootFolders",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/me/root",
-        "responseCode":200
+    "DescribeRootFolders": {
+      "name": "DescribeRootFolders",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/me/root",
+        "responseCode": 200
       },
-      "input":{"shape":"DescribeRootFoldersRequest"},
-      "output":{"shape":"DescribeRootFoldersResponse"},
-      "errors":[
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"InvalidArgumentException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "DescribeRootFoldersRequest" },
+      "output": { "shape": "DescribeRootFoldersResponse" },
+      "errors": [
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "InvalidArgumentException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "DescribeUsers":{
-      "name":"DescribeUsers",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/users",
-        "responseCode":200
+    "DescribeUsers": {
+      "name": "DescribeUsers",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/users",
+        "responseCode": 200
       },
-      "input":{"shape":"DescribeUsersRequest"},
-      "output":{"shape":"DescribeUsersResponse"},
-      "errors":[
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"InvalidArgumentException"}
+      "input": { "shape": "DescribeUsersRequest" },
+      "output": { "shape": "DescribeUsersResponse" },
+      "errors": [
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" },
+        { "shape": "InvalidArgumentException" }
       ]
     },
-    "GetCurrentUser":{
-      "name":"GetCurrentUser",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/me",
-        "responseCode":200
+    "GetCurrentUser": {
+      "name": "GetCurrentUser",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/me",
+        "responseCode": 200
       },
-      "input":{"shape":"GetCurrentUserRequest"},
-      "output":{"shape":"GetCurrentUserResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "GetCurrentUserRequest" },
+      "output": { "shape": "GetCurrentUserResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "GetDocument":{
-      "name":"GetDocument",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/documents/{DocumentId}",
-        "responseCode":200
+    "GetDocument": {
+      "name": "GetDocument",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/documents/{DocumentId}",
+        "responseCode": 200
       },
-      "input":{"shape":"GetDocumentRequest"},
-      "output":{"shape":"GetDocumentResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"InvalidArgumentException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "GetDocumentRequest" },
+      "output": { "shape": "GetDocumentResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "InvalidArgumentException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "GetDocumentPath":{
-      "name":"GetDocumentPath",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/documents/{DocumentId}/path",
-        "responseCode":200
+    "GetDocumentPath": {
+      "name": "GetDocumentPath",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/documents/{DocumentId}/path",
+        "responseCode": 200
       },
-      "input":{"shape":"GetDocumentPathRequest"},
-      "output":{"shape":"GetDocumentPathResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "GetDocumentPathRequest" },
+      "output": { "shape": "GetDocumentPathResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "GetDocumentVersion":{
-      "name":"GetDocumentVersion",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/documents/{DocumentId}/versions/{VersionId}",
-        "responseCode":200
+    "GetDocumentVersion": {
+      "name": "GetDocumentVersion",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/documents/{DocumentId}/versions/{VersionId}",
+        "responseCode": 200
       },
-      "input":{"shape":"GetDocumentVersionRequest"},
-      "output":{"shape":"GetDocumentVersionResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"ProhibitedStateException"}
+      "input": { "shape": "GetDocumentVersionRequest" },
+      "output": { "shape": "GetDocumentVersionResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" },
+        { "shape": "ProhibitedStateException" }
       ]
     },
-    "GetFolder":{
-      "name":"GetFolder",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/folders/{FolderId}",
-        "responseCode":200
+    "GetFolder": {
+      "name": "GetFolder",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/folders/{FolderId}",
+        "responseCode": 200
       },
-      "input":{"shape":"GetFolderRequest"},
-      "output":{"shape":"GetFolderResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"InvalidArgumentException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"ProhibitedStateException"}
+      "input": { "shape": "GetFolderRequest" },
+      "output": { "shape": "GetFolderResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "InvalidArgumentException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" },
+        { "shape": "ProhibitedStateException" }
       ]
     },
-    "GetFolderPath":{
-      "name":"GetFolderPath",
-      "http":{
-        "method":"GET",
-        "requestUri":"/api/v1/folders/{FolderId}/path",
-        "responseCode":200
+    "GetFolderPath": {
+      "name": "GetFolderPath",
+      "http": {
+        "method": "GET",
+        "requestUri": "/api/v1/folders/{FolderId}/path",
+        "responseCode": 200
       },
-      "input":{"shape":"GetFolderPathRequest"},
-      "output":{"shape":"GetFolderPathResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "GetFolderPathRequest" },
+      "output": { "shape": "GetFolderPathResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "InitiateDocumentVersionUpload":{
-      "name":"InitiateDocumentVersionUpload",
-      "http":{
-        "method":"POST",
-        "requestUri":"/api/v1/documents",
-        "responseCode":201
+    "InitiateDocumentVersionUpload": {
+      "name": "InitiateDocumentVersionUpload",
+      "http": {
+        "method": "POST",
+        "requestUri": "/api/v1/documents",
+        "responseCode": 201
       },
-      "input":{"shape":"InitiateDocumentVersionUploadRequest"},
-      "output":{"shape":"InitiateDocumentVersionUploadResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"EntityAlreadyExistsException"},
-        {"shape":"StorageLimitExceededException"},
-        {"shape":"StorageLimitWillExceedException"},
-        {"shape":"ProhibitedStateException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"DraftUploadOutOfSyncException"},
-        {"shape":"ResourceAlreadyCheckedOutException"}
+      "input": { "shape": "InitiateDocumentVersionUploadRequest" },
+      "output": { "shape": "InitiateDocumentVersionUploadResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "EntityAlreadyExistsException" },
+        { "shape": "StorageLimitExceededException" },
+        { "shape": "StorageLimitWillExceedException" },
+        { "shape": "ProhibitedStateException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" },
+        { "shape": "DraftUploadOutOfSyncException" },
+        { "shape": "ResourceAlreadyCheckedOutException" }
       ]
     },
-    "RemoveAllResourcePermissions":{
-      "name":"RemoveAllResourcePermissions",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/api/v1/resources/{ResourceId}/permissions",
-        "responseCode":204
+    "RemoveAllResourcePermissions": {
+      "name": "RemoveAllResourcePermissions",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/api/v1/resources/{ResourceId}/permissions",
+        "responseCode": 204
       },
-      "input":{"shape":"RemoveAllResourcePermissionsRequest"},
-      "errors":[
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "RemoveAllResourcePermissionsRequest" },
+      "errors": [
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "RemoveResourcePermission":{
-      "name":"RemoveResourcePermission",
-      "http":{
-        "method":"DELETE",
-        "requestUri":"/api/v1/resources/{ResourceId}/permissions/{PrincipalId}",
-        "responseCode":204
+    "RemoveResourcePermission": {
+      "name": "RemoveResourcePermission",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/api/v1/resources/{ResourceId}/permissions/{PrincipalId}",
+        "responseCode": 204
       },
-      "input":{"shape":"RemoveResourcePermissionRequest"},
-      "errors":[
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "RemoveResourcePermissionRequest" },
+      "errors": [
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "UpdateDocument":{
-      "name":"UpdateDocument",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/api/v1/documents/{DocumentId}",
-        "responseCode":200
+    "UpdateDocument": {
+      "name": "UpdateDocument",
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/api/v1/documents/{DocumentId}",
+        "responseCode": 200
       },
-      "input":{"shape":"UpdateDocumentRequest"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"EntityAlreadyExistsException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"ProhibitedStateException"},
-        {"shape":"ConcurrentModificationException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "UpdateDocumentRequest" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "EntityAlreadyExistsException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "ProhibitedStateException" },
+        { "shape": "ConcurrentModificationException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "UpdateDocumentVersion":{
-      "name":"UpdateDocumentVersion",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/api/v1/documents/{DocumentId}/versions/{VersionId}",
-        "responseCode":200
+    "UpdateDocumentVersion": {
+      "name": "UpdateDocumentVersion",
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/api/v1/documents/{DocumentId}/versions/{VersionId}",
+        "responseCode": 200
       },
-      "input":{"shape":"UpdateDocumentVersionRequest"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"ProhibitedStateException"},
-        {"shape":"ConcurrentModificationException"},
-        {"shape":"InvalidOperationException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "UpdateDocumentVersionRequest" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "ProhibitedStateException" },
+        { "shape": "ConcurrentModificationException" },
+        { "shape": "InvalidOperationException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "UpdateFolder":{
-      "name":"UpdateFolder",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/api/v1/folders/{FolderId}",
-        "responseCode":200
+    "UpdateFolder": {
+      "name": "UpdateFolder",
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/api/v1/folders/{FolderId}",
+        "responseCode": 200
       },
-      "input":{"shape":"UpdateFolderRequest"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"EntityAlreadyExistsException"},
-        {"shape":"ProhibitedStateException"},
-        {"shape":"ConcurrentModificationException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"}
+      "input": { "shape": "UpdateFolderRequest" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "EntityAlreadyExistsException" },
+        { "shape": "ProhibitedStateException" },
+        { "shape": "ConcurrentModificationException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" }
       ]
     },
-    "UpdateUser":{
-      "name":"UpdateUser",
-      "http":{
-        "method":"PATCH",
-        "requestUri":"/api/v1/users/{UserId}",
-        "responseCode":200
+    "UpdateUser": {
+      "name": "UpdateUser",
+      "http": {
+        "method": "PATCH",
+        "requestUri": "/api/v1/users/{UserId}",
+        "responseCode": 200
       },
-      "input":{"shape":"UpdateUserRequest"},
-      "output":{"shape":"UpdateUserResponse"},
-      "errors":[
-        {"shape":"EntityNotExistsException"},
-        {"shape":"UnauthorizedOperationException"},
-        {"shape":"UnauthorizedResourceAccessException"},
-        {"shape":"IllegalUserStateException"},
-        {"shape":"FailedDependencyException"},
-        {"shape":"ServiceUnavailableException"},
-        {"shape":"DeactivatingLastSystemUserException"}
+      "input": { "shape": "UpdateUserRequest" },
+      "output": { "shape": "UpdateUserResponse" },
+      "errors": [
+        { "shape": "EntityNotExistsException" },
+        { "shape": "UnauthorizedOperationException" },
+        { "shape": "UnauthorizedResourceAccessException" },
+        { "shape": "IllegalUserStateException" },
+        { "shape": "FailedDependencyException" },
+        { "shape": "ServiceUnavailableException" },
+        { "shape": "DeactivatingLastSystemUserException" }
       ]
     }
   },
-  "shapes":{
-    "AbortDocumentVersionUploadRequest":{
-      "type":"structure",
-      "required":[
-        "DocumentId",
-        "VersionId"
-      ],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+  "shapes": {
+    "AbortDocumentVersionUploadRequest": {
+      "type": "structure",
+      "required": ["DocumentId", "VersionId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "DocumentId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"DocumentId"
+        "DocumentId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "DocumentId"
         },
-        "VersionId":{
-          "shape":"DocumentVersionIdType",
-          "location":"uri",
-          "locationName":"VersionId"
+        "VersionId": {
+          "shape": "DocumentVersionIdType",
+          "location": "uri",
+          "locationName": "VersionId"
         }
       }
     },
-    "ActivateUserRequest":{
-      "type":"structure",
-      "required":["UserId"],
-      "members":{
-        "UserId":{
-          "shape":"IdType",
-          "location":"uri",
-          "locationName":"UserId"
+    "ActivateUserRequest": {
+      "type": "structure",
+      "required": ["UserId"],
+      "members": {
+        "UserId": {
+          "shape": "IdType",
+          "location": "uri",
+          "locationName": "UserId"
         },
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         }
       }
     },
-    "ActivateUserResponse":{
-      "type":"structure",
-      "members":{
-        "User":{"shape":"User"}
+    "ActivateUserResponse": {
+      "type": "structure",
+      "members": {
+        "User": { "shape": "User" }
       }
     },
-    "Activity":{
-      "type":"structure",
-      "members":{
-        "Type":{"shape":"ActivityType"},
-        "TimeStamp":{"shape":"TimestampType"},
-        "OrganizationId":{"shape":"IdType"},
-        "Initiator":{"shape":"UserMetadata"},
-        "Participants":{"shape":"Participants"},
-        "ResourceMetadata":{"shape":"ResourceMetadata"},
-        "OriginalParent":{"shape":"ResourceMetadata"},
-        "CommentMetadata":{"shape":"CommentMetadata"}
+    "Activity": {
+      "type": "structure",
+      "members": {
+        "Type": { "shape": "ActivityType" },
+        "TimeStamp": { "shape": "TimestampType" },
+        "OrganizationId": { "shape": "IdType" },
+        "Initiator": { "shape": "UserMetadata" },
+        "Participants": { "shape": "Participants" },
+        "ResourceMetadata": { "shape": "ResourceMetadata" },
+        "OriginalParent": { "shape": "ResourceMetadata" },
+        "CommentMetadata": { "shape": "CommentMetadata" }
       }
     },
-    "ActivityType":{
-      "type":"string",
-      "enum":[
+    "ActivityType": {
+      "type": "string",
+      "enum": [
         "DOCUMENT_CHECKED_IN",
         "DOCUMENT_CHECKED_OUT",
         "DOCUMENT_RENAMED",
@@ -791,1311 +788,1254 @@
         "FOLDER_MOVED"
       ]
     },
-    "AddResourcePermissionsRequest":{
-      "type":"structure",
-      "required":[
-        "ResourceId",
-        "Principals"
-      ],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "AddResourcePermissionsRequest": {
+      "type": "structure",
+      "required": ["ResourceId", "Principals"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "ResourceId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"ResourceId"
+        "ResourceId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "ResourceId"
         },
-        "Principals":{"shape":"SharePrincipalList"}
+        "Principals": { "shape": "SharePrincipalList" }
       }
     },
-    "AddResourcePermissionsResponse":{
-      "type":"structure",
-      "members":{
-        "ShareResults":{"shape":"ShareResultsList"}
+    "AddResourcePermissionsResponse": {
+      "type": "structure",
+      "members": {
+        "ShareResults": { "shape": "ShareResultsList" }
       }
     },
-    "AuthenticationHeaderType":{
-      "type":"string",
-      "max":8199,
-      "min":1,
-      "sensitive":true
+    "AuthenticationHeaderType": {
+      "type": "string",
+      "max": 8199,
+      "min": 1,
+      "sensitive": true
     },
-    "BooleanType":{"type":"boolean"},
-    "Comment":{
-      "type":"structure",
-      "required":["CommentId"],
-      "members":{
-        "CommentId":{"shape":"CommentIdType"},
-        "ParentId":{"shape":"CommentIdType"},
-        "ThreadId":{"shape":"CommentIdType"},
-        "Text":{"shape":"CommentTextType"},
-        "Contributor":{"shape":"User"},
-        "CreatedTimestamp":{"shape":"TimestampType"},
-        "Status":{"shape":"CommentStatusType"},
-        "Visibility":{"shape":"CommentVisibilityType"},
-        "RecipientId":{"shape":"IdType"}
+    "BooleanType": { "type": "boolean" },
+    "Comment": {
+      "type": "structure",
+      "required": ["CommentId"],
+      "members": {
+        "CommentId": { "shape": "CommentIdType" },
+        "ParentId": { "shape": "CommentIdType" },
+        "ThreadId": { "shape": "CommentIdType" },
+        "Text": { "shape": "CommentTextType" },
+        "Contributor": { "shape": "User" },
+        "CreatedTimestamp": { "shape": "TimestampType" },
+        "Status": { "shape": "CommentStatusType" },
+        "Visibility": { "shape": "CommentVisibilityType" },
+        "RecipientId": { "shape": "IdType" }
       }
     },
-    "CommentIdType":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"[\\w+-.@]+"
+    "CommentIdType": {
+      "type": "string",
+      "max": 128,
+      "min": 1,
+      "pattern": "[\\w+-.@]+"
     },
-    "CommentList":{
-      "type":"list",
-      "member":{"shape":"Comment"}
+    "CommentList": {
+      "type": "list",
+      "member": { "shape": "Comment" }
     },
-    "CommentMetadata":{
-      "type":"structure",
-      "members":{
-        "CommentId":{"shape":"CommentIdType"},
-        "Contributor":{"shape":"User"},
-        "CreatedTimestamp":{"shape":"TimestampType"},
-        "CommentStatus":{"shape":"CommentStatusType"},
-        "RecipientId":{"shape":"IdType"}
+    "CommentMetadata": {
+      "type": "structure",
+      "members": {
+        "CommentId": { "shape": "CommentIdType" },
+        "Contributor": { "shape": "User" },
+        "CreatedTimestamp": { "shape": "TimestampType" },
+        "CommentStatus": { "shape": "CommentStatusType" },
+        "RecipientId": { "shape": "IdType" }
       }
     },
-    "CommentStatusType":{
-      "type":"string",
-      "enum":[
-        "DRAFT",
-        "PUBLISHED",
-        "DELETED"
-      ]
+    "CommentStatusType": {
+      "type": "string",
+      "enum": ["DRAFT", "PUBLISHED", "DELETED"]
     },
-    "CommentTextType":{
-      "type":"string",
-      "max":2048,
-      "min":1,
-      "sensitive":true
+    "CommentTextType": {
+      "type": "string",
+      "max": 2048,
+      "min": 1,
+      "sensitive": true
     },
-    "CommentVisibilityType":{
-      "type":"string",
-      "enum":[
-        "PUBLIC",
-        "PRIVATE"
-      ]
+    "CommentVisibilityType": {
+      "type": "string",
+      "enum": ["PUBLIC", "PRIVATE"]
     },
-    "ConcurrentModificationException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "ConcurrentModificationException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "error": { "httpStatusCode": 409 },
+      "exception": true
     },
-    "CreateCommentRequest":{
-      "type":"structure",
-      "required":[
-        "DocumentId",
-        "VersionId",
-        "Text"
-      ],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "CreateCommentRequest": {
+      "type": "structure",
+      "required": ["DocumentId", "VersionId", "Text"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "DocumentId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"DocumentId"
+        "DocumentId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "DocumentId"
         },
-        "VersionId":{
-          "shape":"DocumentVersionIdType",
-          "location":"uri",
-          "locationName":"VersionId"
+        "VersionId": {
+          "shape": "DocumentVersionIdType",
+          "location": "uri",
+          "locationName": "VersionId"
         },
-        "ParentId":{"shape":"CommentIdType"},
-        "ThreadId":{"shape":"CommentIdType"},
-        "Text":{"shape":"CommentTextType"},
-        "Visibility":{"shape":"CommentVisibilityType"},
-        "NotifyCollaborators":{"shape":"BooleanType"}
+        "ParentId": { "shape": "CommentIdType" },
+        "ThreadId": { "shape": "CommentIdType" },
+        "Text": { "shape": "CommentTextType" },
+        "Visibility": { "shape": "CommentVisibilityType" },
+        "NotifyCollaborators": { "shape": "BooleanType" }
       }
     },
-    "CreateCommentResponse":{
-      "type":"structure",
-      "members":{
-        "Comment":{"shape":"Comment"}
+    "CreateCommentResponse": {
+      "type": "structure",
+      "members": {
+        "Comment": { "shape": "Comment" }
       }
     },
-    "CreateCustomMetadataRequest":{
-      "type":"structure",
-      "required":[
-        "ResourceId",
-        "CustomMetadata"
-      ],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "CreateCustomMetadataRequest": {
+      "type": "structure",
+      "required": ["ResourceId", "CustomMetadata"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "ResourceId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"ResourceId"
+        "ResourceId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "ResourceId"
         },
-        "VersionId":{
-          "shape":"DocumentVersionIdType",
-          "location":"querystring",
-          "locationName":"versionid"
+        "VersionId": {
+          "shape": "DocumentVersionIdType",
+          "location": "querystring",
+          "locationName": "versionid"
         },
-        "CustomMetadata":{"shape":"CustomMetadataMap"}
+        "CustomMetadata": { "shape": "CustomMetadataMap" }
       }
     },
-    "CreateCustomMetadataResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "CreateCustomMetadataResponse": {
+      "type": "structure",
+      "members": {}
     },
-    "CreateFolderRequest":{
-      "type":"structure",
-      "required":["ParentFolderId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "CreateFolderRequest": {
+      "type": "structure",
+      "required": ["ParentFolderId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "Name":{"shape":"ResourceNameType"},
-        "ParentFolderId":{"shape":"ResourceIdType"}
+        "Name": { "shape": "ResourceNameType" },
+        "ParentFolderId": { "shape": "ResourceIdType" }
       }
     },
-    "CreateFolderResponse":{
-      "type":"structure",
-      "members":{
-        "Metadata":{"shape":"FolderMetadata"}
+    "CreateFolderResponse": {
+      "type": "structure",
+      "members": {
+        "Metadata": { "shape": "FolderMetadata" }
       }
     },
-    "CreateLabelsRequest":{
-      "type":"structure",
-      "required":[
-        "ResourceId",
-        "Labels"
-      ],
-      "members":{
-        "ResourceId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"ResourceId"
+    "CreateLabelsRequest": {
+      "type": "structure",
+      "required": ["ResourceId", "Labels"],
+      "members": {
+        "ResourceId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "ResourceId"
         },
-        "Labels":{"shape":"Labels"},
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+        "Labels": { "shape": "Labels" },
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         }
       }
     },
-    "CreateLabelsResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "CreateLabelsResponse": {
+      "type": "structure",
+      "members": {}
     },
-    "CreateNotificationSubscriptionRequest":{
-      "type":"structure",
-      "required":[
+    "CreateNotificationSubscriptionRequest": {
+      "type": "structure",
+      "required": [
         "OrganizationId",
         "Endpoint",
         "Protocol",
         "SubscriptionType"
       ],
-      "members":{
-        "OrganizationId":{
-          "shape":"IdType",
-          "location":"uri",
-          "locationName":"OrganizationId"
+      "members": {
+        "OrganizationId": {
+          "shape": "IdType",
+          "location": "uri",
+          "locationName": "OrganizationId"
         },
-        "Endpoint":{"shape":"SubscriptionEndPointType"},
-        "Protocol":{"shape":"SubscriptionProtocolType"},
-        "SubscriptionType":{"shape":"SubscriptionType"}
+        "Endpoint": { "shape": "SubscriptionEndPointType" },
+        "Protocol": { "shape": "SubscriptionProtocolType" },
+        "SubscriptionType": { "shape": "SubscriptionType" }
       }
     },
-    "CreateNotificationSubscriptionResponse":{
-      "type":"structure",
-      "members":{
-        "Subscription":{"shape":"Subscription"}
+    "CreateNotificationSubscriptionResponse": {
+      "type": "structure",
+      "members": {
+        "Subscription": { "shape": "Subscription" }
       }
     },
-    "CreateUserRequest":{
-      "type":"structure",
-      "required":[
-        "Username",
-        "GivenName",
-        "Surname",
-        "Password"
-      ],
-      "members":{
-        "OrganizationId":{"shape":"IdType"},
-        "Username":{"shape":"UsernameType"},
-        "EmailAddress":{"shape":"EmailAddressType"},
-        "GivenName":{"shape":"UserAttributeValueType"},
-        "Surname":{"shape":"UserAttributeValueType"},
-        "Password":{"shape":"PasswordType"},
-        "TimeZoneId":{"shape":"TimeZoneIdType"},
-        "StorageRule":{"shape":"StorageRuleType"},
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "CreateUserRequest": {
+      "type": "structure",
+      "required": ["Username", "GivenName", "Surname", "Password"],
+      "members": {
+        "OrganizationId": { "shape": "IdType" },
+        "Username": { "shape": "UsernameType" },
+        "EmailAddress": { "shape": "EmailAddressType" },
+        "GivenName": { "shape": "UserAttributeValueType" },
+        "Surname": { "shape": "UserAttributeValueType" },
+        "Password": { "shape": "PasswordType" },
+        "TimeZoneId": { "shape": "TimeZoneIdType" },
+        "StorageRule": { "shape": "StorageRuleType" },
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         }
       }
     },
-    "CreateUserResponse":{
-      "type":"structure",
-      "members":{
-        "User":{"shape":"User"}
+    "CreateUserResponse": {
+      "type": "structure",
+      "members": {
+        "User": { "shape": "User" }
       }
     },
-    "CustomMetadataKeyList":{
-      "type":"list",
-      "member":{"shape":"CustomMetadataKeyType"},
-      "max":8
+    "CustomMetadataKeyList": {
+      "type": "list",
+      "member": { "shape": "CustomMetadataKeyType" },
+      "max": 8
     },
-    "CustomMetadataKeyType":{
-      "type":"string",
-      "max":56,
-      "min":1,
-      "pattern":"[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"
+    "CustomMetadataKeyType": {
+      "type": "string",
+      "max": 56,
+      "min": 1,
+      "pattern": "[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"
     },
-    "CustomMetadataLimitExceededException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "CustomMetadataLimitExceededException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":429},
-      "exception":true
+      "error": { "httpStatusCode": 429 },
+      "exception": true
     },
-    "CustomMetadataMap":{
-      "type":"map",
-      "key":{"shape":"CustomMetadataKeyType"},
-      "value":{"shape":"CustomMetadataValueType"},
-      "max":8,
-      "min":1
+    "CustomMetadataMap": {
+      "type": "map",
+      "key": { "shape": "CustomMetadataKeyType" },
+      "value": { "shape": "CustomMetadataValueType" },
+      "max": 8,
+      "min": 1
     },
-    "CustomMetadataValueType":{
-      "type":"string",
-      "max":256,
-      "min":1,
-      "pattern":"[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"
+    "CustomMetadataValueType": {
+      "type": "string",
+      "max": 256,
+      "min": 1,
+      "pattern": "[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"
     },
-    "DeactivateUserRequest":{
-      "type":"structure",
-      "required":["UserId"],
-      "members":{
-        "UserId":{
-          "shape":"IdType",
-          "location":"uri",
-          "locationName":"UserId"
+    "DeactivateUserRequest": {
+      "type": "structure",
+      "required": ["UserId"],
+      "members": {
+        "UserId": {
+          "shape": "IdType",
+          "location": "uri",
+          "locationName": "UserId"
         },
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         }
       }
     },
-    "DeactivatingLastSystemUserException":{
-      "type":"structure",
-      "members":{
+    "DeactivatingLastSystemUserException": {
+      "type": "structure",
+      "members": {},
+      "error": { "httpStatusCode": 409 },
+      "exception": true
+    },
+    "DeleteCommentRequest": {
+      "type": "structure",
+      "required": ["DocumentId", "VersionId", "CommentId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "DocumentId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "DocumentId"
+        },
+        "VersionId": {
+          "shape": "DocumentVersionIdType",
+          "location": "uri",
+          "locationName": "VersionId"
+        },
+        "CommentId": {
+          "shape": "CommentIdType",
+          "location": "uri",
+          "locationName": "CommentId"
+        }
+      }
+    },
+    "DeleteCustomMetadataRequest": {
+      "type": "structure",
+      "required": ["ResourceId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "ResourceId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "ResourceId"
+        },
+        "VersionId": {
+          "shape": "DocumentVersionIdType",
+          "location": "querystring",
+          "locationName": "versionId"
+        },
+        "Keys": {
+          "shape": "CustomMetadataKeyList",
+          "location": "querystring",
+          "locationName": "keys"
+        },
+        "DeleteAll": {
+          "shape": "BooleanType",
+          "location": "querystring",
+          "locationName": "deleteAll"
+        }
+      }
+    },
+    "DeleteCustomMetadataResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "DeleteDocumentRequest": {
+      "type": "structure",
+      "required": ["DocumentId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "DocumentId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "DocumentId"
+        }
+      }
+    },
+    "DeleteFolderContentsRequest": {
+      "type": "structure",
+      "required": ["FolderId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "FolderId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "FolderId"
+        }
+      }
+    },
+    "DeleteFolderRequest": {
+      "type": "structure",
+      "required": ["FolderId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "FolderId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "FolderId"
+        }
+      }
+    },
+    "DeleteLabelsRequest": {
+      "type": "structure",
+      "required": ["ResourceId"],
+      "members": {
+        "ResourceId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "ResourceId"
+        },
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "Labels": {
+          "shape": "Labels",
+          "location": "querystring",
+          "locationName": "labels"
+        },
+        "DeleteAll": {
+          "shape": "BooleanType",
+          "location": "querystring",
+          "locationName": "deleteAll"
+        }
+      }
+    },
+    "DeleteLabelsResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "DeleteNotificationSubscriptionRequest": {
+      "type": "structure",
+      "required": ["SubscriptionId", "OrganizationId"],
+      "members": {
+        "SubscriptionId": {
+          "shape": "IdType",
+          "location": "uri",
+          "locationName": "SubscriptionId"
+        },
+        "OrganizationId": {
+          "shape": "IdType",
+          "location": "uri",
+          "locationName": "OrganizationId"
+        }
+      }
+    },
+    "DeleteUserRequest": {
+      "type": "structure",
+      "required": ["UserId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "UserId": {
+          "shape": "IdType",
+          "location": "uri",
+          "locationName": "UserId"
+        }
+      }
+    },
+    "DescribeActivitiesRequest": {
+      "type": "structure",
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "StartTime": {
+          "shape": "TimestampType",
+          "location": "querystring",
+          "locationName": "startTime"
+        },
+        "EndTime": {
+          "shape": "TimestampType",
+          "location": "querystring",
+          "locationName": "endTime"
+        },
+        "OrganizationId": {
+          "shape": "IdType",
+          "location": "querystring",
+          "locationName": "organizationId"
+        },
+        "UserId": {
+          "shape": "IdType",
+          "location": "querystring",
+          "locationName": "userId"
+        },
+        "Limit": {
+          "shape": "LimitType",
+          "location": "querystring",
+          "locationName": "limit"
+        },
+        "Marker": {
+          "shape": "MarkerType",
+          "location": "querystring",
+          "locationName": "marker"
+        }
+      }
+    },
+    "DescribeActivitiesResponse": {
+      "type": "structure",
+      "members": {
+        "UserActivities": { "shape": "UserActivities" },
+        "Marker": { "shape": "MarkerType" }
+      }
+    },
+    "DescribeCommentsRequest": {
+      "type": "structure",
+      "required": ["DocumentId", "VersionId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "DocumentId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "DocumentId"
+        },
+        "VersionId": {
+          "shape": "DocumentVersionIdType",
+          "location": "uri",
+          "locationName": "VersionId"
+        },
+        "Limit": {
+          "shape": "LimitType",
+          "location": "querystring",
+          "locationName": "limit"
+        },
+        "Marker": {
+          "shape": "MarkerType",
+          "location": "querystring",
+          "locationName": "marker"
+        }
+      }
+    },
+    "DescribeCommentsResponse": {
+      "type": "structure",
+      "members": {
+        "Comments": { "shape": "CommentList" },
+        "Marker": { "shape": "MarkerType" }
+      }
+    },
+    "DescribeDocumentVersionsRequest": {
+      "type": "structure",
+      "required": ["DocumentId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "DocumentId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "DocumentId"
+        },
+        "Marker": {
+          "shape": "PageMarkerType",
+          "location": "querystring",
+          "locationName": "marker"
+        },
+        "Limit": {
+          "shape": "LimitType",
+          "location": "querystring",
+          "locationName": "limit"
+        },
+        "Include": {
+          "shape": "FieldNamesType",
+          "location": "querystring",
+          "locationName": "include"
+        },
+        "Fields": {
+          "shape": "FieldNamesType",
+          "location": "querystring",
+          "locationName": "fields"
+        }
+      }
+    },
+    "DescribeDocumentVersionsResponse": {
+      "type": "structure",
+      "members": {
+        "DocumentVersions": { "shape": "DocumentVersionMetadataList" },
+        "Marker": { "shape": "PageMarkerType" }
+      }
+    },
+    "DescribeFolderContentsRequest": {
+      "type": "structure",
+      "required": ["FolderId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "FolderId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "FolderId"
+        },
+        "Sort": {
+          "shape": "ResourceSortType",
+          "location": "querystring",
+          "locationName": "sort"
+        },
+        "Order": {
+          "shape": "OrderType",
+          "location": "querystring",
+          "locationName": "order"
+        },
+        "Limit": {
+          "shape": "LimitType",
+          "location": "querystring",
+          "locationName": "limit"
+        },
+        "Marker": {
+          "shape": "PageMarkerType",
+          "location": "querystring",
+          "locationName": "marker"
+        },
+        "Type": {
+          "shape": "FolderContentType",
+          "location": "querystring",
+          "locationName": "type"
+        },
+        "Include": {
+          "shape": "FieldNamesType",
+          "location": "querystring",
+          "locationName": "include"
+        }
+      }
+    },
+    "DescribeFolderContentsResponse": {
+      "type": "structure",
+      "members": {
+        "Folders": { "shape": "FolderMetadataList" },
+        "Documents": { "shape": "DocumentMetadataList" },
+        "Marker": { "shape": "PageMarkerType" }
+      }
+    },
+    "DescribeNotificationSubscriptionsRequest": {
+      "type": "structure",
+      "required": ["OrganizationId"],
+      "members": {
+        "OrganizationId": {
+          "shape": "IdType",
+          "location": "uri",
+          "locationName": "OrganizationId"
+        },
+        "Marker": {
+          "shape": "PageMarkerType",
+          "location": "querystring",
+          "locationName": "marker"
+        },
+        "Limit": {
+          "shape": "LimitType",
+          "location": "querystring",
+          "locationName": "limit"
+        }
+      }
+    },
+    "DescribeNotificationSubscriptionsResponse": {
+      "type": "structure",
+      "members": {
+        "Subscriptions": { "shape": "SubscriptionList" },
+        "Marker": { "shape": "PageMarkerType" }
+      }
+    },
+    "DescribeResourcePermissionsRequest": {
+      "type": "structure",
+      "required": ["ResourceId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "ResourceId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "ResourceId"
+        },
+        "Limit": {
+          "shape": "LimitType",
+          "location": "querystring",
+          "locationName": "limit"
+        },
+        "Marker": {
+          "shape": "PageMarkerType",
+          "location": "querystring",
+          "locationName": "marker"
+        }
+      }
+    },
+    "DescribeResourcePermissionsResponse": {
+      "type": "structure",
+      "members": {
+        "Principals": { "shape": "PrincipalList" },
+        "Marker": { "shape": "PageMarkerType" }
+      }
+    },
+    "DescribeRootFoldersRequest": {
+      "type": "structure",
+      "required": ["AuthenticationToken"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "Limit": {
+          "shape": "LimitType",
+          "location": "querystring",
+          "locationName": "limit"
+        },
+        "Marker": {
+          "shape": "PageMarkerType",
+          "location": "querystring",
+          "locationName": "marker"
+        }
+      }
+    },
+    "DescribeRootFoldersResponse": {
+      "type": "structure",
+      "members": {
+        "Folders": { "shape": "FolderMetadataList" },
+        "Marker": { "shape": "PageMarkerType" }
+      }
+    },
+    "DescribeUsersRequest": {
+      "type": "structure",
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
+        },
+        "OrganizationId": {
+          "shape": "IdType",
+          "location": "querystring",
+          "locationName": "organizationId"
+        },
+        "UserIds": {
+          "shape": "UserIdsType",
+          "location": "querystring",
+          "locationName": "userIds"
+        },
+        "Query": {
+          "shape": "SearchQueryType",
+          "location": "querystring",
+          "locationName": "query"
+        },
+        "Include": {
+          "shape": "UserFilterType",
+          "location": "querystring",
+          "locationName": "include"
+        },
+        "Order": {
+          "shape": "OrderType",
+          "location": "querystring",
+          "locationName": "order"
+        },
+        "Sort": {
+          "shape": "UserSortType",
+          "location": "querystring",
+          "locationName": "sort"
+        },
+        "Marker": {
+          "shape": "PageMarkerType",
+          "location": "querystring",
+          "locationName": "marker"
+        },
+        "Limit": {
+          "shape": "LimitType",
+          "location": "querystring",
+          "locationName": "limit"
+        },
+        "Fields": {
+          "shape": "FieldNamesType",
+          "location": "querystring",
+          "locationName": "fields"
+        }
+      }
+    },
+    "DescribeUsersResponse": {
+      "type": "structure",
+      "members": {
+        "Users": { "shape": "OrganizationUserList" },
+        "TotalNumberOfUsers": { "shape": "SizeType" },
+        "Marker": { "shape": "PageMarkerType" }
+      }
+    },
+    "DocumentContentType": {
+      "type": "string",
+      "max": 128,
+      "min": 1
+    },
+    "DocumentLockedForCommentsException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "error": { "httpStatusCode": 409 },
+      "exception": true
     },
-    "DeleteCommentRequest":{
-      "type":"structure",
-      "required":[
-        "DocumentId",
-        "VersionId",
-        "CommentId"
-      ],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "DocumentId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"DocumentId"
-        },
-        "VersionId":{
-          "shape":"DocumentVersionIdType",
-          "location":"uri",
-          "locationName":"VersionId"
-        },
-        "CommentId":{
-          "shape":"CommentIdType",
-          "location":"uri",
-          "locationName":"CommentId"
-        }
+    "DocumentMetadata": {
+      "type": "structure",
+      "members": {
+        "Id": { "shape": "ResourceIdType" },
+        "CreatorId": { "shape": "IdType" },
+        "ParentFolderId": { "shape": "ResourceIdType" },
+        "CreatedTimestamp": { "shape": "TimestampType" },
+        "ModifiedTimestamp": { "shape": "TimestampType" },
+        "LatestVersionMetadata": { "shape": "DocumentVersionMetadata" },
+        "ResourceState": { "shape": "ResourceStateType" },
+        "Labels": { "shape": "Labels" }
       }
     },
-    "DeleteCustomMetadataRequest":{
-      "type":"structure",
-      "required":["ResourceId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "ResourceId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"ResourceId"
-        },
-        "VersionId":{
-          "shape":"DocumentVersionIdType",
-          "location":"querystring",
-          "locationName":"versionId"
-        },
-        "Keys":{
-          "shape":"CustomMetadataKeyList",
-          "location":"querystring",
-          "locationName":"keys"
-        },
-        "DeleteAll":{
-          "shape":"BooleanType",
-          "location":"querystring",
-          "locationName":"deleteAll"
-        }
+    "DocumentMetadataList": {
+      "type": "list",
+      "member": { "shape": "DocumentMetadata" }
+    },
+    "DocumentSourceType": {
+      "type": "string",
+      "enum": ["ORIGINAL", "WITH_COMMENTS"]
+    },
+    "DocumentSourceUrlMap": {
+      "type": "map",
+      "key": { "shape": "DocumentSourceType" },
+      "value": { "shape": "UrlType" }
+    },
+    "DocumentStatusType": {
+      "type": "string",
+      "enum": ["INITIALIZED", "ACTIVE"]
+    },
+    "DocumentThumbnailType": {
+      "type": "string",
+      "enum": ["SMALL", "SMALL_HQ", "LARGE"]
+    },
+    "DocumentThumbnailUrlMap": {
+      "type": "map",
+      "key": { "shape": "DocumentThumbnailType" },
+      "value": { "shape": "UrlType" }
+    },
+    "DocumentVersionIdType": {
+      "type": "string",
+      "max": 128,
+      "min": 1,
+      "pattern": "[\\w+-.@]+"
+    },
+    "DocumentVersionMetadata": {
+      "type": "structure",
+      "members": {
+        "Id": { "shape": "DocumentVersionIdType" },
+        "Name": { "shape": "ResourceNameType" },
+        "ContentType": { "shape": "DocumentContentType" },
+        "Size": { "shape": "SizeType" },
+        "Signature": { "shape": "HashType" },
+        "Status": { "shape": "DocumentStatusType" },
+        "CreatedTimestamp": { "shape": "TimestampType" },
+        "ModifiedTimestamp": { "shape": "TimestampType" },
+        "ContentCreatedTimestamp": { "shape": "TimestampType" },
+        "ContentModifiedTimestamp": { "shape": "TimestampType" },
+        "CreatorId": { "shape": "IdType" },
+        "Thumbnail": { "shape": "DocumentThumbnailUrlMap" },
+        "Source": { "shape": "DocumentSourceUrlMap" }
       }
     },
-    "DeleteCustomMetadataResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "DocumentVersionMetadataList": {
+      "type": "list",
+      "member": { "shape": "DocumentVersionMetadata" }
     },
-    "DeleteDocumentRequest":{
-      "type":"structure",
-      "required":["DocumentId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "DocumentId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"DocumentId"
-        }
-      }
+    "DocumentVersionStatus": {
+      "type": "string",
+      "enum": ["ACTIVE"]
     },
-    "DeleteFolderContentsRequest":{
-      "type":"structure",
-      "required":["FolderId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "FolderId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"FolderId"
-        }
-      }
-    },
-    "DeleteFolderRequest":{
-      "type":"structure",
-      "required":["FolderId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "FolderId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"FolderId"
-        }
-      }
-    },
-    "DeleteLabelsRequest":{
-      "type":"structure",
-      "required":["ResourceId"],
-      "members":{
-        "ResourceId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"ResourceId"
-        },
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "Labels":{
-          "shape":"Labels",
-          "location":"querystring",
-          "locationName":"labels"
-        },
-        "DeleteAll":{
-          "shape":"BooleanType",
-          "location":"querystring",
-          "locationName":"deleteAll"
-        }
-      }
-    },
-    "DeleteLabelsResponse":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DeleteNotificationSubscriptionRequest":{
-      "type":"structure",
-      "required":[
-        "SubscriptionId",
-        "OrganizationId"
-      ],
-      "members":{
-        "SubscriptionId":{
-          "shape":"IdType",
-          "location":"uri",
-          "locationName":"SubscriptionId"
-        },
-        "OrganizationId":{
-          "shape":"IdType",
-          "location":"uri",
-          "locationName":"OrganizationId"
-        }
-      }
-    },
-    "DeleteUserRequest":{
-      "type":"structure",
-      "required":["UserId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "UserId":{
-          "shape":"IdType",
-          "location":"uri",
-          "locationName":"UserId"
-        }
-      }
-    },
-    "DescribeActivitiesRequest":{
-      "type":"structure",
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "StartTime":{
-          "shape":"TimestampType",
-          "location":"querystring",
-          "locationName":"startTime"
-        },
-        "EndTime":{
-          "shape":"TimestampType",
-          "location":"querystring",
-          "locationName":"endTime"
-        },
-        "OrganizationId":{
-          "shape":"IdType",
-          "location":"querystring",
-          "locationName":"organizationId"
-        },
-        "UserId":{
-          "shape":"IdType",
-          "location":"querystring",
-          "locationName":"userId"
-        },
-        "Limit":{
-          "shape":"LimitType",
-          "location":"querystring",
-          "locationName":"limit"
-        },
-        "Marker":{
-          "shape":"MarkerType",
-          "location":"querystring",
-          "locationName":"marker"
-        }
-      }
-    },
-    "DescribeActivitiesResponse":{
-      "type":"structure",
-      "members":{
-        "UserActivities":{"shape":"UserActivities"},
-        "Marker":{"shape":"MarkerType"}
-      }
-    },
-    "DescribeCommentsRequest":{
-      "type":"structure",
-      "required":[
-        "DocumentId",
-        "VersionId"
-      ],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "DocumentId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"DocumentId"
-        },
-        "VersionId":{
-          "shape":"DocumentVersionIdType",
-          "location":"uri",
-          "locationName":"VersionId"
-        },
-        "Limit":{
-          "shape":"LimitType",
-          "location":"querystring",
-          "locationName":"limit"
-        },
-        "Marker":{
-          "shape":"MarkerType",
-          "location":"querystring",
-          "locationName":"marker"
-        }
-      }
-    },
-    "DescribeCommentsResponse":{
-      "type":"structure",
-      "members":{
-        "Comments":{"shape":"CommentList"},
-        "Marker":{"shape":"MarkerType"}
-      }
-    },
-    "DescribeDocumentVersionsRequest":{
-      "type":"structure",
-      "required":["DocumentId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "DocumentId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"DocumentId"
-        },
-        "Marker":{
-          "shape":"PageMarkerType",
-          "location":"querystring",
-          "locationName":"marker"
-        },
-        "Limit":{
-          "shape":"LimitType",
-          "location":"querystring",
-          "locationName":"limit"
-        },
-        "Include":{
-          "shape":"FieldNamesType",
-          "location":"querystring",
-          "locationName":"include"
-        },
-        "Fields":{
-          "shape":"FieldNamesType",
-          "location":"querystring",
-          "locationName":"fields"
-        }
-      }
-    },
-    "DescribeDocumentVersionsResponse":{
-      "type":"structure",
-      "members":{
-        "DocumentVersions":{"shape":"DocumentVersionMetadataList"},
-        "Marker":{"shape":"PageMarkerType"}
-      }
-    },
-    "DescribeFolderContentsRequest":{
-      "type":"structure",
-      "required":["FolderId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "FolderId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"FolderId"
-        },
-        "Sort":{
-          "shape":"ResourceSortType",
-          "location":"querystring",
-          "locationName":"sort"
-        },
-        "Order":{
-          "shape":"OrderType",
-          "location":"querystring",
-          "locationName":"order"
-        },
-        "Limit":{
-          "shape":"LimitType",
-          "location":"querystring",
-          "locationName":"limit"
-        },
-        "Marker":{
-          "shape":"PageMarkerType",
-          "location":"querystring",
-          "locationName":"marker"
-        },
-        "Type":{
-          "shape":"FolderContentType",
-          "location":"querystring",
-          "locationName":"type"
-        },
-        "Include":{
-          "shape":"FieldNamesType",
-          "location":"querystring",
-          "locationName":"include"
-        }
-      }
-    },
-    "DescribeFolderContentsResponse":{
-      "type":"structure",
-      "members":{
-        "Folders":{"shape":"FolderMetadataList"},
-        "Documents":{"shape":"DocumentMetadataList"},
-        "Marker":{"shape":"PageMarkerType"}
-      }
-    },
-    "DescribeNotificationSubscriptionsRequest":{
-      "type":"structure",
-      "required":["OrganizationId"],
-      "members":{
-        "OrganizationId":{
-          "shape":"IdType",
-          "location":"uri",
-          "locationName":"OrganizationId"
-        },
-        "Marker":{
-          "shape":"PageMarkerType",
-          "location":"querystring",
-          "locationName":"marker"
-        },
-        "Limit":{
-          "shape":"LimitType",
-          "location":"querystring",
-          "locationName":"limit"
-        }
-      }
-    },
-    "DescribeNotificationSubscriptionsResponse":{
-      "type":"structure",
-      "members":{
-        "Subscriptions":{"shape":"SubscriptionList"},
-        "Marker":{"shape":"PageMarkerType"}
-      }
-    },
-    "DescribeResourcePermissionsRequest":{
-      "type":"structure",
-      "required":["ResourceId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "ResourceId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"ResourceId"
-        },
-        "Limit":{
-          "shape":"LimitType",
-          "location":"querystring",
-          "locationName":"limit"
-        },
-        "Marker":{
-          "shape":"PageMarkerType",
-          "location":"querystring",
-          "locationName":"marker"
-        }
-      }
-    },
-    "DescribeResourcePermissionsResponse":{
-      "type":"structure",
-      "members":{
-        "Principals":{"shape":"PrincipalList"},
-        "Marker":{"shape":"PageMarkerType"}
-      }
-    },
-    "DescribeRootFoldersRequest":{
-      "type":"structure",
-      "required":["AuthenticationToken"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "Limit":{
-          "shape":"LimitType",
-          "location":"querystring",
-          "locationName":"limit"
-        },
-        "Marker":{
-          "shape":"PageMarkerType",
-          "location":"querystring",
-          "locationName":"marker"
-        }
-      }
-    },
-    "DescribeRootFoldersResponse":{
-      "type":"structure",
-      "members":{
-        "Folders":{"shape":"FolderMetadataList"},
-        "Marker":{"shape":"PageMarkerType"}
-      }
-    },
-    "DescribeUsersRequest":{
-      "type":"structure",
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
-        },
-        "OrganizationId":{
-          "shape":"IdType",
-          "location":"querystring",
-          "locationName":"organizationId"
-        },
-        "UserIds":{
-          "shape":"UserIdsType",
-          "location":"querystring",
-          "locationName":"userIds"
-        },
-        "Query":{
-          "shape":"SearchQueryType",
-          "location":"querystring",
-          "locationName":"query"
-        },
-        "Include":{
-          "shape":"UserFilterType",
-          "location":"querystring",
-          "locationName":"include"
-        },
-        "Order":{
-          "shape":"OrderType",
-          "location":"querystring",
-          "locationName":"order"
-        },
-        "Sort":{
-          "shape":"UserSortType",
-          "location":"querystring",
-          "locationName":"sort"
-        },
-        "Marker":{
-          "shape":"PageMarkerType",
-          "location":"querystring",
-          "locationName":"marker"
-        },
-        "Limit":{
-          "shape":"LimitType",
-          "location":"querystring",
-          "locationName":"limit"
-        },
-        "Fields":{
-          "shape":"FieldNamesType",
-          "location":"querystring",
-          "locationName":"fields"
-        }
-      }
-    },
-    "DescribeUsersResponse":{
-      "type":"structure",
-      "members":{
-        "Users":{"shape":"OrganizationUserList"},
-        "TotalNumberOfUsers":{"shape":"SizeType"},
-        "Marker":{"shape":"PageMarkerType"}
-      }
-    },
-    "DocumentContentType":{
-      "type":"string",
-      "max":128,
-      "min":1
-    },
-    "DocumentLockedForCommentsException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "DraftUploadOutOfSyncException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "error": { "httpStatusCode": 409 },
+      "exception": true
     },
-    "DocumentMetadata":{
-      "type":"structure",
-      "members":{
-        "Id":{"shape":"ResourceIdType"},
-        "CreatorId":{"shape":"IdType"},
-        "ParentFolderId":{"shape":"ResourceIdType"},
-        "CreatedTimestamp":{"shape":"TimestampType"},
-        "ModifiedTimestamp":{"shape":"TimestampType"},
-        "LatestVersionMetadata":{"shape":"DocumentVersionMetadata"},
-        "ResourceState":{"shape":"ResourceStateType"},
-        "Labels":{"shape":"Labels"}
+    "EmailAddressType": {
+      "type": "string",
+      "max": 256,
+      "min": 1,
+      "pattern": "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
+    },
+    "EntityAlreadyExistsException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
+      },
+      "error": { "httpStatusCode": 409 },
+      "exception": true
+    },
+    "EntityIdList": {
+      "type": "list",
+      "member": { "shape": "IdType" }
+    },
+    "EntityNotExistsException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" },
+        "EntityIds": { "shape": "EntityIdList" }
+      },
+      "error": { "httpStatusCode": 404 },
+      "exception": true
+    },
+    "ErrorMessageType": { "type": "string" },
+    "FailedDependencyException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
+      },
+      "error": { "httpStatusCode": 424 },
+      "exception": true
+    },
+    "FieldNamesType": {
+      "type": "string",
+      "max": 256,
+      "min": 1,
+      "pattern": "[\\w,]+"
+    },
+    "FolderContentType": {
+      "type": "string",
+      "enum": ["ALL", "DOCUMENT", "FOLDER"]
+    },
+    "FolderMetadata": {
+      "type": "structure",
+      "members": {
+        "Id": { "shape": "ResourceIdType" },
+        "Name": { "shape": "ResourceNameType" },
+        "CreatorId": { "shape": "IdType" },
+        "ParentFolderId": { "shape": "ResourceIdType" },
+        "CreatedTimestamp": { "shape": "TimestampType" },
+        "ModifiedTimestamp": { "shape": "TimestampType" },
+        "ResourceState": { "shape": "ResourceStateType" },
+        "Signature": { "shape": "HashType" },
+        "Labels": { "shape": "Labels" },
+        "Size": { "shape": "SizeType" },
+        "LatestVersionSize": { "shape": "SizeType" }
       }
     },
-    "DocumentMetadataList":{
-      "type":"list",
-      "member":{"shape":"DocumentMetadata"}
+    "FolderMetadataList": {
+      "type": "list",
+      "member": { "shape": "FolderMetadata" }
     },
-    "DocumentSourceType":{
-      "type":"string",
-      "enum":[
-        "ORIGINAL",
-        "WITH_COMMENTS"
-      ]
-    },
-    "DocumentSourceUrlMap":{
-      "type":"map",
-      "key":{"shape":"DocumentSourceType"},
-      "value":{"shape":"UrlType"}
-    },
-    "DocumentStatusType":{
-      "type":"string",
-      "enum":[
-        "INITIALIZED",
-        "ACTIVE"
-      ]
-    },
-    "DocumentThumbnailType":{
-      "type":"string",
-      "enum":[
-        "SMALL",
-        "SMALL_HQ",
-        "LARGE"
-      ]
-    },
-    "DocumentThumbnailUrlMap":{
-      "type":"map",
-      "key":{"shape":"DocumentThumbnailType"},
-      "value":{"shape":"UrlType"}
-    },
-    "DocumentVersionIdType":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"[\\w+-.@]+"
-    },
-    "DocumentVersionMetadata":{
-      "type":"structure",
-      "members":{
-        "Id":{"shape":"DocumentVersionIdType"},
-        "Name":{"shape":"ResourceNameType"},
-        "ContentType":{"shape":"DocumentContentType"},
-        "Size":{"shape":"SizeType"},
-        "Signature":{"shape":"HashType"},
-        "Status":{"shape":"DocumentStatusType"},
-        "CreatedTimestamp":{"shape":"TimestampType"},
-        "ModifiedTimestamp":{"shape":"TimestampType"},
-        "ContentCreatedTimestamp":{"shape":"TimestampType"},
-        "ContentModifiedTimestamp":{"shape":"TimestampType"},
-        "CreatorId":{"shape":"IdType"},
-        "Thumbnail":{"shape":"DocumentThumbnailUrlMap"},
-        "Source":{"shape":"DocumentSourceUrlMap"}
-      }
-    },
-    "DocumentVersionMetadataList":{
-      "type":"list",
-      "member":{"shape":"DocumentVersionMetadata"}
-    },
-    "DocumentVersionStatus":{
-      "type":"string",
-      "enum":["ACTIVE"]
-    },
-    "DraftUploadOutOfSyncException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
-      },
-      "error":{"httpStatusCode":409},
-      "exception":true
-    },
-    "EmailAddressType":{
-      "type":"string",
-      "max":256,
-      "min":1,
-      "pattern":"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
-    },
-    "EntityAlreadyExistsException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
-      },
-      "error":{"httpStatusCode":409},
-      "exception":true
-    },
-    "EntityIdList":{
-      "type":"list",
-      "member":{"shape":"IdType"}
-    },
-    "EntityNotExistsException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"},
-        "EntityIds":{"shape":"EntityIdList"}
-      },
-      "error":{"httpStatusCode":404},
-      "exception":true
-    },
-    "ErrorMessageType":{"type":"string"},
-    "FailedDependencyException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
-      },
-      "error":{"httpStatusCode":424},
-      "exception":true
-    },
-    "FieldNamesType":{
-      "type":"string",
-      "max":256,
-      "min":1,
-      "pattern":"[\\w,]+"
-    },
-    "FolderContentType":{
-      "type":"string",
-      "enum":[
-        "ALL",
-        "DOCUMENT",
-        "FOLDER"
-      ]
-    },
-    "FolderMetadata":{
-      "type":"structure",
-      "members":{
-        "Id":{"shape":"ResourceIdType"},
-        "Name":{"shape":"ResourceNameType"},
-        "CreatorId":{"shape":"IdType"},
-        "ParentFolderId":{"shape":"ResourceIdType"},
-        "CreatedTimestamp":{"shape":"TimestampType"},
-        "ModifiedTimestamp":{"shape":"TimestampType"},
-        "ResourceState":{"shape":"ResourceStateType"},
-        "Signature":{"shape":"HashType"},
-        "Labels":{"shape":"Labels"},
-        "Size":{"shape":"SizeType"},
-        "LatestVersionSize":{"shape":"SizeType"}
-      }
-    },
-    "FolderMetadataList":{
-      "type":"list",
-      "member":{"shape":"FolderMetadata"}
-    },
-    "GetCurrentUserRequest":{
-      "type":"structure",
-      "required":["AuthenticationToken"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "GetCurrentUserRequest": {
+      "type": "structure",
+      "required": ["AuthenticationToken"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         }
       }
     },
-    "GetCurrentUserResponse":{
-      "type":"structure",
-      "members":{
-        "User":{"shape":"User"}
+    "GetCurrentUserResponse": {
+      "type": "structure",
+      "members": {
+        "User": { "shape": "User" }
       }
     },
-    "GetDocumentPathRequest":{
-      "type":"structure",
-      "required":["DocumentId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "GetDocumentPathRequest": {
+      "type": "structure",
+      "required": ["DocumentId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "DocumentId":{
-          "shape":"IdType",
-          "location":"uri",
-          "locationName":"DocumentId"
+        "DocumentId": {
+          "shape": "IdType",
+          "location": "uri",
+          "locationName": "DocumentId"
         },
-        "Limit":{
-          "shape":"LimitType",
-          "location":"querystring",
-          "locationName":"limit"
+        "Limit": {
+          "shape": "LimitType",
+          "location": "querystring",
+          "locationName": "limit"
         },
-        "Fields":{
-          "shape":"FieldNamesType",
-          "location":"querystring",
-          "locationName":"fields"
+        "Fields": {
+          "shape": "FieldNamesType",
+          "location": "querystring",
+          "locationName": "fields"
         },
-        "Marker":{
-          "shape":"PageMarkerType",
-          "location":"querystring",
-          "locationName":"marker"
+        "Marker": {
+          "shape": "PageMarkerType",
+          "location": "querystring",
+          "locationName": "marker"
         }
       }
     },
-    "GetDocumentPathResponse":{
-      "type":"structure",
-      "members":{
-        "Path":{"shape":"ResourcePath"}
+    "GetDocumentPathResponse": {
+      "type": "structure",
+      "members": {
+        "Path": { "shape": "ResourcePath" }
       }
     },
-    "GetDocumentRequest":{
-      "type":"structure",
-      "required":["DocumentId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "GetDocumentRequest": {
+      "type": "structure",
+      "required": ["DocumentId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "DocumentId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"DocumentId"
+        "DocumentId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "DocumentId"
         },
-        "IncludeCustomMetadata":{
-          "shape":"BooleanType",
-          "location":"querystring",
-          "locationName":"includeCustomMetadata"
+        "IncludeCustomMetadata": {
+          "shape": "BooleanType",
+          "location": "querystring",
+          "locationName": "includeCustomMetadata"
         }
       }
     },
-    "GetDocumentResponse":{
-      "type":"structure",
-      "members":{
-        "Metadata":{"shape":"DocumentMetadata"},
-        "CustomMetadata":{"shape":"CustomMetadataMap"}
+    "GetDocumentResponse": {
+      "type": "structure",
+      "members": {
+        "Metadata": { "shape": "DocumentMetadata" },
+        "CustomMetadata": { "shape": "CustomMetadataMap" }
       }
     },
-    "GetDocumentVersionRequest":{
-      "type":"structure",
-      "required":[
-        "DocumentId",
-        "VersionId"
-      ],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "GetDocumentVersionRequest": {
+      "type": "structure",
+      "required": ["DocumentId", "VersionId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "DocumentId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"DocumentId"
+        "DocumentId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "DocumentId"
         },
-        "VersionId":{
-          "shape":"DocumentVersionIdType",
-          "location":"uri",
-          "locationName":"VersionId"
+        "VersionId": {
+          "shape": "DocumentVersionIdType",
+          "location": "uri",
+          "locationName": "VersionId"
         },
-        "Fields":{
-          "shape":"FieldNamesType",
-          "location":"querystring",
-          "locationName":"fields"
+        "Fields": {
+          "shape": "FieldNamesType",
+          "location": "querystring",
+          "locationName": "fields"
         },
-        "IncludeCustomMetadata":{
-          "shape":"BooleanType",
-          "location":"querystring",
-          "locationName":"includeCustomMetadata"
+        "IncludeCustomMetadata": {
+          "shape": "BooleanType",
+          "location": "querystring",
+          "locationName": "includeCustomMetadata"
         }
       }
     },
-    "GetDocumentVersionResponse":{
-      "type":"structure",
-      "members":{
-        "Metadata":{"shape":"DocumentVersionMetadata"},
-        "CustomMetadata":{"shape":"CustomMetadataMap"}
+    "GetDocumentVersionResponse": {
+      "type": "structure",
+      "members": {
+        "Metadata": { "shape": "DocumentVersionMetadata" },
+        "CustomMetadata": { "shape": "CustomMetadataMap" }
       }
     },
-    "GetFolderPathRequest":{
-      "type":"structure",
-      "required":["FolderId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "GetFolderPathRequest": {
+      "type": "structure",
+      "required": ["FolderId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "FolderId":{
-          "shape":"IdType",
-          "location":"uri",
-          "locationName":"FolderId"
+        "FolderId": {
+          "shape": "IdType",
+          "location": "uri",
+          "locationName": "FolderId"
         },
-        "Limit":{
-          "shape":"LimitType",
-          "location":"querystring",
-          "locationName":"limit"
+        "Limit": {
+          "shape": "LimitType",
+          "location": "querystring",
+          "locationName": "limit"
         },
-        "Fields":{
-          "shape":"FieldNamesType",
-          "location":"querystring",
-          "locationName":"fields"
+        "Fields": {
+          "shape": "FieldNamesType",
+          "location": "querystring",
+          "locationName": "fields"
         },
-        "Marker":{
-          "shape":"PageMarkerType",
-          "location":"querystring",
-          "locationName":"marker"
+        "Marker": {
+          "shape": "PageMarkerType",
+          "location": "querystring",
+          "locationName": "marker"
         }
       }
     },
-    "GetFolderPathResponse":{
-      "type":"structure",
-      "members":{
-        "Path":{"shape":"ResourcePath"}
+    "GetFolderPathResponse": {
+      "type": "structure",
+      "members": {
+        "Path": { "shape": "ResourcePath" }
       }
     },
-    "GetFolderRequest":{
-      "type":"structure",
-      "required":["FolderId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "GetFolderRequest": {
+      "type": "structure",
+      "required": ["FolderId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "FolderId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"FolderId"
+        "FolderId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "FolderId"
         },
-        "IncludeCustomMetadata":{
-          "shape":"BooleanType",
-          "location":"querystring",
-          "locationName":"includeCustomMetadata"
+        "IncludeCustomMetadata": {
+          "shape": "BooleanType",
+          "location": "querystring",
+          "locationName": "includeCustomMetadata"
         }
       }
     },
-    "GetFolderResponse":{
-      "type":"structure",
-      "members":{
-        "Metadata":{"shape":"FolderMetadata"},
-        "CustomMetadata":{"shape":"CustomMetadataMap"}
+    "GetFolderResponse": {
+      "type": "structure",
+      "members": {
+        "Metadata": { "shape": "FolderMetadata" },
+        "CustomMetadata": { "shape": "CustomMetadataMap" }
       }
     },
-    "GroupMetadata":{
-      "type":"structure",
-      "members":{
-        "Id":{"shape":"IdType"},
-        "Name":{"shape":"GroupNameType"}
+    "GroupMetadata": {
+      "type": "structure",
+      "members": {
+        "Id": { "shape": "IdType" },
+        "Name": { "shape": "GroupNameType" }
       }
     },
-    "GroupMetadataList":{
-      "type":"list",
-      "member":{"shape":"GroupMetadata"}
+    "GroupMetadataList": {
+      "type": "list",
+      "member": { "shape": "GroupMetadata" }
     },
-    "GroupNameType":{"type":"string"},
-    "HashType":{
-      "type":"string",
-      "max":128,
-      "min":0,
-      "pattern":"[&\\w+-.@]+"
+    "GroupNameType": { "type": "string" },
+    "HashType": {
+      "type": "string",
+      "max": 128,
+      "min": 0,
+      "pattern": "[&\\w+-.@]+"
     },
-    "HeaderNameType":{
-      "type":"string",
-      "max":256,
-      "min":1,
-      "pattern":"[\\w-]+"
+    "HeaderNameType": {
+      "type": "string",
+      "max": 256,
+      "min": 1,
+      "pattern": "[\\w-]+"
     },
-    "HeaderValueType":{
-      "type":"string",
-      "max":1024,
-      "min":1
+    "HeaderValueType": {
+      "type": "string",
+      "max": 1024,
+      "min": 1
     },
-    "IdType":{
-      "type":"string",
-      "max":256,
-      "min":1,
-      "pattern":"[&\\w+-.@]+"
+    "IdType": {
+      "type": "string",
+      "max": 256,
+      "min": 1,
+      "pattern": "[&\\w+-.@]+"
     },
-    "IllegalUserStateException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "IllegalUserStateException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "error": { "httpStatusCode": 409 },
+      "exception": true
     },
-    "InitiateDocumentVersionUploadRequest":{
-      "type":"structure",
-      "required":["ParentFolderId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "InitiateDocumentVersionUploadRequest": {
+      "type": "structure",
+      "required": ["ParentFolderId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "Id":{"shape":"ResourceIdType"},
-        "Name":{"shape":"ResourceNameType"},
-        "ContentCreatedTimestamp":{"shape":"TimestampType"},
-        "ContentModifiedTimestamp":{"shape":"TimestampType"},
-        "ContentType":{"shape":"DocumentContentType"},
-        "DocumentSizeInBytes":{"shape":"SizeType"},
-        "ParentFolderId":{"shape":"ResourceIdType"}
+        "Id": { "shape": "ResourceIdType" },
+        "Name": { "shape": "ResourceNameType" },
+        "ContentCreatedTimestamp": { "shape": "TimestampType" },
+        "ContentModifiedTimestamp": { "shape": "TimestampType" },
+        "ContentType": { "shape": "DocumentContentType" },
+        "DocumentSizeInBytes": { "shape": "SizeType" },
+        "ParentFolderId": { "shape": "ResourceIdType" }
       }
     },
-    "InitiateDocumentVersionUploadResponse":{
-      "type":"structure",
-      "members":{
-        "Metadata":{"shape":"DocumentMetadata"},
-        "UploadMetadata":{"shape":"UploadMetadata"}
+    "InitiateDocumentVersionUploadResponse": {
+      "type": "structure",
+      "members": {
+        "Metadata": { "shape": "DocumentMetadata" },
+        "UploadMetadata": { "shape": "UploadMetadata" }
       }
     },
-    "InvalidArgumentException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "InvalidArgumentException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":400},
-      "exception":true
+      "error": { "httpStatusCode": 400 },
+      "exception": true
     },
-    "InvalidOperationException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "InvalidOperationException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":405},
-      "exception":true
+      "error": { "httpStatusCode": 405 },
+      "exception": true
     },
-    "Label":{
-      "type":"string",
-      "max":32,
-      "min":1,
-      "pattern":"[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"
+    "Label": {
+      "type": "string",
+      "max": 32,
+      "min": 1,
+      "pattern": "[a-zA-Z0-9._+-/=][a-zA-Z0-9 ._+-/=]*"
     },
-    "Labels":{
-      "type":"list",
-      "member":{"shape":"Label"},
-      "max":20
+    "Labels": {
+      "type": "list",
+      "member": { "shape": "Label" },
+      "max": 20
     },
-    "LimitExceededException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "LimitExceededException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "error": { "httpStatusCode": 409 },
+      "exception": true
     },
-    "LimitType":{
-      "type":"integer",
-      "max":999,
-      "min":1
+    "LimitType": {
+      "type": "integer",
+      "max": 999,
+      "min": 1
     },
-    "LocaleType":{
-      "type":"string",
-      "enum":[
+    "LocaleType": {
+      "type": "string",
+      "enum": [
         "en",
         "fr",
         "ko",
@@ -2109,542 +2049,494 @@
         "default"
       ]
     },
-    "MarkerType":{
-      "type":"string",
-      "max":2048,
-      "min":1,
-      "pattern":"[\\u0000-\\u00FF]+"
+    "MarkerType": {
+      "type": "string",
+      "max": 2048,
+      "min": 1,
+      "pattern": "[\\u0000-\\u00FF]+"
     },
-    "MessageType":{
-      "type":"string",
-      "max":2048,
-      "min":0,
-      "sensitive":true
+    "MessageType": {
+      "type": "string",
+      "max": 2048,
+      "min": 0,
+      "sensitive": true
     },
-    "OrderType":{
-      "type":"string",
-      "enum":[
-        "ASCENDING",
-        "DESCENDING"
-      ]
+    "OrderType": {
+      "type": "string",
+      "enum": ["ASCENDING", "DESCENDING"]
     },
-    "OrganizationUserList":{
-      "type":"list",
-      "member":{"shape":"User"}
+    "OrganizationUserList": {
+      "type": "list",
+      "member": { "shape": "User" }
     },
-    "PageMarkerType":{
-      "type":"string",
-      "max":2048,
-      "min":1
+    "PageMarkerType": {
+      "type": "string",
+      "max": 2048,
+      "min": 1
     },
-    "Participants":{
-      "type":"structure",
-      "members":{
-        "Users":{"shape":"UserMetadataList"},
-        "Groups":{"shape":"GroupMetadataList"}
+    "Participants": {
+      "type": "structure",
+      "members": {
+        "Users": { "shape": "UserMetadataList" },
+        "Groups": { "shape": "GroupMetadataList" }
       }
     },
-    "PasswordType":{
-      "type":"string",
-      "max":32,
-      "min":4,
-      "pattern":"[\\u0020-\\u00FF]+",
-      "sensitive":true
+    "PasswordType": {
+      "type": "string",
+      "max": 32,
+      "min": 4,
+      "pattern": "[\\u0020-\\u00FF]+",
+      "sensitive": true
     },
-    "PermissionInfo":{
-      "type":"structure",
-      "members":{
-        "Role":{"shape":"RoleType"},
-        "Type":{"shape":"RolePermissionType"}
+    "PermissionInfo": {
+      "type": "structure",
+      "members": {
+        "Role": { "shape": "RoleType" },
+        "Type": { "shape": "RolePermissionType" }
       }
     },
-    "PermissionInfoList":{
-      "type":"list",
-      "member":{"shape":"PermissionInfo"}
+    "PermissionInfoList": {
+      "type": "list",
+      "member": { "shape": "PermissionInfo" }
     },
-    "PositiveSizeType":{
-      "type":"long",
-      "min":0
+    "PositiveSizeType": {
+      "type": "long",
+      "min": 0
     },
-    "Principal":{
-      "type":"structure",
-      "members":{
-        "Id":{"shape":"IdType"},
-        "Type":{"shape":"PrincipalType"},
-        "Roles":{"shape":"PermissionInfoList"}
+    "Principal": {
+      "type": "structure",
+      "members": {
+        "Id": { "shape": "IdType" },
+        "Type": { "shape": "PrincipalType" },
+        "Roles": { "shape": "PermissionInfoList" }
       }
     },
-    "PrincipalList":{
-      "type":"list",
-      "member":{"shape":"Principal"}
+    "PrincipalList": {
+      "type": "list",
+      "member": { "shape": "Principal" }
     },
-    "PrincipalType":{
-      "type":"string",
-      "enum":[
-        "USER",
-        "GROUP",
-        "INVITE",
-        "ANONYMOUS",
-        "ORGANIZATION"
-      ]
+    "PrincipalType": {
+      "type": "string",
+      "enum": ["USER", "GROUP", "INVITE", "ANONYMOUS", "ORGANIZATION"]
     },
-    "ProhibitedStateException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "ProhibitedStateException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "error": { "httpStatusCode": 409 },
+      "exception": true
     },
-    "RemoveAllResourcePermissionsRequest":{
-      "type":"structure",
-      "required":["ResourceId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "RemoveAllResourcePermissionsRequest": {
+      "type": "structure",
+      "required": ["ResourceId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "ResourceId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"ResourceId"
+        "ResourceId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "ResourceId"
         }
       }
     },
-    "RemoveResourcePermissionRequest":{
-      "type":"structure",
-      "required":[
-        "ResourceId",
-        "PrincipalId"
-      ],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "RemoveResourcePermissionRequest": {
+      "type": "structure",
+      "required": ["ResourceId", "PrincipalId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "ResourceId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"ResourceId"
+        "ResourceId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "ResourceId"
         },
-        "PrincipalId":{
-          "shape":"IdType",
-          "location":"uri",
-          "locationName":"PrincipalId"
+        "PrincipalId": {
+          "shape": "IdType",
+          "location": "uri",
+          "locationName": "PrincipalId"
         },
-        "PrincipalType":{
-          "shape":"PrincipalType",
-          "location":"querystring",
-          "locationName":"type"
+        "PrincipalType": {
+          "shape": "PrincipalType",
+          "location": "querystring",
+          "locationName": "type"
         }
       }
     },
-    "ResourceAlreadyCheckedOutException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "ResourceAlreadyCheckedOutException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "error": { "httpStatusCode": 409 },
+      "exception": true
     },
-    "ResourceIdType":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"[\\w+-.@]+"
+    "ResourceIdType": {
+      "type": "string",
+      "max": 128,
+      "min": 1,
+      "pattern": "[\\w+-.@]+"
     },
-    "ResourceMetadata":{
-      "type":"structure",
-      "members":{
-        "Type":{"shape":"ResourceType"},
-        "Name":{"shape":"ResourceNameType"},
-        "OriginalName":{"shape":"ResourceNameType"},
-        "Id":{"shape":"ResourceIdType"},
-        "VersionId":{"shape":"DocumentVersionIdType"},
-        "Owner":{"shape":"UserMetadata"},
-        "ParentId":{"shape":"ResourceIdType"}
+    "ResourceMetadata": {
+      "type": "structure",
+      "members": {
+        "Type": { "shape": "ResourceType" },
+        "Name": { "shape": "ResourceNameType" },
+        "OriginalName": { "shape": "ResourceNameType" },
+        "Id": { "shape": "ResourceIdType" },
+        "VersionId": { "shape": "DocumentVersionIdType" },
+        "Owner": { "shape": "UserMetadata" },
+        "ParentId": { "shape": "ResourceIdType" }
       }
     },
-    "ResourceNameType":{
-      "type":"string",
-      "max":255,
-      "min":1,
-      "pattern":"[\\u0020-\\u202D\\u202F-\\uFFFF]+"
+    "ResourceNameType": {
+      "type": "string",
+      "max": 255,
+      "min": 1,
+      "pattern": "[\\u0020-\\u202D\\u202F-\\uFFFF]+"
     },
-    "ResourcePath":{
-      "type":"structure",
-      "members":{
-        "Components":{"shape":"ResourcePathComponentList"}
+    "ResourcePath": {
+      "type": "structure",
+      "members": {
+        "Components": { "shape": "ResourcePathComponentList" }
       }
     },
-    "ResourcePathComponent":{
-      "type":"structure",
-      "members":{
-        "Id":{"shape":"IdType"},
-        "Name":{"shape":"ResourceNameType"}
+    "ResourcePathComponent": {
+      "type": "structure",
+      "members": {
+        "Id": { "shape": "IdType" },
+        "Name": { "shape": "ResourceNameType" }
       }
     },
-    "ResourcePathComponentList":{
-      "type":"list",
-      "member":{"shape":"ResourcePathComponent"}
+    "ResourcePathComponentList": {
+      "type": "list",
+      "member": { "shape": "ResourcePathComponent" }
     },
-    "ResourceSortType":{
-      "type":"string",
-      "enum":[
-        "DATE",
-        "NAME"
-      ]
+    "ResourceSortType": {
+      "type": "string",
+      "enum": ["DATE", "NAME"]
     },
-    "ResourceStateType":{
-      "type":"string",
-      "enum":[
-        "ACTIVE",
-        "RESTORING",
-        "RECYCLING",
-        "RECYCLED"
-      ]
+    "ResourceStateType": {
+      "type": "string",
+      "enum": ["ACTIVE", "RESTORING", "RECYCLING", "RECYCLED"]
     },
-    "ResourceType":{
-      "type":"string",
-      "enum":[
-        "FOLDER",
-        "DOCUMENT"
-      ]
+    "ResourceType": {
+      "type": "string",
+      "enum": ["FOLDER", "DOCUMENT"]
     },
-    "RolePermissionType":{
-      "type":"string",
-      "enum":[
-        "DIRECT",
-        "INHERITED"
-      ]
+    "RolePermissionType": {
+      "type": "string",
+      "enum": ["DIRECT", "INHERITED"]
     },
-    "RoleType":{
-      "type":"string",
-      "enum":[
-        "VIEWER",
-        "CONTRIBUTOR",
-        "OWNER",
-        "COOWNER"
-      ]
+    "RoleType": {
+      "type": "string",
+      "enum": ["VIEWER", "CONTRIBUTOR", "OWNER", "COOWNER"]
     },
-    "SearchQueryType":{
-      "type":"string",
-      "max":512,
-      "min":1,
-      "pattern":"[\\u0020-\\uFFFF]+",
-      "sensitive":true
+    "SearchQueryType": {
+      "type": "string",
+      "max": 512,
+      "min": 1,
+      "pattern": "[\\u0020-\\uFFFF]+",
+      "sensitive": true
     },
-    "ServiceUnavailableException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "ServiceUnavailableException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":503},
-      "exception":true,
-      "fault":true
+      "error": { "httpStatusCode": 503 },
+      "exception": true,
+      "fault": true
     },
-    "SharePrincipal":{
-      "type":"structure",
-      "required":[
-        "Id",
-        "Type",
-        "Role"
-      ],
-      "members":{
-        "Id":{"shape":"IdType"},
-        "Type":{"shape":"PrincipalType"},
-        "Role":{"shape":"RoleType"}
+    "SharePrincipal": {
+      "type": "structure",
+      "required": ["Id", "Type", "Role"],
+      "members": {
+        "Id": { "shape": "IdType" },
+        "Type": { "shape": "PrincipalType" },
+        "Role": { "shape": "RoleType" }
       }
     },
-    "SharePrincipalList":{
-      "type":"list",
-      "member":{"shape":"SharePrincipal"}
+    "SharePrincipalList": {
+      "type": "list",
+      "member": { "shape": "SharePrincipal" }
     },
-    "ShareResult":{
-      "type":"structure",
-      "members":{
-        "PrincipalId":{"shape":"IdType"},
-        "Role":{"shape":"RoleType"},
-        "Status":{"shape":"ShareStatusType"},
-        "ShareId":{"shape":"ResourceIdType"},
-        "StatusMessage":{"shape":"MessageType"}
+    "ShareResult": {
+      "type": "structure",
+      "members": {
+        "PrincipalId": { "shape": "IdType" },
+        "Role": { "shape": "RoleType" },
+        "Status": { "shape": "ShareStatusType" },
+        "ShareId": { "shape": "ResourceIdType" },
+        "StatusMessage": { "shape": "MessageType" }
       }
     },
-    "ShareResultsList":{
-      "type":"list",
-      "member":{"shape":"ShareResult"}
+    "ShareResultsList": {
+      "type": "list",
+      "member": { "shape": "ShareResult" }
     },
-    "ShareStatusType":{
-      "type":"string",
-      "enum":[
-        "SUCCESS",
-        "FAILURE"
-      ]
+    "ShareStatusType": {
+      "type": "string",
+      "enum": ["SUCCESS", "FAILURE"]
     },
-    "SignedHeaderMap":{
-      "type":"map",
-      "key":{"shape":"HeaderNameType"},
-      "value":{"shape":"HeaderValueType"}
+    "SignedHeaderMap": {
+      "type": "map",
+      "key": { "shape": "HeaderNameType" },
+      "value": { "shape": "HeaderValueType" }
     },
-    "SizeType":{"type":"long"},
-    "StorageLimitExceededException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "SizeType": { "type": "long" },
+    "StorageLimitExceededException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":409},
-      "exception":true
+      "error": { "httpStatusCode": 409 },
+      "exception": true
     },
-    "StorageLimitWillExceedException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "StorageLimitWillExceedException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":413},
-      "exception":true
+      "error": { "httpStatusCode": 413 },
+      "exception": true
     },
-    "StorageRuleType":{
-      "type":"structure",
-      "members":{
-        "StorageAllocatedInBytes":{"shape":"PositiveSizeType"},
-        "StorageType":{"shape":"StorageType"}
+    "StorageRuleType": {
+      "type": "structure",
+      "members": {
+        "StorageAllocatedInBytes": { "shape": "PositiveSizeType" },
+        "StorageType": { "shape": "StorageType" }
       }
     },
-    "StorageType":{
-      "type":"string",
-      "enum":[
-        "UNLIMITED",
-        "QUOTA"
-      ]
+    "StorageType": {
+      "type": "string",
+      "enum": ["UNLIMITED", "QUOTA"]
     },
-    "Subscription":{
-      "type":"structure",
-      "members":{
-        "SubscriptionId":{"shape":"IdType"},
-        "EndPoint":{"shape":"SubscriptionEndPointType"},
-        "Protocol":{"shape":"SubscriptionProtocolType"}
+    "Subscription": {
+      "type": "structure",
+      "members": {
+        "SubscriptionId": { "shape": "IdType" },
+        "EndPoint": { "shape": "SubscriptionEndPointType" },
+        "Protocol": { "shape": "SubscriptionProtocolType" }
       }
     },
-    "SubscriptionEndPointType":{
-      "type":"string",
-      "max":256,
-      "min":1
+    "SubscriptionEndPointType": {
+      "type": "string",
+      "max": 256,
+      "min": 1
     },
-    "SubscriptionList":{
-      "type":"list",
-      "member":{"shape":"Subscription"},
-      "max":256
+    "SubscriptionList": {
+      "type": "list",
+      "member": { "shape": "Subscription" },
+      "max": 256
     },
-    "SubscriptionProtocolType":{
-      "type":"string",
-      "enum":["HTTPS"]
+    "SubscriptionProtocolType": {
+      "type": "string",
+      "enum": ["HTTPS"]
     },
-    "SubscriptionType":{
-      "type":"string",
-      "enum":["ALL"]
+    "SubscriptionType": {
+      "type": "string",
+      "enum": ["ALL"]
     },
-    "TimeZoneIdType":{
-      "type":"string",
-      "max":256,
-      "min":1
+    "TimeZoneIdType": {
+      "type": "string",
+      "max": 256,
+      "min": 1
     },
-    "TimestampType":{"type":"timestamp"},
-    "TooManyLabelsException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "TimestampType": { "type": "timestamp" },
+    "TooManyLabelsException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":429},
-      "exception":true
+      "error": { "httpStatusCode": 429 },
+      "exception": true
     },
-    "TooManySubscriptionsException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
+    "TooManySubscriptionsException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":429},
-      "exception":true
+      "error": { "httpStatusCode": 429 },
+      "exception": true
     },
-    "UnauthorizedOperationException":{
-      "type":"structure",
-      "members":{
+    "UnauthorizedOperationException": {
+      "type": "structure",
+      "members": {},
+      "error": { "httpStatusCode": 403 },
+      "exception": true
+    },
+    "UnauthorizedResourceAccessException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessageType" }
       },
-      "error":{"httpStatusCode":403},
-      "exception":true
+      "error": { "httpStatusCode": 404 },
+      "exception": true
     },
-    "UnauthorizedResourceAccessException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessageType"}
-      },
-      "error":{"httpStatusCode":404},
-      "exception":true
-    },
-    "UpdateDocumentRequest":{
-      "type":"structure",
-      "required":["DocumentId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "UpdateDocumentRequest": {
+      "type": "structure",
+      "required": ["DocumentId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "DocumentId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"DocumentId"
+        "DocumentId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "DocumentId"
         },
-        "Name":{"shape":"ResourceNameType"},
-        "ParentFolderId":{"shape":"ResourceIdType"},
-        "ResourceState":{"shape":"ResourceStateType"}
+        "Name": { "shape": "ResourceNameType" },
+        "ParentFolderId": { "shape": "ResourceIdType" },
+        "ResourceState": { "shape": "ResourceStateType" }
       }
     },
-    "UpdateDocumentVersionRequest":{
-      "type":"structure",
-      "required":[
-        "DocumentId",
-        "VersionId"
-      ],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "UpdateDocumentVersionRequest": {
+      "type": "structure",
+      "required": ["DocumentId", "VersionId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "DocumentId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"DocumentId"
+        "DocumentId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "DocumentId"
         },
-        "VersionId":{
-          "shape":"DocumentVersionIdType",
-          "location":"uri",
-          "locationName":"VersionId"
+        "VersionId": {
+          "shape": "DocumentVersionIdType",
+          "location": "uri",
+          "locationName": "VersionId"
         },
-        "VersionStatus":{"shape":"DocumentVersionStatus"}
+        "VersionStatus": { "shape": "DocumentVersionStatus" }
       }
     },
-    "UpdateFolderRequest":{
-      "type":"structure",
-      "required":["FolderId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "UpdateFolderRequest": {
+      "type": "structure",
+      "required": ["FolderId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "FolderId":{
-          "shape":"ResourceIdType",
-          "location":"uri",
-          "locationName":"FolderId"
+        "FolderId": {
+          "shape": "ResourceIdType",
+          "location": "uri",
+          "locationName": "FolderId"
         },
-        "Name":{"shape":"ResourceNameType"},
-        "ParentFolderId":{"shape":"ResourceIdType"},
-        "ResourceState":{"shape":"ResourceStateType"}
+        "Name": { "shape": "ResourceNameType" },
+        "ParentFolderId": { "shape": "ResourceIdType" },
+        "ResourceState": { "shape": "ResourceStateType" }
       }
     },
-    "UpdateUserRequest":{
-      "type":"structure",
-      "required":["UserId"],
-      "members":{
-        "AuthenticationToken":{
-          "shape":"AuthenticationHeaderType",
-          "location":"header",
-          "locationName":"Authentication"
+    "UpdateUserRequest": {
+      "type": "structure",
+      "required": ["UserId"],
+      "members": {
+        "AuthenticationToken": {
+          "shape": "AuthenticationHeaderType",
+          "location": "header",
+          "locationName": "Authentication"
         },
-        "UserId":{
-          "shape":"IdType",
-          "location":"uri",
-          "locationName":"UserId"
+        "UserId": {
+          "shape": "IdType",
+          "location": "uri",
+          "locationName": "UserId"
         },
-        "GivenName":{"shape":"UserAttributeValueType"},
-        "Surname":{"shape":"UserAttributeValueType"},
-        "Type":{"shape":"UserType"},
-        "StorageRule":{"shape":"StorageRuleType"},
-        "TimeZoneId":{"shape":"TimeZoneIdType"},
-        "Locale":{"shape":"LocaleType"}
+        "GivenName": { "shape": "UserAttributeValueType" },
+        "Surname": { "shape": "UserAttributeValueType" },
+        "Type": { "shape": "UserType" },
+        "StorageRule": { "shape": "StorageRuleType" },
+        "TimeZoneId": { "shape": "TimeZoneIdType" },
+        "Locale": { "shape": "LocaleType" }
       }
     },
-    "UpdateUserResponse":{
-      "type":"structure",
-      "members":{
-        "User":{"shape":"User"}
+    "UpdateUserResponse": {
+      "type": "structure",
+      "members": {
+        "User": { "shape": "User" }
       }
     },
-    "UploadMetadata":{
-      "type":"structure",
-      "members":{
-        "UploadUrl":{"shape":"UrlType"},
-        "SignedHeaders":{"shape":"SignedHeaderMap"}
+    "UploadMetadata": {
+      "type": "structure",
+      "members": {
+        "UploadUrl": { "shape": "UrlType" },
+        "SignedHeaders": { "shape": "SignedHeaderMap" }
       }
     },
-    "UrlType":{
-      "type":"string",
-      "max":1024,
-      "min":1,
-      "sensitive":true
+    "UrlType": {
+      "type": "string",
+      "max": 1024,
+      "min": 1,
+      "sensitive": true
     },
-    "User":{
-      "type":"structure",
-      "members":{
-        "Id":{"shape":"IdType"},
-        "Username":{"shape":"UsernameType"},
-        "EmailAddress":{"shape":"EmailAddressType"},
-        "GivenName":{"shape":"UserAttributeValueType"},
-        "Surname":{"shape":"UserAttributeValueType"},
-        "OrganizationId":{"shape":"IdType"},
-        "RootFolderId":{"shape":"ResourceIdType"},
-        "RecycleBinFolderId":{"shape":"ResourceIdType"},
-        "Status":{"shape":"UserStatusType"},
-        "Type":{"shape":"UserType"},
-        "CreatedTimestamp":{"shape":"TimestampType"},
-        "ModifiedTimestamp":{"shape":"TimestampType"},
-        "TimeZoneId":{"shape":"TimeZoneIdType"},
-        "Locale":{"shape":"LocaleType"},
-        "Storage":{"shape":"UserStorageMetadata"}
+    "User": {
+      "type": "structure",
+      "members": {
+        "Id": { "shape": "IdType" },
+        "Username": { "shape": "UsernameType" },
+        "EmailAddress": { "shape": "EmailAddressType" },
+        "GivenName": { "shape": "UserAttributeValueType" },
+        "Surname": { "shape": "UserAttributeValueType" },
+        "OrganizationId": { "shape": "IdType" },
+        "RootFolderId": { "shape": "ResourceIdType" },
+        "RecycleBinFolderId": { "shape": "ResourceIdType" },
+        "Status": { "shape": "UserStatusType" },
+        "Type": { "shape": "UserType" },
+        "CreatedTimestamp": { "shape": "TimestampType" },
+        "ModifiedTimestamp": { "shape": "TimestampType" },
+        "TimeZoneId": { "shape": "TimeZoneIdType" },
+        "Locale": { "shape": "LocaleType" },
+        "Storage": { "shape": "UserStorageMetadata" }
       }
     },
-    "UserActivities":{
-      "type":"list",
-      "member":{"shape":"Activity"}
+    "UserActivities": {
+      "type": "list",
+      "member": { "shape": "Activity" }
     },
-    "UserAttributeValueType":{
-      "type":"string",
-      "max":64,
-      "min":1
+    "UserAttributeValueType": {
+      "type": "string",
+      "max": 64,
+      "min": 1
     },
-    "UserFilterType":{
-      "type":"string",
-      "enum":[
-        "ALL",
-        "ACTIVE_PENDING"
-      ]
+    "UserFilterType": {
+      "type": "string",
+      "enum": ["ALL", "ACTIVE_PENDING"]
     },
-    "UserIdsType":{
-      "type":"string",
-      "max":2000,
-      "min":1,
-      "pattern":"[&\\w+-.@, ]+"
+    "UserIdsType": {
+      "type": "string",
+      "max": 2000,
+      "min": 1,
+      "pattern": "[&\\w+-.@, ]+"
     },
-    "UserMetadata":{
-      "type":"structure",
-      "members":{
-        "Id":{"shape":"IdType"},
-        "Username":{"shape":"UsernameType"},
-        "GivenName":{"shape":"UserAttributeValueType"},
-        "Surname":{"shape":"UserAttributeValueType"},
-        "EmailAddress":{"shape":"EmailAddressType"}
+    "UserMetadata": {
+      "type": "structure",
+      "members": {
+        "Id": { "shape": "IdType" },
+        "Username": { "shape": "UsernameType" },
+        "GivenName": { "shape": "UserAttributeValueType" },
+        "Surname": { "shape": "UserAttributeValueType" },
+        "EmailAddress": { "shape": "EmailAddressType" }
       }
     },
-    "UserMetadataList":{
-      "type":"list",
-      "member":{"shape":"UserMetadata"}
+    "UserMetadataList": {
+      "type": "list",
+      "member": { "shape": "UserMetadata" }
     },
-    "UserSortType":{
-      "type":"string",
-      "enum":[
+    "UserSortType": {
+      "type": "string",
+      "enum": [
         "USER_NAME",
         "FULL_NAME",
         "STORAGE_LIMIT",
@@ -2652,33 +2544,26 @@
         "STORAGE_USED"
       ]
     },
-    "UserStatusType":{
-      "type":"string",
-      "enum":[
-        "ACTIVE",
-        "INACTIVE",
-        "PENDING"
-      ]
+    "UserStatusType": {
+      "type": "string",
+      "enum": ["ACTIVE", "INACTIVE", "PENDING"]
     },
-    "UserStorageMetadata":{
-      "type":"structure",
-      "members":{
-        "StorageUtilizedInBytes":{"shape":"SizeType"},
-        "StorageRule":{"shape":"StorageRuleType"}
+    "UserStorageMetadata": {
+      "type": "structure",
+      "members": {
+        "StorageUtilizedInBytes": { "shape": "SizeType" },
+        "StorageRule": { "shape": "StorageRuleType" }
       }
     },
-    "UserType":{
-      "type":"string",
-      "enum":[
-        "USER",
-        "ADMIN"
-      ]
+    "UserType": {
+      "type": "string",
+      "enum": ["USER", "ADMIN"]
     },
-    "UsernameType":{
-      "type":"string",
-      "max":256,
-      "min":1,
-      "pattern":"[\\w\\-+.]+(@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]+)?"
+    "UsernameType": {
+      "type": "string",
+      "max": 256,
+      "min": 1,
+      "pattern": "[\\w\\-+.]+(@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]+)?"
     }
   }
 }

@@ -7,8 +7,7 @@
   "shapes": {
     "BadRequestException": {
       "base": "<p>An exception object returned when a request fails.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Double": {
       "base": null,
@@ -56,8 +55,7 @@
     },
     "PutEventsInput": {
       "base": "<p>A container for the data needed for a PutEvent operation</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Session": {
       "base": "<p>Describes the session. Session information is required on ALL events.</p>",

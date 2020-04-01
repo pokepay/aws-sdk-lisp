@@ -13,33 +13,27 @@
   "shapes": {
     "AssumeRoleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssumeRoleResponse": {
       "base": "<p>Contains the response to a successful <a>AssumeRole</a> request, including temporary AWS credentials that can be used to make AWS requests. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AssumeRoleWithSAMLRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssumeRoleWithSAMLResponse": {
       "base": "<p>Contains the response to a successful <a>AssumeRoleWithSAML</a> request, including temporary AWS credentials that can be used to make AWS requests. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AssumeRoleWithWebIdentityRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssumeRoleWithWebIdentityResponse": {
       "base": "<p>Contains the response to a successful <a>AssumeRoleWithWebIdentity</a> request, including temporary AWS credentials that can be used to make AWS requests. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AssumedRoleUser": {
       "base": "<p>The identifiers for the temporary security credentials that the operation returns.</p>",
@@ -68,18 +62,15 @@
     },
     "DecodeAuthorizationMessageRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DecodeAuthorizationMessageResponse": {
       "base": "<p>A document that contains additional information about the authorization status of a request from an encoded message that is returned in response to an AWS request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ExpiredTokenException": {
       "base": "<p>The web identity token that was passed is expired or is not valid. Get a new identity token from the identity provider and then retry the request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "FederatedUser": {
       "base": "<p>Identifiers for the federated user that is associated with the credentials.</p>",
@@ -89,53 +80,43 @@
     },
     "GetCallerIdentityRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetCallerIdentityResponse": {
       "base": "<p>Contains the response to a successful <a>GetCallerIdentity</a> request, including information about the entity making the request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetFederationTokenRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetFederationTokenResponse": {
       "base": "<p>Contains the response to a successful <a>GetFederationToken</a> request, including temporary AWS credentials that can be used to make AWS requests. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetSessionTokenRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetSessionTokenResponse": {
       "base": "<p>Contains the response to a successful <a>GetSessionToken</a> request, including temporary AWS credentials that can be used to make AWS requests. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IDPCommunicationErrorException": {
       "base": "<p>The request could not be fulfilled because the non-AWS identity provider (IDP) that was asked to verify the incoming identity token could not be reached. This is often a transient error caused by network conditions. Retry the request a limited number of times so that you don't exceed the request rate. If the error persists, the non-AWS identity provider might be down or not responding.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IDPRejectedClaimException": {
       "base": "<p>The identity provider (IdP) reported that authentication failed. This might be because the claim is invalid.</p> <p>If this error is returned for the <code>AssumeRoleWithWebIdentity</code> operation, it can also mean that the claim has expired or has been explicitly revoked. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidAuthorizationMessageException": {
       "base": "<p>The error returned if the message passed to <code>DecodeAuthorizationMessage</code> was invalid. This can happen if the token contains invalid characters, such as linebreaks. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidIdentityTokenException": {
       "base": "<p>The web identity token that was passed could not be validated by AWS. Get a new identity token from the identity provider and then retry the request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Issuer": {
       "base": null,
@@ -146,8 +127,7 @@
     },
     "MalformedPolicyDocumentException": {
       "base": "<p>The request was rejected because the policy document was malformed. The error message describes the specific error.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NameQualifier": {
       "base": null,
@@ -157,13 +137,11 @@
     },
     "PackedPolicyTooLargeException": {
       "base": "<p>The request was rejected because the policy document was too large. The error message describes how big the policy document is, in packed form, as a percentage of what the API allows.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegionDisabledException": {
       "base": "<p>STS is not activated in the requested region for the account that is being asked to generate credentials. The account administrator must use the IAM console to activate STS in that region. For more information, see <a href=\"http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html\">Activating and Deactivating AWS STS in an AWS Region</a> in the <i>IAM User Guide</i>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SAMLAssertionType": {
       "base": null,

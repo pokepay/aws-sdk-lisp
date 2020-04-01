@@ -98,18 +98,15 @@
     },
     "AssociateConfigurationItemsToApplicationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateConfigurationItemsToApplicationResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AuthorizationErrorException": {
       "base": "<p>The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Boolean": {
       "base": null,
@@ -201,23 +198,19 @@
     },
     "CreateApplicationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateApplicationResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTagsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTagsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CustomerAgentInfo": {
       "base": "<p>Inventory data for installed discovery agents.</p>",
@@ -233,33 +226,27 @@
     },
     "DeleteApplicationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteApplicationsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTagsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTagsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAgentsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAgentsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConfigurationsAttribute": {
       "base": null,
@@ -275,58 +262,47 @@
     },
     "DescribeConfigurationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConfigurationsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeExportConfigurationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeExportConfigurationsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeExportTasksRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeExportTasksResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateConfigurationItemsFromApplicationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateConfigurationItemsFromApplicationResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ExportConfigurationsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ExportDataFormat": {
       "base": null,
@@ -427,13 +403,11 @@
     },
     "GetDiscoverySummaryRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDiscoverySummaryResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Integer": {
       "base": null,
@@ -462,33 +436,27 @@
     },
     "InvalidParameterException": {
       "base": "<p>One or more parameters are not valid. Verify the parameters and try again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterValueException": {
       "base": "<p>The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListConfigurationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListConfigurationsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListServerNeighborsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListServerNeighborsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Long": {
       "base": null,
@@ -541,8 +509,7 @@
     },
     "OperationNotPermittedException": {
       "base": "<p>This operation is not permitted.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OrderByElement": {
       "base": "<p>A field and direction for ordered output.</p>",
@@ -558,43 +525,35 @@
     },
     "ResourceNotFoundException": {
       "base": "<p>The specified configuration ID was not located. Verify the configuration ID and try again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ServerInternalErrorException": {
       "base": "<p>The server experienced an internal error. Try again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StartDataCollectionByAgentIdsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartDataCollectionByAgentIdsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartExportTaskRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartExportTaskResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopDataCollectionByAgentIdsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopDataCollectionByAgentIdsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "String": {
       "base": null,
@@ -677,13 +636,11 @@
     },
     "UpdateApplicationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateApplicationResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "orderString": {
       "base": null,

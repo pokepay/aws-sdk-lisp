@@ -80,8 +80,7 @@
   "shapes": {
     "AccessDeniedException": {
       "base": "<p>Access to a resource was denied.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Action": {
       "base": null,
@@ -99,8 +98,7 @@
     },
     "AlreadyExistsException": {
       "base": "<p>A resource to be created or added already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttemptCount": {
       "base": null,
@@ -110,33 +108,27 @@
     },
     "BatchCreatePartitionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchCreatePartitionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchDeleteConnectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchDeleteConnectionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchDeletePartitionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchDeletePartitionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchDeletePartitionValueList": {
       "base": null,
@@ -152,23 +144,19 @@
     },
     "BatchDeleteTableRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchDeleteTableResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchGetPartitionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchGetPartitionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchGetPartitionValueList": {
       "base": null,
@@ -382,13 +370,11 @@
     },
     "ConcurrentModificationException": {
       "base": "<p>Two processes are trying to modify a resource simultaneously.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConcurrentRunsExceededException": {
       "base": "<p>Too many jobs are being run concurrently.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Condition": {
       "base": null,
@@ -490,13 +476,11 @@
     },
     "CrawlerNotRunningException": {
       "base": "<p>The specified crawler is not running.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CrawlerRunningException": {
       "base": "<p>The operation cannot be performed because the crawler is already running.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CrawlerState": {
       "base": null,
@@ -506,8 +490,7 @@
     },
     "CrawlerStoppingException": {
       "base": "<p>The specified crawler is stopping.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CrawlerTargets": {
       "base": "<p>Specifies crawler targets.</p>",
@@ -519,53 +502,43 @@
     },
     "CreateClassifierRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateClassifierResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateConnectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateConnectionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCrawlerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCrawlerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDatabaseRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDatabaseResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDevEndpointRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDevEndpointResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateGrokClassifierRequest": {
       "base": "<p>Specifies a Grok classifier for CreateClassifier to create.</p>",
@@ -575,63 +548,51 @@
     },
     "CreateJobRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateJobResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePartitionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePartitionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateScriptRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateScriptResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTableRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTableResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTriggerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTriggerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateUserDefinedFunctionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateUserDefinedFunctionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CronExpression": {
       "base": null,
@@ -700,13 +661,11 @@
     },
     "DeleteClassifierRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteClassifierResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteConnectionNameList": {
       "base": null,
@@ -716,93 +675,75 @@
     },
     "DeleteConnectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteConnectionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteCrawlerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteCrawlerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDatabaseRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDatabaseResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDevEndpointRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDevEndpointResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteJobRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteJobResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePartitionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePartitionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTableRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTableResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTriggerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTriggerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteUserDefinedFunctionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteUserDefinedFunctionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescriptionString": {
       "base": null,
@@ -852,8 +793,7 @@
     },
     "EntityNotFoundException": {
       "base": "<p>A specified entity does not exist</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorByName": {
       "base": null,
@@ -968,43 +908,35 @@
     },
     "GetCatalogImportStatusRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetCatalogImportStatusResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetClassifierRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetClassifierResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetClassifiersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetClassifiersResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetConnectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetConnectionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetConnectionsFilter": {
       "base": "<p>Filters the connection definitions returned by the <code>GetConnections</code> API.</p>",
@@ -1014,183 +946,147 @@
     },
     "GetConnectionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetConnectionsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetCrawlerMetricsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetCrawlerMetricsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetCrawlerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetCrawlerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetCrawlersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetCrawlersResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDatabaseRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDatabaseResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDatabasesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDatabasesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDataflowGraphRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDataflowGraphResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDevEndpointRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDevEndpointResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDevEndpointsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDevEndpointsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetJobRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetJobResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetJobRunRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetJobRunResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetJobRunsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetJobRunsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetJobsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetJobsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetMappingRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetMappingResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPartitionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPartitionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPartitionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPartitionsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPlanRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPlanResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTableRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTableResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTableVersionsList": {
       "base": null,
@@ -1200,63 +1096,51 @@
     },
     "GetTableVersionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTableVersionsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTablesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTablesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTriggerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTriggerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTriggersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTriggersResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetUserDefinedFunctionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetUserDefinedFunctionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetUserDefinedFunctionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetUserDefinedFunctionsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GrokClassifier": {
       "base": "<p>A classifier that uses <code>grok</code>.</p>",
@@ -1286,18 +1170,15 @@
     },
     "IdempotentParameterMismatchException": {
       "base": "<p>The same unique identifier was associated with two different records.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportCatalogToGlueRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportCatalogToGlueResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Integer": {
       "base": null,
@@ -1330,13 +1211,11 @@
     },
     "InternalServiceException": {
       "base": "<p>An internal service error occurred.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidInputException": {
       "base": "<p>The input provided was not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "JdbcTarget": {
       "base": "<p>Specifies a JDBC target for a crawl.</p>",
@@ -1687,8 +1566,7 @@
     },
     "NoScheduleException": {
       "base": "<p>There is no applicable schedule.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NonNegativeDouble": {
       "base": null,
@@ -1711,8 +1589,7 @@
     },
     "OperationTimeoutException": {
       "base": "<p>The operation timed out.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Order": {
       "base": "<p>Specifies the sort order of a sorted column.</p>",
@@ -1876,18 +1753,15 @@
     },
     "ResetJobBookmarkRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResetJobBookmarkResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNumberLimitExceededException": {
       "base": "<p>A resource numerical limit was exceeded.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceType": {
       "base": null,
@@ -1953,18 +1827,15 @@
     },
     "SchedulerNotRunningException": {
       "base": "<p>The specified scheduler is not running.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SchedulerRunningException": {
       "base": "<p>The specified scheduler is already running.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SchedulerTransitioningException": {
       "base": "<p>The specified scheduler is transitioning.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SchemaChangePolicy": {
       "base": "<p>Crawler policy for update and deletion behavior.</p>",
@@ -2013,73 +1884,59 @@
     },
     "StartCrawlerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartCrawlerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartCrawlerScheduleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartCrawlerScheduleResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartJobRunRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartJobRunResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartTriggerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartTriggerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopCrawlerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopCrawlerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopCrawlerScheduleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopCrawlerScheduleResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopTriggerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopTriggerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StorageDescriptor": {
       "base": "<p>Describes the physical storage of table data.</p>",
@@ -2277,63 +2134,51 @@
     },
     "UpdateClassifierRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateClassifierResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateConnectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateConnectionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateCrawlerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateCrawlerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateCrawlerScheduleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateCrawlerScheduleResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDatabaseRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDatabaseResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDevEndpointRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDevEndpointResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateGrokClassifierRequest": {
       "base": "<p>Specifies a Grok classifier to update when passed to UpdateClassifier.</p>",
@@ -2343,53 +2188,43 @@
     },
     "UpdateJobRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateJobResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdatePartitionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdatePartitionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTableRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTableResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTriggerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTriggerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateUserDefinedFunctionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateUserDefinedFunctionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UriString": {
       "base": null,
@@ -2421,8 +2256,7 @@
     },
     "ValidationException": {
       "base": "<p>A value could not be validated.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ValueString": {
       "base": null,
@@ -2452,8 +2286,7 @@
     },
     "VersionMismatchException": {
       "base": "<p>There was a version conflict.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "VersionString": {
       "base": null,

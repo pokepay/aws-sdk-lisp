@@ -74,8 +74,7 @@
     },
     "AlreadyExistsException": {
       "base": "<p>The request was rejected because it attempted to create a resource that already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ArnType": {
       "base": null,
@@ -101,13 +100,11 @@
     },
     "CancelKeyDeletionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelKeyDeletionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CiphertextType": {
       "base": null,
@@ -125,28 +122,23 @@
     },
     "CreateAliasRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateGrantRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateGrantResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateKeyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateKeyResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DataKeySpec": {
       "base": null,
@@ -169,38 +161,31 @@
     },
     "DecryptRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DecryptResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteAliasRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteImportedKeyMaterialRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DependencyTimeoutException": {
       "base": "<p>The system timed out while trying to fulfill the request. The request can be retried.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeKeyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeKeyResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescriptionType": {
       "base": null,
@@ -212,38 +197,31 @@
     },
     "DisableKeyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableKeyRotationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisabledException": {
       "base": "<p>The request was rejected because the specified CMK is not enabled.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableKeyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableKeyRotationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EncryptRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EncryptResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EncryptionContextKey": {
       "base": null,
@@ -305,68 +283,55 @@
     },
     "ExpiredImportTokenException": {
       "base": "<p>The request was rejected because the provided import token is expired. Use <a>GetParametersForImport</a> to retrieve a new import token and public key, use the new public key to encrypt the key material, and then try the request again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GenerateDataKeyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GenerateDataKeyResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GenerateDataKeyWithoutPlaintextRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GenerateDataKeyWithoutPlaintextResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GenerateRandomRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GenerateRandomResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetKeyPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetKeyPolicyResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetKeyRotationStatusRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetKeyRotationStatusResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetParametersForImportRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetParametersForImportResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GrantConstraints": {
       "base": "<p>A structure that you can use to allow certain operations in the grant only when the desired encryption context is present. For more information about encryption context, see <a href=\"http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html\">Encryption Context</a> in the <i>AWS Key Management Service Developer Guide</i>.</p> <p>Grant constraints apply only to operations that accept encryption context as input. For example, the <code> <a>DescribeKey</a> </code> operation does not accept encryption context as input. A grant that allows the <code>DescribeKey</code> operation does so regardless of the grant constraints. In constrast, the <code> <a>Encrypt</a> </code> operation accepts encryption context as input. A grant that allows the <code>Encrypt</code> operation does so only when the encryption context of the <code>Encrypt</code> operation satisfies the grant constraints.</p>",
@@ -438,68 +403,55 @@
     },
     "ImportKeyMaterialRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportKeyMaterialResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "IncorrectKeyMaterialException": {
       "base": "<p>The request was rejected because the provided key material is invalid or is not the same key material that was previously imported into this customer master key (CMK).</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidAliasNameException": {
       "base": "<p>The request was rejected because the specified alias name is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidArnException": {
       "base": "<p>The request was rejected because a specified ARN was not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidCiphertextException": {
       "base": "<p>The request was rejected because the specified ciphertext has been corrupted or is otherwise invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidGrantIdException": {
       "base": "<p>The request was rejected because the specified <code>GrantId</code> is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidGrantTokenException": {
       "base": "<p>The request was rejected because the specified grant token is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidImportTokenException": {
       "base": "<p>The request was rejected because the provided import token is invalid or is associated with a different customer master key (CMK).</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidKeyUsageException": {
       "base": "<p>The request was rejected because the specified <code>KeySpec</code> value is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidMarkerException": {
       "base": "<p>The request was rejected because the marker that specifies where pagination should next begin is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSInternalException": {
       "base": "<p>The request was rejected because an internal exception occurred. The request can be retried.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KMSInvalidStateException": {
       "base": "<p>The request was rejected because the state of the specified resource is not valid for this request.</p> <p>For more information about how key state affects the use of a CMK, see <a href=\"http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html\">How Key State Affects Use of a Customer Master Key</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KeyIdType": {
       "base": null,
@@ -580,8 +532,7 @@
     },
     "KeyUnavailableException": {
       "base": "<p>The request was rejected because the specified CMK was not available. The request can be retried.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KeyUsageType": {
       "base": null,
@@ -592,8 +543,7 @@
     },
     "LimitExceededException": {
       "base": "<p>The request was rejected because a limit was exceeded. For more information, see <a href=\"http://docs.aws.amazon.com/kms/latest/developerguide/limits.html\">Limits</a> in the <i>AWS Key Management Service Developer Guide</i>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LimitType": {
       "base": null,
@@ -608,63 +558,51 @@
     },
     "ListAliasesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAliasesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListGrantsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListGrantsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListKeyPoliciesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListKeyPoliciesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListKeysRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListKeysResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListResourceTagsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListResourceTagsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRetirableGrantsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "MalformedPolicyDocumentException": {
       "base": "<p>The request was rejected because the specified policy is not syntactically or semantically correct.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MarkerType": {
       "base": null,
@@ -684,8 +622,7 @@
     },
     "NotFoundException": {
       "base": "<p>The request was rejected because the specified entity or resource could not be found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NumberOfBytesType": {
       "base": null,
@@ -753,38 +690,31 @@
     },
     "PutKeyPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReEncryptRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReEncryptResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RetireGrantRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RevokeGrantRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ScheduleKeyDeletionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ScheduleKeyDeletionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Tag": {
       "base": "<p>A key-value pair. A tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty (null) strings.</p>",
@@ -794,8 +724,7 @@
     },
     "TagException": {
       "base": "<p>The request was rejected because one or more tags are not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TagKeyList": {
       "base": null,
@@ -820,8 +749,7 @@
     },
     "TagResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TagValueType": {
       "base": null,
@@ -831,23 +759,19 @@
     },
     "UnsupportedOperationException": {
       "base": "<p>The request was rejected because a specified parameter is not supported or a specified resource is not valid for this operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UntagResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateAliasRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateKeyDescriptionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "WrappingKeySpec": {
       "base": null,

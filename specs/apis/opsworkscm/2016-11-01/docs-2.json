@@ -33,13 +33,11 @@
     },
     "AssociateNodeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateNodeResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttributeName": {
       "base": null,
@@ -106,103 +104,83 @@
     },
     "CreateBackupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateBackupResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateServerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateServerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBackupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBackupResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteServerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteServerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountAttributesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountAttributesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBackupsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBackupsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNodeAssociationStatusRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNodeAssociationStatusResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeServersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeServersResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateNodeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateNodeResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EngineAttribute": {
       "base": "<p>A name and value pair that is specific to the engine of the server. </p>",
@@ -249,13 +227,11 @@
     },
     "InvalidNextTokenException": {
       "base": "<p>This occurs when the provided nextToken is not valid. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidStateException": {
       "base": "<p>The resource is in a state that does not allow you to perform a specified action. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KeyPair": {
       "base": null,
@@ -266,8 +242,7 @@
     },
     "LimitExceededException": {
       "base": "<p>The limit of servers or backups has been reached. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaintenanceStatus": {
       "base": null,
@@ -314,23 +289,19 @@
     },
     "ResourceAlreadyExistsException": {
       "base": "<p>The requested resource cannot be created because it already exists. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The requested resource does not exist, or access was denied. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RestoreServerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RestoreServerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Server": {
       "base": "<p>Describes a configuration management server. </p>",
@@ -393,13 +364,11 @@
     },
     "StartMaintenanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartMaintenanceResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "String": {
       "base": null,
@@ -486,28 +455,23 @@
     },
     "UpdateServerEngineAttributesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateServerEngineAttributesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateServerRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateServerResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ValidationException": {
       "base": "<p>One or more of the provided request parameters are not valid. </p>",
-      "refs": {
-      }
+      "refs": {}
     }
   }
 }

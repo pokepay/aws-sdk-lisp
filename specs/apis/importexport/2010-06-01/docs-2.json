@@ -37,23 +37,19 @@
     },
     "BucketPermissionException": {
       "base": "The account specified does not have the appropriate bucket permissions.",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelJobInput": {
       "base": "Input structure for the CancelJob operation.",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelJobOutput": {
       "base": "Output structure for the CancelJob operation.",
-      "refs": {
-      }
+      "refs": {}
     },
     "CanceledJobIdException": {
       "base": "The specified job ID has been canceled and is no longer valid.",
-      "refs": {
-      }
+      "refs": {}
     },
     "Carrier": {
       "base": "Name of the shipping company. This value is included when the LocationCode is \"Returned\".",
@@ -63,18 +59,15 @@
     },
     "CreateJobInput": {
       "base": "Input structure for the CreateJob operation.",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateJobOutput": {
       "base": "Output structure for the CreateJob operation.",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateJobQuotaExceededException": {
       "base": "Each account can create only a certain number of jobs per day. If you need to create more than this, please contact awsimportexport@amazon.com to explain your particular use case.",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreationDate": {
       "base": "Timestamp of the CreateJob request in ISO8601 date format. For example \"2010-03-28T20:27:35Z\".",
@@ -128,8 +121,7 @@
     },
     "ExpiredJobIdException": {
       "base": "Indicates that the specified job has expired out of the system.",
-      "refs": {
-      }
+      "refs": {}
     },
     "GenericString": {
       "base": null,
@@ -141,63 +133,51 @@
     },
     "GetShippingLabelInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetShippingLabelOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetStatusInput": {
       "base": "Input structure for the GetStatus operation.",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetStatusOutput": {
       "base": "Output structure for the GetStatus operation.",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidAccessKeyIdException": {
       "base": "The AWS Access Key ID specified in the request did not match the manifest's accessKeyId value. The manifest and the request authentication must use the same AWS Access Key ID.",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidAddressException": {
       "base": "The address specified in the manifest is invalid.",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidCustomsException": {
       "base": "One or more customs parameters was invalid. Please correct and resubmit.",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidFileSystemException": {
       "base": "File system specified in export manifest is invalid.",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidJobIdException": {
       "base": "The JOBID was missing, not found, or not associated with the AWS account.",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidManifestFieldException": {
       "base": "One or more manifest fields was invalid. Please correct and resubmit.",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterException": {
       "base": "One or more parameters had an invalid value.",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidVersionException": {
       "base": "The client tool version is invalid.",
-      "refs": {
-      }
+      "refs": {}
     },
     "IsCanceled": {
       "base": "Indicates whether the job was canceled.",
@@ -252,13 +232,11 @@
     },
     "ListJobsInput": {
       "base": "Input structure for the ListJobs operation.",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListJobsOutput": {
       "base": "Output structure for the ListJobs operation.",
-      "refs": {
-      }
+      "refs": {}
     },
     "LocationCode": {
       "base": "A token representing the location of the storage device, such as \"AtAWS\".",
@@ -286,8 +264,7 @@
     },
     "MalformedManifestException": {
       "base": "Your manifest is not well-formed.",
-      "refs": {
-      }
+      "refs": {}
     },
     "Manifest": {
       "base": "The UTF-8 encoded text of the manifest file.",
@@ -316,28 +293,23 @@
     },
     "MissingCustomsException": {
       "base": "One or more required customs parameters was missing from the manifest.",
-      "refs": {
-      }
+      "refs": {}
     },
     "MissingManifestFieldException": {
       "base": "One or more required fields were missing from the manifest file. Please correct and resubmit.",
-      "refs": {
-      }
+      "refs": {}
     },
     "MissingParameterException": {
       "base": "One or more required parameters was missing from the request.",
-      "refs": {
-      }
+      "refs": {}
     },
     "MultipleRegionsException": {
       "base": "Your manifest file contained buckets from multiple regions. A job is restricted to buckets from one region. Please correct and resubmit.",
-      "refs": {
-      }
+      "refs": {}
     },
     "NoSuchBucketException": {
       "base": "The specified bucket does not exist. Create the specified bucket or change the manifest's bucket, exportBucket, or logBucket field to a bucket that the account, as specified by the manifest's Access Key ID, has write permissions to.",
-      "refs": {
-      }
+      "refs": {}
     },
     "ProgressCode": {
       "base": "A token representing the state of the job, such as \"Started\".",
@@ -386,23 +358,19 @@
     },
     "UnableToCancelJobIdException": {
       "base": "AWS Import/Export cannot cancel the job",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnableToUpdateJobIdException": {
       "base": "AWS Import/Export cannot update the job",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateJobInput": {
       "base": "Input structure for the UpateJob operation.",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateJobOutput": {
       "base": "Output structure for the UpateJob operation.",
-      "refs": {
-      }
+      "refs": {}
     },
     "ValidateOnly": {
       "base": "Validate the manifest and parameter values in the request but do not actually create a job.",

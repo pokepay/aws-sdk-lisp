@@ -77,18 +77,15 @@
     },
     "CancelJobRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelJobResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ClientException": {
       "base": "<p>These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permission to use the action or resource, or specifying an identifier that is not valid. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ComputeEnvironmentDetail": {
       "base": "<p>An object representing an AWS Batch compute environment.</p>",
@@ -150,93 +147,75 @@
     },
     "CreateComputeEnvironmentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateComputeEnvironmentResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateJobQueueRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateJobQueueResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteComputeEnvironmentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteComputeEnvironmentResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteJobQueueRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteJobQueueResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterJobDefinitionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterJobDefinitionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeComputeEnvironmentsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeComputeEnvironmentsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeJobDefinitionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeJobDefinitionsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeJobQueuesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeJobQueuesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeJobsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeJobsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EnvironmentVariables": {
       "base": null,
@@ -381,13 +360,11 @@
     },
     "ListJobsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListJobsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Long": {
       "base": null,
@@ -423,13 +400,11 @@
     },
     "RegisterJobDefinitionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterJobDefinitionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RetryStrategy": {
       "base": "<p>The retry strategy associated with a job.</p>",
@@ -442,8 +417,7 @@
     },
     "ServerException": {
       "base": "<p>These errors are usually caused by a server issue.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "String": {
       "base": null,
@@ -561,13 +535,11 @@
     },
     "SubmitJobRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SubmitJobResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TagsMap": {
       "base": null,
@@ -577,13 +549,11 @@
     },
     "TerminateJobRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TerminateJobResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Ulimit": {
       "base": "<p>The <code>ulimit</code> settings to pass to the container.</p>",
@@ -600,23 +570,19 @@
     },
     "UpdateComputeEnvironmentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateComputeEnvironmentResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateJobQueueRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateJobQueueResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Volume": {
       "base": "<p>A data volume used in a job's container properties.</p>",

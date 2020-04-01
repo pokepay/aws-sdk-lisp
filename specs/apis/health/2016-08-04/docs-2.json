@@ -24,33 +24,27 @@
     },
     "DescribeAffectedEntitiesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAffectedEntitiesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEntityAggregatesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEntityAggregatesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventAggregatesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventAggregatesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventDetailsFailedSet": {
       "base": null,
@@ -60,13 +54,11 @@
     },
     "DescribeEventDetailsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventDetailsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventDetailsSuccessfulSet": {
       "base": null,
@@ -76,23 +68,19 @@
     },
     "DescribeEventTypesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventTypesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EntityAggregate": {
       "base": "<p>The number of entities that are affected by one or more events. Returned by the <a>DescribeEntityAggregates</a> operation.</p>",
@@ -206,13 +194,11 @@
     },
     "InvalidPaginationToken": {
       "base": "<p>The specified pagination token (<code>nextToken</code>) is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnsupportedLocale": {
       "base": "<p>The specified locale is not supported.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "accountId": {
       "base": null,

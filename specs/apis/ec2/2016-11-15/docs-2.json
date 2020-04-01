@@ -240,23 +240,19 @@
   "shapes": {
     "AcceptReservedInstancesExchangeQuoteRequest": {
       "base": "<p>Contains the parameters for accepting the quote.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AcceptReservedInstancesExchangeQuoteResult": {
       "base": "<p>The result of the exchange and whether it was <code>successful</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AcceptVpcPeeringConnectionRequest": {
       "base": "<p>Contains the parameters for AcceptVpcPeeringConnection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AcceptVpcPeeringConnectionResult": {
       "base": "<p>Contains the output of AcceptVpcPeeringConnection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AccountAttribute": {
       "base": "<p>Describes an account attribute.</p>",
@@ -332,23 +328,19 @@
     },
     "AllocateAddressRequest": {
       "base": "<p>Contains the parameters for AllocateAddress.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AllocateAddressResult": {
       "base": "<p>Contains the output of AllocateAddress.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AllocateHostsRequest": {
       "base": "<p>Contains the parameters for AllocateHosts.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AllocateHostsResult": {
       "base": "<p>Contains the output of AllocateHosts.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AllocationIdList": {
       "base": null,
@@ -379,73 +371,59 @@
     },
     "AssignIpv6AddressesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssignIpv6AddressesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssignPrivateIpAddressesRequest": {
       "base": "<p>Contains the parameters for AssignPrivateIpAddresses.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateAddressRequest": {
       "base": "<p>Contains the parameters for AssociateAddress.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateAddressResult": {
       "base": "<p>Contains the output of AssociateAddress.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateDhcpOptionsRequest": {
       "base": "<p>Contains the parameters for AssociateDhcpOptions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateIamInstanceProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateIamInstanceProfileResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateRouteTableRequest": {
       "base": "<p>Contains the parameters for AssociateRouteTable.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateRouteTableResult": {
       "base": "<p>Contains the output of AssociateRouteTable.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateSubnetCidrBlockRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateSubnetCidrBlockResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateVpcCidrBlockRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateVpcCidrBlockResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociationIdList": {
       "base": null,
@@ -455,43 +433,35 @@
     },
     "AttachClassicLinkVpcRequest": {
       "base": "<p>Contains the parameters for AttachClassicLinkVpc.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachClassicLinkVpcResult": {
       "base": "<p>Contains the output of AttachClassicLinkVpc.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachInternetGatewayRequest": {
       "base": "<p>Contains the parameters for AttachInternetGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachNetworkInterfaceRequest": {
       "base": "<p>Contains the parameters for AttachNetworkInterface.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachNetworkInterfaceResult": {
       "base": "<p>Contains the output of AttachNetworkInterface.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachVolumeRequest": {
       "base": "<p>Contains the parameters for AttachVolume.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachVpnGatewayRequest": {
       "base": "<p>Contains the parameters for AttachVpnGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachVpnGatewayResult": {
       "base": "<p>Contains the output of AttachVpnGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachmentStatus": {
       "base": null,
@@ -553,13 +523,11 @@
     },
     "AuthorizeSecurityGroupEgressRequest": {
       "base": "<p>Contains the parameters for AuthorizeSecurityGroupEgress.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AuthorizeSecurityGroupIngressRequest": {
       "base": "<p>Contains the parameters for AuthorizeSecurityGroupIngress.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AutoPlacement": {
       "base": null,
@@ -966,13 +934,11 @@
     },
     "BundleInstanceRequest": {
       "base": "<p>Contains the parameters for BundleInstance.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BundleInstanceResult": {
       "base": "<p>Contains the output of BundleInstance.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BundleTask": {
       "base": "<p>Describes a bundle task.</p>",
@@ -1008,43 +974,35 @@
     },
     "CancelBundleTaskRequest": {
       "base": "<p>Contains the parameters for CancelBundleTask.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelBundleTaskResult": {
       "base": "<p>Contains the output of CancelBundleTask.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelConversionRequest": {
       "base": "<p>Contains the parameters for CancelConversionTask.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelExportTaskRequest": {
       "base": "<p>Contains the parameters for CancelExportTask.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelImportTaskRequest": {
       "base": "<p>Contains the parameters for CancelImportTask.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelImportTaskResult": {
       "base": "<p>Contains the output for CancelImportTask.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelReservedInstancesListingRequest": {
       "base": "<p>Contains the parameters for CancelReservedInstancesListing.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelReservedInstancesListingResult": {
       "base": "<p>Contains the output of CancelReservedInstancesListing.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelSpotFleetRequestsError": {
       "base": "<p>Describes a Spot fleet error.</p>",
@@ -1066,13 +1024,11 @@
     },
     "CancelSpotFleetRequestsRequest": {
       "base": "<p>Contains the parameters for CancelSpotFleetRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelSpotFleetRequestsResponse": {
       "base": "<p>Contains the output of CancelSpotFleetRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelSpotFleetRequestsSuccessItem": {
       "base": "<p>Describes a Spot fleet request that was successfully canceled.</p>",
@@ -1094,13 +1050,11 @@
     },
     "CancelSpotInstanceRequestsRequest": {
       "base": "<p>Contains the parameters for CancelSpotInstanceRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelSpotInstanceRequestsResult": {
       "base": "<p>Contains the output of CancelSpotInstanceRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelledSpotInstanceRequest": {
       "base": "<p>Describes a request to cancel a Spot instance.</p>",
@@ -1147,13 +1101,11 @@
     },
     "ConfirmProductInstanceRequest": {
       "base": "<p>Contains the parameters for ConfirmProductInstance.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConfirmProductInstanceResult": {
       "base": "<p>Contains the output of ConfirmProductInstance.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ContainerFormat": {
       "base": null,
@@ -1184,238 +1136,191 @@
     },
     "CopyImageRequest": {
       "base": "<p>Contains the parameters for CopyImage.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CopyImageResult": {
       "base": "<p>Contains the output of CopyImage.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CopySnapshotRequest": {
       "base": "<p>Contains the parameters for CopySnapshot.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CopySnapshotResult": {
       "base": "<p>Contains the output of CopySnapshot.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCustomerGatewayRequest": {
       "base": "<p>Contains the parameters for CreateCustomerGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCustomerGatewayResult": {
       "base": "<p>Contains the output of CreateCustomerGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDefaultVpcRequest": {
       "base": "<p>Contains the parameters for CreateDefaultVpc.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDefaultVpcResult": {
       "base": "<p>Contains the output of CreateDefaultVpc.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDhcpOptionsRequest": {
       "base": "<p>Contains the parameters for CreateDhcpOptions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDhcpOptionsResult": {
       "base": "<p>Contains the output of CreateDhcpOptions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateEgressOnlyInternetGatewayRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateEgressOnlyInternetGatewayResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateFlowLogsRequest": {
       "base": "<p>Contains the parameters for CreateFlowLogs.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateFlowLogsResult": {
       "base": "<p>Contains the output of CreateFlowLogs.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateFpgaImageRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateFpgaImageResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateImageRequest": {
       "base": "<p>Contains the parameters for CreateImage.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateImageResult": {
       "base": "<p>Contains the output of CreateImage.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstanceExportTaskRequest": {
       "base": "<p>Contains the parameters for CreateInstanceExportTask.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstanceExportTaskResult": {
       "base": "<p>Contains the output for CreateInstanceExportTask.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInternetGatewayRequest": {
       "base": "<p>Contains the parameters for CreateInternetGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInternetGatewayResult": {
       "base": "<p>Contains the output of CreateInternetGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateKeyPairRequest": {
       "base": "<p>Contains the parameters for CreateKeyPair.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNatGatewayRequest": {
       "base": "<p>Contains the parameters for CreateNatGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNatGatewayResult": {
       "base": "<p>Contains the output of CreateNatGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNetworkAclEntryRequest": {
       "base": "<p>Contains the parameters for CreateNetworkAclEntry.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNetworkAclRequest": {
       "base": "<p>Contains the parameters for CreateNetworkAcl.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNetworkAclResult": {
       "base": "<p>Contains the output of CreateNetworkAcl.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNetworkInterfacePermissionRequest": {
       "base": "<p>Contains the parameters for CreateNetworkInterfacePermission.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNetworkInterfacePermissionResult": {
       "base": "<p>Contains the output of CreateNetworkInterfacePermission.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNetworkInterfaceRequest": {
       "base": "<p>Contains the parameters for CreateNetworkInterface.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNetworkInterfaceResult": {
       "base": "<p>Contains the output of CreateNetworkInterface.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePlacementGroupRequest": {
       "base": "<p>Contains the parameters for CreatePlacementGroup.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateReservedInstancesListingRequest": {
       "base": "<p>Contains the parameters for CreateReservedInstancesListing.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateReservedInstancesListingResult": {
       "base": "<p>Contains the output of CreateReservedInstancesListing.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRouteRequest": {
       "base": "<p>Contains the parameters for CreateRoute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRouteResult": {
       "base": "<p>Contains the output of CreateRoute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRouteTableRequest": {
       "base": "<p>Contains the parameters for CreateRouteTable.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRouteTableResult": {
       "base": "<p>Contains the output of CreateRouteTable.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSecurityGroupRequest": {
       "base": "<p>Contains the parameters for CreateSecurityGroup.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSecurityGroupResult": {
       "base": "<p>Contains the output of CreateSecurityGroup.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSnapshotRequest": {
       "base": "<p>Contains the parameters for CreateSnapshot.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSpotDatafeedSubscriptionRequest": {
       "base": "<p>Contains the parameters for CreateSpotDatafeedSubscription.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSpotDatafeedSubscriptionResult": {
       "base": "<p>Contains the output of CreateSpotDatafeedSubscription.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSubnetRequest": {
       "base": "<p>Contains the parameters for CreateSubnet.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSubnetResult": {
       "base": "<p>Contains the output of CreateSubnet.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTagsRequest": {
       "base": "<p>Contains the parameters for CreateTags.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVolumePermission": {
       "base": "<p>Describes the user or group to be added or removed from the permissions for a volume.</p>",
@@ -1439,63 +1344,51 @@
     },
     "CreateVolumeRequest": {
       "base": "<p>Contains the parameters for CreateVolume.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpcEndpointRequest": {
       "base": "<p>Contains the parameters for CreateVpcEndpoint.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpcEndpointResult": {
       "base": "<p>Contains the output of CreateVpcEndpoint.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpcPeeringConnectionRequest": {
       "base": "<p>Contains the parameters for CreateVpcPeeringConnection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpcPeeringConnectionResult": {
       "base": "<p>Contains the output of CreateVpcPeeringConnection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpcRequest": {
       "base": "<p>Contains the parameters for CreateVpc.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpcResult": {
       "base": "<p>Contains the output of CreateVpc.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpnConnectionRequest": {
       "base": "<p>Contains the parameters for CreateVpnConnection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpnConnectionResult": {
       "base": "<p>Contains the output of CreateVpnConnection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpnConnectionRouteRequest": {
       "base": "<p>Contains the parameters for CreateVpnConnectionRoute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpnGatewayRequest": {
       "base": "<p>Contains the parameters for CreateVpnGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateVpnGatewayResult": {
       "base": "<p>Contains the output of CreateVpnGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CurrencyCodeValues": {
       "base": null,
@@ -1615,218 +1508,175 @@
     },
     "DeleteCustomerGatewayRequest": {
       "base": "<p>Contains the parameters for DeleteCustomerGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDhcpOptionsRequest": {
       "base": "<p>Contains the parameters for DeleteDhcpOptions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteEgressOnlyInternetGatewayRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteEgressOnlyInternetGatewayResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteFlowLogsRequest": {
       "base": "<p>Contains the parameters for DeleteFlowLogs.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteFlowLogsResult": {
       "base": "<p>Contains the output of DeleteFlowLogs.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteInternetGatewayRequest": {
       "base": "<p>Contains the parameters for DeleteInternetGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteKeyPairRequest": {
       "base": "<p>Contains the parameters for DeleteKeyPair.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNatGatewayRequest": {
       "base": "<p>Contains the parameters for DeleteNatGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNatGatewayResult": {
       "base": "<p>Contains the output of DeleteNatGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNetworkAclEntryRequest": {
       "base": "<p>Contains the parameters for DeleteNetworkAclEntry.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNetworkAclRequest": {
       "base": "<p>Contains the parameters for DeleteNetworkAcl.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNetworkInterfacePermissionRequest": {
       "base": "<p>Contains the parameters for DeleteNetworkInterfacePermission.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNetworkInterfacePermissionResult": {
       "base": "<p>Contains the output for DeleteNetworkInterfacePermission.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNetworkInterfaceRequest": {
       "base": "<p>Contains the parameters for DeleteNetworkInterface.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePlacementGroupRequest": {
       "base": "<p>Contains the parameters for DeletePlacementGroup.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRouteRequest": {
       "base": "<p>Contains the parameters for DeleteRoute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRouteTableRequest": {
       "base": "<p>Contains the parameters for DeleteRouteTable.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSecurityGroupRequest": {
       "base": "<p>Contains the parameters for DeleteSecurityGroup.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSnapshotRequest": {
       "base": "<p>Contains the parameters for DeleteSnapshot.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSpotDatafeedSubscriptionRequest": {
       "base": "<p>Contains the parameters for DeleteSpotDatafeedSubscription.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSubnetRequest": {
       "base": "<p>Contains the parameters for DeleteSubnet.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTagsRequest": {
       "base": "<p>Contains the parameters for DeleteTags.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVolumeRequest": {
       "base": "<p>Contains the parameters for DeleteVolume.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpcEndpointsRequest": {
       "base": "<p>Contains the parameters for DeleteVpcEndpoints.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpcEndpointsResult": {
       "base": "<p>Contains the output of DeleteVpcEndpoints.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpcPeeringConnectionRequest": {
       "base": "<p>Contains the parameters for DeleteVpcPeeringConnection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpcPeeringConnectionResult": {
       "base": "<p>Contains the output of DeleteVpcPeeringConnection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpcRequest": {
       "base": "<p>Contains the parameters for DeleteVpc.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpnConnectionRequest": {
       "base": "<p>Contains the parameters for DeleteVpnConnection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpnConnectionRouteRequest": {
       "base": "<p>Contains the parameters for DeleteVpnConnectionRoute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVpnGatewayRequest": {
       "base": "<p>Contains the parameters for DeleteVpnGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterImageRequest": {
       "base": "<p>Contains the parameters for DeregisterImage.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountAttributesRequest": {
       "base": "<p>Contains the parameters for DescribeAccountAttributes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountAttributesResult": {
       "base": "<p>Contains the output of DescribeAccountAttributes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAddressesRequest": {
       "base": "<p>Contains the parameters for DescribeAddresses.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAddressesResult": {
       "base": "<p>Contains the output of DescribeAddresses.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAvailabilityZonesRequest": {
       "base": "<p>Contains the parameters for DescribeAvailabilityZones.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAvailabilityZonesResult": {
       "base": "<p>Contains the output of DescribeAvailabiltyZones.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBundleTasksRequest": {
       "base": "<p>Contains the parameters for DescribeBundleTasks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBundleTasksResult": {
       "base": "<p>Contains the output of DescribeBundleTasks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeClassicLinkInstancesRequest": {
       "base": "<p>Contains the parameters for DescribeClassicLinkInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeClassicLinkInstancesResult": {
       "base": "<p>Contains the output of DescribeClassicLinkInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConversionTaskList": {
       "base": null,
@@ -1836,673 +1686,539 @@
     },
     "DescribeConversionTasksRequest": {
       "base": "<p>Contains the parameters for DescribeConversionTasks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConversionTasksResult": {
       "base": "<p>Contains the output for DescribeConversionTasks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCustomerGatewaysRequest": {
       "base": "<p>Contains the parameters for DescribeCustomerGateways.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCustomerGatewaysResult": {
       "base": "<p>Contains the output of DescribeCustomerGateways.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDhcpOptionsRequest": {
       "base": "<p>Contains the parameters for DescribeDhcpOptions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDhcpOptionsResult": {
       "base": "<p>Contains the output of DescribeDhcpOptions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEgressOnlyInternetGatewaysRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEgressOnlyInternetGatewaysResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticGpusRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeElasticGpusResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeExportTasksRequest": {
       "base": "<p>Contains the parameters for DescribeExportTasks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeExportTasksResult": {
       "base": "<p>Contains the output for DescribeExportTasks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFlowLogsRequest": {
       "base": "<p>Contains the parameters for DescribeFlowLogs.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFlowLogsResult": {
       "base": "<p>Contains the output of DescribeFlowLogs.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFpgaImagesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFpgaImagesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeHostReservationOfferingsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeHostReservationOfferingsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeHostReservationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeHostReservationsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeHostsRequest": {
       "base": "<p>Contains the parameters for DescribeHosts.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeHostsResult": {
       "base": "<p>Contains the output of DescribeHosts.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeIamInstanceProfileAssociationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeIamInstanceProfileAssociationsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeIdFormatRequest": {
       "base": "<p>Contains the parameters for DescribeIdFormat.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeIdFormatResult": {
       "base": "<p>Contains the output of DescribeIdFormat.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeIdentityIdFormatRequest": {
       "base": "<p>Contains the parameters for DescribeIdentityIdFormat.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeIdentityIdFormatResult": {
       "base": "<p>Contains the output of DescribeIdentityIdFormat.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImageAttributeRequest": {
       "base": "<p>Contains the parameters for DescribeImageAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImagesRequest": {
       "base": "<p>Contains the parameters for DescribeImages.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImagesResult": {
       "base": "<p>Contains the output of DescribeImages.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImportImageTasksRequest": {
       "base": "<p>Contains the parameters for DescribeImportImageTasks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImportImageTasksResult": {
       "base": "<p>Contains the output for DescribeImportImageTasks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImportSnapshotTasksRequest": {
       "base": "<p>Contains the parameters for DescribeImportSnapshotTasks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImportSnapshotTasksResult": {
       "base": "<p>Contains the output for DescribeImportSnapshotTasks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstanceAttributeRequest": {
       "base": "<p>Contains the parameters for DescribeInstanceAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstanceStatusRequest": {
       "base": "<p>Contains the parameters for DescribeInstanceStatus.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstanceStatusResult": {
       "base": "<p>Contains the output of DescribeInstanceStatus.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstancesRequest": {
       "base": "<p>Contains the parameters for DescribeInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstancesResult": {
       "base": "<p>Contains the output of DescribeInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInternetGatewaysRequest": {
       "base": "<p>Contains the parameters for DescribeInternetGateways.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInternetGatewaysResult": {
       "base": "<p>Contains the output of DescribeInternetGateways.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeKeyPairsRequest": {
       "base": "<p>Contains the parameters for DescribeKeyPairs.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeKeyPairsResult": {
       "base": "<p>Contains the output of DescribeKeyPairs.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMovingAddressesRequest": {
       "base": "<p>Contains the parameters for DescribeMovingAddresses.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMovingAddressesResult": {
       "base": "<p>Contains the output of DescribeMovingAddresses.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNatGatewaysRequest": {
       "base": "<p>Contains the parameters for DescribeNatGateways.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNatGatewaysResult": {
       "base": "<p>Contains the output of DescribeNatGateways.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkAclsRequest": {
       "base": "<p>Contains the parameters for DescribeNetworkAcls.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkAclsResult": {
       "base": "<p>Contains the output of DescribeNetworkAcls.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkInterfaceAttributeRequest": {
       "base": "<p>Contains the parameters for DescribeNetworkInterfaceAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkInterfaceAttributeResult": {
       "base": "<p>Contains the output of DescribeNetworkInterfaceAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkInterfacePermissionsRequest": {
       "base": "<p>Contains the parameters for DescribeNetworkInterfacePermissions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkInterfacePermissionsResult": {
       "base": "<p>Contains the output for DescribeNetworkInterfacePermissions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkInterfacesRequest": {
       "base": "<p>Contains the parameters for DescribeNetworkInterfaces.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNetworkInterfacesResult": {
       "base": "<p>Contains the output of DescribeNetworkInterfaces.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePlacementGroupsRequest": {
       "base": "<p>Contains the parameters for DescribePlacementGroups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePlacementGroupsResult": {
       "base": "<p>Contains the output of DescribePlacementGroups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePrefixListsRequest": {
       "base": "<p>Contains the parameters for DescribePrefixLists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePrefixListsResult": {
       "base": "<p>Contains the output of DescribePrefixLists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRegionsRequest": {
       "base": "<p>Contains the parameters for DescribeRegions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRegionsResult": {
       "base": "<p>Contains the output of DescribeRegions.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesListingsRequest": {
       "base": "<p>Contains the parameters for DescribeReservedInstancesListings.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesListingsResult": {
       "base": "<p>Contains the output of DescribeReservedInstancesListings.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesModificationsRequest": {
       "base": "<p>Contains the parameters for DescribeReservedInstancesModifications.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesModificationsResult": {
       "base": "<p>Contains the output of DescribeReservedInstancesModifications.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesOfferingsRequest": {
       "base": "<p>Contains the parameters for DescribeReservedInstancesOfferings.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesOfferingsResult": {
       "base": "<p>Contains the output of DescribeReservedInstancesOfferings.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesRequest": {
       "base": "<p>Contains the parameters for DescribeReservedInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedInstancesResult": {
       "base": "<p>Contains the output for DescribeReservedInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRouteTablesRequest": {
       "base": "<p>Contains the parameters for DescribeRouteTables.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRouteTablesResult": {
       "base": "<p>Contains the output of DescribeRouteTables.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScheduledInstanceAvailabilityRequest": {
       "base": "<p>Contains the parameters for DescribeScheduledInstanceAvailability.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScheduledInstanceAvailabilityResult": {
       "base": "<p>Contains the output of DescribeScheduledInstanceAvailability.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScheduledInstancesRequest": {
       "base": "<p>Contains the parameters for DescribeScheduledInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScheduledInstancesResult": {
       "base": "<p>Contains the output of DescribeScheduledInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSecurityGroupReferencesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSecurityGroupReferencesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSecurityGroupsRequest": {
       "base": "<p>Contains the parameters for DescribeSecurityGroups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSecurityGroupsResult": {
       "base": "<p>Contains the output of DescribeSecurityGroups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotAttributeRequest": {
       "base": "<p>Contains the parameters for DescribeSnapshotAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotAttributeResult": {
       "base": "<p>Contains the output of DescribeSnapshotAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotsRequest": {
       "base": "<p>Contains the parameters for DescribeSnapshots.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotsResult": {
       "base": "<p>Contains the output of DescribeSnapshots.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotDatafeedSubscriptionRequest": {
       "base": "<p>Contains the parameters for DescribeSpotDatafeedSubscription.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotDatafeedSubscriptionResult": {
       "base": "<p>Contains the output of DescribeSpotDatafeedSubscription.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotFleetInstancesRequest": {
       "base": "<p>Contains the parameters for DescribeSpotFleetInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotFleetInstancesResponse": {
       "base": "<p>Contains the output of DescribeSpotFleetInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotFleetRequestHistoryRequest": {
       "base": "<p>Contains the parameters for DescribeSpotFleetRequestHistory.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotFleetRequestHistoryResponse": {
       "base": "<p>Contains the output of DescribeSpotFleetRequestHistory.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotFleetRequestsRequest": {
       "base": "<p>Contains the parameters for DescribeSpotFleetRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotFleetRequestsResponse": {
       "base": "<p>Contains the output of DescribeSpotFleetRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotInstanceRequestsRequest": {
       "base": "<p>Contains the parameters for DescribeSpotInstanceRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotInstanceRequestsResult": {
       "base": "<p>Contains the output of DescribeSpotInstanceRequests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotPriceHistoryRequest": {
       "base": "<p>Contains the parameters for DescribeSpotPriceHistory.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSpotPriceHistoryResult": {
       "base": "<p>Contains the output of DescribeSpotPriceHistory.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStaleSecurityGroupsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStaleSecurityGroupsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSubnetsRequest": {
       "base": "<p>Contains the parameters for DescribeSubnets.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSubnetsResult": {
       "base": "<p>Contains the output of DescribeSubnets.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsRequest": {
       "base": "<p>Contains the parameters for DescribeTags.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsResult": {
       "base": "<p>Contains the output of DescribeTags.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumeAttributeRequest": {
       "base": "<p>Contains the parameters for DescribeVolumeAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumeAttributeResult": {
       "base": "<p>Contains the output of DescribeVolumeAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumeStatusRequest": {
       "base": "<p>Contains the parameters for DescribeVolumeStatus.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumeStatusResult": {
       "base": "<p>Contains the output of DescribeVolumeStatus.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumesModificationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumesModificationsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumesRequest": {
       "base": "<p>Contains the parameters for DescribeVolumes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVolumesResult": {
       "base": "<p>Contains the output of DescribeVolumes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcAttributeRequest": {
       "base": "<p>Contains the parameters for DescribeVpcAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcAttributeResult": {
       "base": "<p>Contains the output of DescribeVpcAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcClassicLinkDnsSupportRequest": {
       "base": "<p>Contains the parameters for DescribeVpcClassicLinkDnsSupport.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcClassicLinkDnsSupportResult": {
       "base": "<p>Contains the output of DescribeVpcClassicLinkDnsSupport.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcClassicLinkRequest": {
       "base": "<p>Contains the parameters for DescribeVpcClassicLink.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcClassicLinkResult": {
       "base": "<p>Contains the output of DescribeVpcClassicLink.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcEndpointServicesRequest": {
       "base": "<p>Contains the parameters for DescribeVpcEndpointServices.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcEndpointServicesResult": {
       "base": "<p>Contains the output of DescribeVpcEndpointServices.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcEndpointsRequest": {
       "base": "<p>Contains the parameters for DescribeVpcEndpoints.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcEndpointsResult": {
       "base": "<p>Contains the output of DescribeVpcEndpoints.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcPeeringConnectionsRequest": {
       "base": "<p>Contains the parameters for DescribeVpcPeeringConnections.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcPeeringConnectionsResult": {
       "base": "<p>Contains the output of DescribeVpcPeeringConnections.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcsRequest": {
       "base": "<p>Contains the parameters for DescribeVpcs.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpcsResult": {
       "base": "<p>Contains the output of DescribeVpcs.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpnConnectionsRequest": {
       "base": "<p>Contains the parameters for DescribeVpnConnections.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpnConnectionsResult": {
       "base": "<p>Contains the output of DescribeVpnConnections.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpnGatewaysRequest": {
       "base": "<p>Contains the parameters for DescribeVpnGateways.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVpnGatewaysResult": {
       "base": "<p>Contains the output of DescribeVpnGateways.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachClassicLinkVpcRequest": {
       "base": "<p>Contains the parameters for DetachClassicLinkVpc.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachClassicLinkVpcResult": {
       "base": "<p>Contains the output of DetachClassicLinkVpc.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachInternetGatewayRequest": {
       "base": "<p>Contains the parameters for DetachInternetGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachNetworkInterfaceRequest": {
       "base": "<p>Contains the parameters for DetachNetworkInterface.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachVolumeRequest": {
       "base": "<p>Contains the parameters for DetachVolume.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachVpnGatewayRequest": {
       "base": "<p>Contains the parameters for DetachVpnGateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeviceType": {
       "base": null,
@@ -2550,68 +2266,55 @@
     },
     "DisableVgwRoutePropagationRequest": {
       "base": "<p>Contains the parameters for DisableVgwRoutePropagation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableVpcClassicLinkDnsSupportRequest": {
       "base": "<p>Contains the parameters for DisableVpcClassicLinkDnsSupport.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableVpcClassicLinkDnsSupportResult": {
       "base": "<p>Contains the output of DisableVpcClassicLinkDnsSupport.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableVpcClassicLinkRequest": {
       "base": "<p>Contains the parameters for DisableVpcClassicLink.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableVpcClassicLinkResult": {
       "base": "<p>Contains the output of DisableVpcClassicLink.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateAddressRequest": {
       "base": "<p>Contains the parameters for DisassociateAddress.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateIamInstanceProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateIamInstanceProfileResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateRouteTableRequest": {
       "base": "<p>Contains the parameters for DisassociateRouteTable.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateSubnetCidrBlockRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateSubnetCidrBlockResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateVpcCidrBlockRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateVpcCidrBlockResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DiskImage": {
       "base": "<p>Describes a disk image.</p>",
@@ -2785,33 +2488,27 @@
     },
     "EnableVgwRoutePropagationRequest": {
       "base": "<p>Contains the parameters for EnableVgwRoutePropagation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableVolumeIORequest": {
       "base": "<p>Contains the parameters for EnableVolumeIO.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableVpcClassicLinkDnsSupportRequest": {
       "base": "<p>Contains the parameters for EnableVpcClassicLinkDnsSupport.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableVpcClassicLinkDnsSupportResult": {
       "base": "<p>Contains the output of EnableVpcClassicLinkDnsSupport.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableVpcClassicLinkRequest": {
       "base": "<p>Contains the parameters for EnableVpcClassicLink.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableVpcClassicLinkResult": {
       "base": "<p>Contains the output of EnableVpcClassicLink.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EventCode": {
       "base": null,
@@ -3024,53 +2721,43 @@
     },
     "GetConsoleOutputRequest": {
       "base": "<p>Contains the parameters for GetConsoleOutput.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetConsoleOutputResult": {
       "base": "<p>Contains the output of GetConsoleOutput.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetConsoleScreenshotRequest": {
       "base": "<p>Contains the parameters for the request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetConsoleScreenshotResult": {
       "base": "<p>Contains the output of the request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetHostReservationPurchasePreviewRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetHostReservationPurchasePreviewResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPasswordDataRequest": {
       "base": "<p>Contains the parameters for GetPasswordData.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetPasswordDataResult": {
       "base": "<p>Contains the output of GetPasswordData.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetReservedInstancesExchangeQuoteRequest": {
       "base": "<p>Contains the parameters for GetReservedInstanceExchangeQuote.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetReservedInstancesExchangeQuoteResult": {
       "base": "<p>Contains the output of GetReservedInstancesExchangeQuote.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GroupIdStringList": {
       "base": null,
@@ -3266,8 +2953,7 @@
     },
     "ImageAttribute": {
       "base": "<p>Describes an image attribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ImageAttributeName": {
       "base": null,
@@ -3313,13 +2999,11 @@
     },
     "ImportImageRequest": {
       "base": "<p>Contains the parameters for ImportImage.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportImageResult": {
       "base": "<p>Contains the output for ImportImage.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportImageTask": {
       "base": "<p>Describes an import image task.</p>",
@@ -3341,13 +3025,11 @@
     },
     "ImportInstanceRequest": {
       "base": "<p>Contains the parameters for ImportInstance.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportInstanceResult": {
       "base": "<p>Contains the output for ImportInstance.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportInstanceTaskDetails": {
       "base": "<p>Describes an import instance task.</p>",
@@ -3369,23 +3051,19 @@
     },
     "ImportKeyPairRequest": {
       "base": "<p>Contains the parameters for ImportKeyPair.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportKeyPairResult": {
       "base": "<p>Contains the output of ImportKeyPair.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportSnapshotRequest": {
       "base": "<p>Contains the parameters for ImportSnapshot.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportSnapshotResult": {
       "base": "<p>Contains the output for ImportSnapshot.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportSnapshotTask": {
       "base": "<p>Describes an import snapshot task.</p>",
@@ -3408,13 +3086,11 @@
     },
     "ImportVolumeRequest": {
       "base": "<p>Contains the parameters for ImportVolume.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportVolumeResult": {
       "base": "<p>Contains the output for ImportVolume.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportVolumeTaskDetails": {
       "base": "<p>Describes an import volume task.</p>",
@@ -3430,8 +3106,7 @@
     },
     "InstanceAttribute": {
       "base": "<p>Describes an instance attribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InstanceAttributeName": {
       "base": null,
@@ -3953,8 +3628,7 @@
     },
     "KeyPair": {
       "base": "<p>Describes a key pair.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KeyPairInfo": {
       "base": "<p>Describes a key pair.</p>",
@@ -4041,128 +3715,103 @@
     },
     "ModifyHostsRequest": {
       "base": "<p>Contains the parameters for ModifyHosts.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyHostsResult": {
       "base": "<p>Contains the output of ModifyHosts.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyIdFormatRequest": {
       "base": "<p>Contains the parameters of ModifyIdFormat.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyIdentityIdFormatRequest": {
       "base": "<p>Contains the parameters of ModifyIdentityIdFormat.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyImageAttributeRequest": {
       "base": "<p>Contains the parameters for ModifyImageAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyInstanceAttributeRequest": {
       "base": "<p>Contains the parameters for ModifyInstanceAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyInstancePlacementRequest": {
       "base": "<p>Contains the parameters for ModifyInstancePlacement.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyInstancePlacementResult": {
       "base": "<p>Contains the output of ModifyInstancePlacement.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyNetworkInterfaceAttributeRequest": {
       "base": "<p>Contains the parameters for ModifyNetworkInterfaceAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyReservedInstancesRequest": {
       "base": "<p>Contains the parameters for ModifyReservedInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyReservedInstancesResult": {
       "base": "<p>Contains the output of ModifyReservedInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifySnapshotAttributeRequest": {
       "base": "<p>Contains the parameters for ModifySnapshotAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifySpotFleetRequestRequest": {
       "base": "<p>Contains the parameters for ModifySpotFleetRequest.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifySpotFleetRequestResponse": {
       "base": "<p>Contains the output of ModifySpotFleetRequest.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifySubnetAttributeRequest": {
       "base": "<p>Contains the parameters for ModifySubnetAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyVolumeAttributeRequest": {
       "base": "<p>Contains the parameters for ModifyVolumeAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyVolumeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyVolumeResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyVpcAttributeRequest": {
       "base": "<p>Contains the parameters for ModifyVpcAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyVpcEndpointRequest": {
       "base": "<p>Contains the parameters for ModifyVpcEndpoint.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyVpcEndpointResult": {
       "base": "<p>Contains the output of ModifyVpcEndpoint.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyVpcPeeringConnectionOptionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyVpcPeeringConnectionOptionsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "MonitorInstancesRequest": {
       "base": "<p>Contains the parameters for MonitorInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MonitorInstancesResult": {
       "base": "<p>Contains the output of MonitorInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Monitoring": {
       "base": "<p>Describes the monitoring of an instance.</p>",
@@ -4179,13 +3828,11 @@
     },
     "MoveAddressToVpcRequest": {
       "base": "<p>Contains the parameters for MoveAddressToVpc.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MoveAddressToVpcResult": {
       "base": "<p>Contains the output of MoveAddressToVpc.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MoveStatus": {
       "base": null,
@@ -4706,13 +4353,11 @@
     },
     "PurchaseHostReservationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PurchaseHostReservationResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PurchaseRequest": {
       "base": "<p>Describes a request to purchase Scheduled Instances.</p>",
@@ -4728,23 +4373,19 @@
     },
     "PurchaseReservedInstancesOfferingRequest": {
       "base": "<p>Contains the parameters for PurchaseReservedInstancesOffering.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PurchaseReservedInstancesOfferingResult": {
       "base": "<p>Contains the output of PurchaseReservedInstancesOffering.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PurchaseScheduledInstancesRequest": {
       "base": "<p>Contains the parameters for PurchaseScheduledInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PurchaseScheduledInstancesResult": {
       "base": "<p>Contains the output of PurchaseScheduledInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PurchaseSet": {
       "base": null,
@@ -4777,8 +4418,7 @@
     },
     "RebootInstancesRequest": {
       "base": "<p>Contains the parameters for RebootInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RecurringCharge": {
       "base": "<p>Describes a recurring charge.</p>",
@@ -4819,78 +4459,63 @@
     },
     "RegisterImageRequest": {
       "base": "<p>Contains the parameters for RegisterImage.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterImageResult": {
       "base": "<p>Contains the output of RegisterImage.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RejectVpcPeeringConnectionRequest": {
       "base": "<p>Contains the parameters for RejectVpcPeeringConnection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RejectVpcPeeringConnectionResult": {
       "base": "<p>Contains the output of RejectVpcPeeringConnection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReleaseAddressRequest": {
       "base": "<p>Contains the parameters for ReleaseAddress.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReleaseHostsRequest": {
       "base": "<p>Contains the parameters for ReleaseHosts.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReleaseHostsResult": {
       "base": "<p>Contains the output of ReleaseHosts.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceIamInstanceProfileAssociationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceIamInstanceProfileAssociationResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceNetworkAclAssociationRequest": {
       "base": "<p>Contains the parameters for ReplaceNetworkAclAssociation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceNetworkAclAssociationResult": {
       "base": "<p>Contains the output of ReplaceNetworkAclAssociation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceNetworkAclEntryRequest": {
       "base": "<p>Contains the parameters for ReplaceNetworkAclEntry.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceRouteRequest": {
       "base": "<p>Contains the parameters for ReplaceRoute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceRouteTableAssociationRequest": {
       "base": "<p>Contains the parameters for ReplaceRouteTableAssociation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceRouteTableAssociationResult": {
       "base": "<p>Contains the output of ReplaceRouteTableAssociation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReportInstanceReasonCodes": {
       "base": null,
@@ -4900,8 +4525,7 @@
     },
     "ReportInstanceStatusRequest": {
       "base": "<p>Contains the parameters for ReportInstanceStatus.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReportStatusType": {
       "base": null,
@@ -4926,23 +4550,19 @@
     },
     "RequestSpotFleetRequest": {
       "base": "<p>Contains the parameters for RequestSpotFleet.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RequestSpotFleetResponse": {
       "base": "<p>Contains the output of RequestSpotFleet.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RequestSpotInstancesRequest": {
       "base": "<p>Contains the parameters for RequestSpotInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RequestSpotInstancesResult": {
       "base": "<p>Contains the output of RequestSpotInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RequestSpotLaunchSpecification": {
       "base": "<p>Describes the launch specification for an instance.</p>",
@@ -5122,23 +4742,19 @@
     },
     "ResetImageAttributeRequest": {
       "base": "<p>Contains the parameters for ResetImageAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResetInstanceAttributeRequest": {
       "base": "<p>Contains the parameters for ResetInstanceAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResetNetworkInterfaceAttributeRequest": {
       "base": "<p>Contains the parameters for ResetNetworkInterfaceAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResetSnapshotAttributeRequest": {
       "base": "<p>Contains the parameters for ResetSnapshotAttribute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceIdList": {
       "base": null,
@@ -5178,23 +4794,19 @@
     },
     "RestoreAddressToClassicRequest": {
       "base": "<p>Contains the parameters for RestoreAddressToClassic.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RestoreAddressToClassicResult": {
       "base": "<p>Contains the output of RestoreAddressToClassic.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RevokeSecurityGroupEgressRequest": {
       "base": "<p>Contains the parameters for RevokeSecurityGroupEgress.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RevokeSecurityGroupIngressRequest": {
       "base": "<p>Contains the parameters for RevokeSecurityGroupIngress.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Route": {
       "base": "<p>Describes a route in a route table.</p>",
@@ -5263,18 +4875,15 @@
     },
     "RunInstancesRequest": {
       "base": "<p>Contains the parameters for RunInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RunScheduledInstancesRequest": {
       "base": "<p>Contains the parameters for RunScheduledInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RunScheduledInstancesResult": {
       "base": "<p>Contains the output of RunScheduledInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "S3Storage": {
       "base": "<p>Describes the storage parameters for S3 and S3 buckets for an instance store-backed AMI.</p>",
@@ -5666,13 +5275,11 @@
     },
     "StartInstancesRequest": {
       "base": "<p>Contains the parameters for StartInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StartInstancesResult": {
       "base": "<p>Contains the output of StartInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "State": {
       "base": null,
@@ -5708,13 +5315,11 @@
     },
     "StopInstancesRequest": {
       "base": "<p>Contains the parameters for StopInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StopInstancesResult": {
       "base": "<p>Contains the output of StopInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Storage": {
       "base": "<p>Describes the storage location for an instance store-backed AMI.</p>",
@@ -6928,13 +6533,11 @@
     },
     "TerminateInstancesRequest": {
       "base": "<p>Contains the parameters for TerminateInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TerminateInstancesResult": {
       "base": "<p>Contains the output of TerminateInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TrafficType": {
       "base": null,
@@ -6945,28 +6548,23 @@
     },
     "UnassignIpv6AddressesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UnassignIpv6AddressesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UnassignPrivateIpAddressesRequest": {
       "base": "<p>Contains the parameters for UnassignPrivateIpAddresses.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnmonitorInstancesRequest": {
       "base": "<p>Contains the parameters for UnmonitorInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnmonitorInstancesResult": {
       "base": "<p>Contains the output of UnmonitorInstances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnsuccessfulItem": {
       "base": "<p>Information about items that were not successfully processed in a batch call.</p>",

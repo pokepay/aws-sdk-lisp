@@ -49,33 +49,27 @@
     },
     "CancelExportTaskRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateExportTaskRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateExportTaskResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateLogGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateLogStreamRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DataAlreadyAcceptedException": {
       "base": "<p>The event was already logged.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Days": {
       "base": "<p>The number of days to retain the log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, and 3653.</p>",
@@ -92,33 +86,27 @@
     },
     "DeleteDestinationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteLogGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteLogStreamRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteMetricFilterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRetentionPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSubscriptionFilterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Descending": {
       "base": null,
@@ -128,23 +116,19 @@
     },
     "DescribeDestinationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDestinationsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeExportTasksRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeExportTasksResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLimit": {
       "base": null,
@@ -159,43 +143,35 @@
     },
     "DescribeLogGroupsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLogGroupsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLogStreamsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLogStreamsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMetricFiltersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMetricFiltersResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSubscriptionFiltersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSubscriptionFiltersResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Destination": {
       "base": "<p>Represents a cross-account destination that receives subscription log events.</p>",
@@ -344,13 +320,11 @@
     },
     "FilterLogEventsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "FilterLogEventsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "FilterName": {
       "base": null,
@@ -390,13 +364,11 @@
     },
     "GetLogEventsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetLogEventsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "InputLogEvent": {
       "base": "<p>Represents a log event, which is a record of activity that was recorded by the application or resource being monitored.</p>",
@@ -424,33 +396,27 @@
     },
     "InvalidOperationException": {
       "base": "<p>The operation is not valid on the specified resource.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterException": {
       "base": "<p>A parameter is specified incorrectly.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSequenceTokenException": {
       "base": "<p>The sequence token is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LimitExceededException": {
       "base": "<p>You have reached the maximum number of resources that can be created.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsLogGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsLogGroupResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "LogEventIndex": {
       "base": null,
@@ -616,8 +582,7 @@
     },
     "OperationAbortedException": {
       "base": "<p>Multiple requests to update the same resource were in conflict.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OrderBy": {
       "base": null,
@@ -639,43 +604,35 @@
     },
     "PutDestinationPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutDestinationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutDestinationResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutLogEventsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutLogEventsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutMetricFilterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRetentionPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutSubscriptionFilterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RejectedLogEventsInfo": {
       "base": "<p>Represents the rejected events.</p>",
@@ -685,13 +642,11 @@
     },
     "ResourceAlreadyExistsException": {
       "base": "<p>The specified resource already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The specified resource does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RoleArn": {
       "base": null,
@@ -726,8 +681,7 @@
     },
     "ServiceUnavailableException": {
       "base": "<p>The service cannot complete the request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StartFromHead": {
       "base": null,
@@ -769,8 +723,7 @@
     },
     "TagLogGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TagValue": {
       "base": null,
@@ -801,13 +754,11 @@
     },
     "TestMetricFilterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TestMetricFilterResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Timestamp": {
       "base": null,
@@ -845,8 +796,7 @@
     },
     "UntagLogGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Value": {
       "base": null,

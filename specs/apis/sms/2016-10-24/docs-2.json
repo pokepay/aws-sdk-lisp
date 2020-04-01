@@ -67,33 +67,27 @@
     },
     "CreateReplicationJobRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateReplicationJobResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteReplicationJobRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteReplicationJobResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteServerCatalogRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteServerCatalogResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Description": {
       "base": "The description for a Replication Job/Run.",
@@ -107,13 +101,11 @@
     },
     "DisassociateConnectorRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateConnectorResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorMessage": {
       "base": "Error Message string",
@@ -140,63 +132,51 @@
     },
     "GetConnectorsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetConnectorsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetReplicationJobsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetReplicationJobsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetReplicationRunsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetReplicationRunsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetServersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetServersResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportServerCatalogRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportServerCatalogResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "InternalError": {
       "base": "An internal error has occured.",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterException": {
       "base": "A parameter specified in the request is not valid, is unsupported, or cannot be used.",
-      "refs": {
-      }
+      "refs": {}
     },
     "IpAddress": {
       "base": "Internet Protocol (IP) Address",
@@ -229,8 +209,7 @@
     },
     "MissingRequiredParameterException": {
       "base": "The request is missing a required parameter. Ensure that you have supplied all the required parameters for the request.",
-      "refs": {
-      }
+      "refs": {}
     },
     "NextToken": {
       "base": "Pagination token to pass as input to API call",
@@ -247,13 +226,11 @@
     },
     "NoConnectorsAvailableException": {
       "base": "No connectors are available to handle this request. Please associate connector(s) and verify any existing connectors are healthy and can respond to requests.",
-      "refs": {
-      }
+      "refs": {}
     },
     "OperationNotPermittedException": {
       "base": "The specified operation is not allowed. This error can occur for a number of reasons; for example, you might be trying to start a Replication Run before seed Replication Run.",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplicationJob": {
       "base": "Object representing a Replication Job",
@@ -264,8 +241,7 @@
     },
     "ReplicationJobAlreadyExistsException": {
       "base": "An active Replication Job already exists for the specified server.",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplicationJobId": {
       "base": "The unique identifier for a Replication Job.",
@@ -288,8 +264,7 @@
     },
     "ReplicationJobNotFoundException": {
       "base": "The specified Replication Job cannot be found.",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplicationJobState": {
       "base": "Current state of Replication Job",
@@ -324,8 +299,7 @@
     },
     "ReplicationRunLimitExceededException": {
       "base": "This user has exceeded the maximum allowed Replication Run limit.",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplicationRunList": {
       "base": "List of Replication Runs",
@@ -368,8 +342,7 @@
     },
     "ServerCannotBeReplicatedException": {
       "base": "The provided server cannot be replicated.",
-      "refs": {
-      }
+      "refs": {}
     },
     "ServerCatalogStatus": {
       "base": "Status of Server catalog",
@@ -400,13 +373,11 @@
     },
     "StartOnDemandReplicationRunRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartOnDemandReplicationRunResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Timestamp": {
       "base": "Timestamp of an operation",
@@ -423,18 +394,15 @@
     },
     "UnauthorizedOperationException": {
       "base": "This user does not have permissions to perform this operation.",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateReplicationJobRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateReplicationJobResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "VmId": {
       "base": "Unique Identifier for a VM",

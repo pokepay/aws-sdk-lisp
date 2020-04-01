@@ -54,8 +54,7 @@
   "shapes": {
     "AccessDeniedException": {
       "base": "<p>Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AccessDirection": {
       "base": null,
@@ -65,28 +64,23 @@
     },
     "AccountSetupInProgressException": {
       "base": "<p>Lightsail throws this exception when an account is still in the setup in progress state.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AllocateStaticIpRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AllocateStaticIpResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachStaticIpRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachStaticIpResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AvailabilityZone": {
       "base": "<p>Describes an Availability Zone.</p>",
@@ -143,133 +137,107 @@
     },
     "CloseInstancePublicPortsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CloseInstancePublicPortsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDomainEntryRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDomainEntryResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDomainRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDomainResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstanceSnapshotRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstanceSnapshotResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstancesFromSnapshotRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstancesFromSnapshotResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInstancesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateKeyPairRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateKeyPairResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDomainEntryRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDomainEntryResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDomainRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDomainResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteInstanceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteInstanceSnapshotRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteInstanceSnapshotResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteKeyPairRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteKeyPairResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachStaticIpRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachStaticIpResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Disk": {
       "base": "<p>Describes the hard disk (an SSD).</p>",
@@ -343,233 +311,187 @@
     },
     "DownloadDefaultKeyPairRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DownloadDefaultKeyPairResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetActiveNamesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetActiveNamesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBlueprintsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBlueprintsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBundlesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBundlesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDomainRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDomainResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDomainsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDomainsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceAccessDetailsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceAccessDetailsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceMetricDataRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceMetricDataResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstancePortStatesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstancePortStatesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceSnapshotRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceSnapshotResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceSnapshotsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceSnapshotsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceStateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceStateResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstancesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetKeyPairRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetKeyPairResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetKeyPairsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetKeyPairsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetOperationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetOperationResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetOperationsForResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetOperationsForResourceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetOperationsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetOperationsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRegionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRegionsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetStaticIpRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetStaticIpResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetStaticIpsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetStaticIpsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportKeyPairRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportKeyPairResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Instance": {
       "base": "<p>Describes an instance (a virtual private server).</p>",
@@ -668,8 +590,7 @@
     },
     "InvalidInputException": {
       "base": "<p>Lightsail throws this exception when user input does not conform to the validation rules of an input field.</p> <note> <p>Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your Region configuration to us-east-1 to create, view, or edit these resources.</p> </note>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IpAddress": {
       "base": null,
@@ -688,13 +609,11 @@
     },
     "IsVpcPeeredRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "IsVpcPeeredResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "IsoDate": {
       "base": null,
@@ -804,18 +723,15 @@
     },
     "NotFoundException": {
       "base": "<p>Lightsail throws this exception when it cannot find a resource.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OpenInstancePublicPortsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "OpenInstancePublicPortsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Operation": {
       "base": "<p>Describes the API operation.</p>",
@@ -838,8 +754,7 @@
     },
     "OperationFailureException": {
       "base": "<p>Lightsail throws this exception when an operation fails to execute.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OperationList": {
       "base": null,
@@ -875,13 +790,11 @@
     },
     "PeerVpcRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PeerVpcResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Port": {
       "base": null,
@@ -922,23 +835,19 @@
     },
     "PutInstancePublicPortsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutInstancePublicPortsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RebootInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RebootInstanceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Region": {
       "base": "<p>Describes the AWS Region.</p>",
@@ -961,13 +870,11 @@
     },
     "ReleaseStaticIpRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReleaseStaticIpResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceLocation": {
       "base": "<p>Describes the resource location.</p>",
@@ -1043,18 +950,15 @@
     },
     "ServiceException": {
       "base": "<p>A general service exception.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StartInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartInstanceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StaticIp": {
       "base": "<p>Describes the static IP.</p>",
@@ -1071,13 +975,11 @@
     },
     "StopInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopInstanceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StringList": {
       "base": null,
@@ -1089,28 +991,23 @@
     },
     "UnauthenticatedException": {
       "base": "<p>Lightsail throws this exception when the user has not been authenticated.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnpeerVpcRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UnpeerVpcResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDomainEntryRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDomainEntryResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "boolean": {
       "base": null,

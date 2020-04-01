@@ -66,28 +66,23 @@
     },
     "CloudHsmAccessDeniedException": {
       "base": "<p>The request was rejected because the requester does not have permission to perform the requested operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CloudHsmInternalFailureException": {
       "base": "<p>The request was rejected because of an AWS CloudHSM internal failure. The request can be retried.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CloudHsmInvalidRequestException": {
       "base": "<p>The request was rejected because it is not a valid request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CloudHsmResourceNotFoundException": {
       "base": "<p>The request was rejected because it refers to a resource that cannot be found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CloudHsmServiceException": {
       "base": "<p>The request was rejected because an error occurred.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Cluster": {
       "base": "<p>Contains information about an AWS CloudHSM cluster.</p>",
@@ -127,63 +122,51 @@
     },
     "CreateClusterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateClusterResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateHsmRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateHsmResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteClusterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteClusterResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteHsmRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteHsmResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBackupsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBackupsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeClustersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeClustersResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EniId": {
       "base": null,
@@ -255,13 +238,11 @@
     },
     "InitializeClusterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "InitializeClusterResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "IpAddress": {
       "base": null,
@@ -273,13 +254,11 @@
     },
     "ListTagsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxSize": {
       "base": null,
@@ -374,13 +353,11 @@
     },
     "TagResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TagResourceResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TagValue": {
       "base": null,
@@ -397,13 +374,11 @@
     },
     "UntagResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UntagResourceResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "VpcId": {
       "base": null,

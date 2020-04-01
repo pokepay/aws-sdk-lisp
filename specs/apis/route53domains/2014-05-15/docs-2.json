@@ -72,13 +72,11 @@
     },
     "CheckDomainAvailabilityRequest": {
       "base": "<p>The CheckDomainAvailability request contains the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CheckDomainAvailabilityResponse": {
       "base": "<p>The CheckDomainAvailability response includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "City": {
       "base": null,
@@ -145,33 +143,27 @@
     },
     "DeleteTagsForDomainRequest": {
       "base": "<p>The DeleteTagsForDomainRequest includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTagsForDomainResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableDomainAutoRenewRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableDomainAutoRenewResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableDomainTransferLockRequest": {
       "base": "<p>The DisableDomainTransferLock request includes the following element.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableDomainTransferLockResponse": {
       "base": "<p>The DisableDomainTransferLock response includes the following element.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DomainAuthCode": {
       "base": null,
@@ -188,8 +180,7 @@
     },
     "DomainLimitExceeded": {
       "base": "<p>The number of domains has exceeded the allowed threshold for the account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DomainName": {
       "base": null,
@@ -260,8 +251,7 @@
     },
     "DuplicateRequest": {
       "base": "<p>The request is already in progress for the domain.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DurationInYears": {
       "base": null,
@@ -281,23 +271,19 @@
     },
     "EnableDomainAutoRenewRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableDomainAutoRenewResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableDomainTransferLockRequest": {
       "base": "<p>A request to set the transfer lock for the specified domain.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableDomainTransferLockResponse": {
       "base": "<p>The EnableDomainTransferLock response includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorMessage": {
       "base": null,
@@ -343,43 +329,35 @@
     },
     "GetContactReachabilityStatusRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetContactReachabilityStatusResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDomainDetailRequest": {
       "base": "<p>The GetDomainDetail request includes the following element.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDomainDetailResponse": {
       "base": "<p>The GetDomainDetail response includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDomainSuggestionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDomainSuggestionsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetOperationDetailRequest": {
       "base": "<p>The <a>GetOperationDetail</a> request includes the following element.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetOperationDetailResponse": {
       "base": "<p>The GetOperationDetail response includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GlueIp": {
       "base": null,
@@ -407,8 +385,7 @@
     },
     "InvalidInput": {
       "base": "<p>The requested item is not acceptable. For example, for an OperationId it may refer to the ID of an operation that is already completed. For a domain name, it may not be a valid domain name or belong to the requester account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvoiceId": {
       "base": null,
@@ -426,33 +403,27 @@
     },
     "ListDomainsRequest": {
       "base": "<p>The ListDomains request includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListDomainsResponse": {
       "base": "<p>The ListDomains response includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListOperationsRequest": {
       "base": "<p>The ListOperations request includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListOperationsResponse": {
       "base": "<p>The ListOperations response includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForDomainRequest": {
       "base": "<p>The ListTagsForDomainRequest includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForDomainResponse": {
       "base": "<p>The ListTagsForDomain response includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Nameserver": {
       "base": "<p>Nameserver includes the following elements.</p>",
@@ -486,8 +457,7 @@
     },
     "OperationLimitExceeded": {
       "base": "<p>The number of operations or jobs running exceeded the allowed threshold for the account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OperationStatus": {
       "base": null,
@@ -549,13 +519,11 @@
     },
     "RegisterDomainRequest": {
       "base": "<p>The RegisterDomain request includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterDomainResponse": {
       "base": "<p>The RegisterDomain response includes the following element.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegistrarName": {
       "base": null,
@@ -583,13 +551,11 @@
     },
     "RenewDomainRequest": {
       "base": "<p>A <code>RenewDomain</code> request includes the number of years that you want to renew for and the current expiration year.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RenewDomainResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Reseller": {
       "base": null,
@@ -599,23 +565,19 @@
     },
     "ResendContactReachabilityEmailRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResendContactReachabilityEmailResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RetrieveDomainAuthCodeRequest": {
       "base": "<p>A request for the authorization code for the specified domain. To transfer a domain to another registrar, you provide this value to the new registrar.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RetrieveDomainAuthCodeResponse": {
       "base": "<p>The RetrieveDomainAuthCode response includes the following element.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "State": {
       "base": null,
@@ -631,8 +593,7 @@
     },
     "TLDRulesViolation": {
       "base": "<p>The top-level domain does not support this operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Tag": {
       "base": "<p>Each tag includes the following elements.</p>",
@@ -682,68 +643,55 @@
     },
     "TransferDomainRequest": {
       "base": "<p>The TransferDomain request includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TransferDomainResponse": {
       "base": "<p>The TranserDomain response includes the following element.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnsupportedTLD": {
       "base": "<p>Amazon Route 53 does not support this top-level domain.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDomainContactPrivacyRequest": {
       "base": "<p>The UpdateDomainContactPrivacy request includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDomainContactPrivacyResponse": {
       "base": "<p>The UpdateDomainContactPrivacy response includes the following element.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDomainContactRequest": {
       "base": "<p>The UpdateDomainContact request includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDomainContactResponse": {
       "base": "<p>The UpdateDomainContact response includes the following element.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDomainNameserversRequest": {
       "base": "<p>Replaces the current set of name servers for the domain with the specified set of name servers. If you use Amazon Route 53 as your DNS service, specify the four name servers in the delegation set for the hosted zone for the domain.</p> <p>If successful, this operation returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDomainNameserversResponse": {
       "base": "<p>The UpdateDomainNameservers response includes the following element.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTagsForDomainRequest": {
       "base": "<p>The UpdateTagsForDomainRequest includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTagsForDomainResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ViewBillingRequest": {
       "base": "<p>The ViewBilling request includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ViewBillingResponse": {
       "base": "<p>The ViewBilling response includes the following elements.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ZipCode": {
       "base": null,

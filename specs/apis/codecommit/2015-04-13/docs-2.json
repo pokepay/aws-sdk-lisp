@@ -42,23 +42,19 @@
     },
     "BatchGetRepositoriesInput": {
       "base": "<p>Represents the input of a batch get repositories operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchGetRepositoriesOutput": {
       "base": "<p>Represents the output of a batch get repositories operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BlobIdDoesNotExistException": {
       "base": "<p>The specified blob does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BlobIdRequiredException": {
       "base": "<p>A blob ID is required but was not specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BlobMetadata": {
       "base": "<p>Returns information about a specific Git blob object.</p>",
@@ -69,8 +65,7 @@
     },
     "BranchDoesNotExistException": {
       "base": "<p>The specified branch does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BranchInfo": {
       "base": "<p>Returns information about a branch.</p>",
@@ -91,8 +86,7 @@
     },
     "BranchNameExistsException": {
       "base": "<p>The specified branch name already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BranchNameList": {
       "base": null,
@@ -103,8 +97,7 @@
     },
     "BranchNameRequiredException": {
       "base": "<p>A branch name is required but was not specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ChangeTypeEnum": {
       "base": null,
@@ -132,8 +125,7 @@
     },
     "CommitDoesNotExistException": {
       "base": "<p>The specified commit does not exist or no commit was specified, and the specified repository has no default branch.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CommitId": {
       "base": null,
@@ -144,13 +136,11 @@
     },
     "CommitIdDoesNotExistException": {
       "base": "<p>The specified commit ID does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CommitIdRequiredException": {
       "base": "<p>A commit ID was not specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CommitName": {
       "base": null,
@@ -161,23 +151,19 @@
     },
     "CommitRequiredException": {
       "base": "<p>A commit was not specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateBranchInput": {
       "base": "<p>Represents the input of a create branch operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRepositoryInput": {
       "base": "<p>Represents the input of a create repository operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateRepositoryOutput": {
       "base": "<p>Represents the output of a create repository operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreationDate": {
       "base": null,
@@ -193,13 +179,11 @@
     },
     "DeleteRepositoryInput": {
       "base": "<p>Represents the input of a delete repository operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRepositoryOutput": {
       "base": "<p>Represents the output of a delete repository operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Difference": {
       "base": "<p>Returns information about a set of differences for a commit specifier.</p>",
@@ -221,178 +205,143 @@
     },
     "EncryptionIntegrityChecksFailedException": {
       "base": "<p>An encryption integrity check failed.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EncryptionKeyAccessDeniedException": {
       "base": "<p>An encryption key could not be accessed.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EncryptionKeyDisabledException": {
       "base": "<p>The encryption key is disabled.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EncryptionKeyNotFoundException": {
       "base": "<p>No encryption key was found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EncryptionKeyUnavailableException": {
       "base": "<p>The encryption key is not available.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "FileTooLargeException": {
       "base": "<p>The specified file exceeds the file size limit for AWS CodeCommit. For more information about limits in AWS CodeCommit, see <a href=\"http://docs.aws.amazon.com/codecommit/latest/userguide/limits.html\">AWS CodeCommit User Guide</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBlobInput": {
       "base": "<p>Represents the input of a get blob operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBlobOutput": {
       "base": "<p>Represents the output of a get blob operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBranchInput": {
       "base": "<p>Represents the input of a get branch operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetBranchOutput": {
       "base": "<p>Represents the output of a get branch operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetCommitInput": {
       "base": "<p>Represents the input of a get commit operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetCommitOutput": {
       "base": "<p>Represents the output of a get commit operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDifferencesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDifferencesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRepositoryInput": {
       "base": "<p>Represents the input of a get repository operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRepositoryOutput": {
       "base": "<p>Represents the output of a get repository operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRepositoryTriggersInput": {
       "base": "<p>Represents the input of a get repository triggers operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetRepositoryTriggersOutput": {
       "base": "<p>Represents the output of a get repository triggers operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidBlobIdException": {
       "base": "<p>The specified blob is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidBranchNameException": {
       "base": "<p>The specified branch name is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidCommitException": {
       "base": "<p>The specified commit is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidCommitIdException": {
       "base": "<p>The specified commit ID is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidContinuationTokenException": {
       "base": "<p>The specified continuation token is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidMaxResultsException": {
       "base": "<p>The specified number of maximum results is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidOrderException": {
       "base": "<p>The specified sort order is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidPathException": {
       "base": "<p>The specified path is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRepositoryDescriptionException": {
       "base": "<p>The specified repository description is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRepositoryNameException": {
       "base": "<p>At least one specified repository name is not valid.</p> <note> <p>This exception only occurs when a specified repository name is not valid. Other exceptions occur when a required repository parameter is missing, or when a specified repository does not exist.</p> </note>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRepositoryTriggerBranchNameException": {
       "base": "<p>One or more branch names specified for the trigger is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRepositoryTriggerCustomDataException": {
       "base": "<p>The custom data provided for the trigger is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRepositoryTriggerDestinationArnException": {
       "base": "<p>The Amazon Resource Name (ARN) for the trigger is not valid for the specified destination. The most common reason for this error is that the ARN does not meet the requirements for the service type.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRepositoryTriggerEventsException": {
       "base": "<p>One or more events specified for the trigger is not valid. Check to make sure that all events specified match the requirements for allowed events.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRepositoryTriggerNameException": {
       "base": "<p>The name of the trigger is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRepositoryTriggerRegionException": {
       "base": "<p>The region for the trigger target does not match the region for the repository. Triggers must be created in the same region as the target for the trigger.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSortByException": {
       "base": "<p>The specified sort by value is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LastModifiedDate": {
       "base": null,
@@ -408,38 +357,31 @@
     },
     "ListBranchesInput": {
       "base": "<p>Represents the input of a list branches operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListBranchesOutput": {
       "base": "<p>Represents the output of a list branches operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRepositoriesInput": {
       "base": "<p>Represents the input of a list repositories operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRepositoriesOutput": {
       "base": "<p>Represents the output of a list repositories operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaximumBranchesExceededException": {
       "base": "<p>The number of branches for the trigger was exceeded.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaximumRepositoryNamesExceededException": {
       "base": "<p>The maximum number of allowed repository names was exceeded. Currently, this number is 25.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaximumRepositoryTriggersExceededException": {
       "base": "<p>The number of triggers allowed for the repository was exceeded.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Message": {
       "base": null,
@@ -502,18 +444,15 @@
     },
     "PathDoesNotExistException": {
       "base": "<p>The specified path does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRepositoryTriggersInput": {
       "base": "<p>Represents the input ofa put repository triggers operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRepositoryTriggersOutput": {
       "base": "<p>Represents the output of a put repository triggers operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RepositoryDescription": {
       "base": null,
@@ -525,8 +464,7 @@
     },
     "RepositoryDoesNotExistException": {
       "base": "<p>The specified repository does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RepositoryId": {
       "base": null,
@@ -538,8 +476,7 @@
     },
     "RepositoryLimitExceededException": {
       "base": "<p>A repository resource limit was exceeded.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RepositoryMetadata": {
       "base": "<p>Information about a repository.</p>",
@@ -582,8 +519,7 @@
     },
     "RepositoryNameExistsException": {
       "base": "<p>The specified repository name already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RepositoryNameIdPair": {
       "base": "<p>Information about a repository name and ID.</p>",
@@ -605,13 +541,11 @@
     },
     "RepositoryNameRequiredException": {
       "base": "<p>A repository name is required but was not specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RepositoryNamesRequiredException": {
       "base": "<p>A repository names object is required but was not specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RepositoryNotFoundList": {
       "base": null,
@@ -627,8 +561,7 @@
     },
     "RepositoryTriggerBranchNameListRequiredException": {
       "base": "<p>At least one branch name is required but was not specified in the trigger configuration.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RepositoryTriggerCustomData": {
       "base": null,
@@ -638,8 +571,7 @@
     },
     "RepositoryTriggerDestinationArnRequiredException": {
       "base": "<p>A destination ARN for the target service for the trigger is required but was not specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RepositoryTriggerEventEnum": {
       "base": null,
@@ -655,8 +587,7 @@
     },
     "RepositoryTriggerEventsListRequiredException": {
       "base": "<p>At least one event for the trigger is required but was not specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RepositoryTriggerExecutionFailure": {
       "base": "<p>A trigger failed to run.</p>",
@@ -692,8 +623,7 @@
     },
     "RepositoryTriggerNameRequiredException": {
       "base": "<p>A name for the trigger is required but was not specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RepositoryTriggersConfigurationId": {
       "base": null,
@@ -712,8 +642,7 @@
     },
     "RepositoryTriggersListRequiredException": {
       "base": "<p>The list of triggers for the repository is required but was not specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SortByEnum": {
       "base": null,
@@ -723,28 +652,23 @@
     },
     "TestRepositoryTriggersInput": {
       "base": "<p>Represents the input of a test repository triggers operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TestRepositoryTriggersOutput": {
       "base": "<p>Represents the output of a test repository triggers operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDefaultBranchInput": {
       "base": "<p>Represents the input of an update default branch operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateRepositoryDescriptionInput": {
       "base": "<p>Represents the input of an update repository description operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateRepositoryNameInput": {
       "base": "<p>Represents the input of an update repository description operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UserInfo": {
       "base": "<p>Information about the user who made a specified commit.</p>",

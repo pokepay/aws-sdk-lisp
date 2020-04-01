@@ -22,8 +22,7 @@
     },
     "AttributeDoesNotExist": {
       "base": "<p>The specified attribute does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttributeList": {
       "base": null,
@@ -40,13 +39,11 @@
     },
     "BatchDeleteAttributesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchPutAttributesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Boolean": {
       "base": null,
@@ -59,8 +56,7 @@
     },
     "CreateDomainRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletableAttribute": {
       "base": "<p></p>",
@@ -89,23 +85,19 @@
     },
     "DeleteAttributesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDomainRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DomainMetadataRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DomainMetadataResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DomainNameList": {
       "base": null,
@@ -115,8 +107,7 @@
     },
     "DuplicateItemName": {
       "base": "<p>The item name was specified more than once. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Float": {
       "base": null,
@@ -142,13 +133,11 @@
     },
     "GetAttributesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetAttributesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Integer": {
       "base": null,
@@ -162,28 +151,23 @@
     },
     "InvalidNextToken": {
       "base": "<p>The specified NextToken is not valid. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidNumberPredicates": {
       "base": "<p>Too many predicates exist in the query expression.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidNumberValueTests": {
       "base": "<p>Too many predicates exist in the query expression.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterValue": {
       "base": "<p>The value for a parameter is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidQueryExpression": {
       "base": "<p>The specified query expression syntax is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Item": {
       "base": "<p></p>",
@@ -199,13 +183,11 @@
     },
     "ListDomainsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListDomainsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Long": {
       "base": null,
@@ -217,48 +199,39 @@
     },
     "MissingParameter": {
       "base": "<p>The request must contain the specified missing parameter.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NoSuchDomain": {
       "base": "<p>The specified domain does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NumberDomainAttributesExceeded": {
       "base": "<p>Too many attributes in this domain.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NumberDomainBytesExceeded": {
       "base": "<p>Too many bytes in this domain.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NumberDomainsExceeded": {
       "base": "<p>Too many domains exist per this account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NumberItemAttributesExceeded": {
       "base": "<p>Too many attributes in this item.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NumberSubmittedAttributesExceeded": {
       "base": "<p>Too many attributes exist in a single call.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NumberSubmittedItemsExceeded": {
       "base": "<p>Too many items exist in a single call.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutAttributesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplaceableAttribute": {
       "base": "<p></p>",
@@ -287,18 +260,15 @@
     },
     "RequestTimeout": {
       "base": "<p>A timeout occurred when attempting to query the specified domain with specified query expression.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SelectRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SelectResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "String": {
       "base": null,
@@ -339,8 +309,7 @@
     },
     "TooManyRequestedAttributes": {
       "base": "<p>Too many attributes requested.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateCondition": {
       "base": "<p> Specifies the conditions under which data should be updated. If an update condition is specified for a request, the data will only be updated if the condition is satisfied. For example, if an attribute with a specific name and value exists, or if a specific attribute doesn't exist. </p>",

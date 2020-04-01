@@ -68,23 +68,19 @@
     },
     "AllocateConnectionOnInterconnectRequest": {
       "base": "<p>Container for the parameters to the AllocateConnectionOnInterconnect operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AllocateHostedConnectionRequest": {
       "base": "<p>Container for the parameters to theHostedConnection operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AllocatePrivateVirtualInterfaceRequest": {
       "base": "<p>Container for the parameters to the AllocatePrivateVirtualInterface operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AllocatePublicVirtualInterfaceRequest": {
       "base": "<p>Container for the parameters to the AllocatePublicVirtualInterface operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AmazonAddress": {
       "base": "<p>IP address assigned to the Amazon interface.</p> <p>Example: 192.168.1.1/30 or 2001:db8::1/125</p>",
@@ -100,18 +96,15 @@
     },
     "AssociateConnectionWithLagRequest": {
       "base": "<p>Container for the parameters to the AssociateConnectionWithLag operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateHostedConnectionRequest": {
       "base": "<p>Container for the parameters to the AssociateHostedConnection operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateVirtualInterfaceRequest": {
       "base": "<p>Container for the parameters to the AssociateVirtualInterface operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AwsDevice": {
       "base": "<p>An abstract ID for the physical Direct Connect endpoint.</p> <p>Example: EQC50-abcdef123456</p>",
@@ -184,33 +177,27 @@
     },
     "ConfirmConnectionRequest": {
       "base": "<p>Container for the parameters to the ConfirmConnection operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConfirmConnectionResponse": {
       "base": "<p>The response received when ConfirmConnection is called.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConfirmPrivateVirtualInterfaceRequest": {
       "base": "<p>Container for the parameters to the ConfirmPrivateVirtualInterface operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConfirmPrivateVirtualInterfaceResponse": {
       "base": "<p>The response received when ConfirmPrivateVirtualInterface is called.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConfirmPublicVirtualInterfaceRequest": {
       "base": "<p>Container for the parameters to the ConfirmPublicVirtualInterface operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConfirmPublicVirtualInterfaceResponse": {
       "base": "<p>The response received when ConfirmPublicVirtualInterface is called.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Connection": {
       "base": "<p>A connection represents the physical network connection between the AWS Direct Connect location and the customer.</p>",
@@ -268,8 +255,7 @@
     },
     "Connections": {
       "base": "<p>A structure containing a list of connections.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Count": {
       "base": null,
@@ -282,38 +268,31 @@
     },
     "CreateBGPPeerRequest": {
       "base": "<p>Container for the parameters to the CreateBGPPeer operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateBGPPeerResponse": {
       "base": "<p>The response received when CreateBGPPeer is called.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateConnectionRequest": {
       "base": "<p>Container for the parameters to the CreateConnection operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateInterconnectRequest": {
       "base": "<p>Container for the parameters to the CreateInterconnect operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateLagRequest": {
       "base": "<p>Container for the parameters to the CreateLag operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePrivateVirtualInterfaceRequest": {
       "base": "<p>Container for the parameters to the CreatePrivateVirtualInterface operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePublicVirtualInterfaceRequest": {
       "base": "<p>Container for the parameters to the CreatePublicVirtualInterface operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CustomerAddress": {
       "base": "<p>IP address assigned to the customer interface.</p> <p>Example: 192.168.1.2/30 or 2001:db8::2/125</p>",
@@ -330,128 +309,103 @@
     },
     "DeleteBGPPeerRequest": {
       "base": "<p>Container for the parameters to the DeleteBGPPeer operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBGPPeerResponse": {
       "base": "<p>The response received when DeleteBGPPeer is called.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteConnectionRequest": {
       "base": "<p>Container for the parameters to the DeleteConnection operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteInterconnectRequest": {
       "base": "<p>Container for the parameters to the DeleteInterconnect operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteInterconnectResponse": {
       "base": "<p>The response received when DeleteInterconnect is called.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteLagRequest": {
       "base": "<p>Container for the parameters to the DeleteLag operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVirtualInterfaceRequest": {
       "base": "<p>Container for the parameters to the DeleteVirtualInterface operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVirtualInterfaceResponse": {
       "base": "<p>The response received when DeleteVirtualInterface is called.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConnectionLoaRequest": {
       "base": "<p>Container for the parameters to the DescribeConnectionLoa operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConnectionLoaResponse": {
       "base": "<p>The response received when DescribeConnectionLoa is called.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConnectionsOnInterconnectRequest": {
       "base": "<p>Container for the parameters to the DescribeConnectionsOnInterconnect operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConnectionsRequest": {
       "base": "<p>Container for the parameters to the DescribeConnections operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeHostedConnectionsRequest": {
       "base": "<p>Container for the parameters to the DescribeHostedConnections operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInterconnectLoaRequest": {
       "base": "<p>Container for the parameters to the DescribeInterconnectLoa operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInterconnectLoaResponse": {
       "base": "<p>The response received when DescribeInterconnectLoa is called.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInterconnectsRequest": {
       "base": "<p>Container for the parameters to the DescribeInterconnects operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLagsRequest": {
       "base": "<p>Container for the parameters to the DescribeLags operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLoaRequest": {
       "base": "<p>Container for the parameters to the DescribeLoa operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsRequest": {
       "base": "<p>Container for the parameters to the DescribeTags operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsResponse": {
       "base": "<p>The response received when DescribeTags is called.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVirtualInterfacesRequest": {
       "base": "<p>Container for the parameters to the DescribeVirtualInterfaces operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DirectConnectClientException": {
       "base": "<p>The API was called with invalid parameters. The error message will contain additional details about the cause.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DirectConnectServerException": {
       "base": "<p>A server-side error occurred during the API call. The error message will contain additional details about the cause.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateConnectionFromLagRequest": {
       "base": "<p>Container for the parameters to the DisassociateConnectionFromLag operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DuplicateTagKeysException": {
       "base": "<p>A tag key was specified more than once.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorMessage": {
       "base": null,
@@ -499,8 +453,7 @@
     },
     "Interconnects": {
       "base": "<p>A structure containing a list of interconnects.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Lag": {
       "base": "<p>Describes a link aggregation group (LAG). A LAG is a connection that uses the Link Aggregation Control Protocol (LACP) to logically aggregate a bundle of physical connections. Like an interconnect, it can host other connections. All connections in a LAG must terminate on the same physical AWS Direct Connect endpoint, and must be the same bandwidth.</p>",
@@ -545,8 +498,7 @@
     },
     "Lags": {
       "base": "<p>A structure containing a list of LAGs.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Loa": {
       "base": "<p>A structure containing the Letter of Authorization - Connecting Facility Assignment (LOA-CFA) for a connection.</p>",
@@ -610,8 +562,7 @@
     },
     "Locations": {
       "base": "<p>A location is a network facility where AWS Direct Connect routers are available to be connected. Generally, these are colocation hubs where many network providers have equipment, and where cross connects can be delivered. Locations include a name and facility code, and must be provided when creating a connection.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NewBGPPeer": {
       "base": "<p>A structure containing information about a new BGP peer.</p>",
@@ -752,13 +703,11 @@
     },
     "TagResourceRequest": {
       "base": "<p>Container for the parameters to the TagResource operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TagResourceResponse": {
       "base": "<p>The response received when TagResource is called.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TagValue": {
       "base": null,
@@ -768,23 +717,19 @@
     },
     "TooManyTagsException": {
       "base": "<p>You have reached the limit on the number of tags that can be assigned to a Direct Connect resource.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UntagResourceRequest": {
       "base": "<p>Container for the parameters to the UntagResource operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UntagResourceResponse": {
       "base": "<p>The response received when UntagResource is called.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateLagRequest": {
       "base": "<p>Container for the parameters to the UpdateLag operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "VLAN": {
       "base": "<p>The VLAN ID.</p> <p>Example: 101</p>",
@@ -828,8 +773,7 @@
     },
     "VirtualGateways": {
       "base": "<p>A structure containing a list of virtual private gateways.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "VirtualInterface": {
       "base": "<p>A virtual interface (VLAN) transmits the traffic between the AWS Direct Connect location and the customer.</p>",
@@ -885,8 +829,7 @@
     },
     "VirtualInterfaces": {
       "base": "<p>A structure containing a list of virtual interfaces.</p>",
-      "refs": {
-      }
+      "refs": {}
     }
   }
 }

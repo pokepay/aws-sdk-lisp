@@ -120,13 +120,11 @@
     },
     "BatchGetItemInput": {
       "base": "<p>Represents the input of a <code>BatchGetItem</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchGetItemOutput": {
       "base": "<p>Represents the output of a <code>BatchGetItem</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchGetRequestMap": {
       "base": null,
@@ -143,13 +141,11 @@
     },
     "BatchWriteItemInput": {
       "base": "<p>Represents the input of a <code>BatchWriteItem</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchWriteItemOutput": {
       "base": "<p>Represents the output of a <code>BatchWriteItem</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchWriteItemRequestMap": {
       "base": null,
@@ -217,8 +213,7 @@
     },
     "ConditionalCheckFailedException": {
       "base": "<p>A condition specified in the operation could not be evaluated.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConditionalOperator": {
       "base": null,
@@ -273,13 +268,11 @@
     },
     "CreateTableInput": {
       "base": "<p>Represents the input of a <code>CreateTable</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTableOutput": {
       "base": "<p>Represents the output of a <code>CreateTable</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Date": {
       "base": null,
@@ -297,13 +290,11 @@
     },
     "DeleteItemInput": {
       "base": "<p>Represents the input of a <code>DeleteItem</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteItemOutput": {
       "base": "<p>Represents the output of a <code>DeleteItem</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRequest": {
       "base": "<p>Represents a request to perform a <code>DeleteItem</code> operation on an item.</p>",
@@ -313,43 +304,35 @@
     },
     "DeleteTableInput": {
       "base": "<p>Represents the input of a <code>DeleteTable</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTableOutput": {
       "base": "<p>Represents the output of a <code>DeleteTable</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLimitsInput": {
       "base": "<p>Represents the input of a <code>DescribeLimits</code> operation. Has no content.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeLimitsOutput": {
       "base": "<p>Represents the output of a <code>DescribeLimits</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTableInput": {
       "base": "<p>Represents the input of a <code>DescribeTable</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTableOutput": {
       "base": "<p>Represents the output of a <code>DescribeTable</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTimeToLiveInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTimeToLiveOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorMessage": {
       "base": null,
@@ -420,13 +403,11 @@
     },
     "GetItemInput": {
       "base": "<p>Represents the input of a <code>GetItem</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetItemOutput": {
       "base": "<p>Represents the output of a <code>GetItem</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GlobalSecondaryIndex": {
       "base": "<p>Represents the properties of a global secondary index.</p>",
@@ -496,8 +477,7 @@
     },
     "InternalServerError": {
       "base": "<p>An error occurred on the server side.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ItemCollectionKeyAttributeMap": {
       "base": null,
@@ -540,8 +520,7 @@
     },
     "ItemCollectionSizeLimitExceededException": {
       "base": "<p>An item collection is too large. This exception is only returned for tables that have one or more local secondary indexes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ItemList": {
       "base": null,
@@ -622,8 +601,7 @@
     },
     "LimitExceededException": {
       "base": "<p>The number of concurrent table requests (cumulative number of tables in the <code>CREATING</code>, <code>DELETING</code> or <code>UPDATING</code> state) exceeds the maximum allowed of 10.</p> <p>Also, for tables with secondary indexes, only one of those tables can be in the <code>CREATING</code> state at any point in time. Do not attempt to create more than one such table simultaneously.</p> <p>The total limit of tables in the <code>ACTIVE</code> state is 250.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAttributeValue": {
       "base": null,
@@ -633,8 +611,7 @@
     },
     "ListTablesInput": {
       "base": "<p>Represents the input of a <code>ListTables</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTablesInputLimit": {
       "base": null,
@@ -644,18 +621,15 @@
     },
     "ListTablesOutput": {
       "base": "<p>Represents the output of a <code>ListTables</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsOfResourceInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsOfResourceOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "LocalSecondaryIndex": {
       "base": "<p>Represents the properties of a local secondary index.</p>",
@@ -801,13 +775,11 @@
     },
     "ProvisionedThroughputExceededException": {
       "base": "<p>Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of requests and use exponential backoff. For more information, go to <a href=\"http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff\">Error Retries and Exponential Backoff</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutItemInput": {
       "base": "<p>Represents the input of a <code>PutItem</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutItemInputAttributeMap": {
       "base": null,
@@ -818,8 +790,7 @@
     },
     "PutItemOutput": {
       "base": "<p>Represents the output of a <code>PutItem</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRequest": {
       "base": "<p>Represents a request to perform a <code>PutItem</code> operation on an item.</p>",
@@ -829,13 +800,11 @@
     },
     "QueryInput": {
       "base": "<p>Represents the input of a <code>Query</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "QueryOutput": {
       "base": "<p>Represents the output of a <code>Query</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceArnString": {
       "base": null,
@@ -847,13 +816,11 @@
     },
     "ResourceInUseException": {
       "base": "<p>The operation conflicts with the resource's availability. For example, you attempted to recreate an existing table, or tried to delete a table currently in the <code>CREATING</code> state.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The operation tried to access a nonexistent table or index. The resource might not be specified correctly, or its status might not be <code>ACTIVE</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReturnConsumedCapacity": {
       "base": "<p>Determines the level of detail about provisioned throughput consumption that is returned in the response:</p> <ul> <li> <p> <code>INDEXES</code> - The response includes the aggregate <code>ConsumedCapacity</code> for the operation, together with <code>ConsumedCapacity</code> for each table and secondary index that was accessed.</p> <p>Note that some operations, such as <code>GetItem</code> and <code>BatchGetItem</code>, do not access any indexes at all. In these cases, specifying <code>INDEXES</code> will only return <code>ConsumedCapacity</code> information for table(s).</p> </li> <li> <p> <code>TOTAL</code> - The response includes only the aggregate <code>ConsumedCapacity</code> for the operation.</p> </li> <li> <p> <code>NONE</code> - No <code>ConsumedCapacity</code> details are included in the response.</p> </li> </ul>",
@@ -893,13 +860,11 @@
     },
     "ScanInput": {
       "base": "<p>Represents the input of a <code>Scan</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ScanOutput": {
       "base": "<p>Represents the output of a <code>Scan</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ScanSegment": {
       "base": null,
@@ -1050,8 +1015,7 @@
     },
     "TagResourceInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TagValueString": {
       "base": null,
@@ -1093,8 +1057,7 @@
     },
     "UntagResourceInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateExpression": {
       "base": null,
@@ -1110,33 +1073,27 @@
     },
     "UpdateItemInput": {
       "base": "<p>Represents the input of an <code>UpdateItem</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateItemOutput": {
       "base": "<p>Represents the output of an <code>UpdateItem</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTableInput": {
       "base": "<p>Represents the input of an <code>UpdateTable</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTableOutput": {
       "base": "<p>Represents the output of an <code>UpdateTable</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTimeToLiveInput": {
       "base": "<p>Represents the input of an <code>UpdateTimeToLive</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTimeToLiveOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "WriteRequest": {
       "base": "<p>Represents an operation to perform - either <code>DeleteItem</code> or <code>PutItem</code>. You can only request one of these operations, not both, in a single <code>WriteRequest</code>. If you do need to perform both of these operations, you will need to provide two separate <code>WriteRequest</code> objects.</p>",

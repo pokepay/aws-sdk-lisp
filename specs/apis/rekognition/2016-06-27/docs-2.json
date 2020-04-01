@@ -20,8 +20,7 @@
   "shapes": {
     "AccessDeniedException": {
       "base": "<p>You are not authorized to perform the action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AgeRange": {
       "base": "<p>Structure containing the estimated age range, in years, for a face.</p> <p>Rekognition estimates an age-range for faces detected in the input image. Estimated age ranges can overlap; a face of a 5 year old may have an estimated range of 4-6 whilst the face of a 6 year old may have an estimated range of 4-8.</p>",
@@ -115,13 +114,11 @@
     },
     "CompareFacesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CompareFacesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CompareFacesUnmatchList": {
       "base": null,
@@ -152,13 +149,11 @@
     },
     "CreateCollectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCollectionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Degree": {
       "base": null,
@@ -170,53 +165,43 @@
     },
     "DeleteCollectionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteCollectionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteFacesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteFacesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetectFacesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetectFacesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetectLabelsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetectLabelsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetectModerationLabelsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DetectModerationLabelsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Emotion": {
       "base": "<p>The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and ANGRY.</p>",
@@ -350,13 +335,11 @@
     },
     "GetCelebrityInfoRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetCelebrityInfoResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Image": {
       "base": "<p>Provides the input image either as bytes or an S3 object.</p> <p>You pass image bytes to a Rekognition API operation by using the <code>Bytes</code> property. For example, you would use the <code>Bytes</code> property to pass an image loaded from a local file system. Image bytes passed by using the <code>Bytes</code> property must be base64-encoded. Your code may not need to encode image bytes if you are using an AWS SDK to call Rekognition API operations. For more information, see <a>example4</a>.</p> <p> You pass images stored in an S3 bucket to a Rekognition API operation by using the <code>S3Object</code> property. Images stored in an S3 bucket do not need to be base64-encoded.</p> <p>The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.</p> <p>If you use the Amazon CLI to call Amazon Rekognition operations, passing image bytes using the Bytes property is not supported. You must first upload the image to an Amazon S3 bucket and then call the operation using the S3Object property.</p> <p>For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see <a>manage-access-resource-policies</a>. </p>",
@@ -392,43 +375,35 @@
     },
     "ImageTooLargeException": {
       "base": "<p>The input image size exceeds the allowed limit. For more information, see <a>limits</a>. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IndexFacesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "IndexFacesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "InternalServerError": {
       "base": "<p>Amazon Rekognition experienced a service issue. Try your call again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidImageFormatException": {
       "base": "<p>The provided image format is not supported. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidPaginationTokenException": {
       "base": "<p>Pagination token in the request is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterException": {
       "base": "<p>Input parameter violated a constraint. Validate your parameter before calling the API operation again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidS3ObjectException": {
       "base": "<p>Amazon Rekognition is unable to access the S3 object specified in the request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Label": {
       "base": "<p>Structure containing details about the detected label, including name, and level of confidence.</p>",
@@ -463,23 +438,19 @@
     },
     "ListCollectionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListCollectionsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListFacesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListFacesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxFaces": {
       "base": null,
@@ -576,18 +547,15 @@
     },
     "ProvisionedThroughputExceededException": {
       "base": "<p>The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon Rekognition.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RecognizeCelebritiesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RecognizeCelebritiesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RekognitionUniqueId": {
       "base": null,
@@ -598,13 +566,11 @@
     },
     "ResourceAlreadyExistsException": {
       "base": "<p>A collection with the specified ID already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>Collection specified in the request is not found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "S3Bucket": {
       "base": null,
@@ -632,23 +598,19 @@
     },
     "SearchFacesByImageRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SearchFacesByImageResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SearchFacesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SearchFacesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Smile": {
       "base": "<p>Indicates whether or not the face is smiling, and the confidence level in the determination.</p>",
@@ -676,8 +638,7 @@
     },
     "ThrottlingException": {
       "base": "<p>Amazon Rekognition is temporarily unable to process the request. Try your call again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UInteger": {
       "base": null,

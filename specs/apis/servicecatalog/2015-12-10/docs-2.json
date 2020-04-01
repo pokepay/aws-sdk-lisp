@@ -106,13 +106,11 @@
     },
     "AcceptPortfolioShareInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AcceptPortfolioShareOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AccessLevelFilter": {
       "base": "<p>The access level to limit results.</p>",
@@ -177,33 +175,27 @@
     },
     "AssociatePrincipalWithPortfolioInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociatePrincipalWithPortfolioOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateProductWithPortfolioInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateProductWithPortfolioOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateTagOptionWithResourceInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateTagOptionWithResourceOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AttributeValue": {
       "base": null,
@@ -267,63 +259,51 @@
     },
     "CreateConstraintInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateConstraintOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePortfolioInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePortfolioOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePortfolioShareInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePortfolioShareOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateProductInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateProductOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateProvisioningArtifactInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateProvisioningArtifactOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTagOptionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTagOptionOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatedTime": {
       "base": null,
@@ -348,153 +328,123 @@
     },
     "DeleteConstraintInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteConstraintOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePortfolioInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePortfolioOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePortfolioShareInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePortfolioShareOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteProductInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteProductOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteProvisioningArtifactInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteProvisioningArtifactOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConstraintInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConstraintOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePortfolioInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePortfolioOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProductAsAdminInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProductAsAdminOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProductInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProductOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProductViewInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProductViewOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProvisionedProductInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProvisionedProductOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProvisioningArtifactInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProvisioningArtifactOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProvisioningParametersInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProvisioningParametersOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRecordInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRecordOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagOptionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagOptionOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Description": {
       "base": null,
@@ -505,38 +455,31 @@
     },
     "DisassociatePrincipalFromPortfolioInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociatePrincipalFromPortfolioOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateProductFromPortfolioInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateProductFromPortfolioOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateTagOptionFromResourceInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateTagOptionFromResourceOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DuplicateResourceException": {
       "base": "<p>The specified resource is a duplicate.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorCode": {
       "base": null,
@@ -659,13 +602,11 @@
     },
     "InvalidParametersException": {
       "base": "<p>One or more parameters provided to the operation are invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidStateException": {
       "base": "<p>An attempt was made to modify a resource that is in an invalid state. Inspect the resource you are using for this operation to ensure that all resource states are valid before retrying the operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LastRequestId": {
       "base": null,
@@ -687,98 +628,79 @@
     },
     "LimitExceededException": {
       "base": "<p>The current limits of the service would have been exceeded by this operation. Reduce the resource use or increase the service limits and retry the operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAcceptedPortfolioSharesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAcceptedPortfolioSharesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListConstraintsForPortfolioInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListConstraintsForPortfolioOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListLaunchPathsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListLaunchPathsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPortfolioAccessInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPortfolioAccessOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPortfoliosForProductInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPortfoliosForProductOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPortfoliosInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPortfoliosOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPrincipalsForPortfolioInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPrincipalsForPortfolioOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListProvisioningArtifactsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListProvisioningArtifactsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRecordHistoryInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRecordHistoryOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRecordHistorySearchFilter": {
       "base": "<p>The search filter to limit results when listing request history records.</p>",
@@ -788,13 +710,11 @@
     },
     "ListResourcesForTagOptionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListResourcesForTagOptionOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagOptionsFilters": {
       "base": "<p>The ListTagOptions filters.</p>",
@@ -804,13 +724,11 @@
     },
     "ListTagOptionsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagOptionsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "NoEcho": {
       "base": null,
@@ -1127,13 +1045,11 @@
     },
     "ProvisionProductInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ProvisionProductOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ProvisionedProductDetail": {
       "base": "<p>Detailed information about a ProvisionedProduct object.</p>",
@@ -1395,13 +1311,11 @@
     },
     "RejectPortfolioShareInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RejectPortfolioShareOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceARN": {
       "base": null,
@@ -1461,13 +1375,11 @@
     },
     "ResourceInUseException": {
       "base": "<p>The operation was requested against a resource that is currently in use. Free the resource from use and retry the operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The specified resource was not found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceType": {
       "base": null,
@@ -1477,13 +1389,11 @@
     },
     "ScanProvisionedProductsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ScanProvisionedProductsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SearchFilterKey": {
       "base": null,
@@ -1499,23 +1409,19 @@
     },
     "SearchProductsAsAdminInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SearchProductsAsAdminOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SearchProductsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SearchProductsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SortOrder": {
       "base": null,
@@ -1628,8 +1534,7 @@
     },
     "TagOptionNotMigratedException": {
       "base": "<p>An operation requiring TagOptions failed because the TagOptions migration process has not been performed for this account. Please use the AWS console to perform the migration process before retrying the operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TagOptionSummaries": {
       "base": null,
@@ -1680,63 +1585,51 @@
     },
     "TerminateProvisionedProductInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TerminateProvisionedProductOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateConstraintInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateConstraintOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdatePortfolioInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdatePortfolioOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateProductInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateProductOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateProvisionedProductInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateProvisionedProductOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateProvisioningArtifactInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateProvisioningArtifactOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateProvisioningParameter": {
       "base": "<p>The parameter key-value pair used to update a ProvisionedProduct object. If <code>UsePreviousValue</code> is set to true, <code>Value</code> is ignored and the value for <code>Key</code> is kept as previously set (current value).</p>",
@@ -1752,13 +1645,11 @@
     },
     "UpdateTagOptionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTagOptionOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdatedTime": {
       "base": null,

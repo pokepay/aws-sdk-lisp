@@ -24,23 +24,19 @@
     },
     "BadRequest": {
       "base": "<p>Returned if the request is malformed or contains an error such as an invalid parameter value or a missing required parameter.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateFileSystemRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateMountTargetRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTagsRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreationToken": {
       "base": null,
@@ -52,63 +48,51 @@
     },
     "DeleteFileSystemRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteMountTargetRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTagsRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DependencyTimeout": {
       "base": "<p>The service timed out trying to fulfill the request, and the client should try the call again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFileSystemsRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFileSystemsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMountTargetSecurityGroupsRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMountTargetSecurityGroupsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMountTargetsRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMountTargetsResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsResponse": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Encrypted": {
       "base": null,
@@ -165,8 +149,7 @@
     },
     "FileSystemAlreadyExists": {
       "base": "<p>Returned if the file system you are trying to create already exists, with the creation token you provided.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "FileSystemDescription": {
       "base": "<p>Description of the file system.</p>",
@@ -197,18 +180,15 @@
     },
     "FileSystemInUse": {
       "base": "<p>Returned if a file system has mount targets.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "FileSystemLimitExceeded": {
       "base": "<p>Returned if the AWS account has already created maximum number of file systems allowed per account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "FileSystemNotFound": {
       "base": "<p>Returned if the specified <code>FileSystemId</code> does not exist in the requester's AWS account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "FileSystemSize": {
       "base": "<p>Latest known metered size (in bytes) of data stored in the file system, in its <code>Value</code> field, and the time at which that size was determined in its <code>Timestamp</code> field. Note that the value does not represent the size of a consistent snapshot of the file system, but it is eventually consistent when there are no writes to the file system. That is, the value will represent the actual size only if the file system is not modified for a period longer than a couple of hours. Otherwise, the value is not necessarily the exact size the file system was at any instant in time.</p>",
@@ -224,18 +204,15 @@
     },
     "IncorrectFileSystemLifeCycleState": {
       "base": "<p>Returned if the file system's life cycle state is not \"created\".</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IncorrectMountTargetState": {
       "base": "<p>Returned if the mount target is not in the correct state for the operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InternalServerError": {
       "base": "<p>Returned if an error occurred on the server side.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IpAddress": {
       "base": null,
@@ -246,8 +223,7 @@
     },
     "IpAddressInUse": {
       "base": "<p>Returned if the request specified an <code>IpAddress</code> that is already in use in the subnet.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KmsKeyId": {
       "base": null,
@@ -287,13 +263,11 @@
     },
     "ModifyMountTargetSecurityGroupsRequest": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MountTargetConflict": {
       "base": "<p>Returned if the mount target would violate one of the specified restrictions based on the file system's existing mount targets.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MountTargetCount": {
       "base": null,
@@ -325,8 +299,7 @@
     },
     "MountTargetNotFound": {
       "base": "<p>Returned if there is no mount target with the specified ID found in the caller's account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NetworkInterfaceId": {
       "base": null,
@@ -336,13 +309,11 @@
     },
     "NetworkInterfaceLimitExceeded": {
       "base": "<p> The calling account has reached the ENI limit for the specific AWS region. Client should try to delete some ENIs or get its account limit raised. For more information, see <a href=\"http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_Limits.html\">Amazon VPC Limits</a> in the Amazon Virtual Private Cloud User Guide (see the Network interfaces per VPC entry in the table). </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NoFreeAddressesInSubnet": {
       "base": "<p>Returned if <code>IpAddress</code> was not specified in the request and there are no free IP addresses in the subnet.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PerformanceMode": {
       "base": null,
@@ -359,13 +330,11 @@
     },
     "SecurityGroupLimitExceeded": {
       "base": "<p>Returned if the size of <code>SecurityGroups</code> specified in the request is greater than five.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SecurityGroupNotFound": {
       "base": "<p>Returned if one of the specified security groups does not exist in the subnet's VPC.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SecurityGroups": {
       "base": null,
@@ -384,8 +353,7 @@
     },
     "SubnetNotFound": {
       "base": "<p>Returned if there is no subnet with ID <code>SubnetId</code> provided in the request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Tag": {
       "base": "<p>A tag is a key-value pair. Allowed characters: letters, whitespace, and numbers, representable in UTF-8, and the following characters:<code> + - = . _ : /</code> </p>",
@@ -429,8 +397,7 @@
     },
     "UnsupportedAvailabilityZone": {
       "base": "<p/>",
-      "refs": {
-      }
+      "refs": {}
     }
   }
 }

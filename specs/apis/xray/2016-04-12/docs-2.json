@@ -54,13 +54,11 @@
     },
     "BatchGetTracesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchGetTracesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Double": {
       "base": null,
@@ -108,33 +106,27 @@
     },
     "GetServiceGraphRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetServiceGraphResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTraceGraphRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTraceGraphResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTraceSummariesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTraceSummariesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Histogram": {
       "base": null,
@@ -164,8 +156,7 @@
     },
     "InvalidRequestException": {
       "base": "<p>The request is missing required parameters or has invalid parameters.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NullableBoolean": {
       "base": null,
@@ -225,23 +216,19 @@
     },
     "PutTelemetryRecordsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutTelemetryRecordsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutTraceSegmentsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutTraceSegmentsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Segment": {
       "base": "<p>A segment from a trace that has been ingested by the X-Ray service. The segment can be compiled from documents uploaded with <a>PutTraceSegments</a>, or an <code>inferred</code> segment for a downstream service, generated from a subsegment sent by the service that called it.</p>",
@@ -357,8 +344,7 @@
     },
     "ThrottledException": {
       "base": "<p>The request exceeds the maximum number of requests per second.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Timestamp": {
       "base": null,

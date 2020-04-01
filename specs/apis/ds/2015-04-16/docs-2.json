@@ -52,23 +52,19 @@
     },
     "AddIpRoutesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddIpRoutesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddTagsToResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddTagsToResourceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddedDateTime": {
       "base": null,
@@ -111,8 +107,7 @@
     },
     "AuthenticationFailedException": {
       "base": "<p>An authentication error occurred.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AvailabilityZone": {
       "base": null,
@@ -130,13 +125,11 @@
     },
     "CancelSchemaExtensionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelSchemaExtensionResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CidrIp": {
       "base": null,
@@ -154,8 +147,7 @@
     },
     "ClientException": {
       "base": "<p>A client exception has occurred.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CloudOnlyDirectoriesLimitReached": {
       "base": null,
@@ -197,13 +189,11 @@
     },
     "ConnectDirectoryRequest": {
       "base": "<p>Contains the inputs for the <a>ConnectDirectory</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConnectDirectoryResult": {
       "base": "<p>Contains the results of the <a>ConnectDirectory</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConnectPassword": {
       "base": null,
@@ -221,53 +211,43 @@
     },
     "CreateAliasRequest": {
       "base": "<p>Contains the inputs for the <a>CreateAlias</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateAliasResult": {
       "base": "<p>Contains the results of the <a>CreateAlias</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateComputerRequest": {
       "base": "<p>Contains the inputs for the <a>CreateComputer</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateComputerResult": {
       "base": "<p>Contains the results for the <a>CreateComputer</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateConditionalForwarderRequest": {
       "base": "<p>Initiates the creation of a conditional forwarder for your AWS Directory Service for Microsoft Active Directory. Conditional forwarders are required in order to set up a trust relationship with another domain.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateConditionalForwarderResult": {
       "base": "<p>The result of a CreateConditinalForwarder request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDirectoryRequest": {
       "base": "<p>Contains the inputs for the <a>CreateDirectory</a> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDirectoryResult": {
       "base": "<p>Contains the results of the <a>CreateDirectory</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateMicrosoftADRequest": {
       "base": "<p>Creates a Microsoft AD in the AWS cloud.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateMicrosoftADResult": {
       "base": "<p>Result of a CreateMicrosoftAD request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSnapshotBeforeSchemaExtension": {
       "base": null,
@@ -277,23 +257,19 @@
     },
     "CreateSnapshotRequest": {
       "base": "<p>Contains the inputs for the <a>CreateSnapshot</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSnapshotResult": {
       "base": "<p>Contains the results of the <a>CreateSnapshot</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTrustRequest": {
       "base": "<p>AWS Directory Service for Microsoft Active Directory allows you to configure trust relationships. For example, you can establish a trust between your Microsoft AD in the AWS cloud, and your existing on-premises Microsoft Active Directory. This would allow you to provide users and groups access to resources in either domain, with a single set of credentials.</p> <p>This action initiates the creation of the AWS side of a trust relationship between a Microsoft AD in the AWS cloud and an external domain.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTrustResult": {
       "base": "<p>The result of a CreateTrust request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatedDateTime": {
       "base": null,
@@ -310,113 +286,91 @@
     },
     "DeleteConditionalForwarderRequest": {
       "base": "<p>Deletes a conditional forwarder.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteConditionalForwarderResult": {
       "base": "<p>The result of a DeleteConditionalForwarder request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDirectoryRequest": {
       "base": "<p>Contains the inputs for the <a>DeleteDirectory</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDirectoryResult": {
       "base": "<p>Contains the results of the <a>DeleteDirectory</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSnapshotRequest": {
       "base": "<p>Contains the inputs for the <a>DeleteSnapshot</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSnapshotResult": {
       "base": "<p>Contains the results of the <a>DeleteSnapshot</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTrustRequest": {
       "base": "<p>Deletes the local side of an existing trust relationship between the Microsoft AD in the AWS cloud and the external domain.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTrustResult": {
       "base": "<p>The result of a DeleteTrust request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterEventTopicRequest": {
       "base": "<p>Removes the specified directory as a publisher to the specified SNS topic.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterEventTopicResult": {
       "base": "<p>The result of a DeregisterEventTopic request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConditionalForwardersRequest": {
       "base": "<p>Describes a conditional forwarder.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeConditionalForwardersResult": {
       "base": "<p>The result of a DescribeConditionalForwarder request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDirectoriesRequest": {
       "base": "<p>Contains the inputs for the <a>DescribeDirectories</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDirectoriesResult": {
       "base": "<p>Contains the results of the <a>DescribeDirectories</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDomainControllersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDomainControllersResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventTopicsRequest": {
       "base": "<p>Describes event topics.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventTopicsResult": {
       "base": "<p>The result of a DescribeEventTopic request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotsRequest": {
       "base": "<p>Contains the inputs for the <a>DescribeSnapshots</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotsResult": {
       "base": "<p>Contains the results of the <a>DescribeSnapshots</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTrustsRequest": {
       "base": "<p>Describes the trust relationships for a particular Microsoft AD in the AWS cloud. If no input parameters are are provided, such as directory ID or trust ID, this request describes all the trust relationships.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTrustsResult": {
       "base": "<p>The result of a DescribeTrust request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Description": {
       "base": null,
@@ -516,8 +470,7 @@
     },
     "DirectoryLimitExceededException": {
       "base": "<p>The maximum number of directories in the region has been reached. You can use the <a>GetDirectoryLimits</a> operation to determine your directory limits in the region.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DirectoryLimits": {
       "base": "<p>Contains directory limit information for a region.</p>",
@@ -565,8 +518,7 @@
     },
     "DirectoryUnavailableException": {
       "base": "<p>The specified directory is unavailable or could not be found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DirectoryVpcSettings": {
       "base": "<p>Contains VPC information for the <a>CreateDirectory</a> or <a>CreateMicrosoftAD</a> operation.</p>",
@@ -583,23 +535,19 @@
     },
     "DisableRadiusRequest": {
       "base": "<p>Contains the inputs for the <a>DisableRadius</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableRadiusResult": {
       "base": "<p>Contains the results of the <a>DisableRadius</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableSsoRequest": {
       "base": "<p>Contains the inputs for the <a>DisableSso</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableSsoResult": {
       "base": "<p>Contains the results of the <a>DisableSso</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DnsIpAddrs": {
       "base": null,
@@ -633,8 +581,7 @@
     },
     "DomainControllerLimitExceededException": {
       "base": "<p>The maximum allowed number of domain controllers per directory was exceeded. The default limit per directory is 20 domain controllers.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DomainControllerStatus": {
       "base": null,
@@ -656,23 +603,19 @@
     },
     "EnableRadiusRequest": {
       "base": "<p>Contains the inputs for the <a>EnableRadius</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableRadiusResult": {
       "base": "<p>Contains the results of the <a>EnableRadius</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableSsoRequest": {
       "base": "<p>Contains the inputs for the <a>EnableSso</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableSsoResult": {
       "base": "<p>Contains the results of the <a>EnableSso</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EndDateTime": {
       "base": null,
@@ -682,13 +625,11 @@
     },
     "EntityAlreadyExistsException": {
       "base": "<p>The specified entity already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EntityDoesNotExistException": {
       "base": "<p>The specified entity could not be found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EventTopic": {
       "base": "<p>Information about SNS topic and AWS Directory Service directory associations.</p>",
@@ -724,38 +665,31 @@
     },
     "GetDirectoryLimitsRequest": {
       "base": "<p>Contains the inputs for the <a>GetDirectoryLimits</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDirectoryLimitsResult": {
       "base": "<p>Contains the results of the <a>GetDirectoryLimits</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetSnapshotLimitsRequest": {
       "base": "<p>Contains the inputs for the <a>GetSnapshotLimits</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetSnapshotLimitsResult": {
       "base": "<p>Contains the results of the <a>GetSnapshotLimits</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InsufficientPermissionsException": {
       "base": "<p>The account does not have sufficient permission to perform the operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidNextTokenException": {
       "base": "<p>The <i>NextToken</i> value is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterException": {
       "base": "<p>One or more parameters are not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IpAddr": {
       "base": null,
@@ -785,8 +719,7 @@
     },
     "IpRouteLimitExceededException": {
       "base": "<p>The maximum allowed number of IP addresses was exceeded. The default limit is 100 IP address blocks.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IpRouteStatusMsg": {
       "base": null,
@@ -855,33 +788,27 @@
     },
     "ListIpRoutesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListIpRoutesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListSchemaExtensionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListSchemaExtensionsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForResourceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ManualSnapshotsLimitReached": {
       "base": null,
@@ -973,13 +900,11 @@
     },
     "RegisterEventTopicRequest": {
       "base": "<p>Registers a new event topic.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterEventTopicResult": {
       "base": "<p>The result of a RegisterEventTopic request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoteDomainName": {
       "base": null,
@@ -1001,23 +926,19 @@
     },
     "RemoveIpRoutesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveIpRoutesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTagsFromResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTagsFromResourceResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplicationScope": {
       "base": null,
@@ -1055,13 +976,11 @@
     },
     "RestoreFromSnapshotRequest": {
       "base": "<p>An object representing the inputs for the <a>RestoreFromSnapshot</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RestoreFromSnapshotResult": {
       "base": "<p>Contains the results of the <a>RestoreFromSnapshot</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SID": {
       "base": null,
@@ -1122,8 +1041,7 @@
     },
     "ServiceException": {
       "base": "<p>An exception has occurred in AWS Directory Service.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Snapshot": {
       "base": "<p>Describes a directory snapshot.</p>",
@@ -1150,8 +1068,7 @@
     },
     "SnapshotLimitExceededException": {
       "base": "<p>The maximum number of manual snapshots for the directory has been reached. You can use the <a>GetSnapshotLimits</a> operation to determine the snapshot limits for a directory.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SnapshotLimits": {
       "base": "<p>Contains manual snapshot limit information for a directory.</p>",
@@ -1204,13 +1121,11 @@
     },
     "StartSchemaExtensionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartSchemaExtensionResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartTime": {
       "base": null,
@@ -1261,8 +1176,7 @@
     },
     "TagLimitExceededException": {
       "base": "<p>The maximum allowed number of tags was exceeded.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TagValue": {
       "base": null,
@@ -1368,38 +1282,31 @@
     },
     "UnsupportedOperationException": {
       "base": "<p>The operation is not supported.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateConditionalForwarderRequest": {
       "base": "<p>Updates a conditional forwarder.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateConditionalForwarderResult": {
       "base": "<p>The result of an UpdateConditionalForwarder request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateNumberOfDomainControllersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateNumberOfDomainControllersResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateRadiusRequest": {
       "base": "<p>Contains the inputs for the <a>UpdateRadius</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateRadiusResult": {
       "base": "<p>Contains the results of the <a>UpdateRadius</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateSecurityGroupForDirectoryControllers": {
       "base": null,
@@ -1424,13 +1331,11 @@
     },
     "VerifyTrustRequest": {
       "base": "<p>Initiates the verification of an existing trust relationship between a Microsoft AD in the AWS cloud and an external domain.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "VerifyTrustResult": {
       "base": "<p>Result of a VerifyTrust request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "VpcId": {
       "base": null,

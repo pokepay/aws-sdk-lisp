@@ -17,8 +17,7 @@
   "shapes": {
     "AccountLimitExceededException": {
       "base": "<p>An AWS service limit was exceeded for the calling AWS account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ArtifactNamespace": {
       "base": null,
@@ -40,23 +39,19 @@
     },
     "BatchGetBuildsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchGetBuildsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchGetProjectsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchGetProjectsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Boolean": {
       "base": null,
@@ -119,23 +114,19 @@
     },
     "CreateProjectInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateProjectOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteProjectInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteProjectOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EnvironmentImage": {
       "base": "<p>Information about a Docker image that is managed by AWS CodeBuild.</p>",
@@ -194,8 +185,7 @@
     },
     "InvalidInputException": {
       "base": "<p>The input value that was provided is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KeyInput": {
       "base": null,
@@ -211,43 +201,35 @@
     },
     "ListBuildsForProjectInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListBuildsForProjectOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListBuildsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListBuildsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListCuratedEnvironmentImagesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListCuratedEnvironmentImagesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListProjectsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListProjectsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "LogsLocation": {
       "base": "<p>Information about build logs in Amazon CloudWatch Logs.</p>",
@@ -370,13 +352,11 @@
     },
     "ResourceAlreadyExistsException": {
       "base": "<p>The specified AWS resource cannot be created, because an AWS resource with the same settings already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The specified AWS resource cannot be found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SortOrderType": {
       "base": null,
@@ -406,13 +386,11 @@
     },
     "StartBuildInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartBuildOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StatusType": {
       "base": null,
@@ -423,13 +401,11 @@
     },
     "StopBuildInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopBuildOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "String": {
       "base": null,
@@ -499,13 +475,11 @@
     },
     "UpdateProjectInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateProjectOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ValueInput": {
       "base": null,

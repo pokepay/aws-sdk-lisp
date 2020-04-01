@@ -16,8 +16,7 @@
   "shapes": {
     "AddTagsToCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Arn": {
       "base": null,
@@ -99,18 +98,15 @@
     },
     "DeleteCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCertificateResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DomainList": {
       "base": null,
@@ -173,13 +169,11 @@
     },
     "GetCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetCertificateResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "IdempotencyToken": {
       "base": null,
@@ -189,13 +183,11 @@
     },
     "ImportCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ImportCertificateResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "InUseList": {
       "base": null,
@@ -205,23 +197,19 @@
     },
     "InvalidArnException": {
       "base": "<p>The requested Amazon Resource Name (ARN) does not refer to an existing resource.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidDomainValidationOptionsException": {
       "base": "<p>One or more values in the <a>DomainValidationOption</a> structure is incorrect.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidStateException": {
       "base": "<p>Processing has reached an invalid state. For example, this exception can occur if the specified domain is not using email validation, or the current certificate status does not permit the requested operation. See the exception message returned by ACM to determine which state is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidTagException": {
       "base": "<p>One or both of the values that make up the key-value pair is not valid. For example, you cannot specify a tag value that begins with <code>aws:</code>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KeyAlgorithm": {
       "base": null,
@@ -231,28 +219,23 @@
     },
     "LimitExceededException": {
       "base": "<p>An ACM limit has been exceeded. For example, you may have input more domains than are allowed or you've requested too many certificates for your account. See the exception message returned by ACM to determine which limit you have violated. For more information about ACM limits, see the <a href=\"http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html\">Limits</a> topic.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListCertificatesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListCertificatesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForCertificateResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxItems": {
       "base": null,
@@ -275,8 +258,7 @@
     },
     "RemoveTagsFromCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RenewalStatus": {
       "base": null,
@@ -292,33 +274,27 @@
     },
     "RequestCertificateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RequestCertificateResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RequestInProgressException": {
       "base": "<p>The certificate request is in process and the certificate in your account has not yet been issued.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResendValidationEmailRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceInUseException": {
       "base": "<p>The certificate is in use by another AWS service in the caller's account. Remove the association and try again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The specified certificate cannot be found in the caller's account, or the caller's account cannot be found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RevocationReason": {
       "base": null,
@@ -385,8 +361,7 @@
     },
     "TooManyTagsException": {
       "base": "<p>The request contains too many tags. Try the request again with fewer tags.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ValidationEmailList": {
       "base": null,

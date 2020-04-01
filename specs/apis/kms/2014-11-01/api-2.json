@@ -1,988 +1,962 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2014-11-01",
-    "endpointPrefix":"kms",
-    "jsonVersion":"1.1",
-    "protocol":"json",
-    "serviceAbbreviation":"KMS",
-    "serviceFullName":"AWS Key Management Service",
-    "signatureVersion":"v4",
-    "targetPrefix":"TrentService",
-    "uid":"kms-2014-11-01"
+  "version": "2.0",
+  "metadata": {
+    "apiVersion": "2014-11-01",
+    "endpointPrefix": "kms",
+    "jsonVersion": "1.1",
+    "protocol": "json",
+    "serviceAbbreviation": "KMS",
+    "serviceFullName": "AWS Key Management Service",
+    "signatureVersion": "v4",
+    "targetPrefix": "TrentService",
+    "uid": "kms-2014-11-01"
   },
-  "operations":{
-    "CancelKeyDeletion":{
-      "name":"CancelKeyDeletion",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+  "operations": {
+    "CancelKeyDeletion": {
+      "name": "CancelKeyDeletion",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"CancelKeyDeletionRequest"},
-      "output":{"shape":"CancelKeyDeletionResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "CancelKeyDeletionRequest" },
+      "output": { "shape": "CancelKeyDeletionResponse" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "CreateAlias":{
-      "name":"CreateAlias",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "CreateAlias": {
+      "name": "CreateAlias",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"CreateAliasRequest"},
-      "errors":[
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"AlreadyExistsException"},
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidAliasNameException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "CreateAliasRequest" },
+      "errors": [
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "AlreadyExistsException" },
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidAliasNameException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "CreateGrant":{
-      "name":"CreateGrant",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "CreateGrant": {
+      "name": "CreateGrant",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"CreateGrantRequest"},
-      "output":{"shape":"CreateGrantResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"DisabledException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"InvalidGrantTokenException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "CreateGrantRequest" },
+      "output": { "shape": "CreateGrantResponse" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "DisabledException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "InvalidGrantTokenException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "CreateKey":{
-      "name":"CreateKey",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "CreateKey": {
+      "name": "CreateKey",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"CreateKeyRequest"},
-      "output":{"shape":"CreateKeyResponse"},
-      "errors":[
-        {"shape":"MalformedPolicyDocumentException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"UnsupportedOperationException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"TagException"}
+      "input": { "shape": "CreateKeyRequest" },
+      "output": { "shape": "CreateKeyResponse" },
+      "errors": [
+        { "shape": "MalformedPolicyDocumentException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "UnsupportedOperationException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "TagException" }
       ]
     },
-    "Decrypt":{
-      "name":"Decrypt",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "Decrypt": {
+      "name": "Decrypt",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DecryptRequest"},
-      "output":{"shape":"DecryptResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"DisabledException"},
-        {"shape":"InvalidCiphertextException"},
-        {"shape":"KeyUnavailableException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"InvalidGrantTokenException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "DecryptRequest" },
+      "output": { "shape": "DecryptResponse" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "DisabledException" },
+        { "shape": "InvalidCiphertextException" },
+        { "shape": "KeyUnavailableException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "InvalidGrantTokenException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "DeleteAlias":{
-      "name":"DeleteAlias",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteAlias": {
+      "name": "DeleteAlias",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteAliasRequest"},
-      "errors":[
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"NotFoundException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "DeleteAliasRequest" },
+      "errors": [
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "NotFoundException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "DeleteImportedKeyMaterial":{
-      "name":"DeleteImportedKeyMaterial",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteImportedKeyMaterial": {
+      "name": "DeleteImportedKeyMaterial",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteImportedKeyMaterialRequest"},
-      "errors":[
-        {"shape":"InvalidArnException"},
-        {"shape":"UnsupportedOperationException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"NotFoundException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "DeleteImportedKeyMaterialRequest" },
+      "errors": [
+        { "shape": "InvalidArnException" },
+        { "shape": "UnsupportedOperationException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "NotFoundException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "DescribeKey":{
-      "name":"DescribeKey",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DescribeKey": {
+      "name": "DescribeKey",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeKeyRequest"},
-      "output":{"shape":"DescribeKeyResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"}
+      "input": { "shape": "DescribeKeyRequest" },
+      "output": { "shape": "DescribeKeyResponse" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" }
       ]
     },
-    "DisableKey":{
-      "name":"DisableKey",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DisableKey": {
+      "name": "DisableKey",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DisableKeyRequest"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "DisableKeyRequest" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "DisableKeyRotation":{
-      "name":"DisableKeyRotation",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DisableKeyRotation": {
+      "name": "DisableKeyRotation",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DisableKeyRotationRequest"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"DisabledException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"},
-        {"shape":"UnsupportedOperationException"}
+      "input": { "shape": "DisableKeyRotationRequest" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "DisabledException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" },
+        { "shape": "UnsupportedOperationException" }
       ]
     },
-    "EnableKey":{
-      "name":"EnableKey",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "EnableKey": {
+      "name": "EnableKey",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"EnableKeyRequest"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "EnableKeyRequest" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "EnableKeyRotation":{
-      "name":"EnableKeyRotation",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "EnableKeyRotation": {
+      "name": "EnableKeyRotation",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"EnableKeyRotationRequest"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"DisabledException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"},
-        {"shape":"UnsupportedOperationException"}
+      "input": { "shape": "EnableKeyRotationRequest" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "DisabledException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" },
+        { "shape": "UnsupportedOperationException" }
       ]
     },
-    "Encrypt":{
-      "name":"Encrypt",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "Encrypt": {
+      "name": "Encrypt",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"EncryptRequest"},
-      "output":{"shape":"EncryptResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"DisabledException"},
-        {"shape":"KeyUnavailableException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"InvalidKeyUsageException"},
-        {"shape":"InvalidGrantTokenException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "EncryptRequest" },
+      "output": { "shape": "EncryptResponse" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "DisabledException" },
+        { "shape": "KeyUnavailableException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "InvalidKeyUsageException" },
+        { "shape": "InvalidGrantTokenException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "GenerateDataKey":{
-      "name":"GenerateDataKey",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "GenerateDataKey": {
+      "name": "GenerateDataKey",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"GenerateDataKeyRequest"},
-      "output":{"shape":"GenerateDataKeyResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"DisabledException"},
-        {"shape":"KeyUnavailableException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"InvalidKeyUsageException"},
-        {"shape":"InvalidGrantTokenException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "GenerateDataKeyRequest" },
+      "output": { "shape": "GenerateDataKeyResponse" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "DisabledException" },
+        { "shape": "KeyUnavailableException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "InvalidKeyUsageException" },
+        { "shape": "InvalidGrantTokenException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "GenerateDataKeyWithoutPlaintext":{
-      "name":"GenerateDataKeyWithoutPlaintext",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "GenerateDataKeyWithoutPlaintext": {
+      "name": "GenerateDataKeyWithoutPlaintext",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"GenerateDataKeyWithoutPlaintextRequest"},
-      "output":{"shape":"GenerateDataKeyWithoutPlaintextResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"DisabledException"},
-        {"shape":"KeyUnavailableException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"InvalidKeyUsageException"},
-        {"shape":"InvalidGrantTokenException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "GenerateDataKeyWithoutPlaintextRequest" },
+      "output": { "shape": "GenerateDataKeyWithoutPlaintextResponse" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "DisabledException" },
+        { "shape": "KeyUnavailableException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "InvalidKeyUsageException" },
+        { "shape": "InvalidGrantTokenException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "GenerateRandom":{
-      "name":"GenerateRandom",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "GenerateRandom": {
+      "name": "GenerateRandom",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"GenerateRandomRequest"},
-      "output":{"shape":"GenerateRandomResponse"},
-      "errors":[
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"}
+      "input": { "shape": "GenerateRandomRequest" },
+      "output": { "shape": "GenerateRandomResponse" },
+      "errors": [
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" }
       ]
     },
-    "GetKeyPolicy":{
-      "name":"GetKeyPolicy",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "GetKeyPolicy": {
+      "name": "GetKeyPolicy",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"GetKeyPolicyRequest"},
-      "output":{"shape":"GetKeyPolicyResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "GetKeyPolicyRequest" },
+      "output": { "shape": "GetKeyPolicyResponse" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "GetKeyRotationStatus":{
-      "name":"GetKeyRotationStatus",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "GetKeyRotationStatus": {
+      "name": "GetKeyRotationStatus",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"GetKeyRotationStatusRequest"},
-      "output":{"shape":"GetKeyRotationStatusResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"},
-        {"shape":"UnsupportedOperationException"}
+      "input": { "shape": "GetKeyRotationStatusRequest" },
+      "output": { "shape": "GetKeyRotationStatusResponse" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" },
+        { "shape": "UnsupportedOperationException" }
       ]
     },
-    "GetParametersForImport":{
-      "name":"GetParametersForImport",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "GetParametersForImport": {
+      "name": "GetParametersForImport",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"GetParametersForImportRequest"},
-      "output":{"shape":"GetParametersForImportResponse"},
-      "errors":[
-        {"shape":"InvalidArnException"},
-        {"shape":"UnsupportedOperationException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"NotFoundException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "GetParametersForImportRequest" },
+      "output": { "shape": "GetParametersForImportResponse" },
+      "errors": [
+        { "shape": "InvalidArnException" },
+        { "shape": "UnsupportedOperationException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "NotFoundException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "ImportKeyMaterial":{
-      "name":"ImportKeyMaterial",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ImportKeyMaterial": {
+      "name": "ImportKeyMaterial",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ImportKeyMaterialRequest"},
-      "output":{"shape":"ImportKeyMaterialResponse"},
-      "errors":[
-        {"shape":"InvalidArnException"},
-        {"shape":"UnsupportedOperationException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"NotFoundException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"},
-        {"shape":"InvalidCiphertextException"},
-        {"shape":"IncorrectKeyMaterialException"},
-        {"shape":"ExpiredImportTokenException"},
-        {"shape":"InvalidImportTokenException"}
+      "input": { "shape": "ImportKeyMaterialRequest" },
+      "output": { "shape": "ImportKeyMaterialResponse" },
+      "errors": [
+        { "shape": "InvalidArnException" },
+        { "shape": "UnsupportedOperationException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "NotFoundException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" },
+        { "shape": "InvalidCiphertextException" },
+        { "shape": "IncorrectKeyMaterialException" },
+        { "shape": "ExpiredImportTokenException" },
+        { "shape": "InvalidImportTokenException" }
       ]
     },
-    "ListAliases":{
-      "name":"ListAliases",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ListAliases": {
+      "name": "ListAliases",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ListAliasesRequest"},
-      "output":{"shape":"ListAliasesResponse"},
-      "errors":[
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"InvalidMarkerException"},
-        {"shape":"KMSInternalException"}
+      "input": { "shape": "ListAliasesRequest" },
+      "output": { "shape": "ListAliasesResponse" },
+      "errors": [
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "InvalidMarkerException" },
+        { "shape": "KMSInternalException" }
       ]
     },
-    "ListGrants":{
-      "name":"ListGrants",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ListGrants": {
+      "name": "ListGrants",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ListGrantsRequest"},
-      "output":{"shape":"ListGrantsResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"InvalidMarkerException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "ListGrantsRequest" },
+      "output": { "shape": "ListGrantsResponse" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "InvalidMarkerException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "ListKeyPolicies":{
-      "name":"ListKeyPolicies",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ListKeyPolicies": {
+      "name": "ListKeyPolicies",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ListKeyPoliciesRequest"},
-      "output":{"shape":"ListKeyPoliciesResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "ListKeyPoliciesRequest" },
+      "output": { "shape": "ListKeyPoliciesResponse" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "ListKeys":{
-      "name":"ListKeys",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ListKeys": {
+      "name": "ListKeys",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ListKeysRequest"},
-      "output":{"shape":"ListKeysResponse"},
-      "errors":[
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"InvalidMarkerException"}
+      "input": { "shape": "ListKeysRequest" },
+      "output": { "shape": "ListKeysResponse" },
+      "errors": [
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "InvalidMarkerException" }
       ]
     },
-    "ListResourceTags":{
-      "name":"ListResourceTags",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ListResourceTags": {
+      "name": "ListResourceTags",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ListResourceTagsRequest"},
-      "output":{"shape":"ListResourceTagsResponse"},
-      "errors":[
-        {"shape":"KMSInternalException"},
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"InvalidMarkerException"}
+      "input": { "shape": "ListResourceTagsRequest" },
+      "output": { "shape": "ListResourceTagsResponse" },
+      "errors": [
+        { "shape": "KMSInternalException" },
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "InvalidMarkerException" }
       ]
     },
-    "ListRetirableGrants":{
-      "name":"ListRetirableGrants",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ListRetirableGrants": {
+      "name": "ListRetirableGrants",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ListRetirableGrantsRequest"},
-      "output":{"shape":"ListGrantsResponse"},
-      "errors":[
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"InvalidMarkerException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"NotFoundException"},
-        {"shape":"KMSInternalException"}
+      "input": { "shape": "ListRetirableGrantsRequest" },
+      "output": { "shape": "ListGrantsResponse" },
+      "errors": [
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "InvalidMarkerException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "NotFoundException" },
+        { "shape": "KMSInternalException" }
       ]
     },
-    "PutKeyPolicy":{
-      "name":"PutKeyPolicy",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "PutKeyPolicy": {
+      "name": "PutKeyPolicy",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"PutKeyPolicyRequest"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"MalformedPolicyDocumentException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"UnsupportedOperationException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "PutKeyPolicyRequest" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "MalformedPolicyDocumentException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "UnsupportedOperationException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "ReEncrypt":{
-      "name":"ReEncrypt",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ReEncrypt": {
+      "name": "ReEncrypt",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ReEncryptRequest"},
-      "output":{"shape":"ReEncryptResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"DisabledException"},
-        {"shape":"InvalidCiphertextException"},
-        {"shape":"KeyUnavailableException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"InvalidKeyUsageException"},
-        {"shape":"InvalidGrantTokenException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "ReEncryptRequest" },
+      "output": { "shape": "ReEncryptResponse" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "DisabledException" },
+        { "shape": "InvalidCiphertextException" },
+        { "shape": "KeyUnavailableException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "InvalidKeyUsageException" },
+        { "shape": "InvalidGrantTokenException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "RetireGrant":{
-      "name":"RetireGrant",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "RetireGrant": {
+      "name": "RetireGrant",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"RetireGrantRequest"},
-      "errors":[
-        {"shape":"InvalidGrantTokenException"},
-        {"shape":"InvalidGrantIdException"},
-        {"shape":"NotFoundException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "RetireGrantRequest" },
+      "errors": [
+        { "shape": "InvalidGrantTokenException" },
+        { "shape": "InvalidGrantIdException" },
+        { "shape": "NotFoundException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "RevokeGrant":{
-      "name":"RevokeGrant",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "RevokeGrant": {
+      "name": "RevokeGrant",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"RevokeGrantRequest"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"InvalidGrantIdException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "RevokeGrantRequest" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "InvalidGrantIdException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "ScheduleKeyDeletion":{
-      "name":"ScheduleKeyDeletion",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ScheduleKeyDeletion": {
+      "name": "ScheduleKeyDeletion",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ScheduleKeyDeletionRequest"},
-      "output":{"shape":"ScheduleKeyDeletionResponse"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "ScheduleKeyDeletionRequest" },
+      "output": { "shape": "ScheduleKeyDeletionResponse" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "TagResource":{
-      "name":"TagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "TagResource": {
+      "name": "TagResource",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"TagResourceRequest"},
-      "errors":[
-        {"shape":"KMSInternalException"},
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"KMSInvalidStateException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"TagException"}
+      "input": { "shape": "TagResourceRequest" },
+      "errors": [
+        { "shape": "KMSInternalException" },
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "KMSInvalidStateException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "TagException" }
       ]
     },
-    "UntagResource":{
-      "name":"UntagResource",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "UntagResource": {
+      "name": "UntagResource",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"UntagResourceRequest"},
-      "errors":[
-        {"shape":"KMSInternalException"},
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"KMSInvalidStateException"},
-        {"shape":"TagException"}
+      "input": { "shape": "UntagResourceRequest" },
+      "errors": [
+        { "shape": "KMSInternalException" },
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "KMSInvalidStateException" },
+        { "shape": "TagException" }
       ]
     },
-    "UpdateAlias":{
-      "name":"UpdateAlias",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "UpdateAlias": {
+      "name": "UpdateAlias",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"UpdateAliasRequest"},
-      "errors":[
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"NotFoundException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "UpdateAliasRequest" },
+      "errors": [
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "NotFoundException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     },
-    "UpdateKeyDescription":{
-      "name":"UpdateKeyDescription",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "UpdateKeyDescription": {
+      "name": "UpdateKeyDescription",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"UpdateKeyDescriptionRequest"},
-      "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"InvalidArnException"},
-        {"shape":"DependencyTimeoutException"},
-        {"shape":"KMSInternalException"},
-        {"shape":"KMSInvalidStateException"}
+      "input": { "shape": "UpdateKeyDescriptionRequest" },
+      "errors": [
+        { "shape": "NotFoundException" },
+        { "shape": "InvalidArnException" },
+        { "shape": "DependencyTimeoutException" },
+        { "shape": "KMSInternalException" },
+        { "shape": "KMSInvalidStateException" }
       ]
     }
   },
-  "shapes":{
-    "AWSAccountIdType":{"type":"string"},
-    "AlgorithmSpec":{
-      "type":"string",
-      "enum":[
-        "RSAES_PKCS1_V1_5",
-        "RSAES_OAEP_SHA_1",
-        "RSAES_OAEP_SHA_256"
-      ]
+  "shapes": {
+    "AWSAccountIdType": { "type": "string" },
+    "AlgorithmSpec": {
+      "type": "string",
+      "enum": ["RSAES_PKCS1_V1_5", "RSAES_OAEP_SHA_1", "RSAES_OAEP_SHA_256"]
     },
-    "AliasList":{
-      "type":"list",
-      "member":{"shape":"AliasListEntry"}
+    "AliasList": {
+      "type": "list",
+      "member": { "shape": "AliasListEntry" }
     },
-    "AliasListEntry":{
-      "type":"structure",
-      "members":{
-        "AliasName":{"shape":"AliasNameType"},
-        "AliasArn":{"shape":"ArnType"},
-        "TargetKeyId":{"shape":"KeyIdType"}
+    "AliasListEntry": {
+      "type": "structure",
+      "members": {
+        "AliasName": { "shape": "AliasNameType" },
+        "AliasArn": { "shape": "ArnType" },
+        "TargetKeyId": { "shape": "KeyIdType" }
       }
     },
-    "AliasNameType":{
-      "type":"string",
-      "max":256,
-      "min":1,
-      "pattern":"^[a-zA-Z0-9:/_-]+$"
+    "AliasNameType": {
+      "type": "string",
+      "max": 256,
+      "min": 1,
+      "pattern": "^[a-zA-Z0-9:/_-]+$"
     },
-    "AlreadyExistsException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "AlreadyExistsException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "ArnType":{
-      "type":"string",
-      "max":2048,
-      "min":20
+    "ArnType": {
+      "type": "string",
+      "max": 2048,
+      "min": 20
     },
-    "BooleanType":{"type":"boolean"},
-    "CancelKeyDeletionRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"}
+    "BooleanType": { "type": "boolean" },
+    "CancelKeyDeletionRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" }
       }
     },
-    "CancelKeyDeletionResponse":{
-      "type":"structure",
-      "members":{
-        "KeyId":{"shape":"KeyIdType"}
+    "CancelKeyDeletionResponse": {
+      "type": "structure",
+      "members": {
+        "KeyId": { "shape": "KeyIdType" }
       }
     },
-    "CiphertextType":{
-      "type":"blob",
-      "max":6144,
-      "min":1
+    "CiphertextType": {
+      "type": "blob",
+      "max": 6144,
+      "min": 1
     },
-    "CreateAliasRequest":{
-      "type":"structure",
-      "required":[
-        "AliasName",
-        "TargetKeyId"
-      ],
-      "members":{
-        "AliasName":{"shape":"AliasNameType"},
-        "TargetKeyId":{"shape":"KeyIdType"}
+    "CreateAliasRequest": {
+      "type": "structure",
+      "required": ["AliasName", "TargetKeyId"],
+      "members": {
+        "AliasName": { "shape": "AliasNameType" },
+        "TargetKeyId": { "shape": "KeyIdType" }
       }
     },
-    "CreateGrantRequest":{
-      "type":"structure",
-      "required":[
-        "KeyId",
-        "GranteePrincipal"
-      ],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "GranteePrincipal":{"shape":"PrincipalIdType"},
-        "RetiringPrincipal":{"shape":"PrincipalIdType"},
-        "Operations":{"shape":"GrantOperationList"},
-        "Constraints":{"shape":"GrantConstraints"},
-        "GrantTokens":{"shape":"GrantTokenList"},
-        "Name":{"shape":"GrantNameType"}
+    "CreateGrantRequest": {
+      "type": "structure",
+      "required": ["KeyId", "GranteePrincipal"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "GranteePrincipal": { "shape": "PrincipalIdType" },
+        "RetiringPrincipal": { "shape": "PrincipalIdType" },
+        "Operations": { "shape": "GrantOperationList" },
+        "Constraints": { "shape": "GrantConstraints" },
+        "GrantTokens": { "shape": "GrantTokenList" },
+        "Name": { "shape": "GrantNameType" }
       }
     },
-    "CreateGrantResponse":{
-      "type":"structure",
-      "members":{
-        "GrantToken":{"shape":"GrantTokenType"},
-        "GrantId":{"shape":"GrantIdType"}
+    "CreateGrantResponse": {
+      "type": "structure",
+      "members": {
+        "GrantToken": { "shape": "GrantTokenType" },
+        "GrantId": { "shape": "GrantIdType" }
       }
     },
-    "CreateKeyRequest":{
-      "type":"structure",
-      "members":{
-        "Policy":{"shape":"PolicyType"},
-        "Description":{"shape":"DescriptionType"},
-        "KeyUsage":{"shape":"KeyUsageType"},
-        "Origin":{"shape":"OriginType"},
-        "BypassPolicyLockoutSafetyCheck":{"shape":"BooleanType"},
-        "Tags":{"shape":"TagList"}
+    "CreateKeyRequest": {
+      "type": "structure",
+      "members": {
+        "Policy": { "shape": "PolicyType" },
+        "Description": { "shape": "DescriptionType" },
+        "KeyUsage": { "shape": "KeyUsageType" },
+        "Origin": { "shape": "OriginType" },
+        "BypassPolicyLockoutSafetyCheck": { "shape": "BooleanType" },
+        "Tags": { "shape": "TagList" }
       }
     },
-    "CreateKeyResponse":{
-      "type":"structure",
-      "members":{
-        "KeyMetadata":{"shape":"KeyMetadata"}
+    "CreateKeyResponse": {
+      "type": "structure",
+      "members": {
+        "KeyMetadata": { "shape": "KeyMetadata" }
       }
     },
-    "DataKeySpec":{
-      "type":"string",
-      "enum":[
-        "AES_256",
-        "AES_128"
-      ]
+    "DataKeySpec": {
+      "type": "string",
+      "enum": ["AES_256", "AES_128"]
     },
-    "DateType":{"type":"timestamp"},
-    "DecryptRequest":{
-      "type":"structure",
-      "required":["CiphertextBlob"],
-      "members":{
-        "CiphertextBlob":{"shape":"CiphertextType"},
-        "EncryptionContext":{"shape":"EncryptionContextType"},
-        "GrantTokens":{"shape":"GrantTokenList"}
+    "DateType": { "type": "timestamp" },
+    "DecryptRequest": {
+      "type": "structure",
+      "required": ["CiphertextBlob"],
+      "members": {
+        "CiphertextBlob": { "shape": "CiphertextType" },
+        "EncryptionContext": { "shape": "EncryptionContextType" },
+        "GrantTokens": { "shape": "GrantTokenList" }
       }
     },
-    "DecryptResponse":{
-      "type":"structure",
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "Plaintext":{"shape":"PlaintextType"}
+    "DecryptResponse": {
+      "type": "structure",
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "Plaintext": { "shape": "PlaintextType" }
       }
     },
-    "DeleteAliasRequest":{
-      "type":"structure",
-      "required":["AliasName"],
-      "members":{
-        "AliasName":{"shape":"AliasNameType"}
+    "DeleteAliasRequest": {
+      "type": "structure",
+      "required": ["AliasName"],
+      "members": {
+        "AliasName": { "shape": "AliasNameType" }
       }
     },
-    "DeleteImportedKeyMaterialRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"}
+    "DeleteImportedKeyMaterialRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" }
       }
     },
-    "DependencyTimeoutException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "DependencyTimeoutException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true,
-      "fault":true
+      "exception": true,
+      "fault": true
     },
-    "DescribeKeyRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "GrantTokens":{"shape":"GrantTokenList"}
+    "DescribeKeyRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "GrantTokens": { "shape": "GrantTokenList" }
       }
     },
-    "DescribeKeyResponse":{
-      "type":"structure",
-      "members":{
-        "KeyMetadata":{"shape":"KeyMetadata"}
+    "DescribeKeyResponse": {
+      "type": "structure",
+      "members": {
+        "KeyMetadata": { "shape": "KeyMetadata" }
       }
     },
-    "DescriptionType":{
-      "type":"string",
-      "max":8192,
-      "min":0
+    "DescriptionType": {
+      "type": "string",
+      "max": 8192,
+      "min": 0
     },
-    "DisableKeyRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"}
+    "DisableKeyRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" }
       }
     },
-    "DisableKeyRotationRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"}
+    "DisableKeyRotationRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" }
       }
     },
-    "DisabledException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "DisabledException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "EnableKeyRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"}
+    "EnableKeyRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" }
       }
     },
-    "EnableKeyRotationRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"}
+    "EnableKeyRotationRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" }
       }
     },
-    "EncryptRequest":{
-      "type":"structure",
-      "required":[
-        "KeyId",
-        "Plaintext"
-      ],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "Plaintext":{"shape":"PlaintextType"},
-        "EncryptionContext":{"shape":"EncryptionContextType"},
-        "GrantTokens":{"shape":"GrantTokenList"}
+    "EncryptRequest": {
+      "type": "structure",
+      "required": ["KeyId", "Plaintext"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "Plaintext": { "shape": "PlaintextType" },
+        "EncryptionContext": { "shape": "EncryptionContextType" },
+        "GrantTokens": { "shape": "GrantTokenList" }
       }
     },
-    "EncryptResponse":{
-      "type":"structure",
-      "members":{
-        "CiphertextBlob":{"shape":"CiphertextType"},
-        "KeyId":{"shape":"KeyIdType"}
+    "EncryptResponse": {
+      "type": "structure",
+      "members": {
+        "CiphertextBlob": { "shape": "CiphertextType" },
+        "KeyId": { "shape": "KeyIdType" }
       }
     },
-    "EncryptionContextKey":{"type":"string"},
-    "EncryptionContextType":{
-      "type":"map",
-      "key":{"shape":"EncryptionContextKey"},
-      "value":{"shape":"EncryptionContextValue"}
+    "EncryptionContextKey": { "type": "string" },
+    "EncryptionContextType": {
+      "type": "map",
+      "key": { "shape": "EncryptionContextKey" },
+      "value": { "shape": "EncryptionContextValue" }
     },
-    "EncryptionContextValue":{"type":"string"},
-    "ErrorMessageType":{"type":"string"},
-    "ExpirationModelType":{
-      "type":"string",
-      "enum":[
-        "KEY_MATERIAL_EXPIRES",
-        "KEY_MATERIAL_DOES_NOT_EXPIRE"
-      ]
+    "EncryptionContextValue": { "type": "string" },
+    "ErrorMessageType": { "type": "string" },
+    "ExpirationModelType": {
+      "type": "string",
+      "enum": ["KEY_MATERIAL_EXPIRES", "KEY_MATERIAL_DOES_NOT_EXPIRE"]
     },
-    "ExpiredImportTokenException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "ExpiredImportTokenException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "GenerateDataKeyRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "EncryptionContext":{"shape":"EncryptionContextType"},
-        "NumberOfBytes":{"shape":"NumberOfBytesType"},
-        "KeySpec":{"shape":"DataKeySpec"},
-        "GrantTokens":{"shape":"GrantTokenList"}
+    "GenerateDataKeyRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "EncryptionContext": { "shape": "EncryptionContextType" },
+        "NumberOfBytes": { "shape": "NumberOfBytesType" },
+        "KeySpec": { "shape": "DataKeySpec" },
+        "GrantTokens": { "shape": "GrantTokenList" }
       }
     },
-    "GenerateDataKeyResponse":{
-      "type":"structure",
-      "members":{
-        "CiphertextBlob":{"shape":"CiphertextType"},
-        "Plaintext":{"shape":"PlaintextType"},
-        "KeyId":{"shape":"KeyIdType"}
+    "GenerateDataKeyResponse": {
+      "type": "structure",
+      "members": {
+        "CiphertextBlob": { "shape": "CiphertextType" },
+        "Plaintext": { "shape": "PlaintextType" },
+        "KeyId": { "shape": "KeyIdType" }
       }
     },
-    "GenerateDataKeyWithoutPlaintextRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "EncryptionContext":{"shape":"EncryptionContextType"},
-        "KeySpec":{"shape":"DataKeySpec"},
-        "NumberOfBytes":{"shape":"NumberOfBytesType"},
-        "GrantTokens":{"shape":"GrantTokenList"}
+    "GenerateDataKeyWithoutPlaintextRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "EncryptionContext": { "shape": "EncryptionContextType" },
+        "KeySpec": { "shape": "DataKeySpec" },
+        "NumberOfBytes": { "shape": "NumberOfBytesType" },
+        "GrantTokens": { "shape": "GrantTokenList" }
       }
     },
-    "GenerateDataKeyWithoutPlaintextResponse":{
-      "type":"structure",
-      "members":{
-        "CiphertextBlob":{"shape":"CiphertextType"},
-        "KeyId":{"shape":"KeyIdType"}
+    "GenerateDataKeyWithoutPlaintextResponse": {
+      "type": "structure",
+      "members": {
+        "CiphertextBlob": { "shape": "CiphertextType" },
+        "KeyId": { "shape": "KeyIdType" }
       }
     },
-    "GenerateRandomRequest":{
-      "type":"structure",
-      "members":{
-        "NumberOfBytes":{"shape":"NumberOfBytesType"}
+    "GenerateRandomRequest": {
+      "type": "structure",
+      "members": {
+        "NumberOfBytes": { "shape": "NumberOfBytesType" }
       }
     },
-    "GenerateRandomResponse":{
-      "type":"structure",
-      "members":{
-        "Plaintext":{"shape":"PlaintextType"}
+    "GenerateRandomResponse": {
+      "type": "structure",
+      "members": {
+        "Plaintext": { "shape": "PlaintextType" }
       }
     },
-    "GetKeyPolicyRequest":{
-      "type":"structure",
-      "required":[
-        "KeyId",
-        "PolicyName"
-      ],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "PolicyName":{"shape":"PolicyNameType"}
+    "GetKeyPolicyRequest": {
+      "type": "structure",
+      "required": ["KeyId", "PolicyName"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "PolicyName": { "shape": "PolicyNameType" }
       }
     },
-    "GetKeyPolicyResponse":{
-      "type":"structure",
-      "members":{
-        "Policy":{"shape":"PolicyType"}
+    "GetKeyPolicyResponse": {
+      "type": "structure",
+      "members": {
+        "Policy": { "shape": "PolicyType" }
       }
     },
-    "GetKeyRotationStatusRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"}
+    "GetKeyRotationStatusRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" }
       }
     },
-    "GetKeyRotationStatusResponse":{
-      "type":"structure",
-      "members":{
-        "KeyRotationEnabled":{"shape":"BooleanType"}
+    "GetKeyRotationStatusResponse": {
+      "type": "structure",
+      "members": {
+        "KeyRotationEnabled": { "shape": "BooleanType" }
       }
     },
-    "GetParametersForImportRequest":{
-      "type":"structure",
-      "required":[
-        "KeyId",
-        "WrappingAlgorithm",
-        "WrappingKeySpec"
-      ],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "WrappingAlgorithm":{"shape":"AlgorithmSpec"},
-        "WrappingKeySpec":{"shape":"WrappingKeySpec"}
+    "GetParametersForImportRequest": {
+      "type": "structure",
+      "required": ["KeyId", "WrappingAlgorithm", "WrappingKeySpec"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "WrappingAlgorithm": { "shape": "AlgorithmSpec" },
+        "WrappingKeySpec": { "shape": "WrappingKeySpec" }
       }
     },
-    "GetParametersForImportResponse":{
-      "type":"structure",
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "ImportToken":{"shape":"CiphertextType"},
-        "PublicKey":{"shape":"PlaintextType"},
-        "ParametersValidTo":{"shape":"DateType"}
+    "GetParametersForImportResponse": {
+      "type": "structure",
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "ImportToken": { "shape": "CiphertextType" },
+        "PublicKey": { "shape": "PlaintextType" },
+        "ParametersValidTo": { "shape": "DateType" }
       }
     },
-    "GrantConstraints":{
-      "type":"structure",
-      "members":{
-        "EncryptionContextSubset":{"shape":"EncryptionContextType"},
-        "EncryptionContextEquals":{"shape":"EncryptionContextType"}
+    "GrantConstraints": {
+      "type": "structure",
+      "members": {
+        "EncryptionContextSubset": { "shape": "EncryptionContextType" },
+        "EncryptionContextEquals": { "shape": "EncryptionContextType" }
       }
     },
-    "GrantIdType":{
-      "type":"string",
-      "max":128,
-      "min":1
+    "GrantIdType": {
+      "type": "string",
+      "max": 128,
+      "min": 1
     },
-    "GrantList":{
-      "type":"list",
-      "member":{"shape":"GrantListEntry"}
+    "GrantList": {
+      "type": "list",
+      "member": { "shape": "GrantListEntry" }
     },
-    "GrantListEntry":{
-      "type":"structure",
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "GrantId":{"shape":"GrantIdType"},
-        "Name":{"shape":"GrantNameType"},
-        "CreationDate":{"shape":"DateType"},
-        "GranteePrincipal":{"shape":"PrincipalIdType"},
-        "RetiringPrincipal":{"shape":"PrincipalIdType"},
-        "IssuingAccount":{"shape":"PrincipalIdType"},
-        "Operations":{"shape":"GrantOperationList"},
-        "Constraints":{"shape":"GrantConstraints"}
+    "GrantListEntry": {
+      "type": "structure",
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "GrantId": { "shape": "GrantIdType" },
+        "Name": { "shape": "GrantNameType" },
+        "CreationDate": { "shape": "DateType" },
+        "GranteePrincipal": { "shape": "PrincipalIdType" },
+        "RetiringPrincipal": { "shape": "PrincipalIdType" },
+        "IssuingAccount": { "shape": "PrincipalIdType" },
+        "Operations": { "shape": "GrantOperationList" },
+        "Constraints": { "shape": "GrantConstraints" }
       }
     },
-    "GrantNameType":{
-      "type":"string",
-      "max":256,
-      "min":1,
-      "pattern":"^[a-zA-Z0-9:/_-]+$"
+    "GrantNameType": {
+      "type": "string",
+      "max": 256,
+      "min": 1,
+      "pattern": "^[a-zA-Z0-9:/_-]+$"
     },
-    "GrantOperation":{
-      "type":"string",
-      "enum":[
+    "GrantOperation": {
+      "type": "string",
+      "enum": [
         "Decrypt",
         "Encrypt",
         "GenerateDataKey",
@@ -994,507 +968,466 @@
         "DescribeKey"
       ]
     },
-    "GrantOperationList":{
-      "type":"list",
-      "member":{"shape":"GrantOperation"}
+    "GrantOperationList": {
+      "type": "list",
+      "member": { "shape": "GrantOperation" }
     },
-    "GrantTokenList":{
-      "type":"list",
-      "member":{"shape":"GrantTokenType"},
-      "max":10,
-      "min":0
+    "GrantTokenList": {
+      "type": "list",
+      "member": { "shape": "GrantTokenType" },
+      "max": 10,
+      "min": 0
     },
-    "GrantTokenType":{
-      "type":"string",
-      "max":8192,
-      "min":1
+    "GrantTokenType": {
+      "type": "string",
+      "max": 8192,
+      "min": 1
     },
-    "ImportKeyMaterialRequest":{
-      "type":"structure",
-      "required":[
-        "KeyId",
-        "ImportToken",
-        "EncryptedKeyMaterial"
-      ],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "ImportToken":{"shape":"CiphertextType"},
-        "EncryptedKeyMaterial":{"shape":"CiphertextType"},
-        "ValidTo":{"shape":"DateType"},
-        "ExpirationModel":{"shape":"ExpirationModelType"}
+    "ImportKeyMaterialRequest": {
+      "type": "structure",
+      "required": ["KeyId", "ImportToken", "EncryptedKeyMaterial"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "ImportToken": { "shape": "CiphertextType" },
+        "EncryptedKeyMaterial": { "shape": "CiphertextType" },
+        "ValidTo": { "shape": "DateType" },
+        "ExpirationModel": { "shape": "ExpirationModelType" }
       }
     },
-    "ImportKeyMaterialResponse":{
-      "type":"structure",
-      "members":{
-      }
+    "ImportKeyMaterialResponse": {
+      "type": "structure",
+      "members": {}
     },
-    "IncorrectKeyMaterialException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "IncorrectKeyMaterialException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "InvalidAliasNameException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "InvalidAliasNameException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "InvalidArnException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "InvalidArnException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "InvalidCiphertextException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "InvalidCiphertextException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "InvalidGrantIdException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "InvalidGrantIdException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "InvalidGrantTokenException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "InvalidGrantTokenException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "InvalidImportTokenException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "InvalidImportTokenException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "InvalidKeyUsageException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "InvalidKeyUsageException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "InvalidMarkerException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "InvalidMarkerException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "KMSInternalException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "KMSInternalException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "KMSInvalidStateException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "KMSInvalidStateException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "KeyIdType":{
-      "type":"string",
-      "max":2048,
-      "min":1
+    "KeyIdType": {
+      "type": "string",
+      "max": 2048,
+      "min": 1
     },
-    "KeyList":{
-      "type":"list",
-      "member":{"shape":"KeyListEntry"}
+    "KeyList": {
+      "type": "list",
+      "member": { "shape": "KeyListEntry" }
     },
-    "KeyListEntry":{
-      "type":"structure",
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "KeyArn":{"shape":"ArnType"}
+    "KeyListEntry": {
+      "type": "structure",
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "KeyArn": { "shape": "ArnType" }
       }
     },
-    "KeyManagerType":{
-      "type":"string",
-      "enum":[
-        "AWS",
-        "CUSTOMER"
-      ]
+    "KeyManagerType": {
+      "type": "string",
+      "enum": ["AWS", "CUSTOMER"]
     },
-    "KeyMetadata":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "AWSAccountId":{"shape":"AWSAccountIdType"},
-        "KeyId":{"shape":"KeyIdType"},
-        "Arn":{"shape":"ArnType"},
-        "CreationDate":{"shape":"DateType"},
-        "Enabled":{"shape":"BooleanType"},
-        "Description":{"shape":"DescriptionType"},
-        "KeyUsage":{"shape":"KeyUsageType"},
-        "KeyState":{"shape":"KeyState"},
-        "DeletionDate":{"shape":"DateType"},
-        "ValidTo":{"shape":"DateType"},
-        "Origin":{"shape":"OriginType"},
-        "ExpirationModel":{"shape":"ExpirationModelType"},
-        "KeyManager":{"shape":"KeyManagerType"}
+    "KeyMetadata": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "AWSAccountId": { "shape": "AWSAccountIdType" },
+        "KeyId": { "shape": "KeyIdType" },
+        "Arn": { "shape": "ArnType" },
+        "CreationDate": { "shape": "DateType" },
+        "Enabled": { "shape": "BooleanType" },
+        "Description": { "shape": "DescriptionType" },
+        "KeyUsage": { "shape": "KeyUsageType" },
+        "KeyState": { "shape": "KeyState" },
+        "DeletionDate": { "shape": "DateType" },
+        "ValidTo": { "shape": "DateType" },
+        "Origin": { "shape": "OriginType" },
+        "ExpirationModel": { "shape": "ExpirationModelType" },
+        "KeyManager": { "shape": "KeyManagerType" }
       }
     },
-    "KeyState":{
-      "type":"string",
-      "enum":[
-        "Enabled",
-        "Disabled",
-        "PendingDeletion",
-        "PendingImport"
-      ]
+    "KeyState": {
+      "type": "string",
+      "enum": ["Enabled", "Disabled", "PendingDeletion", "PendingImport"]
     },
-    "KeyUnavailableException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "KeyUnavailableException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true,
-      "fault":true
+      "exception": true,
+      "fault": true
     },
-    "KeyUsageType":{
-      "type":"string",
-      "enum":["ENCRYPT_DECRYPT"]
+    "KeyUsageType": {
+      "type": "string",
+      "enum": ["ENCRYPT_DECRYPT"]
     },
-    "LimitExceededException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "LimitExceededException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "LimitType":{
-      "type":"integer",
-      "max":1000,
-      "min":1
+    "LimitType": {
+      "type": "integer",
+      "max": 1000,
+      "min": 1
     },
-    "ListAliasesRequest":{
-      "type":"structure",
-      "members":{
-        "Limit":{"shape":"LimitType"},
-        "Marker":{"shape":"MarkerType"}
+    "ListAliasesRequest": {
+      "type": "structure",
+      "members": {
+        "Limit": { "shape": "LimitType" },
+        "Marker": { "shape": "MarkerType" }
       }
     },
-    "ListAliasesResponse":{
-      "type":"structure",
-      "members":{
-        "Aliases":{"shape":"AliasList"},
-        "NextMarker":{"shape":"MarkerType"},
-        "Truncated":{"shape":"BooleanType"}
+    "ListAliasesResponse": {
+      "type": "structure",
+      "members": {
+        "Aliases": { "shape": "AliasList" },
+        "NextMarker": { "shape": "MarkerType" },
+        "Truncated": { "shape": "BooleanType" }
       }
     },
-    "ListGrantsRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "Limit":{"shape":"LimitType"},
-        "Marker":{"shape":"MarkerType"},
-        "KeyId":{"shape":"KeyIdType"}
+    "ListGrantsRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "Limit": { "shape": "LimitType" },
+        "Marker": { "shape": "MarkerType" },
+        "KeyId": { "shape": "KeyIdType" }
       }
     },
-    "ListGrantsResponse":{
-      "type":"structure",
-      "members":{
-        "Grants":{"shape":"GrantList"},
-        "NextMarker":{"shape":"MarkerType"},
-        "Truncated":{"shape":"BooleanType"}
+    "ListGrantsResponse": {
+      "type": "structure",
+      "members": {
+        "Grants": { "shape": "GrantList" },
+        "NextMarker": { "shape": "MarkerType" },
+        "Truncated": { "shape": "BooleanType" }
       }
     },
-    "ListKeyPoliciesRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "Limit":{"shape":"LimitType"},
-        "Marker":{"shape":"MarkerType"}
+    "ListKeyPoliciesRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "Limit": { "shape": "LimitType" },
+        "Marker": { "shape": "MarkerType" }
       }
     },
-    "ListKeyPoliciesResponse":{
-      "type":"structure",
-      "members":{
-        "PolicyNames":{"shape":"PolicyNameList"},
-        "NextMarker":{"shape":"MarkerType"},
-        "Truncated":{"shape":"BooleanType"}
+    "ListKeyPoliciesResponse": {
+      "type": "structure",
+      "members": {
+        "PolicyNames": { "shape": "PolicyNameList" },
+        "NextMarker": { "shape": "MarkerType" },
+        "Truncated": { "shape": "BooleanType" }
       }
     },
-    "ListKeysRequest":{
-      "type":"structure",
-      "members":{
-        "Limit":{"shape":"LimitType"},
-        "Marker":{"shape":"MarkerType"}
+    "ListKeysRequest": {
+      "type": "structure",
+      "members": {
+        "Limit": { "shape": "LimitType" },
+        "Marker": { "shape": "MarkerType" }
       }
     },
-    "ListKeysResponse":{
-      "type":"structure",
-      "members":{
-        "Keys":{"shape":"KeyList"},
-        "NextMarker":{"shape":"MarkerType"},
-        "Truncated":{"shape":"BooleanType"}
+    "ListKeysResponse": {
+      "type": "structure",
+      "members": {
+        "Keys": { "shape": "KeyList" },
+        "NextMarker": { "shape": "MarkerType" },
+        "Truncated": { "shape": "BooleanType" }
       }
     },
-    "ListResourceTagsRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "Limit":{"shape":"LimitType"},
-        "Marker":{"shape":"MarkerType"}
+    "ListResourceTagsRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "Limit": { "shape": "LimitType" },
+        "Marker": { "shape": "MarkerType" }
       }
     },
-    "ListResourceTagsResponse":{
-      "type":"structure",
-      "members":{
-        "Tags":{"shape":"TagList"},
-        "NextMarker":{"shape":"MarkerType"},
-        "Truncated":{"shape":"BooleanType"}
+    "ListResourceTagsResponse": {
+      "type": "structure",
+      "members": {
+        "Tags": { "shape": "TagList" },
+        "NextMarker": { "shape": "MarkerType" },
+        "Truncated": { "shape": "BooleanType" }
       }
     },
-    "ListRetirableGrantsRequest":{
-      "type":"structure",
-      "required":["RetiringPrincipal"],
-      "members":{
-        "Limit":{"shape":"LimitType"},
-        "Marker":{"shape":"MarkerType"},
-        "RetiringPrincipal":{"shape":"PrincipalIdType"}
+    "ListRetirableGrantsRequest": {
+      "type": "structure",
+      "required": ["RetiringPrincipal"],
+      "members": {
+        "Limit": { "shape": "LimitType" },
+        "Marker": { "shape": "MarkerType" },
+        "RetiringPrincipal": { "shape": "PrincipalIdType" }
       }
     },
-    "MalformedPolicyDocumentException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "MalformedPolicyDocumentException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "MarkerType":{
-      "type":"string",
-      "max":320,
-      "min":1,
-      "pattern":"[\\u0020-\\u00FF]*"
+    "MarkerType": {
+      "type": "string",
+      "max": 320,
+      "min": 1,
+      "pattern": "[\\u0020-\\u00FF]*"
     },
-    "NotFoundException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "NotFoundException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "NumberOfBytesType":{
-      "type":"integer",
-      "max":1024,
-      "min":1
+    "NumberOfBytesType": {
+      "type": "integer",
+      "max": 1024,
+      "min": 1
     },
-    "OriginType":{
-      "type":"string",
-      "enum":[
-        "AWS_KMS",
-        "EXTERNAL"
-      ]
+    "OriginType": {
+      "type": "string",
+      "enum": ["AWS_KMS", "EXTERNAL"]
     },
-    "PendingWindowInDaysType":{
-      "type":"integer",
-      "max":365,
-      "min":1
+    "PendingWindowInDaysType": {
+      "type": "integer",
+      "max": 365,
+      "min": 1
     },
-    "PlaintextType":{
-      "type":"blob",
-      "max":4096,
-      "min":1,
-      "sensitive":true
+    "PlaintextType": {
+      "type": "blob",
+      "max": 4096,
+      "min": 1,
+      "sensitive": true
     },
-    "PolicyNameList":{
-      "type":"list",
-      "member":{"shape":"PolicyNameType"}
+    "PolicyNameList": {
+      "type": "list",
+      "member": { "shape": "PolicyNameType" }
     },
-    "PolicyNameType":{
-      "type":"string",
-      "max":128,
-      "min":1,
-      "pattern":"[\\w]+"
+    "PolicyNameType": {
+      "type": "string",
+      "max": 128,
+      "min": 1,
+      "pattern": "[\\w]+"
     },
-    "PolicyType":{
-      "type":"string",
-      "max":131072,
-      "min":1,
-      "pattern":"[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"
+    "PolicyType": {
+      "type": "string",
+      "max": 131072,
+      "min": 1,
+      "pattern": "[\\u0009\\u000A\\u000D\\u0020-\\u00FF]+"
     },
-    "PrincipalIdType":{
-      "type":"string",
-      "max":256,
-      "min":1
+    "PrincipalIdType": {
+      "type": "string",
+      "max": 256,
+      "min": 1
     },
-    "PutKeyPolicyRequest":{
-      "type":"structure",
-      "required":[
-        "KeyId",
-        "PolicyName",
-        "Policy"
-      ],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "PolicyName":{"shape":"PolicyNameType"},
-        "Policy":{"shape":"PolicyType"},
-        "BypassPolicyLockoutSafetyCheck":{"shape":"BooleanType"}
+    "PutKeyPolicyRequest": {
+      "type": "structure",
+      "required": ["KeyId", "PolicyName", "Policy"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "PolicyName": { "shape": "PolicyNameType" },
+        "Policy": { "shape": "PolicyType" },
+        "BypassPolicyLockoutSafetyCheck": { "shape": "BooleanType" }
       }
     },
-    "ReEncryptRequest":{
-      "type":"structure",
-      "required":[
-        "CiphertextBlob",
-        "DestinationKeyId"
-      ],
-      "members":{
-        "CiphertextBlob":{"shape":"CiphertextType"},
-        "SourceEncryptionContext":{"shape":"EncryptionContextType"},
-        "DestinationKeyId":{"shape":"KeyIdType"},
-        "DestinationEncryptionContext":{"shape":"EncryptionContextType"},
-        "GrantTokens":{"shape":"GrantTokenList"}
+    "ReEncryptRequest": {
+      "type": "structure",
+      "required": ["CiphertextBlob", "DestinationKeyId"],
+      "members": {
+        "CiphertextBlob": { "shape": "CiphertextType" },
+        "SourceEncryptionContext": { "shape": "EncryptionContextType" },
+        "DestinationKeyId": { "shape": "KeyIdType" },
+        "DestinationEncryptionContext": { "shape": "EncryptionContextType" },
+        "GrantTokens": { "shape": "GrantTokenList" }
       }
     },
-    "ReEncryptResponse":{
-      "type":"structure",
-      "members":{
-        "CiphertextBlob":{"shape":"CiphertextType"},
-        "SourceKeyId":{"shape":"KeyIdType"},
-        "KeyId":{"shape":"KeyIdType"}
+    "ReEncryptResponse": {
+      "type": "structure",
+      "members": {
+        "CiphertextBlob": { "shape": "CiphertextType" },
+        "SourceKeyId": { "shape": "KeyIdType" },
+        "KeyId": { "shape": "KeyIdType" }
       }
     },
-    "RetireGrantRequest":{
-      "type":"structure",
-      "members":{
-        "GrantToken":{"shape":"GrantTokenType"},
-        "KeyId":{"shape":"KeyIdType"},
-        "GrantId":{"shape":"GrantIdType"}
+    "RetireGrantRequest": {
+      "type": "structure",
+      "members": {
+        "GrantToken": { "shape": "GrantTokenType" },
+        "KeyId": { "shape": "KeyIdType" },
+        "GrantId": { "shape": "GrantIdType" }
       }
     },
-    "RevokeGrantRequest":{
-      "type":"structure",
-      "required":[
-        "KeyId",
-        "GrantId"
-      ],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "GrantId":{"shape":"GrantIdType"}
+    "RevokeGrantRequest": {
+      "type": "structure",
+      "required": ["KeyId", "GrantId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "GrantId": { "shape": "GrantIdType" }
       }
     },
-    "ScheduleKeyDeletionRequest":{
-      "type":"structure",
-      "required":["KeyId"],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "PendingWindowInDays":{"shape":"PendingWindowInDaysType"}
+    "ScheduleKeyDeletionRequest": {
+      "type": "structure",
+      "required": ["KeyId"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "PendingWindowInDays": { "shape": "PendingWindowInDaysType" }
       }
     },
-    "ScheduleKeyDeletionResponse":{
-      "type":"structure",
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "DeletionDate":{"shape":"DateType"}
+    "ScheduleKeyDeletionResponse": {
+      "type": "structure",
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "DeletionDate": { "shape": "DateType" }
       }
     },
-    "Tag":{
-      "type":"structure",
-      "required":[
-        "TagKey",
-        "TagValue"
-      ],
-      "members":{
-        "TagKey":{"shape":"TagKeyType"},
-        "TagValue":{"shape":"TagValueType"}
+    "Tag": {
+      "type": "structure",
+      "required": ["TagKey", "TagValue"],
+      "members": {
+        "TagKey": { "shape": "TagKeyType" },
+        "TagValue": { "shape": "TagValueType" }
       }
     },
-    "TagException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "TagException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "TagKeyList":{
-      "type":"list",
-      "member":{"shape":"TagKeyType"}
+    "TagKeyList": {
+      "type": "list",
+      "member": { "shape": "TagKeyType" }
     },
-    "TagKeyType":{
-      "type":"string",
-      "max":128,
-      "min":1
+    "TagKeyType": {
+      "type": "string",
+      "max": 128,
+      "min": 1
     },
-    "TagList":{
-      "type":"list",
-      "member":{"shape":"Tag"}
+    "TagList": {
+      "type": "list",
+      "member": { "shape": "Tag" }
     },
-    "TagResourceRequest":{
-      "type":"structure",
-      "required":[
-        "KeyId",
-        "Tags"
-      ],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "Tags":{"shape":"TagList"}
+    "TagResourceRequest": {
+      "type": "structure",
+      "required": ["KeyId", "Tags"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "Tags": { "shape": "TagList" }
       }
     },
-    "TagValueType":{
-      "type":"string",
-      "max":256,
-      "min":0
+    "TagValueType": {
+      "type": "string",
+      "max": 256,
+      "min": 0
     },
-    "UnsupportedOperationException":{
-      "type":"structure",
-      "members":{
-        "message":{"shape":"ErrorMessageType"}
+    "UnsupportedOperationException": {
+      "type": "structure",
+      "members": {
+        "message": { "shape": "ErrorMessageType" }
       },
-      "exception":true
+      "exception": true
     },
-    "UntagResourceRequest":{
-      "type":"structure",
-      "required":[
-        "KeyId",
-        "TagKeys"
-      ],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "TagKeys":{"shape":"TagKeyList"}
+    "UntagResourceRequest": {
+      "type": "structure",
+      "required": ["KeyId", "TagKeys"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "TagKeys": { "shape": "TagKeyList" }
       }
     },
-    "UpdateAliasRequest":{
-      "type":"structure",
-      "required":[
-        "AliasName",
-        "TargetKeyId"
-      ],
-      "members":{
-        "AliasName":{"shape":"AliasNameType"},
-        "TargetKeyId":{"shape":"KeyIdType"}
+    "UpdateAliasRequest": {
+      "type": "structure",
+      "required": ["AliasName", "TargetKeyId"],
+      "members": {
+        "AliasName": { "shape": "AliasNameType" },
+        "TargetKeyId": { "shape": "KeyIdType" }
       }
     },
-    "UpdateKeyDescriptionRequest":{
-      "type":"structure",
-      "required":[
-        "KeyId",
-        "Description"
-      ],
-      "members":{
-        "KeyId":{"shape":"KeyIdType"},
-        "Description":{"shape":"DescriptionType"}
+    "UpdateKeyDescriptionRequest": {
+      "type": "structure",
+      "required": ["KeyId", "Description"],
+      "members": {
+        "KeyId": { "shape": "KeyIdType" },
+        "Description": { "shape": "DescriptionType" }
       }
     },
-    "WrappingKeySpec":{
-      "type":"string",
-      "enum":["RSA_2048"]
+    "WrappingKeySpec": {
+      "type": "string",
+      "enum": ["RSA_2048"]
     }
   }
 }

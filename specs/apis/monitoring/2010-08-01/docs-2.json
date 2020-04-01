@@ -133,8 +133,7 @@
     },
     "DashboardInvalidInputError": {
       "base": "<p>Some part of the dashboard data is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DashboardName": {
       "base": null,
@@ -160,8 +159,7 @@
     },
     "DashboardNotFoundError": {
       "base": "<p>The specified dashboard does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DashboardValidationMessage": {
       "base": "<p>An error or warning for the operation.</p>",
@@ -218,48 +216,39 @@
     },
     "DeleteAlarmsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDashboardsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDashboardsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAlarmHistoryInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAlarmHistoryOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAlarmsForMetricInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAlarmsForMetricOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAlarmsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAlarmsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Dimension": {
       "base": "<p>Expands the identity of a metric.</p>",
@@ -306,13 +295,11 @@
     },
     "DisableAlarmActionsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableAlarmActionsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorMessage": {
       "base": null,
@@ -361,23 +348,19 @@
     },
     "GetDashboardInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetDashboardOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetMetricStatisticsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetMetricStatisticsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "HistoryData": {
       "base": null,
@@ -400,28 +383,23 @@
     },
     "InternalServiceFault": {
       "base": "<p>Request processing has failed due to some unknown error, exception, or failure.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidFormatFault": {
       "base": "<p>Data was not syntactically valid JSON.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidNextToken": {
       "base": "<p>The next token specified is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterCombinationException": {
       "base": "<p>Parameters were used together that cannot be used together.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterValueException": {
       "base": "<p>The value of an input parameter is bad or out-of-range.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LastModified": {
       "base": null,
@@ -431,28 +409,23 @@
     },
     "LimitExceededFault": {
       "base": "<p>The quota for alarms for this customer has already been reached.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListDashboardsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListDashboardsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListMetricsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListMetricsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxRecords": {
       "base": null,
@@ -524,8 +497,7 @@
     },
     "MissingRequiredParameterException": {
       "base": "<p>An input parameter that is required is missing.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Namespace": {
       "base": null,
@@ -563,23 +535,19 @@
     },
     "PutDashboardInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutDashboardOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutMetricAlarmInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutMetricDataInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceList": {
       "base": null,
@@ -600,13 +568,11 @@
     },
     "ResourceNotFound": {
       "base": "<p>The named resource does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetAlarmStateInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Size": {
       "base": null,

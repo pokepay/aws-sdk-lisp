@@ -1,666 +1,634 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2016-12-01",
-    "endpointPrefix":"appstream2",
-    "jsonVersion":"1.1",
-    "protocol":"json",
-    "serviceFullName":"Amazon AppStream",
-    "signatureVersion":"v4",
-    "signingName":"appstream",
-    "targetPrefix":"PhotonAdminProxyService",
-    "uid":"appstream-2016-12-01"
+  "version": "2.0",
+  "metadata": {
+    "apiVersion": "2016-12-01",
+    "endpointPrefix": "appstream2",
+    "jsonVersion": "1.1",
+    "protocol": "json",
+    "serviceFullName": "Amazon AppStream",
+    "signatureVersion": "v4",
+    "signingName": "appstream",
+    "targetPrefix": "PhotonAdminProxyService",
+    "uid": "appstream-2016-12-01"
   },
-  "operations":{
-    "AssociateFleet":{
-      "name":"AssociateFleet",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+  "operations": {
+    "AssociateFleet": {
+      "name": "AssociateFleet",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"AssociateFleetRequest"},
-      "output":{"shape":"AssociateFleetResult"},
-      "errors":[
-        {"shape":"LimitExceededException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConcurrentModificationException"},
-        {"shape":"IncompatibleImageException"},
-        {"shape":"OperationNotPermittedException"}
+      "input": { "shape": "AssociateFleetRequest" },
+      "output": { "shape": "AssociateFleetResult" },
+      "errors": [
+        { "shape": "LimitExceededException" },
+        { "shape": "ResourceNotFoundException" },
+        { "shape": "ConcurrentModificationException" },
+        { "shape": "IncompatibleImageException" },
+        { "shape": "OperationNotPermittedException" }
       ]
     },
-    "CreateDirectoryConfig":{
-      "name":"CreateDirectoryConfig",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "CreateDirectoryConfig": {
+      "name": "CreateDirectoryConfig",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"CreateDirectoryConfigRequest"},
-      "output":{"shape":"CreateDirectoryConfigResult"},
-      "errors":[
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"LimitExceededException"}
+      "input": { "shape": "CreateDirectoryConfigRequest" },
+      "output": { "shape": "CreateDirectoryConfigResult" },
+      "errors": [
+        { "shape": "ResourceAlreadyExistsException" },
+        { "shape": "LimitExceededException" }
       ]
     },
-    "CreateFleet":{
-      "name":"CreateFleet",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "CreateFleet": {
+      "name": "CreateFleet",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"CreateFleetRequest"},
-      "output":{"shape":"CreateFleetResult"},
-      "errors":[
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"ResourceNotAvailableException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"InvalidRoleException"},
-        {"shape":"ConcurrentModificationException"},
-        {"shape":"InvalidParameterCombinationException"},
-        {"shape":"IncompatibleImageException"}
+      "input": { "shape": "CreateFleetRequest" },
+      "output": { "shape": "CreateFleetResult" },
+      "errors": [
+        { "shape": "ResourceAlreadyExistsException" },
+        { "shape": "ResourceNotAvailableException" },
+        { "shape": "ResourceNotFoundException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "InvalidRoleException" },
+        { "shape": "ConcurrentModificationException" },
+        { "shape": "InvalidParameterCombinationException" },
+        { "shape": "IncompatibleImageException" }
       ]
     },
-    "CreateStack":{
-      "name":"CreateStack",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "CreateStack": {
+      "name": "CreateStack",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"CreateStackRequest"},
-      "output":{"shape":"CreateStackResult"},
-      "errors":[
-        {"shape":"LimitExceededException"},
-        {"shape":"ResourceAlreadyExistsException"},
-        {"shape":"ConcurrentModificationException"},
-        {"shape":"InvalidRoleException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"InvalidParameterCombinationException"}
+      "input": { "shape": "CreateStackRequest" },
+      "output": { "shape": "CreateStackResult" },
+      "errors": [
+        { "shape": "LimitExceededException" },
+        { "shape": "ResourceAlreadyExistsException" },
+        { "shape": "ConcurrentModificationException" },
+        { "shape": "InvalidRoleException" },
+        { "shape": "ResourceNotFoundException" },
+        { "shape": "InvalidParameterCombinationException" }
       ]
     },
-    "CreateStreamingURL":{
-      "name":"CreateStreamingURL",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "CreateStreamingURL": {
+      "name": "CreateStreamingURL",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"CreateStreamingURLRequest"},
-      "output":{"shape":"CreateStreamingURLResult"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceNotAvailableException"},
-        {"shape":"OperationNotPermittedException"},
-        {"shape":"InvalidParameterCombinationException"}
+      "input": { "shape": "CreateStreamingURLRequest" },
+      "output": { "shape": "CreateStreamingURLResult" },
+      "errors": [
+        { "shape": "ResourceNotFoundException" },
+        { "shape": "ResourceNotAvailableException" },
+        { "shape": "OperationNotPermittedException" },
+        { "shape": "InvalidParameterCombinationException" }
       ]
     },
-    "DeleteDirectoryConfig":{
-      "name":"DeleteDirectoryConfig",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteDirectoryConfig": {
+      "name": "DeleteDirectoryConfig",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteDirectoryConfigRequest"},
-      "output":{"shape":"DeleteDirectoryConfigResult"},
-      "errors":[
-        {"shape":"ResourceInUseException"},
-        {"shape":"ResourceNotFoundException"}
+      "input": { "shape": "DeleteDirectoryConfigRequest" },
+      "output": { "shape": "DeleteDirectoryConfigResult" },
+      "errors": [
+        { "shape": "ResourceInUseException" },
+        { "shape": "ResourceNotFoundException" }
       ]
     },
-    "DeleteFleet":{
-      "name":"DeleteFleet",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteFleet": {
+      "name": "DeleteFleet",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteFleetRequest"},
-      "output":{"shape":"DeleteFleetResult"},
-      "errors":[
-        {"shape":"ResourceInUseException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConcurrentModificationException"}
+      "input": { "shape": "DeleteFleetRequest" },
+      "output": { "shape": "DeleteFleetResult" },
+      "errors": [
+        { "shape": "ResourceInUseException" },
+        { "shape": "ResourceNotFoundException" },
+        { "shape": "ConcurrentModificationException" }
       ]
     },
-    "DeleteStack":{
-      "name":"DeleteStack",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteStack": {
+      "name": "DeleteStack",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteStackRequest"},
-      "output":{"shape":"DeleteStackResult"},
-      "errors":[
-        {"shape":"ResourceInUseException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConcurrentModificationException"}
+      "input": { "shape": "DeleteStackRequest" },
+      "output": { "shape": "DeleteStackResult" },
+      "errors": [
+        { "shape": "ResourceInUseException" },
+        { "shape": "ResourceNotFoundException" },
+        { "shape": "ConcurrentModificationException" }
       ]
     },
-    "DescribeDirectoryConfigs":{
-      "name":"DescribeDirectoryConfigs",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DescribeDirectoryConfigs": {
+      "name": "DescribeDirectoryConfigs",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeDirectoryConfigsRequest"},
-      "output":{"shape":"DescribeDirectoryConfigsResult"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"}
+      "input": { "shape": "DescribeDirectoryConfigsRequest" },
+      "output": { "shape": "DescribeDirectoryConfigsResult" },
+      "errors": [{ "shape": "ResourceNotFoundException" }]
+    },
+    "DescribeFleets": {
+      "name": "DescribeFleets",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": { "shape": "DescribeFleetsRequest" },
+      "output": { "shape": "DescribeFleetsResult" },
+      "errors": [{ "shape": "ResourceNotFoundException" }]
+    },
+    "DescribeImages": {
+      "name": "DescribeImages",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": { "shape": "DescribeImagesRequest" },
+      "output": { "shape": "DescribeImagesResult" },
+      "errors": [{ "shape": "ResourceNotFoundException" }]
+    },
+    "DescribeSessions": {
+      "name": "DescribeSessions",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": { "shape": "DescribeSessionsRequest" },
+      "output": { "shape": "DescribeSessionsResult" },
+      "errors": [{ "shape": "InvalidParameterCombinationException" }]
+    },
+    "DescribeStacks": {
+      "name": "DescribeStacks",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": { "shape": "DescribeStacksRequest" },
+      "output": { "shape": "DescribeStacksResult" },
+      "errors": [{ "shape": "ResourceNotFoundException" }]
+    },
+    "DisassociateFleet": {
+      "name": "DisassociateFleet",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": { "shape": "DisassociateFleetRequest" },
+      "output": { "shape": "DisassociateFleetResult" },
+      "errors": [
+        { "shape": "ResourceInUseException" },
+        { "shape": "ResourceNotFoundException" },
+        { "shape": "ConcurrentModificationException" }
       ]
     },
-    "DescribeFleets":{
-      "name":"DescribeFleets",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ExpireSession": {
+      "name": "ExpireSession",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeFleetsRequest"},
-      "output":{"shape":"DescribeFleetsResult"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"}
+      "input": { "shape": "ExpireSessionRequest" },
+      "output": { "shape": "ExpireSessionResult" }
+    },
+    "ListAssociatedFleets": {
+      "name": "ListAssociatedFleets",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": { "shape": "ListAssociatedFleetsRequest" },
+      "output": { "shape": "ListAssociatedFleetsResult" }
+    },
+    "ListAssociatedStacks": {
+      "name": "ListAssociatedStacks",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": { "shape": "ListAssociatedStacksRequest" },
+      "output": { "shape": "ListAssociatedStacksResult" }
+    },
+    "StartFleet": {
+      "name": "StartFleet",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": { "shape": "StartFleetRequest" },
+      "output": { "shape": "StartFleetResult" },
+      "errors": [
+        { "shape": "ResourceNotFoundException" },
+        { "shape": "OperationNotPermittedException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "ConcurrentModificationException" }
       ]
     },
-    "DescribeImages":{
-      "name":"DescribeImages",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "StopFleet": {
+      "name": "StopFleet",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeImagesRequest"},
-      "output":{"shape":"DescribeImagesResult"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"}
+      "input": { "shape": "StopFleetRequest" },
+      "output": { "shape": "StopFleetResult" },
+      "errors": [
+        { "shape": "ResourceNotFoundException" },
+        { "shape": "ConcurrentModificationException" }
       ]
     },
-    "DescribeSessions":{
-      "name":"DescribeSessions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "UpdateDirectoryConfig": {
+      "name": "UpdateDirectoryConfig",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeSessionsRequest"},
-      "output":{"shape":"DescribeSessionsResult"},
-      "errors":[
-        {"shape":"InvalidParameterCombinationException"}
+      "input": { "shape": "UpdateDirectoryConfigRequest" },
+      "output": { "shape": "UpdateDirectoryConfigResult" },
+      "errors": [
+        { "shape": "ResourceInUseException" },
+        { "shape": "ResourceNotFoundException" },
+        { "shape": "ConcurrentModificationException" }
       ]
     },
-    "DescribeStacks":{
-      "name":"DescribeStacks",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "UpdateFleet": {
+      "name": "UpdateFleet",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeStacksRequest"},
-      "output":{"shape":"DescribeStacksResult"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"}
+      "input": { "shape": "UpdateFleetRequest" },
+      "output": { "shape": "UpdateFleetResult" },
+      "errors": [
+        { "shape": "ResourceInUseException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "InvalidRoleException" },
+        { "shape": "ResourceNotFoundException" },
+        { "shape": "ResourceNotAvailableException" },
+        { "shape": "InvalidParameterCombinationException" },
+        { "shape": "ConcurrentModificationException" },
+        { "shape": "IncompatibleImageException" },
+        { "shape": "OperationNotPermittedException" }
       ]
     },
-    "DisassociateFleet":{
-      "name":"DisassociateFleet",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "UpdateStack": {
+      "name": "UpdateStack",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DisassociateFleetRequest"},
-      "output":{"shape":"DisassociateFleetResult"},
-      "errors":[
-        {"shape":"ResourceInUseException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConcurrentModificationException"}
-      ]
-    },
-    "ExpireSession":{
-      "name":"ExpireSession",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ExpireSessionRequest"},
-      "output":{"shape":"ExpireSessionResult"}
-    },
-    "ListAssociatedFleets":{
-      "name":"ListAssociatedFleets",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListAssociatedFleetsRequest"},
-      "output":{"shape":"ListAssociatedFleetsResult"}
-    },
-    "ListAssociatedStacks":{
-      "name":"ListAssociatedStacks",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"ListAssociatedStacksRequest"},
-      "output":{"shape":"ListAssociatedStacksResult"}
-    },
-    "StartFleet":{
-      "name":"StartFleet",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"StartFleetRequest"},
-      "output":{"shape":"StartFleetResult"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"OperationNotPermittedException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"ConcurrentModificationException"}
-      ]
-    },
-    "StopFleet":{
-      "name":"StopFleet",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"StopFleetRequest"},
-      "output":{"shape":"StopFleetResult"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConcurrentModificationException"}
-      ]
-    },
-    "UpdateDirectoryConfig":{
-      "name":"UpdateDirectoryConfig",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateDirectoryConfigRequest"},
-      "output":{"shape":"UpdateDirectoryConfigResult"},
-      "errors":[
-        {"shape":"ResourceInUseException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ConcurrentModificationException"}
-      ]
-    },
-    "UpdateFleet":{
-      "name":"UpdateFleet",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateFleetRequest"},
-      "output":{"shape":"UpdateFleetResult"},
-      "errors":[
-        {"shape":"ResourceInUseException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"InvalidRoleException"},
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceNotAvailableException"},
-        {"shape":"InvalidParameterCombinationException"},
-        {"shape":"ConcurrentModificationException"},
-        {"shape":"IncompatibleImageException"},
-        {"shape":"OperationNotPermittedException"}
-      ]
-    },
-    "UpdateStack":{
-      "name":"UpdateStack",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateStackRequest"},
-      "output":{"shape":"UpdateStackResult"},
-      "errors":[
-        {"shape":"ResourceNotFoundException"},
-        {"shape":"ResourceInUseException"},
-        {"shape":"InvalidRoleException"},
-        {"shape":"InvalidParameterCombinationException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"IncompatibleImageException"}
+      "input": { "shape": "UpdateStackRequest" },
+      "output": { "shape": "UpdateStackResult" },
+      "errors": [
+        { "shape": "ResourceNotFoundException" },
+        { "shape": "ResourceInUseException" },
+        { "shape": "InvalidRoleException" },
+        { "shape": "InvalidParameterCombinationException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "IncompatibleImageException" }
       ]
     }
   },
-  "shapes":{
-    "AccountName":{
-      "type":"string",
-      "min":1,
-      "sensitive":true
+  "shapes": {
+    "AccountName": {
+      "type": "string",
+      "min": 1,
+      "sensitive": true
     },
-    "AccountPassword":{
-      "type":"string",
-      "max":127,
-      "min":1,
-      "sensitive":true
+    "AccountPassword": {
+      "type": "string",
+      "max": 127,
+      "min": 1,
+      "sensitive": true
     },
-    "Application":{
-      "type":"structure",
-      "members":{
-        "Name":{"shape":"String"},
-        "DisplayName":{"shape":"String"},
-        "IconURL":{"shape":"String"},
-        "LaunchPath":{"shape":"String"},
-        "LaunchParameters":{"shape":"String"},
-        "Enabled":{"shape":"Boolean"},
-        "Metadata":{"shape":"Metadata"}
+    "Application": {
+      "type": "structure",
+      "members": {
+        "Name": { "shape": "String" },
+        "DisplayName": { "shape": "String" },
+        "IconURL": { "shape": "String" },
+        "LaunchPath": { "shape": "String" },
+        "LaunchParameters": { "shape": "String" },
+        "Enabled": { "shape": "Boolean" },
+        "Metadata": { "shape": "Metadata" }
       }
     },
-    "Applications":{
-      "type":"list",
-      "member":{"shape":"Application"}
+    "Applications": {
+      "type": "list",
+      "member": { "shape": "Application" }
     },
-    "Arn":{
-      "type":"string",
-      "pattern":"^arn:aws:[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.-]{0,1023}$"
+    "Arn": {
+      "type": "string",
+      "pattern": "^arn:aws:[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9_/.-]{0,63}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.-]{0,1023}$"
     },
-    "AssociateFleetRequest":{
-      "type":"structure",
-      "required":[
-        "FleetName",
-        "StackName"
-      ],
-      "members":{
-        "FleetName":{"shape":"String"},
-        "StackName":{"shape":"String"}
+    "AssociateFleetRequest": {
+      "type": "structure",
+      "required": ["FleetName", "StackName"],
+      "members": {
+        "FleetName": { "shape": "String" },
+        "StackName": { "shape": "String" }
       }
     },
-    "AssociateFleetResult":{
-      "type":"structure",
-      "members":{
+    "AssociateFleetResult": {
+      "type": "structure",
+      "members": {}
+    },
+    "AuthenticationType": {
+      "type": "string",
+      "enum": ["API", "SAML", "USERPOOL"]
+    },
+    "Boolean": { "type": "boolean" },
+    "BooleanObject": { "type": "boolean" },
+    "ComputeCapacity": {
+      "type": "structure",
+      "required": ["DesiredInstances"],
+      "members": {
+        "DesiredInstances": { "shape": "Integer" }
       }
     },
-    "AuthenticationType":{
-      "type":"string",
-      "enum":[
-        "API",
-        "SAML",
-        "USERPOOL"
-      ]
-    },
-    "Boolean":{"type":"boolean"},
-    "BooleanObject":{"type":"boolean"},
-    "ComputeCapacity":{
-      "type":"structure",
-      "required":["DesiredInstances"],
-      "members":{
-        "DesiredInstances":{"shape":"Integer"}
+    "ComputeCapacityStatus": {
+      "type": "structure",
+      "required": ["Desired"],
+      "members": {
+        "Desired": { "shape": "Integer" },
+        "Running": { "shape": "Integer" },
+        "InUse": { "shape": "Integer" },
+        "Available": { "shape": "Integer" }
       }
     },
-    "ComputeCapacityStatus":{
-      "type":"structure",
-      "required":["Desired"],
-      "members":{
-        "Desired":{"shape":"Integer"},
-        "Running":{"shape":"Integer"},
-        "InUse":{"shape":"Integer"},
-        "Available":{"shape":"Integer"}
-      }
-    },
-    "ConcurrentModificationException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "ConcurrentModificationException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "CreateDirectoryConfigRequest":{
-      "type":"structure",
-      "required":[
+    "CreateDirectoryConfigRequest": {
+      "type": "structure",
+      "required": [
         "DirectoryName",
         "OrganizationalUnitDistinguishedNames",
         "ServiceAccountCredentials"
       ],
-      "members":{
-        "DirectoryName":{"shape":"DirectoryName"},
-        "OrganizationalUnitDistinguishedNames":{"shape":"OrganizationalUnitDistinguishedNamesList"},
-        "ServiceAccountCredentials":{"shape":"ServiceAccountCredentials"}
+      "members": {
+        "DirectoryName": { "shape": "DirectoryName" },
+        "OrganizationalUnitDistinguishedNames": {
+          "shape": "OrganizationalUnitDistinguishedNamesList"
+        },
+        "ServiceAccountCredentials": { "shape": "ServiceAccountCredentials" }
       }
     },
-    "CreateDirectoryConfigResult":{
-      "type":"structure",
-      "members":{
-        "DirectoryConfig":{"shape":"DirectoryConfig"}
+    "CreateDirectoryConfigResult": {
+      "type": "structure",
+      "members": {
+        "DirectoryConfig": { "shape": "DirectoryConfig" }
       }
     },
-    "CreateFleetRequest":{
-      "type":"structure",
-      "required":[
-        "Name",
-        "ImageName",
-        "InstanceType",
-        "ComputeCapacity"
-      ],
-      "members":{
-        "Name":{"shape":"Name"},
-        "ImageName":{"shape":"String"},
-        "InstanceType":{"shape":"String"},
-        "ComputeCapacity":{"shape":"ComputeCapacity"},
-        "VpcConfig":{"shape":"VpcConfig"},
-        "MaxUserDurationInSeconds":{"shape":"Integer"},
-        "DisconnectTimeoutInSeconds":{"shape":"Integer"},
-        "Description":{"shape":"Description"},
-        "DisplayName":{"shape":"DisplayName"},
-        "EnableDefaultInternetAccess":{"shape":"BooleanObject"},
-        "DomainJoinInfo":{"shape":"DomainJoinInfo"}
+    "CreateFleetRequest": {
+      "type": "structure",
+      "required": ["Name", "ImageName", "InstanceType", "ComputeCapacity"],
+      "members": {
+        "Name": { "shape": "Name" },
+        "ImageName": { "shape": "String" },
+        "InstanceType": { "shape": "String" },
+        "ComputeCapacity": { "shape": "ComputeCapacity" },
+        "VpcConfig": { "shape": "VpcConfig" },
+        "MaxUserDurationInSeconds": { "shape": "Integer" },
+        "DisconnectTimeoutInSeconds": { "shape": "Integer" },
+        "Description": { "shape": "Description" },
+        "DisplayName": { "shape": "DisplayName" },
+        "EnableDefaultInternetAccess": { "shape": "BooleanObject" },
+        "DomainJoinInfo": { "shape": "DomainJoinInfo" }
       }
     },
-    "CreateFleetResult":{
-      "type":"structure",
-      "members":{
-        "Fleet":{"shape":"Fleet"}
+    "CreateFleetResult": {
+      "type": "structure",
+      "members": {
+        "Fleet": { "shape": "Fleet" }
       }
     },
-    "CreateStackRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{"shape":"String"},
-        "Description":{"shape":"Description"},
-        "DisplayName":{"shape":"DisplayName"},
-        "StorageConnectors":{"shape":"StorageConnectorList"}
+    "CreateStackRequest": {
+      "type": "structure",
+      "required": ["Name"],
+      "members": {
+        "Name": { "shape": "String" },
+        "Description": { "shape": "Description" },
+        "DisplayName": { "shape": "DisplayName" },
+        "StorageConnectors": { "shape": "StorageConnectorList" }
       }
     },
-    "CreateStackResult":{
-      "type":"structure",
-      "members":{
-        "Stack":{"shape":"Stack"}
+    "CreateStackResult": {
+      "type": "structure",
+      "members": {
+        "Stack": { "shape": "Stack" }
       }
     },
-    "CreateStreamingURLRequest":{
-      "type":"structure",
-      "required":[
-        "StackName",
-        "FleetName",
-        "UserId"
-      ],
-      "members":{
-        "StackName":{"shape":"String"},
-        "FleetName":{"shape":"String"},
-        "UserId":{"shape":"StreamingUrlUserId"},
-        "ApplicationId":{"shape":"String"},
-        "Validity":{"shape":"Long"},
-        "SessionContext":{"shape":"String"}
+    "CreateStreamingURLRequest": {
+      "type": "structure",
+      "required": ["StackName", "FleetName", "UserId"],
+      "members": {
+        "StackName": { "shape": "String" },
+        "FleetName": { "shape": "String" },
+        "UserId": { "shape": "StreamingUrlUserId" },
+        "ApplicationId": { "shape": "String" },
+        "Validity": { "shape": "Long" },
+        "SessionContext": { "shape": "String" }
       }
     },
-    "CreateStreamingURLResult":{
-      "type":"structure",
-      "members":{
-        "StreamingURL":{"shape":"String"},
-        "Expires":{"shape":"Timestamp"}
+    "CreateStreamingURLResult": {
+      "type": "structure",
+      "members": {
+        "StreamingURL": { "shape": "String" },
+        "Expires": { "shape": "Timestamp" }
       }
     },
-    "DeleteDirectoryConfigRequest":{
-      "type":"structure",
-      "required":["DirectoryName"],
-      "members":{
-        "DirectoryName":{"shape":"DirectoryName"}
+    "DeleteDirectoryConfigRequest": {
+      "type": "structure",
+      "required": ["DirectoryName"],
+      "members": {
+        "DirectoryName": { "shape": "DirectoryName" }
       }
     },
-    "DeleteDirectoryConfigResult":{
-      "type":"structure",
-      "members":{
+    "DeleteDirectoryConfigResult": {
+      "type": "structure",
+      "members": {}
+    },
+    "DeleteFleetRequest": {
+      "type": "structure",
+      "required": ["Name"],
+      "members": {
+        "Name": { "shape": "String" }
       }
     },
-    "DeleteFleetRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{"shape":"String"}
+    "DeleteFleetResult": {
+      "type": "structure",
+      "members": {}
+    },
+    "DeleteStackRequest": {
+      "type": "structure",
+      "required": ["Name"],
+      "members": {
+        "Name": { "shape": "String" }
       }
     },
-    "DeleteFleetResult":{
-      "type":"structure",
-      "members":{
+    "DeleteStackResult": {
+      "type": "structure",
+      "members": {}
+    },
+    "DescribeDirectoryConfigsRequest": {
+      "type": "structure",
+      "members": {
+        "DirectoryNames": { "shape": "DirectoryNameList" },
+        "MaxResults": { "shape": "Integer" },
+        "NextToken": { "shape": "String" }
       }
     },
-    "DeleteStackRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{"shape":"String"}
+    "DescribeDirectoryConfigsResult": {
+      "type": "structure",
+      "members": {
+        "DirectoryConfigs": { "shape": "DirectoryConfigList" },
+        "NextToken": { "shape": "String" }
       }
     },
-    "DeleteStackResult":{
-      "type":"structure",
-      "members":{
+    "DescribeFleetsRequest": {
+      "type": "structure",
+      "members": {
+        "Names": { "shape": "StringList" },
+        "NextToken": { "shape": "String" }
       }
     },
-    "DescribeDirectoryConfigsRequest":{
-      "type":"structure",
-      "members":{
-        "DirectoryNames":{"shape":"DirectoryNameList"},
-        "MaxResults":{"shape":"Integer"},
-        "NextToken":{"shape":"String"}
+    "DescribeFleetsResult": {
+      "type": "structure",
+      "members": {
+        "Fleets": { "shape": "FleetList" },
+        "NextToken": { "shape": "String" }
       }
     },
-    "DescribeDirectoryConfigsResult":{
-      "type":"structure",
-      "members":{
-        "DirectoryConfigs":{"shape":"DirectoryConfigList"},
-        "NextToken":{"shape":"String"}
+    "DescribeImagesRequest": {
+      "type": "structure",
+      "members": {
+        "Names": { "shape": "StringList" }
       }
     },
-    "DescribeFleetsRequest":{
-      "type":"structure",
-      "members":{
-        "Names":{"shape":"StringList"},
-        "NextToken":{"shape":"String"}
+    "DescribeImagesResult": {
+      "type": "structure",
+      "members": {
+        "Images": { "shape": "ImageList" }
       }
     },
-    "DescribeFleetsResult":{
-      "type":"structure",
-      "members":{
-        "Fleets":{"shape":"FleetList"},
-        "NextToken":{"shape":"String"}
+    "DescribeSessionsRequest": {
+      "type": "structure",
+      "required": ["StackName", "FleetName"],
+      "members": {
+        "StackName": { "shape": "String" },
+        "FleetName": { "shape": "String" },
+        "UserId": { "shape": "UserId" },
+        "NextToken": { "shape": "String" },
+        "Limit": { "shape": "Integer" },
+        "AuthenticationType": { "shape": "AuthenticationType" }
       }
     },
-    "DescribeImagesRequest":{
-      "type":"structure",
-      "members":{
-        "Names":{"shape":"StringList"}
+    "DescribeSessionsResult": {
+      "type": "structure",
+      "members": {
+        "Sessions": { "shape": "SessionList" },
+        "NextToken": { "shape": "String" }
       }
     },
-    "DescribeImagesResult":{
-      "type":"structure",
-      "members":{
-        "Images":{"shape":"ImageList"}
+    "DescribeStacksRequest": {
+      "type": "structure",
+      "members": {
+        "Names": { "shape": "StringList" },
+        "NextToken": { "shape": "String" }
       }
     },
-    "DescribeSessionsRequest":{
-      "type":"structure",
-      "required":[
-        "StackName",
-        "FleetName"
-      ],
-      "members":{
-        "StackName":{"shape":"String"},
-        "FleetName":{"shape":"String"},
-        "UserId":{"shape":"UserId"},
-        "NextToken":{"shape":"String"},
-        "Limit":{"shape":"Integer"},
-        "AuthenticationType":{"shape":"AuthenticationType"}
+    "DescribeStacksResult": {
+      "type": "structure",
+      "members": {
+        "Stacks": { "shape": "StackList" },
+        "NextToken": { "shape": "String" }
       }
     },
-    "DescribeSessionsResult":{
-      "type":"structure",
-      "members":{
-        "Sessions":{"shape":"SessionList"},
-        "NextToken":{"shape":"String"}
+    "Description": {
+      "type": "string",
+      "max": 256
+    },
+    "DirectoryConfig": {
+      "type": "structure",
+      "required": ["DirectoryName"],
+      "members": {
+        "DirectoryName": { "shape": "DirectoryName" },
+        "OrganizationalUnitDistinguishedNames": {
+          "shape": "OrganizationalUnitDistinguishedNamesList"
+        },
+        "ServiceAccountCredentials": { "shape": "ServiceAccountCredentials" },
+        "CreatedTime": { "shape": "Timestamp" }
       }
     },
-    "DescribeStacksRequest":{
-      "type":"structure",
-      "members":{
-        "Names":{"shape":"StringList"},
-        "NextToken":{"shape":"String"}
+    "DirectoryConfigList": {
+      "type": "list",
+      "member": { "shape": "DirectoryConfig" }
+    },
+    "DirectoryName": { "type": "string" },
+    "DirectoryNameList": {
+      "type": "list",
+      "member": { "shape": "DirectoryName" }
+    },
+    "DisassociateFleetRequest": {
+      "type": "structure",
+      "required": ["FleetName", "StackName"],
+      "members": {
+        "FleetName": { "shape": "String" },
+        "StackName": { "shape": "String" }
       }
     },
-    "DescribeStacksResult":{
-      "type":"structure",
-      "members":{
-        "Stacks":{"shape":"StackList"},
-        "NextToken":{"shape":"String"}
+    "DisassociateFleetResult": {
+      "type": "structure",
+      "members": {}
+    },
+    "DisplayName": {
+      "type": "string",
+      "max": 100
+    },
+    "DomainJoinInfo": {
+      "type": "structure",
+      "members": {
+        "DirectoryName": { "shape": "DirectoryName" },
+        "OrganizationalUnitDistinguishedName": {
+          "shape": "OrganizationalUnitDistinguishedName"
+        }
       }
     },
-    "Description":{
-      "type":"string",
-      "max":256
-    },
-    "DirectoryConfig":{
-      "type":"structure",
-      "required":["DirectoryName"],
-      "members":{
-        "DirectoryName":{"shape":"DirectoryName"},
-        "OrganizationalUnitDistinguishedNames":{"shape":"OrganizationalUnitDistinguishedNamesList"},
-        "ServiceAccountCredentials":{"shape":"ServiceAccountCredentials"},
-        "CreatedTime":{"shape":"Timestamp"}
+    "ErrorMessage": { "type": "string" },
+    "ExpireSessionRequest": {
+      "type": "structure",
+      "required": ["SessionId"],
+      "members": {
+        "SessionId": { "shape": "String" }
       }
     },
-    "DirectoryConfigList":{
-      "type":"list",
-      "member":{"shape":"DirectoryConfig"}
+    "ExpireSessionResult": {
+      "type": "structure",
+      "members": {}
     },
-    "DirectoryName":{"type":"string"},
-    "DirectoryNameList":{
-      "type":"list",
-      "member":{"shape":"DirectoryName"}
-    },
-    "DisassociateFleetRequest":{
-      "type":"structure",
-      "required":[
-        "FleetName",
-        "StackName"
-      ],
-      "members":{
-        "FleetName":{"shape":"String"},
-        "StackName":{"shape":"String"}
-      }
-    },
-    "DisassociateFleetResult":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "DisplayName":{
-      "type":"string",
-      "max":100
-    },
-    "DomainJoinInfo":{
-      "type":"structure",
-      "members":{
-        "DirectoryName":{"shape":"DirectoryName"},
-        "OrganizationalUnitDistinguishedName":{"shape":"OrganizationalUnitDistinguishedName"}
-      }
-    },
-    "ErrorMessage":{"type":"string"},
-    "ExpireSessionRequest":{
-      "type":"structure",
-      "required":["SessionId"],
-      "members":{
-        "SessionId":{"shape":"String"}
-      }
-    },
-    "ExpireSessionResult":{
-      "type":"structure",
-      "members":{
-      }
-    },
-    "Fleet":{
-      "type":"structure",
-      "required":[
+    "Fleet": {
+      "type": "structure",
+      "required": [
         "Arn",
         "Name",
         "ImageName",
@@ -668,46 +636,46 @@
         "ComputeCapacityStatus",
         "State"
       ],
-      "members":{
-        "Arn":{"shape":"Arn"},
-        "Name":{"shape":"String"},
-        "DisplayName":{"shape":"String"},
-        "Description":{"shape":"String"},
-        "ImageName":{"shape":"String"},
-        "InstanceType":{"shape":"String"},
-        "ComputeCapacityStatus":{"shape":"ComputeCapacityStatus"},
-        "MaxUserDurationInSeconds":{"shape":"Integer"},
-        "DisconnectTimeoutInSeconds":{"shape":"Integer"},
-        "State":{"shape":"FleetState"},
-        "VpcConfig":{"shape":"VpcConfig"},
-        "CreatedTime":{"shape":"Timestamp"},
-        "FleetErrors":{"shape":"FleetErrors"},
-        "EnableDefaultInternetAccess":{"shape":"BooleanObject"},
-        "DomainJoinInfo":{"shape":"DomainJoinInfo"}
+      "members": {
+        "Arn": { "shape": "Arn" },
+        "Name": { "shape": "String" },
+        "DisplayName": { "shape": "String" },
+        "Description": { "shape": "String" },
+        "ImageName": { "shape": "String" },
+        "InstanceType": { "shape": "String" },
+        "ComputeCapacityStatus": { "shape": "ComputeCapacityStatus" },
+        "MaxUserDurationInSeconds": { "shape": "Integer" },
+        "DisconnectTimeoutInSeconds": { "shape": "Integer" },
+        "State": { "shape": "FleetState" },
+        "VpcConfig": { "shape": "VpcConfig" },
+        "CreatedTime": { "shape": "Timestamp" },
+        "FleetErrors": { "shape": "FleetErrors" },
+        "EnableDefaultInternetAccess": { "shape": "BooleanObject" },
+        "DomainJoinInfo": { "shape": "DomainJoinInfo" }
       }
     },
-    "FleetAttribute":{
-      "type":"string",
-      "enum":[
+    "FleetAttribute": {
+      "type": "string",
+      "enum": [
         "VPC_CONFIGURATION",
         "VPC_CONFIGURATION_SECURITY_GROUP_IDS",
         "DOMAIN_JOIN_INFO"
       ]
     },
-    "FleetAttributes":{
-      "type":"list",
-      "member":{"shape":"FleetAttribute"}
+    "FleetAttributes": {
+      "type": "list",
+      "member": { "shape": "FleetAttribute" }
     },
-    "FleetError":{
-      "type":"structure",
-      "members":{
-        "ErrorCode":{"shape":"FleetErrorCode"},
-        "ErrorMessage":{"shape":"String"}
+    "FleetError": {
+      "type": "structure",
+      "members": {
+        "ErrorCode": { "shape": "FleetErrorCode" },
+        "ErrorMessage": { "shape": "String" }
       }
     },
-    "FleetErrorCode":{
-      "type":"string",
-      "enum":[
+    "FleetErrorCode": {
+      "type": "string",
+      "enum": [
         "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION",
         "IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION",
         "IAM_SERVICE_ROLE_MISSING_ENI_DELETE_ACTION",
@@ -735,406 +703,374 @@
         "DOMAIN_JOIN_INTERNAL_SERVICE_ERROR"
       ]
     },
-    "FleetErrors":{
-      "type":"list",
-      "member":{"shape":"FleetError"}
+    "FleetErrors": {
+      "type": "list",
+      "member": { "shape": "FleetError" }
     },
-    "FleetList":{
-      "type":"list",
-      "member":{"shape":"Fleet"}
+    "FleetList": {
+      "type": "list",
+      "member": { "shape": "Fleet" }
     },
-    "FleetState":{
-      "type":"string",
-      "enum":[
-        "STARTING",
-        "RUNNING",
-        "STOPPING",
-        "STOPPED"
-      ]
+    "FleetState": {
+      "type": "string",
+      "enum": ["STARTING", "RUNNING", "STOPPING", "STOPPED"]
     },
-    "Image":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{"shape":"String"},
-        "Arn":{"shape":"Arn"},
-        "BaseImageArn":{"shape":"Arn"},
-        "DisplayName":{"shape":"String"},
-        "State":{"shape":"ImageState"},
-        "Visibility":{"shape":"VisibilityType"},
-        "ImageBuilderSupported":{"shape":"Boolean"},
-        "Platform":{"shape":"PlatformType"},
-        "Description":{"shape":"String"},
-        "StateChangeReason":{"shape":"ImageStateChangeReason"},
-        "Applications":{"shape":"Applications"},
-        "CreatedTime":{"shape":"Timestamp"},
-        "PublicBaseImageReleasedDate":{"shape":"Timestamp"}
+    "Image": {
+      "type": "structure",
+      "required": ["Name"],
+      "members": {
+        "Name": { "shape": "String" },
+        "Arn": { "shape": "Arn" },
+        "BaseImageArn": { "shape": "Arn" },
+        "DisplayName": { "shape": "String" },
+        "State": { "shape": "ImageState" },
+        "Visibility": { "shape": "VisibilityType" },
+        "ImageBuilderSupported": { "shape": "Boolean" },
+        "Platform": { "shape": "PlatformType" },
+        "Description": { "shape": "String" },
+        "StateChangeReason": { "shape": "ImageStateChangeReason" },
+        "Applications": { "shape": "Applications" },
+        "CreatedTime": { "shape": "Timestamp" },
+        "PublicBaseImageReleasedDate": { "shape": "Timestamp" }
       }
     },
-    "ImageList":{
-      "type":"list",
-      "member":{"shape":"Image"}
+    "ImageList": {
+      "type": "list",
+      "member": { "shape": "Image" }
     },
-    "ImageState":{
-      "type":"string",
-      "enum":[
-        "PENDING",
-        "AVAILABLE",
-        "FAILED",
-        "DELETING"
-      ]
+    "ImageState": {
+      "type": "string",
+      "enum": ["PENDING", "AVAILABLE", "FAILED", "DELETING"]
     },
-    "ImageStateChangeReason":{
-      "type":"structure",
-      "members":{
-        "Code":{"shape":"ImageStateChangeReasonCode"},
-        "Message":{"shape":"String"}
+    "ImageStateChangeReason": {
+      "type": "structure",
+      "members": {
+        "Code": { "shape": "ImageStateChangeReasonCode" },
+        "Message": { "shape": "String" }
       }
     },
-    "ImageStateChangeReasonCode":{
-      "type":"string",
-      "enum":[
-        "INTERNAL_ERROR",
-        "IMAGE_BUILDER_NOT_AVAILABLE"
-      ]
+    "ImageStateChangeReasonCode": {
+      "type": "string",
+      "enum": ["INTERNAL_ERROR", "IMAGE_BUILDER_NOT_AVAILABLE"]
     },
-    "IncompatibleImageException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "IncompatibleImageException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "Integer":{"type":"integer"},
-    "InvalidParameterCombinationException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "Integer": { "type": "integer" },
+    "InvalidParameterCombinationException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "InvalidRoleException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "InvalidRoleException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "LimitExceededException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "LimitExceededException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "ListAssociatedFleetsRequest":{
-      "type":"structure",
-      "required":["StackName"],
-      "members":{
-        "StackName":{"shape":"String"},
-        "NextToken":{"shape":"String"}
+    "ListAssociatedFleetsRequest": {
+      "type": "structure",
+      "required": ["StackName"],
+      "members": {
+        "StackName": { "shape": "String" },
+        "NextToken": { "shape": "String" }
       }
     },
-    "ListAssociatedFleetsResult":{
-      "type":"structure",
-      "members":{
-        "Names":{"shape":"StringList"},
-        "NextToken":{"shape":"String"}
+    "ListAssociatedFleetsResult": {
+      "type": "structure",
+      "members": {
+        "Names": { "shape": "StringList" },
+        "NextToken": { "shape": "String" }
       }
     },
-    "ListAssociatedStacksRequest":{
-      "type":"structure",
-      "required":["FleetName"],
-      "members":{
-        "FleetName":{"shape":"String"},
-        "NextToken":{"shape":"String"}
+    "ListAssociatedStacksRequest": {
+      "type": "structure",
+      "required": ["FleetName"],
+      "members": {
+        "FleetName": { "shape": "String" },
+        "NextToken": { "shape": "String" }
       }
     },
-    "ListAssociatedStacksResult":{
-      "type":"structure",
-      "members":{
-        "Names":{"shape":"StringList"},
-        "NextToken":{"shape":"String"}
+    "ListAssociatedStacksResult": {
+      "type": "structure",
+      "members": {
+        "Names": { "shape": "StringList" },
+        "NextToken": { "shape": "String" }
       }
     },
-    "Long":{"type":"long"},
-    "Metadata":{
-      "type":"map",
-      "key":{"shape":"String"},
-      "value":{"shape":"String"}
+    "Long": { "type": "long" },
+    "Metadata": {
+      "type": "map",
+      "key": { "shape": "String" },
+      "value": { "shape": "String" }
     },
-    "Name":{
-      "type":"string",
-      "pattern":"^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,100}$"
+    "Name": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,100}$"
     },
-    "OperationNotPermittedException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "OperationNotPermittedException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "OrganizationalUnitDistinguishedName":{
-      "type":"string",
-      "max":2000
+    "OrganizationalUnitDistinguishedName": {
+      "type": "string",
+      "max": 2000
     },
-    "OrganizationalUnitDistinguishedNamesList":{
-      "type":"list",
-      "member":{"shape":"OrganizationalUnitDistinguishedName"}
+    "OrganizationalUnitDistinguishedNamesList": {
+      "type": "list",
+      "member": { "shape": "OrganizationalUnitDistinguishedName" }
     },
-    "PlatformType":{
-      "type":"string",
-      "enum":["WINDOWS"]
+    "PlatformType": {
+      "type": "string",
+      "enum": ["WINDOWS"]
     },
-    "ResourceAlreadyExistsException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "ResourceAlreadyExistsException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "ResourceIdentifier":{
-      "type":"string",
-      "min":1
+    "ResourceIdentifier": {
+      "type": "string",
+      "min": 1
     },
-    "ResourceInUseException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "ResourceInUseException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "ResourceNotAvailableException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "ResourceNotAvailableException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
+    "ResourceNotFoundException": {
+      "type": "structure",
+      "members": {
+        "Message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "SecurityGroupIdList":{
-      "type":"list",
-      "member":{"shape":"String"},
-      "max":5
+    "SecurityGroupIdList": {
+      "type": "list",
+      "member": { "shape": "String" },
+      "max": 5
     },
-    "ServiceAccountCredentials":{
-      "type":"structure",
-      "required":[
-        "AccountName",
-        "AccountPassword"
-      ],
-      "members":{
-        "AccountName":{"shape":"AccountName"},
-        "AccountPassword":{"shape":"AccountPassword"}
+    "ServiceAccountCredentials": {
+      "type": "structure",
+      "required": ["AccountName", "AccountPassword"],
+      "members": {
+        "AccountName": { "shape": "AccountName" },
+        "AccountPassword": { "shape": "AccountPassword" }
       }
     },
-    "Session":{
-      "type":"structure",
-      "required":[
-        "Id",
-        "UserId",
-        "StackName",
-        "FleetName",
-        "State"
-      ],
-      "members":{
-        "Id":{"shape":"String"},
-        "UserId":{"shape":"UserId"},
-        "StackName":{"shape":"String"},
-        "FleetName":{"shape":"String"},
-        "State":{"shape":"SessionState"},
-        "AuthenticationType":{"shape":"AuthenticationType"}
+    "Session": {
+      "type": "structure",
+      "required": ["Id", "UserId", "StackName", "FleetName", "State"],
+      "members": {
+        "Id": { "shape": "String" },
+        "UserId": { "shape": "UserId" },
+        "StackName": { "shape": "String" },
+        "FleetName": { "shape": "String" },
+        "State": { "shape": "SessionState" },
+        "AuthenticationType": { "shape": "AuthenticationType" }
       }
     },
-    "SessionList":{
-      "type":"list",
-      "member":{"shape":"Session"}
+    "SessionList": {
+      "type": "list",
+      "member": { "shape": "Session" }
     },
-    "SessionState":{
-      "type":"string",
-      "enum":[
-        "ACTIVE",
-        "PENDING",
-        "EXPIRED"
-      ]
+    "SessionState": {
+      "type": "string",
+      "enum": ["ACTIVE", "PENDING", "EXPIRED"]
     },
-    "Stack":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Arn":{"shape":"Arn"},
-        "Name":{"shape":"String"},
-        "Description":{"shape":"String"},
-        "DisplayName":{"shape":"String"},
-        "CreatedTime":{"shape":"Timestamp"},
-        "StorageConnectors":{"shape":"StorageConnectorList"},
-        "StackErrors":{"shape":"StackErrors"}
+    "Stack": {
+      "type": "structure",
+      "required": ["Name"],
+      "members": {
+        "Arn": { "shape": "Arn" },
+        "Name": { "shape": "String" },
+        "Description": { "shape": "String" },
+        "DisplayName": { "shape": "String" },
+        "CreatedTime": { "shape": "Timestamp" },
+        "StorageConnectors": { "shape": "StorageConnectorList" },
+        "StackErrors": { "shape": "StackErrors" }
       }
     },
-    "StackError":{
-      "type":"structure",
-      "members":{
-        "ErrorCode":{"shape":"StackErrorCode"},
-        "ErrorMessage":{"shape":"String"}
+    "StackError": {
+      "type": "structure",
+      "members": {
+        "ErrorCode": { "shape": "StackErrorCode" },
+        "ErrorMessage": { "shape": "String" }
       }
     },
-    "StackErrorCode":{
-      "type":"string",
-      "enum":[
-        "STORAGE_CONNECTOR_ERROR",
-        "INTERNAL_SERVICE_ERROR"
-      ]
+    "StackErrorCode": {
+      "type": "string",
+      "enum": ["STORAGE_CONNECTOR_ERROR", "INTERNAL_SERVICE_ERROR"]
     },
-    "StackErrors":{
-      "type":"list",
-      "member":{"shape":"StackError"}
+    "StackErrors": {
+      "type": "list",
+      "member": { "shape": "StackError" }
     },
-    "StackList":{
-      "type":"list",
-      "member":{"shape":"Stack"}
+    "StackList": {
+      "type": "list",
+      "member": { "shape": "Stack" }
     },
-    "StartFleetRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{"shape":"String"}
+    "StartFleetRequest": {
+      "type": "structure",
+      "required": ["Name"],
+      "members": {
+        "Name": { "shape": "String" }
       }
     },
-    "StartFleetResult":{
-      "type":"structure",
-      "members":{
+    "StartFleetResult": {
+      "type": "structure",
+      "members": {}
+    },
+    "StopFleetRequest": {
+      "type": "structure",
+      "required": ["Name"],
+      "members": {
+        "Name": { "shape": "String" }
       }
     },
-    "StopFleetRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "Name":{"shape":"String"}
+    "StopFleetResult": {
+      "type": "structure",
+      "members": {}
+    },
+    "StorageConnector": {
+      "type": "structure",
+      "required": ["ConnectorType"],
+      "members": {
+        "ConnectorType": { "shape": "StorageConnectorType" },
+        "ResourceIdentifier": { "shape": "ResourceIdentifier" }
       }
     },
-    "StopFleetResult":{
-      "type":"structure",
-      "members":{
-      }
+    "StorageConnectorList": {
+      "type": "list",
+      "member": { "shape": "StorageConnector" }
     },
-    "StorageConnector":{
-      "type":"structure",
-      "required":["ConnectorType"],
-      "members":{
-        "ConnectorType":{"shape":"StorageConnectorType"},
-        "ResourceIdentifier":{"shape":"ResourceIdentifier"}
-      }
+    "StorageConnectorType": {
+      "type": "string",
+      "enum": ["HOMEFOLDERS"]
     },
-    "StorageConnectorList":{
-      "type":"list",
-      "member":{"shape":"StorageConnector"}
+    "StreamingUrlUserId": {
+      "type": "string",
+      "max": 32,
+      "min": 2,
+      "pattern": "[\\w+=,.@-]*"
     },
-    "StorageConnectorType":{
-      "type":"string",
-      "enum":["HOMEFOLDERS"]
+    "String": {
+      "type": "string",
+      "min": 1
     },
-    "StreamingUrlUserId":{
-      "type":"string",
-      "max":32,
-      "min":2,
-      "pattern":"[\\w+=,.@-]*"
+    "StringList": {
+      "type": "list",
+      "member": { "shape": "String" }
     },
-    "String":{
-      "type":"string",
-      "min":1
+    "SubnetIdList": {
+      "type": "list",
+      "member": { "shape": "String" }
     },
-    "StringList":{
-      "type":"list",
-      "member":{"shape":"String"}
-    },
-    "SubnetIdList":{
-      "type":"list",
-      "member":{"shape":"String"}
-    },
-    "Timestamp":{"type":"timestamp"},
-    "UpdateDirectoryConfigRequest":{
-      "type":"structure",
-      "required":["DirectoryName"],
-      "members":{
-        "DirectoryName":{"shape":"DirectoryName"},
-        "OrganizationalUnitDistinguishedNames":{"shape":"OrganizationalUnitDistinguishedNamesList"},
-        "ServiceAccountCredentials":{"shape":"ServiceAccountCredentials"}
-      }
-    },
-    "UpdateDirectoryConfigResult":{
-      "type":"structure",
-      "members":{
-        "DirectoryConfig":{"shape":"DirectoryConfig"}
-      }
-    },
-    "UpdateFleetRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "ImageName":{"shape":"String"},
-        "Name":{"shape":"String"},
-        "InstanceType":{"shape":"String"},
-        "ComputeCapacity":{"shape":"ComputeCapacity"},
-        "VpcConfig":{"shape":"VpcConfig"},
-        "MaxUserDurationInSeconds":{"shape":"Integer"},
-        "DisconnectTimeoutInSeconds":{"shape":"Integer"},
-        "DeleteVpcConfig":{
-          "shape":"Boolean",
-          "deprecated":true
+    "Timestamp": { "type": "timestamp" },
+    "UpdateDirectoryConfigRequest": {
+      "type": "structure",
+      "required": ["DirectoryName"],
+      "members": {
+        "DirectoryName": { "shape": "DirectoryName" },
+        "OrganizationalUnitDistinguishedNames": {
+          "shape": "OrganizationalUnitDistinguishedNamesList"
         },
-        "Description":{"shape":"Description"},
-        "DisplayName":{"shape":"DisplayName"},
-        "EnableDefaultInternetAccess":{"shape":"BooleanObject"},
-        "DomainJoinInfo":{"shape":"DomainJoinInfo"},
-        "AttributesToDelete":{"shape":"FleetAttributes"}
+        "ServiceAccountCredentials": { "shape": "ServiceAccountCredentials" }
       }
     },
-    "UpdateFleetResult":{
-      "type":"structure",
-      "members":{
-        "Fleet":{"shape":"Fleet"}
+    "UpdateDirectoryConfigResult": {
+      "type": "structure",
+      "members": {
+        "DirectoryConfig": { "shape": "DirectoryConfig" }
       }
     },
-    "UpdateStackRequest":{
-      "type":"structure",
-      "required":["Name"],
-      "members":{
-        "DisplayName":{"shape":"DisplayName"},
-        "Description":{"shape":"Description"},
-        "Name":{"shape":"String"},
-        "StorageConnectors":{"shape":"StorageConnectorList"},
-        "DeleteStorageConnectors":{"shape":"Boolean"}
+    "UpdateFleetRequest": {
+      "type": "structure",
+      "required": ["Name"],
+      "members": {
+        "ImageName": { "shape": "String" },
+        "Name": { "shape": "String" },
+        "InstanceType": { "shape": "String" },
+        "ComputeCapacity": { "shape": "ComputeCapacity" },
+        "VpcConfig": { "shape": "VpcConfig" },
+        "MaxUserDurationInSeconds": { "shape": "Integer" },
+        "DisconnectTimeoutInSeconds": { "shape": "Integer" },
+        "DeleteVpcConfig": {
+          "shape": "Boolean",
+          "deprecated": true
+        },
+        "Description": { "shape": "Description" },
+        "DisplayName": { "shape": "DisplayName" },
+        "EnableDefaultInternetAccess": { "shape": "BooleanObject" },
+        "DomainJoinInfo": { "shape": "DomainJoinInfo" },
+        "AttributesToDelete": { "shape": "FleetAttributes" }
       }
     },
-    "UpdateStackResult":{
-      "type":"structure",
-      "members":{
-        "Stack":{"shape":"Stack"}
+    "UpdateFleetResult": {
+      "type": "structure",
+      "members": {
+        "Fleet": { "shape": "Fleet" }
       }
     },
-    "UserId":{
-      "type":"string",
-      "max":32,
-      "min":2
+    "UpdateStackRequest": {
+      "type": "structure",
+      "required": ["Name"],
+      "members": {
+        "DisplayName": { "shape": "DisplayName" },
+        "Description": { "shape": "Description" },
+        "Name": { "shape": "String" },
+        "StorageConnectors": { "shape": "StorageConnectorList" },
+        "DeleteStorageConnectors": { "shape": "Boolean" }
+      }
     },
-    "VisibilityType":{
-      "type":"string",
-      "enum":[
-        "PUBLIC",
-        "PRIVATE"
-      ]
+    "UpdateStackResult": {
+      "type": "structure",
+      "members": {
+        "Stack": { "shape": "Stack" }
+      }
     },
-    "VpcConfig":{
-      "type":"structure",
-      "members":{
-        "SubnetIds":{"shape":"SubnetIdList"},
-        "SecurityGroupIds":{"shape":"SecurityGroupIdList"}
+    "UserId": {
+      "type": "string",
+      "max": 32,
+      "min": 2
+    },
+    "VisibilityType": {
+      "type": "string",
+      "enum": ["PUBLIC", "PRIVATE"]
+    },
+    "VpcConfig": {
+      "type": "structure",
+      "members": {
+        "SubnetIds": { "shape": "SubnetIdList" },
+        "SecurityGroupIds": { "shape": "SecurityGroupIdList" }
       }
     }
   }

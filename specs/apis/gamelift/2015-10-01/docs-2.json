@@ -64,13 +64,11 @@
   "shapes": {
     "AcceptMatchInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AcceptMatchOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AcceptanceType": {
       "base": null,
@@ -191,98 +189,79 @@
     },
     "ConflictException": {
       "base": "<p>The requested operation would cause a conflict with the current state of a service resource associated with the request. Resolve the conflict before retrying this request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateAliasInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateAliasOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateBuildInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateBuildOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateFleetInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateFleetOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateGameSessionInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateGameSessionOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateGameSessionQueueInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateGameSessionQueueOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateMatchmakingConfigurationInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateMatchmakingConfigurationOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateMatchmakingRuleSetInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateMatchmakingRuleSetOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePlayerSessionInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePlayerSessionOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePlayerSessionsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePlayerSessionsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CustomEventData": {
       "base": null,
@@ -294,233 +273,187 @@
     },
     "DeleteAliasInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBuildInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteFleetInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteGameSessionQueueInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteGameSessionQueueOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteMatchmakingConfigurationInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteMatchmakingConfigurationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteScalingPolicyInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAliasInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAliasOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBuildInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBuildOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEC2InstanceLimitsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEC2InstanceLimitsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFleetAttributesInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFleetAttributesOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFleetCapacityInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFleetCapacityOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFleetEventsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFleetEventsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFleetPortSettingsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFleetPortSettingsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFleetUtilizationInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFleetUtilizationOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeGameSessionDetailsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeGameSessionDetailsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeGameSessionPlacementInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeGameSessionPlacementOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeGameSessionQueuesInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeGameSessionQueuesOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeGameSessionsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeGameSessionsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstancesInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeInstancesOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMatchmakingConfigurationsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMatchmakingConfigurationsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMatchmakingInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMatchmakingOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMatchmakingRuleSetsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMatchmakingRuleSetsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePlayerSessionsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePlayerSessionsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRuntimeConfigurationInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRuntimeConfigurationOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScalingPoliciesInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeScalingPoliciesOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DesiredPlayerSession": {
       "base": "<p>Player information for use when creating player sessions using a game session placement request with <a>StartGameSessionPlacement</a>.</p>",
@@ -615,8 +548,7 @@
     },
     "FleetCapacityExceededException": {
       "base": "<p>The specified fleet has no available instances to fulfill a <code>CreateGameSession</code> request. Clients can retry such requests immediately or after a waiting period.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "FleetCapacityList": {
       "base": null,
@@ -779,8 +711,7 @@
     },
     "GameSessionFullException": {
       "base": "<p>The game instance is currently full and cannot allow the requested player(s) to join. Clients can retry such requests immediately or after a waiting period.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GameSessionList": {
       "base": null,
@@ -857,23 +788,19 @@
     },
     "GetGameSessionLogUrlInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetGameSessionLogUrlOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceAccessInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetInstanceAccessOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IdStringModel": {
       "base": null,
@@ -888,8 +815,7 @@
     },
     "IdempotentParameterMismatchException": {
       "base": "<p>A game session with this custom ID string already exists in this fleet. Resolve this conflict before retrying this request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Instance": {
       "base": "<p>Properties that describe an instance of a virtual computing resource that hosts one or more game servers. A fleet may contain zero or more instances.</p>",
@@ -939,23 +865,19 @@
     },
     "InternalServiceException": {
       "base": "<p>The service encountered an unrecoverable internal failure while processing the request. Clients can retry such requests immediately or after a waiting period.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidFleetStatusException": {
       "base": "<p>The requested operation would cause a conflict with the current state of a resource associated with the request and/or the fleet. Resolve the conflict before retrying.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidGameSessionStatusException": {
       "base": "<p>The requested operation would cause a conflict with the current state of a resource associated with the request and/or the game instance. Resolve the conflict before retrying.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRequestException": {
       "base": "<p>One or more parameter values in the request are invalid. Correct the invalid parameter values before retrying.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IpAddress": {
       "base": null,
@@ -996,38 +918,31 @@
     },
     "LimitExceededException": {
       "base": "<p>The requested operation would cause the resource to exceed the allowed service limit. Resolve the issue before retrying.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAliasesInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAliasesOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListBuildsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListBuildsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListFleetsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListFleetsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MatchedPlayerSession": {
       "base": "<p>New player session created as a result of a successful FlexMatch match. A successful match automatically creates new player sessions for every player ID in the original matchmaking request. </p> <p>When players connect to the match's game session, they must include both player ID and player session ID in order to claim their assigned player slot.</p>",
@@ -1315,8 +1230,7 @@
     },
     "NotFoundException": {
       "base": "<p>A service resource associated with the request could not be found. Clients should not retry such requests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OperatingSystem": {
       "base": null,
@@ -1503,13 +1417,11 @@
     },
     "PutScalingPolicyInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutScalingPolicyOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "QueueArnsList": {
       "base": null,
@@ -1521,23 +1433,19 @@
     },
     "RequestUploadCredentialsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RequestUploadCredentialsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResolveAliasInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResolveAliasOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceCreationLimitPolicy": {
       "base": "<p>Policy that limits the number of game sessions a player can create on the same fleet. This optional policy gives game owners control over how players can consume available game server resources. A resource creation policy makes the following statement: \"An individual player can create a maximum number of new game sessions within a specified time period\".</p> <p>The policy is evaluated when a player tries to create a new game session. For example, with a policy of 10 new game sessions and a time period of 60 minutes, on receiving a <code>CreateGameSession</code> request, Amazon GameLift checks that the player (identified by <code>CreatorId</code>) has created fewer than 10 game sessions in the past 60 minutes.</p>",
@@ -1621,13 +1529,11 @@
     },
     "SearchGameSessionsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SearchGameSessionsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ServerProcess": {
       "base": "<p>A set of instructions for launching server processes on each instance in a fleet. Each instruction set identifies the location of the server executable, optional launch parameters, and the number of server processes with this configuration to maintain concurrently on the instance. Server process configurations make up a fleet's <code> <a>RuntimeConfiguration</a> </code>.</p>",
@@ -1651,43 +1557,35 @@
     },
     "StartGameSessionPlacementInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StartGameSessionPlacementOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StartMatchmakingInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StartMatchmakingOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StopGameSessionPlacementInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StopGameSessionPlacementOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StopMatchmakingInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StopMatchmakingOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StringDoubleMap": {
       "base": null,
@@ -1713,8 +1611,7 @@
     },
     "TerminalRoutingStrategyException": {
       "base": "<p>The service is unable to resolve the routing for a particular alias because it has a terminal <a>RoutingStrategy</a> associated with it. The message returned in this exception is the message defined in the routing strategy itself. Such requests should only be retried if the routing strategy for the specified alias is modified. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Timestamp": {
       "base": null,
@@ -1741,113 +1638,91 @@
     },
     "UnauthorizedException": {
       "base": "<p>The client failed authentication. Clients should not retry such requests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnsupportedRegionException": {
       "base": "<p>The requested operation is not supported in the region specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateAliasInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateAliasOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateBuildInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateBuildOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateFleetAttributesInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateFleetAttributesOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateFleetCapacityInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateFleetCapacityOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateFleetPortSettingsInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateFleetPortSettingsOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateGameSessionInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateGameSessionOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateGameSessionQueueInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateGameSessionQueueOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateMatchmakingConfigurationInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateMatchmakingConfigurationOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateRuntimeConfigurationInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateRuntimeConfigurationOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ValidateMatchmakingRuleSetInput": {
       "base": "<p>Represents the input for a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ValidateMatchmakingRuleSetOutput": {
       "base": "<p>Represents the returned data in response to a request action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "WholeNumber": {
       "base": null,

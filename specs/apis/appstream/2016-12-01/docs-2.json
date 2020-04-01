@@ -61,13 +61,11 @@
     },
     "AssociateFleetRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateFleetResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AuthenticationType": {
       "base": null,
@@ -108,128 +106,103 @@
     },
     "ConcurrentModificationException": {
       "base": "<p>An API error occurred. Wait a few minutes and try again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDirectoryConfigRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateDirectoryConfigResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateFleetRequest": {
       "base": "<p>Contains the parameters for the new fleet to create.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateFleetResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStackRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStackResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStreamingURLRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStreamingURLResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDirectoryConfigRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteDirectoryConfigResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteFleetRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteFleetResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteStackRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteStackResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDirectoryConfigsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDirectoryConfigsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFleetsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeFleetsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImagesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeImagesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSessionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSessionsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStacksRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStacksResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Description": {
       "base": null,
@@ -273,13 +246,11 @@
     },
     "DisassociateFleetRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateFleetResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisplayName": {
       "base": null,
@@ -315,13 +286,11 @@
     },
     "ExpireSessionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ExpireSessionResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Fleet": {
       "base": "<p>Contains the parameters for a fleet.</p>",
@@ -405,8 +374,7 @@
     },
     "IncompatibleImageException": {
       "base": "<p>The image does not support storage connectors.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Integer": {
       "base": null,
@@ -428,38 +396,31 @@
     },
     "InvalidParameterCombinationException": {
       "base": "<p>Indicates an incorrect combination of parameters, or a missing parameter.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRoleException": {
       "base": "<p>The specified role is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LimitExceededException": {
       "base": "<p>The requested limit exceeds the permitted limit for an account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAssociatedFleetsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAssociatedFleetsResult": {
       "base": "<p>The response from a successful operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAssociatedStacksRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAssociatedStacksResult": {
       "base": "<p>The response from a successful operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Long": {
       "base": null,
@@ -481,8 +442,7 @@
     },
     "OperationNotPermittedException": {
       "base": "<p>The attempted operation is not permitted.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OrganizationalUnitDistinguishedName": {
       "base": null,
@@ -507,8 +467,7 @@
     },
     "ResourceAlreadyExistsException": {
       "base": "<p>The specified resource already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceIdentifier": {
       "base": "<p>The ARN of the resource.</p>",
@@ -518,18 +477,15 @@
     },
     "ResourceInUseException": {
       "base": "<p>The specified resource is in use.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotAvailableException": {
       "base": "<p>The specified resource exists and is not in use, but isn't available.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The specified resource was not found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SecurityGroupIdList": {
       "base": "<p>A list of security groups.</p>",
@@ -597,23 +553,19 @@
     },
     "StartFleetRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartFleetResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopFleetRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopFleetResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StorageConnector": {
       "base": "<p>Contains the parameters for a storage connector.</p>",
@@ -739,33 +691,27 @@
     },
     "UpdateDirectoryConfigRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateDirectoryConfigResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateFleetRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateFleetResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateStackRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateStackResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UserId": {
       "base": null,

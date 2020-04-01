@@ -51,43 +51,35 @@
     },
     "GetResourcesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetResourcesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTagKeysInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTagKeysOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTagValuesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetTagValuesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "InternalServiceException": {
       "base": "<p>The request processing failed because of an unknown error, exception, or failure. You can retry the request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterException": {
       "base": "<p>A parameter is missing or a malformed string or invalid or out-of-range value was supplied for the request parameter.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PaginationToken": {
       "base": null,
@@ -102,8 +94,7 @@
     },
     "PaginationTokenExpiredException": {
       "base": "<p>A <code>PaginationToken</code> is valid for a maximum of 15 minutes. Your request was denied because the specified <code>PaginationToken</code> has expired.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceARN": {
       "base": null,
@@ -205,13 +196,11 @@
     },
     "TagResourcesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TagResourcesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TagValue": {
       "base": null,
@@ -242,18 +231,15 @@
     },
     "ThrottledException": {
       "base": "<p>The request was denied to limit the frequency of submitted requests.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UntagResourcesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UntagResourcesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     }
   }
 }

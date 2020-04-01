@@ -1,755 +1,711 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2017-04-19",
-    "endpointPrefix":"codestar",
-    "jsonVersion":"1.1",
-    "protocol":"json",
-    "serviceAbbreviation":"CodeStar",
-    "serviceFullName":"AWS CodeStar",
-    "signatureVersion":"v4",
-    "targetPrefix":"CodeStar_20170419",
-    "uid":"codestar-2017-04-19"
+  "version": "2.0",
+  "metadata": {
+    "apiVersion": "2017-04-19",
+    "endpointPrefix": "codestar",
+    "jsonVersion": "1.1",
+    "protocol": "json",
+    "serviceAbbreviation": "CodeStar",
+    "serviceFullName": "AWS CodeStar",
+    "signatureVersion": "v4",
+    "targetPrefix": "CodeStar_20170419",
+    "uid": "codestar-2017-04-19"
   },
-  "operations":{
-    "AssociateTeamMember":{
-      "name":"AssociateTeamMember",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+  "operations": {
+    "AssociateTeamMember": {
+      "name": "AssociateTeamMember",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"AssociateTeamMemberRequest"},
-      "output":{"shape":"AssociateTeamMemberResult"},
-      "errors":[
-        {"shape":"LimitExceededException"},
-        {"shape":"ProjectNotFoundException"},
-        {"shape":"TeamMemberAlreadyAssociatedException"},
-        {"shape":"ValidationException"},
-        {"shape":"InvalidServiceRoleException"},
-        {"shape":"ProjectConfigurationException"},
-        {"shape":"ConcurrentModificationException"}
+      "input": { "shape": "AssociateTeamMemberRequest" },
+      "output": { "shape": "AssociateTeamMemberResult" },
+      "errors": [
+        { "shape": "LimitExceededException" },
+        { "shape": "ProjectNotFoundException" },
+        { "shape": "TeamMemberAlreadyAssociatedException" },
+        { "shape": "ValidationException" },
+        { "shape": "InvalidServiceRoleException" },
+        { "shape": "ProjectConfigurationException" },
+        { "shape": "ConcurrentModificationException" }
       ]
     },
-    "CreateProject":{
-      "name":"CreateProject",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "CreateProject": {
+      "name": "CreateProject",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"CreateProjectRequest"},
-      "output":{"shape":"CreateProjectResult"},
-      "errors":[
-        {"shape":"ProjectAlreadyExistsException"},
-        {"shape":"LimitExceededException"},
-        {"shape":"ValidationException"},
-        {"shape":"ProjectCreationFailedException"},
-        {"shape":"InvalidServiceRoleException"},
-        {"shape":"ProjectConfigurationException"},
-        {"shape":"ConcurrentModificationException"}
+      "input": { "shape": "CreateProjectRequest" },
+      "output": { "shape": "CreateProjectResult" },
+      "errors": [
+        { "shape": "ProjectAlreadyExistsException" },
+        { "shape": "LimitExceededException" },
+        { "shape": "ValidationException" },
+        { "shape": "ProjectCreationFailedException" },
+        { "shape": "InvalidServiceRoleException" },
+        { "shape": "ProjectConfigurationException" },
+        { "shape": "ConcurrentModificationException" }
       ]
     },
-    "CreateUserProfile":{
-      "name":"CreateUserProfile",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "CreateUserProfile": {
+      "name": "CreateUserProfile",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"CreateUserProfileRequest"},
-      "output":{"shape":"CreateUserProfileResult"},
-      "errors":[
-        {"shape":"UserProfileAlreadyExistsException"},
-        {"shape":"ValidationException"}
+      "input": { "shape": "CreateUserProfileRequest" },
+      "output": { "shape": "CreateUserProfileResult" },
+      "errors": [
+        { "shape": "UserProfileAlreadyExistsException" },
+        { "shape": "ValidationException" }
       ]
     },
-    "DeleteProject":{
-      "name":"DeleteProject",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteProject": {
+      "name": "DeleteProject",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteProjectRequest"},
-      "output":{"shape":"DeleteProjectResult"},
-      "errors":[
-        {"shape":"ConcurrentModificationException"},
-        {"shape":"ValidationException"},
-        {"shape":"InvalidServiceRoleException"}
+      "input": { "shape": "DeleteProjectRequest" },
+      "output": { "shape": "DeleteProjectResult" },
+      "errors": [
+        { "shape": "ConcurrentModificationException" },
+        { "shape": "ValidationException" },
+        { "shape": "InvalidServiceRoleException" }
       ]
     },
-    "DeleteUserProfile":{
-      "name":"DeleteUserProfile",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteUserProfile": {
+      "name": "DeleteUserProfile",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteUserProfileRequest"},
-      "output":{"shape":"DeleteUserProfileResult"},
-      "errors":[
-        {"shape":"ValidationException"}
+      "input": { "shape": "DeleteUserProfileRequest" },
+      "output": { "shape": "DeleteUserProfileResult" },
+      "errors": [{ "shape": "ValidationException" }]
+    },
+    "DescribeProject": {
+      "name": "DescribeProject",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
+      },
+      "input": { "shape": "DescribeProjectRequest" },
+      "output": { "shape": "DescribeProjectResult" },
+      "errors": [
+        { "shape": "ProjectNotFoundException" },
+        { "shape": "ValidationException" },
+        { "shape": "InvalidServiceRoleException" },
+        { "shape": "ProjectConfigurationException" },
+        { "shape": "ConcurrentModificationException" }
       ]
     },
-    "DescribeProject":{
-      "name":"DescribeProject",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DescribeUserProfile": {
+      "name": "DescribeUserProfile",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeProjectRequest"},
-      "output":{"shape":"DescribeProjectResult"},
-      "errors":[
-        {"shape":"ProjectNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InvalidServiceRoleException"},
-        {"shape":"ProjectConfigurationException"},
-        {"shape":"ConcurrentModificationException"}
+      "input": { "shape": "DescribeUserProfileRequest" },
+      "output": { "shape": "DescribeUserProfileResult" },
+      "errors": [
+        { "shape": "UserProfileNotFoundException" },
+        { "shape": "ValidationException" }
       ]
     },
-    "DescribeUserProfile":{
-      "name":"DescribeUserProfile",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DisassociateTeamMember": {
+      "name": "DisassociateTeamMember",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeUserProfileRequest"},
-      "output":{"shape":"DescribeUserProfileResult"},
-      "errors":[
-        {"shape":"UserProfileNotFoundException"},
-        {"shape":"ValidationException"}
+      "input": { "shape": "DisassociateTeamMemberRequest" },
+      "output": { "shape": "DisassociateTeamMemberResult" },
+      "errors": [
+        { "shape": "ProjectNotFoundException" },
+        { "shape": "ValidationException" },
+        { "shape": "InvalidServiceRoleException" },
+        { "shape": "ConcurrentModificationException" }
       ]
     },
-    "DisassociateTeamMember":{
-      "name":"DisassociateTeamMember",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ListProjects": {
+      "name": "ListProjects",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DisassociateTeamMemberRequest"},
-      "output":{"shape":"DisassociateTeamMemberResult"},
-      "errors":[
-        {"shape":"ProjectNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InvalidServiceRoleException"},
-        {"shape":"ConcurrentModificationException"}
+      "input": { "shape": "ListProjectsRequest" },
+      "output": { "shape": "ListProjectsResult" },
+      "errors": [
+        { "shape": "InvalidNextTokenException" },
+        { "shape": "ValidationException" }
       ]
     },
-    "ListProjects":{
-      "name":"ListProjects",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ListResources": {
+      "name": "ListResources",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ListProjectsRequest"},
-      "output":{"shape":"ListProjectsResult"},
-      "errors":[
-        {"shape":"InvalidNextTokenException"},
-        {"shape":"ValidationException"}
+      "input": { "shape": "ListResourcesRequest" },
+      "output": { "shape": "ListResourcesResult" },
+      "errors": [
+        { "shape": "ProjectNotFoundException" },
+        { "shape": "InvalidNextTokenException" },
+        { "shape": "ValidationException" }
       ]
     },
-    "ListResources":{
-      "name":"ListResources",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ListTeamMembers": {
+      "name": "ListTeamMembers",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ListResourcesRequest"},
-      "output":{"shape":"ListResourcesResult"},
-      "errors":[
-        {"shape":"ProjectNotFoundException"},
-        {"shape":"InvalidNextTokenException"},
-        {"shape":"ValidationException"}
+      "input": { "shape": "ListTeamMembersRequest" },
+      "output": { "shape": "ListTeamMembersResult" },
+      "errors": [
+        { "shape": "ProjectNotFoundException" },
+        { "shape": "InvalidNextTokenException" },
+        { "shape": "ValidationException" }
       ]
     },
-    "ListTeamMembers":{
-      "name":"ListTeamMembers",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ListUserProfiles": {
+      "name": "ListUserProfiles",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ListTeamMembersRequest"},
-      "output":{"shape":"ListTeamMembersResult"},
-      "errors":[
-        {"shape":"ProjectNotFoundException"},
-        {"shape":"InvalidNextTokenException"},
-        {"shape":"ValidationException"}
+      "input": { "shape": "ListUserProfilesRequest" },
+      "output": { "shape": "ListUserProfilesResult" },
+      "errors": [
+        { "shape": "InvalidNextTokenException" },
+        { "shape": "ValidationException" }
       ]
     },
-    "ListUserProfiles":{
-      "name":"ListUserProfiles",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "UpdateProject": {
+      "name": "UpdateProject",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"ListUserProfilesRequest"},
-      "output":{"shape":"ListUserProfilesResult"},
-      "errors":[
-        {"shape":"InvalidNextTokenException"},
-        {"shape":"ValidationException"}
+      "input": { "shape": "UpdateProjectRequest" },
+      "output": { "shape": "UpdateProjectResult" },
+      "errors": [
+        { "shape": "ProjectNotFoundException" },
+        { "shape": "ValidationException" }
       ]
     },
-    "UpdateProject":{
-      "name":"UpdateProject",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "UpdateTeamMember": {
+      "name": "UpdateTeamMember",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"UpdateProjectRequest"},
-      "output":{"shape":"UpdateProjectResult"},
-      "errors":[
-        {"shape":"ProjectNotFoundException"},
-        {"shape":"ValidationException"}
+      "input": { "shape": "UpdateTeamMemberRequest" },
+      "output": { "shape": "UpdateTeamMemberResult" },
+      "errors": [
+        { "shape": "LimitExceededException" },
+        { "shape": "ProjectNotFoundException" },
+        { "shape": "ValidationException" },
+        { "shape": "InvalidServiceRoleException" },
+        { "shape": "ProjectConfigurationException" },
+        { "shape": "ConcurrentModificationException" },
+        { "shape": "TeamMemberNotFoundException" }
       ]
     },
-    "UpdateTeamMember":{
-      "name":"UpdateTeamMember",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "UpdateUserProfile": {
+      "name": "UpdateUserProfile",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"UpdateTeamMemberRequest"},
-      "output":{"shape":"UpdateTeamMemberResult"},
-      "errors":[
-        {"shape":"LimitExceededException"},
-        {"shape":"ProjectNotFoundException"},
-        {"shape":"ValidationException"},
-        {"shape":"InvalidServiceRoleException"},
-        {"shape":"ProjectConfigurationException"},
-        {"shape":"ConcurrentModificationException"},
-        {"shape":"TeamMemberNotFoundException"}
-      ]
-    },
-    "UpdateUserProfile":{
-      "name":"UpdateUserProfile",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
-      },
-      "input":{"shape":"UpdateUserProfileRequest"},
-      "output":{"shape":"UpdateUserProfileResult"},
-      "errors":[
-        {"shape":"UserProfileNotFoundException"},
-        {"shape":"ValidationException"}
+      "input": { "shape": "UpdateUserProfileRequest" },
+      "output": { "shape": "UpdateUserProfileResult" },
+      "errors": [
+        { "shape": "UserProfileNotFoundException" },
+        { "shape": "ValidationException" }
       ]
     }
   },
-  "shapes":{
-    "AssociateTeamMemberRequest":{
-      "type":"structure",
-      "required":[
-        "projectId",
-        "userArn",
-        "projectRole"
-      ],
-      "members":{
-        "projectId":{"shape":"ProjectId"},
-        "clientRequestToken":{"shape":"ClientRequestToken"},
-        "userArn":{"shape":"UserArn"},
-        "projectRole":{"shape":"Role"},
-        "remoteAccessAllowed":{
-          "shape":"RemoteAccessAllowed",
-          "box":true
+  "shapes": {
+    "AssociateTeamMemberRequest": {
+      "type": "structure",
+      "required": ["projectId", "userArn", "projectRole"],
+      "members": {
+        "projectId": { "shape": "ProjectId" },
+        "clientRequestToken": { "shape": "ClientRequestToken" },
+        "userArn": { "shape": "UserArn" },
+        "projectRole": { "shape": "Role" },
+        "remoteAccessAllowed": {
+          "shape": "RemoteAccessAllowed",
+          "box": true
         }
       }
     },
-    "AssociateTeamMemberResult":{
-      "type":"structure",
-      "members":{
-        "clientRequestToken":{"shape":"ClientRequestToken"}
+    "AssociateTeamMemberResult": {
+      "type": "structure",
+      "members": {
+        "clientRequestToken": { "shape": "ClientRequestToken" }
       }
     },
-    "ClientRequestToken":{
-      "type":"string",
-      "max":256,
-      "min":1,
-      "pattern":"^[\\w:/-]+$"
+    "ClientRequestToken": {
+      "type": "string",
+      "max": 256,
+      "min": 1,
+      "pattern": "^[\\w:/-]+$"
     },
-    "ConcurrentModificationException":{
-      "type":"structure",
-      "members":{
-      },
-      "exception":true
+    "ConcurrentModificationException": {
+      "type": "structure",
+      "members": {},
+      "exception": true
     },
-    "CreateProjectRequest":{
-      "type":"structure",
-      "required":[
-        "name",
-        "id"
-      ],
-      "members":{
-        "name":{"shape":"ProjectName"},
-        "id":{"shape":"ProjectId"},
-        "description":{"shape":"ProjectDescription"},
-        "clientRequestToken":{"shape":"ClientRequestToken"}
+    "CreateProjectRequest": {
+      "type": "structure",
+      "required": ["name", "id"],
+      "members": {
+        "name": { "shape": "ProjectName" },
+        "id": { "shape": "ProjectId" },
+        "description": { "shape": "ProjectDescription" },
+        "clientRequestToken": { "shape": "ClientRequestToken" }
       }
     },
-    "CreateProjectResult":{
-      "type":"structure",
-      "required":[
-        "id",
-        "arn"
-      ],
-      "members":{
-        "id":{"shape":"ProjectId"},
-        "arn":{"shape":"ProjectArn"},
-        "clientRequestToken":{"shape":"ClientRequestToken"},
-        "projectTemplateId":{"shape":"ProjectTemplateId"}
+    "CreateProjectResult": {
+      "type": "structure",
+      "required": ["id", "arn"],
+      "members": {
+        "id": { "shape": "ProjectId" },
+        "arn": { "shape": "ProjectArn" },
+        "clientRequestToken": { "shape": "ClientRequestToken" },
+        "projectTemplateId": { "shape": "ProjectTemplateId" }
       }
     },
-    "CreateUserProfileRequest":{
-      "type":"structure",
-      "required":[
-        "userArn",
-        "displayName",
-        "emailAddress"
-      ],
-      "members":{
-        "userArn":{"shape":"UserArn"},
-        "displayName":{"shape":"UserProfileDisplayName"},
-        "emailAddress":{"shape":"Email"},
-        "sshPublicKey":{"shape":"SshPublicKey"}
+    "CreateUserProfileRequest": {
+      "type": "structure",
+      "required": ["userArn", "displayName", "emailAddress"],
+      "members": {
+        "userArn": { "shape": "UserArn" },
+        "displayName": { "shape": "UserProfileDisplayName" },
+        "emailAddress": { "shape": "Email" },
+        "sshPublicKey": { "shape": "SshPublicKey" }
       }
     },
-    "CreateUserProfileResult":{
-      "type":"structure",
-      "required":["userArn"],
-      "members":{
-        "userArn":{"shape":"UserArn"},
-        "displayName":{"shape":"UserProfileDisplayName"},
-        "emailAddress":{"shape":"Email"},
-        "sshPublicKey":{"shape":"SshPublicKey"},
-        "createdTimestamp":{"shape":"CreatedTimestamp"},
-        "lastModifiedTimestamp":{"shape":"LastModifiedTimestamp"}
+    "CreateUserProfileResult": {
+      "type": "structure",
+      "required": ["userArn"],
+      "members": {
+        "userArn": { "shape": "UserArn" },
+        "displayName": { "shape": "UserProfileDisplayName" },
+        "emailAddress": { "shape": "Email" },
+        "sshPublicKey": { "shape": "SshPublicKey" },
+        "createdTimestamp": { "shape": "CreatedTimestamp" },
+        "lastModifiedTimestamp": { "shape": "LastModifiedTimestamp" }
       }
     },
-    "CreatedTimestamp":{"type":"timestamp"},
-    "DeleteProjectRequest":{
-      "type":"structure",
-      "required":["id"],
-      "members":{
-        "id":{"shape":"ProjectId"},
-        "clientRequestToken":{"shape":"ClientRequestToken"},
-        "deleteStack":{"shape":"DeleteStack"}
+    "CreatedTimestamp": { "type": "timestamp" },
+    "DeleteProjectRequest": {
+      "type": "structure",
+      "required": ["id"],
+      "members": {
+        "id": { "shape": "ProjectId" },
+        "clientRequestToken": { "shape": "ClientRequestToken" },
+        "deleteStack": { "shape": "DeleteStack" }
       }
     },
-    "DeleteProjectResult":{
-      "type":"structure",
-      "members":{
-        "stackId":{"shape":"StackId"},
-        "projectArn":{"shape":"ProjectArn"}
+    "DeleteProjectResult": {
+      "type": "structure",
+      "members": {
+        "stackId": { "shape": "StackId" },
+        "projectArn": { "shape": "ProjectArn" }
       }
     },
-    "DeleteStack":{"type":"boolean"},
-    "DeleteUserProfileRequest":{
-      "type":"structure",
-      "required":["userArn"],
-      "members":{
-        "userArn":{"shape":"UserArn"}
+    "DeleteStack": { "type": "boolean" },
+    "DeleteUserProfileRequest": {
+      "type": "structure",
+      "required": ["userArn"],
+      "members": {
+        "userArn": { "shape": "UserArn" }
       }
     },
-    "DeleteUserProfileResult":{
-      "type":"structure",
-      "required":["userArn"],
-      "members":{
-        "userArn":{"shape":"UserArn"}
+    "DeleteUserProfileResult": {
+      "type": "structure",
+      "required": ["userArn"],
+      "members": {
+        "userArn": { "shape": "UserArn" }
       }
     },
-    "DescribeProjectRequest":{
-      "type":"structure",
-      "required":["id"],
-      "members":{
-        "id":{"shape":"ProjectId"}
+    "DescribeProjectRequest": {
+      "type": "structure",
+      "required": ["id"],
+      "members": {
+        "id": { "shape": "ProjectId" }
       }
     },
-    "DescribeProjectResult":{
-      "type":"structure",
-      "members":{
-        "name":{"shape":"ProjectName"},
-        "id":{"shape":"ProjectId"},
-        "arn":{"shape":"ProjectArn"},
-        "description":{"shape":"ProjectDescription"},
-        "clientRequestToken":{"shape":"ClientRequestToken"},
-        "createdTimeStamp":{"shape":"CreatedTimestamp"},
-        "stackId":{"shape":"StackId"},
-        "projectTemplateId":{"shape":"ProjectTemplateId"}
+    "DescribeProjectResult": {
+      "type": "structure",
+      "members": {
+        "name": { "shape": "ProjectName" },
+        "id": { "shape": "ProjectId" },
+        "arn": { "shape": "ProjectArn" },
+        "description": { "shape": "ProjectDescription" },
+        "clientRequestToken": { "shape": "ClientRequestToken" },
+        "createdTimeStamp": { "shape": "CreatedTimestamp" },
+        "stackId": { "shape": "StackId" },
+        "projectTemplateId": { "shape": "ProjectTemplateId" }
       }
     },
-    "DescribeUserProfileRequest":{
-      "type":"structure",
-      "required":["userArn"],
-      "members":{
-        "userArn":{"shape":"UserArn"}
+    "DescribeUserProfileRequest": {
+      "type": "structure",
+      "required": ["userArn"],
+      "members": {
+        "userArn": { "shape": "UserArn" }
       }
     },
-    "DescribeUserProfileResult":{
-      "type":"structure",
-      "required":[
-        "userArn",
-        "createdTimestamp",
-        "lastModifiedTimestamp"
-      ],
-      "members":{
-        "userArn":{"shape":"UserArn"},
-        "displayName":{"shape":"UserProfileDisplayName"},
-        "emailAddress":{"shape":"Email"},
-        "sshPublicKey":{"shape":"SshPublicKey"},
-        "createdTimestamp":{"shape":"CreatedTimestamp"},
-        "lastModifiedTimestamp":{"shape":"LastModifiedTimestamp"}
+    "DescribeUserProfileResult": {
+      "type": "structure",
+      "required": ["userArn", "createdTimestamp", "lastModifiedTimestamp"],
+      "members": {
+        "userArn": { "shape": "UserArn" },
+        "displayName": { "shape": "UserProfileDisplayName" },
+        "emailAddress": { "shape": "Email" },
+        "sshPublicKey": { "shape": "SshPublicKey" },
+        "createdTimestamp": { "shape": "CreatedTimestamp" },
+        "lastModifiedTimestamp": { "shape": "LastModifiedTimestamp" }
       }
     },
-    "DisassociateTeamMemberRequest":{
-      "type":"structure",
-      "required":[
-        "projectId",
-        "userArn"
-      ],
-      "members":{
-        "projectId":{"shape":"ProjectId"},
-        "userArn":{"shape":"UserArn"}
+    "DisassociateTeamMemberRequest": {
+      "type": "structure",
+      "required": ["projectId", "userArn"],
+      "members": {
+        "projectId": { "shape": "ProjectId" },
+        "userArn": { "shape": "UserArn" }
       }
     },
-    "DisassociateTeamMemberResult":{
-      "type":"structure",
-      "members":{
-      }
+    "DisassociateTeamMemberResult": {
+      "type": "structure",
+      "members": {}
     },
-    "Email":{
-      "type":"string",
-      "max":128,
-      "min":3,
-      "pattern":"^[\\w-.+]+@[\\w-.+]+$"
+    "Email": {
+      "type": "string",
+      "max": 128,
+      "min": 3,
+      "pattern": "^[\\w-.+]+@[\\w-.+]+$"
     },
-    "InvalidNextTokenException":{
-      "type":"structure",
-      "members":{
-      },
-      "exception":true
+    "InvalidNextTokenException": {
+      "type": "structure",
+      "members": {},
+      "exception": true
     },
-    "InvalidServiceRoleException":{
-      "type":"structure",
-      "members":{
-      },
-      "exception":true
+    "InvalidServiceRoleException": {
+      "type": "structure",
+      "members": {},
+      "exception": true
     },
-    "LastModifiedTimestamp":{"type":"timestamp"},
-    "LimitExceededException":{
-      "type":"structure",
-      "members":{
-      },
-      "exception":true
+    "LastModifiedTimestamp": { "type": "timestamp" },
+    "LimitExceededException": {
+      "type": "structure",
+      "members": {},
+      "exception": true
     },
-    "ListProjectsRequest":{
-      "type":"structure",
-      "members":{
-        "nextToken":{"shape":"PaginationToken"},
-        "maxResults":{
-          "shape":"MaxResults",
-          "box":true
+    "ListProjectsRequest": {
+      "type": "structure",
+      "members": {
+        "nextToken": { "shape": "PaginationToken" },
+        "maxResults": {
+          "shape": "MaxResults",
+          "box": true
         }
       }
     },
-    "ListProjectsResult":{
-      "type":"structure",
-      "required":["projects"],
-      "members":{
-        "projects":{"shape":"ProjectsList"},
-        "nextToken":{"shape":"PaginationToken"}
+    "ListProjectsResult": {
+      "type": "structure",
+      "required": ["projects"],
+      "members": {
+        "projects": { "shape": "ProjectsList" },
+        "nextToken": { "shape": "PaginationToken" }
       }
     },
-    "ListResourcesRequest":{
-      "type":"structure",
-      "required":["projectId"],
-      "members":{
-        "projectId":{"shape":"ProjectId"},
-        "nextToken":{"shape":"PaginationToken"},
-        "maxResults":{
-          "shape":"MaxResults",
-          "box":true
+    "ListResourcesRequest": {
+      "type": "structure",
+      "required": ["projectId"],
+      "members": {
+        "projectId": { "shape": "ProjectId" },
+        "nextToken": { "shape": "PaginationToken" },
+        "maxResults": {
+          "shape": "MaxResults",
+          "box": true
         }
       }
     },
-    "ListResourcesResult":{
-      "type":"structure",
-      "members":{
-        "resources":{"shape":"ResourcesResult"},
-        "nextToken":{"shape":"PaginationToken"}
+    "ListResourcesResult": {
+      "type": "structure",
+      "members": {
+        "resources": { "shape": "ResourcesResult" },
+        "nextToken": { "shape": "PaginationToken" }
       }
     },
-    "ListTeamMembersRequest":{
-      "type":"structure",
-      "required":["projectId"],
-      "members":{
-        "projectId":{"shape":"ProjectId"},
-        "nextToken":{"shape":"PaginationToken"},
-        "maxResults":{
-          "shape":"MaxResults",
-          "box":true
+    "ListTeamMembersRequest": {
+      "type": "structure",
+      "required": ["projectId"],
+      "members": {
+        "projectId": { "shape": "ProjectId" },
+        "nextToken": { "shape": "PaginationToken" },
+        "maxResults": {
+          "shape": "MaxResults",
+          "box": true
         }
       }
     },
-    "ListTeamMembersResult":{
-      "type":"structure",
-      "required":["teamMembers"],
-      "members":{
-        "teamMembers":{"shape":"TeamMemberResult"},
-        "nextToken":{"shape":"PaginationToken"}
+    "ListTeamMembersResult": {
+      "type": "structure",
+      "required": ["teamMembers"],
+      "members": {
+        "teamMembers": { "shape": "TeamMemberResult" },
+        "nextToken": { "shape": "PaginationToken" }
       }
     },
-    "ListUserProfilesRequest":{
-      "type":"structure",
-      "members":{
-        "nextToken":{"shape":"PaginationToken"},
-        "maxResults":{
-          "shape":"MaxResults",
-          "box":true
+    "ListUserProfilesRequest": {
+      "type": "structure",
+      "members": {
+        "nextToken": { "shape": "PaginationToken" },
+        "maxResults": {
+          "shape": "MaxResults",
+          "box": true
         }
       }
     },
-    "ListUserProfilesResult":{
-      "type":"structure",
-      "required":["userProfiles"],
-      "members":{
-        "userProfiles":{"shape":"UserProfilesList"},
-        "nextToken":{"shape":"PaginationToken"}
+    "ListUserProfilesResult": {
+      "type": "structure",
+      "required": ["userProfiles"],
+      "members": {
+        "userProfiles": { "shape": "UserProfilesList" },
+        "nextToken": { "shape": "PaginationToken" }
       }
     },
-    "MaxResults":{
-      "type":"integer",
-      "max":100,
-      "min":1
+    "MaxResults": {
+      "type": "integer",
+      "max": 100,
+      "min": 1
     },
-    "PaginationToken":{
-      "type":"string",
-      "max":256,
-      "min":1,
-      "pattern":"^[\\w/+=]+$"
+    "PaginationToken": {
+      "type": "string",
+      "max": 256,
+      "min": 1,
+      "pattern": "^[\\w/+=]+$"
     },
-    "ProjectAlreadyExistsException":{
-      "type":"structure",
-      "members":{
-      },
-      "exception":true
+    "ProjectAlreadyExistsException": {
+      "type": "structure",
+      "members": {},
+      "exception": true
     },
-    "ProjectArn":{
-      "type":"string",
-      "pattern":"^arn:aws[^:\\s]*:codestar:[^:\\s]+:[0-9]{12}:project\\/[a-z]([a-z0-9|-])+$"
+    "ProjectArn": {
+      "type": "string",
+      "pattern": "^arn:aws[^:\\s]*:codestar:[^:\\s]+:[0-9]{12}:project\\/[a-z]([a-z0-9|-])+$"
     },
-    "ProjectConfigurationException":{
-      "type":"structure",
-      "members":{
-      },
-      "exception":true
+    "ProjectConfigurationException": {
+      "type": "structure",
+      "members": {},
+      "exception": true
     },
-    "ProjectCreationFailedException":{
-      "type":"structure",
-      "members":{
-      },
-      "exception":true
+    "ProjectCreationFailedException": {
+      "type": "structure",
+      "members": {},
+      "exception": true
     },
-    "ProjectDescription":{
-      "type":"string",
-      "max":1024,
-      "pattern":"^$|^\\S(.*\\S)?$",
-      "sensitive":true
+    "ProjectDescription": {
+      "type": "string",
+      "max": 1024,
+      "pattern": "^$|^\\S(.*\\S)?$",
+      "sensitive": true
     },
-    "ProjectId":{
-      "type":"string",
-      "max":15,
-      "min":2,
-      "pattern":"^[a-z][a-z0-9-]+$"
+    "ProjectId": {
+      "type": "string",
+      "max": 15,
+      "min": 2,
+      "pattern": "^[a-z][a-z0-9-]+$"
     },
-    "ProjectName":{
-      "type":"string",
-      "max":100,
-      "min":1,
-      "pattern":"^\\S(.*\\S)?$",
-      "sensitive":true
+    "ProjectName": {
+      "type": "string",
+      "max": 100,
+      "min": 1,
+      "pattern": "^\\S(.*\\S)?$",
+      "sensitive": true
     },
-    "ProjectNotFoundException":{
-      "type":"structure",
-      "members":{
-      },
-      "exception":true
+    "ProjectNotFoundException": {
+      "type": "structure",
+      "members": {},
+      "exception": true
     },
-    "ProjectSummary":{
-      "type":"structure",
-      "members":{
-        "projectId":{"shape":"ProjectId"},
-        "projectArn":{"shape":"ProjectArn"}
+    "ProjectSummary": {
+      "type": "structure",
+      "members": {
+        "projectId": { "shape": "ProjectId" },
+        "projectArn": { "shape": "ProjectArn" }
       }
     },
-    "ProjectTemplateId":{
-      "type":"string",
-      "min":1,
-      "pattern":"^arn:aws[^:\\s]{0,5}:codestar:[^:\\s]+::project-template\\/[a-z0-9-]+$"
+    "ProjectTemplateId": {
+      "type": "string",
+      "min": 1,
+      "pattern": "^arn:aws[^:\\s]{0,5}:codestar:[^:\\s]+::project-template\\/[a-z0-9-]+$"
     },
-    "ProjectsList":{
-      "type":"list",
-      "member":{"shape":"ProjectSummary"}
+    "ProjectsList": {
+      "type": "list",
+      "member": { "shape": "ProjectSummary" }
     },
-    "RemoteAccessAllowed":{"type":"boolean"},
-    "Resource":{
-      "type":"structure",
-      "required":["id"],
-      "members":{
-        "id":{"shape":"ResourceId"}
+    "RemoteAccessAllowed": { "type": "boolean" },
+    "Resource": {
+      "type": "structure",
+      "required": ["id"],
+      "members": {
+        "id": { "shape": "ResourceId" }
       }
     },
-    "ResourceId":{
-      "type":"string",
-      "min":11,
-      "pattern":"^arn\\:aws\\:\\S.*\\:.*"
+    "ResourceId": {
+      "type": "string",
+      "min": 11,
+      "pattern": "^arn\\:aws\\:\\S.*\\:.*"
     },
-    "ResourcesResult":{
-      "type":"list",
-      "member":{"shape":"Resource"}
+    "ResourcesResult": {
+      "type": "list",
+      "member": { "shape": "Resource" }
     },
-    "Role":{
-      "type":"string",
-      "pattern":"^(Owner|Viewer|Contributor)$"
+    "Role": {
+      "type": "string",
+      "pattern": "^(Owner|Viewer|Contributor)$"
     },
-    "SshPublicKey":{
-      "type":"string",
-      "max":16384,
-      "pattern":"^[\\t\\r\\n\\u0020-\\u00FF]*$"
+    "SshPublicKey": {
+      "type": "string",
+      "max": 16384,
+      "pattern": "^[\\t\\r\\n\\u0020-\\u00FF]*$"
     },
-    "StackId":{
-      "type":"string",
-      "pattern":"^arn:aws[^:\\s]*:cloudformation:[^:\\s]+:[0-9]{12}:stack\\/[^:\\s]+\\/[^:\\s]+$"
+    "StackId": {
+      "type": "string",
+      "pattern": "^arn:aws[^:\\s]*:cloudformation:[^:\\s]+:[0-9]{12}:stack\\/[^:\\s]+\\/[^:\\s]+$"
     },
-    "TeamMember":{
-      "type":"structure",
-      "required":[
-        "userArn",
-        "projectRole"
-      ],
-      "members":{
-        "userArn":{"shape":"UserArn"},
-        "projectRole":{"shape":"Role"},
-        "remoteAccessAllowed":{
-          "shape":"RemoteAccessAllowed",
-          "box":true
+    "TeamMember": {
+      "type": "structure",
+      "required": ["userArn", "projectRole"],
+      "members": {
+        "userArn": { "shape": "UserArn" },
+        "projectRole": { "shape": "Role" },
+        "remoteAccessAllowed": {
+          "shape": "RemoteAccessAllowed",
+          "box": true
         }
       }
     },
-    "TeamMemberAlreadyAssociatedException":{
-      "type":"structure",
-      "members":{
-      },
-      "exception":true
+    "TeamMemberAlreadyAssociatedException": {
+      "type": "structure",
+      "members": {},
+      "exception": true
     },
-    "TeamMemberNotFoundException":{
-      "type":"structure",
-      "members":{
-      },
-      "exception":true
+    "TeamMemberNotFoundException": {
+      "type": "structure",
+      "members": {},
+      "exception": true
     },
-    "TeamMemberResult":{
-      "type":"list",
-      "member":{"shape":"TeamMember"}
+    "TeamMemberResult": {
+      "type": "list",
+      "member": { "shape": "TeamMember" }
     },
-    "UpdateProjectRequest":{
-      "type":"structure",
-      "required":["id"],
-      "members":{
-        "id":{"shape":"ProjectId"},
-        "name":{"shape":"ProjectName"},
-        "description":{"shape":"ProjectDescription"}
+    "UpdateProjectRequest": {
+      "type": "structure",
+      "required": ["id"],
+      "members": {
+        "id": { "shape": "ProjectId" },
+        "name": { "shape": "ProjectName" },
+        "description": { "shape": "ProjectDescription" }
       }
     },
-    "UpdateProjectResult":{
-      "type":"structure",
-      "members":{
-      }
+    "UpdateProjectResult": {
+      "type": "structure",
+      "members": {}
     },
-    "UpdateTeamMemberRequest":{
-      "type":"structure",
-      "required":[
-        "projectId",
-        "userArn"
-      ],
-      "members":{
-        "projectId":{"shape":"ProjectId"},
-        "userArn":{"shape":"UserArn"},
-        "projectRole":{"shape":"Role"},
-        "remoteAccessAllowed":{
-          "shape":"RemoteAccessAllowed",
-          "box":true
+    "UpdateTeamMemberRequest": {
+      "type": "structure",
+      "required": ["projectId", "userArn"],
+      "members": {
+        "projectId": { "shape": "ProjectId" },
+        "userArn": { "shape": "UserArn" },
+        "projectRole": { "shape": "Role" },
+        "remoteAccessAllowed": {
+          "shape": "RemoteAccessAllowed",
+          "box": true
         }
       }
     },
-    "UpdateTeamMemberResult":{
-      "type":"structure",
-      "members":{
-        "userArn":{"shape":"UserArn"},
-        "projectRole":{"shape":"Role"},
-        "remoteAccessAllowed":{
-          "shape":"RemoteAccessAllowed",
-          "box":true
+    "UpdateTeamMemberResult": {
+      "type": "structure",
+      "members": {
+        "userArn": { "shape": "UserArn" },
+        "projectRole": { "shape": "Role" },
+        "remoteAccessAllowed": {
+          "shape": "RemoteAccessAllowed",
+          "box": true
         }
       }
     },
-    "UpdateUserProfileRequest":{
-      "type":"structure",
-      "required":["userArn"],
-      "members":{
-        "userArn":{"shape":"UserArn"},
-        "displayName":{"shape":"UserProfileDisplayName"},
-        "emailAddress":{"shape":"Email"},
-        "sshPublicKey":{"shape":"SshPublicKey"}
+    "UpdateUserProfileRequest": {
+      "type": "structure",
+      "required": ["userArn"],
+      "members": {
+        "userArn": { "shape": "UserArn" },
+        "displayName": { "shape": "UserProfileDisplayName" },
+        "emailAddress": { "shape": "Email" },
+        "sshPublicKey": { "shape": "SshPublicKey" }
       }
     },
-    "UpdateUserProfileResult":{
-      "type":"structure",
-      "required":["userArn"],
-      "members":{
-        "userArn":{"shape":"UserArn"},
-        "displayName":{"shape":"UserProfileDisplayName"},
-        "emailAddress":{"shape":"Email"},
-        "sshPublicKey":{"shape":"SshPublicKey"},
-        "createdTimestamp":{"shape":"CreatedTimestamp"},
-        "lastModifiedTimestamp":{"shape":"LastModifiedTimestamp"}
+    "UpdateUserProfileResult": {
+      "type": "structure",
+      "required": ["userArn"],
+      "members": {
+        "userArn": { "shape": "UserArn" },
+        "displayName": { "shape": "UserProfileDisplayName" },
+        "emailAddress": { "shape": "Email" },
+        "sshPublicKey": { "shape": "SshPublicKey" },
+        "createdTimestamp": { "shape": "CreatedTimestamp" },
+        "lastModifiedTimestamp": { "shape": "LastModifiedTimestamp" }
       }
     },
-    "UserArn":{
-      "type":"string",
-      "max":95,
-      "min":32,
-      "pattern":"arn:aws:iam::\\d{12}:user\\/[\\w-]+"
+    "UserArn": {
+      "type": "string",
+      "max": 95,
+      "min": 32,
+      "pattern": "arn:aws:iam::\\d{12}:user\\/[\\w-]+"
     },
-    "UserProfileAlreadyExistsException":{
-      "type":"structure",
-      "members":{
-      },
-      "exception":true
+    "UserProfileAlreadyExistsException": {
+      "type": "structure",
+      "members": {},
+      "exception": true
     },
-    "UserProfileDisplayName":{
-      "type":"string",
-      "max":64,
-      "min":1,
-      "pattern":"^\\S(.*\\S)?$"
+    "UserProfileDisplayName": {
+      "type": "string",
+      "max": 64,
+      "min": 1,
+      "pattern": "^\\S(.*\\S)?$"
     },
-    "UserProfileNotFoundException":{
-      "type":"structure",
-      "members":{
-      },
-      "exception":true
+    "UserProfileNotFoundException": {
+      "type": "structure",
+      "members": {},
+      "exception": true
     },
-    "UserProfileSummary":{
-      "type":"structure",
-      "members":{
-        "userArn":{"shape":"UserArn"},
-        "displayName":{"shape":"UserProfileDisplayName"},
-        "emailAddress":{"shape":"Email"},
-        "sshPublicKey":{"shape":"SshPublicKey"}
+    "UserProfileSummary": {
+      "type": "structure",
+      "members": {
+        "userArn": { "shape": "UserArn" },
+        "displayName": { "shape": "UserProfileDisplayName" },
+        "emailAddress": { "shape": "Email" },
+        "sshPublicKey": { "shape": "SshPublicKey" }
       }
     },
-    "UserProfilesList":{
-      "type":"list",
-      "member":{"shape":"UserProfileSummary"}
+    "UserProfilesList": {
+      "type": "list",
+      "member": { "shape": "UserProfileSummary" }
     },
-    "ValidationException":{
-      "type":"structure",
-      "members":{
-      },
-      "exception":true
+    "ValidationException": {
+      "type": "structure",
+      "members": {},
+      "exception": true
     }
   }
 }

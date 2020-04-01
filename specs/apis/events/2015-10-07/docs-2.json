@@ -39,38 +39,31 @@
     },
     "ConcurrentModificationException": {
       "base": "<p>There is concurrent modification on a rule or target.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteRuleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventBusRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventBusResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRuleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeRuleResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableRuleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EcsParameters": {
       "base": "<p>The custom parameters to be used when the target is an Amazon ECS cluster.</p>",
@@ -80,8 +73,7 @@
     },
     "EnableRuleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorCode": {
       "base": null,
@@ -154,13 +146,11 @@
     },
     "InternalException": {
       "base": "<p>This exception occurs due to unexpected causes.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidEventPatternException": {
       "base": "<p>The event pattern is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KinesisParameters": {
       "base": "<p>This object enables you to specify a JSON path to extract from the event and use as the partition key for the Amazon Kinesis stream, so that you can control the shard to which the event goes. If you do not include this parameter, the default is to use the <code>eventId</code> as the partition key.</p>",
@@ -170,8 +160,7 @@
     },
     "LimitExceededException": {
       "base": "<p>You tried to create more rules or add more targets to a rule than is allowed.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LimitMax100": {
       "base": null,
@@ -189,33 +178,27 @@
     },
     "ListRuleNamesByTargetRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRuleNamesByTargetResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRulesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRulesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTargetsByRuleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTargetsByRuleResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "NextToken": {
       "base": null,
@@ -230,8 +213,7 @@
     },
     "PolicyLengthExceededException": {
       "base": "<p>The event bus policy is too long. For more information, see the limits.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Principal": {
       "base": null,
@@ -241,8 +223,7 @@
     },
     "PutEventsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutEventsRequestEntry": {
       "base": "<p>Represents an event to be submitted.</p>",
@@ -258,8 +239,7 @@
     },
     "PutEventsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutEventsResultEntry": {
       "base": "<p>Represents an event that failed to be submitted.</p>",
@@ -275,28 +255,23 @@
     },
     "PutPermissionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRuleRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutRuleResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutTargetsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutTargetsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutTargetsResultEntry": {
       "base": "<p>Represents a target that failed to be added to a rule.</p>",
@@ -312,18 +287,15 @@
     },
     "RemovePermissionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTargetsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTargetsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTargetsResultEntry": {
       "base": "<p>Represents a target that failed to be removed from a rule.</p>",
@@ -339,8 +311,7 @@
     },
     "ResourceNotFoundException": {
       "base": "<p>An entity that you specified does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RoleArn": {
       "base": null,
@@ -529,13 +500,11 @@
     },
     "TestEventPatternRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TestEventPatternResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TransformerInput": {
       "base": null,

@@ -50,8 +50,7 @@
     },
     "AttributeLimitExceededException": {
       "base": "<p>You can apply up to 10 custom attributes per resource. You can view the attributes of a resource with <a>ListAttributes</a>. You can remove existing attributes on a resource with <a>DeleteAttributes</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Attributes": {
       "base": null,
@@ -114,8 +113,7 @@
     },
     "ClientException": {
       "base": "<p>These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permission to use the action or resource, or specifying an identifier that is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Cluster": {
       "base": "<p>A regional grouping of one or more container instances on which you can run task requests. Each account receives a default cluster the first time you use the Amazon ECS service, but you may also create other clusters. Clusters may contain more than one instance type simultaneously.</p>",
@@ -127,18 +125,15 @@
     },
     "ClusterContainsContainerInstancesException": {
       "base": "<p>You cannot delete a cluster that has registered container instances. You must first deregister the container instances before you can delete the cluster. For more information, see <a>DeregisterContainerInstance</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ClusterContainsServicesException": {
       "base": "<p>You cannot delete a cluster that contains services. You must first update the service to reduce its desired task count to 0 and then delete the service. For more information, see <a>UpdateService</a> and <a>DeleteService</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ClusterNotFoundException": {
       "base": "<p>The specified cluster could not be found. You can view your available clusters with <a>ListClusters</a>. Amazon ECS clusters are region-specific.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Clusters": {
       "base": null,
@@ -208,53 +203,43 @@
     },
     "CreateClusterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateClusterResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateServiceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateServiceResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteAttributesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteAttributesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteClusterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteClusterResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteServiceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteServiceResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Deployment": {
       "base": "<p>The details of an Amazon ECS service deployment.</p>",
@@ -278,73 +263,59 @@
     },
     "DeregisterContainerInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterContainerInstanceResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterTaskDefinitionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeregisterTaskDefinitionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeClustersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeClustersResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeContainerInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeContainerInstancesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeServicesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeServicesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTaskDefinitionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTaskDefinitionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTasksRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTasksResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DesiredStatus": {
       "base": null,
@@ -354,13 +325,11 @@
     },
     "DiscoverPollEndpointRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DiscoverPollEndpointResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DockerLabelsMap": {
       "base": null,
@@ -441,8 +410,7 @@
     },
     "InvalidParameterException": {
       "base": "<p>The specified parameter is invalid. Review the available parameters for the API request.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KeyValuePair": {
       "base": "<p>A key and value pair object.</p>",
@@ -452,73 +420,59 @@
     },
     "ListAttributesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAttributesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListClustersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListClustersResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListContainerInstancesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListContainerInstancesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListServicesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListServicesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTaskDefinitionFamiliesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTaskDefinitionFamiliesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTaskDefinitionsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTaskDefinitionsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTasksRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTasksResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "LoadBalancer": {
       "base": "<p>Details on a load balancer that is used with a service.</p>",
@@ -561,8 +515,7 @@
     },
     "MissingVersionException": {
       "base": "<p>Amazon ECS is unable to determine the current version of the Amazon ECS container agent on the container instance and does not have enough information to proceed with an update. This could be because the agent running on the container instance is an older or custom version that does not use our version information.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MountPoint": {
       "base": "<p>Details on a volume mount point that is used in a container definition.</p>",
@@ -598,8 +551,7 @@
     },
     "NoUpdateAvailableException": {
       "base": "<p>There is no update available for this Amazon ECS container agent. This could be because the agent is already running the latest version, or it is so old that there is no update path to the current version.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PlacementConstraint": {
       "base": "<p>An object representing a constraint on task placement. For more information, see <a href=\"http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html\">Task Placement Constraints</a> in the <i>Amazon EC2 Container Service Developer Guide</i>.</p>",
@@ -655,33 +607,27 @@
     },
     "PutAttributesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutAttributesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterContainerInstanceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterContainerInstanceResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterTaskDefinitionRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegisterTaskDefinitionResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RequiresAttributes": {
       "base": null,
@@ -705,18 +651,15 @@
     },
     "RunTaskRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RunTaskResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ServerException": {
       "base": "<p>These errors are usually caused by a server issue.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Service": {
       "base": "<p>Details on a service within a cluster</p>",
@@ -741,13 +684,11 @@
     },
     "ServiceNotActiveException": {
       "base": "<p>The specified service is not active. You cannot update a service that is not active. If you have previously deleted a service, you can re-create it with <a>CreateService</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ServiceNotFoundException": {
       "base": "<p>The specified service could not be found. You can view your available services with <a>ListServices</a>. Amazon ECS services are cluster-specific and region-specific.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Services": {
       "base": null,
@@ -763,23 +704,19 @@
     },
     "StartTaskRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartTaskResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopTaskRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopTaskResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "String": {
       "base": null,
@@ -970,28 +907,23 @@
     },
     "SubmitContainerStateChangeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SubmitContainerStateChangeResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SubmitTaskStateChangeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SubmitTaskStateChangeResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TargetNotFoundException": {
       "base": "<p>The specified target could not be found. You can view your available container instances with <a>ListContainerInstances</a>. Amazon ECS container instances are cluster-specific and region-specific.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TargetType": {
       "base": null,
@@ -1103,38 +1035,31 @@
     },
     "UpdateContainerAgentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateContainerAgentResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateContainerInstancesStateRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateContainerInstancesStateResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateInProgressException": {
       "base": "<p>There is already a current Amazon ECS container agent update in progress on the specified container instance. If the container agent becomes disconnected while it is in a transitional stage, such as <code>PENDING</code> or <code>STAGING</code>, the update process can get stuck in that state. However, when the agent reconnects, it resumes where it stopped previously.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateServiceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateServiceResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "VersionInfo": {
       "base": "<p>The Docker and Amazon ECS container agent version information about a container instance.</p>",

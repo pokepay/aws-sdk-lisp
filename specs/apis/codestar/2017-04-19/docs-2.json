@@ -21,13 +21,11 @@
   "shapes": {
     "AssociateTeamMemberRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AssociateTeamMemberResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ClientRequestToken": {
       "base": null,
@@ -42,28 +40,23 @@
     },
     "ConcurrentModificationException": {
       "base": "<p>Another modification is being made. That modification must complete before you can make your change.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateProjectRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateProjectResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateUserProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateUserProfileResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatedTimestamp": {
       "base": null,
@@ -76,13 +69,11 @@
     },
     "DeleteProjectRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteProjectResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteStack": {
       "base": null,
@@ -92,43 +83,35 @@
     },
     "DeleteUserProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteUserProfileResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProjectRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeProjectResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeUserProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeUserProfileResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateTeamMemberRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisassociateTeamMemberResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Email": {
       "base": null,
@@ -143,13 +126,11 @@
     },
     "InvalidNextTokenException": {
       "base": "<p>The next token is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidServiceRoleException": {
       "base": "<p>The service role is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "LastModifiedTimestamp": {
       "base": null,
@@ -161,48 +142,39 @@
     },
     "LimitExceededException": {
       "base": "<p>A resource limit has been exceeded.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListProjectsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListProjectsResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListResourcesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListResourcesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTeamMembersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTeamMembersResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListUserProfilesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListUserProfilesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxResults": {
       "base": null,
@@ -228,8 +200,7 @@
     },
     "ProjectAlreadyExistsException": {
       "base": "<p>An AWS CodeStar project with the same ID already exists in this region for the AWS account. AWS CodeStar project IDs must be unique within a region for the AWS account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ProjectArn": {
       "base": null,
@@ -242,13 +213,11 @@
     },
     "ProjectConfigurationException": {
       "base": "<p>Project configuration information is required but not specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ProjectCreationFailedException": {
       "base": "<p>The project creation request was valid, but a nonspecific exception or error occurred during project creation. The project could not be created in AWS CodeStar.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ProjectDescription": {
       "base": null,
@@ -285,8 +254,7 @@
     },
     "ProjectNotFoundException": {
       "base": "<p>The specified AWS CodeStar project was not found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ProjectSummary": {
       "base": "<p>Information about the metadata for a project.</p>",
@@ -369,13 +337,11 @@
     },
     "TeamMemberAlreadyAssociatedException": {
       "base": "<p>The team member is already associated with a role in this project.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TeamMemberNotFoundException": {
       "base": "<p>The specified team member was not found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TeamMemberResult": {
       "base": null,
@@ -385,33 +351,27 @@
     },
     "UpdateProjectRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateProjectResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTeamMemberRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateTeamMemberResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateUserProfileRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateUserProfileResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UserArn": {
       "base": null,
@@ -434,8 +394,7 @@
     },
     "UserProfileAlreadyExistsException": {
       "base": "<p>A user profile with that name already exists in this region for the AWS account. AWS CodeStar user profile names must be unique within a region for the AWS account. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UserProfileDisplayName": {
       "base": null,
@@ -450,8 +409,7 @@
     },
     "UserProfileNotFoundException": {
       "base": "<p>The user profile was not found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UserProfileSummary": {
       "base": "<p>Information about a user's profile in AWS CodeStar.</p>",
@@ -467,8 +425,7 @@
     },
     "ValidationException": {
       "base": "<p>The specified input is either not valid, or it could not be validated.</p>",
-      "refs": {
-      }
+      "refs": {}
     }
   }
 }

@@ -98,108 +98,87 @@
     },
     "CreateBudgetRequest": {
       "base": "Request of CreateBudget",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateBudgetResponse": {
       "base": "Response of CreateBudget",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNotificationRequest": {
       "base": "Request of CreateNotification",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNotificationResponse": {
       "base": "Response of CreateNotification",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSubscriberRequest": {
       "base": "Request of CreateSubscriber",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSubscriberResponse": {
       "base": "Response of CreateSubscriber",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreationLimitExceededException": {
       "base": "The exception is thrown when customer tries to create a record (e.g. budget), but the number this record already exceeds the limitation.",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBudgetRequest": {
       "base": "Request of DeleteBudget",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBudgetResponse": {
       "base": "Response of DeleteBudget",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNotificationRequest": {
       "base": "Request of DeleteNotification",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNotificationResponse": {
       "base": "Response of DeleteNotification",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSubscriberRequest": {
       "base": "Request of DeleteSubscriber",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSubscriberResponse": {
       "base": "Response of DeleteSubscriber",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBudgetRequest": {
       "base": "Request of DescribeBudget",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBudgetResponse": {
       "base": "Response of DescribeBudget",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBudgetsRequest": {
       "base": "Request of DescribeBudgets",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBudgetsResponse": {
       "base": "Response of DescribeBudgets",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNotificationsForBudgetRequest": {
       "base": "Request of DescribeNotificationsForBudget",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNotificationsForBudgetResponse": {
       "base": "Response of GetNotificationsForBudget",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSubscribersForNotificationRequest": {
       "base": "Request of DescribeSubscribersForNotification",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSubscribersForNotificationResponse": {
       "base": "Response of DescribeSubscribersForNotification",
-      "refs": {
-      }
+      "refs": {}
     },
     "DimensionValues": {
       "base": null,
@@ -209,13 +188,11 @@
     },
     "DuplicateRecordException": {
       "base": "The exception is thrown when customer tries to create a record (e.g. budget) that already exists.",
-      "refs": {
-      }
+      "refs": {}
     },
     "ExpiredNextTokenException": {
       "base": "This exception is thrown if the paging token is expired - past its TTL",
-      "refs": {
-      }
+      "refs": {}
     },
     "GenericBoolean": {
       "base": "A generic boolean value.",
@@ -248,18 +225,15 @@
     },
     "InternalErrorException": {
       "base": "This exception is thrown on an unknown internal failure.",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidNextTokenException": {
       "base": "This exception is thrown if paging token signature didn't match the token, or the paging token isn't for this request",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterException": {
       "base": "This exception is thrown if any request is given an invalid parameter. E.g., if a required Date field is null.",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxResults": {
       "base": "An integer to represent how many entries should a pagianted response contains. Maxium is set to 100.",
@@ -271,8 +245,7 @@
     },
     "NotFoundException": {
       "base": "This exception is thrown if a requested entity is not found. E.g., if a budget id doesn't exist for an account ID.",
-      "refs": {
-      }
+      "refs": {}
     },
     "Notification": {
       "base": "Notification model. Each budget may contain multiple notifications with different settings.",
@@ -377,33 +350,27 @@
     },
     "UpdateBudgetRequest": {
       "base": "Request of UpdateBudget",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateBudgetResponse": {
       "base": "Response of UpdateBudget",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateNotificationRequest": {
       "base": "Request of UpdateNotification",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateNotificationResponse": {
       "base": "Response of UpdateNotification",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateSubscriberRequest": {
       "base": "Request of UpdateSubscriber",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateSubscriberResponse": {
       "base": "Response of UpdateSubscriber",
-      "refs": {
-      }
+      "refs": {}
     },
     "errorMessage": {
       "base": "The error message the exception carries.",

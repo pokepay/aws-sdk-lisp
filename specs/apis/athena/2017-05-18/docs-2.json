@@ -17,23 +17,19 @@
   "shapes": {
     "BatchGetNamedQueryInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchGetNamedQueryOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchGetQueryExecutionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "BatchGetQueryExecutionOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Boolean": {
       "base": null,
@@ -61,13 +57,11 @@
     },
     "CreateNamedQueryInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNamedQueryOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DatabaseString": {
       "base": null,
@@ -92,13 +86,11 @@
     },
     "DeleteNamedQueryInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteNamedQueryOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescriptionString": {
       "base": null,
@@ -139,33 +131,27 @@
     },
     "GetNamedQueryInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetNamedQueryOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetQueryExecutionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetQueryExecutionOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetQueryResultsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "GetQueryResultsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "IdempotencyToken": {
       "base": null,
@@ -183,33 +169,27 @@
     },
     "InternalServerException": {
       "base": "<p>Indicates a platform issue, which may be due to a transient condition or outage.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRequestException": {
       "base": "<p>Indicates that something is wrong with the input to the request. For example, a required parameter may be missing or out of range.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListNamedQueriesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListNamedQueriesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListQueryExecutionsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListQueryExecutionsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Long": {
       "base": null,
@@ -373,23 +353,19 @@
     },
     "StartQueryExecutionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartQueryExecutionOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopQueryExecutionInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopQueryExecutionOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "String": {
       "base": null,
@@ -424,8 +400,7 @@
     },
     "TooManyRequestsException": {
       "base": "<p>Indicates that the request was throttled.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnprocessedNamedQueryId": {
       "base": "<p>Information about a named query ID that could not be processed.</p>",

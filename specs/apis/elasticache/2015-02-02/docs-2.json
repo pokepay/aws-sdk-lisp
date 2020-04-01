@@ -45,8 +45,7 @@
   "shapes": {
     "APICallRateForCustomerExceededFault": {
       "base": "<p>The customer has exceeded the allowed rate of API calls.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AZMode": {
       "base": null,
@@ -57,33 +56,27 @@
     },
     "AddTagsToResourceMessage": {
       "base": "<p>Represents the input of an AddTagsToResource operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AllowedNodeTypeModificationsMessage": {
       "base": "<p>Represents the allowed node types you can use to modify your cache cluster or replication group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AuthorizationAlreadyExistsFault": {
       "base": "<p>The specified Amazon EC2 security group is already authorized for the specified cache security group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AuthorizationNotFoundFault": {
       "base": "<p>The specified Amazon EC2 security group is not authorized for the specified cache security group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AuthorizeCacheSecurityGroupIngressMessage": {
       "base": "<p>Represents the input of an AuthorizeCacheSecurityGroupIngress operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AuthorizeCacheSecurityGroupIngressResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AutomaticFailoverStatus": {
       "base": null,
@@ -153,8 +146,7 @@
     },
     "CacheClusterAlreadyExistsFault": {
       "base": "<p>You already have a cache cluster with the given identifier.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheClusterList": {
       "base": null,
@@ -164,13 +156,11 @@
     },
     "CacheClusterMessage": {
       "base": "<p>Represents the output of a <code>DescribeCacheClusters</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheClusterNotFoundFault": {
       "base": "<p>The requested cache cluster ID does not refer to an existing cache cluster.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheEngineVersion": {
       "base": "<p>Provides all of the details about a particular cache engine version.</p>",
@@ -186,8 +176,7 @@
     },
     "CacheEngineVersionMessage": {
       "base": "<p>Represents the output of a <a>DescribeCacheEngineVersions</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheNode": {
       "base": "<p>Represents an individual cache node within a cache cluster. Each cache node runs its own instance of the cluster's protocol-compliant caching software - either Memcached or Redis.</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href=\"http://aws.amazon.com/elasticache/details\">Amazon ElastiCache Product Features and Details</a> and either <a href=\"http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific\">Cache Node Type-Specific Parameters for Memcached</a> or <a href=\"http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific\">Cache Node Type-Specific Parameters for Redis</a>.</p>",
@@ -244,13 +233,11 @@
     },
     "CacheParameterGroupAlreadyExistsFault": {
       "base": "<p>A cache parameter group with the requested name already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheParameterGroupDetails": {
       "base": "<p>Represents the output of a <code>DescribeCacheParameters</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheParameterGroupList": {
       "base": null,
@@ -260,18 +247,15 @@
     },
     "CacheParameterGroupNameMessage": {
       "base": "<p>Represents the output of one of the following operations:</p> <ul> <li> <p> <code>ModifyCacheParameterGroup</code> </p> </li> <li> <p> <code>ResetCacheParameterGroup</code> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheParameterGroupNotFoundFault": {
       "base": "<p>The requested cache parameter group name does not refer to an existing cache parameter group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheParameterGroupQuotaExceededFault": {
       "base": "<p>The request cannot be processed because it would exceed the maximum number of cache security groups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheParameterGroupStatus": {
       "base": "<p>Status of the cache parameter group.</p>",
@@ -281,8 +265,7 @@
     },
     "CacheParameterGroupsMessage": {
       "base": "<p>Represents the output of a <code>DescribeCacheParameterGroups</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheSecurityGroup": {
       "base": "<p>Represents the output of one of the following operations:</p> <ul> <li> <p> <code>AuthorizeCacheSecurityGroupIngress</code> </p> </li> <li> <p> <code>CreateCacheSecurityGroup</code> </p> </li> <li> <p> <code>RevokeCacheSecurityGroupIngress</code> </p> </li> </ul>",
@@ -295,8 +278,7 @@
     },
     "CacheSecurityGroupAlreadyExistsFault": {
       "base": "<p>A cache security group with the specified name already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheSecurityGroupMembership": {
       "base": "<p>Represents a cache cluster's status within a particular cache security group.</p>",
@@ -312,8 +294,7 @@
     },
     "CacheSecurityGroupMessage": {
       "base": "<p>Represents the output of a <code>DescribeCacheSecurityGroups</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheSecurityGroupNameList": {
       "base": null,
@@ -326,13 +307,11 @@
     },
     "CacheSecurityGroupNotFoundFault": {
       "base": "<p>The requested cache security group name does not refer to an existing cache security group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheSecurityGroupQuotaExceededFault": {
       "base": "<p>The request cannot be processed because it would exceed the allowed number of cache security groups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheSecurityGroups": {
       "base": null,
@@ -350,28 +329,23 @@
     },
     "CacheSubnetGroupAlreadyExistsFault": {
       "base": "<p>The requested cache subnet group name is already in use by an existing cache subnet group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheSubnetGroupInUse": {
       "base": "<p>The requested cache subnet group is currently in use.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheSubnetGroupMessage": {
       "base": "<p>Represents the output of a <code>DescribeCacheSubnetGroups</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheSubnetGroupNotFoundFault": {
       "base": "<p>The requested cache subnet group name does not refer to an existing cache subnet group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheSubnetGroupQuotaExceededFault": {
       "base": "<p>The request cannot be processed because it would exceed the allowed number of cache subnet groups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CacheSubnetGroups": {
       "base": null,
@@ -381,8 +355,7 @@
     },
     "CacheSubnetQuotaExceededFault": {
       "base": "<p>The request cannot be processed because it would exceed the allowed number of subnets in a cache subnet group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ChangeType": {
       "base": null,
@@ -399,193 +372,155 @@
     },
     "ClusterQuotaForCustomerExceededFault": {
       "base": "<p>The request cannot be processed because it would exceed the allowed number of cache clusters per customer.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CopySnapshotMessage": {
       "base": "<p>Represents the input of a <code>CopySnapshotMessage</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CopySnapshotResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCacheClusterMessage": {
       "base": "<p>Represents the input of a CreateCacheCluster operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCacheClusterResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCacheParameterGroupMessage": {
       "base": "<p>Represents the input of a <code>CreateCacheParameterGroup</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCacheParameterGroupResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCacheSecurityGroupMessage": {
       "base": "<p>Represents the input of a <code>CreateCacheSecurityGroup</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCacheSecurityGroupResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCacheSubnetGroupMessage": {
       "base": "<p>Represents the input of a <code>CreateCacheSubnetGroup</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCacheSubnetGroupResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateReplicationGroupMessage": {
       "base": "<p>Represents the input of a <code>CreateReplicationGroup</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateReplicationGroupResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSnapshotMessage": {
       "base": "<p>Represents the input of a <code>CreateSnapshot</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSnapshotResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteCacheClusterMessage": {
       "base": "<p>Represents the input of a <code>DeleteCacheCluster</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteCacheClusterResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteCacheParameterGroupMessage": {
       "base": "<p>Represents the input of a <code>DeleteCacheParameterGroup</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteCacheSecurityGroupMessage": {
       "base": "<p>Represents the input of a <code>DeleteCacheSecurityGroup</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteCacheSubnetGroupMessage": {
       "base": "<p>Represents the input of a <code>DeleteCacheSubnetGroup</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteReplicationGroupMessage": {
       "base": "<p>Represents the input of a <code>DeleteReplicationGroup</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteReplicationGroupResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSnapshotMessage": {
       "base": "<p>Represents the input of a <code>DeleteSnapshot</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSnapshotResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCacheClustersMessage": {
       "base": "<p>Represents the input of a <code>DescribeCacheClusters</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCacheEngineVersionsMessage": {
       "base": "<p>Represents the input of a <code>DescribeCacheEngineVersions</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCacheParameterGroupsMessage": {
       "base": "<p>Represents the input of a <code>DescribeCacheParameterGroups</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCacheParametersMessage": {
       "base": "<p>Represents the input of a <code>DescribeCacheParameters</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCacheSecurityGroupsMessage": {
       "base": "<p>Represents the input of a <code>DescribeCacheSecurityGroups</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCacheSubnetGroupsMessage": {
       "base": "<p>Represents the input of a <code>DescribeCacheSubnetGroups</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEngineDefaultParametersMessage": {
       "base": "<p>Represents the input of a <code>DescribeEngineDefaultParameters</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEngineDefaultParametersResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventsMessage": {
       "base": "<p>Represents the input of a <code>DescribeEvents</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReplicationGroupsMessage": {
       "base": "<p>Represents the input of a <code>DescribeReplicationGroups</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedCacheNodesMessage": {
       "base": "<p>Represents the input of a <code>DescribeReservedCacheNodes</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReservedCacheNodesOfferingsMessage": {
       "base": "<p>Represents the input of a <code>DescribeReservedCacheNodesOfferings</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotsListMessage": {
       "base": "<p>Represents the output of a <code>DescribeSnapshots</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotsMessage": {
       "base": "<p>Represents the input of a <code>DescribeSnapshotsMessage</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Double": {
       "base": null,
@@ -639,13 +574,11 @@
     },
     "EventsMessage": {
       "base": "<p>Represents the output of a <code>DescribeEvents</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InsufficientCacheClusterCapacityFault": {
       "base": "<p>The requested cache node type is not available in the specified Availability Zone.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Integer": {
       "base": null,
@@ -697,53 +630,43 @@
     },
     "InvalidARNFault": {
       "base": "<p>The requested Amazon Resource Name (ARN) does not refer to an existing resource.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidCacheClusterStateFault": {
       "base": "<p>The requested cache cluster is not in the <code>available</code> state.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidCacheParameterGroupStateFault": {
       "base": "<p>The current state of the cache parameter group does not allow the requested operation to occur.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidCacheSecurityGroupStateFault": {
       "base": "<p>The current state of the cache security group does not allow deletion.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterCombinationException": {
       "base": "<p>Two or more incompatible parameters were specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterValueException": {
       "base": "<p>The value for a parameter is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidReplicationGroupStateFault": {
       "base": "<p>The requested replication group is not in the <code>available</code> state.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSnapshotStateFault": {
       "base": "<p>The current state of the snapshot does not allow the requested operation to occur.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSubnet": {
       "base": "<p>An invalid subnet identifier was specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidVPCNetworkStateFault": {
       "base": "<p>The VPC network is in an invalid state.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "KeyList": {
       "base": null,
@@ -753,48 +676,39 @@
     },
     "ListAllowedNodeTypeModificationsMessage": {
       "base": "<p>The input parameters for the <code>ListAllowedNodeTypeModifications</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForResourceMessage": {
       "base": "<p>The input parameters for the <code>ListTagsForResource</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyCacheClusterMessage": {
       "base": "<p>Represents the input of a <code>ModifyCacheCluster</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyCacheClusterResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyCacheParameterGroupMessage": {
       "base": "<p>Represents the input of a <code>ModifyCacheParameterGroup</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyCacheSubnetGroupMessage": {
       "base": "<p>Represents the input of a <code>ModifyCacheSubnetGroup</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyCacheSubnetGroupResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyReplicationGroupMessage": {
       "base": "<p>Represents the input of a <code>ModifyReplicationGroups</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyReplicationGroupResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "NodeGroup": {
       "base": "<p>Represents a collection of cache nodes in a replication group. One node in the node group is the read/write primary node. All the other nodes are read-only Replica nodes.</p>",
@@ -835,23 +749,19 @@
     },
     "NodeGroupNotFoundFault": {
       "base": "<p>The node group specified by the <code>NodeGroupId</code> parameter could not be found. Please verify that the node group exists and that you spelled the <code>NodeGroupId</code> value correctly.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NodeGroupsPerReplicationGroupQuotaExceededFault": {
       "base": "<p>The request cannot be processed because it would exceed the maximum of 15 node groups (shards) in a single replication group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NodeQuotaForClusterExceededFault": {
       "base": "<p>The request cannot be processed because it would exceed the allowed number of cache nodes in a single cache cluster.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NodeQuotaForCustomerExceededFault": {
       "base": "<p>The request cannot be processed because it would exceed the allowed number of cache nodes per customer.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NodeSnapshot": {
       "base": "<p>Represents an individual cache node in a snapshot of a cache cluster.</p>",
@@ -924,23 +834,19 @@
     },
     "PurchaseReservedCacheNodesOfferingMessage": {
       "base": "<p>Represents the input of a <code>PurchaseReservedCacheNodesOffering</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PurchaseReservedCacheNodesOfferingResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RebootCacheClusterMessage": {
       "base": "<p>Represents the input of a <code>RebootCacheCluster</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RebootCacheClusterResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RecurringCharge": {
       "base": "<p>Contains the specific price and frequency of a recurring charges for a reserved cache node, or for a reserved cache node offering.</p>",
@@ -957,8 +863,7 @@
     },
     "RemoveTagsFromResourceMessage": {
       "base": "<p>Represents the input of a <code>RemoveTagsFromResource</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplicationGroup": {
       "base": "<p>Contains all of the attributes of a specific Redis replication group.</p>",
@@ -972,8 +877,7 @@
     },
     "ReplicationGroupAlreadyExistsFault": {
       "base": "<p>The specified replication group already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplicationGroupList": {
       "base": null,
@@ -983,13 +887,11 @@
     },
     "ReplicationGroupMessage": {
       "base": "<p>Represents the output of a <code>DescribeReplicationGroups</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplicationGroupNotFoundFault": {
       "base": "<p>The specified replication group does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReplicationGroupPendingModifiedValues": {
       "base": "<p>The settings to be applied to the Redis replication group, either immediately or during the next maintenance window.</p>",
@@ -1006,8 +908,7 @@
     },
     "ReservedCacheNodeAlreadyExistsFault": {
       "base": "<p>You already have a reservation with the given identifier.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReservedCacheNodeList": {
       "base": null,
@@ -1017,18 +918,15 @@
     },
     "ReservedCacheNodeMessage": {
       "base": "<p>Represents the output of a <code>DescribeReservedCacheNodes</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReservedCacheNodeNotFoundFault": {
       "base": "<p>The requested reserved cache node was not found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReservedCacheNodeQuotaExceededFault": {
       "base": "<p>The request cannot be processed because it would exceed the user's cache node quota.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReservedCacheNodesOffering": {
       "base": "<p>Describes all of the attributes of a reserved cache node offering.</p>",
@@ -1044,28 +942,23 @@
     },
     "ReservedCacheNodesOfferingMessage": {
       "base": "<p>Represents the output of a <code>DescribeReservedCacheNodesOfferings</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReservedCacheNodesOfferingNotFoundFault": {
       "base": "<p>The requested cache node offering does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResetCacheParameterGroupMessage": {
       "base": "<p>Represents the input of a <code>ResetCacheParameterGroup</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RevokeCacheSecurityGroupIngressMessage": {
       "base": "<p>Represents the input of a <code>RevokeCacheSecurityGroupIngress</code> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RevokeCacheSecurityGroupIngressResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SecurityGroupIdsList": {
       "base": null,
@@ -1099,8 +992,7 @@
     },
     "SnapshotAlreadyExistsFault": {
       "base": "<p>You already have a snapshot with the given name.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SnapshotArnsList": {
       "base": null,
@@ -1111,8 +1003,7 @@
     },
     "SnapshotFeatureNotSupportedFault": {
       "base": "<p>You attempted one of the following operations:</p> <ul> <li> <p>Creating a snapshot of a Redis cache cluster running on a <code>cache.t1.micro</code> cache node.</p> </li> <li> <p>Creating a snapshot of a cache cluster that is running Memcached rather than Redis.</p> </li> </ul> <p>Neither of these are supported by ElastiCache.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SnapshotList": {
       "base": null,
@@ -1122,13 +1013,11 @@
     },
     "SnapshotNotFoundFault": {
       "base": "<p>The requested snapshot name does not refer to an existing snapshot.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SnapshotQuotaExceededFault": {
       "base": "<p>The request cannot be processed because it would exceed the maximum number of snapshots.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SourceType": {
       "base": null,
@@ -1421,8 +1310,7 @@
     },
     "SubnetInUse": {
       "base": "<p>The requested subnet is being used by another cache subnet group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SubnetList": {
       "base": null,
@@ -1461,33 +1349,27 @@
     },
     "TagListMessage": {
       "base": "<p>Represents the output from the <code>AddTagsToResource</code>, <code>ListTagsForResource</code>, and <code>RemoveTagsFromResource</code> operations.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TagNotFoundFault": {
       "base": "<p>The requested tag was not found on this resource.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TagQuotaPerResourceExceeded": {
       "base": "<p>The request cannot be processed because it would cause the resource to have more than the allowed number of tags. The maximum number of tags permitted on a resource is 50.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TestFailoverMessage": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TestFailoverNotAvailableFault": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TestFailoverResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     }
   }
 }

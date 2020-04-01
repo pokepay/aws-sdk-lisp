@@ -26,8 +26,7 @@
     },
     "AccessDeniedException": {
       "base": "<p>The user is not authorized to access a resource.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Alias": {
       "base": null,
@@ -102,23 +101,19 @@
     },
     "CreateTagsRequest": {
       "base": "<p>The request of the <a>CreateTags</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTagsResult": {
       "base": "<p>The result of the <a>CreateTags</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateWorkspacesRequest": {
       "base": "<p>Contains the inputs for the <a>CreateWorkspaces</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateWorkspacesResult": {
       "base": "<p>Contains the result of the <a>CreateWorkspaces</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DefaultOu": {
       "base": null,
@@ -134,63 +129,51 @@
     },
     "DeleteTagsRequest": {
       "base": "<p>The request of the <a>DeleteTags</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTagsResult": {
       "base": "<p>The result of the <a>DeleteTags</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsRequest": {
       "base": "<p>The request of the <a>DescribeTags</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTagsResult": {
       "base": "<p>The result of the <a>DescribeTags</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeWorkspaceBundlesRequest": {
       "base": "<p>Contains the inputs for the <a>DescribeWorkspaceBundles</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeWorkspaceBundlesResult": {
       "base": "<p>Contains the results of the <a>DescribeWorkspaceBundles</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeWorkspaceDirectoriesRequest": {
       "base": "<p>Contains the inputs for the <a>DescribeWorkspaceDirectories</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeWorkspaceDirectoriesResult": {
       "base": "<p>Contains the results of the <a>DescribeWorkspaceDirectories</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeWorkspacesConnectionStatusRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeWorkspacesConnectionStatusResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeWorkspacesRequest": {
       "base": "<p>Contains the inputs for the <a>DescribeWorkspaces</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeWorkspacesResult": {
       "base": "<p>Contains the results for the <a>DescribeWorkspaces</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Description": {
       "base": null,
@@ -309,13 +292,11 @@
     },
     "InvalidParameterValuesException": {
       "base": "<p>One or more parameter values are not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidResourceStateException": {
       "base": "<p>The state of the WorkSpace is not valid for this operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IpAddress": {
       "base": null,
@@ -332,13 +313,11 @@
     },
     "ModifyWorkspacePropertiesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyWorkspacePropertiesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "NonEmptyString": {
       "base": null,
@@ -355,8 +334,7 @@
     },
     "OperationInProgressException": {
       "base": "<p>The properties of this WorkSpace are currently being modified. Try again in a moment.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PaginationToken": {
       "base": null,
@@ -385,13 +363,11 @@
     },
     "RebootWorkspacesRequest": {
       "base": "<p>Contains the inputs for the <a>RebootWorkspaces</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RebootWorkspacesResult": {
       "base": "<p>Contains the results of the <a>RebootWorkspaces</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RebuildRequest": {
       "base": "<p>Contains information used with the <a>RebuildWorkspaces</a> operation to rebuild a WorkSpace.</p>",
@@ -407,13 +383,11 @@
     },
     "RebuildWorkspacesRequest": {
       "base": "<p>Contains the inputs for the <a>RebuildWorkspaces</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RebuildWorkspacesResult": {
       "base": "<p>Contains the results of the <a>RebuildWorkspaces</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RegistrationCode": {
       "base": null,
@@ -423,18 +397,15 @@
     },
     "ResourceLimitExceededException": {
       "base": "<p>Your resource limits have been exceeded.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The resource could not be found.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceUnavailableException": {
       "base": "<p>The specified resource is not available.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RunningMode": {
       "base": null,
@@ -469,13 +440,11 @@
     },
     "StartWorkspacesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StartWorkspacesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopRequest": {
       "base": "<p>Describes the stop request.</p>",
@@ -491,13 +460,11 @@
     },
     "StopWorkspacesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "StopWorkspacesResult": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SubnetId": {
       "base": null,
@@ -558,13 +525,11 @@
     },
     "TerminateWorkspacesRequest": {
       "base": "<p>Contains the inputs for the <a>TerminateWorkspaces</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TerminateWorkspacesResult": {
       "base": "<p>Contains the results of the <a>TerminateWorkspaces</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Timestamp": {
       "base": null,
@@ -575,8 +540,7 @@
     },
     "UnsupportedWorkspaceConfigurationException": {
       "base": "<p>The configuration of this WorkSpace is not supported for this operation. For more information, see the <a href=\"http://docs.aws.amazon.com/workspaces/latest/adminguide/\">Amazon WorkSpaces Administration Guide</a>. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UserName": {
       "base": null,

@@ -41,43 +41,35 @@
     },
     "AddInstanceFleetInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddInstanceFleetOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddInstanceGroupsInput": {
       "base": "<p>Input to an AddInstanceGroups call.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AddInstanceGroupsOutput": {
       "base": "<p>Output from an AddInstanceGroups call.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AddJobFlowStepsInput": {
       "base": "<p> The input argument to the <a>AddJobFlowSteps</a> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AddJobFlowStepsOutput": {
       "base": "<p> The output for the <a>AddJobFlowSteps</a> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AddTagsInput": {
       "base": "<p>This input identifies a cluster and a list of tags to attach.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AddTagsOutput": {
       "base": "<p>This output indicates the result of adding tags to a resource.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AdjustmentType": {
       "base": null,
@@ -199,13 +191,11 @@
     },
     "CancelStepsInput": {
       "base": "<p>The input argument to the <a>CancelSteps</a> operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelStepsOutput": {
       "base": "<p> The output for the <a>CancelSteps</a> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelStepsRequestStatus": {
       "base": null,
@@ -332,13 +322,11 @@
     },
     "CreateSecurityConfigurationInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSecurityConfigurationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Date": {
       "base": null,
@@ -380,53 +368,43 @@
     },
     "DeleteSecurityConfigurationInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSecurityConfigurationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeClusterInput": {
       "base": "<p>This input determines which cluster to describe.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeClusterOutput": {
       "base": "<p>This output contains the description of the cluster.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeJobFlowsInput": {
       "base": "<p> The input for the <a>DescribeJobFlows</a> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeJobFlowsOutput": {
       "base": "<p> The output for the <a>DescribeJobFlows</a> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSecurityConfigurationInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSecurityConfigurationOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStepInput": {
       "base": "<p>This input determines which step to describe.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStepOutput": {
       "base": "<p>This output contains the description of the cluster step.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "EC2InstanceIdsList": {
       "base": null,
@@ -865,18 +843,15 @@
     },
     "InternalServerError": {
       "base": "<p>Indicates that an error occurred while processing the request and that the request was not completed.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InternalServerException": {
       "base": "<p>This exception occurs when there is an internal failure in the EMR service.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRequestException": {
       "base": "<p>This exception occurs when there is something wrong with user input.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "JobFlowDetail": {
       "base": "<p>A description of a cluster (job flow).</p>",
@@ -935,73 +910,59 @@
     },
     "ListBootstrapActionsInput": {
       "base": "<p>This input determines which bootstrap actions to retrieve.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListBootstrapActionsOutput": {
       "base": "<p>This output contains the bootstrap actions detail.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListClustersInput": {
       "base": "<p>This input determines how the ListClusters action filters the list of clusters that it returns.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListClustersOutput": {
       "base": "<p>This contains a ClusterSummaryList with the cluster details; for example, the cluster IDs, names, and status.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListInstanceFleetsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListInstanceFleetsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListInstanceGroupsInput": {
       "base": "<p>This input determines which instance groups to retrieve.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListInstanceGroupsOutput": {
       "base": "<p>This input determines which instance groups to retrieve.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListInstancesInput": {
       "base": "<p>This input determines which instances to list.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListInstancesOutput": {
       "base": "<p>This output contains the list of instances.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListSecurityConfigurationsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListSecurityConfigurationsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStepsInput": {
       "base": "<p>This input determines which steps to list.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListStepsOutput": {
       "base": "<p>This output contains the list of steps returned in reverse order. This means that the last step is the first element in the list.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Marker": {
       "base": null,
@@ -1046,13 +1007,11 @@
     },
     "ModifyInstanceFleetInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ModifyInstanceGroupsInput": {
       "base": "<p>Change the size of some instance groups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NewSupportedProductsList": {
       "base": null,
@@ -1077,33 +1036,27 @@
     },
     "PutAutoScalingPolicyInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "PutAutoScalingPolicyOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveAutoScalingPolicyInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveAutoScalingPolicyOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTagsInput": {
       "base": "<p>This input identifies a cluster and a list of tags to remove.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTagsOutput": {
       "base": "<p>This output indicates the result of removing tags from a resource.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RepoUpgradeOnBoot": {
       "base": null,
@@ -1121,13 +1074,11 @@
     },
     "RunJobFlowInput": {
       "base": "<p> Input to the <a>RunJobFlow</a> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RunJobFlowOutput": {
       "base": "<p> The result of the <a>RunJobFlow</a> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ScaleDownBehavior": {
       "base": null,
@@ -1196,13 +1147,11 @@
     },
     "SetTerminationProtectionInput": {
       "base": "<p> The input argument to the <a>TerminationProtection</a> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetVisibleToAllUsersInput": {
       "base": "<p>The input to the SetVisibleToAllUsers action.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ShrinkPolicy": {
       "base": "<p>Policy for customizing shrink operations. Allows configuration of decommissioning timeout and targeted instance shrinking.</p>",
@@ -1456,8 +1405,7 @@
     },
     "TerminateJobFlowsInput": {
       "base": "<p> Input to the <a>TerminateJobFlows</a> operation. </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Unit": {
       "base": null,

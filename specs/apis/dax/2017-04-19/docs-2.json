@@ -60,8 +60,7 @@
     },
     "ClusterAlreadyExistsFault": {
       "base": "<p>You already have a DAX cluster with the given identifier.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ClusterList": {
       "base": null,
@@ -77,143 +76,115 @@
     },
     "ClusterNotFoundFault": {
       "base": "<p>The requested cluster ID does not refer to an existing DAX cluster.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ClusterQuotaForCustomerExceededFault": {
       "base": "<p>You have attempted to exceed the maximum number of DAX clusters for your AWS account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateClusterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateClusterResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateParameterGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateParameterGroupResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSubnetGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSubnetGroupResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DecreaseReplicationFactorRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DecreaseReplicationFactorResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteClusterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteClusterResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteParameterGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteParameterGroupResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSubnetGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSubnetGroupResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeClustersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeClustersResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDefaultParametersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeDefaultParametersResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeEventsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeParameterGroupsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeParameterGroupsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeParametersRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeParametersResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSubnetGroupsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSubnetGroupsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Endpoint": {
       "base": "<p>Represents the information required for client programs to connect to the configuration endpoint for a DAX cluster, or to an individual node within the cluster.</p>",
@@ -236,18 +207,15 @@
     },
     "IncreaseReplicationFactorRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "IncreaseReplicationFactorResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "InsufficientClusterCapacityFault": {
       "base": "<p>There are not enough system resources to create the cluster you requested (or to resize an already-existing cluster). </p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Integer": {
       "base": null,
@@ -274,38 +242,31 @@
     },
     "InvalidARNFault": {
       "base": "<p>The Amazon Resource Name (ARN) supplied in the request is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidClusterStateFault": {
       "base": "<p>The requested DAX cluster is not in the <i>available</i> state.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterCombinationException": {
       "base": "<p>Two or more incompatible parameters were specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterGroupStateFault": {
       "base": "<p>One or more parameters in a parameter group are in an invalid state.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidParameterValueException": {
       "base": "<p>The value for a parameter is invalid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidSubnet": {
       "base": "<p>An invalid subnet identifier was specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidVPCNetworkStateFault": {
       "base": "<p>The VPC network is in an invalid state.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IsModifiable": {
       "base": null,
@@ -321,13 +282,11 @@
     },
     "ListTagsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Node": {
       "base": "<p>Represents an individual node within a DAX cluster.</p>",
@@ -351,18 +310,15 @@
     },
     "NodeNotFoundFault": {
       "base": "<p>None of the nodes in the cluster have the given node ID.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NodeQuotaForClusterExceededFault": {
       "base": "<p>You have attempted to exceed the maximum number of nodes for a DAX cluster.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NodeQuotaForCustomerExceededFault": {
       "base": "<p>You have attempted to exceed the maximum number of nodes for your AWS account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "NodeTypeSpecificValue": {
       "base": "<p>Represents a parameter value that is applicable to a particular node type.</p>",
@@ -398,8 +354,7 @@
     },
     "ParameterGroupAlreadyExistsFault": {
       "base": "<p>The specified parameter group already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ParameterGroupList": {
       "base": null,
@@ -415,13 +370,11 @@
     },
     "ParameterGroupNotFoundFault": {
       "base": "<p>The specified parameter group does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ParameterGroupQuotaExceededFault": {
       "base": "<p>You have attempted to exceed the maximum number of parameter groups.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ParameterGroupStatus": {
       "base": "<p>The status of a parameter group.</p>",
@@ -456,13 +409,11 @@
     },
     "RebootNodeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RebootNodeResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "SecurityGroupIdentifierList": {
       "base": null,
@@ -609,13 +560,11 @@
     },
     "SubnetGroupAlreadyExistsFault": {
       "base": "<p>The specified subnet group already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SubnetGroupInUseFault": {
       "base": "<p>The specified subnet group is currently in use.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SubnetGroupList": {
       "base": null,
@@ -631,13 +580,11 @@
     },
     "SubnetGroupNotFoundFault": {
       "base": "<p>The requested subnet group name does not refer to an existing subnet group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SubnetGroupQuotaExceededFault": {
       "base": "<p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SubnetIdentifierList": {
       "base": null,
@@ -648,8 +595,7 @@
     },
     "SubnetInUse": {
       "base": "<p>The requested subnet is being used by another subnet group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SubnetList": {
       "base": null,
@@ -659,8 +605,7 @@
     },
     "SubnetQuotaExceededFault": {
       "base": "<p>The request cannot be processed because it would exceed the allowed number of subnets in a subnet group.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TStamp": {
       "base": null,
@@ -689,63 +634,51 @@
     },
     "TagNotFoundFault": {
       "base": "<p>The tag does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TagQuotaPerResourceExceeded": {
       "base": "<p>You have exceeded the maximum number of tags for this DAX cluster.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TagResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "TagResourceResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UntagResourceRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UntagResourceResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateClusterRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateClusterResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateParameterGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateParameterGroupResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateSubnetGroupRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateSubnetGroupResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     }
   }
 }

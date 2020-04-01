@@ -33,13 +33,11 @@
     },
     "DeleteReportDefinitionRequest": {
       "base": "Request of DeleteReportDefinition",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteReportDefinitionResponse": {
       "base": "Response of DeleteReportDefinition",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteResponseMessage": {
       "base": "A message indicates if the deletion is successful.",
@@ -49,18 +47,15 @@
     },
     "DescribeReportDefinitionsRequest": {
       "base": "Request of DescribeReportDefinitions",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeReportDefinitionsResponse": {
       "base": "Response of DescribeReportDefinitions",
-      "refs": {
-      }
+      "refs": {}
     },
     "DuplicateReportNameException": {
       "base": "This exception is thrown when putting a report preference with a name that already exists.",
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorMessage": {
       "base": "A message to show the detail of the exception.",
@@ -80,8 +75,7 @@
     },
     "InternalErrorException": {
       "base": "This exception is thrown on a known dependency failure.",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxResults": {
       "base": "The max number of results returned by the operation.",
@@ -91,13 +85,11 @@
     },
     "PutReportDefinitionRequest": {
       "base": "Request of PutReportDefinition",
-      "refs": {
-      }
+      "refs": {}
     },
     "PutReportDefinitionResponse": {
       "base": "Response of PutReportDefinition",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReportDefinition": {
       "base": "The definition of AWS Cost and Usage Report. Customer can specify the report name, time unit, report format, compression format, S3 bucket and additional artifacts and schema elements in the definition.",
@@ -120,8 +112,7 @@
     },
     "ReportLimitReachedException": {
       "base": "This exception is thrown when the number of report preference reaches max limit. The max number is 5.",
-      "refs": {
-      }
+      "refs": {}
     },
     "ReportName": {
       "base": "Preferred name for a report, it has to be unique. Must starts with a number/letter, case sensitive. Limited to 256 characters.",
@@ -162,8 +153,7 @@
     },
     "ValidationException": {
       "base": "This exception is thrown when providing an invalid input. eg. Put a report preference with an invalid report name, or Delete a report preference with an empty report name.",
-      "refs": {
-      }
+      "refs": {}
     }
   }
 }

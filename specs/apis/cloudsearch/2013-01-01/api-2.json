@@ -1,1066 +1,1055 @@
 {
-  "version":"2.0",
-  "metadata":{
-    "apiVersion":"2013-01-01",
-    "endpointPrefix":"cloudsearch",
-    "serviceFullName":"Amazon CloudSearch",
-    "signatureVersion":"v4",
-    "xmlNamespace":"http://cloudsearch.amazonaws.com/doc/2013-01-01/",
-    "protocol":"query",
-    "uid":"cloudsearch-2013-01-01"
+  "version": "2.0",
+  "metadata": {
+    "apiVersion": "2013-01-01",
+    "endpointPrefix": "cloudsearch",
+    "serviceFullName": "Amazon CloudSearch",
+    "signatureVersion": "v4",
+    "xmlNamespace": "http://cloudsearch.amazonaws.com/doc/2013-01-01/",
+    "protocol": "query",
+    "uid": "cloudsearch-2013-01-01"
   },
-  "operations":{
-    "BuildSuggesters":{
-      "name":"BuildSuggesters",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+  "operations": {
+    "BuildSuggesters": {
+      "name": "BuildSuggesters",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"BuildSuggestersRequest"},
-      "output":{
-        "shape":"BuildSuggestersResponse",
-        "resultWrapper":"BuildSuggestersResult"
+      "input": { "shape": "BuildSuggestersRequest" },
+      "output": {
+        "shape": "BuildSuggestersResponse",
+        "resultWrapper": "BuildSuggestersResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "CreateDomain":{
-      "name":"CreateDomain",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "CreateDomain": {
+      "name": "CreateDomain",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"CreateDomainRequest"},
-      "output":{
-        "shape":"CreateDomainResponse",
-        "resultWrapper":"CreateDomainResult"
+      "input": { "shape": "CreateDomainRequest" },
+      "output": {
+        "shape": "CreateDomainResponse",
+        "resultWrapper": "CreateDomainResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"LimitExceededException",
-          "error":{
-            "code":"LimitExceeded",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "LimitExceededException",
+          "error": {
+            "code": "LimitExceeded",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DefineAnalysisScheme":{
-      "name":"DefineAnalysisScheme",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DefineAnalysisScheme": {
+      "name": "DefineAnalysisScheme",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DefineAnalysisSchemeRequest"},
-      "output":{
-        "shape":"DefineAnalysisSchemeResponse",
-        "resultWrapper":"DefineAnalysisSchemeResult"
+      "input": { "shape": "DefineAnalysisSchemeRequest" },
+      "output": {
+        "shape": "DefineAnalysisSchemeResponse",
+        "resultWrapper": "DefineAnalysisSchemeResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"LimitExceededException",
-          "error":{
-            "code":"LimitExceeded",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "LimitExceededException",
+          "error": {
+            "code": "LimitExceeded",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"InvalidTypeException",
-          "error":{
-            "code":"InvalidType",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "InvalidTypeException",
+          "error": {
+            "code": "InvalidType",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DefineExpression":{
-      "name":"DefineExpression",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DefineExpression": {
+      "name": "DefineExpression",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DefineExpressionRequest"},
-      "output":{
-        "shape":"DefineExpressionResponse",
-        "resultWrapper":"DefineExpressionResult"
+      "input": { "shape": "DefineExpressionRequest" },
+      "output": {
+        "shape": "DefineExpressionResponse",
+        "resultWrapper": "DefineExpressionResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"LimitExceededException",
-          "error":{
-            "code":"LimitExceeded",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "LimitExceededException",
+          "error": {
+            "code": "LimitExceeded",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"InvalidTypeException",
-          "error":{
-            "code":"InvalidType",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "InvalidTypeException",
+          "error": {
+            "code": "InvalidType",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DefineIndexField":{
-      "name":"DefineIndexField",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DefineIndexField": {
+      "name": "DefineIndexField",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DefineIndexFieldRequest"},
-      "output":{
-        "shape":"DefineIndexFieldResponse",
-        "resultWrapper":"DefineIndexFieldResult"
+      "input": { "shape": "DefineIndexFieldRequest" },
+      "output": {
+        "shape": "DefineIndexFieldResponse",
+        "resultWrapper": "DefineIndexFieldResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"LimitExceededException",
-          "error":{
-            "code":"LimitExceeded",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "LimitExceededException",
+          "error": {
+            "code": "LimitExceeded",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"InvalidTypeException",
-          "error":{
-            "code":"InvalidType",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "InvalidTypeException",
+          "error": {
+            "code": "InvalidType",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DefineSuggester":{
-      "name":"DefineSuggester",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DefineSuggester": {
+      "name": "DefineSuggester",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DefineSuggesterRequest"},
-      "output":{
-        "shape":"DefineSuggesterResponse",
-        "resultWrapper":"DefineSuggesterResult"
+      "input": { "shape": "DefineSuggesterRequest" },
+      "output": {
+        "shape": "DefineSuggesterResponse",
+        "resultWrapper": "DefineSuggesterResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"LimitExceededException",
-          "error":{
-            "code":"LimitExceeded",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "LimitExceededException",
+          "error": {
+            "code": "LimitExceeded",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"InvalidTypeException",
-          "error":{
-            "code":"InvalidType",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "InvalidTypeException",
+          "error": {
+            "code": "InvalidType",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DeleteAnalysisScheme":{
-      "name":"DeleteAnalysisScheme",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteAnalysisScheme": {
+      "name": "DeleteAnalysisScheme",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteAnalysisSchemeRequest"},
-      "output":{
-        "shape":"DeleteAnalysisSchemeResponse",
-        "resultWrapper":"DeleteAnalysisSchemeResult"
+      "input": { "shape": "DeleteAnalysisSchemeRequest" },
+      "output": {
+        "shape": "DeleteAnalysisSchemeResponse",
+        "resultWrapper": "DeleteAnalysisSchemeResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"InvalidTypeException",
-          "error":{
-            "code":"InvalidType",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "InvalidTypeException",
+          "error": {
+            "code": "InvalidType",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DeleteDomain":{
-      "name":"DeleteDomain",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteDomain": {
+      "name": "DeleteDomain",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteDomainRequest"},
-      "output":{
-        "shape":"DeleteDomainResponse",
-        "resultWrapper":"DeleteDomainResult"
+      "input": { "shape": "DeleteDomainRequest" },
+      "output": {
+        "shape": "DeleteDomainResponse",
+        "resultWrapper": "DeleteDomainResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DeleteExpression":{
-      "name":"DeleteExpression",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteExpression": {
+      "name": "DeleteExpression",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteExpressionRequest"},
-      "output":{
-        "shape":"DeleteExpressionResponse",
-        "resultWrapper":"DeleteExpressionResult"
+      "input": { "shape": "DeleteExpressionRequest" },
+      "output": {
+        "shape": "DeleteExpressionResponse",
+        "resultWrapper": "DeleteExpressionResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"InvalidTypeException",
-          "error":{
-            "code":"InvalidType",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "InvalidTypeException",
+          "error": {
+            "code": "InvalidType",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DeleteIndexField":{
-      "name":"DeleteIndexField",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteIndexField": {
+      "name": "DeleteIndexField",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteIndexFieldRequest"},
-      "output":{
-        "shape":"DeleteIndexFieldResponse",
-        "resultWrapper":"DeleteIndexFieldResult"
+      "input": { "shape": "DeleteIndexFieldRequest" },
+      "output": {
+        "shape": "DeleteIndexFieldResponse",
+        "resultWrapper": "DeleteIndexFieldResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"InvalidTypeException",
-          "error":{
-            "code":"InvalidType",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "InvalidTypeException",
+          "error": {
+            "code": "InvalidType",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DeleteSuggester":{
-      "name":"DeleteSuggester",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DeleteSuggester": {
+      "name": "DeleteSuggester",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DeleteSuggesterRequest"},
-      "output":{
-        "shape":"DeleteSuggesterResponse",
-        "resultWrapper":"DeleteSuggesterResult"
+      "input": { "shape": "DeleteSuggesterRequest" },
+      "output": {
+        "shape": "DeleteSuggesterResponse",
+        "resultWrapper": "DeleteSuggesterResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"InvalidTypeException",
-          "error":{
-            "code":"InvalidType",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "InvalidTypeException",
+          "error": {
+            "code": "InvalidType",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DescribeAnalysisSchemes":{
-      "name":"DescribeAnalysisSchemes",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DescribeAnalysisSchemes": {
+      "name": "DescribeAnalysisSchemes",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeAnalysisSchemesRequest"},
-      "output":{
-        "shape":"DescribeAnalysisSchemesResponse",
-        "resultWrapper":"DescribeAnalysisSchemesResult"
+      "input": { "shape": "DescribeAnalysisSchemesRequest" },
+      "output": {
+        "shape": "DescribeAnalysisSchemesResponse",
+        "resultWrapper": "DescribeAnalysisSchemesResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DescribeAvailabilityOptions":{
-      "name":"DescribeAvailabilityOptions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DescribeAvailabilityOptions": {
+      "name": "DescribeAvailabilityOptions",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeAvailabilityOptionsRequest"},
-      "output":{
-        "shape":"DescribeAvailabilityOptionsResponse",
-        "resultWrapper":"DescribeAvailabilityOptionsResult"
+      "input": { "shape": "DescribeAvailabilityOptionsRequest" },
+      "output": {
+        "shape": "DescribeAvailabilityOptionsResponse",
+        "resultWrapper": "DescribeAvailabilityOptionsResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"InvalidTypeException",
-          "error":{
-            "code":"InvalidType",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "InvalidTypeException",
+          "error": {
+            "code": "InvalidType",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"LimitExceededException",
-          "error":{
-            "code":"LimitExceeded",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "LimitExceededException",
+          "error": {
+            "code": "LimitExceeded",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"DisabledOperationException",
-          "error":{
-            "code":"DisabledAction",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "DisabledOperationException",
+          "error": {
+            "code": "DisabledAction",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DescribeDomains":{
-      "name":"DescribeDomains",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DescribeDomains": {
+      "name": "DescribeDomains",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeDomainsRequest"},
-      "output":{
-        "shape":"DescribeDomainsResponse",
-        "resultWrapper":"DescribeDomainsResult"
+      "input": { "shape": "DescribeDomainsRequest" },
+      "output": {
+        "shape": "DescribeDomainsResponse",
+        "resultWrapper": "DescribeDomainsResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DescribeExpressions":{
-      "name":"DescribeExpressions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DescribeExpressions": {
+      "name": "DescribeExpressions",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeExpressionsRequest"},
-      "output":{
-        "shape":"DescribeExpressionsResponse",
-        "resultWrapper":"DescribeExpressionsResult"
+      "input": { "shape": "DescribeExpressionsRequest" },
+      "output": {
+        "shape": "DescribeExpressionsResponse",
+        "resultWrapper": "DescribeExpressionsResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DescribeIndexFields":{
-      "name":"DescribeIndexFields",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DescribeIndexFields": {
+      "name": "DescribeIndexFields",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeIndexFieldsRequest"},
-      "output":{
-        "shape":"DescribeIndexFieldsResponse",
-        "resultWrapper":"DescribeIndexFieldsResult"
+      "input": { "shape": "DescribeIndexFieldsRequest" },
+      "output": {
+        "shape": "DescribeIndexFieldsResponse",
+        "resultWrapper": "DescribeIndexFieldsResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DescribeScalingParameters":{
-      "name":"DescribeScalingParameters",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DescribeScalingParameters": {
+      "name": "DescribeScalingParameters",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeScalingParametersRequest"},
-      "output":{
-        "shape":"DescribeScalingParametersResponse",
-        "resultWrapper":"DescribeScalingParametersResult"
+      "input": { "shape": "DescribeScalingParametersRequest" },
+      "output": {
+        "shape": "DescribeScalingParametersResponse",
+        "resultWrapper": "DescribeScalingParametersResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DescribeServiceAccessPolicies":{
-      "name":"DescribeServiceAccessPolicies",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DescribeServiceAccessPolicies": {
+      "name": "DescribeServiceAccessPolicies",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeServiceAccessPoliciesRequest"},
-      "output":{
-        "shape":"DescribeServiceAccessPoliciesResponse",
-        "resultWrapper":"DescribeServiceAccessPoliciesResult"
+      "input": { "shape": "DescribeServiceAccessPoliciesRequest" },
+      "output": {
+        "shape": "DescribeServiceAccessPoliciesResponse",
+        "resultWrapper": "DescribeServiceAccessPoliciesResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "DescribeSuggesters":{
-      "name":"DescribeSuggesters",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "DescribeSuggesters": {
+      "name": "DescribeSuggesters",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"DescribeSuggestersRequest"},
-      "output":{
-        "shape":"DescribeSuggestersResponse",
-        "resultWrapper":"DescribeSuggestersResult"
+      "input": { "shape": "DescribeSuggestersRequest" },
+      "output": {
+        "shape": "DescribeSuggestersResponse",
+        "resultWrapper": "DescribeSuggestersResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "IndexDocuments":{
-      "name":"IndexDocuments",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "IndexDocuments": {
+      "name": "IndexDocuments",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"IndexDocumentsRequest"},
-      "output":{
-        "shape":"IndexDocumentsResponse",
-        "resultWrapper":"IndexDocumentsResult"
+      "input": { "shape": "IndexDocumentsRequest" },
+      "output": {
+        "shape": "IndexDocumentsResponse",
+        "resultWrapper": "IndexDocumentsResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "ListDomainNames":{
-      "name":"ListDomainNames",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "ListDomainNames": {
+      "name": "ListDomainNames",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "output":{
-        "shape":"ListDomainNamesResponse",
-        "resultWrapper":"ListDomainNamesResult"
+      "output": {
+        "shape": "ListDomainNamesResponse",
+        "resultWrapper": "ListDomainNamesResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         }
       ]
     },
-    "UpdateAvailabilityOptions":{
-      "name":"UpdateAvailabilityOptions",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "UpdateAvailabilityOptions": {
+      "name": "UpdateAvailabilityOptions",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"UpdateAvailabilityOptionsRequest"},
-      "output":{
-        "shape":"UpdateAvailabilityOptionsResponse",
-        "resultWrapper":"UpdateAvailabilityOptionsResult"
+      "input": { "shape": "UpdateAvailabilityOptionsRequest" },
+      "output": {
+        "shape": "UpdateAvailabilityOptionsResponse",
+        "resultWrapper": "UpdateAvailabilityOptionsResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"InvalidTypeException",
-          "error":{
-            "code":"InvalidType",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "InvalidTypeException",
+          "error": {
+            "code": "InvalidType",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"LimitExceededException",
-          "error":{
-            "code":"LimitExceeded",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "LimitExceededException",
+          "error": {
+            "code": "LimitExceeded",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"DisabledOperationException",
-          "error":{
-            "code":"DisabledAction",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "DisabledOperationException",
+          "error": {
+            "code": "DisabledAction",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "UpdateScalingParameters":{
-      "name":"UpdateScalingParameters",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "UpdateScalingParameters": {
+      "name": "UpdateScalingParameters",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"UpdateScalingParametersRequest"},
-      "output":{
-        "shape":"UpdateScalingParametersResponse",
-        "resultWrapper":"UpdateScalingParametersResult"
+      "input": { "shape": "UpdateScalingParametersRequest" },
+      "output": {
+        "shape": "UpdateScalingParametersResponse",
+        "resultWrapper": "UpdateScalingParametersResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"LimitExceededException",
-          "error":{
-            "code":"LimitExceeded",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "LimitExceededException",
+          "error": {
+            "code": "LimitExceeded",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"InvalidTypeException",
-          "error":{
-            "code":"InvalidType",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "InvalidTypeException",
+          "error": {
+            "code": "InvalidType",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     },
-    "UpdateServiceAccessPolicies":{
-      "name":"UpdateServiceAccessPolicies",
-      "http":{
-        "method":"POST",
-        "requestUri":"/"
+    "UpdateServiceAccessPolicies": {
+      "name": "UpdateServiceAccessPolicies",
+      "http": {
+        "method": "POST",
+        "requestUri": "/"
       },
-      "input":{"shape":"UpdateServiceAccessPoliciesRequest"},
-      "output":{
-        "shape":"UpdateServiceAccessPoliciesResponse",
-        "resultWrapper":"UpdateServiceAccessPoliciesResult"
+      "input": { "shape": "UpdateServiceAccessPoliciesRequest" },
+      "output": {
+        "shape": "UpdateServiceAccessPoliciesResponse",
+        "resultWrapper": "UpdateServiceAccessPoliciesResult"
       },
-      "errors":[
+      "errors": [
         {
-          "shape":"BaseException",
-          "exception":true
+          "shape": "BaseException",
+          "exception": true
         },
         {
-          "shape":"InternalException",
-          "error":{
-            "code":"InternalException",
-            "httpStatusCode":500
+          "shape": "InternalException",
+          "error": {
+            "code": "InternalException",
+            "httpStatusCode": 500
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"LimitExceededException",
-          "error":{
-            "code":"LimitExceeded",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "LimitExceededException",
+          "error": {
+            "code": "LimitExceeded",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"ResourceNotFoundException",
-          "error":{
-            "code":"ResourceNotFound",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "ResourceNotFoundException",
+          "error": {
+            "code": "ResourceNotFound",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         },
         {
-          "shape":"InvalidTypeException",
-          "error":{
-            "code":"InvalidType",
-            "httpStatusCode":409,
-            "senderFault":true
+          "shape": "InvalidTypeException",
+          "error": {
+            "code": "InvalidType",
+            "httpStatusCode": 409,
+            "senderFault": true
           },
-          "exception":true
+          "exception": true
         }
       ]
     }
   },
-  "shapes":{
-    "APIVersion":{"type":"string"},
-    "ARN":{"type":"string"},
-    "AccessPoliciesStatus":{
-      "type":"structure",
-      "required":[
-        "Options",
-        "Status"
-      ],
-      "members":{
-        "Options":{"shape":"PolicyDocument"},
-        "Status":{"shape":"OptionStatus"}
+  "shapes": {
+    "APIVersion": { "type": "string" },
+    "ARN": { "type": "string" },
+    "AccessPoliciesStatus": {
+      "type": "structure",
+      "required": ["Options", "Status"],
+      "members": {
+        "Options": { "shape": "PolicyDocument" },
+        "Status": { "shape": "OptionStatus" }
       }
     },
-    "AlgorithmicStemming":{
-      "type":"string",
-      "enum":[
-        "none",
-        "minimal",
-        "light",
-        "full"
-      ]
+    "AlgorithmicStemming": {
+      "type": "string",
+      "enum": ["none", "minimal", "light", "full"]
     },
-    "AnalysisOptions":{
-      "type":"structure",
-      "members":{
-        "Synonyms":{"shape":"String"},
-        "Stopwords":{"shape":"String"},
-        "StemmingDictionary":{"shape":"String"},
-        "JapaneseTokenizationDictionary":{"shape":"String"},
-        "AlgorithmicStemming":{"shape":"AlgorithmicStemming"}
+    "AnalysisOptions": {
+      "type": "structure",
+      "members": {
+        "Synonyms": { "shape": "String" },
+        "Stopwords": { "shape": "String" },
+        "StemmingDictionary": { "shape": "String" },
+        "JapaneseTokenizationDictionary": { "shape": "String" },
+        "AlgorithmicStemming": { "shape": "AlgorithmicStemming" }
       }
     },
-    "AnalysisScheme":{
-      "type":"structure",
-      "required":[
-        "AnalysisSchemeName",
-        "AnalysisSchemeLanguage"
-      ],
-      "members":{
-        "AnalysisSchemeName":{"shape":"StandardName"},
-        "AnalysisSchemeLanguage":{"shape":"AnalysisSchemeLanguage"},
-        "AnalysisOptions":{"shape":"AnalysisOptions"}
+    "AnalysisScheme": {
+      "type": "structure",
+      "required": ["AnalysisSchemeName", "AnalysisSchemeLanguage"],
+      "members": {
+        "AnalysisSchemeName": { "shape": "StandardName" },
+        "AnalysisSchemeLanguage": { "shape": "AnalysisSchemeLanguage" },
+        "AnalysisOptions": { "shape": "AnalysisOptions" }
       }
     },
-    "AnalysisSchemeLanguage":{
-      "type":"string",
-      "enum":[
+    "AnalysisSchemeLanguage": {
+      "type": "string",
+      "enum": [
         "ar",
         "bg",
         "ca",
@@ -1098,569 +1087,522 @@
         "zh-Hant"
       ]
     },
-    "AnalysisSchemeStatus":{
-      "type":"structure",
-      "required":[
-        "Options",
-        "Status"
-      ],
-      "members":{
-        "Options":{"shape":"AnalysisScheme"},
-        "Status":{"shape":"OptionStatus"}
+    "AnalysisSchemeStatus": {
+      "type": "structure",
+      "required": ["Options", "Status"],
+      "members": {
+        "Options": { "shape": "AnalysisScheme" },
+        "Status": { "shape": "OptionStatus" }
       }
     },
-    "AnalysisSchemeStatusList":{
-      "type":"list",
-      "member":{"shape":"AnalysisSchemeStatus"}
+    "AnalysisSchemeStatusList": {
+      "type": "list",
+      "member": { "shape": "AnalysisSchemeStatus" }
     },
-    "AvailabilityOptionsStatus":{
-      "type":"structure",
-      "required":[
-        "Options",
-        "Status"
-      ],
-      "members":{
-        "Options":{"shape":"MultiAZ"},
-        "Status":{"shape":"OptionStatus"}
+    "AvailabilityOptionsStatus": {
+      "type": "structure",
+      "required": ["Options", "Status"],
+      "members": {
+        "Options": { "shape": "MultiAZ" },
+        "Status": { "shape": "OptionStatus" }
       }
     },
-    "BaseException":{
-      "type":"structure",
-      "members":{
-        "Code":{"shape":"ErrorCode"},
-        "Message":{"shape":"ErrorMessage"}
+    "BaseException": {
+      "type": "structure",
+      "members": {
+        "Code": { "shape": "ErrorCode" },
+        "Message": { "shape": "ErrorMessage" }
       },
-      "exception":true
+      "exception": true
     },
-    "Boolean":{"type":"boolean"},
-    "BuildSuggestersRequest":{
-      "type":"structure",
-      "required":["DomainName"],
-      "members":{
-        "DomainName":{"shape":"DomainName"}
+    "Boolean": { "type": "boolean" },
+    "BuildSuggestersRequest": {
+      "type": "structure",
+      "required": ["DomainName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" }
       }
     },
-    "BuildSuggestersResponse":{
-      "type":"structure",
-      "members":{
-        "FieldNames":{"shape":"FieldNameList"}
+    "BuildSuggestersResponse": {
+      "type": "structure",
+      "members": {
+        "FieldNames": { "shape": "FieldNameList" }
       }
     },
-    "CreateDomainRequest":{
-      "type":"structure",
-      "required":["DomainName"],
-      "members":{
-        "DomainName":{"shape":"DomainName"}
+    "CreateDomainRequest": {
+      "type": "structure",
+      "required": ["DomainName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" }
       }
     },
-    "CreateDomainResponse":{
-      "type":"structure",
-      "members":{
-        "DomainStatus":{"shape":"DomainStatus"}
+    "CreateDomainResponse": {
+      "type": "structure",
+      "members": {
+        "DomainStatus": { "shape": "DomainStatus" }
       }
     },
-    "DateArrayOptions":{
-      "type":"structure",
-      "members":{
-        "DefaultValue":{"shape":"FieldValue"},
-        "SourceFields":{"shape":"FieldNameCommaList"},
-        "FacetEnabled":{"shape":"Boolean"},
-        "SearchEnabled":{"shape":"Boolean"},
-        "ReturnEnabled":{"shape":"Boolean"}
+    "DateArrayOptions": {
+      "type": "structure",
+      "members": {
+        "DefaultValue": { "shape": "FieldValue" },
+        "SourceFields": { "shape": "FieldNameCommaList" },
+        "FacetEnabled": { "shape": "Boolean" },
+        "SearchEnabled": { "shape": "Boolean" },
+        "ReturnEnabled": { "shape": "Boolean" }
       }
     },
-    "DateOptions":{
-      "type":"structure",
-      "members":{
-        "DefaultValue":{"shape":"FieldValue"},
-        "SourceField":{"shape":"FieldName"},
-        "FacetEnabled":{"shape":"Boolean"},
-        "SearchEnabled":{"shape":"Boolean"},
-        "ReturnEnabled":{"shape":"Boolean"},
-        "SortEnabled":{"shape":"Boolean"}
+    "DateOptions": {
+      "type": "structure",
+      "members": {
+        "DefaultValue": { "shape": "FieldValue" },
+        "SourceField": { "shape": "FieldName" },
+        "FacetEnabled": { "shape": "Boolean" },
+        "SearchEnabled": { "shape": "Boolean" },
+        "ReturnEnabled": { "shape": "Boolean" },
+        "SortEnabled": { "shape": "Boolean" }
       }
     },
-    "DefineAnalysisSchemeRequest":{
-      "type":"structure",
-      "required":[
-        "DomainName",
-        "AnalysisScheme"
-      ],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "AnalysisScheme":{"shape":"AnalysisScheme"}
+    "DefineAnalysisSchemeRequest": {
+      "type": "structure",
+      "required": ["DomainName", "AnalysisScheme"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "AnalysisScheme": { "shape": "AnalysisScheme" }
       }
     },
-    "DefineAnalysisSchemeResponse":{
-      "type":"structure",
-      "required":["AnalysisScheme"],
-      "members":{
-        "AnalysisScheme":{"shape":"AnalysisSchemeStatus"}
+    "DefineAnalysisSchemeResponse": {
+      "type": "structure",
+      "required": ["AnalysisScheme"],
+      "members": {
+        "AnalysisScheme": { "shape": "AnalysisSchemeStatus" }
       }
     },
-    "DefineExpressionRequest":{
-      "type":"structure",
-      "required":[
-        "DomainName",
-        "Expression"
-      ],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "Expression":{"shape":"Expression"}
+    "DefineExpressionRequest": {
+      "type": "structure",
+      "required": ["DomainName", "Expression"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "Expression": { "shape": "Expression" }
       }
     },
-    "DefineExpressionResponse":{
-      "type":"structure",
-      "required":["Expression"],
-      "members":{
-        "Expression":{"shape":"ExpressionStatus"}
+    "DefineExpressionResponse": {
+      "type": "structure",
+      "required": ["Expression"],
+      "members": {
+        "Expression": { "shape": "ExpressionStatus" }
       }
     },
-    "DefineIndexFieldRequest":{
-      "type":"structure",
-      "required":[
-        "DomainName",
-        "IndexField"
-      ],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "IndexField":{"shape":"IndexField"}
+    "DefineIndexFieldRequest": {
+      "type": "structure",
+      "required": ["DomainName", "IndexField"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "IndexField": { "shape": "IndexField" }
       }
     },
-    "DefineIndexFieldResponse":{
-      "type":"structure",
-      "required":["IndexField"],
-      "members":{
-        "IndexField":{"shape":"IndexFieldStatus"}
+    "DefineIndexFieldResponse": {
+      "type": "structure",
+      "required": ["IndexField"],
+      "members": {
+        "IndexField": { "shape": "IndexFieldStatus" }
       }
     },
-    "DefineSuggesterRequest":{
-      "type":"structure",
-      "required":[
-        "DomainName",
-        "Suggester"
-      ],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "Suggester":{"shape":"Suggester"}
+    "DefineSuggesterRequest": {
+      "type": "structure",
+      "required": ["DomainName", "Suggester"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "Suggester": { "shape": "Suggester" }
       }
     },
-    "DefineSuggesterResponse":{
-      "type":"structure",
-      "required":["Suggester"],
-      "members":{
-        "Suggester":{"shape":"SuggesterStatus"}
+    "DefineSuggesterResponse": {
+      "type": "structure",
+      "required": ["Suggester"],
+      "members": {
+        "Suggester": { "shape": "SuggesterStatus" }
       }
     },
-    "DeleteAnalysisSchemeRequest":{
-      "type":"structure",
-      "required":[
-        "DomainName",
-        "AnalysisSchemeName"
-      ],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "AnalysisSchemeName":{"shape":"StandardName"}
+    "DeleteAnalysisSchemeRequest": {
+      "type": "structure",
+      "required": ["DomainName", "AnalysisSchemeName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "AnalysisSchemeName": { "shape": "StandardName" }
       }
     },
-    "DeleteAnalysisSchemeResponse":{
-      "type":"structure",
-      "required":["AnalysisScheme"],
-      "members":{
-        "AnalysisScheme":{"shape":"AnalysisSchemeStatus"}
+    "DeleteAnalysisSchemeResponse": {
+      "type": "structure",
+      "required": ["AnalysisScheme"],
+      "members": {
+        "AnalysisScheme": { "shape": "AnalysisSchemeStatus" }
       }
     },
-    "DeleteDomainRequest":{
-      "type":"structure",
-      "required":["DomainName"],
-      "members":{
-        "DomainName":{"shape":"DomainName"}
+    "DeleteDomainRequest": {
+      "type": "structure",
+      "required": ["DomainName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" }
       }
     },
-    "DeleteDomainResponse":{
-      "type":"structure",
-      "members":{
-        "DomainStatus":{"shape":"DomainStatus"}
+    "DeleteDomainResponse": {
+      "type": "structure",
+      "members": {
+        "DomainStatus": { "shape": "DomainStatus" }
       }
     },
-    "DeleteExpressionRequest":{
-      "type":"structure",
-      "required":[
-        "DomainName",
-        "ExpressionName"
-      ],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "ExpressionName":{"shape":"StandardName"}
+    "DeleteExpressionRequest": {
+      "type": "structure",
+      "required": ["DomainName", "ExpressionName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "ExpressionName": { "shape": "StandardName" }
       }
     },
-    "DeleteExpressionResponse":{
-      "type":"structure",
-      "required":["Expression"],
-      "members":{
-        "Expression":{"shape":"ExpressionStatus"}
+    "DeleteExpressionResponse": {
+      "type": "structure",
+      "required": ["Expression"],
+      "members": {
+        "Expression": { "shape": "ExpressionStatus" }
       }
     },
-    "DeleteIndexFieldRequest":{
-      "type":"structure",
-      "required":[
-        "DomainName",
-        "IndexFieldName"
-      ],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "IndexFieldName":{"shape":"DynamicFieldName"}
+    "DeleteIndexFieldRequest": {
+      "type": "structure",
+      "required": ["DomainName", "IndexFieldName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "IndexFieldName": { "shape": "DynamicFieldName" }
       }
     },
-    "DeleteIndexFieldResponse":{
-      "type":"structure",
-      "required":["IndexField"],
-      "members":{
-        "IndexField":{"shape":"IndexFieldStatus"}
+    "DeleteIndexFieldResponse": {
+      "type": "structure",
+      "required": ["IndexField"],
+      "members": {
+        "IndexField": { "shape": "IndexFieldStatus" }
       }
     },
-    "DeleteSuggesterRequest":{
-      "type":"structure",
-      "required":[
-        "DomainName",
-        "SuggesterName"
-      ],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "SuggesterName":{"shape":"StandardName"}
+    "DeleteSuggesterRequest": {
+      "type": "structure",
+      "required": ["DomainName", "SuggesterName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "SuggesterName": { "shape": "StandardName" }
       }
     },
-    "DeleteSuggesterResponse":{
-      "type":"structure",
-      "required":["Suggester"],
-      "members":{
-        "Suggester":{"shape":"SuggesterStatus"}
+    "DeleteSuggesterResponse": {
+      "type": "structure",
+      "required": ["Suggester"],
+      "members": {
+        "Suggester": { "shape": "SuggesterStatus" }
       }
     },
-    "DescribeAnalysisSchemesRequest":{
-      "type":"structure",
-      "required":["DomainName"],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "AnalysisSchemeNames":{"shape":"StandardNameList"},
-        "Deployed":{"shape":"Boolean"}
+    "DescribeAnalysisSchemesRequest": {
+      "type": "structure",
+      "required": ["DomainName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "AnalysisSchemeNames": { "shape": "StandardNameList" },
+        "Deployed": { "shape": "Boolean" }
       }
     },
-    "DescribeAnalysisSchemesResponse":{
-      "type":"structure",
-      "required":["AnalysisSchemes"],
-      "members":{
-        "AnalysisSchemes":{"shape":"AnalysisSchemeStatusList"}
+    "DescribeAnalysisSchemesResponse": {
+      "type": "structure",
+      "required": ["AnalysisSchemes"],
+      "members": {
+        "AnalysisSchemes": { "shape": "AnalysisSchemeStatusList" }
       }
     },
-    "DescribeAvailabilityOptionsRequest":{
-      "type":"structure",
-      "required":["DomainName"],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "Deployed":{"shape":"Boolean"}
+    "DescribeAvailabilityOptionsRequest": {
+      "type": "structure",
+      "required": ["DomainName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "Deployed": { "shape": "Boolean" }
       }
     },
-    "DescribeAvailabilityOptionsResponse":{
-      "type":"structure",
-      "members":{
-        "AvailabilityOptions":{"shape":"AvailabilityOptionsStatus"}
+    "DescribeAvailabilityOptionsResponse": {
+      "type": "structure",
+      "members": {
+        "AvailabilityOptions": { "shape": "AvailabilityOptionsStatus" }
       }
     },
-    "DescribeDomainsRequest":{
-      "type":"structure",
-      "members":{
-        "DomainNames":{"shape":"DomainNameList"}
+    "DescribeDomainsRequest": {
+      "type": "structure",
+      "members": {
+        "DomainNames": { "shape": "DomainNameList" }
       }
     },
-    "DescribeDomainsResponse":{
-      "type":"structure",
-      "required":["DomainStatusList"],
-      "members":{
-        "DomainStatusList":{"shape":"DomainStatusList"}
+    "DescribeDomainsResponse": {
+      "type": "structure",
+      "required": ["DomainStatusList"],
+      "members": {
+        "DomainStatusList": { "shape": "DomainStatusList" }
       }
     },
-    "DescribeExpressionsRequest":{
-      "type":"structure",
-      "required":["DomainName"],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "ExpressionNames":{"shape":"StandardNameList"},
-        "Deployed":{"shape":"Boolean"}
+    "DescribeExpressionsRequest": {
+      "type": "structure",
+      "required": ["DomainName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "ExpressionNames": { "shape": "StandardNameList" },
+        "Deployed": { "shape": "Boolean" }
       }
     },
-    "DescribeExpressionsResponse":{
-      "type":"structure",
-      "required":["Expressions"],
-      "members":{
-        "Expressions":{"shape":"ExpressionStatusList"}
+    "DescribeExpressionsResponse": {
+      "type": "structure",
+      "required": ["Expressions"],
+      "members": {
+        "Expressions": { "shape": "ExpressionStatusList" }
       }
     },
-    "DescribeIndexFieldsRequest":{
-      "type":"structure",
-      "required":["DomainName"],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "FieldNames":{"shape":"DynamicFieldNameList"},
-        "Deployed":{"shape":"Boolean"}
+    "DescribeIndexFieldsRequest": {
+      "type": "structure",
+      "required": ["DomainName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "FieldNames": { "shape": "DynamicFieldNameList" },
+        "Deployed": { "shape": "Boolean" }
       }
     },
-    "DescribeIndexFieldsResponse":{
-      "type":"structure",
-      "required":["IndexFields"],
-      "members":{
-        "IndexFields":{"shape":"IndexFieldStatusList"}
+    "DescribeIndexFieldsResponse": {
+      "type": "structure",
+      "required": ["IndexFields"],
+      "members": {
+        "IndexFields": { "shape": "IndexFieldStatusList" }
       }
     },
-    "DescribeScalingParametersRequest":{
-      "type":"structure",
-      "required":["DomainName"],
-      "members":{
-        "DomainName":{"shape":"DomainName"}
+    "DescribeScalingParametersRequest": {
+      "type": "structure",
+      "required": ["DomainName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" }
       }
     },
-    "DescribeScalingParametersResponse":{
-      "type":"structure",
-      "required":["ScalingParameters"],
-      "members":{
-        "ScalingParameters":{"shape":"ScalingParametersStatus"}
+    "DescribeScalingParametersResponse": {
+      "type": "structure",
+      "required": ["ScalingParameters"],
+      "members": {
+        "ScalingParameters": { "shape": "ScalingParametersStatus" }
       }
     },
-    "DescribeServiceAccessPoliciesRequest":{
-      "type":"structure",
-      "required":["DomainName"],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "Deployed":{"shape":"Boolean"}
+    "DescribeServiceAccessPoliciesRequest": {
+      "type": "structure",
+      "required": ["DomainName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "Deployed": { "shape": "Boolean" }
       }
     },
-    "DescribeServiceAccessPoliciesResponse":{
-      "type":"structure",
-      "required":["AccessPolicies"],
-      "members":{
-        "AccessPolicies":{"shape":"AccessPoliciesStatus"}
+    "DescribeServiceAccessPoliciesResponse": {
+      "type": "structure",
+      "required": ["AccessPolicies"],
+      "members": {
+        "AccessPolicies": { "shape": "AccessPoliciesStatus" }
       }
     },
-    "DescribeSuggestersRequest":{
-      "type":"structure",
-      "required":["DomainName"],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "SuggesterNames":{"shape":"StandardNameList"},
-        "Deployed":{"shape":"Boolean"}
+    "DescribeSuggestersRequest": {
+      "type": "structure",
+      "required": ["DomainName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "SuggesterNames": { "shape": "StandardNameList" },
+        "Deployed": { "shape": "Boolean" }
       }
     },
-    "DescribeSuggestersResponse":{
-      "type":"structure",
-      "required":["Suggesters"],
-      "members":{
-        "Suggesters":{"shape":"SuggesterStatusList"}
+    "DescribeSuggestersResponse": {
+      "type": "structure",
+      "required": ["Suggesters"],
+      "members": {
+        "Suggesters": { "shape": "SuggesterStatusList" }
       }
     },
-    "DisabledOperationException":{
-      "type":"structure",
-      "members":{
+    "DisabledOperationException": {
+      "type": "structure",
+      "members": {},
+      "error": {
+        "code": "DisabledAction",
+        "httpStatusCode": 409,
+        "senderFault": true
       },
-      "error":{
-        "code":"DisabledAction",
-        "httpStatusCode":409,
-        "senderFault":true
-      },
-      "exception":true
+      "exception": true
     },
-    "DocumentSuggesterOptions":{
-      "type":"structure",
-      "required":["SourceField"],
-      "members":{
-        "SourceField":{"shape":"FieldName"},
-        "FuzzyMatching":{"shape":"SuggesterFuzzyMatching"},
-        "SortExpression":{"shape":"String"}
+    "DocumentSuggesterOptions": {
+      "type": "structure",
+      "required": ["SourceField"],
+      "members": {
+        "SourceField": { "shape": "FieldName" },
+        "FuzzyMatching": { "shape": "SuggesterFuzzyMatching" },
+        "SortExpression": { "shape": "String" }
       }
     },
-    "DomainId":{
-      "type":"string",
-      "min":1,
-      "max":64
+    "DomainId": {
+      "type": "string",
+      "min": 1,
+      "max": 64
     },
-    "DomainName":{
-      "type":"string",
-      "min":3,
-      "max":28,
-      "pattern":"[a-z][a-z0-9\\-]+"
+    "DomainName": {
+      "type": "string",
+      "min": 3,
+      "max": 28,
+      "pattern": "[a-z][a-z0-9\\-]+"
     },
-    "DomainNameList":{
-      "type":"list",
-      "member":{"shape":"DomainName"}
+    "DomainNameList": {
+      "type": "list",
+      "member": { "shape": "DomainName" }
     },
-    "DomainNameMap":{
-      "type":"map",
-      "key":{"shape":"DomainName"},
-      "value":{"shape":"APIVersion"}
+    "DomainNameMap": {
+      "type": "map",
+      "key": { "shape": "DomainName" },
+      "value": { "shape": "APIVersion" }
     },
-    "DomainStatus":{
-      "type":"structure",
-      "required":[
-        "DomainId",
-        "DomainName",
-        "RequiresIndexDocuments"
-      ],
-      "members":{
-        "DomainId":{"shape":"DomainId"},
-        "DomainName":{"shape":"DomainName"},
-        "ARN":{"shape":"ARN"},
-        "Created":{"shape":"Boolean"},
-        "Deleted":{"shape":"Boolean"},
-        "DocService":{"shape":"ServiceEndpoint"},
-        "SearchService":{"shape":"ServiceEndpoint"},
-        "RequiresIndexDocuments":{"shape":"Boolean"},
-        "Processing":{"shape":"Boolean"},
-        "SearchInstanceType":{"shape":"SearchInstanceType"},
-        "SearchPartitionCount":{"shape":"PartitionCount"},
-        "SearchInstanceCount":{"shape":"InstanceCount"},
-        "Limits":{"shape":"Limits"}
+    "DomainStatus": {
+      "type": "structure",
+      "required": ["DomainId", "DomainName", "RequiresIndexDocuments"],
+      "members": {
+        "DomainId": { "shape": "DomainId" },
+        "DomainName": { "shape": "DomainName" },
+        "ARN": { "shape": "ARN" },
+        "Created": { "shape": "Boolean" },
+        "Deleted": { "shape": "Boolean" },
+        "DocService": { "shape": "ServiceEndpoint" },
+        "SearchService": { "shape": "ServiceEndpoint" },
+        "RequiresIndexDocuments": { "shape": "Boolean" },
+        "Processing": { "shape": "Boolean" },
+        "SearchInstanceType": { "shape": "SearchInstanceType" },
+        "SearchPartitionCount": { "shape": "PartitionCount" },
+        "SearchInstanceCount": { "shape": "InstanceCount" },
+        "Limits": { "shape": "Limits" }
       }
     },
-    "DomainStatusList":{
-      "type":"list",
-      "member":{"shape":"DomainStatus"}
+    "DomainStatusList": {
+      "type": "list",
+      "member": { "shape": "DomainStatus" }
     },
-    "Double":{"type":"double"},
-    "DoubleArrayOptions":{
-      "type":"structure",
-      "members":{
-        "DefaultValue":{"shape":"Double"},
-        "SourceFields":{"shape":"FieldNameCommaList"},
-        "FacetEnabled":{"shape":"Boolean"},
-        "SearchEnabled":{"shape":"Boolean"},
-        "ReturnEnabled":{"shape":"Boolean"}
+    "Double": { "type": "double" },
+    "DoubleArrayOptions": {
+      "type": "structure",
+      "members": {
+        "DefaultValue": { "shape": "Double" },
+        "SourceFields": { "shape": "FieldNameCommaList" },
+        "FacetEnabled": { "shape": "Boolean" },
+        "SearchEnabled": { "shape": "Boolean" },
+        "ReturnEnabled": { "shape": "Boolean" }
       }
     },
-    "DoubleOptions":{
-      "type":"structure",
-      "members":{
-        "DefaultValue":{"shape":"Double"},
-        "SourceField":{"shape":"FieldName"},
-        "FacetEnabled":{"shape":"Boolean"},
-        "SearchEnabled":{"shape":"Boolean"},
-        "ReturnEnabled":{"shape":"Boolean"},
-        "SortEnabled":{"shape":"Boolean"}
+    "DoubleOptions": {
+      "type": "structure",
+      "members": {
+        "DefaultValue": { "shape": "Double" },
+        "SourceField": { "shape": "FieldName" },
+        "FacetEnabled": { "shape": "Boolean" },
+        "SearchEnabled": { "shape": "Boolean" },
+        "ReturnEnabled": { "shape": "Boolean" },
+        "SortEnabled": { "shape": "Boolean" }
       }
     },
-    "DynamicFieldName":{
-      "type":"string",
-      "min":1,
-      "max":64,
-      "pattern":"([a-z][a-z0-9_]*\\*?|\\*[a-z0-9_]*)"
+    "DynamicFieldName": {
+      "type": "string",
+      "min": 1,
+      "max": 64,
+      "pattern": "([a-z][a-z0-9_]*\\*?|\\*[a-z0-9_]*)"
     },
-    "DynamicFieldNameList":{
-      "type":"list",
-      "member":{"shape":"DynamicFieldName"}
+    "DynamicFieldNameList": {
+      "type": "list",
+      "member": { "shape": "DynamicFieldName" }
     },
-    "ErrorCode":{"type":"string"},
-    "ErrorMessage":{"type":"string"},
-    "Expression":{
-      "type":"structure",
-      "required":[
-        "ExpressionName",
-        "ExpressionValue"
-      ],
-      "members":{
-        "ExpressionName":{"shape":"StandardName"},
-        "ExpressionValue":{"shape":"ExpressionValue"}
+    "ErrorCode": { "type": "string" },
+    "ErrorMessage": { "type": "string" },
+    "Expression": {
+      "type": "structure",
+      "required": ["ExpressionName", "ExpressionValue"],
+      "members": {
+        "ExpressionName": { "shape": "StandardName" },
+        "ExpressionValue": { "shape": "ExpressionValue" }
       }
     },
-    "ExpressionStatus":{
-      "type":"structure",
-      "required":[
-        "Options",
-        "Status"
-      ],
-      "members":{
-        "Options":{"shape":"Expression"},
-        "Status":{"shape":"OptionStatus"}
+    "ExpressionStatus": {
+      "type": "structure",
+      "required": ["Options", "Status"],
+      "members": {
+        "Options": { "shape": "Expression" },
+        "Status": { "shape": "OptionStatus" }
       }
     },
-    "ExpressionStatusList":{
-      "type":"list",
-      "member":{"shape":"ExpressionStatus"}
+    "ExpressionStatusList": {
+      "type": "list",
+      "member": { "shape": "ExpressionStatus" }
     },
-    "ExpressionValue":{
-      "type":"string",
-      "min":1,
-      "max":10240
+    "ExpressionValue": {
+      "type": "string",
+      "min": 1,
+      "max": 10240
     },
-    "FieldName":{
-      "type":"string",
-      "min":1,
-      "max":64,
-      "pattern":"[a-z][a-z0-9_]*"
+    "FieldName": {
+      "type": "string",
+      "min": 1,
+      "max": 64,
+      "pattern": "[a-z][a-z0-9_]*"
     },
-    "FieldNameCommaList":{
-      "type":"string",
-      "pattern":"\\s*[a-z*][a-z0-9_]*\\*?\\s*(,\\s*[a-z*][a-z0-9_]*\\*?\\s*)*"
+    "FieldNameCommaList": {
+      "type": "string",
+      "pattern": "\\s*[a-z*][a-z0-9_]*\\*?\\s*(,\\s*[a-z*][a-z0-9_]*\\*?\\s*)*"
     },
-    "FieldNameList":{
-      "type":"list",
-      "member":{"shape":"FieldName"}
+    "FieldNameList": {
+      "type": "list",
+      "member": { "shape": "FieldName" }
     },
-    "FieldValue":{
-      "type":"string",
-      "min":0,
-      "max":1024
+    "FieldValue": {
+      "type": "string",
+      "min": 0,
+      "max": 1024
     },
-    "IndexDocumentsRequest":{
-      "type":"structure",
-      "required":["DomainName"],
-      "members":{
-        "DomainName":{"shape":"DomainName"}
+    "IndexDocumentsRequest": {
+      "type": "structure",
+      "required": ["DomainName"],
+      "members": {
+        "DomainName": { "shape": "DomainName" }
       }
     },
-    "IndexDocumentsResponse":{
-      "type":"structure",
-      "members":{
-        "FieldNames":{"shape":"FieldNameList"}
+    "IndexDocumentsResponse": {
+      "type": "structure",
+      "members": {
+        "FieldNames": { "shape": "FieldNameList" }
       }
     },
-    "IndexField":{
-      "type":"structure",
-      "required":[
-        "IndexFieldName",
-        "IndexFieldType"
-      ],
-      "members":{
-        "IndexFieldName":{"shape":"DynamicFieldName"},
-        "IndexFieldType":{"shape":"IndexFieldType"},
-        "IntOptions":{"shape":"IntOptions"},
-        "DoubleOptions":{"shape":"DoubleOptions"},
-        "LiteralOptions":{"shape":"LiteralOptions"},
-        "TextOptions":{"shape":"TextOptions"},
-        "DateOptions":{"shape":"DateOptions"},
-        "LatLonOptions":{"shape":"LatLonOptions"},
-        "IntArrayOptions":{"shape":"IntArrayOptions"},
-        "DoubleArrayOptions":{"shape":"DoubleArrayOptions"},
-        "LiteralArrayOptions":{"shape":"LiteralArrayOptions"},
-        "TextArrayOptions":{"shape":"TextArrayOptions"},
-        "DateArrayOptions":{"shape":"DateArrayOptions"}
+    "IndexField": {
+      "type": "structure",
+      "required": ["IndexFieldName", "IndexFieldType"],
+      "members": {
+        "IndexFieldName": { "shape": "DynamicFieldName" },
+        "IndexFieldType": { "shape": "IndexFieldType" },
+        "IntOptions": { "shape": "IntOptions" },
+        "DoubleOptions": { "shape": "DoubleOptions" },
+        "LiteralOptions": { "shape": "LiteralOptions" },
+        "TextOptions": { "shape": "TextOptions" },
+        "DateOptions": { "shape": "DateOptions" },
+        "LatLonOptions": { "shape": "LatLonOptions" },
+        "IntArrayOptions": { "shape": "IntArrayOptions" },
+        "DoubleArrayOptions": { "shape": "DoubleArrayOptions" },
+        "LiteralArrayOptions": { "shape": "LiteralArrayOptions" },
+        "TextArrayOptions": { "shape": "TextArrayOptions" },
+        "DateArrayOptions": { "shape": "DateArrayOptions" }
       }
     },
-    "IndexFieldStatus":{
-      "type":"structure",
-      "required":[
-        "Options",
-        "Status"
-      ],
-      "members":{
-        "Options":{"shape":"IndexField"},
-        "Status":{"shape":"OptionStatus"}
+    "IndexFieldStatus": {
+      "type": "structure",
+      "required": ["Options", "Status"],
+      "members": {
+        "Options": { "shape": "IndexField" },
+        "Status": { "shape": "OptionStatus" }
       }
     },
-    "IndexFieldStatusList":{
-      "type":"list",
-      "member":{"shape":"IndexFieldStatus"}
+    "IndexFieldStatusList": {
+      "type": "list",
+      "member": { "shape": "IndexFieldStatus" }
     },
-    "IndexFieldType":{
-      "type":"string",
-      "enum":[
+    "IndexFieldType": {
+      "type": "string",
+      "enum": [
         "int",
         "double",
         "literal",
@@ -1674,153 +1616,143 @@
         "date-array"
       ]
     },
-    "InstanceCount":{
-      "type":"integer",
-      "min":1
+    "InstanceCount": {
+      "type": "integer",
+      "min": 1
     },
-    "IntArrayOptions":{
-      "type":"structure",
-      "members":{
-        "DefaultValue":{"shape":"Long"},
-        "SourceFields":{"shape":"FieldNameCommaList"},
-        "FacetEnabled":{"shape":"Boolean"},
-        "SearchEnabled":{"shape":"Boolean"},
-        "ReturnEnabled":{"shape":"Boolean"}
+    "IntArrayOptions": {
+      "type": "structure",
+      "members": {
+        "DefaultValue": { "shape": "Long" },
+        "SourceFields": { "shape": "FieldNameCommaList" },
+        "FacetEnabled": { "shape": "Boolean" },
+        "SearchEnabled": { "shape": "Boolean" },
+        "ReturnEnabled": { "shape": "Boolean" }
       }
     },
-    "IntOptions":{
-      "type":"structure",
-      "members":{
-        "DefaultValue":{"shape":"Long"},
-        "SourceField":{"shape":"FieldName"},
-        "FacetEnabled":{"shape":"Boolean"},
-        "SearchEnabled":{"shape":"Boolean"},
-        "ReturnEnabled":{"shape":"Boolean"},
-        "SortEnabled":{"shape":"Boolean"}
+    "IntOptions": {
+      "type": "structure",
+      "members": {
+        "DefaultValue": { "shape": "Long" },
+        "SourceField": { "shape": "FieldName" },
+        "FacetEnabled": { "shape": "Boolean" },
+        "SearchEnabled": { "shape": "Boolean" },
+        "ReturnEnabled": { "shape": "Boolean" },
+        "SortEnabled": { "shape": "Boolean" }
       }
     },
-    "InternalException":{
-      "type":"structure",
-      "members":{
+    "InternalException": {
+      "type": "structure",
+      "members": {},
+      "error": {
+        "code": "InternalException",
+        "httpStatusCode": 500
       },
-      "error":{
-        "code":"InternalException",
-        "httpStatusCode":500
-      },
-      "exception":true
+      "exception": true
     },
-    "InvalidTypeException":{
-      "type":"structure",
-      "members":{
+    "InvalidTypeException": {
+      "type": "structure",
+      "members": {},
+      "error": {
+        "code": "InvalidType",
+        "httpStatusCode": 409,
+        "senderFault": true
       },
-      "error":{
-        "code":"InvalidType",
-        "httpStatusCode":409,
-        "senderFault":true
-      },
-      "exception":true
+      "exception": true
     },
-    "LatLonOptions":{
-      "type":"structure",
-      "members":{
-        "DefaultValue":{"shape":"FieldValue"},
-        "SourceField":{"shape":"FieldName"},
-        "FacetEnabled":{"shape":"Boolean"},
-        "SearchEnabled":{"shape":"Boolean"},
-        "ReturnEnabled":{"shape":"Boolean"},
-        "SortEnabled":{"shape":"Boolean"}
+    "LatLonOptions": {
+      "type": "structure",
+      "members": {
+        "DefaultValue": { "shape": "FieldValue" },
+        "SourceField": { "shape": "FieldName" },
+        "FacetEnabled": { "shape": "Boolean" },
+        "SearchEnabled": { "shape": "Boolean" },
+        "ReturnEnabled": { "shape": "Boolean" },
+        "SortEnabled": { "shape": "Boolean" }
       }
     },
-    "LimitExceededException":{
-      "type":"structure",
-      "members":{
+    "LimitExceededException": {
+      "type": "structure",
+      "members": {},
+      "error": {
+        "code": "LimitExceeded",
+        "httpStatusCode": 409,
+        "senderFault": true
       },
-      "error":{
-        "code":"LimitExceeded",
-        "httpStatusCode":409,
-        "senderFault":true
-      },
-      "exception":true
+      "exception": true
     },
-    "Limits":{
-      "type":"structure",
-      "required":[
-        "MaximumReplicationCount",
-        "MaximumPartitionCount"
-      ],
-      "members":{
-        "MaximumReplicationCount":{"shape":"MaximumReplicationCount"},
-        "MaximumPartitionCount":{"shape":"MaximumPartitionCount"}
+    "Limits": {
+      "type": "structure",
+      "required": ["MaximumReplicationCount", "MaximumPartitionCount"],
+      "members": {
+        "MaximumReplicationCount": { "shape": "MaximumReplicationCount" },
+        "MaximumPartitionCount": { "shape": "MaximumPartitionCount" }
       }
     },
-    "ListDomainNamesResponse":{
-      "type":"structure",
-      "members":{
-        "DomainNames":{"shape":"DomainNameMap"}
+    "ListDomainNamesResponse": {
+      "type": "structure",
+      "members": {
+        "DomainNames": { "shape": "DomainNameMap" }
       }
     },
-    "LiteralArrayOptions":{
-      "type":"structure",
-      "members":{
-        "DefaultValue":{"shape":"FieldValue"},
-        "SourceFields":{"shape":"FieldNameCommaList"},
-        "FacetEnabled":{"shape":"Boolean"},
-        "SearchEnabled":{"shape":"Boolean"},
-        "ReturnEnabled":{"shape":"Boolean"}
+    "LiteralArrayOptions": {
+      "type": "structure",
+      "members": {
+        "DefaultValue": { "shape": "FieldValue" },
+        "SourceFields": { "shape": "FieldNameCommaList" },
+        "FacetEnabled": { "shape": "Boolean" },
+        "SearchEnabled": { "shape": "Boolean" },
+        "ReturnEnabled": { "shape": "Boolean" }
       }
     },
-    "LiteralOptions":{
-      "type":"structure",
-      "members":{
-        "DefaultValue":{"shape":"FieldValue"},
-        "SourceField":{"shape":"FieldName"},
-        "FacetEnabled":{"shape":"Boolean"},
-        "SearchEnabled":{"shape":"Boolean"},
-        "ReturnEnabled":{"shape":"Boolean"},
-        "SortEnabled":{"shape":"Boolean"}
+    "LiteralOptions": {
+      "type": "structure",
+      "members": {
+        "DefaultValue": { "shape": "FieldValue" },
+        "SourceField": { "shape": "FieldName" },
+        "FacetEnabled": { "shape": "Boolean" },
+        "SearchEnabled": { "shape": "Boolean" },
+        "ReturnEnabled": { "shape": "Boolean" },
+        "SortEnabled": { "shape": "Boolean" }
       }
     },
-    "Long":{"type":"long"},
-    "MaximumPartitionCount":{
-      "type":"integer",
-      "min":1
+    "Long": { "type": "long" },
+    "MaximumPartitionCount": {
+      "type": "integer",
+      "min": 1
     },
-    "MaximumReplicationCount":{
-      "type":"integer",
-      "min":1
+    "MaximumReplicationCount": {
+      "type": "integer",
+      "min": 1
     },
-    "MultiAZ":{"type":"boolean"},
-    "OptionState":{
-      "type":"string",
-      "enum":[
+    "MultiAZ": { "type": "boolean" },
+    "OptionState": {
+      "type": "string",
+      "enum": [
         "RequiresIndexDocuments",
         "Processing",
         "Active",
         "FailedToValidate"
       ]
     },
-    "OptionStatus":{
-      "type":"structure",
-      "required":[
-        "CreationDate",
-        "UpdateDate",
-        "State"
-      ],
-      "members":{
-        "CreationDate":{"shape":"UpdateTimestamp"},
-        "UpdateDate":{"shape":"UpdateTimestamp"},
-        "UpdateVersion":{"shape":"UIntValue"},
-        "State":{"shape":"OptionState"},
-        "PendingDeletion":{"shape":"Boolean"}
+    "OptionStatus": {
+      "type": "structure",
+      "required": ["CreationDate", "UpdateDate", "State"],
+      "members": {
+        "CreationDate": { "shape": "UpdateTimestamp" },
+        "UpdateDate": { "shape": "UpdateTimestamp" },
+        "UpdateVersion": { "shape": "UIntValue" },
+        "State": { "shape": "OptionState" },
+        "PendingDeletion": { "shape": "Boolean" }
       }
     },
-    "PartitionCount":{
-      "type":"integer",
-      "min":1
+    "PartitionCount": {
+      "type": "integer",
+      "min": 1
     },
-    "PartitionInstanceType":{
-      "type":"string",
-      "enum":[
+    "PartitionInstanceType": {
+      "type": "string",
+      "enum": [
         "search.m1.small",
         "search.m1.large",
         "search.m2.xlarge",
@@ -1831,172 +1763,149 @@
         "search.m3.2xlarge"
       ]
     },
-    "PolicyDocument":{"type":"string"},
-    "ResourceNotFoundException":{
-      "type":"structure",
-      "members":{
+    "PolicyDocument": { "type": "string" },
+    "ResourceNotFoundException": {
+      "type": "structure",
+      "members": {},
+      "error": {
+        "code": "ResourceNotFound",
+        "httpStatusCode": 409,
+        "senderFault": true
       },
-      "error":{
-        "code":"ResourceNotFound",
-        "httpStatusCode":409,
-        "senderFault":true
-      },
-      "exception":true
+      "exception": true
     },
-    "ScalingParameters":{
-      "type":"structure",
-      "members":{
-        "DesiredInstanceType":{"shape":"PartitionInstanceType"},
-        "DesiredReplicationCount":{"shape":"UIntValue"},
-        "DesiredPartitionCount":{"shape":"UIntValue"}
+    "ScalingParameters": {
+      "type": "structure",
+      "members": {
+        "DesiredInstanceType": { "shape": "PartitionInstanceType" },
+        "DesiredReplicationCount": { "shape": "UIntValue" },
+        "DesiredPartitionCount": { "shape": "UIntValue" }
       }
     },
-    "ScalingParametersStatus":{
-      "type":"structure",
-      "required":[
-        "Options",
-        "Status"
-      ],
-      "members":{
-        "Options":{"shape":"ScalingParameters"},
-        "Status":{"shape":"OptionStatus"}
+    "ScalingParametersStatus": {
+      "type": "structure",
+      "required": ["Options", "Status"],
+      "members": {
+        "Options": { "shape": "ScalingParameters" },
+        "Status": { "shape": "OptionStatus" }
       }
     },
-    "SearchInstanceType":{"type":"string"},
-    "ServiceEndpoint":{
-      "type":"structure",
-      "members":{
-        "Endpoint":{"shape":"ServiceUrl"}
+    "SearchInstanceType": { "type": "string" },
+    "ServiceEndpoint": {
+      "type": "structure",
+      "members": {
+        "Endpoint": { "shape": "ServiceUrl" }
       }
     },
-    "ServiceUrl":{"type":"string"},
-    "StandardName":{
-      "type":"string",
-      "min":1,
-      "max":64,
-      "pattern":"[a-z][a-z0-9_]*"
+    "ServiceUrl": { "type": "string" },
+    "StandardName": {
+      "type": "string",
+      "min": 1,
+      "max": 64,
+      "pattern": "[a-z][a-z0-9_]*"
     },
-    "StandardNameList":{
-      "type":"list",
-      "member":{"shape":"StandardName"}
+    "StandardNameList": {
+      "type": "list",
+      "member": { "shape": "StandardName" }
     },
-    "String":{"type":"string"},
-    "Suggester":{
-      "type":"structure",
-      "required":[
-        "SuggesterName",
-        "DocumentSuggesterOptions"
-      ],
-      "members":{
-        "SuggesterName":{"shape":"StandardName"},
-        "DocumentSuggesterOptions":{"shape":"DocumentSuggesterOptions"}
+    "String": { "type": "string" },
+    "Suggester": {
+      "type": "structure",
+      "required": ["SuggesterName", "DocumentSuggesterOptions"],
+      "members": {
+        "SuggesterName": { "shape": "StandardName" },
+        "DocumentSuggesterOptions": { "shape": "DocumentSuggesterOptions" }
       }
     },
-    "SuggesterFuzzyMatching":{
-      "type":"string",
-      "enum":[
-        "none",
-        "low",
-        "high"
-      ]
+    "SuggesterFuzzyMatching": {
+      "type": "string",
+      "enum": ["none", "low", "high"]
     },
-    "SuggesterStatus":{
-      "type":"structure",
-      "required":[
-        "Options",
-        "Status"
-      ],
-      "members":{
-        "Options":{"shape":"Suggester"},
-        "Status":{"shape":"OptionStatus"}
+    "SuggesterStatus": {
+      "type": "structure",
+      "required": ["Options", "Status"],
+      "members": {
+        "Options": { "shape": "Suggester" },
+        "Status": { "shape": "OptionStatus" }
       }
     },
-    "SuggesterStatusList":{
-      "type":"list",
-      "member":{"shape":"SuggesterStatus"}
+    "SuggesterStatusList": {
+      "type": "list",
+      "member": { "shape": "SuggesterStatus" }
     },
-    "TextArrayOptions":{
-      "type":"structure",
-      "members":{
-        "DefaultValue":{"shape":"FieldValue"},
-        "SourceFields":{"shape":"FieldNameCommaList"},
-        "ReturnEnabled":{"shape":"Boolean"},
-        "HighlightEnabled":{"shape":"Boolean"},
-        "AnalysisScheme":{"shape":"Word"}
+    "TextArrayOptions": {
+      "type": "structure",
+      "members": {
+        "DefaultValue": { "shape": "FieldValue" },
+        "SourceFields": { "shape": "FieldNameCommaList" },
+        "ReturnEnabled": { "shape": "Boolean" },
+        "HighlightEnabled": { "shape": "Boolean" },
+        "AnalysisScheme": { "shape": "Word" }
       }
     },
-    "TextOptions":{
-      "type":"structure",
-      "members":{
-        "DefaultValue":{"shape":"FieldValue"},
-        "SourceField":{"shape":"FieldName"},
-        "ReturnEnabled":{"shape":"Boolean"},
-        "SortEnabled":{"shape":"Boolean"},
-        "HighlightEnabled":{"shape":"Boolean"},
-        "AnalysisScheme":{"shape":"Word"}
+    "TextOptions": {
+      "type": "structure",
+      "members": {
+        "DefaultValue": { "shape": "FieldValue" },
+        "SourceField": { "shape": "FieldName" },
+        "ReturnEnabled": { "shape": "Boolean" },
+        "SortEnabled": { "shape": "Boolean" },
+        "HighlightEnabled": { "shape": "Boolean" },
+        "AnalysisScheme": { "shape": "Word" }
       }
     },
-    "UIntValue":{
-      "type":"integer",
-      "min":0
+    "UIntValue": {
+      "type": "integer",
+      "min": 0
     },
-    "UpdateAvailabilityOptionsRequest":{
-      "type":"structure",
-      "required":[
-        "DomainName",
-        "MultiAZ"
-      ],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "MultiAZ":{"shape":"Boolean"}
+    "UpdateAvailabilityOptionsRequest": {
+      "type": "structure",
+      "required": ["DomainName", "MultiAZ"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "MultiAZ": { "shape": "Boolean" }
       }
     },
-    "UpdateAvailabilityOptionsResponse":{
-      "type":"structure",
-      "members":{
-        "AvailabilityOptions":{"shape":"AvailabilityOptionsStatus"}
+    "UpdateAvailabilityOptionsResponse": {
+      "type": "structure",
+      "members": {
+        "AvailabilityOptions": { "shape": "AvailabilityOptionsStatus" }
       }
     },
-    "UpdateScalingParametersRequest":{
-      "type":"structure",
-      "required":[
-        "DomainName",
-        "ScalingParameters"
-      ],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "ScalingParameters":{"shape":"ScalingParameters"}
+    "UpdateScalingParametersRequest": {
+      "type": "structure",
+      "required": ["DomainName", "ScalingParameters"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "ScalingParameters": { "shape": "ScalingParameters" }
       }
     },
-    "UpdateScalingParametersResponse":{
-      "type":"structure",
-      "required":["ScalingParameters"],
-      "members":{
-        "ScalingParameters":{"shape":"ScalingParametersStatus"}
+    "UpdateScalingParametersResponse": {
+      "type": "structure",
+      "required": ["ScalingParameters"],
+      "members": {
+        "ScalingParameters": { "shape": "ScalingParametersStatus" }
       }
     },
-    "UpdateServiceAccessPoliciesRequest":{
-      "type":"structure",
-      "required":[
-        "DomainName",
-        "AccessPolicies"
-      ],
-      "members":{
-        "DomainName":{"shape":"DomainName"},
-        "AccessPolicies":{"shape":"PolicyDocument"}
+    "UpdateServiceAccessPoliciesRequest": {
+      "type": "structure",
+      "required": ["DomainName", "AccessPolicies"],
+      "members": {
+        "DomainName": { "shape": "DomainName" },
+        "AccessPolicies": { "shape": "PolicyDocument" }
       }
     },
-    "UpdateServiceAccessPoliciesResponse":{
-      "type":"structure",
-      "required":["AccessPolicies"],
-      "members":{
-        "AccessPolicies":{"shape":"AccessPoliciesStatus"}
+    "UpdateServiceAccessPoliciesResponse": {
+      "type": "structure",
+      "required": ["AccessPolicies"],
+      "members": {
+        "AccessPolicies": { "shape": "AccessPoliciesStatus" }
       }
     },
-    "UpdateTimestamp":{"type":"timestamp"},
-    "Word":{
-      "type":"string",
-      "pattern":"[\\S]+"
+    "UpdateTimestamp": { "type": "timestamp" },
+    "Word": {
+      "type": "string",
+      "pattern": "[\\S]+"
     }
   }
 }

@@ -1,3451 +1,3581 @@
 {
-  "metadata" : {
-    "apiVersion" : "2017-06-07",
-    "endpointPrefix" : "greengrass",
-    "signingName" : "greengrass",
-    "serviceFullName" : "AWS Greengrass",
-    "protocol" : "rest-json",
-    "jsonVersion" : "1.1",
-    "uid" : "greengrass-2017-06-07",
-    "signatureVersion" : "v4"
+  "metadata": {
+    "apiVersion": "2017-06-07",
+    "endpointPrefix": "greengrass",
+    "signingName": "greengrass",
+    "serviceFullName": "AWS Greengrass",
+    "protocol": "rest-json",
+    "jsonVersion": "1.1",
+    "uid": "greengrass-2017-06-07",
+    "signatureVersion": "v4"
   },
-  "operations" : {
-    "AssociateRoleToGroup" : {
-      "name" : "AssociateRoleToGroup",
-      "http" : {
-        "method" : "PUT",
-        "requestUri" : "/greengrass/groups/{GroupId}/role",
-        "responseCode" : 200
+  "operations": {
+    "AssociateRoleToGroup": {
+      "name": "AssociateRoleToGroup",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/greengrass/groups/{GroupId}/role",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "AssociateRoleToGroupRequest"
+      "input": {
+        "shape": "AssociateRoleToGroupRequest"
       },
-      "output" : {
-        "shape" : "AssociateRoleToGroupResponse"
+      "output": {
+        "shape": "AssociateRoleToGroupResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      }, {
-        "shape" : "InternalServerErrorException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        }
+      ]
     },
-    "AssociateServiceRoleToAccount" : {
-      "name" : "AssociateServiceRoleToAccount",
-      "http" : {
-        "method" : "PUT",
-        "requestUri" : "/greengrass/servicerole",
-        "responseCode" : 200
+    "AssociateServiceRoleToAccount": {
+      "name": "AssociateServiceRoleToAccount",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/greengrass/servicerole",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "AssociateServiceRoleToAccountRequest"
+      "input": {
+        "shape": "AssociateServiceRoleToAccountRequest"
       },
-      "output" : {
-        "shape" : "AssociateServiceRoleToAccountResponse"
+      "output": {
+        "shape": "AssociateServiceRoleToAccountResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      }, {
-        "shape" : "InternalServerErrorException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        }
+      ]
     },
-    "CreateCoreDefinition" : {
-      "name" : "CreateCoreDefinition",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/definition/cores",
-        "responseCode" : 200
+    "CreateCoreDefinition": {
+      "name": "CreateCoreDefinition",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/definition/cores",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateCoreDefinitionRequest"
+      "input": {
+        "shape": "CreateCoreDefinitionRequest"
       },
-      "output" : {
-        "shape" : "CreateCoreDefinitionResponse"
+      "output": {
+        "shape": "CreateCoreDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "CreateCoreDefinitionVersion" : {
-      "name" : "CreateCoreDefinitionVersion",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/definition/cores/{CoreDefinitionId}/versions",
-        "responseCode" : 200
+    "CreateCoreDefinitionVersion": {
+      "name": "CreateCoreDefinitionVersion",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/definition/cores/{CoreDefinitionId}/versions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateCoreDefinitionVersionRequest"
+      "input": {
+        "shape": "CreateCoreDefinitionVersionRequest"
       },
-      "output" : {
-        "shape" : "CreateCoreDefinitionVersionResponse"
+      "output": {
+        "shape": "CreateCoreDefinitionVersionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "CreateDeployment" : {
-      "name" : "CreateDeployment",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/groups/{GroupId}/deployments",
-        "responseCode" : 200
+    "CreateDeployment": {
+      "name": "CreateDeployment",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/groups/{GroupId}/deployments",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateDeploymentRequest"
+      "input": {
+        "shape": "CreateDeploymentRequest"
       },
-      "output" : {
-        "shape" : "CreateDeploymentResponse"
+      "output": {
+        "shape": "CreateDeploymentResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "CreateDeviceDefinition" : {
-      "name" : "CreateDeviceDefinition",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/definition/devices",
-        "responseCode" : 200
+    "CreateDeviceDefinition": {
+      "name": "CreateDeviceDefinition",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/definition/devices",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateDeviceDefinitionRequest"
+      "input": {
+        "shape": "CreateDeviceDefinitionRequest"
       },
-      "output" : {
-        "shape" : "CreateDeviceDefinitionResponse"
+      "output": {
+        "shape": "CreateDeviceDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "CreateDeviceDefinitionVersion" : {
-      "name" : "CreateDeviceDefinitionVersion",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/definition/devices/{DeviceDefinitionId}/versions",
-        "responseCode" : 200
+    "CreateDeviceDefinitionVersion": {
+      "name": "CreateDeviceDefinitionVersion",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/definition/devices/{DeviceDefinitionId}/versions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateDeviceDefinitionVersionRequest"
+      "input": {
+        "shape": "CreateDeviceDefinitionVersionRequest"
       },
-      "output" : {
-        "shape" : "CreateDeviceDefinitionVersionResponse"
+      "output": {
+        "shape": "CreateDeviceDefinitionVersionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "CreateFunctionDefinition" : {
-      "name" : "CreateFunctionDefinition",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/definition/functions",
-        "responseCode" : 200
+    "CreateFunctionDefinition": {
+      "name": "CreateFunctionDefinition",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/definition/functions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateFunctionDefinitionRequest"
+      "input": {
+        "shape": "CreateFunctionDefinitionRequest"
       },
-      "output" : {
-        "shape" : "CreateFunctionDefinitionResponse"
+      "output": {
+        "shape": "CreateFunctionDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "CreateFunctionDefinitionVersion" : {
-      "name" : "CreateFunctionDefinitionVersion",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/definition/functions/{FunctionDefinitionId}/versions",
-        "responseCode" : 200
+    "CreateFunctionDefinitionVersion": {
+      "name": "CreateFunctionDefinitionVersion",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/definition/functions/{FunctionDefinitionId}/versions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateFunctionDefinitionVersionRequest"
+      "input": {
+        "shape": "CreateFunctionDefinitionVersionRequest"
       },
-      "output" : {
-        "shape" : "CreateFunctionDefinitionVersionResponse"
+      "output": {
+        "shape": "CreateFunctionDefinitionVersionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "CreateGroup" : {
-      "name" : "CreateGroup",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/groups",
-        "responseCode" : 200
+    "CreateGroup": {
+      "name": "CreateGroup",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/groups",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateGroupRequest"
+      "input": {
+        "shape": "CreateGroupRequest"
       },
-      "output" : {
-        "shape" : "CreateGroupResponse"
+      "output": {
+        "shape": "CreateGroupResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "CreateGroupCertificateAuthority" : {
-      "name" : "CreateGroupCertificateAuthority",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/groups/{GroupId}/certificateauthorities",
-        "responseCode" : 200
+    "CreateGroupCertificateAuthority": {
+      "name": "CreateGroupCertificateAuthority",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/groups/{GroupId}/certificateauthorities",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateGroupCertificateAuthorityRequest"
+      "input": {
+        "shape": "CreateGroupCertificateAuthorityRequest"
       },
-      "output" : {
-        "shape" : "CreateGroupCertificateAuthorityResponse"
+      "output": {
+        "shape": "CreateGroupCertificateAuthorityResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      }, {
-        "shape" : "InternalServerErrorException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        }
+      ]
     },
-    "CreateGroupVersion" : {
-      "name" : "CreateGroupVersion",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/groups/{GroupId}/versions",
-        "responseCode" : 200
+    "CreateGroupVersion": {
+      "name": "CreateGroupVersion",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/groups/{GroupId}/versions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateGroupVersionRequest"
+      "input": {
+        "shape": "CreateGroupVersionRequest"
       },
-      "output" : {
-        "shape" : "CreateGroupVersionResponse"
+      "output": {
+        "shape": "CreateGroupVersionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "CreateLoggerDefinition" : {
-      "name" : "CreateLoggerDefinition",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/definition/loggers",
-        "responseCode" : 200
+    "CreateLoggerDefinition": {
+      "name": "CreateLoggerDefinition",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/definition/loggers",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateLoggerDefinitionRequest"
+      "input": {
+        "shape": "CreateLoggerDefinitionRequest"
       },
-      "output" : {
-        "shape" : "CreateLoggerDefinitionResponse"
+      "output": {
+        "shape": "CreateLoggerDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "CreateLoggerDefinitionVersion" : {
-      "name" : "CreateLoggerDefinitionVersion",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/definition/loggers/{LoggerDefinitionId}/versions",
-        "responseCode" : 200
+    "CreateLoggerDefinitionVersion": {
+      "name": "CreateLoggerDefinitionVersion",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/definition/loggers/{LoggerDefinitionId}/versions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateLoggerDefinitionVersionRequest"
+      "input": {
+        "shape": "CreateLoggerDefinitionVersionRequest"
       },
-      "output" : {
-        "shape" : "CreateLoggerDefinitionVersionResponse"
+      "output": {
+        "shape": "CreateLoggerDefinitionVersionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "CreateSubscriptionDefinition" : {
-      "name" : "CreateSubscriptionDefinition",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/definition/subscriptions",
-        "responseCode" : 200
+    "CreateSubscriptionDefinition": {
+      "name": "CreateSubscriptionDefinition",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/definition/subscriptions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateSubscriptionDefinitionRequest"
+      "input": {
+        "shape": "CreateSubscriptionDefinitionRequest"
       },
-      "output" : {
-        "shape" : "CreateSubscriptionDefinitionResponse"
+      "output": {
+        "shape": "CreateSubscriptionDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "CreateSubscriptionDefinitionVersion" : {
-      "name" : "CreateSubscriptionDefinitionVersion",
-      "http" : {
-        "method" : "POST",
-        "requestUri" : "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions",
-        "responseCode" : 200
+    "CreateSubscriptionDefinitionVersion": {
+      "name": "CreateSubscriptionDefinitionVersion",
+      "http": {
+        "method": "POST",
+        "requestUri": "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "CreateSubscriptionDefinitionVersionRequest"
+      "input": {
+        "shape": "CreateSubscriptionDefinitionVersionRequest"
       },
-      "output" : {
-        "shape" : "CreateSubscriptionDefinitionVersionResponse"
+      "output": {
+        "shape": "CreateSubscriptionDefinitionVersionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "DeleteCoreDefinition" : {
-      "name" : "DeleteCoreDefinition",
-      "http" : {
-        "method" : "DELETE",
-        "requestUri" : "/greengrass/definition/cores/{CoreDefinitionId}",
-        "responseCode" : 200
+    "DeleteCoreDefinition": {
+      "name": "DeleteCoreDefinition",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/greengrass/definition/cores/{CoreDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "DeleteCoreDefinitionRequest"
+      "input": {
+        "shape": "DeleteCoreDefinitionRequest"
       },
-      "output" : {
-        "shape" : "DeleteCoreDefinitionResponse"
+      "output": {
+        "shape": "DeleteCoreDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "DeleteDeviceDefinition" : {
-      "name" : "DeleteDeviceDefinition",
-      "http" : {
-        "method" : "DELETE",
-        "requestUri" : "/greengrass/definition/devices/{DeviceDefinitionId}",
-        "responseCode" : 200
+    "DeleteDeviceDefinition": {
+      "name": "DeleteDeviceDefinition",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/greengrass/definition/devices/{DeviceDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "DeleteDeviceDefinitionRequest"
+      "input": {
+        "shape": "DeleteDeviceDefinitionRequest"
       },
-      "output" : {
-        "shape" : "DeleteDeviceDefinitionResponse"
+      "output": {
+        "shape": "DeleteDeviceDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "DeleteFunctionDefinition" : {
-      "name" : "DeleteFunctionDefinition",
-      "http" : {
-        "method" : "DELETE",
-        "requestUri" : "/greengrass/definition/functions/{FunctionDefinitionId}",
-        "responseCode" : 200
+    "DeleteFunctionDefinition": {
+      "name": "DeleteFunctionDefinition",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/greengrass/definition/functions/{FunctionDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "DeleteFunctionDefinitionRequest"
+      "input": {
+        "shape": "DeleteFunctionDefinitionRequest"
       },
-      "output" : {
-        "shape" : "DeleteFunctionDefinitionResponse"
+      "output": {
+        "shape": "DeleteFunctionDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "DeleteGroup" : {
-      "name" : "DeleteGroup",
-      "http" : {
-        "method" : "DELETE",
-        "requestUri" : "/greengrass/groups/{GroupId}",
-        "responseCode" : 200
+    "DeleteGroup": {
+      "name": "DeleteGroup",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/greengrass/groups/{GroupId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "DeleteGroupRequest"
+      "input": {
+        "shape": "DeleteGroupRequest"
       },
-      "output" : {
-        "shape" : "DeleteGroupResponse"
+      "output": {
+        "shape": "DeleteGroupResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "DeleteLoggerDefinition" : {
-      "name" : "DeleteLoggerDefinition",
-      "http" : {
-        "method" : "DELETE",
-        "requestUri" : "/greengrass/definition/loggers/{LoggerDefinitionId}",
-        "responseCode" : 200
+    "DeleteLoggerDefinition": {
+      "name": "DeleteLoggerDefinition",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/greengrass/definition/loggers/{LoggerDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "DeleteLoggerDefinitionRequest"
+      "input": {
+        "shape": "DeleteLoggerDefinitionRequest"
       },
-      "output" : {
-        "shape" : "DeleteLoggerDefinitionResponse"
+      "output": {
+        "shape": "DeleteLoggerDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "DeleteSubscriptionDefinition" : {
-      "name" : "DeleteSubscriptionDefinition",
-      "http" : {
-        "method" : "DELETE",
-        "requestUri" : "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}",
-        "responseCode" : 200
+    "DeleteSubscriptionDefinition": {
+      "name": "DeleteSubscriptionDefinition",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "DeleteSubscriptionDefinitionRequest"
+      "input": {
+        "shape": "DeleteSubscriptionDefinitionRequest"
       },
-      "output" : {
-        "shape" : "DeleteSubscriptionDefinitionResponse"
+      "output": {
+        "shape": "DeleteSubscriptionDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "DisassociateRoleFromGroup" : {
-      "name" : "DisassociateRoleFromGroup",
-      "http" : {
-        "method" : "DELETE",
-        "requestUri" : "/greengrass/groups/{GroupId}/role",
-        "responseCode" : 200
+    "DisassociateRoleFromGroup": {
+      "name": "DisassociateRoleFromGroup",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/greengrass/groups/{GroupId}/role",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "DisassociateRoleFromGroupRequest"
+      "input": {
+        "shape": "DisassociateRoleFromGroupRequest"
       },
-      "output" : {
-        "shape" : "DisassociateRoleFromGroupResponse"
+      "output": {
+        "shape": "DisassociateRoleFromGroupResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      }, {
-        "shape" : "InternalServerErrorException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        }
+      ]
     },
-    "DisassociateServiceRoleFromAccount" : {
-      "name" : "DisassociateServiceRoleFromAccount",
-      "http" : {
-        "method" : "DELETE",
-        "requestUri" : "/greengrass/servicerole",
-        "responseCode" : 200
+    "DisassociateServiceRoleFromAccount": {
+      "name": "DisassociateServiceRoleFromAccount",
+      "http": {
+        "method": "DELETE",
+        "requestUri": "/greengrass/servicerole",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "DisassociateServiceRoleFromAccountRequest"
+      "input": {
+        "shape": "DisassociateServiceRoleFromAccountRequest"
       },
-      "output" : {
-        "shape" : "DisassociateServiceRoleFromAccountResponse"
+      "output": {
+        "shape": "DisassociateServiceRoleFromAccountResponse"
       },
-      "errors" : [ {
-        "shape" : "InternalServerErrorException"
-      } ]
+      "errors": [
+        {
+          "shape": "InternalServerErrorException"
+        }
+      ]
     },
-    "GetAssociatedRole" : {
-      "name" : "GetAssociatedRole",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/groups/{GroupId}/role",
-        "responseCode" : 200
+    "GetAssociatedRole": {
+      "name": "GetAssociatedRole",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/groups/{GroupId}/role",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetAssociatedRoleRequest"
+      "input": {
+        "shape": "GetAssociatedRoleRequest"
       },
-      "output" : {
-        "shape" : "GetAssociatedRoleResponse"
+      "output": {
+        "shape": "GetAssociatedRoleResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      }, {
-        "shape" : "InternalServerErrorException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        }
+      ]
     },
-    "GetConnectivityInfo" : {
-      "name" : "GetConnectivityInfo",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/things/{ThingName}/connectivityInfo",
-        "responseCode" : 200
+    "GetConnectivityInfo": {
+      "name": "GetConnectivityInfo",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/things/{ThingName}/connectivityInfo",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetConnectivityInfoRequest"
+      "input": {
+        "shape": "GetConnectivityInfoRequest"
       },
-      "output" : {
-        "shape" : "GetConnectivityInfoResponse"
+      "output": {
+        "shape": "GetConnectivityInfoResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      }, {
-        "shape" : "InternalServerErrorException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        }
+      ]
     },
-    "GetCoreDefinition" : {
-      "name" : "GetCoreDefinition",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/cores/{CoreDefinitionId}",
-        "responseCode" : 200
+    "GetCoreDefinition": {
+      "name": "GetCoreDefinition",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/cores/{CoreDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetCoreDefinitionRequest"
+      "input": {
+        "shape": "GetCoreDefinitionRequest"
       },
-      "output" : {
-        "shape" : "GetCoreDefinitionResponse"
+      "output": {
+        "shape": "GetCoreDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "GetCoreDefinitionVersion" : {
-      "name" : "GetCoreDefinitionVersion",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/cores/{CoreDefinitionId}/versions/{CoreDefinitionVersionId}",
-        "responseCode" : 200
+    "GetCoreDefinitionVersion": {
+      "name": "GetCoreDefinitionVersion",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/cores/{CoreDefinitionId}/versions/{CoreDefinitionVersionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetCoreDefinitionVersionRequest"
+      "input": {
+        "shape": "GetCoreDefinitionVersionRequest"
       },
-      "output" : {
-        "shape" : "GetCoreDefinitionVersionResponse"
+      "output": {
+        "shape": "GetCoreDefinitionVersionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "GetDeploymentStatus" : {
-      "name" : "GetDeploymentStatus",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/groups/{GroupId}/deployments/{DeploymentId}/status",
-        "responseCode" : 200
+    "GetDeploymentStatus": {
+      "name": "GetDeploymentStatus",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/groups/{GroupId}/deployments/{DeploymentId}/status",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetDeploymentStatusRequest"
+      "input": {
+        "shape": "GetDeploymentStatusRequest"
       },
-      "output" : {
-        "shape" : "GetDeploymentStatusResponse"
+      "output": {
+        "shape": "GetDeploymentStatusResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "GetDeviceDefinition" : {
-      "name" : "GetDeviceDefinition",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/devices/{DeviceDefinitionId}",
-        "responseCode" : 200
+    "GetDeviceDefinition": {
+      "name": "GetDeviceDefinition",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/devices/{DeviceDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetDeviceDefinitionRequest"
+      "input": {
+        "shape": "GetDeviceDefinitionRequest"
       },
-      "output" : {
-        "shape" : "GetDeviceDefinitionResponse"
+      "output": {
+        "shape": "GetDeviceDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "GetDeviceDefinitionVersion" : {
-      "name" : "GetDeviceDefinitionVersion",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/devices/{DeviceDefinitionId}/versions/{DeviceDefinitionVersionId}",
-        "responseCode" : 200
+    "GetDeviceDefinitionVersion": {
+      "name": "GetDeviceDefinitionVersion",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/devices/{DeviceDefinitionId}/versions/{DeviceDefinitionVersionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetDeviceDefinitionVersionRequest"
+      "input": {
+        "shape": "GetDeviceDefinitionVersionRequest"
       },
-      "output" : {
-        "shape" : "GetDeviceDefinitionVersionResponse"
+      "output": {
+        "shape": "GetDeviceDefinitionVersionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "GetFunctionDefinition" : {
-      "name" : "GetFunctionDefinition",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/functions/{FunctionDefinitionId}",
-        "responseCode" : 200
+    "GetFunctionDefinition": {
+      "name": "GetFunctionDefinition",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/functions/{FunctionDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetFunctionDefinitionRequest"
+      "input": {
+        "shape": "GetFunctionDefinitionRequest"
       },
-      "output" : {
-        "shape" : "GetFunctionDefinitionResponse"
+      "output": {
+        "shape": "GetFunctionDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "GetFunctionDefinitionVersion" : {
-      "name" : "GetFunctionDefinitionVersion",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/functions/{FunctionDefinitionId}/versions/{FunctionDefinitionVersionId}",
-        "responseCode" : 200
+    "GetFunctionDefinitionVersion": {
+      "name": "GetFunctionDefinitionVersion",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/functions/{FunctionDefinitionId}/versions/{FunctionDefinitionVersionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetFunctionDefinitionVersionRequest"
+      "input": {
+        "shape": "GetFunctionDefinitionVersionRequest"
       },
-      "output" : {
-        "shape" : "GetFunctionDefinitionVersionResponse"
+      "output": {
+        "shape": "GetFunctionDefinitionVersionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "GetGroup" : {
-      "name" : "GetGroup",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/groups/{GroupId}",
-        "responseCode" : 200
+    "GetGroup": {
+      "name": "GetGroup",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/groups/{GroupId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetGroupRequest"
+      "input": {
+        "shape": "GetGroupRequest"
       },
-      "output" : {
-        "shape" : "GetGroupResponse"
+      "output": {
+        "shape": "GetGroupResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "GetGroupCertificateAuthority" : {
-      "name" : "GetGroupCertificateAuthority",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/groups/{GroupId}/certificateauthorities/{CertificateAuthorityId}",
-        "responseCode" : 200
+    "GetGroupCertificateAuthority": {
+      "name": "GetGroupCertificateAuthority",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/groups/{GroupId}/certificateauthorities/{CertificateAuthorityId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetGroupCertificateAuthorityRequest"
+      "input": {
+        "shape": "GetGroupCertificateAuthorityRequest"
       },
-      "output" : {
-        "shape" : "GetGroupCertificateAuthorityResponse"
+      "output": {
+        "shape": "GetGroupCertificateAuthorityResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      }, {
-        "shape" : "InternalServerErrorException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        }
+      ]
     },
-    "GetGroupCertificateConfiguration" : {
-      "name" : "GetGroupCertificateConfiguration",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry",
-        "responseCode" : 200
+    "GetGroupCertificateConfiguration": {
+      "name": "GetGroupCertificateConfiguration",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetGroupCertificateConfigurationRequest"
+      "input": {
+        "shape": "GetGroupCertificateConfigurationRequest"
       },
-      "output" : {
-        "shape" : "GetGroupCertificateConfigurationResponse"
+      "output": {
+        "shape": "GetGroupCertificateConfigurationResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      }, {
-        "shape" : "InternalServerErrorException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        }
+      ]
     },
-    "GetGroupVersion" : {
-      "name" : "GetGroupVersion",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/groups/{GroupId}/versions/{GroupVersionId}",
-        "responseCode" : 200
+    "GetGroupVersion": {
+      "name": "GetGroupVersion",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/groups/{GroupId}/versions/{GroupVersionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetGroupVersionRequest"
+      "input": {
+        "shape": "GetGroupVersionRequest"
       },
-      "output" : {
-        "shape" : "GetGroupVersionResponse"
+      "output": {
+        "shape": "GetGroupVersionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "GetLoggerDefinition" : {
-      "name" : "GetLoggerDefinition",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/loggers/{LoggerDefinitionId}",
-        "responseCode" : 200
+    "GetLoggerDefinition": {
+      "name": "GetLoggerDefinition",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/loggers/{LoggerDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetLoggerDefinitionRequest"
+      "input": {
+        "shape": "GetLoggerDefinitionRequest"
       },
-      "output" : {
-        "shape" : "GetLoggerDefinitionResponse"
+      "output": {
+        "shape": "GetLoggerDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "GetLoggerDefinitionVersion" : {
-      "name" : "GetLoggerDefinitionVersion",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/loggers/{LoggerDefinitionId}/versions/{LoggerDefinitionVersionId}",
-        "responseCode" : 200
+    "GetLoggerDefinitionVersion": {
+      "name": "GetLoggerDefinitionVersion",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/loggers/{LoggerDefinitionId}/versions/{LoggerDefinitionVersionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetLoggerDefinitionVersionRequest"
+      "input": {
+        "shape": "GetLoggerDefinitionVersionRequest"
       },
-      "output" : {
-        "shape" : "GetLoggerDefinitionVersionResponse"
+      "output": {
+        "shape": "GetLoggerDefinitionVersionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "GetServiceRoleForAccount" : {
-      "name" : "GetServiceRoleForAccount",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/servicerole",
-        "responseCode" : 200
+    "GetServiceRoleForAccount": {
+      "name": "GetServiceRoleForAccount",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/servicerole",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetServiceRoleForAccountRequest"
+      "input": {
+        "shape": "GetServiceRoleForAccountRequest"
       },
-      "output" : {
-        "shape" : "GetServiceRoleForAccountResponse"
+      "output": {
+        "shape": "GetServiceRoleForAccountResponse"
       },
-      "errors" : [ {
-        "shape" : "InternalServerErrorException"
-      } ]
+      "errors": [
+        {
+          "shape": "InternalServerErrorException"
+        }
+      ]
     },
-    "GetSubscriptionDefinition" : {
-      "name" : "GetSubscriptionDefinition",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}",
-        "responseCode" : 200
+    "GetSubscriptionDefinition": {
+      "name": "GetSubscriptionDefinition",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetSubscriptionDefinitionRequest"
+      "input": {
+        "shape": "GetSubscriptionDefinitionRequest"
       },
-      "output" : {
-        "shape" : "GetSubscriptionDefinitionResponse"
+      "output": {
+        "shape": "GetSubscriptionDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "GetSubscriptionDefinitionVersion" : {
-      "name" : "GetSubscriptionDefinitionVersion",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions/{SubscriptionDefinitionVersionId}",
-        "responseCode" : 200
+    "GetSubscriptionDefinitionVersion": {
+      "name": "GetSubscriptionDefinitionVersion",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions/{SubscriptionDefinitionVersionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "GetSubscriptionDefinitionVersionRequest"
+      "input": {
+        "shape": "GetSubscriptionDefinitionVersionRequest"
       },
-      "output" : {
-        "shape" : "GetSubscriptionDefinitionVersionResponse"
+      "output": {
+        "shape": "GetSubscriptionDefinitionVersionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "ListCoreDefinitionVersions" : {
-      "name" : "ListCoreDefinitionVersions",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/cores/{CoreDefinitionId}/versions",
-        "responseCode" : 200
+    "ListCoreDefinitionVersions": {
+      "name": "ListCoreDefinitionVersions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/cores/{CoreDefinitionId}/versions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListCoreDefinitionVersionsRequest"
+      "input": {
+        "shape": "ListCoreDefinitionVersionsRequest"
       },
-      "output" : {
-        "shape" : "ListCoreDefinitionVersionsResponse"
+      "output": {
+        "shape": "ListCoreDefinitionVersionsResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "ListCoreDefinitions" : {
-      "name" : "ListCoreDefinitions",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/cores",
-        "responseCode" : 200
+    "ListCoreDefinitions": {
+      "name": "ListCoreDefinitions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/cores",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListCoreDefinitionsRequest"
+      "input": {
+        "shape": "ListCoreDefinitionsRequest"
       },
-      "output" : {
-        "shape" : "ListCoreDefinitionsResponse"
+      "output": {
+        "shape": "ListCoreDefinitionsResponse"
       },
-      "errors" : [ ]
+      "errors": []
     },
-    "ListDeployments" : {
-      "name" : "ListDeployments",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/groups/{GroupId}/deployments",
-        "responseCode" : 200
+    "ListDeployments": {
+      "name": "ListDeployments",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/groups/{GroupId}/deployments",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListDeploymentsRequest"
+      "input": {
+        "shape": "ListDeploymentsRequest"
       },
-      "output" : {
-        "shape" : "ListDeploymentsResponse"
+      "output": {
+        "shape": "ListDeploymentsResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "ListDeviceDefinitionVersions" : {
-      "name" : "ListDeviceDefinitionVersions",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/devices/{DeviceDefinitionId}/versions",
-        "responseCode" : 200
+    "ListDeviceDefinitionVersions": {
+      "name": "ListDeviceDefinitionVersions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/devices/{DeviceDefinitionId}/versions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListDeviceDefinitionVersionsRequest"
+      "input": {
+        "shape": "ListDeviceDefinitionVersionsRequest"
       },
-      "output" : {
-        "shape" : "ListDeviceDefinitionVersionsResponse"
+      "output": {
+        "shape": "ListDeviceDefinitionVersionsResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "ListDeviceDefinitions" : {
-      "name" : "ListDeviceDefinitions",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/devices",
-        "responseCode" : 200
+    "ListDeviceDefinitions": {
+      "name": "ListDeviceDefinitions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/devices",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListDeviceDefinitionsRequest"
+      "input": {
+        "shape": "ListDeviceDefinitionsRequest"
       },
-      "output" : {
-        "shape" : "ListDeviceDefinitionsResponse"
+      "output": {
+        "shape": "ListDeviceDefinitionsResponse"
       },
-      "errors" : [ ]
+      "errors": []
     },
-    "ListFunctionDefinitionVersions" : {
-      "name" : "ListFunctionDefinitionVersions",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/functions/{FunctionDefinitionId}/versions",
-        "responseCode" : 200
+    "ListFunctionDefinitionVersions": {
+      "name": "ListFunctionDefinitionVersions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/functions/{FunctionDefinitionId}/versions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListFunctionDefinitionVersionsRequest"
+      "input": {
+        "shape": "ListFunctionDefinitionVersionsRequest"
       },
-      "output" : {
-        "shape" : "ListFunctionDefinitionVersionsResponse"
+      "output": {
+        "shape": "ListFunctionDefinitionVersionsResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "ListFunctionDefinitions" : {
-      "name" : "ListFunctionDefinitions",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/functions",
-        "responseCode" : 200
+    "ListFunctionDefinitions": {
+      "name": "ListFunctionDefinitions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/functions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListFunctionDefinitionsRequest"
+      "input": {
+        "shape": "ListFunctionDefinitionsRequest"
       },
-      "output" : {
-        "shape" : "ListFunctionDefinitionsResponse"
+      "output": {
+        "shape": "ListFunctionDefinitionsResponse"
       },
-      "errors" : [ ]
+      "errors": []
     },
-    "ListGroupCertificateAuthorities" : {
-      "name" : "ListGroupCertificateAuthorities",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/groups/{GroupId}/certificateauthorities",
-        "responseCode" : 200
+    "ListGroupCertificateAuthorities": {
+      "name": "ListGroupCertificateAuthorities",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/groups/{GroupId}/certificateauthorities",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListGroupCertificateAuthoritiesRequest"
+      "input": {
+        "shape": "ListGroupCertificateAuthoritiesRequest"
       },
-      "output" : {
-        "shape" : "ListGroupCertificateAuthoritiesResponse"
+      "output": {
+        "shape": "ListGroupCertificateAuthoritiesResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      }, {
-        "shape" : "InternalServerErrorException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        }
+      ]
     },
-    "ListGroupVersions" : {
-      "name" : "ListGroupVersions",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/groups/{GroupId}/versions",
-        "responseCode" : 200
+    "ListGroupVersions": {
+      "name": "ListGroupVersions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/groups/{GroupId}/versions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListGroupVersionsRequest"
+      "input": {
+        "shape": "ListGroupVersionsRequest"
       },
-      "output" : {
-        "shape" : "ListGroupVersionsResponse"
+      "output": {
+        "shape": "ListGroupVersionsResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "ListGroups" : {
-      "name" : "ListGroups",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/groups",
-        "responseCode" : 200
+    "ListGroups": {
+      "name": "ListGroups",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/groups",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListGroupsRequest"
+      "input": {
+        "shape": "ListGroupsRequest"
       },
-      "output" : {
-        "shape" : "ListGroupsResponse"
+      "output": {
+        "shape": "ListGroupsResponse"
       },
-      "errors" : [ ]
+      "errors": []
     },
-    "ListLoggerDefinitionVersions" : {
-      "name" : "ListLoggerDefinitionVersions",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/loggers/{LoggerDefinitionId}/versions",
-        "responseCode" : 200
+    "ListLoggerDefinitionVersions": {
+      "name": "ListLoggerDefinitionVersions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/loggers/{LoggerDefinitionId}/versions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListLoggerDefinitionVersionsRequest"
+      "input": {
+        "shape": "ListLoggerDefinitionVersionsRequest"
       },
-      "output" : {
-        "shape" : "ListLoggerDefinitionVersionsResponse"
+      "output": {
+        "shape": "ListLoggerDefinitionVersionsResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "ListLoggerDefinitions" : {
-      "name" : "ListLoggerDefinitions",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/loggers",
-        "responseCode" : 200
+    "ListLoggerDefinitions": {
+      "name": "ListLoggerDefinitions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/loggers",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListLoggerDefinitionsRequest"
+      "input": {
+        "shape": "ListLoggerDefinitionsRequest"
       },
-      "output" : {
-        "shape" : "ListLoggerDefinitionsResponse"
+      "output": {
+        "shape": "ListLoggerDefinitionsResponse"
       },
-      "errors" : [ ]
+      "errors": []
     },
-    "ListSubscriptionDefinitionVersions" : {
-      "name" : "ListSubscriptionDefinitionVersions",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions",
-        "responseCode" : 200
+    "ListSubscriptionDefinitionVersions": {
+      "name": "ListSubscriptionDefinitionVersions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListSubscriptionDefinitionVersionsRequest"
+      "input": {
+        "shape": "ListSubscriptionDefinitionVersionsRequest"
       },
-      "output" : {
-        "shape" : "ListSubscriptionDefinitionVersionsResponse"
+      "output": {
+        "shape": "ListSubscriptionDefinitionVersionsResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "ListSubscriptionDefinitions" : {
-      "name" : "ListSubscriptionDefinitions",
-      "http" : {
-        "method" : "GET",
-        "requestUri" : "/greengrass/definition/subscriptions",
-        "responseCode" : 200
+    "ListSubscriptionDefinitions": {
+      "name": "ListSubscriptionDefinitions",
+      "http": {
+        "method": "GET",
+        "requestUri": "/greengrass/definition/subscriptions",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "ListSubscriptionDefinitionsRequest"
+      "input": {
+        "shape": "ListSubscriptionDefinitionsRequest"
       },
-      "output" : {
-        "shape" : "ListSubscriptionDefinitionsResponse"
+      "output": {
+        "shape": "ListSubscriptionDefinitionsResponse"
       },
-      "errors" : [ ]
+      "errors": []
     },
-    "UpdateConnectivityInfo" : {
-      "name" : "UpdateConnectivityInfo",
-      "http" : {
-        "method" : "PUT",
-        "requestUri" : "/greengrass/things/{ThingName}/connectivityInfo",
-        "responseCode" : 200
+    "UpdateConnectivityInfo": {
+      "name": "UpdateConnectivityInfo",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/greengrass/things/{ThingName}/connectivityInfo",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "UpdateConnectivityInfoRequest"
+      "input": {
+        "shape": "UpdateConnectivityInfoRequest"
       },
-      "output" : {
-        "shape" : "UpdateConnectivityInfoResponse"
+      "output": {
+        "shape": "UpdateConnectivityInfoResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      }, {
-        "shape" : "InternalServerErrorException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        }
+      ]
     },
-    "UpdateCoreDefinition" : {
-      "name" : "UpdateCoreDefinition",
-      "http" : {
-        "method" : "PUT",
-        "requestUri" : "/greengrass/definition/cores/{CoreDefinitionId}",
-        "responseCode" : 200
+    "UpdateCoreDefinition": {
+      "name": "UpdateCoreDefinition",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/greengrass/definition/cores/{CoreDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "UpdateCoreDefinitionRequest"
+      "input": {
+        "shape": "UpdateCoreDefinitionRequest"
       },
-      "output" : {
-        "shape" : "UpdateCoreDefinitionResponse"
+      "output": {
+        "shape": "UpdateCoreDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "UpdateDeviceDefinition" : {
-      "name" : "UpdateDeviceDefinition",
-      "http" : {
-        "method" : "PUT",
-        "requestUri" : "/greengrass/definition/devices/{DeviceDefinitionId}",
-        "responseCode" : 200
+    "UpdateDeviceDefinition": {
+      "name": "UpdateDeviceDefinition",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/greengrass/definition/devices/{DeviceDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "UpdateDeviceDefinitionRequest"
+      "input": {
+        "shape": "UpdateDeviceDefinitionRequest"
       },
-      "output" : {
-        "shape" : "UpdateDeviceDefinitionResponse"
+      "output": {
+        "shape": "UpdateDeviceDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "UpdateFunctionDefinition" : {
-      "name" : "UpdateFunctionDefinition",
-      "http" : {
-        "method" : "PUT",
-        "requestUri" : "/greengrass/definition/functions/{FunctionDefinitionId}",
-        "responseCode" : 200
+    "UpdateFunctionDefinition": {
+      "name": "UpdateFunctionDefinition",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/greengrass/definition/functions/{FunctionDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "UpdateFunctionDefinitionRequest"
+      "input": {
+        "shape": "UpdateFunctionDefinitionRequest"
       },
-      "output" : {
-        "shape" : "UpdateFunctionDefinitionResponse"
+      "output": {
+        "shape": "UpdateFunctionDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "UpdateGroup" : {
-      "name" : "UpdateGroup",
-      "http" : {
-        "method" : "PUT",
-        "requestUri" : "/greengrass/groups/{GroupId}",
-        "responseCode" : 200
+    "UpdateGroup": {
+      "name": "UpdateGroup",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/greengrass/groups/{GroupId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "UpdateGroupRequest"
+      "input": {
+        "shape": "UpdateGroupRequest"
       },
-      "output" : {
-        "shape" : "UpdateGroupResponse"
+      "output": {
+        "shape": "UpdateGroupResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "UpdateGroupCertificateConfiguration" : {
-      "name" : "UpdateGroupCertificateConfiguration",
-      "http" : {
-        "method" : "PUT",
-        "requestUri" : "/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry",
-        "responseCode" : 200
+    "UpdateGroupCertificateConfiguration": {
+      "name": "UpdateGroupCertificateConfiguration",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "UpdateGroupCertificateConfigurationRequest"
+      "input": {
+        "shape": "UpdateGroupCertificateConfigurationRequest"
       },
-      "output" : {
-        "shape" : "UpdateGroupCertificateConfigurationResponse"
+      "output": {
+        "shape": "UpdateGroupCertificateConfigurationResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      }, {
-        "shape" : "InternalServerErrorException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        },
+        {
+          "shape": "InternalServerErrorException"
+        }
+      ]
     },
-    "UpdateLoggerDefinition" : {
-      "name" : "UpdateLoggerDefinition",
-      "http" : {
-        "method" : "PUT",
-        "requestUri" : "/greengrass/definition/loggers/{LoggerDefinitionId}",
-        "responseCode" : 200
+    "UpdateLoggerDefinition": {
+      "name": "UpdateLoggerDefinition",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/greengrass/definition/loggers/{LoggerDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "UpdateLoggerDefinitionRequest"
+      "input": {
+        "shape": "UpdateLoggerDefinitionRequest"
       },
-      "output" : {
-        "shape" : "UpdateLoggerDefinitionResponse"
+      "output": {
+        "shape": "UpdateLoggerDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     },
-    "UpdateSubscriptionDefinition" : {
-      "name" : "UpdateSubscriptionDefinition",
-      "http" : {
-        "method" : "PUT",
-        "requestUri" : "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}",
-        "responseCode" : 200
+    "UpdateSubscriptionDefinition": {
+      "name": "UpdateSubscriptionDefinition",
+      "http": {
+        "method": "PUT",
+        "requestUri": "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}",
+        "responseCode": 200
       },
-      "input" : {
-        "shape" : "UpdateSubscriptionDefinitionRequest"
+      "input": {
+        "shape": "UpdateSubscriptionDefinitionRequest"
       },
-      "output" : {
-        "shape" : "UpdateSubscriptionDefinitionResponse"
+      "output": {
+        "shape": "UpdateSubscriptionDefinitionResponse"
       },
-      "errors" : [ {
-        "shape" : "BadRequestException"
-      } ]
+      "errors": [
+        {
+          "shape": "BadRequestException"
+        }
+      ]
     }
   },
-  "shapes" : {
-    "AssociateRoleToGroupRequest" : {
-      "type" : "structure",
-      "members" : {
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
+  "shapes": {
+    "AssociateRoleToGroupRequest": {
+      "type": "structure",
+      "members": {
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
         },
-        "RoleArn" : {
-          "shape" : "__string"
+        "RoleArn": {
+          "shape": "__string"
         }
       },
-      "required" : [ "GroupId" ]
+      "required": ["GroupId"]
     },
-    "AssociateRoleToGroupResponse" : {
-      "type" : "structure",
-      "members" : {
-        "AssociatedAt" : {
-          "shape" : "__string"
+    "AssociateRoleToGroupResponse": {
+      "type": "structure",
+      "members": {
+        "AssociatedAt": {
+          "shape": "__string"
         }
       }
     },
-    "AssociateServiceRoleToAccountRequest" : {
-      "type" : "structure",
-      "members" : {
-        "RoleArn" : {
-          "shape" : "__string"
+    "AssociateServiceRoleToAccountRequest": {
+      "type": "structure",
+      "members": {
+        "RoleArn": {
+          "shape": "__string"
         }
       }
     },
-    "AssociateServiceRoleToAccountResponse" : {
-      "type" : "structure",
-      "members" : {
-        "AssociatedAt" : {
-          "shape" : "__string"
+    "AssociateServiceRoleToAccountResponse": {
+      "type": "structure",
+      "members": {
+        "AssociatedAt": {
+          "shape": "__string"
         }
       }
     },
-    "BadRequestException" : {
-      "type" : "structure",
-      "members" : {
-        "ErrorDetails" : {
-          "shape" : "ErrorDetails"
+    "BadRequestException": {
+      "type": "structure",
+      "members": {
+        "ErrorDetails": {
+          "shape": "ErrorDetails"
         },
-        "Message" : {
-          "shape" : "__string"
-        }
-      },
-      "exception" : true,
-      "error" : {
-        "httpStatusCode" : 400
-      }
-    },
-    "ConnectivityInfo" : {
-      "type" : "structure",
-      "members" : {
-        "HostAddress" : {
-          "shape" : "__string"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "Metadata" : {
-          "shape" : "__string"
-        },
-        "PortNumber" : {
-          "shape" : "__integer"
-        }
-      }
-    },
-    "Core" : {
-      "type" : "structure",
-      "members" : {
-        "CertificateArn" : {
-          "shape" : "__string"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "SyncShadow" : {
-          "shape" : "__boolean"
-        },
-        "ThingArn" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "CoreDefinitionVersion" : {
-      "type" : "structure",
-      "members" : {
-        "Cores" : {
-          "shape" : "ListOfCore"
-        }
-      }
-    },
-    "CreateCoreDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
-        },
-        "InitialVersion" : {
-          "shape" : "CoreDefinitionVersion"
-        },
-        "Name" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "CreateCoreDefinitionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
-        },
-        "CreationTimestamp" : {
-          "shape" : "__string"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
-        },
-        "LatestVersion" : {
-          "shape" : "__string"
-        },
-        "LatestVersionArn" : {
-          "shape" : "__string"
-        },
-        "Name" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "CreateCoreDefinitionVersionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
-        },
-        "CoreDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "CoreDefinitionId"
-        },
-        "Cores" : {
-          "shape" : "ListOfCore"
+        "Message": {
+          "shape": "__string"
         }
       },
-      "required" : [ "CoreDefinitionId" ]
+      "exception": true,
+      "error": {
+        "httpStatusCode": 400
+      }
     },
-    "CreateCoreDefinitionVersionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "ConnectivityInfo": {
+      "type": "structure",
+      "members": {
+        "HostAddress": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "Id": {
+          "shape": "__string"
         },
-        "Id" : {
-          "shape" : "__string"
+        "Metadata": {
+          "shape": "__string"
         },
-        "Version" : {
-          "shape" : "__string"
+        "PortNumber": {
+          "shape": "__integer"
         }
       }
     },
-    "CreateDeploymentRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
+    "Core": {
+      "type": "structure",
+      "members": {
+        "CertificateArn": {
+          "shape": "__string"
         },
-        "DeploymentId" : {
-          "shape" : "__string"
+        "Id": {
+          "shape": "__string"
         },
-        "DeploymentType" : {
-          "shape" : "DeploymentType"
+        "SyncShadow": {
+          "shape": "__boolean"
         },
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
-        },
-        "GroupVersionId" : {
-          "shape" : "__string"
-        }
-      },
-      "required" : [ "GroupId" ]
-    },
-    "CreateDeploymentResponse" : {
-      "type" : "structure",
-      "members" : {
-        "DeploymentArn" : {
-          "shape" : "__string"
-        },
-        "DeploymentId" : {
-          "shape" : "__string"
+        "ThingArn": {
+          "shape": "__string"
         }
       }
     },
-    "CreateDeviceDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
-        },
-        "InitialVersion" : {
-          "shape" : "DeviceDefinitionVersion"
-        },
-        "Name" : {
-          "shape" : "__string"
+    "CoreDefinitionVersion": {
+      "type": "structure",
+      "members": {
+        "Cores": {
+          "shape": "ListOfCore"
         }
       }
     },
-    "CreateDeviceDefinitionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "CreateCoreDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "InitialVersion": {
+          "shape": "CoreDefinitionVersion"
         },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
-        },
-        "LatestVersion" : {
-          "shape" : "__string"
-        },
-        "LatestVersionArn" : {
-          "shape" : "__string"
-        },
-        "Name" : {
-          "shape" : "__string"
+        "Name": {
+          "shape": "__string"
         }
       }
     },
-    "CreateDeviceDefinitionVersionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
+    "CreateCoreDefinitionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "DeviceDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "DeviceDefinitionId"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "Devices" : {
-          "shape" : "ListOfDevice"
+        "Id": {
+          "shape": "__string"
+        },
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
+        },
+        "LatestVersion": {
+          "shape": "__string"
+        },
+        "LatestVersionArn": {
+          "shape": "__string"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      }
+    },
+    "CreateCoreDefinitionVersionRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
+        },
+        "CoreDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "CoreDefinitionId"
+        },
+        "Cores": {
+          "shape": "ListOfCore"
         }
       },
-      "required" : [ "DeviceDefinitionId" ]
+      "required": ["CoreDefinitionId"]
     },
-    "CreateDeviceDefinitionVersionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "CreateCoreDefinitionVersionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "Id" : {
-          "shape" : "__string"
+        "Id": {
+          "shape": "__string"
         },
-        "Version" : {
-          "shape" : "__string"
+        "Version": {
+          "shape": "__string"
         }
       }
     },
-    "CreateFunctionDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
+    "CreateDeploymentRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
         },
-        "InitialVersion" : {
-          "shape" : "FunctionDefinitionVersion"
+        "DeploymentId": {
+          "shape": "__string"
         },
-        "Name" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "CreateFunctionDefinitionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+        "DeploymentType": {
+          "shape": "DeploymentType"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
         },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
-        },
-        "LatestVersion" : {
-          "shape" : "__string"
-        },
-        "LatestVersionArn" : {
-          "shape" : "__string"
-        },
-        "Name" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "CreateFunctionDefinitionVersionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
-        },
-        "FunctionDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "FunctionDefinitionId"
-        },
-        "Functions" : {
-          "shape" : "ListOfFunction"
+        "GroupVersionId": {
+          "shape": "__string"
         }
       },
-      "required" : [ "FunctionDefinitionId" ]
+      "required": ["GroupId"]
     },
-    "CreateFunctionDefinitionVersionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "CreateDeploymentResponse": {
+      "type": "structure",
+      "members": {
+        "DeploymentArn": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "Version" : {
-          "shape" : "__string"
+        "DeploymentId": {
+          "shape": "__string"
         }
       }
     },
-    "CreateGroupCertificateAuthorityRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
+    "CreateDeviceDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
         },
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
-        }
-      },
-      "required" : [ "GroupId" ]
-    },
-    "CreateGroupCertificateAuthorityResponse" : {
-      "type" : "structure",
-      "members" : {
-        "GroupCertificateAuthorityArn" : {
-          "shape" : "__string"
+        "InitialVersion": {
+          "shape": "DeviceDefinitionVersion"
+        },
+        "Name": {
+          "shape": "__string"
         }
       }
     },
-    "CreateGroupRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
+    "CreateDeviceDefinitionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "InitialVersion" : {
-          "shape" : "GroupVersion"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "Name" : {
-          "shape" : "__string"
+        "Id": {
+          "shape": "__string"
+        },
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
+        },
+        "LatestVersion": {
+          "shape": "__string"
+        },
+        "LatestVersionArn": {
+          "shape": "__string"
+        },
+        "Name": {
+          "shape": "__string"
         }
       }
     },
-    "CreateGroupResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "CreateDeviceDefinitionVersionRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "DeviceDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "DeviceDefinitionId"
         },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
-        },
-        "LatestVersion" : {
-          "shape" : "__string"
-        },
-        "LatestVersionArn" : {
-          "shape" : "__string"
-        },
-        "Name" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "CreateGroupVersionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
-        },
-        "CoreDefinitionVersionArn" : {
-          "shape" : "__string"
-        },
-        "DeviceDefinitionVersionArn" : {
-          "shape" : "__string"
-        },
-        "FunctionDefinitionVersionArn" : {
-          "shape" : "__string"
-        },
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
-        },
-        "LoggerDefinitionVersionArn" : {
-          "shape" : "__string"
-        },
-        "SubscriptionDefinitionVersionArn" : {
-          "shape" : "__string"
+        "Devices": {
+          "shape": "ListOfDevice"
         }
       },
-      "required" : [ "GroupId" ]
+      "required": ["DeviceDefinitionId"]
     },
-    "CreateGroupVersionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "CreateDeviceDefinitionVersionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "Id" : {
-          "shape" : "__string"
+        "Id": {
+          "shape": "__string"
         },
-        "Version" : {
-          "shape" : "__string"
+        "Version": {
+          "shape": "__string"
         }
       }
     },
-    "CreateLoggerDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
+    "CreateFunctionDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
         },
-        "InitialVersion" : {
-          "shape" : "LoggerDefinitionVersion"
+        "InitialVersion": {
+          "shape": "FunctionDefinitionVersion"
         },
-        "Name" : {
-          "shape" : "__string"
+        "Name": {
+          "shape": "__string"
         }
       }
     },
-    "CreateLoggerDefinitionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "CreateFunctionDefinitionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "Id" : {
-          "shape" : "__string"
+        "Id": {
+          "shape": "__string"
         },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
         },
-        "LatestVersion" : {
-          "shape" : "__string"
+        "LatestVersion": {
+          "shape": "__string"
         },
-        "LatestVersionArn" : {
-          "shape" : "__string"
+        "LatestVersionArn": {
+          "shape": "__string"
         },
-        "Name" : {
-          "shape" : "__string"
+        "Name": {
+          "shape": "__string"
         }
       }
     },
-    "CreateLoggerDefinitionVersionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
+    "CreateFunctionDefinitionVersionRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
         },
-        "LoggerDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "LoggerDefinitionId"
+        "FunctionDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "FunctionDefinitionId"
         },
-        "Loggers" : {
-          "shape" : "ListOfLogger"
-        }
-      },
-      "required" : [ "LoggerDefinitionId" ]
-    },
-    "CreateLoggerDefinitionVersionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
-        },
-        "CreationTimestamp" : {
-          "shape" : "__string"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "Version" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "CreateSubscriptionDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
-        },
-        "InitialVersion" : {
-          "shape" : "SubscriptionDefinitionVersion"
-        },
-        "Name" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "CreateSubscriptionDefinitionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
-        },
-        "CreationTimestamp" : {
-          "shape" : "__string"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
-        },
-        "LatestVersion" : {
-          "shape" : "__string"
-        },
-        "LatestVersionArn" : {
-          "shape" : "__string"
-        },
-        "Name" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "CreateSubscriptionDefinitionVersionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "AmznClientToken" : {
-          "shape" : "__string",
-          "location" : "header",
-          "locationName" : "X-Amzn-Client-Token"
-        },
-        "SubscriptionDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "SubscriptionDefinitionId"
-        },
-        "Subscriptions" : {
-          "shape" : "ListOfSubscription"
+        "Functions": {
+          "shape": "ListOfFunction"
         }
       },
-      "required" : [ "SubscriptionDefinitionId" ]
+      "required": ["FunctionDefinitionId"]
     },
-    "CreateSubscriptionDefinitionVersionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "CreateFunctionDefinitionVersionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "Id" : {
-          "shape" : "__string"
+        "Id": {
+          "shape": "__string"
         },
-        "Version" : {
-          "shape" : "__string"
+        "Version": {
+          "shape": "__string"
         }
       }
     },
-    "DefinitionInformation" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "CreateGroupCertificateAuthorityRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
-        },
-        "LatestVersion" : {
-          "shape" : "__string"
-        },
-        "LatestVersionArn" : {
-          "shape" : "__string"
-        },
-        "Name" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "DeleteCoreDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "CoreDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "CoreDefinitionId"
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
         }
       },
-      "required" : [ "CoreDefinitionId" ]
+      "required": ["GroupId"]
     },
-    "DeleteCoreDefinitionResponse" : {
-      "type" : "structure",
-      "members" : { }
+    "CreateGroupCertificateAuthorityResponse": {
+      "type": "structure",
+      "members": {
+        "GroupCertificateAuthorityArn": {
+          "shape": "__string"
+        }
+      }
     },
-    "DeleteDeviceDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "DeviceDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "DeviceDefinitionId"
+    "CreateGroupRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
+        },
+        "InitialVersion": {
+          "shape": "GroupVersion"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      }
+    },
+    "CreateGroupResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
+        },
+        "CreationTimestamp": {
+          "shape": "__string"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
+        },
+        "LatestVersion": {
+          "shape": "__string"
+        },
+        "LatestVersionArn": {
+          "shape": "__string"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      }
+    },
+    "CreateGroupVersionRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
+        },
+        "CoreDefinitionVersionArn": {
+          "shape": "__string"
+        },
+        "DeviceDefinitionVersionArn": {
+          "shape": "__string"
+        },
+        "FunctionDefinitionVersionArn": {
+          "shape": "__string"
+        },
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
+        },
+        "LoggerDefinitionVersionArn": {
+          "shape": "__string"
+        },
+        "SubscriptionDefinitionVersionArn": {
+          "shape": "__string"
         }
       },
-      "required" : [ "DeviceDefinitionId" ]
+      "required": ["GroupId"]
     },
-    "DeleteDeviceDefinitionResponse" : {
-      "type" : "structure",
-      "members" : { }
+    "CreateGroupVersionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
+        },
+        "CreationTimestamp": {
+          "shape": "__string"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "Version": {
+          "shape": "__string"
+        }
+      }
     },
-    "DeleteFunctionDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "FunctionDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "FunctionDefinitionId"
+    "CreateLoggerDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
+        },
+        "InitialVersion": {
+          "shape": "LoggerDefinitionVersion"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      }
+    },
+    "CreateLoggerDefinitionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
+        },
+        "CreationTimestamp": {
+          "shape": "__string"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
+        },
+        "LatestVersion": {
+          "shape": "__string"
+        },
+        "LatestVersionArn": {
+          "shape": "__string"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      }
+    },
+    "CreateLoggerDefinitionVersionRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
+        },
+        "LoggerDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "LoggerDefinitionId"
+        },
+        "Loggers": {
+          "shape": "ListOfLogger"
         }
       },
-      "required" : [ "FunctionDefinitionId" ]
+      "required": ["LoggerDefinitionId"]
     },
-    "DeleteFunctionDefinitionResponse" : {
-      "type" : "structure",
-      "members" : { }
+    "CreateLoggerDefinitionVersionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
+        },
+        "CreationTimestamp": {
+          "shape": "__string"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "Version": {
+          "shape": "__string"
+        }
+      }
     },
-    "DeleteGroupRequest" : {
-      "type" : "structure",
-      "members" : {
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
+    "CreateSubscriptionDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
+        },
+        "InitialVersion": {
+          "shape": "SubscriptionDefinitionVersion"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      }
+    },
+    "CreateSubscriptionDefinitionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
+        },
+        "CreationTimestamp": {
+          "shape": "__string"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
+        },
+        "LatestVersion": {
+          "shape": "__string"
+        },
+        "LatestVersionArn": {
+          "shape": "__string"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      }
+    },
+    "CreateSubscriptionDefinitionVersionRequest": {
+      "type": "structure",
+      "members": {
+        "AmznClientToken": {
+          "shape": "__string",
+          "location": "header",
+          "locationName": "X-Amzn-Client-Token"
+        },
+        "SubscriptionDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "SubscriptionDefinitionId"
+        },
+        "Subscriptions": {
+          "shape": "ListOfSubscription"
         }
       },
-      "required" : [ "GroupId" ]
+      "required": ["SubscriptionDefinitionId"]
     },
-    "DeleteGroupResponse" : {
-      "type" : "structure",
-      "members" : { }
+    "CreateSubscriptionDefinitionVersionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
+        },
+        "CreationTimestamp": {
+          "shape": "__string"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "Version": {
+          "shape": "__string"
+        }
+      }
     },
-    "DeleteLoggerDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "LoggerDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "LoggerDefinitionId"
+    "DefinitionInformation": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
+        },
+        "CreationTimestamp": {
+          "shape": "__string"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
+        },
+        "LatestVersion": {
+          "shape": "__string"
+        },
+        "LatestVersionArn": {
+          "shape": "__string"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      }
+    },
+    "DeleteCoreDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "CoreDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "CoreDefinitionId"
         }
       },
-      "required" : [ "LoggerDefinitionId" ]
+      "required": ["CoreDefinitionId"]
     },
-    "DeleteLoggerDefinitionResponse" : {
-      "type" : "structure",
-      "members" : { }
+    "DeleteCoreDefinitionResponse": {
+      "type": "structure",
+      "members": {}
     },
-    "DeleteSubscriptionDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "SubscriptionDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "SubscriptionDefinitionId"
+    "DeleteDeviceDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "DeviceDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "DeviceDefinitionId"
         }
       },
-      "required" : [ "SubscriptionDefinitionId" ]
+      "required": ["DeviceDefinitionId"]
     },
-    "DeleteSubscriptionDefinitionResponse" : {
-      "type" : "structure",
-      "members" : { }
+    "DeleteDeviceDefinitionResponse": {
+      "type": "structure",
+      "members": {}
     },
-    "Deployment" : {
-      "type" : "structure",
-      "members" : {
-        "CreatedAt" : {
-          "shape" : "__string"
-        },
-        "DeploymentArn" : {
-          "shape" : "__string"
-        },
-        "DeploymentId" : {
-          "shape" : "__string"
-        },
-        "GroupArn" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "DeploymentType" : {
-      "type" : "string",
-      "enum" : [ "NewDeployment", "Redeployment" ]
-    },
-    "Deployments" : {
-      "type" : "list",
-      "member" : {
-        "shape" : "Deployment"
-      }
-    },
-    "Device" : {
-      "type" : "structure",
-      "members" : {
-        "CertificateArn" : {
-          "shape" : "__string"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "SyncShadow" : {
-          "shape" : "__boolean"
-        },
-        "ThingArn" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "DeviceDefinitionVersion" : {
-      "type" : "structure",
-      "members" : {
-        "Devices" : {
-          "shape" : "ListOfDevice"
-        }
-      }
-    },
-    "DisassociateRoleFromGroupRequest" : {
-      "type" : "structure",
-      "members" : {
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
+    "DeleteFunctionDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "FunctionDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "FunctionDefinitionId"
         }
       },
-      "required" : [ "GroupId" ]
+      "required": ["FunctionDefinitionId"]
     },
-    "DisassociateRoleFromGroupResponse" : {
-      "type" : "structure",
-      "members" : {
-        "DisassociatedAt" : {
-          "shape" : "__string"
-        }
-      }
+    "DeleteFunctionDefinitionResponse": {
+      "type": "structure",
+      "members": {}
     },
-    "DisassociateServiceRoleFromAccountRequest" : {
-      "type" : "structure",
-      "members" : { }
-    },
-    "DisassociateServiceRoleFromAccountResponse" : {
-      "type" : "structure",
-      "members" : {
-        "DisassociatedAt" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "Empty" : {
-      "type" : "structure",
-      "members" : { }
-    },
-    "ErrorDetail" : {
-      "type" : "structure",
-      "members" : {
-        "DetailedErrorCode" : {
-          "shape" : "__string"
-        },
-        "DetailedErrorMessage" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "ErrorDetails" : {
-      "type" : "list",
-      "member" : {
-        "shape" : "ErrorDetail"
-      }
-    },
-    "Function" : {
-      "type" : "structure",
-      "members" : {
-        "FunctionArn" : {
-          "shape" : "__string"
-        },
-        "FunctionConfiguration" : {
-          "shape" : "FunctionConfiguration"
-        },
-        "Id" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "FunctionConfiguration" : {
-      "type" : "structure",
-      "members" : {
-        "Environment" : {
-          "shape" : "FunctionConfigurationEnvironment"
-        },
-        "ExecArgs" : {
-          "shape" : "__string"
-        },
-        "Executable" : {
-          "shape" : "__string"
-        },
-        "MemorySize" : {
-          "shape" : "__integer"
-        },
-        "Pinned" : {
-          "shape" : "__boolean"
-        },
-        "Timeout" : {
-          "shape" : "__integer"
-        }
-      }
-    },
-    "FunctionConfigurationEnvironment" : {
-      "type" : "structure",
-      "members" : {
-        "Variables" : {
-          "shape" : "MapOf__string"
-        }
-      }
-    },
-    "FunctionDefinitionVersion" : {
-      "type" : "structure",
-      "members" : {
-        "Functions" : {
-          "shape" : "ListOfFunction"
-        }
-      }
-    },
-    "GeneralError" : {
-      "type" : "structure",
-      "members" : {
-        "ErrorDetails" : {
-          "shape" : "ErrorDetails"
-        },
-        "Message" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "GetAssociatedRoleRequest" : {
-      "type" : "structure",
-      "members" : {
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
+    "DeleteGroupRequest": {
+      "type": "structure",
+      "members": {
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
         }
       },
-      "required" : [ "GroupId" ]
+      "required": ["GroupId"]
     },
-    "GetAssociatedRoleResponse" : {
-      "type" : "structure",
-      "members" : {
-        "AssociatedAt" : {
-          "shape" : "__string"
-        },
-        "RoleArn" : {
-          "shape" : "__string"
-        }
-      }
+    "DeleteGroupResponse": {
+      "type": "structure",
+      "members": {}
     },
-    "GetConnectivityInfoRequest" : {
-      "type" : "structure",
-      "members" : {
-        "ThingName" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "ThingName"
+    "DeleteLoggerDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "LoggerDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "LoggerDefinitionId"
         }
       },
-      "required" : [ "ThingName" ]
+      "required": ["LoggerDefinitionId"]
     },
-    "GetConnectivityInfoResponse" : {
-      "type" : "structure",
-      "members" : {
-        "ConnectivityInfo" : {
-          "shape" : "ListOfConnectivityInfo"
-        },
-        "Message" : {
-          "shape" : "__string",
-          "locationName" : "message"
-        }
-      }
+    "DeleteLoggerDefinitionResponse": {
+      "type": "structure",
+      "members": {}
     },
-    "GetCoreDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "CoreDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "CoreDefinitionId"
+    "DeleteSubscriptionDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "SubscriptionDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "SubscriptionDefinitionId"
         }
       },
-      "required" : [ "CoreDefinitionId" ]
+      "required": ["SubscriptionDefinitionId"]
     },
-    "GetCoreDefinitionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "DeleteSubscriptionDefinitionResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "Deployment": {
+      "type": "structure",
+      "members": {
+        "CreatedAt": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "DeploymentArn": {
+          "shape": "__string"
         },
-        "Id" : {
-          "shape" : "__string"
+        "DeploymentId": {
+          "shape": "__string"
         },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
-        },
-        "LatestVersion" : {
-          "shape" : "__string"
-        },
-        "LatestVersionArn" : {
-          "shape" : "__string"
-        },
-        "Name" : {
-          "shape" : "__string"
+        "GroupArn": {
+          "shape": "__string"
         }
       }
     },
-    "GetCoreDefinitionVersionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "CoreDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "CoreDefinitionId"
+    "DeploymentType": {
+      "type": "string",
+      "enum": ["NewDeployment", "Redeployment"]
+    },
+    "Deployments": {
+      "type": "list",
+      "member": {
+        "shape": "Deployment"
+      }
+    },
+    "Device": {
+      "type": "structure",
+      "members": {
+        "CertificateArn": {
+          "shape": "__string"
         },
-        "CoreDefinitionVersionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "CoreDefinitionVersionId"
+        "Id": {
+          "shape": "__string"
+        },
+        "SyncShadow": {
+          "shape": "__boolean"
+        },
+        "ThingArn": {
+          "shape": "__string"
+        }
+      }
+    },
+    "DeviceDefinitionVersion": {
+      "type": "structure",
+      "members": {
+        "Devices": {
+          "shape": "ListOfDevice"
+        }
+      }
+    },
+    "DisassociateRoleFromGroupRequest": {
+      "type": "structure",
+      "members": {
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
         }
       },
-      "required" : [ "CoreDefinitionId", "CoreDefinitionVersionId" ]
+      "required": ["GroupId"]
     },
-    "GetCoreDefinitionVersionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
-        },
-        "CreationTimestamp" : {
-          "shape" : "__string"
-        },
-        "Definition" : {
-          "shape" : "CoreDefinitionVersion"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "Version" : {
-          "shape" : "__string"
+    "DisassociateRoleFromGroupResponse": {
+      "type": "structure",
+      "members": {
+        "DisassociatedAt": {
+          "shape": "__string"
         }
       }
     },
-    "GetDeploymentStatusRequest" : {
-      "type" : "structure",
-      "members" : {
-        "DeploymentId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "DeploymentId"
+    "DisassociateServiceRoleFromAccountRequest": {
+      "type": "structure",
+      "members": {}
+    },
+    "DisassociateServiceRoleFromAccountResponse": {
+      "type": "structure",
+      "members": {
+        "DisassociatedAt": {
+          "shape": "__string"
+        }
+      }
+    },
+    "Empty": {
+      "type": "structure",
+      "members": {}
+    },
+    "ErrorDetail": {
+      "type": "structure",
+      "members": {
+        "DetailedErrorCode": {
+          "shape": "__string"
         },
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
+        "DetailedErrorMessage": {
+          "shape": "__string"
+        }
+      }
+    },
+    "ErrorDetails": {
+      "type": "list",
+      "member": {
+        "shape": "ErrorDetail"
+      }
+    },
+    "Function": {
+      "type": "structure",
+      "members": {
+        "FunctionArn": {
+          "shape": "__string"
+        },
+        "FunctionConfiguration": {
+          "shape": "FunctionConfiguration"
+        },
+        "Id": {
+          "shape": "__string"
+        }
+      }
+    },
+    "FunctionConfiguration": {
+      "type": "structure",
+      "members": {
+        "Environment": {
+          "shape": "FunctionConfigurationEnvironment"
+        },
+        "ExecArgs": {
+          "shape": "__string"
+        },
+        "Executable": {
+          "shape": "__string"
+        },
+        "MemorySize": {
+          "shape": "__integer"
+        },
+        "Pinned": {
+          "shape": "__boolean"
+        },
+        "Timeout": {
+          "shape": "__integer"
+        }
+      }
+    },
+    "FunctionConfigurationEnvironment": {
+      "type": "structure",
+      "members": {
+        "Variables": {
+          "shape": "MapOf__string"
+        }
+      }
+    },
+    "FunctionDefinitionVersion": {
+      "type": "structure",
+      "members": {
+        "Functions": {
+          "shape": "ListOfFunction"
+        }
+      }
+    },
+    "GeneralError": {
+      "type": "structure",
+      "members": {
+        "ErrorDetails": {
+          "shape": "ErrorDetails"
+        },
+        "Message": {
+          "shape": "__string"
+        }
+      }
+    },
+    "GetAssociatedRoleRequest": {
+      "type": "structure",
+      "members": {
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
         }
       },
-      "required" : [ "GroupId", "DeploymentId" ]
+      "required": ["GroupId"]
     },
-    "GetDeploymentStatusResponse" : {
-      "type" : "structure",
-      "members" : {
-        "DeploymentStatus" : {
-          "shape" : "__string"
+    "GetAssociatedRoleResponse": {
+      "type": "structure",
+      "members": {
+        "AssociatedAt": {
+          "shape": "__string"
         },
-        "ErrorMessage" : {
-          "shape" : "__string"
-        },
-        "UpdatedAt" : {
-          "shape" : "__string"
+        "RoleArn": {
+          "shape": "__string"
         }
       }
     },
-    "GetDeviceDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "DeviceDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "DeviceDefinitionId"
+    "GetConnectivityInfoRequest": {
+      "type": "structure",
+      "members": {
+        "ThingName": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "ThingName"
         }
       },
-      "required" : [ "DeviceDefinitionId" ]
+      "required": ["ThingName"]
     },
-    "GetDeviceDefinitionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "GetConnectivityInfoResponse": {
+      "type": "structure",
+      "members": {
+        "ConnectivityInfo": {
+          "shape": "ListOfConnectivityInfo"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
-        },
-        "LatestVersion" : {
-          "shape" : "__string"
-        },
-        "LatestVersionArn" : {
-          "shape" : "__string"
-        },
-        "Name" : {
-          "shape" : "__string"
+        "Message": {
+          "shape": "__string",
+          "locationName": "message"
         }
       }
     },
-    "GetDeviceDefinitionVersionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "DeviceDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "DeviceDefinitionId"
-        },
-        "DeviceDefinitionVersionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "DeviceDefinitionVersionId"
+    "GetCoreDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "CoreDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "CoreDefinitionId"
         }
       },
-      "required" : [ "DeviceDefinitionVersionId", "DeviceDefinitionId" ]
+      "required": ["CoreDefinitionId"]
     },
-    "GetDeviceDefinitionVersionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "GetCoreDefinitionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "Definition" : {
-          "shape" : "DeviceDefinitionVersion"
+        "Id": {
+          "shape": "__string"
         },
-        "Id" : {
-          "shape" : "__string"
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
         },
-        "Version" : {
-          "shape" : "__string"
+        "LatestVersion": {
+          "shape": "__string"
+        },
+        "LatestVersionArn": {
+          "shape": "__string"
+        },
+        "Name": {
+          "shape": "__string"
         }
       }
     },
-    "GetFunctionDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "FunctionDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "FunctionDefinitionId"
+    "GetCoreDefinitionVersionRequest": {
+      "type": "structure",
+      "members": {
+        "CoreDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "CoreDefinitionId"
+        },
+        "CoreDefinitionVersionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "CoreDefinitionVersionId"
         }
       },
-      "required" : [ "FunctionDefinitionId" ]
+      "required": ["CoreDefinitionId", "CoreDefinitionVersionId"]
     },
-    "GetFunctionDefinitionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "GetCoreDefinitionVersionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "Id" : {
-          "shape" : "__string"
+        "Definition": {
+          "shape": "CoreDefinitionVersion"
         },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
+        "Id": {
+          "shape": "__string"
         },
-        "LatestVersion" : {
-          "shape" : "__string"
-        },
-        "LatestVersionArn" : {
-          "shape" : "__string"
-        },
-        "Name" : {
-          "shape" : "__string"
+        "Version": {
+          "shape": "__string"
         }
       }
     },
-    "GetFunctionDefinitionVersionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "FunctionDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "FunctionDefinitionId"
+    "GetDeploymentStatusRequest": {
+      "type": "structure",
+      "members": {
+        "DeploymentId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "DeploymentId"
         },
-        "FunctionDefinitionVersionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "FunctionDefinitionVersionId"
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
         }
       },
-      "required" : [ "FunctionDefinitionId", "FunctionDefinitionVersionId" ]
+      "required": ["GroupId", "DeploymentId"]
     },
-    "GetFunctionDefinitionVersionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "GetDeploymentStatusResponse": {
+      "type": "structure",
+      "members": {
+        "DeploymentStatus": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "ErrorMessage": {
+          "shape": "__string"
         },
-        "Definition" : {
-          "shape" : "FunctionDefinitionVersion"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "Version" : {
-          "shape" : "__string"
+        "UpdatedAt": {
+          "shape": "__string"
         }
       }
     },
-    "GetGroupCertificateAuthorityRequest" : {
-      "type" : "structure",
-      "members" : {
-        "CertificateAuthorityId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "CertificateAuthorityId"
-        },
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
+    "GetDeviceDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "DeviceDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "DeviceDefinitionId"
         }
       },
-      "required" : [ "CertificateAuthorityId", "GroupId" ]
+      "required": ["DeviceDefinitionId"]
     },
-    "GetGroupCertificateAuthorityResponse" : {
-      "type" : "structure",
-      "members" : {
-        "GroupCertificateAuthorityArn" : {
-          "shape" : "__string"
+    "GetDeviceDefinitionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "GroupCertificateAuthorityId" : {
-          "shape" : "__string"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "PemEncodedCertificate" : {
-          "shape" : "__string"
+        "Id": {
+          "shape": "__string"
+        },
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
+        },
+        "LatestVersion": {
+          "shape": "__string"
+        },
+        "LatestVersionArn": {
+          "shape": "__string"
+        },
+        "Name": {
+          "shape": "__string"
         }
       }
     },
-    "GetGroupCertificateConfigurationRequest" : {
-      "type" : "structure",
-      "members" : {
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
+    "GetDeviceDefinitionVersionRequest": {
+      "type": "structure",
+      "members": {
+        "DeviceDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "DeviceDefinitionId"
+        },
+        "DeviceDefinitionVersionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "DeviceDefinitionVersionId"
         }
       },
-      "required" : [ "GroupId" ]
+      "required": ["DeviceDefinitionVersionId", "DeviceDefinitionId"]
     },
-    "GetGroupCertificateConfigurationResponse" : {
-      "type" : "structure",
-      "members" : {
-        "CertificateAuthorityExpiryInMilliseconds" : {
-          "shape" : "__string"
+    "GetDeviceDefinitionVersionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "CertificateExpiryInMilliseconds" : {
-          "shape" : "__string"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "GroupId" : {
-          "shape" : "__string"
+        "Definition": {
+          "shape": "DeviceDefinitionVersion"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "Version": {
+          "shape": "__string"
         }
       }
     },
-    "GetGroupRequest" : {
-      "type" : "structure",
-      "members" : {
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
+    "GetFunctionDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "FunctionDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "FunctionDefinitionId"
         }
       },
-      "required" : [ "GroupId" ]
+      "required": ["FunctionDefinitionId"]
     },
-    "GetGroupResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "GetFunctionDefinitionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "Id" : {
-          "shape" : "__string"
+        "Id": {
+          "shape": "__string"
         },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
         },
-        "LatestVersion" : {
-          "shape" : "__string"
+        "LatestVersion": {
+          "shape": "__string"
         },
-        "LatestVersionArn" : {
-          "shape" : "__string"
+        "LatestVersionArn": {
+          "shape": "__string"
         },
-        "Name" : {
-          "shape" : "__string"
+        "Name": {
+          "shape": "__string"
         }
       }
     },
-    "GetGroupVersionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
+    "GetFunctionDefinitionVersionRequest": {
+      "type": "structure",
+      "members": {
+        "FunctionDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "FunctionDefinitionId"
         },
-        "GroupVersionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupVersionId"
+        "FunctionDefinitionVersionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "FunctionDefinitionVersionId"
         }
       },
-      "required" : [ "GroupVersionId", "GroupId" ]
+      "required": ["FunctionDefinitionId", "FunctionDefinitionVersionId"]
     },
-    "GetGroupVersionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "GetFunctionDefinitionVersionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "Definition" : {
-          "shape" : "GroupVersion"
+        "Definition": {
+          "shape": "FunctionDefinitionVersion"
         },
-        "Id" : {
-          "shape" : "__string"
+        "Id": {
+          "shape": "__string"
         },
-        "Version" : {
-          "shape" : "__string"
+        "Version": {
+          "shape": "__string"
         }
       }
     },
-    "GetLoggerDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "LoggerDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "LoggerDefinitionId"
+    "GetGroupCertificateAuthorityRequest": {
+      "type": "structure",
+      "members": {
+        "CertificateAuthorityId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "CertificateAuthorityId"
+        },
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
         }
       },
-      "required" : [ "LoggerDefinitionId" ]
+      "required": ["CertificateAuthorityId", "GroupId"]
     },
-    "GetLoggerDefinitionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "GetGroupCertificateAuthorityResponse": {
+      "type": "structure",
+      "members": {
+        "GroupCertificateAuthorityArn": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "GroupCertificateAuthorityId": {
+          "shape": "__string"
         },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
-        },
-        "LatestVersion" : {
-          "shape" : "__string"
-        },
-        "LatestVersionArn" : {
-          "shape" : "__string"
-        },
-        "Name" : {
-          "shape" : "__string"
+        "PemEncodedCertificate": {
+          "shape": "__string"
         }
       }
     },
-    "GetLoggerDefinitionVersionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "LoggerDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "LoggerDefinitionId"
-        },
-        "LoggerDefinitionVersionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "LoggerDefinitionVersionId"
+    "GetGroupCertificateConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
         }
       },
-      "required" : [ "LoggerDefinitionVersionId", "LoggerDefinitionId" ]
+      "required": ["GroupId"]
     },
-    "GetLoggerDefinitionVersionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "GetGroupCertificateConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "CertificateAuthorityExpiryInMilliseconds": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "CertificateExpiryInMilliseconds": {
+          "shape": "__string"
         },
-        "Definition" : {
-          "shape" : "LoggerDefinitionVersion"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "Version" : {
-          "shape" : "__string"
+        "GroupId": {
+          "shape": "__string"
         }
       }
     },
-    "GetServiceRoleForAccountRequest" : {
-      "type" : "structure",
-      "members" : { }
-    },
-    "GetServiceRoleForAccountResponse" : {
-      "type" : "structure",
-      "members" : {
-        "AssociatedAt" : {
-          "shape" : "__string"
-        },
-        "RoleArn" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "GetSubscriptionDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "SubscriptionDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "SubscriptionDefinitionId"
+    "GetGroupRequest": {
+      "type": "structure",
+      "members": {
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
         }
       },
-      "required" : [ "SubscriptionDefinitionId" ]
+      "required": ["GroupId"]
     },
-    "GetSubscriptionDefinitionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "GetGroupResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "Id" : {
-          "shape" : "__string"
+        "Id": {
+          "shape": "__string"
         },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
         },
-        "LatestVersion" : {
-          "shape" : "__string"
+        "LatestVersion": {
+          "shape": "__string"
         },
-        "LatestVersionArn" : {
-          "shape" : "__string"
+        "LatestVersionArn": {
+          "shape": "__string"
         },
-        "Name" : {
-          "shape" : "__string"
+        "Name": {
+          "shape": "__string"
         }
       }
     },
-    "GetSubscriptionDefinitionVersionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "SubscriptionDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "SubscriptionDefinitionId"
+    "GetGroupVersionRequest": {
+      "type": "structure",
+      "members": {
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
         },
-        "SubscriptionDefinitionVersionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "SubscriptionDefinitionVersionId"
+        "GroupVersionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupVersionId"
         }
       },
-      "required" : [ "SubscriptionDefinitionId", "SubscriptionDefinitionVersionId" ]
+      "required": ["GroupVersionId", "GroupId"]
     },
-    "GetSubscriptionDefinitionVersionResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
+    "GetGroupVersionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "CreationTimestamp" : {
-          "shape" : "__string"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "Definition" : {
-          "shape" : "SubscriptionDefinitionVersion"
+        "Definition": {
+          "shape": "GroupVersion"
         },
-        "Id" : {
-          "shape" : "__string"
+        "Id": {
+          "shape": "__string"
         },
-        "Version" : {
-          "shape" : "__string"
+        "Version": {
+          "shape": "__string"
         }
       }
     },
-    "GroupCertificateAuthorityProperties" : {
-      "type" : "structure",
-      "members" : {
-        "GroupCertificateAuthorityArn" : {
-          "shape" : "__string"
-        },
-        "GroupCertificateAuthorityId" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "GroupCertificateConfiguration" : {
-      "type" : "structure",
-      "members" : {
-        "CertificateAuthorityExpiryInMilliseconds" : {
-          "shape" : "__string"
-        },
-        "CertificateExpiryInMilliseconds" : {
-          "shape" : "__string"
-        },
-        "GroupId" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "GroupInformation" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
-        },
-        "CreationTimestamp" : {
-          "shape" : "__string"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "LastUpdatedTimestamp" : {
-          "shape" : "__string"
-        },
-        "LatestVersion" : {
-          "shape" : "__string"
-        },
-        "LatestVersionArn" : {
-          "shape" : "__string"
-        },
-        "Name" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "GroupVersion" : {
-      "type" : "structure",
-      "members" : {
-        "CoreDefinitionVersionArn" : {
-          "shape" : "__string"
-        },
-        "DeviceDefinitionVersionArn" : {
-          "shape" : "__string"
-        },
-        "FunctionDefinitionVersionArn" : {
-          "shape" : "__string"
-        },
-        "LoggerDefinitionVersionArn" : {
-          "shape" : "__string"
-        },
-        "SubscriptionDefinitionVersionArn" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "InternalServerErrorException" : {
-      "type" : "structure",
-      "members" : {
-        "ErrorDetails" : {
-          "shape" : "ErrorDetails"
-        },
-        "Message" : {
-          "shape" : "__string"
+    "GetLoggerDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "LoggerDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "LoggerDefinitionId"
         }
       },
-      "exception" : true,
-      "error" : {
-        "httpStatusCode" : 500
+      "required": ["LoggerDefinitionId"]
+    },
+    "GetLoggerDefinitionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
+        },
+        "CreationTimestamp": {
+          "shape": "__string"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
+        },
+        "LatestVersion": {
+          "shape": "__string"
+        },
+        "LatestVersionArn": {
+          "shape": "__string"
+        },
+        "Name": {
+          "shape": "__string"
+        }
       }
     },
-    "ListCoreDefinitionVersionsRequest" : {
-      "type" : "structure",
-      "members" : {
-        "CoreDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "CoreDefinitionId"
+    "GetLoggerDefinitionVersionRequest": {
+      "type": "structure",
+      "members": {
+        "LoggerDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "LoggerDefinitionId"
         },
-        "MaxResults" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "MaxResults"
-        },
-        "NextToken" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "NextToken"
+        "LoggerDefinitionVersionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "LoggerDefinitionVersionId"
         }
       },
-      "required" : [ "CoreDefinitionId" ]
+      "required": ["LoggerDefinitionVersionId", "LoggerDefinitionId"]
     },
-    "ListCoreDefinitionVersionsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "NextToken" : {
-          "shape" : "__string"
+    "GetLoggerDefinitionVersionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "Versions" : {
-          "shape" : "ListOfVersionInformation"
+        "CreationTimestamp": {
+          "shape": "__string"
+        },
+        "Definition": {
+          "shape": "LoggerDefinitionVersion"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "Version": {
+          "shape": "__string"
         }
       }
     },
-    "ListCoreDefinitionsRequest" : {
-      "type" : "structure",
-      "members" : {
-        "MaxResults" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "MaxResults"
+    "GetServiceRoleForAccountRequest": {
+      "type": "structure",
+      "members": {}
+    },
+    "GetServiceRoleForAccountResponse": {
+      "type": "structure",
+      "members": {
+        "AssociatedAt": {
+          "shape": "__string"
         },
-        "NextToken" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "NextToken"
+        "RoleArn": {
+          "shape": "__string"
         }
       }
     },
-    "ListCoreDefinitionsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Definitions" : {
-          "shape" : "ListOfDefinitionInformation"
-        },
-        "NextToken" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "ListDefinitionsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Definitions" : {
-          "shape" : "ListOfDefinitionInformation"
-        },
-        "NextToken" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "ListDeploymentsRequest" : {
-      "type" : "structure",
-      "members" : {
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
-        },
-        "MaxResults" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "MaxResults"
-        },
-        "NextToken" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "NextToken"
+    "GetSubscriptionDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "SubscriptionDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "SubscriptionDefinitionId"
         }
       },
-      "required" : [ "GroupId" ]
+      "required": ["SubscriptionDefinitionId"]
     },
-    "ListDeploymentsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Deployments" : {
-          "shape" : "Deployments"
+    "GetSubscriptionDefinitionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "NextToken" : {
-          "shape" : "__string"
+        "CreationTimestamp": {
+          "shape": "__string"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
+        },
+        "LatestVersion": {
+          "shape": "__string"
+        },
+        "LatestVersionArn": {
+          "shape": "__string"
+        },
+        "Name": {
+          "shape": "__string"
         }
       }
     },
-    "ListDeviceDefinitionVersionsRequest" : {
-      "type" : "structure",
-      "members" : {
-        "DeviceDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "DeviceDefinitionId"
+    "GetSubscriptionDefinitionVersionRequest": {
+      "type": "structure",
+      "members": {
+        "SubscriptionDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "SubscriptionDefinitionId"
         },
-        "MaxResults" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "MaxResults"
-        },
-        "NextToken" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "NextToken"
+        "SubscriptionDefinitionVersionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "SubscriptionDefinitionVersionId"
         }
       },
-      "required" : [ "DeviceDefinitionId" ]
+      "required": [
+        "SubscriptionDefinitionId",
+        "SubscriptionDefinitionVersionId"
+      ]
     },
-    "ListDeviceDefinitionVersionsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "NextToken" : {
-          "shape" : "__string"
+    "GetSubscriptionDefinitionVersionResponse": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "Versions" : {
-          "shape" : "ListOfVersionInformation"
+        "CreationTimestamp": {
+          "shape": "__string"
+        },
+        "Definition": {
+          "shape": "SubscriptionDefinitionVersion"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "Version": {
+          "shape": "__string"
         }
       }
     },
-    "ListDeviceDefinitionsRequest" : {
-      "type" : "structure",
-      "members" : {
-        "MaxResults" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "MaxResults"
+    "GroupCertificateAuthorityProperties": {
+      "type": "structure",
+      "members": {
+        "GroupCertificateAuthorityArn": {
+          "shape": "__string"
         },
-        "NextToken" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "NextToken"
+        "GroupCertificateAuthorityId": {
+          "shape": "__string"
         }
       }
     },
-    "ListDeviceDefinitionsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Definitions" : {
-          "shape" : "ListOfDefinitionInformation"
+    "GroupCertificateConfiguration": {
+      "type": "structure",
+      "members": {
+        "CertificateAuthorityExpiryInMilliseconds": {
+          "shape": "__string"
         },
-        "NextToken" : {
-          "shape" : "__string"
+        "CertificateExpiryInMilliseconds": {
+          "shape": "__string"
+        },
+        "GroupId": {
+          "shape": "__string"
         }
       }
     },
-    "ListFunctionDefinitionVersionsRequest" : {
-      "type" : "structure",
-      "members" : {
-        "FunctionDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "FunctionDefinitionId"
+    "GroupInformation": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
         },
-        "MaxResults" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "MaxResults"
+        "CreationTimestamp": {
+          "shape": "__string"
         },
-        "NextToken" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "NextToken"
+        "Id": {
+          "shape": "__string"
+        },
+        "LastUpdatedTimestamp": {
+          "shape": "__string"
+        },
+        "LatestVersion": {
+          "shape": "__string"
+        },
+        "LatestVersionArn": {
+          "shape": "__string"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      }
+    },
+    "GroupVersion": {
+      "type": "structure",
+      "members": {
+        "CoreDefinitionVersionArn": {
+          "shape": "__string"
+        },
+        "DeviceDefinitionVersionArn": {
+          "shape": "__string"
+        },
+        "FunctionDefinitionVersionArn": {
+          "shape": "__string"
+        },
+        "LoggerDefinitionVersionArn": {
+          "shape": "__string"
+        },
+        "SubscriptionDefinitionVersionArn": {
+          "shape": "__string"
+        }
+      }
+    },
+    "InternalServerErrorException": {
+      "type": "structure",
+      "members": {
+        "ErrorDetails": {
+          "shape": "ErrorDetails"
+        },
+        "Message": {
+          "shape": "__string"
         }
       },
-      "required" : [ "FunctionDefinitionId" ]
-    },
-    "ListFunctionDefinitionVersionsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "NextToken" : {
-          "shape" : "__string"
-        },
-        "Versions" : {
-          "shape" : "ListOfVersionInformation"
-        }
+      "exception": true,
+      "error": {
+        "httpStatusCode": 500
       }
     },
-    "ListFunctionDefinitionsRequest" : {
-      "type" : "structure",
-      "members" : {
-        "MaxResults" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "MaxResults"
+    "ListCoreDefinitionVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "CoreDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "CoreDefinitionId"
         },
-        "NextToken" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "NextToken"
-        }
-      }
-    },
-    "ListFunctionDefinitionsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Definitions" : {
-          "shape" : "ListOfDefinitionInformation"
+        "MaxResults": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "MaxResults"
         },
-        "NextToken" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "ListGroupCertificateAuthoritiesRequest" : {
-      "type" : "structure",
-      "members" : {
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "NextToken"
         }
       },
-      "required" : [ "GroupId" ]
+      "required": ["CoreDefinitionId"]
     },
-    "ListGroupCertificateAuthoritiesResponse" : {
-      "type" : "structure",
-      "members" : {
-        "GroupCertificateAuthorities" : {
-          "shape" : "ListOfGroupCertificateAuthorityProperties"
+    "ListCoreDefinitionVersionsResponse": {
+      "type": "structure",
+      "members": {
+        "NextToken": {
+          "shape": "__string"
+        },
+        "Versions": {
+          "shape": "ListOfVersionInformation"
         }
       }
     },
-    "ListGroupVersionsRequest" : {
-      "type" : "structure",
-      "members" : {
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
+    "ListCoreDefinitionsRequest": {
+      "type": "structure",
+      "members": {
+        "MaxResults": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "MaxResults"
         },
-        "MaxResults" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "MaxResults"
-        },
-        "NextToken" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "NextToken"
-        }
-      },
-      "required" : [ "GroupId" ]
-    },
-    "ListGroupVersionsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "NextToken" : {
-          "shape" : "__string"
-        },
-        "Versions" : {
-          "shape" : "ListOfVersionInformation"
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "NextToken"
         }
       }
     },
-    "ListGroupsRequest" : {
-      "type" : "structure",
-      "members" : {
-        "MaxResults" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "MaxResults"
+    "ListCoreDefinitionsResponse": {
+      "type": "structure",
+      "members": {
+        "Definitions": {
+          "shape": "ListOfDefinitionInformation"
         },
-        "NextToken" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "NextToken"
+        "NextToken": {
+          "shape": "__string"
         }
       }
     },
-    "ListGroupsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Groups" : {
-          "shape" : "ListOfGroupInformation"
+    "ListDefinitionsResponse": {
+      "type": "structure",
+      "members": {
+        "Definitions": {
+          "shape": "ListOfDefinitionInformation"
         },
-        "NextToken" : {
-          "shape" : "__string"
+        "NextToken": {
+          "shape": "__string"
         }
       }
     },
-    "ListLoggerDefinitionVersionsRequest" : {
-      "type" : "structure",
-      "members" : {
-        "LoggerDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "LoggerDefinitionId"
+    "ListDeploymentsRequest": {
+      "type": "structure",
+      "members": {
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
         },
-        "MaxResults" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "MaxResults"
+        "MaxResults": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "MaxResults"
         },
-        "NextToken" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "NextToken"
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "NextToken"
         }
       },
-      "required" : [ "LoggerDefinitionId" ]
+      "required": ["GroupId"]
     },
-    "ListLoggerDefinitionVersionsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "NextToken" : {
-          "shape" : "__string"
+    "ListDeploymentsResponse": {
+      "type": "structure",
+      "members": {
+        "Deployments": {
+          "shape": "Deployments"
         },
-        "Versions" : {
-          "shape" : "ListOfVersionInformation"
+        "NextToken": {
+          "shape": "__string"
         }
       }
     },
-    "ListLoggerDefinitionsRequest" : {
-      "type" : "structure",
-      "members" : {
-        "MaxResults" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "MaxResults"
+    "ListDeviceDefinitionVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "DeviceDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "DeviceDefinitionId"
         },
-        "NextToken" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "NextToken"
-        }
-      }
-    },
-    "ListLoggerDefinitionsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Definitions" : {
-          "shape" : "ListOfDefinitionInformation"
+        "MaxResults": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "MaxResults"
         },
-        "NextToken" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "ListOfConnectivityInfo" : {
-      "type" : "list",
-      "member" : {
-        "shape" : "ConnectivityInfo"
-      }
-    },
-    "ListOfCore" : {
-      "type" : "list",
-      "member" : {
-        "shape" : "Core"
-      }
-    },
-    "ListOfDefinitionInformation" : {
-      "type" : "list",
-      "member" : {
-        "shape" : "DefinitionInformation"
-      }
-    },
-    "ListOfDevice" : {
-      "type" : "list",
-      "member" : {
-        "shape" : "Device"
-      }
-    },
-    "ListOfFunction" : {
-      "type" : "list",
-      "member" : {
-        "shape" : "Function"
-      }
-    },
-    "ListOfGroupCertificateAuthorityProperties" : {
-      "type" : "list",
-      "member" : {
-        "shape" : "GroupCertificateAuthorityProperties"
-      }
-    },
-    "ListOfGroupInformation" : {
-      "type" : "list",
-      "member" : {
-        "shape" : "GroupInformation"
-      }
-    },
-    "ListOfLogger" : {
-      "type" : "list",
-      "member" : {
-        "shape" : "Logger"
-      }
-    },
-    "ListOfSubscription" : {
-      "type" : "list",
-      "member" : {
-        "shape" : "Subscription"
-      }
-    },
-    "ListOfVersionInformation" : {
-      "type" : "list",
-      "member" : {
-        "shape" : "VersionInformation"
-      }
-    },
-    "ListSubscriptionDefinitionVersionsRequest" : {
-      "type" : "structure",
-      "members" : {
-        "MaxResults" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "MaxResults"
-        },
-        "NextToken" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "NextToken"
-        },
-        "SubscriptionDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "SubscriptionDefinitionId"
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "NextToken"
         }
       },
-      "required" : [ "SubscriptionDefinitionId" ]
+      "required": ["DeviceDefinitionId"]
     },
-    "ListSubscriptionDefinitionVersionsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "NextToken" : {
-          "shape" : "__string"
+    "ListDeviceDefinitionVersionsResponse": {
+      "type": "structure",
+      "members": {
+        "NextToken": {
+          "shape": "__string"
         },
-        "Versions" : {
-          "shape" : "ListOfVersionInformation"
+        "Versions": {
+          "shape": "ListOfVersionInformation"
         }
       }
     },
-    "ListSubscriptionDefinitionsRequest" : {
-      "type" : "structure",
-      "members" : {
-        "MaxResults" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "MaxResults"
+    "ListDeviceDefinitionsRequest": {
+      "type": "structure",
+      "members": {
+        "MaxResults": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "MaxResults"
         },
-        "NextToken" : {
-          "shape" : "__string",
-          "location" : "querystring",
-          "locationName" : "NextToken"
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "NextToken"
         }
       }
     },
-    "ListSubscriptionDefinitionsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Definitions" : {
-          "shape" : "ListOfDefinitionInformation"
+    "ListDeviceDefinitionsResponse": {
+      "type": "structure",
+      "members": {
+        "Definitions": {
+          "shape": "ListOfDefinitionInformation"
         },
-        "NextToken" : {
-          "shape" : "__string"
+        "NextToken": {
+          "shape": "__string"
         }
       }
     },
-    "ListVersionsResponse" : {
-      "type" : "structure",
-      "members" : {
-        "NextToken" : {
-          "shape" : "__string"
+    "ListFunctionDefinitionVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "FunctionDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "FunctionDefinitionId"
         },
-        "Versions" : {
-          "shape" : "ListOfVersionInformation"
-        }
-      }
-    },
-    "Logger" : {
-      "type" : "structure",
-      "members" : {
-        "Component" : {
-          "shape" : "LoggerComponent"
+        "MaxResults": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "MaxResults"
         },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "Level" : {
-          "shape" : "LoggerLevel"
-        },
-        "Space" : {
-          "shape" : "__integer"
-        },
-        "Type" : {
-          "shape" : "LoggerType"
-        }
-      }
-    },
-    "LoggerComponent" : {
-      "type" : "string",
-      "enum" : [ "GreengrassSystem", "Lambda" ]
-    },
-    "LoggerDefinitionVersion" : {
-      "type" : "structure",
-      "members" : {
-        "Loggers" : {
-          "shape" : "ListOfLogger"
-        }
-      }
-    },
-    "LoggerLevel" : {
-      "type" : "string",
-      "enum" : [ "DEBUG", "INFO", "WARN", "ERROR", "FATAL" ]
-    },
-    "LoggerType" : {
-      "type" : "string",
-      "enum" : [ "FileSystem", "AWSCloudWatch" ]
-    },
-    "MapOf__string" : {
-      "type" : "map",
-      "key" : {
-        "shape" : "__string"
-      },
-      "value" : {
-        "shape" : "__string"
-      }
-    },
-    "Subscription" : {
-      "type" : "structure",
-      "members" : {
-        "Id" : {
-          "shape" : "__string"
-        },
-        "Source" : {
-          "shape" : "__string"
-        },
-        "Subject" : {
-          "shape" : "__string"
-        },
-        "Target" : {
-          "shape" : "__string"
-        }
-      }
-    },
-    "SubscriptionDefinitionVersion" : {
-      "type" : "structure",
-      "members" : {
-        "Subscriptions" : {
-          "shape" : "ListOfSubscription"
-        }
-      }
-    },
-    "UpdateConnectivityInfoRequest" : {
-      "type" : "structure",
-      "members" : {
-        "ConnectivityInfo" : {
-          "shape" : "ListOfConnectivityInfo"
-        },
-        "ThingName" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "ThingName"
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "NextToken"
         }
       },
-      "required" : [ "ThingName" ]
+      "required": ["FunctionDefinitionId"]
     },
-    "UpdateConnectivityInfoResponse" : {
-      "type" : "structure",
-      "members" : {
-        "Message" : {
-          "shape" : "__string",
-          "locationName" : "message"
+    "ListFunctionDefinitionVersionsResponse": {
+      "type": "structure",
+      "members": {
+        "NextToken": {
+          "shape": "__string"
         },
-        "Version" : {
-          "shape" : "__string"
+        "Versions": {
+          "shape": "ListOfVersionInformation"
         }
       }
     },
-    "UpdateCoreDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "CoreDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "CoreDefinitionId"
+    "ListFunctionDefinitionsRequest": {
+      "type": "structure",
+      "members": {
+        "MaxResults": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "MaxResults"
         },
-        "Name" : {
-          "shape" : "__string"
-        }
-      },
-      "required" : [ "CoreDefinitionId" ]
-    },
-    "UpdateCoreDefinitionResponse" : {
-      "type" : "structure",
-      "members" : { }
-    },
-    "UpdateDeviceDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "DeviceDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "DeviceDefinitionId"
-        },
-        "Name" : {
-          "shape" : "__string"
-        }
-      },
-      "required" : [ "DeviceDefinitionId" ]
-    },
-    "UpdateDeviceDefinitionResponse" : {
-      "type" : "structure",
-      "members" : { }
-    },
-    "UpdateFunctionDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "FunctionDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "FunctionDefinitionId"
-        },
-        "Name" : {
-          "shape" : "__string"
-        }
-      },
-      "required" : [ "FunctionDefinitionId" ]
-    },
-    "UpdateFunctionDefinitionResponse" : {
-      "type" : "structure",
-      "members" : { }
-    },
-    "UpdateGroupCertificateConfigurationRequest" : {
-      "type" : "structure",
-      "members" : {
-        "CertificateExpiryInMilliseconds" : {
-          "shape" : "__string"
-        },
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
-        }
-      },
-      "required" : [ "GroupId" ]
-    },
-    "UpdateGroupCertificateConfigurationResponse" : {
-      "type" : "structure",
-      "members" : {
-        "CertificateAuthorityExpiryInMilliseconds" : {
-          "shape" : "__string"
-        },
-        "CertificateExpiryInMilliseconds" : {
-          "shape" : "__string"
-        },
-        "GroupId" : {
-          "shape" : "__string"
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "NextToken"
         }
       }
     },
-    "UpdateGroupRequest" : {
-      "type" : "structure",
-      "members" : {
-        "GroupId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "GroupId"
+    "ListFunctionDefinitionsResponse": {
+      "type": "structure",
+      "members": {
+        "Definitions": {
+          "shape": "ListOfDefinitionInformation"
         },
-        "Name" : {
-          "shape" : "__string"
-        }
-      },
-      "required" : [ "GroupId" ]
-    },
-    "UpdateGroupResponse" : {
-      "type" : "structure",
-      "members" : { }
-    },
-    "UpdateLoggerDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "LoggerDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "LoggerDefinitionId"
-        },
-        "Name" : {
-          "shape" : "__string"
-        }
-      },
-      "required" : [ "LoggerDefinitionId" ]
-    },
-    "UpdateLoggerDefinitionResponse" : {
-      "type" : "structure",
-      "members" : { }
-    },
-    "UpdateSubscriptionDefinitionRequest" : {
-      "type" : "structure",
-      "members" : {
-        "Name" : {
-          "shape" : "__string"
-        },
-        "SubscriptionDefinitionId" : {
-          "shape" : "__string",
-          "location" : "uri",
-          "locationName" : "SubscriptionDefinitionId"
-        }
-      },
-      "required" : [ "SubscriptionDefinitionId" ]
-    },
-    "UpdateSubscriptionDefinitionResponse" : {
-      "type" : "structure",
-      "members" : { }
-    },
-    "VersionInformation" : {
-      "type" : "structure",
-      "members" : {
-        "Arn" : {
-          "shape" : "__string"
-        },
-        "CreationTimestamp" : {
-          "shape" : "__string"
-        },
-        "Id" : {
-          "shape" : "__string"
-        },
-        "Version" : {
-          "shape" : "__string"
+        "NextToken": {
+          "shape": "__string"
         }
       }
     },
-    "__boolean" : {
-      "type" : "boolean"
+    "ListGroupCertificateAuthoritiesRequest": {
+      "type": "structure",
+      "members": {
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
+        }
+      },
+      "required": ["GroupId"]
     },
-    "__double" : {
-      "type" : "double"
+    "ListGroupCertificateAuthoritiesResponse": {
+      "type": "structure",
+      "members": {
+        "GroupCertificateAuthorities": {
+          "shape": "ListOfGroupCertificateAuthorityProperties"
+        }
+      }
     },
-    "__integer" : {
-      "type" : "integer"
+    "ListGroupVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
+        },
+        "MaxResults": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "MaxResults"
+        },
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "NextToken"
+        }
+      },
+      "required": ["GroupId"]
     },
-    "__string" : {
-      "type" : "string"
+    "ListGroupVersionsResponse": {
+      "type": "structure",
+      "members": {
+        "NextToken": {
+          "shape": "__string"
+        },
+        "Versions": {
+          "shape": "ListOfVersionInformation"
+        }
+      }
     },
-    "__timestamp" : {
-      "type" : "timestamp"
+    "ListGroupsRequest": {
+      "type": "structure",
+      "members": {
+        "MaxResults": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "MaxResults"
+        },
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "NextToken"
+        }
+      }
+    },
+    "ListGroupsResponse": {
+      "type": "structure",
+      "members": {
+        "Groups": {
+          "shape": "ListOfGroupInformation"
+        },
+        "NextToken": {
+          "shape": "__string"
+        }
+      }
+    },
+    "ListLoggerDefinitionVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "LoggerDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "LoggerDefinitionId"
+        },
+        "MaxResults": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "MaxResults"
+        },
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "NextToken"
+        }
+      },
+      "required": ["LoggerDefinitionId"]
+    },
+    "ListLoggerDefinitionVersionsResponse": {
+      "type": "structure",
+      "members": {
+        "NextToken": {
+          "shape": "__string"
+        },
+        "Versions": {
+          "shape": "ListOfVersionInformation"
+        }
+      }
+    },
+    "ListLoggerDefinitionsRequest": {
+      "type": "structure",
+      "members": {
+        "MaxResults": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "MaxResults"
+        },
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "NextToken"
+        }
+      }
+    },
+    "ListLoggerDefinitionsResponse": {
+      "type": "structure",
+      "members": {
+        "Definitions": {
+          "shape": "ListOfDefinitionInformation"
+        },
+        "NextToken": {
+          "shape": "__string"
+        }
+      }
+    },
+    "ListOfConnectivityInfo": {
+      "type": "list",
+      "member": {
+        "shape": "ConnectivityInfo"
+      }
+    },
+    "ListOfCore": {
+      "type": "list",
+      "member": {
+        "shape": "Core"
+      }
+    },
+    "ListOfDefinitionInformation": {
+      "type": "list",
+      "member": {
+        "shape": "DefinitionInformation"
+      }
+    },
+    "ListOfDevice": {
+      "type": "list",
+      "member": {
+        "shape": "Device"
+      }
+    },
+    "ListOfFunction": {
+      "type": "list",
+      "member": {
+        "shape": "Function"
+      }
+    },
+    "ListOfGroupCertificateAuthorityProperties": {
+      "type": "list",
+      "member": {
+        "shape": "GroupCertificateAuthorityProperties"
+      }
+    },
+    "ListOfGroupInformation": {
+      "type": "list",
+      "member": {
+        "shape": "GroupInformation"
+      }
+    },
+    "ListOfLogger": {
+      "type": "list",
+      "member": {
+        "shape": "Logger"
+      }
+    },
+    "ListOfSubscription": {
+      "type": "list",
+      "member": {
+        "shape": "Subscription"
+      }
+    },
+    "ListOfVersionInformation": {
+      "type": "list",
+      "member": {
+        "shape": "VersionInformation"
+      }
+    },
+    "ListSubscriptionDefinitionVersionsRequest": {
+      "type": "structure",
+      "members": {
+        "MaxResults": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "MaxResults"
+        },
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "NextToken"
+        },
+        "SubscriptionDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "SubscriptionDefinitionId"
+        }
+      },
+      "required": ["SubscriptionDefinitionId"]
+    },
+    "ListSubscriptionDefinitionVersionsResponse": {
+      "type": "structure",
+      "members": {
+        "NextToken": {
+          "shape": "__string"
+        },
+        "Versions": {
+          "shape": "ListOfVersionInformation"
+        }
+      }
+    },
+    "ListSubscriptionDefinitionsRequest": {
+      "type": "structure",
+      "members": {
+        "MaxResults": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "MaxResults"
+        },
+        "NextToken": {
+          "shape": "__string",
+          "location": "querystring",
+          "locationName": "NextToken"
+        }
+      }
+    },
+    "ListSubscriptionDefinitionsResponse": {
+      "type": "structure",
+      "members": {
+        "Definitions": {
+          "shape": "ListOfDefinitionInformation"
+        },
+        "NextToken": {
+          "shape": "__string"
+        }
+      }
+    },
+    "ListVersionsResponse": {
+      "type": "structure",
+      "members": {
+        "NextToken": {
+          "shape": "__string"
+        },
+        "Versions": {
+          "shape": "ListOfVersionInformation"
+        }
+      }
+    },
+    "Logger": {
+      "type": "structure",
+      "members": {
+        "Component": {
+          "shape": "LoggerComponent"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "Level": {
+          "shape": "LoggerLevel"
+        },
+        "Space": {
+          "shape": "__integer"
+        },
+        "Type": {
+          "shape": "LoggerType"
+        }
+      }
+    },
+    "LoggerComponent": {
+      "type": "string",
+      "enum": ["GreengrassSystem", "Lambda"]
+    },
+    "LoggerDefinitionVersion": {
+      "type": "structure",
+      "members": {
+        "Loggers": {
+          "shape": "ListOfLogger"
+        }
+      }
+    },
+    "LoggerLevel": {
+      "type": "string",
+      "enum": ["DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
+    },
+    "LoggerType": {
+      "type": "string",
+      "enum": ["FileSystem", "AWSCloudWatch"]
+    },
+    "MapOf__string": {
+      "type": "map",
+      "key": {
+        "shape": "__string"
+      },
+      "value": {
+        "shape": "__string"
+      }
+    },
+    "Subscription": {
+      "type": "structure",
+      "members": {
+        "Id": {
+          "shape": "__string"
+        },
+        "Source": {
+          "shape": "__string"
+        },
+        "Subject": {
+          "shape": "__string"
+        },
+        "Target": {
+          "shape": "__string"
+        }
+      }
+    },
+    "SubscriptionDefinitionVersion": {
+      "type": "structure",
+      "members": {
+        "Subscriptions": {
+          "shape": "ListOfSubscription"
+        }
+      }
+    },
+    "UpdateConnectivityInfoRequest": {
+      "type": "structure",
+      "members": {
+        "ConnectivityInfo": {
+          "shape": "ListOfConnectivityInfo"
+        },
+        "ThingName": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "ThingName"
+        }
+      },
+      "required": ["ThingName"]
+    },
+    "UpdateConnectivityInfoResponse": {
+      "type": "structure",
+      "members": {
+        "Message": {
+          "shape": "__string",
+          "locationName": "message"
+        },
+        "Version": {
+          "shape": "__string"
+        }
+      }
+    },
+    "UpdateCoreDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "CoreDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "CoreDefinitionId"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      },
+      "required": ["CoreDefinitionId"]
+    },
+    "UpdateCoreDefinitionResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "UpdateDeviceDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "DeviceDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "DeviceDefinitionId"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      },
+      "required": ["DeviceDefinitionId"]
+    },
+    "UpdateDeviceDefinitionResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "UpdateFunctionDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "FunctionDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "FunctionDefinitionId"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      },
+      "required": ["FunctionDefinitionId"]
+    },
+    "UpdateFunctionDefinitionResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "UpdateGroupCertificateConfigurationRequest": {
+      "type": "structure",
+      "members": {
+        "CertificateExpiryInMilliseconds": {
+          "shape": "__string"
+        },
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
+        }
+      },
+      "required": ["GroupId"]
+    },
+    "UpdateGroupCertificateConfigurationResponse": {
+      "type": "structure",
+      "members": {
+        "CertificateAuthorityExpiryInMilliseconds": {
+          "shape": "__string"
+        },
+        "CertificateExpiryInMilliseconds": {
+          "shape": "__string"
+        },
+        "GroupId": {
+          "shape": "__string"
+        }
+      }
+    },
+    "UpdateGroupRequest": {
+      "type": "structure",
+      "members": {
+        "GroupId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "GroupId"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      },
+      "required": ["GroupId"]
+    },
+    "UpdateGroupResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "UpdateLoggerDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "LoggerDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "LoggerDefinitionId"
+        },
+        "Name": {
+          "shape": "__string"
+        }
+      },
+      "required": ["LoggerDefinitionId"]
+    },
+    "UpdateLoggerDefinitionResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "UpdateSubscriptionDefinitionRequest": {
+      "type": "structure",
+      "members": {
+        "Name": {
+          "shape": "__string"
+        },
+        "SubscriptionDefinitionId": {
+          "shape": "__string",
+          "location": "uri",
+          "locationName": "SubscriptionDefinitionId"
+        }
+      },
+      "required": ["SubscriptionDefinitionId"]
+    },
+    "UpdateSubscriptionDefinitionResponse": {
+      "type": "structure",
+      "members": {}
+    },
+    "VersionInformation": {
+      "type": "structure",
+      "members": {
+        "Arn": {
+          "shape": "__string"
+        },
+        "CreationTimestamp": {
+          "shape": "__string"
+        },
+        "Id": {
+          "shape": "__string"
+        },
+        "Version": {
+          "shape": "__string"
+        }
+      }
+    },
+    "__boolean": {
+      "type": "boolean"
+    },
+    "__double": {
+      "type": "double"
+    },
+    "__integer": {
+      "type": "integer"
+    },
+    "__string": {
+      "type": "string"
+    },
+    "__timestamp": {
+      "type": "timestamp"
     }
   }
 }

@@ -45,23 +45,19 @@
   "shapes": {
     "AWSOrganizationsNotInUseException": {
       "base": "<p>Your account is not a member of an organization. To make this request, you must use the credentials of an account that belongs to an organization.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AcceptHandshakeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AcceptHandshakeResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AccessDeniedException": {
       "base": "<p>You don't have permissions to perform the requested operation. The user or role that is making the request must have at least one IAM permissions policy attached that grants the required permissions. For more information, see <a href=\"http://docs.aws.amazon.com/IAM/latest/UserGuide/access.html\">Access Management</a> in the <i>IAM User Guide</i>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Account": {
       "base": "<p>Contains information about an AWS account that is a member of an organization.</p>",
@@ -104,8 +100,7 @@
     },
     "AccountNotFoundException": {
       "base": "<p> We can't find an AWS account with the AccountId that you specified, or the account whose credentials you used to make this request is not a member of an organization.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AccountStatus": {
       "base": null,
@@ -129,13 +124,11 @@
     },
     "AlreadyInOrganizationException": {
       "base": "<p>This account is already a member of an organization. An account can belong to only one organization at a time.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AttachPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AwsManagedPolicy": {
       "base": null,
@@ -145,13 +138,11 @@
     },
     "CancelHandshakeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelHandshakeResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "Child": {
       "base": "<p>Contains a list of child entities, either OUs or accounts.</p>",
@@ -168,8 +159,7 @@
     },
     "ChildNotFoundException": {
       "base": "<p>We can't find an organizational unit (OU) or AWS account with the ChildId that you specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ChildType": {
       "base": null,
@@ -186,13 +176,11 @@
     },
     "ConcurrentModificationException": {
       "base": "<p>The target of the operation is currently being modified by a different request. Try again later.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConstraintViolationException": {
       "base": "<p>Performing this operation violates a minimum or maximum value limit. For example, attempting to removing the last SCP from an OU or root, inviting or creating too many accounts to the organization, or attaching too many policies to an account, OU, or root. This exception includes a reason that contains additional information about the violated limit:</p> <p/> <ul> <li> <p>ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. If you need more accounts, contact AWS Support to request an increase in your limit. </p> <p>Or, The number of invitations that you tried to send would cause you to exceed the limit of accounts in your organization. Send fewer invitations, or contact AWS Support to request an increase in the number of accounts.</p> <p> <b>Note</b>: deleted and closed accounts still count toward your limit.</p> </li> <li> <p>HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.</p> </li> <li> <p>OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of organizational units you can have in an organization.</p> </li> <li> <p>OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an organizational unit tree that is too many levels deep.</p> </li> <li> <p>POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an organization.</p> </li> <li> <p>MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain type that can be attached to an entity at one time.</p> </li> <li> <p>MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would cause the entity to have fewer than the minimum number of policies of a certain type required.</p> </li> <li> <p>ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first agree to the End-User License Agreement (EULA).</p> </li> <li> <p>ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization that does not yet have enough information to exist as a stand-alone account. This account requires you to first complete phone verification.</p> </li> <li> <p>MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this account, you first must associate a payment instrument, such as a credit card, with the account.</p> </li> <li> <p>MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you first must associate a payment instrument, such as a credit card, with the account.</p> </li> <li> <p>ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create in one day.</p> </li> <li> <p>MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first must migrate the organization's master account to the marketplace that corresponds to the master account's address. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be associated with the same marketplace.</p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ConstraintViolationExceptionReason": {
       "base": null,
@@ -208,8 +196,7 @@
     },
     "CreateAccountRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateAccountRequestId": {
       "base": null,
@@ -220,8 +207,7 @@
     },
     "CreateAccountResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateAccountState": {
       "base": null,
@@ -246,8 +232,7 @@
     },
     "CreateAccountStatusNotFoundException": {
       "base": "<p>We can't find an create account request with the CreateAccountRequestId that you specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateAccountStatuses": {
       "base": null,
@@ -257,153 +242,123 @@
     },
     "CreateOrganizationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateOrganizationResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateOrganizationalUnitRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateOrganizationalUnitResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatePolicyResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeclineHandshakeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeclineHandshakeResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteOrganizationalUnitRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeletePolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeAccountResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCreateAccountStatusRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCreateAccountStatusResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeHandshakeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeHandshakeResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeOrganizationResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeOrganizationalUnitRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeOrganizationalUnitResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribePolicyResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DestinationParentNotFoundException": {
       "base": "<p>We can't find the destination container (a root or OU) with the ParentId that you specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DetachPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisablePolicyTypeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DisablePolicyTypeResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DuplicateAccountException": {
       "base": "<p>That account is already present in the specified destination.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DuplicateHandshakeException": {
       "base": "<p>A handshake with the same action and target already exists. For example, if you invited an account to join your organization, the invited account might already have a pending invitation from this organization. If you intend to resend an invitation to an account, ensure that existing handshakes that might be considered duplicates are canceled or declined.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DuplicateOrganizationalUnitException": {
       "base": "<p>An organizational unit (OU) with the same name already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DuplicatePolicyAttachmentException": {
       "base": "<p>The selected policy is already attached to the specified target.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DuplicatePolicyException": {
       "base": "<p>A policy with the same name already exists.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Email": {
       "base": null,
@@ -415,23 +370,19 @@
     },
     "EnableAllFeaturesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EnableAllFeaturesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EnablePolicyTypeRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "EnablePolicyTypeResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ExceptionMessage": {
       "base": null,
@@ -483,8 +434,7 @@
     },
     "FinalizingOrganizationException": {
       "base": "<p>AWS Organizations could not finalize the creation of your organization. Try again later. If this persists, contact AWS customer support.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GenericArn": {
       "base": null,
@@ -506,8 +456,7 @@
     },
     "HandshakeAlreadyInStateException": {
       "base": "<p>The specified handshake is already in the requested state. For example, you can't accept a handshake that was already accepted.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "HandshakeArn": {
       "base": null,
@@ -517,8 +466,7 @@
     },
     "HandshakeConstraintViolationException": {
       "base": "<p>The requested operation would violate the constraint identified in the reason code.</p> <ul> <li> <p>ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an organization. <b>Note</b>: deleted and closed accounts still count toward your limit.</p> </li> <li> <p>HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes you can send in one day.</p> </li> <li> <p>ALREADY_IN_AN_ORGANIZATION: The handshake request is invalid because the invited account is already a member of an organization.</p> </li> <li> <p>ORGANIZATION_ALREADY_HAS_ALL_FEATURES: The handshake request is invalid because the organization has already enabled all features.</p> </li> <li> <p>INVITE_DISABLED_DURING_ENABLE_ALL_FEATURES: You cannot issue new invitations to join an organization while it is in the process of enabling all features. You can resume inviting accounts after you finalize the process when all accounts have agreed to the change.</p> </li> <li> <p>PAYMENT_INSTRUMENT_REQUIRED: You cannot complete the operation with an account that does not have a payment instrument, such as a credit card, associated with it.</p> </li> <li> <p>ORGANIZATION_FROM_DIFFERENT_SELLER_OF_RECORD: The request failed because the account is from a different marketplace than the accounts in the organization. For example, accounts with India addresses must be associated with the AISPL marketplace. All accounts in an organization must be from the same marketplace.</p> </li> <li> <p>ORGANIZATION_MEMBERSHIP_CHANGE_RATE_LIMIT_EXCEEDED: You attempted to change the membership of an account too quickly after its previous change.</p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "HandshakeConstraintViolationExceptionReason": {
       "base": null,
@@ -546,8 +494,7 @@
     },
     "HandshakeNotFoundException": {
       "base": "<p>We can't find a handshake with the HandshakeId that you specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "HandshakeNotes": {
       "base": null,
@@ -626,13 +573,11 @@
     },
     "InvalidHandshakeTransitionException": {
       "base": "<p>You can't perform the operation on the handshake in its current state. For example, you can't cancel a handshake that was already accepted, or accept a handshake that was already declined.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidInputException": {
       "base": "<p>The requested operation failed because you provided invalid values for one or more of the request parameters. This exception includes a reason that contains additional information about the violated limit:</p> <ul> <li> <p>INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a party.</p> </li> <li> <p>INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid ARN for the organization.</p> </li> <li> <p>INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID. </p> </li> <li> <p>INVALID_ENUM: You specified a value that is not valid for that parameter.</p> </li> <li> <p>INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.</p> </li> <li> <p>INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.</p> </li> <li> <p>MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.</p> </li> <li> <p>MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.</p> </li> <li> <p>MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.</p> </li> <li> <p>MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.</p> </li> <li> <p>IMMUTABLE_POLICY: You specified a policy that is managed by AWS and cannot be modified.</p> </li> <li> <p>INVALID_PATTERN: You provided a value that doesn't match the required pattern.</p> </li> <li> <p>INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.</p> </li> <li> <p>INPUT_REQUIRED: You must include a value for all required parameters.</p> </li> <li> <p>INVALID_PAGINATION_TOKEN: Get the value for the NextToken parameter from the response to a previous call of the operation.</p> </li> <li> <p>MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.</p> </li> <li> <p>MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.</p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidInputExceptionReason": {
       "base": null,
@@ -642,143 +587,115 @@
     },
     "InviteAccountToOrganizationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "InviteAccountToOrganizationResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAccountsForParentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAccountsForParentResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAccountsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListAccountsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListChildrenRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListChildrenResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListCreateAccountStatusRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListCreateAccountStatusResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListHandshakesForAccountRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListHandshakesForAccountResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListHandshakesForOrganizationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListHandshakesForOrganizationResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListOrganizationalUnitsForParentRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListOrganizationalUnitsForParentResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListParentsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListParentsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPoliciesForTargetRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPoliciesForTargetResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPoliciesRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListPoliciesResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRootsRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListRootsResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTargetsForPolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTargetsForPolicyResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "MalformedPolicyDocumentException": {
       "base": "<p>The provided policy document does not meet the requirements of the specified policy type. For example, the syntax might be incorrect. For details about service control policy syntax, see <a href=\"http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html\">Service Control Policy Syntax</a> in the <i>AWS Organizations User Guide</i>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MasterCannotLeaveOrganizationException": {
       "base": "<p>You can't remove a master account from an organization. If you want the master account to become a member account in another organization, you must first delete the current organization of the master account.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "MaxResults": {
       "base": null,
@@ -799,8 +716,7 @@
     },
     "MoveAccountRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "NextToken": {
       "base": null,
@@ -859,8 +775,7 @@
     },
     "OrganizationNotEmptyException": {
       "base": "<p>The organization isn't empty. To delete an organization, you must first remove all accounts except the master account, delete all organizational units (OUs), and delete all policies.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OrganizationalUnit": {
       "base": "<p>Contains details about an organizational unit (OU). An OU is a container of AWS accounts within a root of an organization. Policies that are attached to an OU apply to all accounts contained in that OU and in any child OUs.</p>",
@@ -896,13 +811,11 @@
     },
     "OrganizationalUnitNotEmptyException": {
       "base": "<p>The specified organizational unit (OU) is not empty. Move all accounts to another root or to other OUs, remove all child OUs, and then try the operation again.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OrganizationalUnitNotFoundException": {
       "base": "<p>We can't find an organizational unit (OU) with the OrganizationalUnitId that you specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "OrganizationalUnits": {
       "base": null,
@@ -930,8 +843,7 @@
     },
     "ParentNotFoundException": {
       "base": "<p>We can't find a root or organizational unit (OU) with the ParentId that you specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ParentType": {
       "base": null,
@@ -996,8 +908,7 @@
     },
     "PolicyInUseException": {
       "base": "<p>The policy is attached to one or more entities. You must detach it from all roots, organizational units (OUs), and accounts before performing this operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PolicyName": {
       "base": null,
@@ -1009,13 +920,11 @@
     },
     "PolicyNotAttachedException": {
       "base": "<p>The policy isn't attached to the specified target in the specified root.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PolicyNotFoundException": {
       "base": "<p>We can't find a policy with the PolicyId that you specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PolicySummary": {
       "base": "<p>Contains information about a policy, but does not include the content. To see the content of a policy, see <a>DescribePolicy</a>.</p>",
@@ -1059,18 +968,15 @@
     },
     "PolicyTypeAlreadyEnabledException": {
       "base": "<p>The specified policy type is already enabled in the specified root.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PolicyTypeNotAvailableForOrganizationException": {
       "base": "<p>You can't use the specified policy type with the feature set currently enabled for this organization. For example, you can enable service control policies (SCPs) only after you enable all features in the organization. For more information, see <a href=\"http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#enable_policies_on_root\">Enabling and Disabling a Policy Type on a Root</a> in the <i>AWS Organizations User Guide</i>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PolicyTypeNotEnabledException": {
       "base": "<p>The specified policy type is not currently enabled in this root. You cannot attach policies of the specified type to entities in a root until you enable that type in the root. For more information, see <a href=\"http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html\">Enabling All Features in Your Organization</a> in the <i>AWS Organizations User Guide</i>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "PolicyTypeStatus": {
       "base": null,
@@ -1093,8 +999,7 @@
     },
     "RemoveAccountFromOrganizationRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RoleName": {
       "base": null,
@@ -1132,8 +1037,7 @@
     },
     "RootNotFoundException": {
       "base": "<p>We can't find a root with the RootId that you specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Roots": {
       "base": null,
@@ -1143,13 +1047,11 @@
     },
     "ServiceException": {
       "base": "<p>AWS Organizations can't complete your request because of an internal service error. Try again later.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SourceParentNotFoundException": {
       "base": "<p>We can't find a source root or OU with the ParentId that you specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TargetName": {
       "base": null,
@@ -1159,8 +1061,7 @@
     },
     "TargetNotFoundException": {
       "base": "<p>We can't find a root, OU, or account with the TargetId that you specified.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "TargetType": {
       "base": null,
@@ -1180,28 +1081,23 @@
     },
     "TooManyRequestsException": {
       "base": "<p>You've sent too many requests in too short a period of time. The limit helps protect against denial-of-service attacks. Try again later.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateOrganizationalUnitRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateOrganizationalUnitResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdatePolicyRequest": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdatePolicyResponse": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     }
   }
 }

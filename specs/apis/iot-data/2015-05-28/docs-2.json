@@ -10,18 +10,15 @@
   "shapes": {
     "ConflictException": {
       "base": "<p>The specified version does not match the version of the document.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteThingShadowRequest": {
       "base": "<p>The input for the DeleteThingShadow operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteThingShadowResponse": {
       "base": "<p>The output from the DeleteThingShadow operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ErrorMessage": {
       "base": null,
@@ -33,23 +30,19 @@
     },
     "GetThingShadowRequest": {
       "base": "<p>The input for the GetThingShadow operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "GetThingShadowResponse": {
       "base": "<p>The output from the GetThingShadow operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InternalFailureException": {
       "base": "<p>An unexpected error has occurred.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidRequestException": {
       "base": "<p>The request is not valid.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "JsonDocument": {
       "base": null,
@@ -62,8 +55,7 @@
     },
     "MethodNotAllowedException": {
       "base": "<p>The specified combination of HTTP verb and URI is not supported.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Payload": {
       "base": null,
@@ -73,8 +65,7 @@
     },
     "PublishRequest": {
       "base": "<p>The input for the Publish operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Qos": {
       "base": null,
@@ -84,18 +75,15 @@
     },
     "RequestEntityTooLargeException": {
       "base": "<p>The payload exceeds the maximum size allowed.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceNotFoundException": {
       "base": "<p>The specified resource does not exist.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ServiceUnavailableException": {
       "base": "<p>The service is temporarily unavailable.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ThingName": {
       "base": null,
@@ -107,8 +95,7 @@
     },
     "ThrottlingException": {
       "base": "<p>The rate exceeds the limit.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Topic": {
       "base": null,
@@ -118,23 +105,19 @@
     },
     "UnauthorizedException": {
       "base": "<p>You are not authorized to perform this operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UnsupportedDocumentEncodingException": {
       "base": "<p>The document encoding is not supported.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateThingShadowRequest": {
       "base": "<p>The input for the UpdateThingShadow operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateThingShadowResponse": {
       "base": "<p>The output from the UpdateThingShadow operation.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "errorMessage": {
       "base": null,

@@ -68,13 +68,11 @@
   "shapes": {
     "ActivateGatewayInput": {
       "base": "<p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>ActivateGatewayInput$ActivationKey</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayName</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayRegion</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayTimezone</a> </p> </li> <li> <p> <a>ActivateGatewayInput$GatewayType</a> </p> </li> <li> <p> <a>ActivateGatewayInput$TapeDriveType</a> </p> </li> <li> <p> <a>ActivateGatewayInput$MediumChangerType</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ActivateGatewayOutput": {
       "base": "<p>AWS Storage Gateway returns the Amazon Resource Name (ARN) of the activated gateway. It is a string made of information such as your account, gateway name, and region. This ARN is used to reference the gateway in other API operations as well as resource-based authorization.</p> <note> <p>For gateways activated prior to September 02, 2015 the gateway ARN contains the gateway name rather than the gateway id. Changing the name of the gateway has no effect on the gateway ARN.</p> </note>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ActivationKey": {
       "base": null,
@@ -84,43 +82,35 @@
     },
     "AddCacheInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddCacheOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddTagsToResourceInput": {
       "base": "<p>AddTagsToResourceInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AddTagsToResourceOutput": {
       "base": "<p>AddTagsToResourceOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AddUploadBufferInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddUploadBufferOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "AddWorkingStorageInput": {
       "base": "<p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>AddWorkingStorageInput$DiskIds</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "AddWorkingStorageOutput": {
       "base": "<p>A JSON object containing the of the gateway for which working storage was configured.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "BandwidthDownloadRateLimit": {
       "base": null,
@@ -166,23 +156,19 @@
     },
     "CancelArchivalInput": {
       "base": "<p>CancelArchivalInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelArchivalOutput": {
       "base": "<p>CancelArchivalOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelRetrievalInput": {
       "base": "<p>CancelRetrievalInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CancelRetrievalOutput": {
       "base": "<p>CancelRetrievalOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ChapCredentials": {
       "base": null,
@@ -215,73 +201,59 @@
     },
     "CreateCachediSCSIVolumeInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateCachediSCSIVolumeOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNFSFileShareInput": {
       "base": "<p>CreateNFSFileShareInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateNFSFileShareOutput": {
       "base": "<p>CreateNFSFileShareOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSnapshotFromVolumeRecoveryPointInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSnapshotFromVolumeRecoveryPointOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSnapshotInput": {
       "base": "<p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>CreateSnapshotInput$SnapshotDescription</a> </p> </li> <li> <p> <a>CreateSnapshotInput$VolumeARN</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateSnapshotOutput": {
       "base": "<p>A JSON object containing the following fields:</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStorediSCSIVolumeInput": {
       "base": "<p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>CreateStorediSCSIVolumeInput$DiskId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$NetworkInterfaceId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$PreserveExistingData</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$SnapshotId</a> </p> </li> <li> <p> <a>CreateStorediSCSIVolumeInput$TargetName</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateStorediSCSIVolumeOutput": {
       "base": "<p>A JSON object containing the following fields:</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTapeWithBarcodeInput": {
       "base": "<p>CreateTapeWithBarcodeInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTapeWithBarcodeOutput": {
       "base": "<p>CreateTapeOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTapesInput": {
       "base": "<p>CreateTapesInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreateTapesOutput": {
       "base": "<p>CreateTapeOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "CreatedDate": {
       "base": null,
@@ -299,233 +271,187 @@
     },
     "DeleteBandwidthRateLimitInput": {
       "base": "<p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>DeleteBandwidthRateLimitInput$BandwidthType</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteBandwidthRateLimitOutput": {
       "base": "<p>A JSON object containing the of the gateway whose bandwidth rate information was deleted.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteChapCredentialsInput": {
       "base": "<p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>DeleteChapCredentialsInput$InitiatorName</a> </p> </li> <li> <p> <a>DeleteChapCredentialsInput$TargetARN</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteChapCredentialsOutput": {
       "base": "<p>A JSON object containing the following fields:</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteFileShareInput": {
       "base": "<p>DeleteFileShareInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteFileShareOutput": {
       "base": "<p>DeleteFileShareOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteGatewayInput": {
       "base": "<p>A JSON object containing the id of the gateway to delete.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteGatewayOutput": {
       "base": "<p>A JSON object containing the id of the deleted gateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSnapshotScheduleInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteSnapshotScheduleOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTapeArchiveInput": {
       "base": "<p>DeleteTapeArchiveInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTapeArchiveOutput": {
       "base": "<p>DeleteTapeArchiveOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTapeInput": {
       "base": "<p>DeleteTapeInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteTapeOutput": {
       "base": "<p>DeleteTapeOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVolumeInput": {
       "base": "<p>A JSON object containing the <a>DeleteVolumeInput$VolumeARN</a> to delete.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DeleteVolumeOutput": {
       "base": "<p>A JSON object containing the of the storage volume that was deleted</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBandwidthRateLimitInput": {
       "base": "<p>A JSON object containing the of the gateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeBandwidthRateLimitOutput": {
       "base": "<p>A JSON object containing the following fields:</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCacheInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCacheOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCachediSCSIVolumesInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeCachediSCSIVolumesOutput": {
       "base": "<p>A JSON object containing the following fields:</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeChapCredentialsInput": {
       "base": "<p>A JSON object containing the Amazon Resource Name (ARN) of the iSCSI volume target.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeChapCredentialsOutput": {
       "base": "<p>A JSON object containing a .</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeGatewayInformationInput": {
       "base": "<p>A JSON object containing the id of the gateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeGatewayInformationOutput": {
       "base": "<p>A JSON object containing the following fields:</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMaintenanceStartTimeInput": {
       "base": "<p>A JSON object containing the of the gateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeMaintenanceStartTimeOutput": {
       "base": "<p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>DescribeMaintenanceStartTimeOutput$DayOfWeek</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$HourOfDay</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$MinuteOfHour</a> </p> </li> <li> <p> <a>DescribeMaintenanceStartTimeOutput$Timezone</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNFSFileSharesInput": {
       "base": "<p>DescribeNFSFileSharesInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeNFSFileSharesOutput": {
       "base": "<p>DescribeNFSFileSharesOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotScheduleInput": {
       "base": "<p>A JSON object containing the <a>DescribeSnapshotScheduleInput$VolumeARN</a> of the volume.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeSnapshotScheduleOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStorediSCSIVolumesInput": {
       "base": "<p>A JSON object containing a list of <a>DescribeStorediSCSIVolumesInput$VolumeARNs</a>.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeStorediSCSIVolumesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTapeArchivesInput": {
       "base": "<p>DescribeTapeArchivesInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTapeArchivesOutput": {
       "base": "<p>DescribeTapeArchivesOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTapeRecoveryPointsInput": {
       "base": "<p>DescribeTapeRecoveryPointsInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTapeRecoveryPointsOutput": {
       "base": "<p>DescribeTapeRecoveryPointsOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTapesInput": {
       "base": "<p>DescribeTapesInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeTapesOutput": {
       "base": "<p>DescribeTapesOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeUploadBufferInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeUploadBufferOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVTLDevicesInput": {
       "base": "<p>DescribeVTLDevicesInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeVTLDevicesOutput": {
       "base": "<p>DescribeVTLDevicesOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeWorkingStorageInput": {
       "base": "<p>A JSON object containing the of the gateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DescribeWorkingStorageOutput": {
       "base": "<p>A JSON object containing the following fields:</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Description": {
       "base": null,
@@ -548,13 +474,11 @@
     },
     "DisableGatewayInput": {
       "base": "<p>DisableGatewayInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "DisableGatewayOutput": {
       "base": "<p>DisableGatewayOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Disk": {
       "base": null,
@@ -829,13 +753,11 @@
     },
     "InternalServerError": {
       "base": "<p>An internal server error has occurred during the request. For more information, see the error and message fields.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "InvalidGatewayRequestException": {
       "base": "<p>An exception occurred because an invalid gateway request was issued to the service. For more information, see the error and message fields.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "IqnName": {
       "base": null,
@@ -863,83 +785,67 @@
     },
     "ListFileSharesInput": {
       "base": "<p>ListFileShareInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListFileSharesOutput": {
       "base": "<p>ListFileShareOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListGatewaysInput": {
       "base": "<p>A JSON object containing zero or more of the following fields:</p> <ul> <li> <p> <a>ListGatewaysInput$Limit</a> </p> </li> <li> <p> <a>ListGatewaysInput$Marker</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListGatewaysOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListLocalDisksInput": {
       "base": "<p>A JSON object containing the of the gateway.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListLocalDisksOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForResourceInput": {
       "base": "<p>ListTagsForResourceInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTagsForResourceOutput": {
       "base": "<p>ListTagsForResourceOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTapesInput": {
       "base": "<p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListTapesInput$Limit</a> </p> </li> <li> <p> <a>ListTapesInput$Marker</a> </p> </li> <li> <p> <a>ListTapesInput$TapeARNs</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListTapesOutput": {
       "base": "<p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>ListTapesOutput$Marker</a> </p> </li> <li> <p> <a>ListTapesOutput$VolumeInfos</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListVolumeInitiatorsInput": {
       "base": "<p>ListVolumeInitiatorsInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListVolumeInitiatorsOutput": {
       "base": "<p>ListVolumeInitiatorsOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListVolumeRecoveryPointsInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListVolumeRecoveryPointsOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ListVolumesInput": {
       "base": "<p>A JSON object that contains one or more of the following fields:</p> <ul> <li> <p> <a>ListVolumesInput$Limit</a> </p> </li> <li> <p> <a>ListVolumesInput$Marker</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ListVolumesOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "LocalConsolePassword": {
       "base": null,
@@ -1082,13 +988,11 @@
     },
     "RefreshCacheInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RefreshCacheOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "RegionId": {
       "base": null,
@@ -1098,23 +1002,19 @@
     },
     "RemoveTagsFromResourceInput": {
       "base": "<p>RemoveTagsFromResourceInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RemoveTagsFromResourceOutput": {
       "base": "<p>RemoveTagsFromResourceOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ResetCacheInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResetCacheOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ResourceARN": {
       "base": null,
@@ -1129,23 +1029,19 @@
     },
     "RetrieveTapeArchiveInput": {
       "base": "<p>RetrieveTapeArchiveInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RetrieveTapeArchiveOutput": {
       "base": "<p>RetrieveTapeArchiveOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RetrieveTapeRecoveryPointInput": {
       "base": "<p>RetrieveTapeRecoveryPointInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "RetrieveTapeRecoveryPointOutput": {
       "base": "<p>RetrieveTapeRecoveryPointOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "Role": {
       "base": "<p>The ARN of the IAM role that file gateway assumes when it accesses the underlying storage. </p>",
@@ -1156,28 +1052,23 @@
     },
     "ServiceUnavailableError": {
       "base": "<p>An internal server error has occurred because the service is unavailable. For more information, see the error and message fields.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetLocalConsolePasswordInput": {
       "base": "<p>SetLocalConsolePasswordInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SetLocalConsolePasswordOutput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "ShutdownGatewayInput": {
       "base": "<p>A JSON object containing the of the gateway to shut down.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "ShutdownGatewayOutput": {
       "base": "<p>A JSON object containing the of the gateway that was shut down.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "SnapshotDescription": {
       "base": null,
@@ -1207,13 +1098,11 @@
     },
     "StartGatewayInput": {
       "base": "<p>A JSON object containing the of the gateway to start.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StartGatewayOutput": {
       "base": "<p>A JSON object containing the of the gateway that was restarted.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "StorageClass": {
       "base": "<p/>",
@@ -1446,83 +1335,67 @@
     },
     "UpdateBandwidthRateLimitInput": {
       "base": "<p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateBandwidthRateLimitInput$AverageDownloadRateLimitInBitsPerSec</a> </p> </li> <li> <p> <a>UpdateBandwidthRateLimitInput$AverageUploadRateLimitInBitsPerSec</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateBandwidthRateLimitOutput": {
       "base": "<p>A JSON object containing the of the gateway whose throttle information was updated.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateChapCredentialsInput": {
       "base": "<p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateChapCredentialsInput$InitiatorName</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$SecretToAuthenticateInitiator</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$SecretToAuthenticateTarget</a> </p> </li> <li> <p> <a>UpdateChapCredentialsInput$TargetARN</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateChapCredentialsOutput": {
       "base": "<p>A JSON object containing the following fields:</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateGatewayInformationInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateGatewayInformationOutput": {
       "base": "<p>A JSON object containing the ARN of the gateway that was updated.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateGatewaySoftwareNowInput": {
       "base": "<p>A JSON object containing the of the gateway to update.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateGatewaySoftwareNowOutput": {
       "base": "<p>A JSON object containing the of the gateway that was updated.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateMaintenanceStartTimeInput": {
       "base": "<p>A JSON object containing the following fields:</p> <ul> <li> <p> <a>UpdateMaintenanceStartTimeInput$DayOfWeek</a> </p> </li> <li> <p> <a>UpdateMaintenanceStartTimeInput$HourOfDay</a> </p> </li> <li> <p> <a>UpdateMaintenanceStartTimeInput$MinuteOfHour</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateMaintenanceStartTimeOutput": {
       "base": "<p>A JSON object containing the of the gateway whose maintenance start time is updated.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateNFSFileShareInput": {
       "base": "<p>UpdateNFSFileShareInput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateNFSFileShareOutput": {
       "base": "<p>UpdateNFSFileShareOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateSnapshotScheduleInput": {
       "base": "<p>A JSON object containing one or more of the following fields:</p> <ul> <li> <p> <a>UpdateSnapshotScheduleInput$Description</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$RecurrenceInHours</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$StartAt</a> </p> </li> <li> <p> <a>UpdateSnapshotScheduleInput$VolumeARN</a> </p> </li> </ul>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateSnapshotScheduleOutput": {
       "base": "<p>A JSON object containing the of the updated storage volume.</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateVTLDeviceTypeInput": {
       "base": null,
-      "refs": {
-      }
+      "refs": {}
     },
     "UpdateVTLDeviceTypeOutput": {
       "base": "<p>UpdateVTLDeviceTypeOutput</p>",
-      "refs": {
-      }
+      "refs": {}
     },
     "VTLDevice": {
       "base": "<p>Represents a device object associated with a tape gateway.</p>",
