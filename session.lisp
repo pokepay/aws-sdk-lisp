@@ -4,7 +4,8 @@
                 #:credentials)
   (:export #:session
            #:session-credentials
-           #:session-region))
+           #:session-region
+           #:*session*))
 (in-package #:aws-sdk/session)
 
 (defvar *session* nil)

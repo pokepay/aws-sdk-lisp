@@ -10,7 +10,9 @@
            #:*aws-profile*))
 (in-package #:aws-sdk/utils/config)
 
-(defvar *aws-profile* (or (getenv "AWS_PROFILE") "default"))
+(defvar *aws-profile* (or (getenv "AWS_PROFILE")
+                          (getenv "AWS_DEFAULT_PROFILE")
+                          "default"))
 
 (defvar *cached-ini* (make-hash-table :test 'equal))
 

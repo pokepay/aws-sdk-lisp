@@ -19,13 +19,13 @@
            #:credentials-headers))
 (in-package #:aws-sdk/credentials)
 
-(defvar *chained-providers*
+(defun chained-providers ()
   (list (make-instance 'env-provider)
         (make-instance 'shared-provider)
         (make-instance 'ec2role-provider)))
 
-(defun default-aws-credentials ()
-  (loop for provider in *chained-providers*
+(defun default-aws-credentials (&optional (providers 'chained-providers))
+  (loop for provider in (funcall providers)
         for credentials = (retrieve provider)
         when credentials
           do (return credentials)))
