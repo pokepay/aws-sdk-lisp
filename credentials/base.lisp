@@ -56,9 +56,12 @@
 
 (defgeneric credentials-keys (credentials)
   (:method ((credentials credentials))
-    (values (slot-value credentials 'access-key-id)
-            (slot-value credentials 'secret-access-key)
-            (slot-value credentials 'session-token)))
+    (if (slot-boundp credentials 'session-token)
+        (values (slot-value credentials 'access-key-id)
+                (slot-value credentials 'secret-access-key)
+                (slot-value credentials 'session-token))
+        (values (slot-value credentials 'access-key-id)
+                (slot-value credentials 'secret-access-key))))
   (:method ((credentials provider-credentials))
     (credentials-keys (provider-credentials-credentials credentials))))
 

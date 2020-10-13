@@ -46,21 +46,25 @@
       (setf headers
             (append (credentials-headers credentials)
                     headers))
-      (multiple-value-bind (authorization x-amz-date)
-          (aws-sign4:aws-sign4 :region region
-                               :service service
-                               :method method
-                               :host host
-                               :path path
-                               :params params
-                               :headers headers
-                               :payload (or payload ""))
-        (dex:request (format nil "https://~A~A?~A" host path
-                             (quri:url-encode-params params))
-                     :method method
-                     :headers `(("Authorization" . ,authorization)
-                                ("X-Amz-Date" . ,x-amz-date)
-                                ("X-Amz-Content-Sha256" . ,(aws-sdk/utils::sha-256 (or payload "")))
-                                ("Content-Type" . "application/x-amz-json-1.0")
-                                ,@headers)
-                     :content payload)))))
+      (let* ((path-uri (quri:uri path))
+             (path (quri:uri-path path-uri))
+             (path-params (quri:uri-query-params path-uri))
+             (params (append path-params params)))
+        (multiple-value-bind (authorization x-amz-date)
+            (aws-sign4:aws-sign4 :region region
+                                 :service service
+                                 :method method
+                                 :host host
+                                 :path path
+                                 :params params
+                                 :headers headers
+                                 :payload (or payload ""))
+          (dex:request (format nil "https://~A~A?~A" host path
+                               (quri:url-encode-params params))
+                       :method method
+                       :headers `(("Authorization" . ,authorization)
+                                  ("X-Amz-Date" . ,x-amz-date)
+                                  ("X-Amz-Content-Sha256" . ,(aws-sdk/utils::sha-256 (or payload "")))
+                                  ("Content-Type" . "application/x-amz-json-1.0")
+                                  ,@headers)
+                       :content payload))))))
