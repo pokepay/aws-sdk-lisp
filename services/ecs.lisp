@@ -7,11 +7,13 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/ecs)
+
 (common-lisp:deftype agent-update-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (attribute (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (target-type common-lisp:nil :type
     (common-lisp:or target-type common-lisp:null))
@@ -611,14 +613,20 @@
 (common-lisp:progn
  (common-lisp:defstruct (create-service-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (service-name (common-lisp:error ":servicename is required") :type
-    (common-lisp:or string common-lisp:null))
-   (task-definition (common-lisp:error ":taskdefinition is required") :type
-    (common-lisp:or string common-lisp:null))
+   (service-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":servicename is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (task-definition
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":taskdefinition is required"))
+    :type (common-lisp:or string common-lisp:null))
    (load-balancers common-lisp:nil :type
     (common-lisp:or load-balancers common-lisp:null))
-   (desired-count (common-lisp:error ":desiredcount is required") :type
-    (common-lisp:or boxed-integer common-lisp:null))
+   (desired-count
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":desiredcount is required"))
+    :type (common-lisp:or boxed-integer common-lisp:null))
    (client-token common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (role common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -703,8 +711,10 @@
 (common-lisp:progn
  (common-lisp:defstruct (delete-attributes-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or attributes common-lisp:null)))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or attributes common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-attributes-request
                     'make-delete-attributes-request))
@@ -742,8 +752,9 @@
                                                 'attributes))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-cluster-request (:copier common-lisp:nil))
-   (cluster (common-lisp:error ":cluster is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (cluster
+    (common-lisp:error #A((20) common-lisp:base-char . ":cluster is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-cluster-request 'make-delete-cluster-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -774,8 +785,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (delete-service-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (service (common-lisp:error ":service is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (service
+    (common-lisp:error #A((20) common-lisp:base-char . ":service is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-service-request 'make-delete-service-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -902,7 +914,9 @@
  (common-lisp:defstruct
      (deregister-container-instance-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (container-instance (common-lisp:error ":containerinstance is required")
+   (container-instance
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":containerinstance is required"))
     :type (common-lisp:or string common-lisp:null))
    (force common-lisp:nil :type
     (common-lisp:or boxed-boolean common-lisp:null)))
@@ -950,8 +964,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (deregister-task-definition-request (:copier common-lisp:nil))
-   (task-definition (common-lisp:error ":taskdefinition is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (task-definition
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":taskdefinition is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-task-definition-request
                     'make-deregister-task-definition-request))
@@ -1026,7 +1042,9 @@
  (common-lisp:defstruct
      (describe-container-instances-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (container-instances (common-lisp:error ":containerinstances is required")
+   (container-instances
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":containerinstances is required"))
     :type (common-lisp:or string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-container-instances-request
@@ -1073,8 +1091,10 @@
 (common-lisp:progn
  (common-lisp:defstruct (describe-services-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (services (common-lisp:error ":services is required") :type
-    (common-lisp:or string-list common-lisp:null)))
+   (services
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":services is required"))
+    :type (common-lisp:or string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-services-request
                     'make-describe-services-request))
@@ -1118,8 +1138,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-task-definition-request (:copier common-lisp:nil))
-   (task-definition (common-lisp:error ":taskdefinition is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (task-definition
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":taskdefinition is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-task-definition-request
                     'make-describe-task-definition-request))
@@ -1154,8 +1176,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (describe-tasks-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (tasks (common-lisp:error ":tasks is required") :type
-    (common-lisp:or string-list common-lisp:null)))
+   (tasks
+    (common-lisp:error #A((18) common-lisp:base-char . ":tasks is required"))
+    :type (common-lisp:or string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-tasks-request 'make-describe-tasks-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1285,10 +1308,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (host-entry (:copier common-lisp:nil))
-   (hostname (common-lisp:error ":hostname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (ip-address (common-lisp:error ":ipaddress is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (hostname
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":hostname is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (ip-address
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":ipaddress is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'host-entry 'make-host-entry))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape host-entry))
@@ -1360,8 +1387,10 @@
 (common-lisp:progn
  (common-lisp:defstruct (list-attributes-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (target-type (common-lisp:error ":targettype is required") :type
-    (common-lisp:or target-type common-lisp:null))
+   (target-type
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":targettype is required"))
+    :type (common-lisp:or target-type common-lisp:null))
    (attribute-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (attribute-value common-lisp:nil :type
@@ -1842,8 +1871,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (log-configuration (:copier common-lisp:nil))
-   (log-driver (common-lisp:error ":logdriver is required") :type
-    (common-lisp:or log-driver common-lisp:null))
+   (log-driver
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":logdriver is required"))
+    :type (common-lisp:or log-driver common-lisp:null))
    (options common-lisp:nil :type
     (common-lisp:or log-configuration-options-map common-lisp:null)))
  (common-lisp:export
@@ -2063,8 +2094,10 @@
 (common-lisp:progn
  (common-lisp:defstruct (put-attributes-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or attributes common-lisp:null)))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or attributes common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-attributes-request 'make-put-attributes-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2178,15 +2211,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-task-definition-request (:copier common-lisp:nil))
-   (family (common-lisp:error ":family is required") :type
-    (common-lisp:or string common-lisp:null))
+   (family
+    (common-lisp:error #A((19) common-lisp:base-char . ":family is required"))
+    :type (common-lisp:or string common-lisp:null))
    (task-role-arn common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (network-mode common-lisp:nil :type
     (common-lisp:or network-mode common-lisp:null))
    (container-definitions
-    (common-lisp:error ":containerdefinitions is required") :type
-    (common-lisp:or container-definitions common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":containerdefinitions is required"))
+    :type (common-lisp:or container-definitions common-lisp:null))
    (volumes common-lisp:nil :type
     (common-lisp:or volume-list common-lisp:null))
    (placement-constraints common-lisp:nil :type
@@ -2310,8 +2345,10 @@
 (common-lisp:progn
  (common-lisp:defstruct (run-task-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (task-definition (common-lisp:error ":taskdefinition is required") :type
-    (common-lisp:or string common-lisp:null))
+   (task-definition
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":taskdefinition is required"))
+    :type (common-lisp:or string common-lisp:null))
    (overrides common-lisp:nil :type
     (common-lisp:or task-override common-lisp:null))
    (count common-lisp:nil :type
@@ -2579,11 +2616,15 @@
 (common-lisp:progn
  (common-lisp:defstruct (start-task-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (task-definition (common-lisp:error ":taskdefinition is required") :type
-    (common-lisp:or string common-lisp:null))
+   (task-definition
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":taskdefinition is required"))
+    :type (common-lisp:or string common-lisp:null))
    (overrides common-lisp:nil :type
     (common-lisp:or task-override common-lisp:null))
-   (container-instances (common-lisp:error ":containerinstances is required")
+   (container-instances
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":containerinstances is required"))
     :type (common-lisp:or string-list common-lisp:null))
    (started-by common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (group common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -2644,8 +2685,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (stop-task-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (task (common-lisp:error ":task is required") :type
-    (common-lisp:or string common-lisp:null))
+   (task
+    (common-lisp:error #A((17) common-lisp:base-char . ":task is required"))
+    :type (common-lisp:or string common-lisp:null))
    (reason common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-task-request 'make-stop-task-request))
@@ -3074,12 +3116,17 @@
 (common-lisp:deftype transport-protocol () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (ulimit (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or ulimit-name common-lisp:null))
-   (soft-limit (common-lisp:error ":softlimit is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (hard-limit (common-lisp:error ":hardlimit is required") :type
-    (common-lisp:or integer common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or ulimit-name common-lisp:null))
+   (soft-limit
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":softlimit is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (hard-limit
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":hardlimit is required"))
+    :type (common-lisp:or integer common-lisp:null)))
  (common-lisp:export (common-lisp:list 'ulimit 'make-ulimit))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape ulimit))
@@ -3111,7 +3158,9 @@
  (common-lisp:defstruct
      (update-container-agent-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (container-instance (common-lisp:error ":containerinstance is required")
+   (container-instance
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":containerinstance is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-container-agent-request
@@ -3153,10 +3202,13 @@
  (common-lisp:defstruct
      (update-container-instances-state-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (container-instances (common-lisp:error ":containerinstances is required")
+   (container-instances
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":containerinstances is required"))
     :type (common-lisp:or string-list common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or container-instance-status common-lisp:null)))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or container-instance-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-container-instances-state-request
                     'make-update-container-instances-state-request))
@@ -3218,8 +3270,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (update-service-request (:copier common-lisp:nil))
    (cluster common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (service (common-lisp:error ":service is required") :type
-    (common-lisp:or string common-lisp:null))
+   (service
+    (common-lisp:error #A((20) common-lisp:base-char . ":service is required"))
+    :type (common-lisp:or string common-lisp:null))
    (desired-count common-lisp:nil :type
     (common-lisp:or boxed-integer common-lisp:null))
    (task-definition common-lisp:nil :type

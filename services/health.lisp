@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/health)
+
 (common-lisp:progn
  (common-lisp:defstruct (affected-entity (:copier common-lisp:nil))
    (entity-arn common-lisp:nil :type
@@ -84,8 +85,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-affected-entities-request (:copier common-lisp:nil))
-   (filter (common-lisp:error ":filter is required") :type
-    (common-lisp:or entity-filter common-lisp:null))
+   (filter
+    (common-lisp:error #A((19) common-lisp:base-char . ":filter is required"))
+    :type (common-lisp:or entity-filter common-lisp:null))
    (locale common-lisp:nil :type (common-lisp:or |locale| common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or |nextToken| common-lisp:null))
@@ -185,8 +187,10 @@
      (describe-event-aggregates-request (:copier common-lisp:nil))
    (filter common-lisp:nil :type
     (common-lisp:or event-filter common-lisp:null))
-   (aggregate-field (common-lisp:error ":aggregatefield is required") :type
-    (common-lisp:or |eventAggregateField| common-lisp:null))
+   (aggregate-field
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":aggregatefield is required"))
+    :type (common-lisp:or |eventAggregateField| common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or |maxResults| common-lisp:null))
    (next-token common-lisp:nil :type
@@ -256,8 +260,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-event-details-request (:copier common-lisp:nil))
-   (event-arns (common-lisp:error ":eventarns is required") :type
-    (common-lisp:or |eventArnList| common-lisp:null))
+   (event-arns
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":eventarns is required"))
+    :type (common-lisp:or |eventArnList| common-lisp:null))
    (locale common-lisp:nil :type (common-lisp:or |locale| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-event-details-request
@@ -461,8 +467,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (entity-filter (:copier common-lisp:nil))
-   (event-arns (common-lisp:error ":eventarns is required") :type
-    (common-lisp:or |eventArnList| common-lisp:null))
+   (event-arns
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":eventarns is required"))
+    :type (common-lisp:or |eventArnList| common-lisp:null))
    (entity-arns common-lisp:nil :type
     (common-lisp:or |entityArnList| common-lisp:null))
    (entity-values common-lisp:nil :type
@@ -1045,7 +1053,9 @@ common-lisp:nil
                        'make-describe-affected-entities-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "health" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "health") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAffectedEntities")
                                   ("Version" ,@"2016-08-04"))
@@ -1064,7 +1074,9 @@ common-lisp:nil
                        'make-describe-entity-aggregates-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "health" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "health") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEntityAggregates")
                                   ("Version" ,@"2016-08-04"))
@@ -1085,7 +1097,9 @@ common-lisp:nil
                        'make-describe-event-aggregates-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "health" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "health") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEventAggregates")
                                   ("Version" ,@"2016-08-04"))
@@ -1103,7 +1117,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-event-details-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "health" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "health") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEventDetails")
                                   ("Version" ,@"2016-08-04"))
@@ -1122,7 +1138,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-event-types-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "health" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "health") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEventTypes")
                                   ("Version" ,@"2016-08-04"))
@@ -1141,7 +1159,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-events-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "health" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "health") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEvents")
                                   ("Version" ,@"2016-08-04"))

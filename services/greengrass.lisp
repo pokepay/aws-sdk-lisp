@@ -7,11 +7,14 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/greengrass)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (associate-role-to-group-request (:copier common-lisp:nil))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (role-arn common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
@@ -285,7 +288,9 @@
      (create-core-definition-version-request (:copier common-lisp:nil))
    (amzn-client-token common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
-   (core-definition-id (common-lisp:error ":core-definition-id is required")
+   (core-definition-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":core-definition-id is required"))
     :type (common-lisp:or |__string| common-lisp:null))
    (cores common-lisp:nil :type
     (common-lisp:or list-of-core common-lisp:null)))
@@ -357,8 +362,10 @@
     (common-lisp:or |__string| common-lisp:null))
    (deployment-type common-lisp:nil :type
     (common-lisp:or deployment-type common-lisp:null))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (group-version-id common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
@@ -512,8 +519,9 @@
    (amzn-client-token common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (device-definition-id
-    (common-lisp:error ":device-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":device-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (devices common-lisp:nil :type
     (common-lisp:or list-of-device common-lisp:null)))
  (common-lisp:export
@@ -670,8 +678,9 @@
    (amzn-client-token common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (function-definition-id
-    (common-lisp:error ":function-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":function-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (functions common-lisp:nil :type
     (common-lisp:or list-of-function common-lisp:null)))
  (common-lisp:export
@@ -739,8 +748,10 @@
      (create-group-certificate-authority-request (:copier common-lisp:nil))
    (amzn-client-token common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-group-certificate-authority-request
                     'make-create-group-certificate-authority-request))
@@ -870,8 +881,10 @@
     (common-lisp:or |__string| common-lisp:null))
    (function-definition-version-arn common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (logger-definition-version-arn common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (subscription-definition-version-arn common-lisp:nil :type
@@ -1050,8 +1063,9 @@
    (amzn-client-token common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (logger-definition-id
-    (common-lisp:error ":logger-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":logger-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (loggers common-lisp:nil :type
     (common-lisp:or list-of-logger common-lisp:null)))
  (common-lisp:export
@@ -1208,8 +1222,10 @@
    (amzn-client-token common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (subscription-definition-id
-    (common-lisp:error ":subscription-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":subscription-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (subscriptions common-lisp:nil :type
     (common-lisp:or list-of-subscription common-lisp:null)))
  (common-lisp:export
@@ -1331,7 +1347,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-core-definition-request (:copier common-lisp:nil))
-   (core-definition-id (common-lisp:error ":core-definition-id is required")
+   (core-definition-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":core-definition-id is required"))
     :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-core-definition-request
@@ -1361,8 +1379,9 @@
  (common-lisp:defstruct
      (delete-device-definition-request (:copier common-lisp:nil))
    (device-definition-id
-    (common-lisp:error ":device-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":device-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-device-definition-request
                     'make-delete-device-definition-request))
@@ -1391,8 +1410,9 @@
  (common-lisp:defstruct
      (delete-function-definition-request (:copier common-lisp:nil))
    (function-definition-id
-    (common-lisp:error ":function-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":function-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-function-definition-request
                     'make-delete-function-definition-request))
@@ -1419,8 +1439,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-group-request (:copier common-lisp:nil))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-group-request 'make-delete-group-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1444,8 +1466,9 @@
  (common-lisp:defstruct
      (delete-logger-definition-request (:copier common-lisp:nil))
    (logger-definition-id
-    (common-lisp:error ":logger-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":logger-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-logger-definition-request
                     'make-delete-logger-definition-request))
@@ -1474,8 +1497,10 @@
  (common-lisp:defstruct
      (delete-subscription-definition-request (:copier common-lisp:nil))
    (subscription-definition-id
-    (common-lisp:error ":subscription-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":subscription-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-subscription-definition-request
                     'make-delete-subscription-definition-request))
@@ -1595,8 +1620,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disassociate-role-from-group-request (:copier common-lisp:nil))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disassociate-role-from-group-request
                     'make-disassociate-role-from-group-request))
@@ -1826,8 +1853,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-associated-role-request (:copier common-lisp:nil))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-associated-role-request
                     'make-get-associated-role-request))
@@ -1869,8 +1898,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-connectivity-info-request (:copier common-lisp:nil))
-   (thing-name (common-lisp:error ":thing-name is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (thing-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":thing-name is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-connectivity-info-request
                     'make-get-connectivity-info-request))
@@ -1911,7 +1942,9 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-core-definition-request (:copier common-lisp:nil))
-   (core-definition-id (common-lisp:error ":core-definition-id is required")
+   (core-definition-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":core-definition-id is required"))
     :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-core-definition-request
@@ -1986,11 +2019,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-core-definition-version-request (:copier common-lisp:nil))
-   (core-definition-id (common-lisp:error ":core-definition-id is required")
+   (core-definition-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":core-definition-id is required"))
     :type (common-lisp:or |__string| common-lisp:null))
    (core-definition-version-id
-    (common-lisp:error ":core-definition-version-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":core-definition-version-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-core-definition-version-request
                     'make-get-core-definition-version-request))
@@ -2056,10 +2093,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-deployment-status-request (:copier common-lisp:nil))
-   (deployment-id (common-lisp:error ":deployment-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (deployment-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":deployment-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-deployment-status-request
                     'make-get-deployment-status-request))
@@ -2114,8 +2155,9 @@
  (common-lisp:defstruct
      (get-device-definition-request (:copier common-lisp:nil))
    (device-definition-id
-    (common-lisp:error ":device-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":device-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-device-definition-request
                     'make-get-device-definition-request))
@@ -2190,11 +2232,14 @@
  (common-lisp:defstruct
      (get-device-definition-version-request (:copier common-lisp:nil))
    (device-definition-id
-    (common-lisp:error ":device-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":device-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (device-definition-version-id
-    (common-lisp:error ":device-definition-version-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":device-definition-version-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-device-definition-version-request
                     'make-get-device-definition-version-request))
@@ -2261,8 +2306,9 @@
  (common-lisp:defstruct
      (get-function-definition-request (:copier common-lisp:nil))
    (function-definition-id
-    (common-lisp:error ":function-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":function-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-function-definition-request
                     'make-get-function-definition-request))
@@ -2337,11 +2383,14 @@
  (common-lisp:defstruct
      (get-function-definition-version-request (:copier common-lisp:nil))
    (function-definition-id
-    (common-lisp:error ":function-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":function-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (function-definition-version-id
-    (common-lisp:error ":function-definition-version-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":function-definition-version-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-function-definition-version-request
                     'make-get-function-definition-version-request))
@@ -2408,10 +2457,13 @@
  (common-lisp:defstruct
      (get-group-certificate-authority-request (:copier common-lisp:nil))
    (certificate-authority-id
-    (common-lisp:error ":certificate-authority-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":certificate-authority-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-group-certificate-authority-request
                     'make-get-group-certificate-authority-request))
@@ -2465,8 +2517,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-group-certificate-configuration-request (:copier common-lisp:nil))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-group-certificate-configuration-request
                     'make-get-group-certificate-configuration-request))
@@ -2514,8 +2568,10 @@
                                                 'group-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-group-request (:copier common-lisp:nil))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-group-request 'make-get-group-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2581,10 +2637,14 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-group-version-request (:copier common-lisp:nil))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (group-version-id (common-lisp:error ":group-version-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (group-version-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":group-version-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-group-version-request
                     'make-get-group-version-request))
@@ -2650,8 +2710,9 @@
  (common-lisp:defstruct
      (get-logger-definition-request (:copier common-lisp:nil))
    (logger-definition-id
-    (common-lisp:error ":logger-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":logger-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-logger-definition-request
                     'make-get-logger-definition-request))
@@ -2726,11 +2787,14 @@
  (common-lisp:defstruct
      (get-logger-definition-version-request (:copier common-lisp:nil))
    (logger-definition-id
-    (common-lisp:error ":logger-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":logger-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (logger-definition-version-id
-    (common-lisp:error ":logger-definition-version-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":logger-definition-version-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-logger-definition-version-request
                     'make-get-logger-definition-version-request))
@@ -2833,8 +2897,10 @@
  (common-lisp:defstruct
      (get-subscription-definition-request (:copier common-lisp:nil))
    (subscription-definition-id
-    (common-lisp:error ":subscription-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":subscription-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-subscription-definition-request
                     'make-get-subscription-definition-request))
@@ -2909,11 +2975,15 @@
  (common-lisp:defstruct
      (get-subscription-definition-version-request (:copier common-lisp:nil))
    (subscription-definition-id
-    (common-lisp:error ":subscription-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":subscription-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (subscription-definition-version-id
-    (common-lisp:error ":subscription-definition-version-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((47) common-lisp:base-char
+        . ":subscription-definition-version-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-subscription-definition-version-request
                     'make-get-subscription-definition-version-request))
@@ -3155,7 +3225,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-core-definition-versions-request (:copier common-lisp:nil))
-   (core-definition-id (common-lisp:error ":core-definition-id is required")
+   (core-definition-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":core-definition-id is required"))
     :type (common-lisp:or |__string| common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
@@ -3285,8 +3357,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-deployments-request (:copier common-lisp:nil))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (next-token common-lisp:nil :type
@@ -3341,8 +3415,9 @@
  (common-lisp:defstruct
      (list-device-definition-versions-request (:copier common-lisp:nil))
    (device-definition-id
-    (common-lisp:error ":device-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":device-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (next-token common-lisp:nil :type
@@ -3449,8 +3524,9 @@
  (common-lisp:defstruct
      (list-function-definition-versions-request (:copier common-lisp:nil))
    (function-definition-id
-    (common-lisp:error ":function-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":function-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (next-token common-lisp:nil :type
@@ -3556,8 +3632,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-group-certificate-authorities-request (:copier common-lisp:nil))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-group-certificate-authorities-request
                     'make-list-group-certificate-authorities-request))
@@ -3592,8 +3670,10 @@
                                                 'group-certificate-authorities))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-group-versions-request (:copier common-lisp:nil))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (next-token common-lisp:nil :type
@@ -3692,8 +3772,9 @@
  (common-lisp:defstruct
      (list-logger-definition-versions-request (:copier common-lisp:nil))
    (logger-definition-id
-    (common-lisp:error ":logger-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":logger-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (next-token common-lisp:nil :type
@@ -3882,8 +3963,10 @@
    (next-token common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (subscription-definition-id
-    (common-lisp:error ":subscription-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":subscription-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-subscription-definition-versions-request
                     'make-list-subscription-definition-versions-request))
@@ -4121,8 +4204,10 @@
      (update-connectivity-info-request (:copier common-lisp:nil))
    (connectivity-info common-lisp:nil :type
     (common-lisp:or list-of-connectivity-info common-lisp:null))
-   (thing-name (common-lisp:error ":thing-name is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (thing-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":thing-name is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-connectivity-info-request
                     'make-update-connectivity-info-request))
@@ -4168,7 +4253,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-core-definition-request (:copier common-lisp:nil))
-   (core-definition-id (common-lisp:error ":core-definition-id is required")
+   (core-definition-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":core-definition-id is required"))
     :type (common-lisp:or |__string| common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
@@ -4204,8 +4291,9 @@
  (common-lisp:defstruct
      (update-device-definition-request (:copier common-lisp:nil))
    (device-definition-id
-    (common-lisp:error ":device-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":device-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-device-definition-request
@@ -4240,8 +4328,9 @@
  (common-lisp:defstruct
      (update-function-definition-request (:copier common-lisp:nil))
    (function-definition-id
-    (common-lisp:error ":function-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":function-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-function-definition-request
@@ -4277,8 +4366,10 @@
      (update-group-certificate-configuration-request (:copier common-lisp:nil))
    (certificate-expiry-in-milliseconds common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-group-certificate-configuration-request
                     'make-update-group-certificate-configuration-request))
@@ -4332,8 +4423,10 @@
                                                 'group-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-group-request (:copier common-lisp:nil))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-group-request 'make-update-group-request))
@@ -4363,8 +4456,9 @@
  (common-lisp:defstruct
      (update-logger-definition-request (:copier common-lisp:nil))
    (logger-definition-id
-    (common-lisp:error ":logger-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":logger-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-logger-definition-request
@@ -4400,8 +4494,10 @@
      (update-subscription-definition-request (:copier common-lisp:nil))
    (name common-lisp:nil :type (common-lisp:or |__string| common-lisp:null))
    (subscription-definition-id
-    (common-lisp:error ":subscription-definition-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":subscription-definition-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-subscription-definition-request
                     'make-update-subscription-definition-request))
@@ -4479,7 +4575,13 @@
                       (common-lisp:apply 'make-associate-role-to-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/role"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"AssociateRoleToGroup")
                                   ("Version" ,@"2017-06-07"))
@@ -4498,7 +4600,9 @@
                        'make-associate-service-role-to-account-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"AssociateServiceRoleToAccount")
                                   ("Version" ,@"2017-06-07"))
@@ -4517,7 +4621,9 @@
                       (common-lisp:apply 'make-create-core-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCoreDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -4538,7 +4644,13 @@
                        'make-create-core-definition-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/cores/~a/versions"
+                                                   coredefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCoreDefinitionVersion")
                                   ("Version" ,@"2017-06-07"))
@@ -4559,7 +4671,13 @@
                       (common-lisp:apply 'make-create-deployment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/deployments"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDeployment")
                                   ("Version" ,@"2017-06-07"))
@@ -4578,7 +4696,9 @@
                       (common-lisp:apply 'make-create-device-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDeviceDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -4599,7 +4719,13 @@
                        'make-create-device-definition-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/devices/~a/versions"
+                                                   devicedefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDeviceDefinitionVersion")
                                   ("Version" ,@"2017-06-07"))
@@ -4619,7 +4745,9 @@
                        'make-create-function-definition-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateFunctionDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -4640,7 +4768,13 @@
                        'make-create-function-definition-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/functions/~a/versions"
+                                                   functiondefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"CreateFunctionDefinitionVersion")
@@ -4660,7 +4794,9 @@
                       (common-lisp:apply 'make-create-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateGroup")
                                   ("Version" ,@"2017-06-07"))
@@ -4679,7 +4815,13 @@
                        'make-create-group-certificate-authority-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/certificateauthorities"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"CreateGroupCertificateAuthority")
@@ -4705,7 +4847,13 @@
                       (common-lisp:apply 'make-create-group-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/versions"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateGroupVersion")
                                   ("Version" ,@"2017-06-07"))
@@ -4724,7 +4872,9 @@
                       (common-lisp:apply 'make-create-logger-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLoggerDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -4745,7 +4895,13 @@
                        'make-create-logger-definition-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/loggers/~a/versions"
+                                                   loggerdefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLoggerDefinitionVersion")
                                   ("Version" ,@"2017-06-07"))
@@ -4765,7 +4921,9 @@
                        'make-create-subscription-definition-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSubscriptionDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -4787,7 +4945,13 @@
                        'make-create-subscription-definition-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/subscriptions/~a/versions"
+                                                   subscriptiondefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"CreateSubscriptionDefinitionVersion")
@@ -4806,7 +4970,13 @@
                       (common-lisp:apply 'make-delete-core-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/cores/~a"
+                                                   coredefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCoreDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -4824,7 +4994,13 @@
                       (common-lisp:apply 'make-delete-device-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/devices/~a"
+                                                   devicedefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDeviceDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -4843,7 +5019,13 @@
                        'make-delete-function-definition-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/functions/~a"
+                                                   functiondefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFunctionDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -4861,7 +5043,13 @@
                       (common-lisp:apply 'make-delete-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteGroup")
                                   ("Version" ,@"2017-06-07"))
@@ -4879,7 +5067,13 @@
                       (common-lisp:apply 'make-delete-logger-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/loggers/~a"
+                                                   loggerdefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLoggerDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -4898,7 +5092,13 @@
                        'make-delete-subscription-definition-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/subscriptions/~a"
+                                                   subscriptiondefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSubscriptionDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -4917,7 +5117,13 @@
                        'make-disassociate-role-from-group-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/role"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DisassociateRoleFromGroup")
                                   ("Version" ,@"2017-06-07"))
@@ -4928,7 +5134,9 @@
 (common-lisp:progn
  (common-lisp:defun disassociate-service-role-from-account ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
+    (aws-sdk/api:aws-request :service
+                             #A((10) common-lisp:base-char . "greengrass")
+                             :method :delete :params
                              (common-lisp:cons "Action"
                                                "DisassociateServiceRoleFromAccount"))
     "DisassociateServiceRoleFromAccountResponse" common-lisp:nil))
@@ -4943,7 +5151,13 @@
                       (common-lisp:apply 'make-get-associated-role-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/role"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetAssociatedRole")
                                   ("Version" ,@"2017-06-07"))
@@ -4961,7 +5175,13 @@
                       (common-lisp:apply 'make-get-connectivity-info-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/things/~a/connectivityInfo"
+                                                   thingname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetConnectivityInfo")
                                   ("Version" ,@"2017-06-07"))
@@ -4979,7 +5199,13 @@
                       (common-lisp:apply 'make-get-core-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/cores/~a"
+                                                   coredefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCoreDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -5000,7 +5226,14 @@
                        'make-get-core-definition-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/cores/~a/versions/~a"
+                                                   coredefinitionid
+                                                   coredefinitionversionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCoreDefinitionVersion")
                                   ("Version" ,@"2017-06-07"))
@@ -5018,7 +5251,13 @@
                       (common-lisp:apply 'make-get-deployment-status-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/deployments/~a/status"
+                                                   groupid deploymentid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDeploymentStatus")
                                   ("Version" ,@"2017-06-07"))
@@ -5036,7 +5275,13 @@
                       (common-lisp:apply 'make-get-device-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/devices/~a"
+                                                   devicedefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDeviceDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -5057,7 +5302,14 @@
                        'make-get-device-definition-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/devices/~a/versions/~a"
+                                                   devicedefinitionid
+                                                   devicedefinitionversionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDeviceDefinitionVersion")
                                   ("Version" ,@"2017-06-07"))
@@ -5075,7 +5327,13 @@
                       (common-lisp:apply 'make-get-function-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/functions/~a"
+                                                   functiondefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetFunctionDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -5097,7 +5355,14 @@
                        'make-get-function-definition-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/functions/~a/versions/~a"
+                                                   functiondefinitionid
+                                                   functiondefinitionversionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetFunctionDefinitionVersion")
                                   ("Version" ,@"2017-06-07"))
@@ -5115,7 +5380,13 @@
                       (common-lisp:apply 'make-get-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetGroup")
                                   ("Version" ,@"2017-06-07"))
@@ -5135,7 +5406,14 @@
                        'make-get-group-certificate-authority-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/certificateauthorities/~a"
+                                                   groupid
+                                                   certificateauthorityid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetGroupCertificateAuthority")
                                   ("Version" ,@"2017-06-07"))
@@ -5154,7 +5432,13 @@
                        'make-get-group-certificate-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/certificateauthorities/configuration/expiry"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetGroupCertificateConfiguration")
@@ -5173,7 +5457,13 @@
                       (common-lisp:apply 'make-get-group-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/versions/~a"
+                                                   groupid groupversionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetGroupVersion")
                                   ("Version" ,@"2017-06-07"))
@@ -5191,7 +5481,13 @@
                       (common-lisp:apply 'make-get-logger-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/loggers/~a"
+                                                   loggerdefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetLoggerDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -5212,7 +5508,14 @@
                        'make-get-logger-definition-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/loggers/~a/versions/~a"
+                                                   loggerdefinitionid
+                                                   loggerdefinitionversionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetLoggerDefinitionVersion")
                                   ("Version" ,@"2017-06-07"))
@@ -5223,7 +5526,9 @@
 (common-lisp:progn
  (common-lisp:defun get-service-role-for-account ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+    (aws-sdk/api:aws-request :service
+                             #A((10) common-lisp:base-char . "greengrass")
+                             :method :get :params
                              (common-lisp:cons "Action"
                                                "GetServiceRoleForAccount"))
     "GetServiceRoleForAccountResponse" common-lisp:nil))
@@ -5239,7 +5544,13 @@
                        'make-get-subscription-definition-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/subscriptions/~a"
+                                                   subscriptiondefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSubscriptionDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -5261,7 +5572,14 @@
                        'make-get-subscription-definition-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/subscriptions/~a/versions/~a"
+                                                   subscriptiondefinitionid
+                                                   subscriptiondefinitionversionid)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetSubscriptionDefinitionVersion")
@@ -5283,7 +5601,13 @@
                        'make-list-core-definition-versions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/cores/~a/versions"
+                                                   coredefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListCoreDefinitionVersions")
                                   ("Version" ,@"2017-06-07"))
@@ -5301,7 +5625,9 @@
                       (common-lisp:apply 'make-list-core-definitions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListCoreDefinitions")
                                   ("Version" ,@"2017-06-07"))
@@ -5320,7 +5646,13 @@
                       (common-lisp:apply 'make-list-deployments-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/deployments"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDeployments")
                                   ("Version" ,@"2017-06-07"))
@@ -5341,7 +5673,13 @@
                        'make-list-device-definition-versions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/devices/~a/versions"
+                                                   devicedefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDeviceDefinitionVersions")
                                   ("Version" ,@"2017-06-07"))
@@ -5359,7 +5697,9 @@
                       (common-lisp:apply 'make-list-device-definitions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDeviceDefinitions")
                                   ("Version" ,@"2017-06-07"))
@@ -5380,7 +5720,13 @@
                        'make-list-function-definition-versions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/functions/~a/versions"
+                                                   functiondefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListFunctionDefinitionVersions")
                                   ("Version" ,@"2017-06-07"))
@@ -5399,7 +5745,9 @@
                        'make-list-function-definitions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListFunctionDefinitions")
                                   ("Version" ,@"2017-06-07"))
@@ -5418,7 +5766,13 @@
                        'make-list-group-certificate-authorities-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/certificateauthorities"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ListGroupCertificateAuthorities")
@@ -5438,7 +5792,13 @@
                       (common-lisp:apply 'make-list-group-versions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/versions"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListGroupVersions")
                                   ("Version" ,@"2017-06-07"))
@@ -5456,7 +5816,9 @@
                       (common-lisp:apply 'make-list-groups-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListGroups")
                                   ("Version" ,@"2017-06-07"))
@@ -5477,7 +5839,13 @@
                        'make-list-logger-definition-versions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/loggers/~a/versions"
+                                                   loggerdefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListLoggerDefinitionVersions")
                                   ("Version" ,@"2017-06-07"))
@@ -5495,7 +5863,9 @@
                       (common-lisp:apply 'make-list-logger-definitions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListLoggerDefinitions")
                                   ("Version" ,@"2017-06-07"))
@@ -5516,7 +5886,13 @@
                        'make-list-subscription-definition-versions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/subscriptions/~a/versions"
+                                                   subscriptiondefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ListSubscriptionDefinitionVersions")
@@ -5536,7 +5912,9 @@
                        'make-list-subscription-definitions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListSubscriptionDefinitions")
                                   ("Version" ,@"2017-06-07"))
@@ -5554,7 +5932,13 @@
                       (common-lisp:apply 'make-update-connectivity-info-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/things/~a/connectivityInfo"
+                                                   thingname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateConnectivityInfo")
                                   ("Version" ,@"2017-06-07"))
@@ -5572,7 +5956,13 @@
                       (common-lisp:apply 'make-update-core-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/cores/~a"
+                                                   coredefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateCoreDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -5590,7 +5980,13 @@
                       (common-lisp:apply 'make-update-device-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/devices/~a"
+                                                   devicedefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDeviceDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -5609,7 +6005,13 @@
                        'make-update-function-definition-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/functions/~a"
+                                                   functiondefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateFunctionDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -5627,7 +6029,13 @@
                       (common-lisp:apply 'make-update-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateGroup")
                                   ("Version" ,@"2017-06-07"))
@@ -5648,7 +6056,13 @@
                        'make-update-group-certificate-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/groups/~a/certificateauthorities/configuration/expiry"
+                                                   groupid)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"UpdateGroupCertificateConfiguration")
@@ -5667,7 +6081,13 @@
                       (common-lisp:apply 'make-update-logger-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/loggers/~a"
+                                                   loggerdefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateLoggerDefinition")
                                   ("Version" ,@"2017-06-07"))
@@ -5687,7 +6107,13 @@
                        'make-update-subscription-definition-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "greengrass" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "greengrass")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/greengrass/definition/subscriptions/~a"
+                                                   subscriptiondefinitionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSubscriptionDefinition")
                                   ("Version" ,@"2017-06-07"))

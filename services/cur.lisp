@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/cur)
+
 (common-lisp:deftype awsregion () 'common-lisp:string)
 (common-lisp:deftype additional-artifact () 'common-lisp:string)
 (common-lisp:progn
@@ -145,7 +146,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-report-definition-request (:copier common-lisp:nil))
-   (report-definition (common-lisp:error ":report-definition is required")
+   (report-definition
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":report-definition is required"))
     :type (common-lisp:or report-definition common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-report-definition-request
@@ -173,23 +176,38 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (report-definition (:copier common-lisp:nil))
-   (report-name (common-lisp:error ":report-name is required") :type
-    (common-lisp:or report-name common-lisp:null))
-   (time-unit (common-lisp:error ":time-unit is required") :type
-    (common-lisp:or time-unit common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or report-format common-lisp:null))
-   (compression (common-lisp:error ":compression is required") :type
-    (common-lisp:or compression-format common-lisp:null))
+   (report-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":report-name is required"))
+    :type (common-lisp:or report-name common-lisp:null))
+   (time-unit
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":time-unit is required"))
+    :type (common-lisp:or time-unit common-lisp:null))
+   (format
+    (common-lisp:error #A((19) common-lisp:base-char . ":format is required"))
+    :type (common-lisp:or report-format common-lisp:null))
+   (compression
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":compression is required"))
+    :type (common-lisp:or compression-format common-lisp:null))
    (additional-schema-elements
-    (common-lisp:error ":additional-schema-elements is required") :type
-    (common-lisp:or schema-element-list common-lisp:null))
-   (s3bucket (common-lisp:error ":s3bucket is required") :type
-    (common-lisp:or s3bucket common-lisp:null))
-   (s3prefix (common-lisp:error ":s3prefix is required") :type
-    (common-lisp:or s3prefix common-lisp:null))
-   (s3region (common-lisp:error ":s3region is required") :type
-    (common-lisp:or awsregion common-lisp:null))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":additional-schema-elements is required"))
+    :type (common-lisp:or schema-element-list common-lisp:null))
+   (s3bucket
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":s3bucket is required"))
+    :type (common-lisp:or s3bucket common-lisp:null))
+   (s3prefix
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":s3prefix is required"))
+    :type (common-lisp:or s3prefix common-lisp:null))
+   (s3region
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":s3region is required"))
+    :type (common-lisp:or awsregion common-lisp:null))
    (additional-artifacts common-lisp:nil :type
     (common-lisp:or additional-artifact-list common-lisp:null)))
  (common-lisp:export
@@ -306,7 +324,8 @@
                       (common-lisp:apply 'make-delete-report-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cur" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "cur")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReportDefinition")
                                   ("Version" ,@"2017-01-06"))
@@ -325,7 +344,8 @@
                        'make-describe-report-definitions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cur" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "cur")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReportDefinitions")
                                   ("Version" ,@"2017-01-06"))
@@ -343,7 +363,8 @@
                       (common-lisp:apply 'make-put-report-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cur" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "cur")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutReportDefinition")
                                   ("Version" ,@"2017-01-06"))

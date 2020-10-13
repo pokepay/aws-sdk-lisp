@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/cloudhsm)
+
 (common-lisp:deftype az () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype azlist () '(trivial-types:proper-list az))
@@ -18,10 +19,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-resource-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tag-list (common-lisp:error ":tag-list is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (tag-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-list is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-tags-to-resource-request
                     'make-add-tags-to-resource-request))
@@ -43,8 +48,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-resource-response (:copier common-lisp:nil))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-tags-to-resource-response
                     'make-add-tags-to-resource-response))
@@ -108,8 +114,9 @@
                                                 'retryable))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-hapg-request (:copier common-lisp:nil))
-   (label (common-lisp:error ":label is required") :type
-    (common-lisp:or label common-lisp:null)))
+   (label
+    (common-lisp:error #A((18) common-lisp:base-char . ":label is required"))
+    :type (common-lisp:or label common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-hapg-request 'make-create-hapg-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -135,16 +142,23 @@
                                                 'hapg-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-hsm-request (:copier common-lisp:nil))
-   (subnet-id (common-lisp:error ":subnet-id is required") :type
-    (common-lisp:or subnet-id common-lisp:null))
-   (ssh-key (common-lisp:error ":ssh-key is required") :type
-    (common-lisp:or ssh-key common-lisp:null))
+   (subnet-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":subnet-id is required"))
+    :type (common-lisp:or subnet-id common-lisp:null))
+   (ssh-key
+    (common-lisp:error #A((20) common-lisp:base-char . ":ssh-key is required"))
+    :type (common-lisp:or ssh-key common-lisp:null))
    (eni-ip common-lisp:nil :type (common-lisp:or ip-address common-lisp:null))
-   (iam-role-arn (common-lisp:error ":iam-role-arn is required") :type
-    (common-lisp:or iam-role-arn common-lisp:null))
+   (iam-role-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":iam-role-arn is required"))
+    :type (common-lisp:or iam-role-arn common-lisp:null))
    (external-id common-lisp:nil :type
     (common-lisp:or external-id common-lisp:null))
-   (subscription-type (common-lisp:error ":subscription-type is required")
+   (subscription-type
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-type is required"))
     :type (common-lisp:or subscription-type common-lisp:null))
    (client-token common-lisp:nil :type
     (common-lisp:or client-token common-lisp:null))
@@ -211,8 +225,10 @@
 (common-lisp:progn
  (common-lisp:defstruct (create-luna-client-request (:copier common-lisp:nil))
    (label common-lisp:nil :type (common-lisp:or client-label common-lisp:null))
-   (certificate (common-lisp:error ":certificate is required") :type
-    (common-lisp:or certificate common-lisp:null)))
+   (certificate
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":certificate is required"))
+    :type (common-lisp:or certificate common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-luna-client-request
                     'make-create-luna-client-request))
@@ -250,8 +266,10 @@
                                                 'client-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-hapg-request (:copier common-lisp:nil))
-   (hapg-arn (common-lisp:error ":hapg-arn is required") :type
-    (common-lisp:or hapg-arn common-lisp:null)))
+   (hapg-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":hapg-arn is required"))
+    :type (common-lisp:or hapg-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-hapg-request 'make-delete-hapg-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -264,8 +282,9 @@
                                                 'hapg-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-hapg-response (:copier common-lisp:nil))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-hapg-response 'make-delete-hapg-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -278,8 +297,9 @@
                                                 'status))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-hsm-request (:copier common-lisp:nil))
-   (hsm-arn (common-lisp:error ":hsm-arn is required") :type
-    (common-lisp:or hsm-arn common-lisp:null)))
+   (hsm-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":hsm-arn is required"))
+    :type (common-lisp:or hsm-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-hsm-request 'make-delete-hsm-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -292,8 +312,9 @@
                                                 'hsm-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-hsm-response (:copier common-lisp:nil))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-hsm-response 'make-delete-hsm-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -306,8 +327,10 @@
                                                 'status))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-luna-client-request (:copier common-lisp:nil))
-   (client-arn (common-lisp:error ":client-arn is required") :type
-    (common-lisp:or client-arn common-lisp:null)))
+   (client-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":client-arn is required"))
+    :type (common-lisp:or client-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-luna-client-request
                     'make-delete-luna-client-request))
@@ -323,8 +346,9 @@
                                                 'client-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-luna-client-response (:copier common-lisp:nil))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-luna-client-response
                     'make-delete-luna-client-response))
@@ -340,8 +364,10 @@
                                                 'status))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-hapg-request (:copier common-lisp:nil))
-   (hapg-arn (common-lisp:error ":hapg-arn is required") :type
-    (common-lisp:or hapg-arn common-lisp:null)))
+   (hapg-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":hapg-arn is required"))
+    :type (common-lisp:or hapg-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-hapg-request 'make-describe-hapg-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -666,12 +692,18 @@
 (common-lisp:deftype external-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (get-config-request (:copier common-lisp:nil))
-   (client-arn (common-lisp:error ":client-arn is required") :type
-    (common-lisp:or client-arn common-lisp:null))
-   (client-version (common-lisp:error ":client-version is required") :type
-    (common-lisp:or client-version common-lisp:null))
-   (hapg-list (common-lisp:error ":hapg-list is required") :type
-    (common-lisp:or hapg-list common-lisp:null)))
+   (client-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":client-arn is required"))
+    :type (common-lisp:or client-arn common-lisp:null))
+   (client-version
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":client-version is required"))
+    :type (common-lisp:or client-version common-lisp:null))
+   (hapg-list
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":hapg-list is required"))
+    :type (common-lisp:or hapg-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-config-request 'make-get-config-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -793,8 +825,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-hapgs-response (:copier common-lisp:nil))
-   (hapg-list (common-lisp:error ":hapg-list is required") :type
-    (common-lisp:or hapg-list common-lisp:null))
+   (hapg-list
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":hapg-list is required"))
+    :type (common-lisp:or hapg-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -865,8 +899,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-luna-clients-response (:copier common-lisp:nil))
-   (client-list (common-lisp:error ":client-list is required") :type
-    (common-lisp:or client-list common-lisp:null))
+   (client-list
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":client-list is required"))
+    :type (common-lisp:or client-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -890,8 +926,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -908,8 +946,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-response (:copier common-lisp:nil))
-   (tag-list (common-lisp:error ":tag-list is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (tag-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-list is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -925,8 +965,10 @@
                                                 'tag-list))))))
 (common-lisp:progn
  (common-lisp:defstruct (modify-hapg-request (:copier common-lisp:nil))
-   (hapg-arn (common-lisp:error ":hapg-arn is required") :type
-    (common-lisp:or hapg-arn common-lisp:null))
+   (hapg-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":hapg-arn is required"))
+    :type (common-lisp:or hapg-arn common-lisp:null))
    (label common-lisp:nil :type (common-lisp:or label common-lisp:null))
    (partition-serial-list common-lisp:nil :type
     (common-lisp:or partition-serial-list common-lisp:null)))
@@ -965,8 +1007,9 @@
                                                 'hapg-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (modify-hsm-request (:copier common-lisp:nil))
-   (hsm-arn (common-lisp:error ":hsm-arn is required") :type
-    (common-lisp:or hsm-arn common-lisp:null))
+   (hsm-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":hsm-arn is required"))
+    :type (common-lisp:or hsm-arn common-lisp:null))
    (subnet-id common-lisp:nil :type
     (common-lisp:or subnet-id common-lisp:null))
    (eni-ip common-lisp:nil :type (common-lisp:or ip-address common-lisp:null))
@@ -1026,10 +1069,14 @@
                                                 'hsm-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (modify-luna-client-request (:copier common-lisp:nil))
-   (client-arn (common-lisp:error ":client-arn is required") :type
-    (common-lisp:or client-arn common-lisp:null))
-   (certificate (common-lisp:error ":certificate is required") :type
-    (common-lisp:or certificate common-lisp:null)))
+   (client-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":client-arn is required"))
+    :type (common-lisp:or client-arn common-lisp:null))
+   (certificate
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":certificate is required"))
+    :type (common-lisp:or certificate common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-luna-client-request
                     'make-modify-luna-client-request))
@@ -1087,10 +1134,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-tags-from-resource-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tag-key-list (common-lisp:error ":tag-key-list is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (tag-key-list
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":tag-key-list is required"))
+    :type (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-from-resource-request
                     'make-remove-tags-from-resource-request))
@@ -1112,8 +1163,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-tags-from-resource-response (:copier common-lisp:nil))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-from-resource-response
                     'make-remove-tags-from-resource-response))
@@ -1133,10 +1185,11 @@
 (common-lisp:deftype subscription-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -1179,7 +1232,9 @@
                       (common-lisp:apply 'make-add-tags-to-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToResource")
                                   ("Version" ,@"2014-05-30"))
@@ -1197,7 +1252,9 @@
                       (common-lisp:apply 'make-create-hapg-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateHapg")
                                   ("Version" ,@"2014-05-30"))
@@ -1218,7 +1275,9 @@
                       (common-lisp:apply 'make-create-hsm-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateHsm")
                                   ("Version" ,@"2014-05-30"))
@@ -1236,7 +1295,9 @@
                       (common-lisp:apply 'make-create-luna-client-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLunaClient")
                                   ("Version" ,@"2014-05-30"))
@@ -1254,7 +1315,9 @@
                       (common-lisp:apply 'make-delete-hapg-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteHapg")
                                   ("Version" ,@"2014-05-30"))
@@ -1272,7 +1335,9 @@
                       (common-lisp:apply 'make-delete-hsm-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteHsm")
                                   ("Version" ,@"2014-05-30"))
@@ -1290,7 +1355,9 @@
                       (common-lisp:apply 'make-delete-luna-client-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLunaClient")
                                   ("Version" ,@"2014-05-30"))
@@ -1308,7 +1375,9 @@
                       (common-lisp:apply 'make-describe-hapg-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeHapg")
                                   ("Version" ,@"2014-05-30"))
@@ -1326,7 +1395,9 @@
                       (common-lisp:apply 'make-describe-hsm-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeHsm")
                                   ("Version" ,@"2014-05-30"))
@@ -1345,7 +1416,9 @@
                       (common-lisp:apply 'make-describe-luna-client-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLunaClient")
                                   ("Version" ,@"2014-05-30"))
@@ -1364,7 +1437,9 @@
                       (common-lisp:apply 'make-get-config-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetConfig")
                                   ("Version" ,@"2014-05-30"))
@@ -1375,7 +1450,9 @@
 (common-lisp:progn
  (common-lisp:defun list-available-zones ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((8) common-lisp:base-char . "cloudhsm") :method
+                             :post :params
                              (common-lisp:cons "Action" "ListAvailableZones"))
     "ListAvailableZonesResponse" common-lisp:nil))
  (common-lisp:export 'list-available-zones))
@@ -1389,7 +1466,9 @@
                       (common-lisp:apply 'make-list-hapgs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListHapgs")
                                   ("Version" ,@"2014-05-30"))
@@ -1407,7 +1486,9 @@
                       (common-lisp:apply 'make-list-hsms-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListHsms")
                                   ("Version" ,@"2014-05-30"))
@@ -1425,7 +1506,9 @@
                       (common-lisp:apply 'make-list-luna-clients-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListLunaClients")
                                   ("Version" ,@"2014-05-30"))
@@ -1443,7 +1526,9 @@
                       (common-lisp:apply 'make-list-tags-for-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2014-05-30"))
@@ -1462,7 +1547,9 @@
                       (common-lisp:apply 'make-modify-hapg-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyHapg")
                                   ("Version" ,@"2014-05-30"))
@@ -1483,7 +1570,9 @@
                       (common-lisp:apply 'make-modify-hsm-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyHsm")
                                   ("Version" ,@"2014-05-30"))
@@ -1501,7 +1590,9 @@
                       (common-lisp:apply 'make-modify-luna-client-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyLunaClient")
                                   ("Version" ,@"2014-05-30"))
@@ -1520,7 +1611,9 @@
                        'make-remove-tags-from-resource-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "cloudhsm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromResource")
                                   ("Version" ,@"2014-05-30"))

@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/dms)
+
 (common-lisp:progn
  (common-lisp:defstruct (access-denied-fault (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -57,10 +58,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-resource-message (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-tags-to-resource-message
                     'make-add-tags-to-resource-message))
@@ -251,12 +255,18 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (create-endpoint-message (:copier common-lisp:nil))
-   (endpoint-identifier (common-lisp:error ":endpoint-identifier is required")
+   (endpoint-identifier
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":endpoint-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
-   (endpoint-type (common-lisp:error ":endpoint-type is required") :type
-    (common-lisp:or replication-endpoint-type-value common-lisp:null))
-   (engine-name (common-lisp:error ":engine-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (endpoint-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":endpoint-type is required"))
+    :type (common-lisp:or replication-endpoint-type-value common-lisp:null))
+   (engine-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":engine-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (username common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (password common-lisp:nil :type
     (common-lisp:or secret-string common-lisp:null))
@@ -384,10 +394,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-event-subscription-message (:copier common-lisp:nil))
-   (subscription-name (common-lisp:error ":subscription-name is required")
+   (subscription-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-name is required"))
     :type (common-lisp:or string common-lisp:null))
-   (sns-topic-arn (common-lisp:error ":sns-topic-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+   (sns-topic-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":sns-topic-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (source-type common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (event-categories common-lisp:nil :type
     (common-lisp:or event-categories-list common-lisp:null))
@@ -461,13 +475,17 @@
  (common-lisp:defstruct
      (create-replication-instance-message (:copier common-lisp:nil))
    (replication-instance-identifier
-    (common-lisp:error ":replication-instance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((44) common-lisp:base-char
+        . ":replication-instance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (allocated-storage common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
    (replication-instance-class
-    (common-lisp:error ":replication-instance-class is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":replication-instance-class is required"))
+    :type (common-lisp:or string common-lisp:null))
    (vpc-security-group-ids common-lisp:nil :type
     (common-lisp:or vpc-security-group-id-list common-lisp:null))
    (availability-zone common-lisp:nil :type
@@ -581,13 +599,19 @@
  (common-lisp:defstruct
      (create-replication-subnet-group-message (:copier common-lisp:nil))
    (replication-subnet-group-identifier
-    (common-lisp:error ":replication-subnet-group-identifier is required")
+    (common-lisp:error
+     #A((48) common-lisp:base-char
+        . ":replication-subnet-group-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (replication-subnet-group-description
-    (common-lisp:error ":replication-subnet-group-description is required")
+    (common-lisp:error
+     #A((49) common-lisp:base-char
+        . ":replication-subnet-group-description is required"))
     :type (common-lisp:or string common-lisp:null))
-   (subnet-ids (common-lisp:error ":subnet-ids is required") :type
-    (common-lisp:or subnet-identifier-list common-lisp:null))
+   (subnet-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":subnet-ids is required"))
+    :type (common-lisp:or subnet-identifier-list common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-replication-subnet-group-message
@@ -639,19 +663,30 @@
  (common-lisp:defstruct
      (create-replication-task-message (:copier common-lisp:nil))
    (replication-task-identifier
-    (common-lisp:error ":replication-task-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
-   (source-endpoint-arn (common-lisp:error ":source-endpoint-arn is required")
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":replication-task-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
-   (target-endpoint-arn (common-lisp:error ":target-endpoint-arn is required")
+   (source-endpoint-arn
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":source-endpoint-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (target-endpoint-arn
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":target-endpoint-arn is required"))
     :type (common-lisp:or string common-lisp:null))
    (replication-instance-arn
-    (common-lisp:error ":replication-instance-arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (migration-type (common-lisp:error ":migration-type is required") :type
-    (common-lisp:or migration-type-value common-lisp:null))
-   (table-mappings (common-lisp:error ":table-mappings is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":replication-instance-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (migration-type
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":migration-type is required"))
+    :type (common-lisp:or migration-type-value common-lisp:null))
+   (table-mappings
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":table-mappings is required"))
+    :type (common-lisp:or string common-lisp:null))
    (replication-task-settings common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (cdc-start-time common-lisp:nil :type
@@ -730,8 +765,10 @@
                                                 'replication-task))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-certificate-message (:copier common-lisp:nil))
-   (certificate-arn (common-lisp:error ":certificate-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (certificate-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":certificate-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-certificate-message
                     'make-delete-certificate-message))
@@ -764,8 +801,10 @@
                                                 'certificate))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-endpoint-message (:copier common-lisp:nil))
-   (endpoint-arn (common-lisp:error ":endpoint-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (endpoint-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":endpoint-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-endpoint-message 'make-delete-endpoint-message))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -796,7 +835,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-event-subscription-message (:copier common-lisp:nil))
-   (subscription-name (common-lisp:error ":subscription-name is required")
+   (subscription-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-name is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-event-subscription-message
@@ -833,8 +874,9 @@
  (common-lisp:defstruct
      (delete-replication-instance-message (:copier common-lisp:nil))
    (replication-instance-arn
-    (common-lisp:error ":replication-instance-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":replication-instance-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-replication-instance-message
                     'make-delete-replication-instance-message))
@@ -870,7 +912,9 @@
  (common-lisp:defstruct
      (delete-replication-subnet-group-message (:copier common-lisp:nil))
    (replication-subnet-group-identifier
-    (common-lisp:error ":replication-subnet-group-identifier is required")
+    (common-lisp:error
+     #A((48) common-lisp:base-char
+        . ":replication-subnet-group-identifier is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-replication-subnet-group-message
@@ -900,8 +944,9 @@
  (common-lisp:defstruct
      (delete-replication-task-message (:copier common-lisp:nil))
    (replication-task-arn
-    (common-lisp:error ":replication-task-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":replication-task-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-replication-task-message
                     'make-delete-replication-task-message))
@@ -1427,8 +1472,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-refresh-schemas-status-message (:copier common-lisp:nil))
-   (endpoint-arn (common-lisp:error ":endpoint-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (endpoint-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":endpoint-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-refresh-schemas-status-message
                     'make-describe-refresh-schemas-status-message))
@@ -1627,8 +1674,10 @@
                                                 'replication-tasks))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-schemas-message (:copier common-lisp:nil))
-   (endpoint-arn (common-lisp:error ":endpoint-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+   (endpoint-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":endpoint-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (max-records common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -1681,8 +1730,9 @@
  (common-lisp:defstruct
      (describe-table-statistics-message (:copier common-lisp:nil))
    (replication-task-arn
-    (common-lisp:error ":replication-task-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":replication-task-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (max-records common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -1744,8 +1794,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (dynamo-db-settings (:copier common-lisp:nil))
    (service-access-role-arn
-    (common-lisp:error ":service-access-role-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":service-access-role-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'dynamo-db-settings 'make-dynamo-db-settings))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2042,10 +2093,12 @@
 (common-lisp:deftype exception-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (filter (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or filter-value-list common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (values
+    (common-lisp:error #A((19) common-lisp:base-char . ":values is required"))
+    :type (common-lisp:or filter-value-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'filter 'make-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape filter))
@@ -2077,8 +2130,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (import-certificate-message (:copier common-lisp:nil))
    (certificate-identifier
-    (common-lisp:error ":certificate-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":certificate-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (certificate-pem common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (certificate-wallet common-lisp:nil :type
@@ -2224,8 +2278,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-message (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-message
                     'make-list-tags-for-resource-message))
@@ -2260,8 +2316,10 @@
 (common-lisp:deftype migration-type-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (modify-endpoint-message (:copier common-lisp:nil))
-   (endpoint-arn (common-lisp:error ":endpoint-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+   (endpoint-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":endpoint-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (endpoint-identifier common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (endpoint-type common-lisp:nil :type
@@ -2387,7 +2445,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (modify-event-subscription-message (:copier common-lisp:nil))
-   (subscription-name (common-lisp:error ":subscription-name is required")
+   (subscription-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-name is required"))
     :type (common-lisp:or string common-lisp:null))
    (sns-topic-arn common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -2451,8 +2511,9 @@
  (common-lisp:defstruct
      (modify-replication-instance-message (:copier common-lisp:nil))
    (replication-instance-arn
-    (common-lisp:error ":replication-instance-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":replication-instance-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (allocated-storage common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
    (apply-immediately common-lisp:nil :type
@@ -2558,12 +2619,16 @@
  (common-lisp:defstruct
      (modify-replication-subnet-group-message (:copier common-lisp:nil))
    (replication-subnet-group-identifier
-    (common-lisp:error ":replication-subnet-group-identifier is required")
+    (common-lisp:error
+     #A((48) common-lisp:base-char
+        . ":replication-subnet-group-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (replication-subnet-group-description common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (subnet-ids (common-lisp:error ":subnet-ids is required") :type
-    (common-lisp:or subnet-identifier-list common-lisp:null)))
+   (subnet-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":subnet-ids is required"))
+    :type (common-lisp:or subnet-identifier-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-replication-subnet-group-message
                     'make-modify-replication-subnet-group-message))
@@ -2609,8 +2674,9 @@
  (common-lisp:defstruct
      (modify-replication-task-message (:copier common-lisp:nil))
    (replication-task-arn
-    (common-lisp:error ":replication-task-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":replication-task-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (replication-task-identifier common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (migration-type common-lisp:nil :type
@@ -2831,11 +2897,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (refresh-schemas-message (:copier common-lisp:nil))
-   (endpoint-arn (common-lisp:error ":endpoint-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+   (endpoint-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":endpoint-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (replication-instance-arn
-    (common-lisp:error ":replication-instance-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":replication-instance-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'refresh-schemas-message 'make-refresh-schemas-message))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2917,10 +2986,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (reload-tables-message (:copier common-lisp:nil))
    (replication-task-arn
-    (common-lisp:error ":replication-task-arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tables-to-reload (common-lisp:error ":tables-to-reload is required") :type
-    (common-lisp:or table-list-to-reload common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":replication-task-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (tables-to-reload
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":tables-to-reload is required"))
+    :type (common-lisp:or table-list-to-reload common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reload-tables-message 'make-reload-tables-message))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2957,10 +3029,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-tags-from-resource-message (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or key-list common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-from-resource-message
                     'make-remove-tags-from-resource-message))
@@ -3600,11 +3676,14 @@
  (common-lisp:defstruct
      (start-replication-task-message (:copier common-lisp:nil))
    (replication-task-arn
-    (common-lisp:error ":replication-task-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":replication-task-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (start-replication-task-type
-    (common-lisp:error ":start-replication-task-type is required") :type
-    (common-lisp:or start-replication-task-type-value common-lisp:null))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":start-replication-task-type is required"))
+    :type (common-lisp:or start-replication-task-type-value common-lisp:null))
    (cdc-start-time common-lisp:nil :type
     (common-lisp:or tstamp common-lisp:null)))
  (common-lisp:export
@@ -3653,8 +3732,9 @@
  (common-lisp:defstruct
      (stop-replication-task-message (:copier common-lisp:nil))
    (replication-task-arn
-    (common-lisp:error ":replication-task-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":replication-task-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-replication-task-message
                     'make-stop-replication-task-message))
@@ -3941,10 +4021,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (test-connection-message (:copier common-lisp:nil))
    (replication-instance-arn
-    (common-lisp:error ":replication-instance-arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (endpoint-arn (common-lisp:error ":endpoint-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":replication-instance-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (endpoint-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":endpoint-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'test-connection-message 'make-test-connection-message))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4047,7 +4130,8 @@
                       (common-lisp:apply 'make-add-tags-to-resource-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToResource")
                                   ("Version" ,@"2016-01-01"))
@@ -4073,7 +4157,8 @@
                       (common-lisp:apply 'make-create-endpoint-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateEndpoint")
                                   ("Version" ,@"2016-01-01"))
@@ -4095,7 +4180,8 @@
                        'make-create-event-subscription-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateEventSubscription")
                                   ("Version" ,@"2016-01-01"))
@@ -4125,7 +4211,8 @@
                        'make-create-replication-instance-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateReplicationInstance")
                                   ("Version" ,@"2016-01-01"))
@@ -4147,7 +4234,8 @@
                        'make-create-replication-subnet-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateReplicationSubnetGroup")
                                   ("Version" ,@"2016-01-01"))
@@ -4171,7 +4259,8 @@
                       (common-lisp:apply 'make-create-replication-task-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateReplicationTask")
                                   ("Version" ,@"2016-01-01"))
@@ -4189,7 +4278,8 @@
                       (common-lisp:apply 'make-delete-certificate-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCertificate")
                                   ("Version" ,@"2016-01-01"))
@@ -4207,7 +4297,8 @@
                       (common-lisp:apply 'make-delete-endpoint-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEndpoint")
                                   ("Version" ,@"2016-01-01"))
@@ -4226,7 +4317,8 @@
                        'make-delete-event-subscription-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEventSubscription")
                                   ("Version" ,@"2016-01-01"))
@@ -4245,7 +4337,8 @@
                        'make-delete-replication-instance-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReplicationInstance")
                                   ("Version" ,@"2016-01-01"))
@@ -4265,7 +4358,8 @@
                        'make-delete-replication-subnet-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReplicationSubnetGroup")
                                   ("Version" ,@"2016-01-01"))
@@ -4283,7 +4377,8 @@
                       (common-lisp:apply 'make-delete-replication-task-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReplicationTask")
                                   ("Version" ,@"2016-01-01"))
@@ -4294,7 +4389,8 @@
 (common-lisp:progn
  (common-lisp:defun describe-account-attributes ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "dms" :method :post :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeAccountAttributes"))
     "DescribeAccountAttributesResponse" common-lisp:nil))
@@ -4309,7 +4405,8 @@
                       (common-lisp:apply 'make-describe-certificates-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCertificates")
                                   ("Version" ,@"2016-01-01"))
@@ -4327,7 +4424,8 @@
                       (common-lisp:apply 'make-describe-connections-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConnections")
                                   ("Version" ,@"2016-01-01"))
@@ -4345,7 +4443,8 @@
                       (common-lisp:apply 'make-describe-endpoint-types-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEndpointTypes")
                                   ("Version" ,@"2016-01-01"))
@@ -4363,7 +4462,8 @@
                       (common-lisp:apply 'make-describe-endpoints-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEndpoints")
                                   ("Version" ,@"2016-01-01"))
@@ -4382,7 +4482,8 @@
                        'make-describe-event-categories-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEventCategories")
                                   ("Version" ,@"2016-01-01"))
@@ -4403,7 +4504,8 @@
                        'make-describe-event-subscriptions-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEventSubscriptions")
                                   ("Version" ,@"2016-01-01"))
@@ -4425,7 +4527,8 @@
                       (common-lisp:apply 'make-describe-events-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEvents")
                                   ("Version" ,@"2016-01-01"))
@@ -4444,7 +4547,8 @@
                        'make-describe-orderable-replication-instances-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeOrderableReplicationInstances")
@@ -4464,7 +4568,8 @@
                        'make-describe-refresh-schemas-status-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRefreshSchemasStatus")
                                   ("Version" ,@"2016-01-01"))
@@ -4483,7 +4588,8 @@
                        'make-describe-replication-instances-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReplicationInstances")
                                   ("Version" ,@"2016-01-01"))
@@ -4502,7 +4608,8 @@
                        'make-describe-replication-subnet-groups-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeReplicationSubnetGroups")
@@ -4522,7 +4629,8 @@
                        'make-describe-replication-tasks-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReplicationTasks")
                                   ("Version" ,@"2016-01-01"))
@@ -4541,7 +4649,8 @@
                       (common-lisp:apply 'make-describe-schemas-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSchemas")
                                   ("Version" ,@"2016-01-01"))
@@ -4561,7 +4670,8 @@
                        'make-describe-table-statistics-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTableStatistics")
                                   ("Version" ,@"2016-01-01"))
@@ -4582,7 +4692,8 @@
                       (common-lisp:apply 'make-import-certificate-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ImportCertificate")
                                   ("Version" ,@"2016-01-01"))
@@ -4600,7 +4711,8 @@
                       (common-lisp:apply 'make-list-tags-for-resource-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2016-01-01"))
@@ -4626,7 +4738,8 @@
                       (common-lisp:apply 'make-modify-endpoint-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyEndpoint")
                                   ("Version" ,@"2016-01-01"))
@@ -4648,7 +4761,8 @@
                        'make-modify-event-subscription-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyEventSubscription")
                                   ("Version" ,@"2016-01-01"))
@@ -4677,7 +4791,8 @@
                        'make-modify-replication-instance-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyReplicationInstance")
                                   ("Version" ,@"2016-01-01"))
@@ -4699,7 +4814,8 @@
                        'make-modify-replication-subnet-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyReplicationSubnetGroup")
                                   ("Version" ,@"2016-01-01"))
@@ -4721,7 +4837,8 @@
                       (common-lisp:apply 'make-modify-replication-task-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyReplicationTask")
                                   ("Version" ,@"2016-01-01"))
@@ -4740,7 +4857,8 @@
                       (common-lisp:apply 'make-refresh-schemas-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RefreshSchemas")
                                   ("Version" ,@"2016-01-01"))
@@ -4759,7 +4877,8 @@
                       (common-lisp:apply 'make-reload-tables-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ReloadTables")
                                   ("Version" ,@"2016-01-01"))
@@ -4778,7 +4897,8 @@
                        'make-remove-tags-from-resource-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromResource")
                                   ("Version" ,@"2016-01-01"))
@@ -4799,7 +4919,8 @@
                       (common-lisp:apply 'make-start-replication-task-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartReplicationTask")
                                   ("Version" ,@"2016-01-01"))
@@ -4817,7 +4938,8 @@
                       (common-lisp:apply 'make-stop-replication-task-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopReplicationTask")
                                   ("Version" ,@"2016-01-01"))
@@ -4836,7 +4958,8 @@
                       (common-lisp:apply 'make-test-connection-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TestConnection")
                                   ("Version" ,@"2016-01-01"))

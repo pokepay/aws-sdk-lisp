@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/resourcegroupstaggingapi)
+
 (common-lisp:deftype amazon-resource-type () 'common-lisp:string)
 (common-lisp:deftype error-code () 'common-lisp:string)
 (common-lisp:deftype error-message () 'common-lisp:string)
@@ -146,8 +147,8 @@
  (common-lisp:defstruct (get-tag-values-input (:copier common-lisp:nil))
    (pagination-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-tag-values-input 'make-get-tag-values-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -288,10 +289,11 @@
 (common-lisp:deftype status-code () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -364,10 +366,13 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (tag-resources-input (:copier common-lisp:nil))
-   (resource-arnlist (common-lisp:error ":resource-arnlist is required") :type
-    (common-lisp:or resource-arnlist common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+   (resource-arnlist
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":resource-arnlist is required"))
+    :type (common-lisp:or resource-arnlist common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-map common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-resources-input 'make-tag-resources-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -430,10 +435,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (untag-resources-input (:copier common-lisp:nil))
-   (resource-arnlist (common-lisp:error ":resource-arnlist is required") :type
-    (common-lisp:or resource-arnlist common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list-for-untag common-lisp:null)))
+   (resource-arnlist
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":resource-arnlist is required"))
+    :type (common-lisp:or resource-arnlist common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-key-list-for-untag common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-resources-input 'make-untag-resources-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -480,8 +489,10 @@
                       (common-lisp:apply 'make-get-resources-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "resourcegroupstaggingapi" :method
-                               :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((24) common-lisp:base-char
+                                  . "resourcegroupstaggingapi")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetResources")
                                   ("Version" ,@"2017-01-26"))
@@ -499,8 +510,10 @@
                       (common-lisp:apply 'make-get-tag-keys-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "resourcegroupstaggingapi" :method
-                               :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((24) common-lisp:base-char
+                                  . "resourcegroupstaggingapi")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTagKeys")
                                   ("Version" ,@"2017-01-26"))
@@ -518,8 +531,10 @@
                       (common-lisp:apply 'make-get-tag-values-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "resourcegroupstaggingapi" :method
-                               :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((24) common-lisp:base-char
+                                  . "resourcegroupstaggingapi")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTagValues")
                                   ("Version" ,@"2017-01-26"))
@@ -537,8 +552,10 @@
                       (common-lisp:apply 'make-tag-resources-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "resourcegroupstaggingapi" :method
-                               :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((24) common-lisp:base-char
+                                  . "resourcegroupstaggingapi")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TagResources")
                                   ("Version" ,@"2017-01-26"))
@@ -556,8 +573,10 @@
                       (common-lisp:apply 'make-untag-resources-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "resourcegroupstaggingapi" :method
-                               :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((24) common-lisp:base-char
+                                  . "resourcegroupstaggingapi")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UntagResources")
                                   ("Version" ,@"2017-01-26"))

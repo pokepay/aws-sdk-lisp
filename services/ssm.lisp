@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/ssm)
+
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype account-id-list ()
@@ -97,12 +98,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-resource-request (:copier common-lisp:nil))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or resource-type-for-tagging common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or resource-type-for-tagging common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-tags-to-resource-request
                     'make-add-tags-to-resource-request))
@@ -390,10 +396,11 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (association-filter (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or association-filter-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or association-filter-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or association-filter-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or association-filter-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'association-filter 'make-association-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -468,12 +475,15 @@
                               'association-status-aggregated-count))))))
 (common-lisp:progn
  (common-lisp:defstruct (association-status (:copier common-lisp:nil))
-   (date (common-lisp:error ":date is required") :type
-    (common-lisp:or date-time common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or association-status-name common-lisp:null))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or status-message common-lisp:null))
+   (date
+    (common-lisp:error #A((17) common-lisp:base-char . ":date is required"))
+    :type (common-lisp:or date-time common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or association-status-name common-lisp:null))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or status-message common-lisp:null))
    (additional-info common-lisp:nil :type
     (common-lisp:or status-additional-info common-lisp:null)))
  (common-lisp:export
@@ -729,9 +739,11 @@
                                                 'failure-message))))))
 (common-lisp:progn
  (common-lisp:defstruct (automation-execution-filter (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or automation-execution-filter-key common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or automation-execution-filter-key common-lisp:null))
+   (values
+    (common-lisp:error #A((19) common-lisp:base-char . ":values is required"))
+    :type
     (common-lisp:or automation-execution-filter-value-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'automation-execution-filter
@@ -912,8 +924,10 @@
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (cancel-command-request (:copier common-lisp:nil))
-   (command-id (common-lisp:error ":command-id is required") :type
-    (common-lisp:or command-id common-lisp:null))
+   (command-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":command-id is required"))
+    :type (common-lisp:or command-id common-lisp:null))
    (instance-ids common-lisp:nil :type
     (common-lisp:or instance-id-list common-lisp:null)))
  (common-lisp:export
@@ -1089,10 +1103,11 @@
                                                 'notification-config))))))
 (common-lisp:progn
  (common-lisp:defstruct (command-filter (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or command-filter-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or command-filter-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or command-filter-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or command-filter-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'command-filter 'make-command-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape command-filter))
@@ -1347,8 +1362,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (compliance-execution-summary (:copier common-lisp:nil))
-   (execution-time (common-lisp:error ":execution-time is required") :type
-    (common-lisp:or date-time common-lisp:null))
+   (execution-time
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":execution-time is required"))
+    :type (common-lisp:or date-time common-lisp:null))
    (execution-id common-lisp:nil :type
     (common-lisp:or compliance-execution-id common-lisp:null))
    (execution-type common-lisp:nil :type
@@ -1460,10 +1477,13 @@
     (common-lisp:or compliance-item-id common-lisp:null))
    (title common-lisp:nil :type
     (common-lisp:or compliance-item-title common-lisp:null))
-   (severity (common-lisp:error ":severity is required") :type
-    (common-lisp:or compliance-severity common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or compliance-status common-lisp:null))
+   (severity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":severity is required"))
+    :type (common-lisp:or compliance-severity common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or compliance-status common-lisp:null))
    (details common-lisp:nil :type
     (common-lisp:or compliance-item-details common-lisp:null)))
  (common-lisp:export
@@ -1671,8 +1691,10 @@
     (common-lisp:or activation-description common-lisp:null))
    (default-instance-name common-lisp:nil :type
     (common-lisp:or default-instance-name common-lisp:null))
-   (iam-role (common-lisp:error ":iam-role is required") :type
-    (common-lisp:or iam-role common-lisp:null))
+   (iam-role
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":iam-role is required"))
+    :type (common-lisp:or iam-role common-lisp:null))
    (registration-limit common-lisp:nil :type
     (common-lisp:or registration-limit common-lisp:null))
    (expiration-date common-lisp:nil :type
@@ -1736,7 +1758,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-association-batch-request (:copier common-lisp:nil))
-   (entries (common-lisp:error ":entries is required") :type
+   (entries
+    (common-lisp:error #A((20) common-lisp:base-char . ":entries is required"))
+    :type
     (common-lisp:or create-association-batch-request-entries
                     common-lisp:null)))
  (common-lisp:export
@@ -1764,8 +1788,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-association-batch-request-entry (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or document-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or document-name common-lisp:null))
    (instance-id common-lisp:nil :type
     (common-lisp:or instance-id common-lisp:null))
    (parameters common-lisp:nil :type
@@ -1854,8 +1879,9 @@
                                                 'failed))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-association-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or document-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or document-name common-lisp:null))
    (document-version common-lisp:nil :type
     (common-lisp:or document-version common-lisp:null))
    (instance-id common-lisp:nil :type
@@ -1936,10 +1962,12 @@
                                                 'association-description))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-document-request (:copier common-lisp:nil))
-   (content (common-lisp:error ":content is required") :type
-    (common-lisp:or document-content common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or document-name common-lisp:null))
+   (content
+    (common-lisp:error #A((20) common-lisp:base-char . ":content is required"))
+    :type (common-lisp:or document-content common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or document-name common-lisp:null))
    (document-type common-lisp:nil :type
     (common-lisp:or document-type common-lisp:null)))
  (common-lisp:export
@@ -1983,18 +2011,27 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-maintenance-window-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or maintenance-window-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or maintenance-window-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or maintenance-window-description common-lisp:null))
-   (schedule (common-lisp:error ":schedule is required") :type
-    (common-lisp:or maintenance-window-schedule common-lisp:null))
-   (duration (common-lisp:error ":duration is required") :type
-    (common-lisp:or maintenance-window-duration-hours common-lisp:null))
-   (cutoff (common-lisp:error ":cutoff is required") :type
-    (common-lisp:or maintenance-window-cutoff common-lisp:null))
+   (schedule
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":schedule is required"))
+    :type (common-lisp:or maintenance-window-schedule common-lisp:null))
+   (duration
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":duration is required"))
+    :type (common-lisp:or maintenance-window-duration-hours common-lisp:null))
+   (cutoff
+    (common-lisp:error #A((19) common-lisp:base-char . ":cutoff is required"))
+    :type (common-lisp:or maintenance-window-cutoff common-lisp:null))
    (allow-unassociated-targets
-    (common-lisp:error ":allow-unassociated-targets is required") :type
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":allow-unassociated-targets is required"))
+    :type
     (common-lisp:or maintenance-window-allow-unassociated-targets
                     common-lisp:null))
    (client-token common-lisp:nil :type
@@ -2065,8 +2102,9 @@
      (create-patch-baseline-request (:copier common-lisp:nil))
    (operating-system common-lisp:nil :type
     (common-lisp:or operating-system common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or baseline-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or baseline-name common-lisp:null))
    (global-filters common-lisp:nil :type
     (common-lisp:or patch-filter-group common-lisp:null))
    (approval-rules common-lisp:nil :type
@@ -2155,10 +2193,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-resource-data-sync-request (:copier common-lisp:nil))
-   (sync-name (common-lisp:error ":sync-name is required") :type
-    (common-lisp:or resource-data-sync-name common-lisp:null))
-   (s3destination (common-lisp:error ":s3destination is required") :type
-    (common-lisp:or resource-data-sync-s3destination common-lisp:null)))
+   (sync-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":sync-name is required"))
+    :type (common-lisp:or resource-data-sync-name common-lisp:null))
+   (s3destination
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":s3destination is required"))
+    :type (common-lisp:or resource-data-sync-s3destination common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-resource-data-sync-request
                     'make-create-resource-data-sync-request))
@@ -2211,8 +2253,10 @@
 (common-lisp:deftype default-instance-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-activation-request (:copier common-lisp:nil))
-   (activation-id (common-lisp:error ":activation-id is required") :type
-    (common-lisp:or activation-id common-lisp:null)))
+   (activation-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":activation-id is required"))
+    :type (common-lisp:or activation-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-activation-request
                     'make-delete-activation-request))
@@ -2277,8 +2321,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-document-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or document-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or document-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-document-request 'make-delete-document-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2303,8 +2348,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-maintenance-window-request (:copier common-lisp:nil))
-   (window-id (common-lisp:error ":window-id is required") :type
-    (common-lisp:or maintenance-window-id common-lisp:null)))
+   (window-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":window-id is required"))
+    :type (common-lisp:or maintenance-window-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-maintenance-window-request
                     'make-delete-maintenance-window-request))
@@ -2338,8 +2385,9 @@
                                                 'window-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-parameter-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or psparameter-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or psparameter-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-parameter-request 'make-delete-parameter-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2363,8 +2411,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-parameters-request (:copier common-lisp:nil))
-   (names (common-lisp:error ":names is required") :type
-    (common-lisp:or parameter-name-list common-lisp:null)))
+   (names
+    (common-lisp:error #A((18) common-lisp:base-char . ":names is required"))
+    :type (common-lisp:or parameter-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-parameters-request
                     'make-delete-parameters-request))
@@ -2404,8 +2453,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-patch-baseline-request (:copier common-lisp:nil))
-   (baseline-id (common-lisp:error ":baseline-id is required") :type
-    (common-lisp:or baseline-id common-lisp:null)))
+   (baseline-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":baseline-id is required"))
+    :type (common-lisp:or baseline-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-patch-baseline-request
                     'make-delete-patch-baseline-request))
@@ -2440,8 +2491,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-resource-data-sync-request (:copier common-lisp:nil))
-   (sync-name (common-lisp:error ":sync-name is required") :type
-    (common-lisp:or resource-data-sync-name common-lisp:null)))
+   (sync-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":sync-name is required"))
+    :type (common-lisp:or resource-data-sync-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-resource-data-sync-request
                     'make-delete-resource-data-sync-request))
@@ -2469,8 +2522,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (deregister-managed-instance-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or managed-instance-id common-lisp:null)))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or managed-instance-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-managed-instance-request
                     'make-deregister-managed-instance-request))
@@ -2499,10 +2554,14 @@
  (common-lisp:defstruct
      (deregister-patch-baseline-for-patch-group-request
       (:copier common-lisp:nil))
-   (baseline-id (common-lisp:error ":baseline-id is required") :type
-    (common-lisp:or baseline-id common-lisp:null))
-   (patch-group (common-lisp:error ":patch-group is required") :type
-    (common-lisp:or patch-group common-lisp:null)))
+   (baseline-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":baseline-id is required"))
+    :type (common-lisp:or baseline-id common-lisp:null))
+   (patch-group
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":patch-group is required"))
+    :type (common-lisp:or patch-group common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-patch-baseline-for-patch-group-request
                     'make-deregister-patch-baseline-for-patch-group-request))
@@ -2551,10 +2610,14 @@
  (common-lisp:defstruct
      (deregister-target-from-maintenance-window-request
       (:copier common-lisp:nil))
-   (window-id (common-lisp:error ":window-id is required") :type
-    (common-lisp:or maintenance-window-id common-lisp:null))
-   (window-target-id (common-lisp:error ":window-target-id is required") :type
-    (common-lisp:or maintenance-window-target-id common-lisp:null))
+   (window-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":window-id is required"))
+    :type (common-lisp:or maintenance-window-id common-lisp:null))
+   (window-target-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":window-target-id is required"))
+    :type (common-lisp:or maintenance-window-target-id common-lisp:null))
    (safe common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-target-from-maintenance-window-request
@@ -2609,10 +2672,14 @@
  (common-lisp:defstruct
      (deregister-task-from-maintenance-window-request
       (:copier common-lisp:nil))
-   (window-id (common-lisp:error ":window-id is required") :type
-    (common-lisp:or maintenance-window-id common-lisp:null))
-   (window-task-id (common-lisp:error ":window-task-id is required") :type
-    (common-lisp:or maintenance-window-task-id common-lisp:null)))
+   (window-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":window-id is required"))
+    :type (common-lisp:or maintenance-window-id common-lisp:null))
+   (window-task-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":window-task-id is required"))
+    :type (common-lisp:or maintenance-window-task-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-task-from-maintenance-window-request
                     'make-deregister-task-from-maintenance-window-request))
@@ -2917,10 +2984,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-document-permission-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or document-name common-lisp:null))
-   (permission-type (common-lisp:error ":permission-type is required") :type
-    (common-lisp:or document-permission-type common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or document-name common-lisp:null))
+   (permission-type
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":permission-type is required"))
+    :type (common-lisp:or document-permission-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-document-permission-request
                     'make-describe-document-permission-request))
@@ -2959,8 +3029,9 @@
                                                 'account-ids))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-document-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or document-arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or document-arn common-lisp:null))
    (document-version common-lisp:nil :type
     (common-lisp:or document-version common-lisp:null)))
  (common-lisp:export
@@ -3001,8 +3072,10 @@
  (common-lisp:defstruct
      (describe-effective-instance-associations-request
       (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or instance-id common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or instance-id common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or effective-instance-association-max-results
                     common-lisp:null))
@@ -3061,8 +3134,10 @@
  (common-lisp:defstruct
      (describe-effective-patches-for-patch-baseline-request
       (:copier common-lisp:nil))
-   (baseline-id (common-lisp:error ":baseline-id is required") :type
-    (common-lisp:or baseline-id common-lisp:null))
+   (baseline-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":baseline-id is required"))
+    :type (common-lisp:or baseline-id common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or patch-baseline-max-results common-lisp:null))
    (next-token common-lisp:nil :type
@@ -3119,8 +3194,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-instance-associations-status-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or instance-id common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or instance-id common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or max-results common-lisp:null))
    (next-token common-lisp:nil :type
@@ -3241,8 +3318,10 @@
  (common-lisp:defstruct
      (describe-instance-patch-states-for-patch-group-request
       (:copier common-lisp:nil))
-   (patch-group (common-lisp:error ":patch-group is required") :type
-    (common-lisp:or patch-group common-lisp:null))
+   (patch-group
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":patch-group is required"))
+    :type (common-lisp:or patch-group common-lisp:null))
    (filters common-lisp:nil :type
     (common-lisp:or instance-patch-state-filter-list common-lisp:null))
    (next-token common-lisp:nil :type
@@ -3306,8 +3385,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-instance-patch-states-request (:copier common-lisp:nil))
-   (instance-ids (common-lisp:error ":instance-ids is required") :type
-    (common-lisp:or instance-id-list common-lisp:null))
+   (instance-ids
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instance-ids is required"))
+    :type (common-lisp:or instance-id-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -3363,8 +3444,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-instance-patches-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or instance-id common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or instance-id common-lisp:null))
    (filters common-lisp:nil :type
     (common-lisp:or patch-orchestrator-filter-list common-lisp:null))
    (next-token common-lisp:nil :type
@@ -3428,9 +3511,13 @@
  (common-lisp:defstruct
      (describe-maintenance-window-execution-task-invocations-request
       (:copier common-lisp:nil))
-   (window-execution-id (common-lisp:error ":window-execution-id is required")
+   (window-execution-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":window-execution-id is required"))
     :type (common-lisp:or maintenance-window-execution-id common-lisp:null))
-   (task-id (common-lisp:error ":task-id is required") :type
+   (task-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":task-id is required"))
+    :type
     (common-lisp:or maintenance-window-execution-task-id common-lisp:null))
    (filters common-lisp:nil :type
     (common-lisp:or maintenance-window-filter-list common-lisp:null))
@@ -3504,7 +3591,9 @@
  (common-lisp:defstruct
      (describe-maintenance-window-execution-tasks-request
       (:copier common-lisp:nil))
-   (window-execution-id (common-lisp:error ":window-execution-id is required")
+   (window-execution-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":window-execution-id is required"))
     :type (common-lisp:or maintenance-window-execution-id common-lisp:null))
    (filters common-lisp:nil :type
     (common-lisp:or maintenance-window-filter-list common-lisp:null))
@@ -3570,8 +3659,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-maintenance-window-executions-request (:copier common-lisp:nil))
-   (window-id (common-lisp:error ":window-id is required") :type
-    (common-lisp:or maintenance-window-id common-lisp:null))
+   (window-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":window-id is required"))
+    :type (common-lisp:or maintenance-window-id common-lisp:null))
    (filters common-lisp:nil :type
     (common-lisp:or maintenance-window-filter-list common-lisp:null))
    (max-results common-lisp:nil :type
@@ -3634,8 +3725,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-maintenance-window-targets-request (:copier common-lisp:nil))
-   (window-id (common-lisp:error ":window-id is required") :type
-    (common-lisp:or maintenance-window-id common-lisp:null))
+   (window-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":window-id is required"))
+    :type (common-lisp:or maintenance-window-id common-lisp:null))
    (filters common-lisp:nil :type
     (common-lisp:or maintenance-window-filter-list common-lisp:null))
    (max-results common-lisp:nil :type
@@ -3698,8 +3791,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-maintenance-window-tasks-request (:copier common-lisp:nil))
-   (window-id (common-lisp:error ":window-id is required") :type
-    (common-lisp:or maintenance-window-id common-lisp:null))
+   (window-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":window-id is required"))
+    :type (common-lisp:or maintenance-window-id common-lisp:null))
    (filters common-lisp:nil :type
     (common-lisp:or maintenance-window-filter-list common-lisp:null))
    (max-results common-lisp:nil :type
@@ -3938,8 +4033,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-patch-group-state-request (:copier common-lisp:nil))
-   (patch-group (common-lisp:error ":patch-group is required") :type
-    (common-lisp:or patch-group common-lisp:null)))
+   (patch-group
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":patch-group is required"))
+    :type (common-lisp:or patch-group common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-patch-group-state-request
                     'make-describe-patch-group-state-request))
@@ -4215,10 +4312,11 @@
                                                 'default-version))))))
 (common-lisp:progn
  (common-lisp:defstruct (document-filter (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or document-filter-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or document-filter-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or document-filter-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or document-filter-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'document-filter 'make-document-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape document-filter))
@@ -4608,8 +4706,9 @@
  (common-lisp:defstruct
      (get-automation-execution-request (:copier common-lisp:nil))
    (automation-execution-id
-    (common-lisp:error ":automation-execution-id is required") :type
-    (common-lisp:or automation-execution-id common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":automation-execution-id is required"))
+    :type (common-lisp:or automation-execution-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-automation-execution-request
                     'make-get-automation-execution-request))
@@ -4644,10 +4743,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-command-invocation-request (:copier common-lisp:nil))
-   (command-id (common-lisp:error ":command-id is required") :type
-    (common-lisp:or command-id common-lisp:null))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or instance-id common-lisp:null))
+   (command-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":command-id is required"))
+    :type (common-lisp:or command-id common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or instance-id common-lisp:null))
    (plugin-name common-lisp:nil :type
     (common-lisp:or command-plugin-name common-lisp:null)))
  (common-lisp:export
@@ -4835,10 +4938,14 @@
  (common-lisp:defstruct
      (get-deployable-patch-snapshot-for-instance-request
       (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or instance-id common-lisp:null))
-   (snapshot-id (common-lisp:error ":snapshot-id is required") :type
-    (common-lisp:or snapshot-id common-lisp:null)))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or instance-id common-lisp:null))
+   (snapshot-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":snapshot-id is required"))
+    :type (common-lisp:or snapshot-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-deployable-patch-snapshot-for-instance-request
                     'make-get-deployable-patch-snapshot-for-instance-request))
@@ -4898,8 +5005,9 @@
                                                 'product))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-document-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or document-arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or document-arn common-lisp:null))
    (document-version common-lisp:nil :type
     (common-lisp:or document-version common-lisp:null)))
  (common-lisp:export
@@ -5076,7 +5184,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-maintenance-window-execution-request (:copier common-lisp:nil))
-   (window-execution-id (common-lisp:error ":window-execution-id is required")
+   (window-execution-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":window-execution-id is required"))
     :type (common-lisp:or maintenance-window-execution-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-maintenance-window-execution-request
@@ -5150,11 +5260,18 @@
  (common-lisp:defstruct
      (get-maintenance-window-execution-task-invocation-request
       (:copier common-lisp:nil))
-   (window-execution-id (common-lisp:error ":window-execution-id is required")
+   (window-execution-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":window-execution-id is required"))
     :type (common-lisp:or maintenance-window-execution-id common-lisp:null))
-   (task-id (common-lisp:error ":task-id is required") :type
+   (task-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":task-id is required"))
+    :type
     (common-lisp:or maintenance-window-execution-task-id common-lisp:null))
-   (invocation-id (common-lisp:error ":invocation-id is required") :type
+   (invocation-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":invocation-id is required"))
+    :type
     (common-lisp:or maintenance-window-execution-task-invocation-id
                     common-lisp:null)))
  (common-lisp:export
@@ -5282,9 +5399,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-maintenance-window-execution-task-request (:copier common-lisp:nil))
-   (window-execution-id (common-lisp:error ":window-execution-id is required")
+   (window-execution-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":window-execution-id is required"))
     :type (common-lisp:or maintenance-window-execution-id common-lisp:null))
-   (task-id (common-lisp:error ":task-id is required") :type
+   (task-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":task-id is required"))
+    :type
     (common-lisp:or maintenance-window-execution-task-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-maintenance-window-execution-task-request
@@ -5410,8 +5531,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-maintenance-window-request (:copier common-lisp:nil))
-   (window-id (common-lisp:error ":window-id is required") :type
-    (common-lisp:or maintenance-window-id common-lisp:null)))
+   (window-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":window-id is required"))
+    :type (common-lisp:or maintenance-window-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-maintenance-window-request
                     'make-get-maintenance-window-request))
@@ -5510,10 +5633,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-maintenance-window-task-request (:copier common-lisp:nil))
-   (window-id (common-lisp:error ":window-id is required") :type
-    (common-lisp:or maintenance-window-id common-lisp:null))
-   (window-task-id (common-lisp:error ":window-task-id is required") :type
-    (common-lisp:or maintenance-window-task-id common-lisp:null)))
+   (window-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":window-id is required"))
+    :type (common-lisp:or maintenance-window-id common-lisp:null))
+   (window-task-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":window-task-id is required"))
+    :type (common-lisp:or maintenance-window-task-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-maintenance-window-task-request
                     'make-get-maintenance-window-task-request))
@@ -5644,8 +5771,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-parameter-history-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or psparameter-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or psparameter-name common-lisp:null))
    (with-decryption common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (max-results common-lisp:nil :type
@@ -5707,8 +5835,9 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-parameter-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or psparameter-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or psparameter-name common-lisp:null))
    (with-decryption common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
@@ -5746,8 +5875,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-parameters-by-path-request (:copier common-lisp:nil))
-   (path (common-lisp:error ":path is required") :type
-    (common-lisp:or psparameter-name common-lisp:null))
+   (path
+    (common-lisp:error #A((17) common-lisp:base-char . ":path is required"))
+    :type (common-lisp:or psparameter-name common-lisp:null))
    (recursive common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
    (parameter-filters common-lisp:nil :type
     (common-lisp:or parameter-string-filter-list common-lisp:null))
@@ -5822,8 +5952,9 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-parameters-request (:copier common-lisp:nil))
-   (names (common-lisp:error ":names is required") :type
-    (common-lisp:or parameter-name-list common-lisp:null))
+   (names
+    (common-lisp:error #A((18) common-lisp:base-char . ":names is required"))
+    :type (common-lisp:or parameter-name-list common-lisp:null))
    (with-decryption common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
@@ -5869,8 +6000,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-patch-baseline-for-patch-group-request (:copier common-lisp:nil))
-   (patch-group (common-lisp:error ":patch-group is required") :type
-    (common-lisp:or patch-group common-lisp:null))
+   (patch-group
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":patch-group is required"))
+    :type (common-lisp:or patch-group common-lisp:null))
    (operating-system common-lisp:nil :type
     (common-lisp:or operating-system common-lisp:null)))
  (common-lisp:export
@@ -5925,8 +6058,10 @@
                                                 'operating-system))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-patch-baseline-request (:copier common-lisp:nil))
-   (baseline-id (common-lisp:error ":baseline-id is required") :type
-    (common-lisp:or baseline-id common-lisp:null)))
+   (baseline-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":baseline-id is required"))
+    :type (common-lisp:or baseline-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-patch-baseline-request
                     'make-get-patch-baseline-request))
@@ -6452,9 +6587,12 @@
                                                 'association-overview))))))
 (common-lisp:progn
  (common-lisp:defstruct (instance-information-filter (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or instance-information-filter-key common-lisp:null))
-   (value-set (common-lisp:error ":valueset is required") :type
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or instance-information-filter-key common-lisp:null))
+   (value-set
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":valueset is required"))
+    :type
     (common-lisp:or instance-information-filter-value-set common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'instance-information-filter
@@ -6505,9 +6643,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (instance-information-string-filter (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type
     (common-lisp:or instance-information-string-filter-key common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
+   (values
+    (common-lisp:error #A((19) common-lisp:base-char . ":values is required"))
+    :type
     (common-lisp:or instance-information-filter-value-set common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'instance-information-string-filter
@@ -6540,12 +6681,18 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (instance-patch-state (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or instance-id common-lisp:null))
-   (patch-group (common-lisp:error ":patch-group is required") :type
-    (common-lisp:or patch-group common-lisp:null))
-   (baseline-id (common-lisp:error ":baseline-id is required") :type
-    (common-lisp:or baseline-id common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or instance-id common-lisp:null))
+   (patch-group
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":patch-group is required"))
+    :type (common-lisp:or patch-group common-lisp:null))
+   (baseline-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":baseline-id is required"))
+    :type (common-lisp:or baseline-id common-lisp:null))
    (snapshot-id common-lisp:nil :type
     (common-lisp:or snapshot-id common-lisp:null))
    (owner-information common-lisp:nil :type
@@ -6561,12 +6708,17 @@
    (not-applicable-count common-lisp:nil :type
     (common-lisp:or patch-not-applicable-count common-lisp:null))
    (operation-start-time
-    (common-lisp:error ":operation-start-time is required") :type
-    (common-lisp:or date-time common-lisp:null))
-   (operation-end-time (common-lisp:error ":operation-end-time is required")
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":operation-start-time is required"))
     :type (common-lisp:or date-time common-lisp:null))
-   (operation (common-lisp:error ":operation is required") :type
-    (common-lisp:or patch-operation-type common-lisp:null)))
+   (operation-end-time
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":operation-end-time is required"))
+    :type (common-lisp:or date-time common-lisp:null))
+   (operation
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":operation is required"))
+    :type (common-lisp:or patch-operation-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'instance-patch-state 'make-instance-patch-state))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -6639,11 +6791,14 @@
                                                 'operation))))))
 (common-lisp:progn
  (common-lisp:defstruct (instance-patch-state-filter (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or instance-patch-state-filter-key common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or instance-patch-state-filter-values common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or instance-patch-state-filter-key common-lisp:null))
+   (values
+    (common-lisp:error #A((19) common-lisp:base-char . ":values is required"))
+    :type (common-lisp:or instance-patch-state-filter-values common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type
     (common-lisp:or instance-patch-state-operator-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'instance-patch-state-filter
@@ -7214,10 +7369,11 @@
 (common-lisp:deftype inventory-attribute-data-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (inventory-filter (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or inventory-filter-key common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or inventory-filter-value-list common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or inventory-filter-key common-lisp:null))
+   (values
+    (common-lisp:error #A((19) common-lisp:base-char . ":values is required"))
+    :type (common-lisp:or inventory-filter-value-list common-lisp:null))
    (type common-lisp:nil :type
     (common-lisp:or inventory-query-operator-type common-lisp:null)))
  (common-lisp:export
@@ -7260,12 +7416,18 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (inventory-item (:copier common-lisp:nil))
-   (type-name (common-lisp:error ":type-name is required") :type
-    (common-lisp:or inventory-item-type-name common-lisp:null))
-   (schema-version (common-lisp:error ":schema-version is required") :type
-    (common-lisp:or inventory-item-schema-version common-lisp:null))
-   (capture-time (common-lisp:error ":capture-time is required") :type
-    (common-lisp:or inventory-item-capture-time common-lisp:null))
+   (type-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":type-name is required"))
+    :type (common-lisp:or inventory-item-type-name common-lisp:null))
+   (schema-version
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":schema-version is required"))
+    :type (common-lisp:or inventory-item-schema-version common-lisp:null))
+   (capture-time
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":capture-time is required"))
+    :type (common-lisp:or inventory-item-capture-time common-lisp:null))
    (content-hash common-lisp:nil :type
     (common-lisp:or inventory-item-content-hash common-lisp:null))
    (content common-lisp:nil :type
@@ -7308,10 +7470,13 @@
                                                 'context))))))
 (common-lisp:progn
  (common-lisp:defstruct (inventory-item-attribute (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or inventory-item-attribute-name common-lisp:null))
-   (data-type (common-lisp:error ":data-type is required") :type
-    (common-lisp:or inventory-attribute-data-type common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or inventory-item-attribute-name common-lisp:null))
+   (data-type
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":data-type is required"))
+    :type (common-lisp:or inventory-attribute-data-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'inventory-item-attribute 'make-inventory-item-attribute))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -7371,12 +7536,16 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (inventory-item-schema (:copier common-lisp:nil))
-   (type-name (common-lisp:error ":type-name is required") :type
-    (common-lisp:or inventory-item-type-name common-lisp:null))
+   (type-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":type-name is required"))
+    :type (common-lisp:or inventory-item-type-name common-lisp:null))
    (version common-lisp:nil :type
     (common-lisp:or inventory-item-schema-version common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or inventory-item-attribute-list common-lisp:null)))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or inventory-item-attribute-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'inventory-item-schema 'make-inventory-item-schema))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -7445,16 +7614,21 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (inventory-result-item (:copier common-lisp:nil))
-   (type-name (common-lisp:error ":type-name is required") :type
-    (common-lisp:or inventory-item-type-name common-lisp:null))
-   (schema-version (common-lisp:error ":schema-version is required") :type
-    (common-lisp:or inventory-item-schema-version common-lisp:null))
+   (type-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":type-name is required"))
+    :type (common-lisp:or inventory-item-type-name common-lisp:null))
+   (schema-version
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":schema-version is required"))
+    :type (common-lisp:or inventory-item-schema-version common-lisp:null))
    (capture-time common-lisp:nil :type
     (common-lisp:or inventory-item-capture-time common-lisp:null))
    (content-hash common-lisp:nil :type
     (common-lisp:or inventory-item-content-hash common-lisp:null))
-   (content (common-lisp:error ":content is required") :type
-    (common-lisp:or inventory-item-entry-list common-lisp:null)))
+   (content
+    (common-lisp:error #A((20) common-lisp:base-char . ":content is required"))
+    :type (common-lisp:or inventory-item-entry-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'inventory-result-item 'make-inventory-result-item))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -7568,8 +7742,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-association-versions-request (:copier common-lisp:nil))
-   (association-id (common-lisp:error ":association-id is required") :type
-    (common-lisp:or association-id common-lisp:null))
+   (association-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":association-id is required"))
+    :type (common-lisp:or association-id common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or max-results common-lisp:null))
    (next-token common-lisp:nil :type
@@ -7949,8 +8125,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-document-versions-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or document-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or document-name common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or max-results common-lisp:null))
    (next-token common-lisp:nil :type
@@ -8059,10 +8236,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-inventory-entries-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or instance-id common-lisp:null))
-   (type-name (common-lisp:error ":type-name is required") :type
-    (common-lisp:or inventory-item-type-name common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or instance-id common-lisp:null))
+   (type-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":type-name is required"))
+    :type (common-lisp:or inventory-item-type-name common-lisp:null))
    (filters common-lisp:nil :type
     (common-lisp:or inventory-filter-list common-lisp:null))
    (next-token common-lisp:nil :type
@@ -8265,10 +8446,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-request (:copier common-lisp:nil))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or resource-type-for-tagging common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or resource-type-for-tagging common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -8306,12 +8491,16 @@
                                                 'tag-list))))))
 (common-lisp:progn
  (common-lisp:defstruct (logging-info (:copier common-lisp:nil))
-   (s3bucket-name (common-lisp:error ":s3bucket-name is required") :type
-    (common-lisp:or s3bucket-name common-lisp:null))
+   (s3bucket-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":s3bucket-name is required"))
+    :type (common-lisp:or s3bucket-name common-lisp:null))
    (s3key-prefix common-lisp:nil :type
     (common-lisp:or s3key-prefix common-lisp:null))
-   (s3region (common-lisp:error ":s3region is required") :type
-    (common-lisp:or s3region common-lisp:null)))
+   (s3region
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":s3region is required"))
+    :type (common-lisp:or s3region common-lisp:null)))
  (common-lisp:export (common-lisp:list 'logging-info 'make-logging-info))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape logging-info))
@@ -9174,10 +9363,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (modify-document-permission-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or document-name common-lisp:null))
-   (permission-type (common-lisp:error ":permission-type is required") :type
-    (common-lisp:or document-permission-type common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or document-name common-lisp:null))
+   (permission-type
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":permission-type is required"))
+    :type (common-lisp:or document-permission-type common-lisp:null))
    (account-ids-to-add common-lisp:nil :type
     (common-lisp:or account-id-list common-lisp:null))
    (account-ids-to-remove common-lisp:nil :type
@@ -9536,8 +9728,8 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (parameter-string-filter (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or parameter-string-filter-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or parameter-string-filter-key common-lisp:null))
    (option common-lisp:nil :type
     (common-lisp:or parameter-string-query-option common-lisp:null))
    (values common-lisp:nil :type
@@ -9602,10 +9794,11 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (parameters-filter (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or parameters-filter-key common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or parameters-filter-value-list common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or parameters-filter-key common-lisp:null))
+   (values
+    (common-lisp:error #A((19) common-lisp:base-char . ":values is required"))
+    :type (common-lisp:or parameters-filter-value-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'parameters-filter 'make-parameters-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -9790,18 +9983,27 @@
 (common-lisp:deftype patch-classification () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (patch-compliance-data (:copier common-lisp:nil))
-   (title (common-lisp:error ":title is required") :type
-    (common-lisp:or patch-title common-lisp:null))
-   (kbid (common-lisp:error ":kbid is required") :type
-    (common-lisp:or patch-kb-number common-lisp:null))
-   (classification (common-lisp:error ":classification is required") :type
-    (common-lisp:or patch-classification common-lisp:null))
-   (severity (common-lisp:error ":severity is required") :type
-    (common-lisp:or patch-severity common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or patch-compliance-data-state common-lisp:null))
-   (installed-time (common-lisp:error ":installed-time is required") :type
-    (common-lisp:or date-time common-lisp:null)))
+   (title
+    (common-lisp:error #A((18) common-lisp:base-char . ":title is required"))
+    :type (common-lisp:or patch-title common-lisp:null))
+   (kbid
+    (common-lisp:error #A((17) common-lisp:base-char . ":kbid is required"))
+    :type (common-lisp:or patch-kb-number common-lisp:null))
+   (classification
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":classification is required"))
+    :type (common-lisp:or patch-classification common-lisp:null))
+   (severity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":severity is required"))
+    :type (common-lisp:or patch-severity common-lisp:null))
+   (state
+    (common-lisp:error #A((18) common-lisp:base-char . ":state is required"))
+    :type (common-lisp:or patch-compliance-data-state common-lisp:null))
+   (installed-time
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":installed-time is required"))
+    :type (common-lisp:or date-time common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'patch-compliance-data 'make-patch-compliance-data))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -9856,10 +10058,11 @@
 (common-lisp:deftype patch-failed-count () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (patch-filter (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or patch-filter-key common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or patch-filter-value-list common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or patch-filter-key common-lisp:null))
+   (values
+    (common-lisp:error #A((19) common-lisp:base-char . ":values is required"))
+    :type (common-lisp:or patch-filter-value-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'patch-filter 'make-patch-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape patch-filter))
@@ -9876,8 +10079,10 @@
                                                 'values))))))
 (common-lisp:progn
  (common-lisp:defstruct (patch-filter-group (:copier common-lisp:nil))
-   (patch-filters (common-lisp:error ":patch-filters is required") :type
-    (common-lisp:or patch-filter-list common-lisp:null)))
+   (patch-filters
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":patch-filters is required"))
+    :type (common-lisp:or patch-filter-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'patch-filter-group 'make-patch-filter-group))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -10021,11 +10226,15 @@
 (common-lisp:deftype patch-product-family () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (patch-rule (:copier common-lisp:nil))
-   (patch-filter-group (common-lisp:error ":patch-filter-group is required")
+   (patch-filter-group
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":patch-filter-group is required"))
     :type (common-lisp:or patch-filter-group common-lisp:null))
    (compliance-level common-lisp:nil :type
     (common-lisp:or patch-compliance-level common-lisp:null))
-   (approve-after-days (common-lisp:error ":approve-after-days is required")
+   (approve-after-days
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":approve-after-days is required"))
     :type (common-lisp:or approve-after-days common-lisp:null)))
  (common-lisp:export (common-lisp:list 'patch-rule 'make-patch-rule))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -10048,8 +10257,10 @@
                                                 'approve-after-days))))))
 (common-lisp:progn
  (common-lisp:defstruct (patch-rule-group (:copier common-lisp:nil))
-   (patch-rules (common-lisp:error ":patch-rules is required") :type
-    (common-lisp:or patch-rule-list common-lisp:null)))
+   (patch-rules
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":patch-rules is required"))
+    :type (common-lisp:or patch-rule-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'patch-rule-group 'make-patch-rule-group))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -10112,16 +10323,25 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-compliance-items-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or compliance-resource-id common-lisp:null))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or compliance-resource-type common-lisp:null))
-   (compliance-type (common-lisp:error ":compliance-type is required") :type
-    (common-lisp:or compliance-type-name common-lisp:null))
-   (execution-summary (common-lisp:error ":execution-summary is required")
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or compliance-resource-id common-lisp:null))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or compliance-resource-type common-lisp:null))
+   (compliance-type
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":compliance-type is required"))
+    :type (common-lisp:or compliance-type-name common-lisp:null))
+   (execution-summary
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":execution-summary is required"))
     :type (common-lisp:or compliance-execution-summary common-lisp:null))
-   (items (common-lisp:error ":items is required") :type
-    (common-lisp:or compliance-item-entry-list common-lisp:null))
+   (items
+    (common-lisp:error #A((18) common-lisp:base-char . ":items is required"))
+    :type (common-lisp:or compliance-item-entry-list common-lisp:null))
    (item-content-hash common-lisp:nil :type
     (common-lisp:or compliance-item-content-hash common-lisp:null)))
  (common-lisp:export
@@ -10175,10 +10395,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (put-inventory-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or instance-id common-lisp:null))
-   (items (common-lisp:error ":items is required") :type
-    (common-lisp:or inventory-item-list common-lisp:null)))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or instance-id common-lisp:null))
+   (items
+    (common-lisp:error #A((18) common-lisp:base-char . ":items is required"))
+    :type (common-lisp:or inventory-item-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-inventory-request 'make-put-inventory-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -10205,14 +10428,17 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (put-parameter-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or psparameter-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or psparameter-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or parameter-description common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or psparameter-value common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or parameter-type common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or psparameter-value common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or parameter-type common-lisp:null))
    (key-id common-lisp:nil :type
     (common-lisp:or parameter-key-id common-lisp:null))
    (overwrite common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
@@ -10270,8 +10496,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-default-patch-baseline-request (:copier common-lisp:nil))
-   (baseline-id (common-lisp:error ":baseline-id is required") :type
-    (common-lisp:or baseline-id common-lisp:null)))
+   (baseline-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":baseline-id is required"))
+    :type (common-lisp:or baseline-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-default-patch-baseline-request
                     'make-register-default-patch-baseline-request))
@@ -10307,10 +10535,14 @@
  (common-lisp:defstruct
      (register-patch-baseline-for-patch-group-request
       (:copier common-lisp:nil))
-   (baseline-id (common-lisp:error ":baseline-id is required") :type
-    (common-lisp:or baseline-id common-lisp:null))
-   (patch-group (common-lisp:error ":patch-group is required") :type
-    (common-lisp:or patch-group common-lisp:null)))
+   (baseline-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":baseline-id is required"))
+    :type (common-lisp:or baseline-id common-lisp:null))
+   (patch-group
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":patch-group is required"))
+    :type (common-lisp:or patch-group common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-patch-baseline-for-patch-group-request
                     'make-register-patch-baseline-for-patch-group-request))
@@ -10358,12 +10590,17 @@
  (common-lisp:defstruct
      (register-target-with-maintenance-window-request
       (:copier common-lisp:nil))
-   (window-id (common-lisp:error ":window-id is required") :type
-    (common-lisp:or maintenance-window-id common-lisp:null))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or maintenance-window-resource-type common-lisp:null))
-   (targets (common-lisp:error ":targets is required") :type
-    (common-lisp:or targets common-lisp:null))
+   (window-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":window-id is required"))
+    :type (common-lisp:or maintenance-window-id common-lisp:null))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or maintenance-window-resource-type common-lisp:null))
+   (targets
+    (common-lisp:error #A((20) common-lisp:base-char . ":targets is required"))
+    :type (common-lisp:or targets common-lisp:null))
    (owner-information common-lisp:nil :type
     (common-lisp:or owner-information common-lisp:null))
    (name common-lisp:nil :type
@@ -10436,16 +10673,25 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-task-with-maintenance-window-request (:copier common-lisp:nil))
-   (window-id (common-lisp:error ":window-id is required") :type
-    (common-lisp:or maintenance-window-id common-lisp:null))
-   (targets (common-lisp:error ":targets is required") :type
-    (common-lisp:or targets common-lisp:null))
-   (task-arn (common-lisp:error ":task-arn is required") :type
-    (common-lisp:or maintenance-window-task-arn common-lisp:null))
-   (service-role-arn (common-lisp:error ":service-role-arn is required") :type
-    (common-lisp:or service-role common-lisp:null))
-   (task-type (common-lisp:error ":task-type is required") :type
-    (common-lisp:or maintenance-window-task-type common-lisp:null))
+   (window-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":window-id is required"))
+    :type (common-lisp:or maintenance-window-id common-lisp:null))
+   (targets
+    (common-lisp:error #A((20) common-lisp:base-char . ":targets is required"))
+    :type (common-lisp:or targets common-lisp:null))
+   (task-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":task-arn is required"))
+    :type (common-lisp:or maintenance-window-task-arn common-lisp:null))
+   (service-role-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":service-role-arn is required"))
+    :type (common-lisp:or service-role common-lisp:null))
+   (task-type
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":task-type is required"))
+    :type (common-lisp:or maintenance-window-task-type common-lisp:null))
    (task-parameters common-lisp:nil :type
     (common-lisp:or maintenance-window-task-parameters common-lisp:null))
    (task-invocation-parameters common-lisp:nil :type
@@ -10453,10 +10699,14 @@
                     common-lisp:null))
    (priority common-lisp:nil :type
     (common-lisp:or maintenance-window-task-priority common-lisp:null))
-   (max-concurrency (common-lisp:error ":max-concurrency is required") :type
-    (common-lisp:or max-concurrency common-lisp:null))
-   (max-errors (common-lisp:error ":max-errors is required") :type
-    (common-lisp:or max-errors common-lisp:null))
+   (max-concurrency
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":max-concurrency is required"))
+    :type (common-lisp:or max-concurrency common-lisp:null))
+   (max-errors
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":max-errors is required"))
+    :type (common-lisp:or max-errors common-lisp:null))
    (logging-info common-lisp:nil :type
     (common-lisp:or logging-info common-lisp:null))
    (name common-lisp:nil :type
@@ -10566,12 +10816,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-tags-from-resource-request (:copier common-lisp:nil))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or resource-type-for-tagging common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or key-list common-lisp:null)))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or resource-type-for-tagging common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-from-resource-request
                     'make-remove-tags-from-resource-request))
@@ -10818,14 +11074,19 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (resource-data-sync-s3destination (:copier common-lisp:nil))
-   (bucket-name (common-lisp:error ":bucket-name is required") :type
-    (common-lisp:or resource-data-sync-s3bucket-name common-lisp:null))
+   (bucket-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":bucket-name is required"))
+    :type (common-lisp:or resource-data-sync-s3bucket-name common-lisp:null))
    (prefix common-lisp:nil :type
     (common-lisp:or resource-data-sync-s3prefix common-lisp:null))
-   (sync-format (common-lisp:error ":sync-format is required") :type
-    (common-lisp:or resource-data-sync-s3format common-lisp:null))
-   (region (common-lisp:error ":region is required") :type
-    (common-lisp:or resource-data-sync-s3region common-lisp:null)))
+   (sync-format
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":sync-format is required"))
+    :type (common-lisp:or resource-data-sync-s3format common-lisp:null))
+   (region
+    (common-lisp:error #A((19) common-lisp:base-char . ":region is required"))
+    :type (common-lisp:or resource-data-sync-s3region common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'resource-data-sync-s3destination
                     'make-resource-data-sync-s3destination))
@@ -10896,8 +11157,10 @@
 (common-lisp:deftype response-code () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (result-attribute (:copier common-lisp:nil))
-   (type-name (common-lisp:error ":type-name is required") :type
-    (common-lisp:or inventory-item-type-name common-lisp:null)))
+   (type-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":type-name is required"))
+    :type (common-lisp:or inventory-item-type-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'result-attribute 'make-result-attribute))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -10964,10 +11227,13 @@
  (common-lisp:defstruct
      (send-automation-signal-request (:copier common-lisp:nil))
    (automation-execution-id
-    (common-lisp:error ":automation-execution-id is required") :type
-    (common-lisp:or automation-execution-id common-lisp:null))
-   (signal-type (common-lisp:error ":signal-type is required") :type
-    (common-lisp:or signal-type common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":automation-execution-id is required"))
+    :type (common-lisp:or automation-execution-id common-lisp:null))
+   (signal-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":signal-type is required"))
+    :type (common-lisp:or signal-type common-lisp:null))
    (payload common-lisp:nil :type
     (common-lisp:or automation-parameter-map common-lisp:null)))
  (common-lisp:export
@@ -11009,8 +11275,10 @@
    (instance-ids common-lisp:nil :type
     (common-lisp:or instance-id-list common-lisp:null))
    (targets common-lisp:nil :type (common-lisp:or targets common-lisp:null))
-   (document-name (common-lisp:error ":document-name is required") :type
-    (common-lisp:or document-arn common-lisp:null))
+   (document-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":document-name is required"))
+    :type (common-lisp:or document-arn common-lisp:null))
    (document-hash common-lisp:nil :type
     (common-lisp:or document-hash common-lisp:null))
    (document-hash-type common-lisp:nil :type
@@ -11185,8 +11453,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-automation-execution-request (:copier common-lisp:nil))
-   (document-name (common-lisp:error ":document-name is required") :type
-    (common-lisp:or document-arn common-lisp:null))
+   (document-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":document-name is required"))
+    :type (common-lisp:or document-arn common-lisp:null))
    (document-version common-lisp:nil :type
     (common-lisp:or document-version common-lisp:null))
    (parameters common-lisp:nil :type
@@ -11336,8 +11606,9 @@
  (common-lisp:defstruct
      (stop-automation-execution-request (:copier common-lisp:nil))
    (automation-execution-id
-    (common-lisp:error ":automation-execution-id is required") :type
-    (common-lisp:or automation-execution-id common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":automation-execution-id is required"))
+    :type (common-lisp:or automation-execution-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-automation-execution-request
                     'make-stop-automation-execution-request))
@@ -11390,10 +11661,11 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -11599,8 +11871,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-association-request (:copier common-lisp:nil))
-   (association-id (common-lisp:error ":association-id is required") :type
-    (common-lisp:or association-id common-lisp:null))
+   (association-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":association-id is required"))
+    :type (common-lisp:or association-id common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or parameters common-lisp:null))
    (document-version common-lisp:nil :type
@@ -11688,11 +11962,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-association-status-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or document-name common-lisp:null))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or instance-id common-lisp:null))
-   (association-status (common-lisp:error ":association-status is required")
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or document-name common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or instance-id common-lisp:null))
+   (association-status
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":association-status is required"))
     :type (common-lisp:or association-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-association-status-request
@@ -11738,10 +12017,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-document-default-version-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or document-name common-lisp:null))
-   (document-version (common-lisp:error ":document-version is required") :type
-    (common-lisp:or document-version-number common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or document-name common-lisp:null))
+   (document-version
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":document-version is required"))
+    :type (common-lisp:or document-version-number common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-document-default-version-request
                     'make-update-document-default-version-request))
@@ -11780,10 +12062,12 @@
                                                 'description))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-document-request (:copier common-lisp:nil))
-   (content (common-lisp:error ":content is required") :type
-    (common-lisp:or document-content common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or document-name common-lisp:null))
+   (content
+    (common-lisp:error #A((20) common-lisp:base-char . ":content is required"))
+    :type (common-lisp:or document-content common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or document-name common-lisp:null))
    (document-version common-lisp:nil :type
     (common-lisp:or document-version common-lisp:null)))
  (common-lisp:export
@@ -11827,8 +12111,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-maintenance-window-request (:copier common-lisp:nil))
-   (window-id (common-lisp:error ":window-id is required") :type
-    (common-lisp:or maintenance-window-id common-lisp:null))
+   (window-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":window-id is required"))
+    :type (common-lisp:or maintenance-window-id common-lisp:null))
    (name common-lisp:nil :type
     (common-lisp:or maintenance-window-name common-lisp:null))
    (description common-lisp:nil :type
@@ -11969,10 +12255,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-maintenance-window-target-request (:copier common-lisp:nil))
-   (window-id (common-lisp:error ":window-id is required") :type
-    (common-lisp:or maintenance-window-id common-lisp:null))
-   (window-target-id (common-lisp:error ":window-target-id is required") :type
-    (common-lisp:or maintenance-window-target-id common-lisp:null))
+   (window-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":window-id is required"))
+    :type (common-lisp:or maintenance-window-id common-lisp:null))
+   (window-target-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":window-target-id is required"))
+    :type (common-lisp:or maintenance-window-target-id common-lisp:null))
    (targets common-lisp:nil :type (common-lisp:or targets common-lisp:null))
    (owner-information common-lisp:nil :type
     (common-lisp:or owner-information common-lisp:null))
@@ -12079,10 +12369,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-maintenance-window-task-request (:copier common-lisp:nil))
-   (window-id (common-lisp:error ":window-id is required") :type
-    (common-lisp:or maintenance-window-id common-lisp:null))
-   (window-task-id (common-lisp:error ":window-task-id is required") :type
-    (common-lisp:or maintenance-window-task-id common-lisp:null))
+   (window-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":window-id is required"))
+    :type (common-lisp:or maintenance-window-id common-lisp:null))
+   (window-task-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":window-task-id is required"))
+    :type (common-lisp:or maintenance-window-task-id common-lisp:null))
    (targets common-lisp:nil :type (common-lisp:or targets common-lisp:null))
    (task-arn common-lisp:nil :type
     (common-lisp:or maintenance-window-task-arn common-lisp:null))
@@ -12289,10 +12583,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-managed-instance-role-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or managed-instance-id common-lisp:null))
-   (iam-role (common-lisp:error ":iam-role is required") :type
-    (common-lisp:or iam-role common-lisp:null)))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or managed-instance-id common-lisp:null))
+   (iam-role
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":iam-role is required"))
+    :type (common-lisp:or iam-role common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-managed-instance-role-request
                     'make-update-managed-instance-role-request))
@@ -12325,8 +12623,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-patch-baseline-request (:copier common-lisp:nil))
-   (baseline-id (common-lisp:error ":baseline-id is required") :type
-    (common-lisp:or baseline-id common-lisp:null))
+   (baseline-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":baseline-id is required"))
+    :type (common-lisp:or baseline-id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or baseline-name common-lisp:null))
    (global-filters common-lisp:nil :type
     (common-lisp:or patch-filter-group common-lisp:null))
@@ -12487,7 +12787,8 @@
                       (common-lisp:apply 'make-add-tags-to-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToResource")
                                   ("Version" ,@"2014-11-06"))
@@ -12505,7 +12806,8 @@
                       (common-lisp:apply 'make-cancel-command-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelCommand")
                                   ("Version" ,@"2014-11-06"))
@@ -12526,7 +12828,8 @@
                       (common-lisp:apply 'make-create-activation-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateActivation")
                                   ("Version" ,@"2014-11-06"))
@@ -12548,7 +12851,8 @@
                       (common-lisp:apply 'make-create-association-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAssociation")
                                   ("Version" ,@"2014-11-06"))
@@ -12566,7 +12870,8 @@
                       (common-lisp:apply 'make-create-association-batch-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAssociationBatch")
                                   ("Version" ,@"2014-11-06"))
@@ -12584,7 +12889,8 @@
                       (common-lisp:apply 'make-create-document-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDocument")
                                   ("Version" ,@"2014-11-06"))
@@ -12606,7 +12912,8 @@
                        'make-create-maintenance-window-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateMaintenanceWindow")
                                   ("Version" ,@"2014-11-06"))
@@ -12630,7 +12937,8 @@
                       (common-lisp:apply 'make-create-patch-baseline-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePatchBaseline")
                                   ("Version" ,@"2014-11-06"))
@@ -12649,7 +12957,8 @@
                        'make-create-resource-data-sync-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateResourceDataSync")
                                   ("Version" ,@"2014-11-06"))
@@ -12667,7 +12976,8 @@
                       (common-lisp:apply 'make-delete-activation-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteActivation")
                                   ("Version" ,@"2014-11-06"))
@@ -12686,7 +12996,8 @@
                       (common-lisp:apply 'make-delete-association-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAssociation")
                                   ("Version" ,@"2014-11-06"))
@@ -12704,7 +13015,8 @@
                       (common-lisp:apply 'make-delete-document-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDocument")
                                   ("Version" ,@"2014-11-06"))
@@ -12723,7 +13035,8 @@
                        'make-delete-maintenance-window-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteMaintenanceWindow")
                                   ("Version" ,@"2014-11-06"))
@@ -12741,7 +13054,8 @@
                       (common-lisp:apply 'make-delete-parameter-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteParameter")
                                   ("Version" ,@"2014-11-06"))
@@ -12759,7 +13073,8 @@
                       (common-lisp:apply 'make-delete-parameters-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteParameters")
                                   ("Version" ,@"2014-11-06"))
@@ -12777,7 +13092,8 @@
                       (common-lisp:apply 'make-delete-patch-baseline-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePatchBaseline")
                                   ("Version" ,@"2014-11-06"))
@@ -12796,7 +13112,8 @@
                        'make-delete-resource-data-sync-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteResourceDataSync")
                                   ("Version" ,@"2014-11-06"))
@@ -12815,7 +13132,8 @@
                        'make-deregister-managed-instance-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterManagedInstance")
                                   ("Version" ,@"2014-11-06"))
@@ -12834,7 +13152,8 @@
                        'make-deregister-patch-baseline-for-patch-group-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeregisterPatchBaselineForPatchGroup")
@@ -12855,7 +13174,8 @@
                        'make-deregister-target-from-maintenance-window-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeregisterTargetFromMaintenanceWindow")
@@ -12875,7 +13195,8 @@
                        'make-deregister-task-from-maintenance-window-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeregisterTaskFromMaintenanceWindow")
@@ -12894,7 +13215,8 @@
                       (common-lisp:apply 'make-describe-activations-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeActivations")
                                   ("Version" ,@"2014-11-06"))
@@ -12915,7 +13237,8 @@
                       (common-lisp:apply 'make-describe-association-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAssociation")
                                   ("Version" ,@"2014-11-06"))
@@ -12934,7 +13257,8 @@
                        'make-describe-automation-executions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAutomationExecutions")
                                   ("Version" ,@"2014-11-06"))
@@ -12953,7 +13277,8 @@
                        'make-describe-available-patches-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAvailablePatches")
                                   ("Version" ,@"2014-11-06"))
@@ -12971,7 +13296,8 @@
                       (common-lisp:apply 'make-describe-document-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDocument")
                                   ("Version" ,@"2014-11-06"))
@@ -12990,7 +13316,8 @@
                        'make-describe-document-permission-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDocumentPermission")
                                   ("Version" ,@"2014-11-06"))
@@ -13010,7 +13337,8 @@
                        'make-describe-effective-instance-associations-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeEffectiveInstanceAssociations")
@@ -13031,7 +13359,8 @@
                        'make-describe-effective-patches-for-patch-baseline-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeEffectivePatchesForPatchBaseline")
@@ -13052,7 +13381,8 @@
                        'make-describe-instance-associations-status-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeInstanceAssociationsStatus")
@@ -13075,7 +13405,8 @@
                        'make-describe-instance-information-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeInstanceInformation")
                                   ("Version" ,@"2014-11-06"))
@@ -13095,7 +13426,8 @@
                        'make-describe-instance-patch-states-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeInstancePatchStates")
                                   ("Version" ,@"2014-11-06"))
@@ -13116,7 +13448,8 @@
                        'make-describe-instance-patch-states-for-patch-group-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeInstancePatchStatesForPatchGroup")
@@ -13138,7 +13471,8 @@
                        'make-describe-instance-patches-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeInstancePatches")
                                   ("Version" ,@"2014-11-06"))
@@ -13160,7 +13494,8 @@
                        'make-describe-maintenance-window-execution-task-invocations-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeMaintenanceWindowExecutionTaskInvocations")
@@ -13183,7 +13518,8 @@
                        'make-describe-maintenance-window-execution-tasks-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeMaintenanceWindowExecutionTasks")
@@ -13204,7 +13540,8 @@
                        'make-describe-maintenance-window-executions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeMaintenanceWindowExecutions")
@@ -13225,7 +13562,8 @@
                        'make-describe-maintenance-window-targets-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeMaintenanceWindowTargets")
@@ -13246,7 +13584,8 @@
                        'make-describe-maintenance-window-tasks-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeMaintenanceWindowTasks")
                                   ("Version" ,@"2014-11-06"))
@@ -13265,7 +13604,8 @@
                        'make-describe-maintenance-windows-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeMaintenanceWindows")
                                   ("Version" ,@"2014-11-06"))
@@ -13285,7 +13625,8 @@
                       (common-lisp:apply 'make-describe-parameters-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeParameters")
                                   ("Version" ,@"2014-11-06"))
@@ -13303,7 +13644,8 @@
                       (common-lisp:apply 'make-describe-patch-baselines-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribePatchBaselines")
                                   ("Version" ,@"2014-11-06"))
@@ -13322,7 +13664,8 @@
                        'make-describe-patch-group-state-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribePatchGroupState")
                                   ("Version" ,@"2014-11-06"))
@@ -13340,7 +13683,8 @@
                       (common-lisp:apply 'make-describe-patch-groups-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribePatchGroups")
                                   ("Version" ,@"2014-11-06"))
@@ -13358,7 +13702,8 @@
                       (common-lisp:apply 'make-get-automation-execution-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetAutomationExecution")
                                   ("Version" ,@"2014-11-06"))
@@ -13377,7 +13722,8 @@
                       (common-lisp:apply 'make-get-command-invocation-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCommandInvocation")
                                   ("Version" ,@"2014-11-06"))
@@ -13396,7 +13742,8 @@
                        'make-get-default-patch-baseline-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDefaultPatchBaseline")
                                   ("Version" ,@"2014-11-06"))
@@ -13415,7 +13762,8 @@
                        'make-get-deployable-patch-snapshot-for-instance-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetDeployablePatchSnapshotForInstance")
@@ -13434,7 +13782,8 @@
                       (common-lisp:apply 'make-get-document-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDocument")
                                   ("Version" ,@"2014-11-06"))
@@ -13454,7 +13803,8 @@
                       (common-lisp:apply 'make-get-inventory-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetInventory")
                                   ("Version" ,@"2014-11-06"))
@@ -13474,7 +13824,8 @@
                       (common-lisp:apply 'make-get-inventory-schema-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetInventorySchema")
                                   ("Version" ,@"2014-11-06"))
@@ -13492,7 +13843,8 @@
                       (common-lisp:apply 'make-get-maintenance-window-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetMaintenanceWindow")
                                   ("Version" ,@"2014-11-06"))
@@ -13511,7 +13863,8 @@
                        'make-get-maintenance-window-execution-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetMaintenanceWindowExecution")
                                   ("Version" ,@"2014-11-06"))
@@ -13530,7 +13883,8 @@
                        'make-get-maintenance-window-execution-task-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetMaintenanceWindowExecutionTask")
@@ -13552,7 +13906,8 @@
                        'make-get-maintenance-window-execution-task-invocation-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetMaintenanceWindowExecutionTaskInvocation")
@@ -13572,7 +13927,8 @@
                        'make-get-maintenance-window-task-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetMaintenanceWindowTask")
                                   ("Version" ,@"2014-11-06"))
@@ -13590,7 +13946,8 @@
                       (common-lisp:apply 'make-get-parameter-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetParameter")
                                   ("Version" ,@"2014-11-06"))
@@ -13610,7 +13967,8 @@
                       (common-lisp:apply 'make-get-parameter-history-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetParameterHistory")
                                   ("Version" ,@"2014-11-06"))
@@ -13628,7 +13986,8 @@
                       (common-lisp:apply 'make-get-parameters-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetParameters")
                                   ("Version" ,@"2014-11-06"))
@@ -13649,7 +14008,8 @@
                       (common-lisp:apply 'make-get-parameters-by-path-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetParametersByPath")
                                   ("Version" ,@"2014-11-06"))
@@ -13667,7 +14027,8 @@
                       (common-lisp:apply 'make-get-patch-baseline-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPatchBaseline")
                                   ("Version" ,@"2014-11-06"))
@@ -13686,7 +14047,8 @@
                        'make-get-patch-baseline-for-patch-group-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPatchBaselineForPatchGroup")
                                   ("Version" ,@"2014-11-06"))
@@ -13706,7 +14068,8 @@
                        'make-list-association-versions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAssociationVersions")
                                   ("Version" ,@"2014-11-06"))
@@ -13726,7 +14089,8 @@
                       (common-lisp:apply 'make-list-associations-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAssociations")
                                   ("Version" ,@"2014-11-06"))
@@ -13747,7 +14111,8 @@
                       (common-lisp:apply 'make-list-command-invocations-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListCommandInvocations")
                                   ("Version" ,@"2014-11-06"))
@@ -13768,7 +14133,8 @@
                       (common-lisp:apply 'make-list-commands-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListCommands")
                                   ("Version" ,@"2014-11-06"))
@@ -13789,7 +14155,8 @@
                       (common-lisp:apply 'make-list-compliance-items-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListComplianceItems")
                                   ("Version" ,@"2014-11-06"))
@@ -13808,7 +14175,8 @@
                        'make-list-compliance-summaries-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListComplianceSummaries")
                                   ("Version" ,@"2014-11-06"))
@@ -13826,7 +14194,8 @@
                       (common-lisp:apply 'make-list-document-versions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDocumentVersions")
                                   ("Version" ,@"2014-11-06"))
@@ -13846,7 +14215,8 @@
                       (common-lisp:apply 'make-list-documents-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDocuments")
                                   ("Version" ,@"2014-11-06"))
@@ -13867,7 +14237,8 @@
                       (common-lisp:apply 'make-list-inventory-entries-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListInventoryEntries")
                                   ("Version" ,@"2014-11-06"))
@@ -13886,7 +14257,8 @@
                        'make-list-resource-compliance-summaries-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ListResourceComplianceSummaries")
@@ -13905,7 +14277,8 @@
                       (common-lisp:apply 'make-list-resource-data-sync-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListResourceDataSync")
                                   ("Version" ,@"2014-11-06"))
@@ -13923,7 +14296,8 @@
                       (common-lisp:apply 'make-list-tags-for-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2014-11-06"))
@@ -13945,7 +14319,8 @@
                        'make-modify-document-permission-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDocumentPermission")
                                   ("Version" ,@"2014-11-06"))
@@ -13966,7 +14341,8 @@
                       (common-lisp:apply 'make-put-compliance-items-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutComplianceItems")
                                   ("Version" ,@"2014-11-06"))
@@ -13984,7 +14360,8 @@
                       (common-lisp:apply 'make-put-inventory-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutInventory")
                                   ("Version" ,@"2014-11-06"))
@@ -14005,7 +14382,8 @@
                       (common-lisp:apply 'make-put-parameter-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutParameter")
                                   ("Version" ,@"2014-11-06"))
@@ -14024,7 +14402,8 @@
                        'make-register-default-patch-baseline-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterDefaultPatchBaseline")
                                   ("Version" ,@"2014-11-06"))
@@ -14043,7 +14422,8 @@
                        'make-register-patch-baseline-for-patch-group-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"RegisterPatchBaselineForPatchGroup")
@@ -14066,7 +14446,8 @@
                        'make-register-target-with-maintenance-window-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"RegisterTargetWithMaintenanceWindow")
@@ -14092,7 +14473,8 @@
                        'make-register-task-with-maintenance-window-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"RegisterTaskWithMaintenanceWindow")
@@ -14113,7 +14495,8 @@
                        'make-remove-tags-from-resource-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromResource")
                                   ("Version" ,@"2014-11-06"))
@@ -14133,7 +14516,8 @@
                       (common-lisp:apply 'make-send-automation-signal-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SendAutomationSignal")
                                   ("Version" ,@"2014-11-06"))
@@ -14159,7 +14543,8 @@
                       (common-lisp:apply 'make-send-command-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SendCommand")
                                   ("Version" ,@"2014-11-06"))
@@ -14180,7 +14565,8 @@
                        'make-start-automation-execution-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartAutomationExecution")
                                   ("Version" ,@"2014-11-06"))
@@ -14199,7 +14585,8 @@
                        'make-stop-automation-execution-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopAutomationExecution")
                                   ("Version" ,@"2014-11-06"))
@@ -14222,7 +14609,8 @@
                       (common-lisp:apply 'make-update-association-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAssociation")
                                   ("Version" ,@"2014-11-06"))
@@ -14242,7 +14630,8 @@
                        'make-update-association-status-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAssociationStatus")
                                   ("Version" ,@"2014-11-06"))
@@ -14260,7 +14649,8 @@
                       (common-lisp:apply 'make-update-document-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDocument")
                                   ("Version" ,@"2014-11-06"))
@@ -14279,7 +14669,8 @@
                        'make-update-document-default-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDocumentDefaultVersion")
                                   ("Version" ,@"2014-11-06"))
@@ -14302,7 +14693,8 @@
                        'make-update-maintenance-window-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateMaintenanceWindow")
                                   ("Version" ,@"2014-11-06"))
@@ -14324,7 +14716,8 @@
                        'make-update-maintenance-window-target-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateMaintenanceWindowTarget")
                                   ("Version" ,@"2014-11-06"))
@@ -14349,7 +14742,8 @@
                        'make-update-maintenance-window-task-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateMaintenanceWindowTask")
                                   ("Version" ,@"2014-11-06"))
@@ -14368,7 +14762,8 @@
                        'make-update-managed-instance-role-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateManagedInstanceRole")
                                   ("Version" ,@"2014-11-06"))
@@ -14392,7 +14787,8 @@
                       (common-lisp:apply 'make-update-patch-baseline-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ssm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "ssm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdatePatchBaseline")
                                   ("Version" ,@"2014-11-06"))

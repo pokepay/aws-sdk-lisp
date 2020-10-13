@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/states)
+
 (common-lisp:progn
  (common-lisp:defstruct (activity-does-not-exist (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -72,12 +73,17 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (activity-list-item (:copier common-lisp:nil))
-   (activity-arn (common-lisp:error ":activityarn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (creation-date (common-lisp:error ":creationdate is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (activity-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":activityarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
+   (creation-date
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":creationdate is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'activity-list-item 'make-activity-list-item))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -124,8 +130,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (activity-scheduled-event-details (:copier common-lisp:nil))
-   (resource (common-lisp:error ":resource is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (resource
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":resource is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (timeout-in-seconds common-lisp:nil :type
     (common-lisp:or timeout-in-seconds common-lisp:null))
@@ -239,8 +247,9 @@
 (common-lisp:deftype cause () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (create-activity-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-activity-input 'make-create-activity-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -255,10 +264,14 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-activity-output (:copier common-lisp:nil))
-   (activity-arn (common-lisp:error ":activityarn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (creation-date (common-lisp:error ":creationdate is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (activity-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":activityarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (creation-date
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":creationdate is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-activity-output 'make-create-activity-output))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -278,12 +291,16 @@
                                                 'creation-date))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-state-machine-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (definition (common-lisp:error ":definition is required") :type
-    (common-lisp:or definition common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
+   (definition
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":definition is required"))
+    :type (common-lisp:or definition common-lisp:null))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-state-machine-input
                     'make-create-state-machine-input))
@@ -309,10 +326,14 @@
                                                 'role-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-state-machine-output (:copier common-lisp:nil))
-   (state-machine-arn (common-lisp:error ":statemachinearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (creation-date (common-lisp:error ":creationdate is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (state-machine-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":statemachinearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (creation-date
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":creationdate is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-state-machine-output
                     'make-create-state-machine-output))
@@ -335,8 +356,10 @@
 (common-lisp:deftype definition () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-activity-input (:copier common-lisp:nil))
-   (activity-arn (common-lisp:error ":activityarn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (activity-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":activityarn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-activity-input 'make-delete-activity-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -360,8 +383,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-state-machine-input (:copier common-lisp:nil))
-   (state-machine-arn (common-lisp:error ":statemachinearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (state-machine-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":statemachinearn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-state-machine-input
                     'make-delete-state-machine-input))
@@ -388,8 +413,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (describe-activity-input (:copier common-lisp:nil))
-   (activity-arn (common-lisp:error ":activityarn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (activity-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":activityarn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-activity-input 'make-describe-activity-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -404,12 +431,17 @@
                                                 'activity-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-activity-output (:copier common-lisp:nil))
-   (activity-arn (common-lisp:error ":activityarn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (creation-date (common-lisp:error ":creationdate is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (activity-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":activityarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
+   (creation-date
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":creationdate is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-activity-output 'make-describe-activity-output))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -434,8 +466,10 @@
                                                 'creation-date))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-execution-input (:copier common-lisp:nil))
-   (execution-arn (common-lisp:error ":executionarn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (execution-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":executionarn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-execution-input 'make-describe-execution-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -450,19 +484,27 @@
                                                 'execution-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-execution-output (:copier common-lisp:nil))
-   (execution-arn (common-lisp:error ":executionarn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (state-machine-arn (common-lisp:error ":statemachinearn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (execution-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":executionarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (state-machine-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":statemachinearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or execution-status common-lisp:null))
-   (start-date (common-lisp:error ":startdate is required") :type
-    (common-lisp:or timestamp common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or execution-status common-lisp:null))
+   (start-date
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":startdate is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
    (stop-date common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
-   (input (common-lisp:error ":input is required") :type
-    (common-lisp:or data common-lisp:null))
+   (input
+    (common-lisp:error #A((18) common-lisp:base-char . ":input is required"))
+    :type (common-lisp:or data common-lisp:null))
    (output common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-execution-output
@@ -515,8 +557,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-state-machine-input (:copier common-lisp:nil))
-   (state-machine-arn (common-lisp:error ":statemachinearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (state-machine-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":statemachinearn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-state-machine-input
                     'make-describe-state-machine-input))
@@ -533,18 +577,26 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-state-machine-output (:copier common-lisp:nil))
-   (state-machine-arn (common-lisp:error ":statemachinearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
+   (state-machine-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":statemachinearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
    (status common-lisp:nil :type
     (common-lisp:or state-machine-status common-lisp:null))
-   (definition (common-lisp:error ":definition is required") :type
-    (common-lisp:or definition common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (creation-date (common-lisp:error ":creationdate is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (definition
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":definition is required"))
+    :type (common-lisp:or definition common-lisp:null))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (creation-date
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":creationdate is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-state-machine-output
                     'make-describe-state-machine-output))
@@ -690,16 +742,24 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (execution-list-item (:copier common-lisp:nil))
-   (execution-arn (common-lisp:error ":executionarn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (state-machine-arn (common-lisp:error ":statemachinearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or execution-status common-lisp:null))
-   (start-date (common-lisp:error ":startdate is required") :type
-    (common-lisp:or timestamp common-lisp:null))
+   (execution-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":executionarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (state-machine-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":statemachinearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or execution-status common-lisp:null))
+   (start-date
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":startdate is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
    (stop-date common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
@@ -803,8 +863,10 @@
                                                 'cause))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-activity-task-input (:copier common-lisp:nil))
-   (activity-arn (common-lisp:error ":activityarn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (activity-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":activityarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (worker-name common-lisp:nil :type (common-lisp:or name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-activity-task-input 'make-get-activity-task-input))
@@ -847,8 +909,10 @@
                                                 'input))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-execution-history-input (:copier common-lisp:nil))
-   (execution-arn (common-lisp:error ":executionarn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (execution-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":executionarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or page-size common-lisp:null))
    (reverse-order common-lisp:nil :type
@@ -886,8 +950,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-execution-history-output (:copier common-lisp:nil))
-   (events (common-lisp:error ":events is required") :type
-    (common-lisp:or history-event-list common-lisp:null))
+   (events
+    (common-lisp:error #A((19) common-lisp:base-char . ":events is required"))
+    :type (common-lisp:or history-event-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export
@@ -910,12 +975,14 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (history-event (:copier common-lisp:nil))
-   (timestamp (common-lisp:error ":string is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or history-event-type common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or event-id common-lisp:null))
+   (timestamp
+    (common-lisp:error #A((19) common-lisp:base-char . ":string is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or history-event-type common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (previous-event-id common-lisp:nil :type
     (common-lisp:or event-id common-lisp:null))
    (activity-failed-event-details common-lisp:nil :type
@@ -1218,8 +1285,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (lambda-function-scheduled-event-details (:copier common-lisp:nil))
-   (resource (common-lisp:error ":resource is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (resource
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":resource is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (timeout-in-seconds common-lisp:nil :type
     (common-lisp:or timeout-in-seconds common-lisp:null)))
@@ -1334,8 +1403,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-activities-output (:copier common-lisp:nil))
-   (activities (common-lisp:error ":activities is required") :type
-    (common-lisp:or activity-list common-lisp:null))
+   (activities
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":activities is required"))
+    :type (common-lisp:or activity-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export
@@ -1357,8 +1428,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-executions-input (:copier common-lisp:nil))
-   (state-machine-arn (common-lisp:error ":statemachinearn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (state-machine-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":statemachinearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (status-filter common-lisp:nil :type
     (common-lisp:or execution-status common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1394,8 +1467,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-executions-output (:copier common-lisp:nil))
-   (executions (common-lisp:error ":executions is required") :type
-    (common-lisp:or execution-list common-lisp:null))
+   (executions
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":executions is required"))
+    :type (common-lisp:or execution-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export
@@ -1441,8 +1516,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-state-machines-output (:copier common-lisp:nil))
-   (state-machines (common-lisp:error ":statemachines is required") :type
-    (common-lisp:or state-machine-list common-lisp:null))
+   (state-machines
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":statemachines is required"))
+    :type (common-lisp:or state-machine-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export
@@ -1469,8 +1546,10 @@
 (common-lisp:deftype reverse-order () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (send-task-failure-input (:copier common-lisp:nil))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
+   (task-token
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":tasktoken is required"))
+    :type (common-lisp:or task-token common-lisp:null))
    (error common-lisp:nil :type (common-lisp:or error common-lisp:null))
    (cause common-lisp:nil :type (common-lisp:or cause common-lisp:null)))
  (common-lisp:export
@@ -1506,8 +1585,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (send-task-heartbeat-input (:copier common-lisp:nil))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null)))
+   (task-token
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":tasktoken is required"))
+    :type (common-lisp:or task-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'send-task-heartbeat-input
                     'make-send-task-heartbeat-input))
@@ -1533,10 +1614,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (send-task-success-input (:copier common-lisp:nil))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
-   (output (common-lisp:error ":output is required") :type
-    (common-lisp:or data common-lisp:null)))
+   (task-token
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":tasktoken is required"))
+    :type (common-lisp:or task-token common-lisp:null))
+   (output
+    (common-lisp:error #A((19) common-lisp:base-char . ":output is required"))
+    :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'send-task-success-input 'make-send-task-success-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1565,8 +1649,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (start-execution-input (:copier common-lisp:nil))
-   (state-machine-arn (common-lisp:error ":statemachinearn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (state-machine-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":statemachinearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
@@ -1593,10 +1679,14 @@
                                                 'input))))))
 (common-lisp:progn
  (common-lisp:defstruct (start-execution-output (:copier common-lisp:nil))
-   (execution-arn (common-lisp:error ":executionarn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (start-date (common-lisp:error ":startdate is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (execution-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":executionarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (start-date
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":startdate is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-execution-output 'make-start-execution-output))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1616,8 +1706,9 @@
                                                 'start-date))))))
 (common-lisp:progn
  (common-lisp:defstruct (state-entered-event-details (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'state-entered-event-details
@@ -1639,8 +1730,9 @@
                                                 'input))))))
 (common-lisp:progn
  (common-lisp:defstruct (state-exited-event-details (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
    (output common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'state-exited-event-details
@@ -1740,12 +1832,17 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (state-machine-list-item (:copier common-lisp:nil))
-   (state-machine-arn (common-lisp:error ":statemachinearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (creation-date (common-lisp:error ":creationdate is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (state-machine-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":statemachinearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
+   (creation-date
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":creationdate is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'state-machine-list-item 'make-state-machine-list-item))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1771,8 +1868,10 @@
 (common-lisp:deftype state-machine-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (stop-execution-input (:copier common-lisp:nil))
-   (execution-arn (common-lisp:error ":executionarn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (execution-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":executionarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (error common-lisp:nil :type (common-lisp:or error common-lisp:null))
    (cause common-lisp:nil :type (common-lisp:or cause common-lisp:null)))
  (common-lisp:export
@@ -1797,8 +1896,10 @@
                                                 'cause))))))
 (common-lisp:progn
  (common-lisp:defstruct (stop-execution-output (:copier common-lisp:nil))
-   (stop-date (common-lisp:error ":stopdate is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (stop-date
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stopdate is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-execution-output 'make-stop-execution-output))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1851,7 +1952,9 @@
                       (common-lisp:apply 'make-create-activity-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateActivity")
                                   ("Version" ,@"2016-11-23"))
@@ -1869,7 +1972,9 @@
                       (common-lisp:apply 'make-create-state-machine-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateStateMachine")
                                   ("Version" ,@"2016-11-23"))
@@ -1887,7 +1992,9 @@
                       (common-lisp:apply 'make-delete-activity-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteActivity")
                                   ("Version" ,@"2016-11-23"))
@@ -1905,7 +2012,9 @@
                       (common-lisp:apply 'make-delete-state-machine-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteStateMachine")
                                   ("Version" ,@"2016-11-23"))
@@ -1923,7 +2032,9 @@
                       (common-lisp:apply 'make-describe-activity-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeActivity")
                                   ("Version" ,@"2016-11-23"))
@@ -1941,7 +2052,9 @@
                       (common-lisp:apply 'make-describe-execution-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeExecution")
                                   ("Version" ,@"2016-11-23"))
@@ -1959,7 +2072,9 @@
                       (common-lisp:apply 'make-describe-state-machine-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStateMachine")
                                   ("Version" ,@"2016-11-23"))
@@ -1977,7 +2092,9 @@
                       (common-lisp:apply 'make-get-activity-task-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetActivityTask")
                                   ("Version" ,@"2016-11-23"))
@@ -1997,7 +2114,9 @@
                       (common-lisp:apply 'make-get-execution-history-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetExecutionHistory")
                                   ("Version" ,@"2016-11-23"))
@@ -2015,7 +2134,9 @@
                       (common-lisp:apply 'make-list-activities-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListActivities")
                                   ("Version" ,@"2016-11-23"))
@@ -2036,7 +2157,9 @@
                       (common-lisp:apply 'make-list-executions-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListExecutions")
                                   ("Version" ,@"2016-11-23"))
@@ -2054,7 +2177,9 @@
                       (common-lisp:apply 'make-list-state-machines-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListStateMachines")
                                   ("Version" ,@"2016-11-23"))
@@ -2072,7 +2197,9 @@
                       (common-lisp:apply 'make-send-task-failure-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SendTaskFailure")
                                   ("Version" ,@"2016-11-23"))
@@ -2090,7 +2217,9 @@
                       (common-lisp:apply 'make-send-task-heartbeat-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SendTaskHeartbeat")
                                   ("Version" ,@"2016-11-23"))
@@ -2108,7 +2237,9 @@
                       (common-lisp:apply 'make-send-task-success-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SendTaskSuccess")
                                   ("Version" ,@"2016-11-23"))
@@ -2126,7 +2257,9 @@
                       (common-lisp:apply 'make-start-execution-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartExecution")
                                   ("Version" ,@"2016-11-23"))
@@ -2144,7 +2277,9 @@
                       (common-lisp:apply 'make-stop-execution-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "states" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "states") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopExecution")
                                   ("Version" ,@"2016-11-23"))

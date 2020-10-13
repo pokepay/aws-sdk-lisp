@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/opsworks)
+
 (common-lisp:progn
  (common-lisp:defstruct (agent-version (:copier common-lisp:nil))
    (version common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -146,10 +147,14 @@
 (common-lisp:deftype architecture () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (assign-instance-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (layer-ids (common-lisp:error ":layer-ids is required") :type
-    (common-lisp:or strings common-lisp:null)))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (layer-ids
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":layer-ids is required"))
+    :type (common-lisp:or strings common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'assign-instance-request 'make-assign-instance-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -169,8 +174,10 @@
                                                 'layer-ids))))))
 (common-lisp:progn
  (common-lisp:defstruct (assign-volume-request (:copier common-lisp:nil))
-   (volume-id (common-lisp:error ":volume-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (volume-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":volume-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (instance-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -193,8 +200,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (associate-elastic-ip-request (:copier common-lisp:nil))
-   (elastic-ip (common-lisp:error ":elastic-ip is required") :type
-    (common-lisp:or string common-lisp:null))
+   (elastic-ip
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":elastic-ip is required"))
+    :type (common-lisp:or string common-lisp:null))
    (instance-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -219,10 +228,14 @@
  (common-lisp:defstruct
      (attach-elastic-load-balancer-request (:copier common-lisp:nil))
    (elastic-load-balancer-name
-    (common-lisp:error ":elastic-load-balancer-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (layer-id (common-lisp:error ":layer-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":elastic-load-balancer-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (layer-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":layer-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-elastic-load-balancer-request
                     'make-attach-elastic-load-balancer-request))
@@ -364,15 +377,19 @@
                                                 'berkshelf-version))))))
 (common-lisp:progn
  (common-lisp:defstruct (clone-stack-request (:copier common-lisp:nil))
-   (source-stack-id (common-lisp:error ":source-stack-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (source-stack-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":source-stack-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (region common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (vpc-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (attributes common-lisp:nil :type
     (common-lisp:or stack-attributes common-lisp:null))
-   (service-role-arn (common-lisp:error ":service-role-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+   (service-role-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":service-role-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (default-instance-profile-arn common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (default-os common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -732,16 +749,20 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (create-app-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (shortname common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (data-sources common-lisp:nil :type
     (common-lisp:or data-sources common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or app-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or app-type common-lisp:null))
    (app-source common-lisp:nil :type (common-lisp:or source common-lisp:null))
    (domains common-lisp:nil :type (common-lisp:or strings common-lisp:null))
    (enable-ssl common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
@@ -831,14 +852,17 @@
                                                 'app-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-deployment-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (app-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (instance-ids common-lisp:nil :type
     (common-lisp:or strings common-lisp:null))
    (layer-ids common-lisp:nil :type (common-lisp:or strings common-lisp:null))
-   (command (common-lisp:error ":command is required") :type
-    (common-lisp:or deployment-command common-lisp:null))
+   (command
+    (common-lisp:error #A((20) common-lisp:base-char . ":command is required"))
+    :type (common-lisp:or deployment-command common-lisp:null))
    (comment common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (custom-json common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
@@ -903,12 +927,18 @@
                                                 'deployment-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-instance-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (layer-ids (common-lisp:error ":layer-ids is required") :type
-    (common-lisp:or strings common-lisp:null))
-   (instance-type (common-lisp:error ":instance-type is required") :type
-    (common-lisp:or string common-lisp:null))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (layer-ids
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":layer-ids is required"))
+    :type (common-lisp:or strings common-lisp:null))
+   (instance-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instance-type is required"))
+    :type (common-lisp:or string common-lisp:null))
    (auto-scaling-type common-lisp:nil :type
     (common-lisp:or auto-scaling-type common-lisp:null))
    (hostname common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -1049,14 +1079,20 @@
                                                 'instance-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-layer-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or layer-type common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (shortname (common-lisp:error ":shortname is required") :type
-    (common-lisp:or string common-lisp:null))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or layer-type common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (shortname
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":shortname is required"))
+    :type (common-lisp:or string common-lisp:null))
    (attributes common-lisp:nil :type
     (common-lisp:or layer-attributes common-lisp:null))
    (cloud-watch-logs-configuration common-lisp:nil :type
@@ -1193,18 +1229,24 @@
                                                 'layer-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-stack-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (region (common-lisp:error ":region is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (region
+    (common-lisp:error #A((19) common-lisp:base-char . ":region is required"))
+    :type (common-lisp:or string common-lisp:null))
    (vpc-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (attributes common-lisp:nil :type
     (common-lisp:or stack-attributes common-lisp:null))
-   (service-role-arn (common-lisp:error ":service-role-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+   (service-role-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":service-role-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (default-instance-profile-arn
-    (common-lisp:error ":default-instance-profile-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":default-instance-profile-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (default-os common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (hostname-theme common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -1344,8 +1386,10 @@
                                                 'stack-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-user-profile-request (:copier common-lisp:nil))
-   (iam-user-arn (common-lisp:error ":iam-user-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+   (iam-user-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":iam-user-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (ssh-username common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (ssh-public-key common-lisp:nil :type
@@ -1438,8 +1482,9 @@
 (common-lisp:deftype date-time () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-app-request (:copier common-lisp:nil))
-   (app-id (common-lisp:error ":app-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (app-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":app-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-app-request 'make-delete-app-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1452,8 +1497,10 @@
                                                 'app-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-instance-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (delete-elastic-ip common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (delete-volumes common-lisp:nil :type
@@ -1482,8 +1529,10 @@
                                                 'delete-volumes))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-layer-request (:copier common-lisp:nil))
-   (layer-id (common-lisp:error ":layer-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (layer-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":layer-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-layer-request 'make-delete-layer-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1496,8 +1545,10 @@
                                                 'layer-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-stack-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-stack-request 'make-delete-stack-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1510,8 +1561,10 @@
                                                 'stack-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-user-profile-request (:copier common-lisp:nil))
-   (iam-user-arn (common-lisp:error ":iam-user-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (iam-user-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":iam-user-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-user-profile-request
                     'make-delete-user-profile-request))
@@ -1611,8 +1664,9 @@
                                                 'instance-ids))))))
 (common-lisp:progn
  (common-lisp:defstruct (deployment-command (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or deployment-command-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or deployment-command-name common-lisp:null))
    (args common-lisp:nil :type
     (common-lisp:or deployment-command-args common-lisp:null)))
  (common-lisp:export
@@ -1647,8 +1701,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (deregister-ecs-cluster-request (:copier common-lisp:nil))
-   (ecs-cluster-arn (common-lisp:error ":ecs-cluster-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (ecs-cluster-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":ecs-cluster-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-ecs-cluster-request
                     'make-deregister-ecs-cluster-request))
@@ -1665,8 +1721,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (deregister-elastic-ip-request (:copier common-lisp:nil))
-   (elastic-ip (common-lisp:error ":elastic-ip is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (elastic-ip
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":elastic-ip is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-elastic-ip-request
                     'make-deregister-elastic-ip-request))
@@ -1682,8 +1740,10 @@
                                                 'elastic-ip))))))
 (common-lisp:progn
  (common-lisp:defstruct (deregister-instance-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-instance-request
                     'make-deregister-instance-request))
@@ -1700,7 +1760,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (deregister-rds-db-instance-request (:copier common-lisp:nil))
-   (rds-db-instance-arn (common-lisp:error ":rds-db-instance-arn is required")
+   (rds-db-instance-arn
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":rds-db-instance-arn is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-rds-db-instance-request
@@ -1717,8 +1779,10 @@
                                                 'rds-db-instance-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (deregister-volume-request (:copier common-lisp:nil))
-   (volume-id (common-lisp:error ":volume-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (volume-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":volume-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-volume-request
                     'make-deregister-volume-request))
@@ -2133,8 +2197,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-load-based-auto-scaling-request (:copier common-lisp:nil))
-   (layer-ids (common-lisp:error ":layer-ids is required") :type
-    (common-lisp:or strings common-lisp:null)))
+   (layer-ids
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":layer-ids is required"))
+    :type (common-lisp:or strings common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-load-based-auto-scaling-request
                     'make-describe-load-based-auto-scaling-request))
@@ -2275,8 +2341,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-rds-db-instances-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (rds-db-instance-arns common-lisp:nil :type
     (common-lisp:or strings common-lisp:null)))
  (common-lisp:export
@@ -2366,8 +2434,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-stack-provisioning-parameters-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-stack-provisioning-parameters-request
                     'make-describe-stack-provisioning-parameters-request))
@@ -2409,8 +2479,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-stack-summary-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-stack-summary-request
                     'make-describe-stack-summary-request))
@@ -2475,8 +2547,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-time-based-auto-scaling-request (:copier common-lisp:nil))
-   (instance-ids (common-lisp:error ":instance-ids is required") :type
-    (common-lisp:or strings common-lisp:null)))
+   (instance-ids
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instance-ids is required"))
+    :type (common-lisp:or strings common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-time-based-auto-scaling-request
                     'make-describe-time-based-auto-scaling-request))
@@ -2598,10 +2672,14 @@
  (common-lisp:defstruct
      (detach-elastic-load-balancer-request (:copier common-lisp:nil))
    (elastic-load-balancer-name
-    (common-lisp:error ":elastic-load-balancer-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (layer-id (common-lisp:error ":layer-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":elastic-load-balancer-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (layer-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":layer-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-elastic-load-balancer-request
                     'make-detach-elastic-load-balancer-request))
@@ -2623,8 +2701,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disassociate-elastic-ip-request (:copier common-lisp:nil))
-   (elastic-ip (common-lisp:error ":elastic-ip is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (elastic-ip
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":elastic-ip is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disassociate-elastic-ip-request
                     'make-disassociate-elastic-ip-request))
@@ -2839,10 +2919,11 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (environment-variable (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or string common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or string common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or string common-lisp:null))
    (secure common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'environment-variable 'make-environment-variable))
@@ -2875,8 +2956,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-hostname-suggestion-request (:copier common-lisp:nil))
-   (layer-id (common-lisp:error ":layer-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (layer-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":layer-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-hostname-suggestion-request
                     'make-get-hostname-suggestion-request))
@@ -2915,8 +2998,10 @@
                                                 'hostname))))))
 (common-lisp:progn
  (common-lisp:defstruct (grant-access-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (valid-for-in-minutes common-lisp:nil :type
     (common-lisp:or valid-for-in-minutes common-lisp:null)))
  (common-lisp:export
@@ -3576,8 +3661,10 @@
                                                 'shutdown))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-tags-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or max-results common-lisp:null))
    (next-token common-lisp:nil :type
@@ -3889,8 +3976,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (reboot-instance-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reboot-instance-request 'make-reboot-instance-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3942,10 +4031,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-ecs-cluster-request (:copier common-lisp:nil))
-   (ecs-cluster-arn (common-lisp:error ":ecs-cluster-arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (ecs-cluster-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":ecs-cluster-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-ecs-cluster-request
                     'make-register-ecs-cluster-request))
@@ -3983,10 +4076,14 @@
                                                 'ecs-cluster-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (register-elastic-ip-request (:copier common-lisp:nil))
-   (elastic-ip (common-lisp:error ":elastic-ip is required") :type
-    (common-lisp:or string common-lisp:null))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (elastic-ip
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":elastic-ip is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-elastic-ip-request
                     'make-register-elastic-ip-request))
@@ -4023,8 +4120,10 @@
                                                 'elastic-ip))))))
 (common-lisp:progn
  (common-lisp:defstruct (register-instance-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (hostname common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (public-ip common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (private-ip common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -4096,14 +4195,21 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-rds-db-instance-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (rds-db-instance-arn (common-lisp:error ":rds-db-instance-arn is required")
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
     :type (common-lisp:or string common-lisp:null))
-   (db-user (common-lisp:error ":db-user is required") :type
-    (common-lisp:or string common-lisp:null))
-   (db-password (common-lisp:error ":db-password is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rds-db-instance-arn
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":rds-db-instance-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (db-user
+    (common-lisp:error #A((20) common-lisp:base-char . ":db-user is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (db-password
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":db-password is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-rds-db-instance-request
                     'make-register-rds-db-instance-request))
@@ -4136,8 +4242,10 @@
  (common-lisp:defstruct (register-volume-request (:copier common-lisp:nil))
    (ec2volume-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-volume-request 'make-register-volume-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4302,8 +4410,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-load-based-auto-scaling-request (:copier common-lisp:nil))
-   (layer-id (common-lisp:error ":layer-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (layer-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":layer-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (enable common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
    (up-scaling common-lisp:nil :type
     (common-lisp:or auto-scaling-thresholds common-lisp:null))
@@ -4339,10 +4449,14 @@
                                                 'down-scaling))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-permission-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (iam-user-arn (common-lisp:error ":iam-user-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (iam-user-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":iam-user-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (allow-ssh common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
    (allow-sudo common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
    (level common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -4381,8 +4495,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-time-based-auto-scaling-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (auto-scaling-schedule common-lisp:nil :type
     (common-lisp:or weekly-auto-scaling-schedule common-lisp:null)))
  (common-lisp:export
@@ -4473,10 +4589,14 @@
 (common-lisp:deftype source-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (ssl-configuration (:copier common-lisp:nil))
-   (certificate (common-lisp:error ":certificate is required") :type
-    (common-lisp:or string common-lisp:null))
-   (private-key (common-lisp:error ":private-key is required") :type
-    (common-lisp:or string common-lisp:null))
+   (certificate
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":certificate is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (private-key
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":private-key is required"))
+    :type (common-lisp:or string common-lisp:null))
    (chain common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'ssl-configuration 'make-ssl-configuration))
@@ -4733,8 +4853,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (start-instance-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-instance-request 'make-start-instance-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4749,8 +4871,10 @@
                                                 'instance-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (start-stack-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-stack-request 'make-start-stack-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4763,8 +4887,10 @@
                                                 'stack-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (stop-instance-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-instance-request 'make-stop-instance-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4779,8 +4905,10 @@
                                                 'instance-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (stop-stack-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-stack-request 'make-stop-stack-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4810,10 +4938,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag-resource-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4904,8 +5035,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (unassign-instance-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'unassign-instance-request
                     'make-unassign-instance-request))
@@ -4921,8 +5054,10 @@
                                                 'instance-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (unassign-volume-request (:copier common-lisp:nil))
-   (volume-id (common-lisp:error ":volume-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (volume-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":volume-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'unassign-volume-request 'make-unassign-volume-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4937,10 +5072,14 @@
                                                 'volume-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (untag-resource-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-keys common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-keys common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4960,8 +5099,9 @@
                                                 'tag-keys))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-app-request (:copier common-lisp:nil))
-   (app-id (common-lisp:error ":app-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (app-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":app-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (data-sources common-lisp:nil :type
@@ -5038,8 +5178,10 @@
                                                 'environment))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-elastic-ip-request (:copier common-lisp:nil))
-   (elastic-ip (common-lisp:error ":elastic-ip is required") :type
-    (common-lisp:or string common-lisp:null))
+   (elastic-ip
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":elastic-ip is required"))
+    :type (common-lisp:or string common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-elastic-ip-request
@@ -5061,8 +5203,10 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-instance-request (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (layer-ids common-lisp:nil :type (common-lisp:or strings common-lisp:null))
    (instance-type common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -5150,8 +5294,10 @@
                                                 'agent-version))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-layer-request (:copier common-lisp:nil))
-   (layer-id (common-lisp:error ":layer-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (layer-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":layer-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (shortname common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (attributes common-lisp:nil :type
@@ -5291,7 +5437,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-rds-db-instance-request (:copier common-lisp:nil))
-   (rds-db-instance-arn (common-lisp:error ":rds-db-instance-arn is required")
+   (rds-db-instance-arn
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":rds-db-instance-arn is required"))
     :type (common-lisp:or string common-lisp:null))
    (db-user common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (db-password common-lisp:nil :type
@@ -5321,8 +5469,10 @@
                                                 'db-password))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-stack-request (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (attributes common-lisp:nil :type
     (common-lisp:or stack-attributes common-lisp:null))
@@ -5451,8 +5601,10 @@
                                                 'agent-version))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-user-profile-request (:copier common-lisp:nil))
-   (iam-user-arn (common-lisp:error ":iam-user-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+   (iam-user-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":iam-user-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (ssh-username common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (ssh-public-key common-lisp:nil :type
@@ -5489,8 +5641,10 @@
                                                 'allow-self-management))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-volume-request (:copier common-lisp:nil))
-   (volume-id (common-lisp:error ":volume-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (volume-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":volume-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (mount-point common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
@@ -5668,13 +5822,18 @@
                                                 'iops))))))
 (common-lisp:progn
  (common-lisp:defstruct (volume-configuration (:copier common-lisp:nil))
-   (mount-point (common-lisp:error ":mount-point is required") :type
-    (common-lisp:or string common-lisp:null))
+   (mount-point
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":mount-point is required"))
+    :type (common-lisp:or string common-lisp:null))
    (raid-level common-lisp:nil :type (common-lisp:or integer common-lisp:null))
-   (number-of-disks (common-lisp:error ":number-of-disks is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (size (common-lisp:error ":size is required") :type
-    (common-lisp:or integer common-lisp:null))
+   (number-of-disks
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":number-of-disks is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (size
+    (common-lisp:error #A((17) common-lisp:base-char . ":size is required"))
+    :type (common-lisp:or integer common-lisp:null))
    (volume-type common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (iops common-lisp:nil :type (common-lisp:or integer common-lisp:null)))
  (common-lisp:export
@@ -5798,7 +5957,9 @@
                       (common-lisp:apply 'make-assign-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AssignInstance")
                                   ("Version" ,@"2013-02-18"))
@@ -5816,7 +5977,9 @@
                       (common-lisp:apply 'make-assign-volume-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AssignVolume")
                                   ("Version" ,@"2013-02-18"))
@@ -5834,7 +5997,9 @@
                       (common-lisp:apply 'make-associate-elastic-ip-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AssociateElasticIp")
                                   ("Version" ,@"2013-02-18"))
@@ -5854,7 +6019,9 @@
                        'make-attach-elastic-load-balancer-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachElasticLoadBalancer")
                                   ("Version" ,@"2013-02-18"))
@@ -5885,7 +6052,9 @@
                       (common-lisp:apply 'make-clone-stack-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CloneStack")
                                   ("Version" ,@"2013-02-18"))
@@ -5908,7 +6077,9 @@
                       (common-lisp:apply 'make-create-app-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateApp")
                                   ("Version" ,@"2013-02-18"))
@@ -5929,7 +6100,9 @@
                       (common-lisp:apply 'make-create-deployment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDeployment")
                                   ("Version" ,@"2013-02-18"))
@@ -5956,7 +6129,9 @@
                       (common-lisp:apply 'make-create-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateInstance")
                                   ("Version" ,@"2013-02-18"))
@@ -5986,7 +6161,9 @@
                       (common-lisp:apply 'make-create-layer-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLayer")
                                   ("Version" ,@"2013-02-18"))
@@ -6016,7 +6193,9 @@
                       (common-lisp:apply 'make-create-stack-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateStack")
                                   ("Version" ,@"2013-02-18"))
@@ -6037,7 +6216,9 @@
                       (common-lisp:apply 'make-create-user-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateUserProfile")
                                   ("Version" ,@"2013-02-18"))
@@ -6055,7 +6236,9 @@
                       (common-lisp:apply 'make-delete-app-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApp")
                                   ("Version" ,@"2013-02-18"))
@@ -6075,7 +6258,9 @@
                       (common-lisp:apply 'make-delete-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteInstance")
                                   ("Version" ,@"2013-02-18"))
@@ -6093,7 +6278,9 @@
                       (common-lisp:apply 'make-delete-layer-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLayer")
                                   ("Version" ,@"2013-02-18"))
@@ -6111,7 +6298,9 @@
                       (common-lisp:apply 'make-delete-stack-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteStack")
                                   ("Version" ,@"2013-02-18"))
@@ -6129,7 +6318,9 @@
                       (common-lisp:apply 'make-delete-user-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUserProfile")
                                   ("Version" ,@"2013-02-18"))
@@ -6147,7 +6338,9 @@
                       (common-lisp:apply 'make-deregister-ecs-cluster-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterEcsCluster")
                                   ("Version" ,@"2013-02-18"))
@@ -6165,7 +6358,9 @@
                       (common-lisp:apply 'make-deregister-elastic-ip-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterElasticIp")
                                   ("Version" ,@"2013-02-18"))
@@ -6183,7 +6378,9 @@
                       (common-lisp:apply 'make-deregister-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterInstance")
                                   ("Version" ,@"2013-02-18"))
@@ -6202,7 +6399,9 @@
                        'make-deregister-rds-db-instance-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterRdsDbInstance")
                                   ("Version" ,@"2013-02-18"))
@@ -6220,7 +6419,9 @@
                       (common-lisp:apply 'make-deregister-volume-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterVolume")
                                   ("Version" ,@"2013-02-18"))
@@ -6238,7 +6439,9 @@
                       (common-lisp:apply 'make-describe-agent-versions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAgentVersions")
                                   ("Version" ,@"2013-02-18"))
@@ -6256,7 +6459,9 @@
                       (common-lisp:apply 'make-describe-apps-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeApps")
                                   ("Version" ,@"2013-02-18"))
@@ -6275,7 +6480,9 @@
                       (common-lisp:apply 'make-describe-commands-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCommands")
                                   ("Version" ,@"2013-02-18"))
@@ -6293,7 +6500,9 @@
                       (common-lisp:apply 'make-describe-deployments-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDeployments")
                                   ("Version" ,@"2013-02-18"))
@@ -6313,7 +6522,9 @@
                       (common-lisp:apply 'make-describe-ecs-clusters-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEcsClusters")
                                   ("Version" ,@"2013-02-18"))
@@ -6331,7 +6542,9 @@
                       (common-lisp:apply 'make-describe-elastic-ips-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeElasticIps")
                                   ("Version" ,@"2013-02-18"))
@@ -6350,7 +6563,9 @@
                        'make-describe-elastic-load-balancers-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeElasticLoadBalancers")
                                   ("Version" ,@"2013-02-18"))
@@ -6368,7 +6583,9 @@
                       (common-lisp:apply 'make-describe-instances-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeInstances")
                                   ("Version" ,@"2013-02-18"))
@@ -6386,7 +6603,9 @@
                       (common-lisp:apply 'make-describe-layers-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLayers")
                                   ("Version" ,@"2013-02-18"))
@@ -6405,7 +6624,9 @@
                        'make-describe-load-based-auto-scaling-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLoadBasedAutoScaling")
                                   ("Version" ,@"2013-02-18"))
@@ -6416,7 +6637,9 @@
 (common-lisp:progn
  (common-lisp:defun describe-my-user-profile ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((8) common-lisp:base-char . "opsworks") :method
+                             :post :params
                              (common-lisp:cons "Action"
                                                "DescribeMyUserProfile"))
     "DescribeMyUserProfileResult" common-lisp:nil))
@@ -6431,7 +6654,9 @@
                       (common-lisp:apply 'make-describe-permissions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribePermissions")
                                   ("Version" ,@"2013-02-18"))
@@ -6450,7 +6675,9 @@
                       (common-lisp:apply 'make-describe-raid-arrays-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRaidArrays")
                                   ("Version" ,@"2013-02-18"))
@@ -6469,7 +6696,9 @@
                        'make-describe-rds-db-instances-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRdsDbInstances")
                                   ("Version" ,@"2013-02-18"))
@@ -6488,7 +6717,9 @@
                       (common-lisp:apply 'make-describe-service-errors-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeServiceErrors")
                                   ("Version" ,@"2013-02-18"))
@@ -6507,7 +6738,9 @@
                        'make-describe-stack-provisioning-parameters-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeStackProvisioningParameters")
@@ -6526,7 +6759,9 @@
                       (common-lisp:apply 'make-describe-stack-summary-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStackSummary")
                                   ("Version" ,@"2013-02-18"))
@@ -6544,7 +6779,9 @@
                       (common-lisp:apply 'make-describe-stacks-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStacks")
                                   ("Version" ,@"2013-02-18"))
@@ -6563,7 +6800,9 @@
                        'make-describe-time-based-auto-scaling-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTimeBasedAutoScaling")
                                   ("Version" ,@"2013-02-18"))
@@ -6581,7 +6820,9 @@
                       (common-lisp:apply 'make-describe-user-profiles-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeUserProfiles")
                                   ("Version" ,@"2013-02-18"))
@@ -6601,7 +6842,9 @@
                       (common-lisp:apply 'make-describe-volumes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeVolumes")
                                   ("Version" ,@"2013-02-18"))
@@ -6621,7 +6864,9 @@
                        'make-detach-elastic-load-balancer-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachElasticLoadBalancer")
                                   ("Version" ,@"2013-02-18"))
@@ -6639,7 +6884,9 @@
                       (common-lisp:apply 'make-disassociate-elastic-ip-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisassociateElasticIp")
                                   ("Version" ,@"2013-02-18"))
@@ -6657,7 +6904,9 @@
                       (common-lisp:apply 'make-get-hostname-suggestion-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetHostnameSuggestion")
                                   ("Version" ,@"2013-02-18"))
@@ -6676,7 +6925,9 @@
                       (common-lisp:apply 'make-grant-access-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GrantAccess")
                                   ("Version" ,@"2013-02-18"))
@@ -6695,7 +6946,9 @@
                       (common-lisp:apply 'make-list-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTags")
                                   ("Version" ,@"2013-02-18"))
@@ -6713,7 +6966,9 @@
                       (common-lisp:apply 'make-reboot-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RebootInstance")
                                   ("Version" ,@"2013-02-18"))
@@ -6731,7 +6986,9 @@
                       (common-lisp:apply 'make-register-ecs-cluster-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterEcsCluster")
                                   ("Version" ,@"2013-02-18"))
@@ -6749,7 +7006,9 @@
                       (common-lisp:apply 'make-register-elastic-ip-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterElasticIp")
                                   ("Version" ,@"2013-02-18"))
@@ -6771,7 +7030,9 @@
                       (common-lisp:apply 'make-register-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterInstance")
                                   ("Version" ,@"2013-02-18"))
@@ -6791,7 +7052,9 @@
                       (common-lisp:apply 'make-register-rds-db-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterRdsDbInstance")
                                   ("Version" ,@"2013-02-18"))
@@ -6809,7 +7072,9 @@
                       (common-lisp:apply 'make-register-volume-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterVolume")
                                   ("Version" ,@"2013-02-18"))
@@ -6829,7 +7094,9 @@
                        'make-set-load-based-auto-scaling-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetLoadBasedAutoScaling")
                                   ("Version" ,@"2013-02-18"))
@@ -6849,7 +7116,9 @@
                       (common-lisp:apply 'make-set-permission-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetPermission")
                                   ("Version" ,@"2013-02-18"))
@@ -6869,7 +7138,9 @@
                        'make-set-time-based-auto-scaling-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetTimeBasedAutoScaling")
                                   ("Version" ,@"2013-02-18"))
@@ -6887,7 +7158,9 @@
                       (common-lisp:apply 'make-start-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartInstance")
                                   ("Version" ,@"2013-02-18"))
@@ -6905,7 +7178,9 @@
                       (common-lisp:apply 'make-start-stack-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartStack")
                                   ("Version" ,@"2013-02-18"))
@@ -6923,7 +7198,9 @@
                       (common-lisp:apply 'make-stop-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopInstance")
                                   ("Version" ,@"2013-02-18"))
@@ -6941,7 +7218,9 @@
                       (common-lisp:apply 'make-stop-stack-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopStack")
                                   ("Version" ,@"2013-02-18"))
@@ -6959,7 +7238,9 @@
                       (common-lisp:apply 'make-tag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TagResource")
                                   ("Version" ,@"2013-02-18"))
@@ -6977,7 +7258,9 @@
                       (common-lisp:apply 'make-unassign-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UnassignInstance")
                                   ("Version" ,@"2013-02-18"))
@@ -6995,7 +7278,9 @@
                       (common-lisp:apply 'make-unassign-volume-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UnassignVolume")
                                   ("Version" ,@"2013-02-18"))
@@ -7013,7 +7298,9 @@
                       (common-lisp:apply 'make-untag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UntagResource")
                                   ("Version" ,@"2013-02-18"))
@@ -7035,7 +7322,9 @@
                       (common-lisp:apply 'make-update-app-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApp")
                                   ("Version" ,@"2013-02-18"))
@@ -7053,7 +7342,9 @@
                       (common-lisp:apply 'make-update-elastic-ip-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateElasticIp")
                                   ("Version" ,@"2013-02-18"))
@@ -7077,7 +7368,9 @@
                       (common-lisp:apply 'make-update-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateInstance")
                                   ("Version" ,@"2013-02-18"))
@@ -7107,7 +7400,9 @@
                       (common-lisp:apply 'make-update-layer-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateLayer")
                                   ("Version" ,@"2013-02-18"))
@@ -7125,7 +7420,9 @@
                       (common-lisp:apply 'make-update-my-user-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateMyUserProfile")
                                   ("Version" ,@"2013-02-18"))
@@ -7144,7 +7441,9 @@
                       (common-lisp:apply 'make-update-rds-db-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRdsDbInstance")
                                   ("Version" ,@"2013-02-18"))
@@ -7174,7 +7473,9 @@
                       (common-lisp:apply 'make-update-stack-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateStack")
                                   ("Version" ,@"2013-02-18"))
@@ -7195,7 +7496,9 @@
                       (common-lisp:apply 'make-update-user-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateUserProfile")
                                   ("Version" ,@"2013-02-18"))
@@ -7213,7 +7516,9 @@
                       (common-lisp:apply 'make-update-volume-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "opsworks" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "opsworks")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateVolume")
                                   ("Version" ,@"2013-02-18"))

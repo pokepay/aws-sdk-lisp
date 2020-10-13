@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/kms)
+
 (common-lisp:deftype awsaccount-id-type () 'common-lisp:string)
 (common-lisp:deftype algorithm-spec () 'common-lisp:string)
 (common-lisp:progn
@@ -65,8 +66,9 @@
 (common-lisp:deftype boolean-type () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (cancel-key-deletion-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null)))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-key-deletion-request
                     'make-cancel-key-deletion-request))
@@ -102,10 +104,14 @@
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
  (common-lisp:defstruct (create-alias-request (:copier common-lisp:nil))
-   (alias-name (common-lisp:error ":alias-name is required") :type
-    (common-lisp:or alias-name-type common-lisp:null))
-   (target-key-id (common-lisp:error ":target-key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null)))
+   (alias-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":alias-name is required"))
+    :type (common-lisp:or alias-name-type common-lisp:null))
+   (target-key-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":target-key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-alias-request 'make-create-alias-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -123,9 +129,12 @@
                                                 'target-key-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-grant-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
-   (grantee-principal (common-lisp:error ":grantee-principal is required")
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
+   (grantee-principal
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":grantee-principal is required"))
     :type (common-lisp:or principal-id-type common-lisp:null))
    (retiring-principal common-lisp:nil :type
     (common-lisp:or principal-id-type common-lisp:null))
@@ -264,8 +273,10 @@
 (common-lisp:deftype date-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (decrypt-request (:copier common-lisp:nil))
-   (ciphertext-blob (common-lisp:error ":ciphertext-blob is required") :type
-    (common-lisp:or ciphertext-type common-lisp:null))
+   (ciphertext-blob
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":ciphertext-blob is required"))
+    :type (common-lisp:or ciphertext-type common-lisp:null))
    (encryption-context common-lisp:nil :type
     (common-lisp:or encryption-context-type common-lisp:null))
    (grant-tokens common-lisp:nil :type
@@ -311,8 +322,10 @@
                                                 'plaintext))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-alias-request (:copier common-lisp:nil))
-   (alias-name (common-lisp:error ":alias-name is required") :type
-    (common-lisp:or alias-name-type common-lisp:null)))
+   (alias-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":alias-name is required"))
+    :type (common-lisp:or alias-name-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-alias-request 'make-delete-alias-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -326,8 +339,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-imported-key-material-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null)))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-imported-key-material-request
                     'make-delete-imported-key-material-request))
@@ -361,8 +375,9 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-key-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
    (grant-tokens common-lisp:nil :type
     (common-lisp:or grant-token-list common-lisp:null)))
  (common-lisp:export
@@ -399,8 +414,9 @@
 (common-lisp:deftype description-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (disable-key-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null)))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-key-request 'make-disable-key-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -414,8 +430,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disable-key-rotation-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null)))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-key-rotation-request
                     'make-disable-key-rotation-request))
@@ -445,8 +462,9 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (enable-key-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null)))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-key-request 'make-enable-key-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -459,8 +477,9 @@
                                                 'key-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (enable-key-rotation-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null)))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-key-rotation-request
                     'make-enable-key-rotation-request))
@@ -476,10 +495,13 @@
                                                 'key-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (encrypt-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
-   (plaintext (common-lisp:error ":plaintext is required") :type
-    (common-lisp:or plaintext-type common-lisp:null))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
+   (plaintext
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":plaintext is required"))
+    :type (common-lisp:or plaintext-type common-lisp:null))
    (encryption-context common-lisp:nil :type
     (common-lisp:or encryption-context-type common-lisp:null))
    (grant-tokens common-lisp:nil :type
@@ -559,8 +581,9 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (generate-data-key-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
    (encryption-context common-lisp:nil :type
     (common-lisp:or encryption-context-type common-lisp:null))
    (number-of-bytes common-lisp:nil :type
@@ -636,8 +659,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (generate-data-key-without-plaintext-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
    (encryption-context common-lisp:nil :type
     (common-lisp:or encryption-context-type common-lisp:null))
    (key-spec common-lisp:nil :type
@@ -738,10 +762,13 @@
                                                 'plaintext))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-key-policy-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or policy-name-type common-lisp:null)))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or policy-name-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-key-policy-request 'make-get-key-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -778,8 +805,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-key-rotation-status-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null)))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-key-rotation-status-request
                     'make-get-key-rotation-status-request))
@@ -814,11 +842,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-parameters-for-import-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
-   (wrapping-algorithm (common-lisp:error ":wrapping-algorithm is required")
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
+   (wrapping-algorithm
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":wrapping-algorithm is required"))
     :type (common-lisp:or algorithm-spec common-lisp:null))
-   (wrapping-key-spec (common-lisp:error ":wrapping-key-spec is required")
+   (wrapping-key-spec
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":wrapping-key-spec is required"))
     :type (common-lisp:or wrapping-key-spec common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-parameters-for-import-request
@@ -1001,13 +1034,17 @@
 (common-lisp:deftype grant-token-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (import-key-material-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
-   (import-token (common-lisp:error ":import-token is required") :type
-    (common-lisp:or ciphertext-type common-lisp:null))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
+   (import-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":import-token is required"))
+    :type (common-lisp:or ciphertext-type common-lisp:null))
    (encrypted-key-material
-    (common-lisp:error ":encrypted-key-material is required") :type
-    (common-lisp:or ciphertext-type common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":encrypted-key-material is required"))
+    :type (common-lisp:or ciphertext-type common-lisp:null))
    (valid-to common-lisp:nil :type (common-lisp:or date-type common-lisp:null))
    (expiration-model common-lisp:nil :type
     (common-lisp:or expiration-model-type common-lisp:null)))
@@ -1275,8 +1312,9 @@
  (common-lisp:defstruct (key-metadata (:copier common-lisp:nil))
    (awsaccount-id common-lisp:nil :type
     (common-lisp:or awsaccount-id-type common-lisp:null))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
    (arn common-lisp:nil :type (common-lisp:or arn-type common-lisp:null))
    (creation-date common-lisp:nil :type
     (common-lisp:or date-type common-lisp:null))
@@ -1454,8 +1492,9 @@
  (common-lisp:defstruct (list-grants-request (:copier common-lisp:nil))
    (limit common-lisp:nil :type (common-lisp:or limit-type common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker-type common-lisp:null))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null)))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-grants-request 'make-list-grants-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1505,8 +1544,9 @@
                                                 'truncated))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-key-policies-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or limit-type common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or marker-type common-lisp:null)))
@@ -1613,8 +1653,9 @@
                                                 'truncated))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-resource-tags-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or limit-type common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or marker-type common-lisp:null)))
@@ -1676,7 +1717,9 @@
      (list-retirable-grants-request (:copier common-lisp:nil))
    (limit common-lisp:nil :type (common-lisp:or limit-type common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker-type common-lisp:null))
-   (retiring-principal (common-lisp:error ":retiring-principal is required")
+   (retiring-principal
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":retiring-principal is required"))
     :type (common-lisp:or principal-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-retirable-grants-request
@@ -1752,12 +1795,16 @@
 (common-lisp:deftype principal-id-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (put-key-policy-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or policy-name-type common-lisp:null))
-   (policy (common-lisp:error ":policy is required") :type
-    (common-lisp:or policy-type common-lisp:null))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or policy-name-type common-lisp:null))
+   (policy
+    (common-lisp:error #A((19) common-lisp:base-char . ":policy is required"))
+    :type (common-lisp:or policy-type common-lisp:null))
    (bypass-policy-lockout-safety-check common-lisp:nil :type
     (common-lisp:or boolean-type common-lisp:null)))
  (common-lisp:export
@@ -1789,11 +1836,15 @@
                                                 'bypass-policy-lockout-safety-check))))))
 (common-lisp:progn
  (common-lisp:defstruct (re-encrypt-request (:copier common-lisp:nil))
-   (ciphertext-blob (common-lisp:error ":ciphertext-blob is required") :type
-    (common-lisp:or ciphertext-type common-lisp:null))
+   (ciphertext-blob
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":ciphertext-blob is required"))
+    :type (common-lisp:or ciphertext-type common-lisp:null))
    (source-encryption-context common-lisp:nil :type
     (common-lisp:or encryption-context-type common-lisp:null))
-   (destination-key-id (common-lisp:error ":destination-key-id is required")
+   (destination-key-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":destination-key-id is required"))
     :type (common-lisp:or key-id-type common-lisp:null))
    (destination-encryption-context common-lisp:nil :type
     (common-lisp:or encryption-context-type common-lisp:null))
@@ -1886,10 +1937,13 @@
                                                 'grant-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (revoke-grant-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
-   (grant-id (common-lisp:error ":grant-id is required") :type
-    (common-lisp:or grant-id-type common-lisp:null)))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
+   (grant-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":grant-id is required"))
+    :type (common-lisp:or grant-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'revoke-grant-request 'make-revoke-grant-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1908,8 +1962,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (schedule-key-deletion-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
    (pending-window-in-days common-lisp:nil :type
     (common-lisp:or pending-window-in-days-type common-lisp:null)))
  (common-lisp:export
@@ -1956,10 +2011,13 @@
                                                 'deletion-date))))))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (tag-key (common-lisp:error ":tag-key is required") :type
-    (common-lisp:or tag-key-type common-lisp:null))
-   (tag-value (common-lisp:error ":tag-value is required") :type
-    (common-lisp:or tag-value-type common-lisp:null)))
+   (tag-key
+    (common-lisp:error #A((20) common-lisp:base-char . ":tag-key is required"))
+    :type (common-lisp:or tag-key-type common-lisp:null))
+   (tag-value
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":tag-value is required"))
+    :type (common-lisp:or tag-value-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -2005,10 +2063,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag-resource-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2045,10 +2105,13 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (untag-resource-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2068,10 +2131,14 @@
                                                 'tag-keys))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-alias-request (:copier common-lisp:nil))
-   (alias-name (common-lisp:error ":alias-name is required") :type
-    (common-lisp:or alias-name-type common-lisp:null))
-   (target-key-id (common-lisp:error ":target-key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null)))
+   (alias-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":alias-name is required"))
+    :type (common-lisp:or alias-name-type common-lisp:null))
+   (target-key-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":target-key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-alias-request 'make-update-alias-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2090,10 +2157,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-key-description-request (:copier common-lisp:nil))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id-type common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or description-type common-lisp:null)))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id-type common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or description-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-key-description-request
                     'make-update-key-description-request))
@@ -2123,7 +2193,8 @@
                       (common-lisp:apply 'make-cancel-key-deletion-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelKeyDeletion")
                                   ("Version" ,@"2014-11-01"))
@@ -2141,7 +2212,8 @@
                       (common-lisp:apply 'make-create-alias-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAlias")
                                   ("Version" ,@"2014-11-01"))
@@ -2163,7 +2235,8 @@
                       (common-lisp:apply 'make-create-grant-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateGrant")
                                   ("Version" ,@"2014-11-01"))
@@ -2184,7 +2257,8 @@
                       (common-lisp:apply 'make-create-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateKey")
                                   ("Version" ,@"2014-11-01"))
@@ -2204,7 +2278,8 @@
                       (common-lisp:apply 'make-decrypt-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"Decrypt")
                                   ("Version" ,@"2014-11-01"))
@@ -2222,7 +2297,8 @@
                       (common-lisp:apply 'make-delete-alias-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAlias")
                                   ("Version" ,@"2014-11-01"))
@@ -2241,7 +2317,8 @@
                        'make-delete-imported-key-material-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteImportedKeyMaterial")
                                   ("Version" ,@"2014-11-01"))
@@ -2259,7 +2336,8 @@
                       (common-lisp:apply 'make-describe-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeKey")
                                   ("Version" ,@"2014-11-01"))
@@ -2277,7 +2355,8 @@
                       (common-lisp:apply 'make-disable-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableKey")
                                   ("Version" ,@"2014-11-01"))
@@ -2295,7 +2374,8 @@
                       (common-lisp:apply 'make-disable-key-rotation-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableKeyRotation")
                                   ("Version" ,@"2014-11-01"))
@@ -2313,7 +2393,8 @@
                       (common-lisp:apply 'make-enable-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableKey")
                                   ("Version" ,@"2014-11-01"))
@@ -2331,7 +2412,8 @@
                       (common-lisp:apply 'make-enable-key-rotation-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableKeyRotation")
                                   ("Version" ,@"2014-11-01"))
@@ -2351,7 +2433,8 @@
                       (common-lisp:apply 'make-encrypt-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"Encrypt")
                                   ("Version" ,@"2014-11-01"))
@@ -2372,7 +2455,8 @@
                       (common-lisp:apply 'make-generate-data-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GenerateDataKey")
                                   ("Version" ,@"2014-11-01"))
@@ -2394,7 +2478,8 @@
                        'make-generate-data-key-without-plaintext-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GenerateDataKeyWithoutPlaintext")
@@ -2413,7 +2498,8 @@
                       (common-lisp:apply 'make-generate-random-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GenerateRandom")
                                   ("Version" ,@"2014-11-01"))
@@ -2431,7 +2517,8 @@
                       (common-lisp:apply 'make-get-key-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetKeyPolicy")
                                   ("Version" ,@"2014-11-01"))
@@ -2449,7 +2536,8 @@
                       (common-lisp:apply 'make-get-key-rotation-status-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetKeyRotationStatus")
                                   ("Version" ,@"2014-11-01"))
@@ -2470,7 +2558,8 @@
                        'make-get-parameters-for-import-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetParametersForImport")
                                   ("Version" ,@"2014-11-01"))
@@ -2491,7 +2580,8 @@
                       (common-lisp:apply 'make-import-key-material-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ImportKeyMaterial")
                                   ("Version" ,@"2014-11-01"))
@@ -2509,7 +2599,8 @@
                       (common-lisp:apply 'make-list-aliases-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAliases")
                                   ("Version" ,@"2014-11-01"))
@@ -2527,7 +2618,8 @@
                       (common-lisp:apply 'make-list-grants-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListGrants")
                                   ("Version" ,@"2014-11-01"))
@@ -2545,7 +2637,8 @@
                       (common-lisp:apply 'make-list-key-policies-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListKeyPolicies")
                                   ("Version" ,@"2014-11-01"))
@@ -2563,7 +2656,8 @@
                       (common-lisp:apply 'make-list-keys-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListKeys")
                                   ("Version" ,@"2014-11-01"))
@@ -2581,7 +2675,8 @@
                       (common-lisp:apply 'make-list-resource-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListResourceTags")
                                   ("Version" ,@"2014-11-01"))
@@ -2600,7 +2695,8 @@
                       (common-lisp:apply 'make-list-retirable-grants-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRetirableGrants")
                                   ("Version" ,@"2014-11-01"))
@@ -2621,7 +2717,8 @@
                       (common-lisp:apply 'make-put-key-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutKeyPolicy")
                                   ("Version" ,@"2014-11-01"))
@@ -2643,7 +2740,8 @@
                       (common-lisp:apply 'make-re-encrypt-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ReEncrypt")
                                   ("Version" ,@"2014-11-01"))
@@ -2661,7 +2759,8 @@
                       (common-lisp:apply 'make-retire-grant-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RetireGrant")
                                   ("Version" ,@"2014-11-01"))
@@ -2679,7 +2778,8 @@
                       (common-lisp:apply 'make-revoke-grant-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RevokeGrant")
                                   ("Version" ,@"2014-11-01"))
@@ -2697,7 +2797,8 @@
                       (common-lisp:apply 'make-schedule-key-deletion-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ScheduleKeyDeletion")
                                   ("Version" ,@"2014-11-01"))
@@ -2715,7 +2816,8 @@
                       (common-lisp:apply 'make-tag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TagResource")
                                   ("Version" ,@"2014-11-01"))
@@ -2733,7 +2835,8 @@
                       (common-lisp:apply 'make-untag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UntagResource")
                                   ("Version" ,@"2014-11-01"))
@@ -2751,7 +2854,8 @@
                       (common-lisp:apply 'make-update-alias-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAlias")
                                   ("Version" ,@"2014-11-01"))
@@ -2769,7 +2873,8 @@
                       (common-lisp:apply 'make-update-key-description-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "kms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateKeyDescription")
                                   ("Version" ,@"2014-11-01"))

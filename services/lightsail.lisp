@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/lightsail)
+
 (common-lisp:progn
  (common-lisp:defstruct (access-denied-exception (:copier common-lisp:nil))
    (code common-lisp:nil :type
@@ -86,8 +87,10 @@
                                                 'tip))))))
 (common-lisp:progn
  (common-lisp:defstruct (allocate-static-ip-request (:copier common-lisp:nil))
-   (static-ip-name (common-lisp:error ":staticipname is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (static-ip-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":staticipname is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'allocate-static-ip-request
                     'make-allocate-static-ip-request))
@@ -120,10 +123,14 @@
                                                 'operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (attach-static-ip-request (:copier common-lisp:nil))
-   (static-ip-name (common-lisp:error ":staticipname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (static-ip-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":staticipname is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-static-ip-request 'make-attach-static-ip-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -363,10 +370,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (close-instance-public-ports-request (:copier common-lisp:nil))
-   (port-info (common-lisp:error ":portinfo is required") :type
-    (common-lisp:or port-info common-lisp:null))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (port-info
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":portinfo is required"))
+    :type (common-lisp:or port-info common-lisp:null))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'close-instance-public-ports-request
                     'make-close-instance-public-ports-request))
@@ -405,10 +416,14 @@
                                                 'operation))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-domain-entry-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-entry (common-lisp:error ":domainentry is required") :type
-    (common-lisp:or domain-entry common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (domain-entry
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domainentry is required"))
+    :type (common-lisp:or domain-entry common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-domain-entry-request
                     'make-create-domain-entry-request))
@@ -446,8 +461,10 @@
                                                 'operation))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-domain-request 'make-create-domain-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -478,10 +495,13 @@
  (common-lisp:defstruct
      (create-instance-snapshot-request (:copier common-lisp:nil))
    (instance-snapshot-name
-    (common-lisp:error ":instancesnapshotname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":instancesnapshotname is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-instance-snapshot-request
                     'make-create-instance-snapshot-request))
@@ -521,15 +541,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-instances-from-snapshot-request (:copier common-lisp:nil))
-   (instance-names (common-lisp:error ":instancenames is required") :type
-    (common-lisp:or string-list common-lisp:null))
-   (availability-zone (common-lisp:error ":availabilityzone is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (instance-names
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instancenames is required"))
+    :type (common-lisp:or string-list common-lisp:null))
+   (availability-zone
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":availabilityzone is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (instance-snapshot-name
-    (common-lisp:error ":instancesnapshotname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (bundle-id (common-lisp:error ":bundleid is required") :type
-    (common-lisp:or non-empty-string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":instancesnapshotname is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (bundle-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":bundleid is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null))
    (user-data common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (key-pair-name common-lisp:nil :type
@@ -592,16 +619,24 @@
                                                 'operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-instances-request (:copier common-lisp:nil))
-   (instance-names (common-lisp:error ":instancenames is required") :type
-    (common-lisp:or string-list common-lisp:null))
-   (availability-zone (common-lisp:error ":availabilityzone is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (instance-names
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instancenames is required"))
+    :type (common-lisp:or string-list common-lisp:null))
+   (availability-zone
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":availabilityzone is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (custom-image-name common-lisp:nil :type
     (common-lisp:or resource-name common-lisp:null))
-   (blueprint-id (common-lisp:error ":blueprintid is required") :type
-    (common-lisp:or non-empty-string common-lisp:null))
-   (bundle-id (common-lisp:error ":bundleid is required") :type
-    (common-lisp:or non-empty-string common-lisp:null))
+   (blueprint-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":blueprintid is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null))
+   (bundle-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":bundleid is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null))
    (user-data common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (key-pair-name common-lisp:nil :type
@@ -666,8 +701,10 @@
                                                 'operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-key-pair-request (:copier common-lisp:nil))
-   (key-pair-name (common-lisp:error ":keypairname is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (key-pair-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":keypairname is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-key-pair-request 'make-create-key-pair-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -718,10 +755,14 @@
                                                 'operation))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-domain-entry-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-entry (common-lisp:error ":domainentry is required") :type
-    (common-lisp:or domain-entry common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (domain-entry
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domainentry is required"))
+    :type (common-lisp:or domain-entry common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-domain-entry-request
                     'make-delete-domain-entry-request))
@@ -759,8 +800,10 @@
                                                 'operation))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-domain-request 'make-delete-domain-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -789,8 +832,10 @@
                                                 'operation))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-instance-request (:copier common-lisp:nil))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-instance-request 'make-delete-instance-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -823,8 +868,9 @@
  (common-lisp:defstruct
      (delete-instance-snapshot-request (:copier common-lisp:nil))
    (instance-snapshot-name
-    (common-lisp:error ":instancesnapshotname is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":instancesnapshotname is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-instance-snapshot-request
                     'make-delete-instance-snapshot-request))
@@ -858,8 +904,10 @@
                                                 'operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-key-pair-request (:copier common-lisp:nil))
-   (key-pair-name (common-lisp:error ":keypairname is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (key-pair-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":keypairname is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-key-pair-request 'make-delete-key-pair-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -890,8 +938,10 @@
                                                 'operation))))))
 (common-lisp:progn
  (common-lisp:defstruct (detach-static-ip-request (:copier common-lisp:nil))
-   (static-ip-name (common-lisp:error ":staticipname is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (static-ip-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":staticipname is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-static-ip-request 'make-detach-static-ip-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1313,8 +1363,10 @@
                                                 'next-page-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-domain-request 'make-get-domain-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1376,8 +1428,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-instance-access-details-request (:copier common-lisp:nil))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (protocol common-lisp:nil :type
     (common-lisp:or instance-access-protocol common-lisp:null)))
  (common-lisp:export
@@ -1419,20 +1473,31 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-instance-metric-data-request (:copier common-lisp:nil))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (metric-name (common-lisp:error ":metricname is required") :type
-    (common-lisp:or instance-metric-name common-lisp:null))
-   (period (common-lisp:error ":period is required") :type
-    (common-lisp:or metric-period common-lisp:null))
-   (start-time (common-lisp:error ":starttime is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (end-time (common-lisp:error ":endtime is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (unit (common-lisp:error ":unit is required") :type
-    (common-lisp:or metric-unit common-lisp:null))
-   (statistics (common-lisp:error ":statistics is required") :type
-    (common-lisp:or metric-statistic-list common-lisp:null)))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (metric-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":metricname is required"))
+    :type (common-lisp:or instance-metric-name common-lisp:null))
+   (period
+    (common-lisp:error #A((19) common-lisp:base-char . ":period is required"))
+    :type (common-lisp:or metric-period common-lisp:null))
+   (start-time
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":starttime is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (end-time
+    (common-lisp:error #A((20) common-lisp:base-char . ":endtime is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (unit
+    (common-lisp:error #A((17) common-lisp:base-char . ":unit is required"))
+    :type (common-lisp:or metric-unit common-lisp:null))
+   (statistics
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":statistics is required"))
+    :type (common-lisp:or metric-statistic-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-instance-metric-data-request
                     'make-get-instance-metric-data-request))
@@ -1504,8 +1569,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-instance-port-states-request (:copier common-lisp:nil))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-instance-port-states-request
                     'make-get-instance-port-states-request))
@@ -1539,8 +1606,10 @@
                                                 'port-states))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-instance-request (:copier common-lisp:nil))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-instance-request 'make-get-instance-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1568,8 +1637,9 @@
  (common-lisp:defstruct
      (get-instance-snapshot-request (:copier common-lisp:nil))
    (instance-snapshot-name
-    (common-lisp:error ":instancesnapshotname is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":instancesnapshotname is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-instance-snapshot-request
                     'make-get-instance-snapshot-request))
@@ -1646,8 +1716,10 @@
                                                 'next-page-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-instance-state-request (:copier common-lisp:nil))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-instance-state-request
                     'make-get-instance-state-request))
@@ -1717,8 +1789,10 @@
                                                 'next-page-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-key-pair-request (:copier common-lisp:nil))
-   (key-pair-name (common-lisp:error ":keypairname is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (key-pair-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":keypairname is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-key-pair-request 'make-get-key-pair-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1781,8 +1855,10 @@
                                                 'next-page-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-operation-request (:copier common-lisp:nil))
-   (operation-id (common-lisp:error ":operationid is required") :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+   (operation-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":operationid is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-operation-request 'make-get-operation-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1812,8 +1888,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-operations-for-resource-request (:copier common-lisp:nil))
-   (resource-name (common-lisp:error ":resourcename is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+   (resource-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resourcename is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (page-token common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
@@ -1935,8 +2013,10 @@
                                                 'regions))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-static-ip-request (:copier common-lisp:nil))
-   (static-ip-name (common-lisp:error ":staticipname is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (static-ip-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":staticipname is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-static-ip-request 'make-get-static-ip-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2004,10 +2084,14 @@
                                                 'next-page-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (import-key-pair-request (:copier common-lisp:nil))
-   (key-pair-name (common-lisp:error ":keypairname is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (public-key-base64 (common-lisp:error ":publickeybase64 is required") :type
-    (common-lisp:or base64 common-lisp:null)))
+   (key-pair-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":keypairname is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (public-key-base64
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":publickeybase64 is required"))
+    :type (common-lisp:or base64 common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'import-key-pair-request 'make-import-key-pair-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2774,10 +2858,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (open-instance-public-ports-request (:copier common-lisp:nil))
-   (port-info (common-lisp:error ":portinfo is required") :type
-    (common-lisp:or port-info common-lisp:null))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (port-info
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":portinfo is required"))
+    :type (common-lisp:or port-info common-lisp:null))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'open-instance-public-ports-request
                     'make-open-instance-public-ports-request))
@@ -3009,10 +3097,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-instance-public-ports-request (:copier common-lisp:nil))
-   (port-infos (common-lisp:error ":portinfos is required") :type
-    (common-lisp:or port-info-list common-lisp:null))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (port-infos
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":portinfos is required"))
+    :type (common-lisp:or port-info-list common-lisp:null))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-instance-public-ports-request
                     'make-put-instance-public-ports-request))
@@ -3051,8 +3143,10 @@
                                                 'operation))))))
 (common-lisp:progn
  (common-lisp:defstruct (reboot-instance-request (:copier common-lisp:nil))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reboot-instance-request 'make-reboot-instance-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3131,8 +3225,10 @@
 (common-lisp:deftype region-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (release-static-ip-request (:copier common-lisp:nil))
-   (static-ip-name (common-lisp:error ":staticipname is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (static-ip-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":staticipname is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'release-static-ip-request
                     'make-release-static-ip-request))
@@ -3222,8 +3318,10 @@
                                                 'tip))))))
 (common-lisp:progn
  (common-lisp:defstruct (start-instance-request (:copier common-lisp:nil))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-instance-request 'make-start-instance-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3329,8 +3427,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (stop-instance-request (:copier common-lisp:nil))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-instance-request 'make-stop-instance-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3426,10 +3526,14 @@
                                                 'operation))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-domain-entry-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (domain-entry (common-lisp:error ":domainentry is required") :type
-    (common-lisp:or domain-entry common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (domain-entry
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domainentry is required"))
+    :type (common-lisp:or domain-entry common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-domain-entry-request
                     'make-update-domain-entry-request))
@@ -3481,7 +3585,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-allocate-static-ip-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AllocateStaticIp")
                                   ("Version" ,@"2016-11-28"))
@@ -3499,7 +3605,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-attach-static-ip-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachStaticIp")
                                   ("Version" ,@"2016-11-28"))
@@ -3518,7 +3626,9 @@ common-lisp:nil
                        'make-close-instance-public-ports-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CloseInstancePublicPorts")
                                   ("Version" ,@"2016-11-28"))
@@ -3536,7 +3646,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDomain")
                                   ("Version" ,@"2016-11-28"))
@@ -3554,7 +3666,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-domain-entry-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDomainEntry")
                                   ("Version" ,@"2016-11-28"))
@@ -3573,7 +3687,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-instance-snapshot-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateInstanceSnapshot")
                                   ("Version" ,@"2016-11-28"))
@@ -3595,7 +3711,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-instances-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateInstances")
                                   ("Version" ,@"2016-11-28"))
@@ -3617,7 +3735,9 @@ common-lisp:nil
                        'make-create-instances-from-snapshot-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateInstancesFromSnapshot")
                                   ("Version" ,@"2016-11-28"))
@@ -3635,7 +3755,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-key-pair-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateKeyPair")
                                   ("Version" ,@"2016-11-28"))
@@ -3653,7 +3775,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDomain")
                                   ("Version" ,@"2016-11-28"))
@@ -3671,7 +3795,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-domain-entry-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDomainEntry")
                                   ("Version" ,@"2016-11-28"))
@@ -3689,7 +3815,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteInstance")
                                   ("Version" ,@"2016-11-28"))
@@ -3707,7 +3835,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-instance-snapshot-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteInstanceSnapshot")
                                   ("Version" ,@"2016-11-28"))
@@ -3725,7 +3855,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-key-pair-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteKeyPair")
                                   ("Version" ,@"2016-11-28"))
@@ -3743,7 +3875,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-detach-static-ip-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachStaticIp")
                                   ("Version" ,@"2016-11-28"))
@@ -3754,7 +3888,9 @@ common-lisp:nil
 (common-lisp:progn
  (common-lisp:defun download-default-key-pair ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((9) common-lisp:base-char . "lightsail")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DownloadDefaultKeyPair"))
     "DownloadDefaultKeyPairResult" common-lisp:nil))
@@ -3769,7 +3905,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-active-names-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetActiveNames")
                                   ("Version" ,@"2016-11-28"))
@@ -3787,7 +3925,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-blueprints-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBlueprints")
                                   ("Version" ,@"2016-11-28"))
@@ -3805,7 +3945,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-bundles-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBundles")
                                   ("Version" ,@"2016-11-28"))
@@ -3823,7 +3965,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDomain")
                                   ("Version" ,@"2016-11-28"))
@@ -3841,7 +3985,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-domains-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDomains")
                                   ("Version" ,@"2016-11-28"))
@@ -3859,7 +4005,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetInstance")
                                   ("Version" ,@"2016-11-28"))
@@ -3878,7 +4026,9 @@ common-lisp:nil
                        'make-get-instance-access-details-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetInstanceAccessDetails")
                                   ("Version" ,@"2016-11-28"))
@@ -3899,7 +4049,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-instance-metric-data-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetInstanceMetricData")
                                   ("Version" ,@"2016-11-28"))
@@ -3917,7 +4069,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-instance-port-states-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetInstancePortStates")
                                   ("Version" ,@"2016-11-28"))
@@ -3935,7 +4089,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-instance-snapshot-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetInstanceSnapshot")
                                   ("Version" ,@"2016-11-28"))
@@ -3953,7 +4109,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-instance-snapshots-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetInstanceSnapshots")
                                   ("Version" ,@"2016-11-28"))
@@ -3971,7 +4129,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-instance-state-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetInstanceState")
                                   ("Version" ,@"2016-11-28"))
@@ -3989,7 +4149,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-instances-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetInstances")
                                   ("Version" ,@"2016-11-28"))
@@ -4007,7 +4169,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-key-pair-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetKeyPair")
                                   ("Version" ,@"2016-11-28"))
@@ -4025,7 +4189,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-key-pairs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetKeyPairs")
                                   ("Version" ,@"2016-11-28"))
@@ -4043,7 +4209,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-operation-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetOperation")
                                   ("Version" ,@"2016-11-28"))
@@ -4061,7 +4229,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-operations-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetOperations")
                                   ("Version" ,@"2016-11-28"))
@@ -4080,7 +4250,9 @@ common-lisp:nil
                        'make-get-operations-for-resource-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetOperationsForResource")
                                   ("Version" ,@"2016-11-28"))
@@ -4098,7 +4270,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-regions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRegions")
                                   ("Version" ,@"2016-11-28"))
@@ -4116,7 +4290,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-static-ip-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetStaticIp")
                                   ("Version" ,@"2016-11-28"))
@@ -4134,7 +4310,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-static-ips-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetStaticIps")
                                   ("Version" ,@"2016-11-28"))
@@ -4153,7 +4331,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-import-key-pair-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ImportKeyPair")
                                   ("Version" ,@"2016-11-28"))
@@ -4164,7 +4344,9 @@ common-lisp:nil
 (common-lisp:progn
  (common-lisp:defun is-vpc-peered ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((9) common-lisp:base-char . "lightsail")
+                             :method :post :params
                              (common-lisp:cons "Action" "IsVpcPeered"))
     "IsVpcPeeredResult" common-lisp:nil))
  (common-lisp:export 'is-vpc-peered))
@@ -4179,7 +4361,9 @@ common-lisp:nil
                        'make-open-instance-public-ports-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"OpenInstancePublicPorts")
                                   ("Version" ,@"2016-11-28"))
@@ -4190,7 +4374,9 @@ common-lisp:nil
 (common-lisp:progn
  (common-lisp:defun peer-vpc ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((9) common-lisp:base-char . "lightsail")
+                             :method :post :params
                              (common-lisp:cons "Action" "PeerVpc"))
     "PeerVpcResult" common-lisp:nil))
  (common-lisp:export 'peer-vpc))
@@ -4205,7 +4391,9 @@ common-lisp:nil
                        'make-put-instance-public-ports-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutInstancePublicPorts")
                                   ("Version" ,@"2016-11-28"))
@@ -4223,7 +4411,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-reboot-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RebootInstance")
                                   ("Version" ,@"2016-11-28"))
@@ -4241,7 +4431,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-release-static-ip-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ReleaseStaticIp")
                                   ("Version" ,@"2016-11-28"))
@@ -4259,7 +4451,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-start-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartInstance")
                                   ("Version" ,@"2016-11-28"))
@@ -4277,7 +4471,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-stop-instance-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopInstance")
                                   ("Version" ,@"2016-11-28"))
@@ -4288,7 +4484,9 @@ common-lisp:nil
 (common-lisp:progn
  (common-lisp:defun unpeer-vpc ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((9) common-lisp:base-char . "lightsail")
+                             :method :post :params
                              (common-lisp:cons "Action" "UnpeerVpc"))
     "UnpeerVpcResult" common-lisp:nil))
  (common-lisp:export 'unpeer-vpc))
@@ -4302,7 +4500,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-update-domain-entry-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lightsail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "lightsail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDomainEntry")
                                   ("Version" ,@"2016-11-28"))

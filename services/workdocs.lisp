@@ -7,15 +7,20 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/workdocs)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (abort-document-version-upload-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (document-id (common-lisp:error ":document-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
-   (version-id (common-lisp:error ":version-id is required") :type
-    (common-lisp:or document-version-id-type common-lisp:null)))
+   (document-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":document-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
+   (version-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":version-id is required"))
+    :type (common-lisp:or document-version-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'abort-document-version-upload-request
                     'make-abort-document-version-upload-request))
@@ -41,8 +46,9 @@
                                                 'version-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (activate-user-request (:copier common-lisp:nil))
-   (user-id (common-lisp:error ":user-id is required") :type
-    (common-lisp:or id-type common-lisp:null))
+   (user-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":user-id is required"))
+    :type (common-lisp:or id-type common-lisp:null))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null)))
  (common-lisp:export
@@ -144,10 +150,14 @@
      (add-resource-permissions-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
-   (principals (common-lisp:error ":principals is required") :type
-    (common-lisp:or share-principal-list common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
+   (principals
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":principals is required"))
+    :type (common-lisp:or share-principal-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-resource-permissions-request
                     'make-add-resource-permissions-request))
@@ -193,8 +203,10 @@
 (common-lisp:deftype boolean-type () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (comment (:copier common-lisp:nil))
-   (comment-id (common-lisp:error ":comment-id is required") :type
-    (common-lisp:or comment-id-type common-lisp:null))
+   (comment-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":comment-id is required"))
+    :type (common-lisp:or comment-id-type common-lisp:null))
    (parent-id common-lisp:nil :type
     (common-lisp:or comment-id-type common-lisp:null))
    (thread-id common-lisp:nil :type
@@ -333,16 +345,21 @@
  (common-lisp:defstruct (create-comment-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (document-id (common-lisp:error ":document-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
-   (version-id (common-lisp:error ":version-id is required") :type
-    (common-lisp:or document-version-id-type common-lisp:null))
+   (document-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":document-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
+   (version-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":version-id is required"))
+    :type (common-lisp:or document-version-id-type common-lisp:null))
    (parent-id common-lisp:nil :type
     (common-lisp:or comment-id-type common-lisp:null))
    (thread-id common-lisp:nil :type
     (common-lisp:or comment-id-type common-lisp:null))
-   (text (common-lisp:error ":text is required") :type
-    (common-lisp:or comment-text-type common-lisp:null))
+   (text
+    (common-lisp:error #A((17) common-lisp:base-char . ":text is required"))
+    :type (common-lisp:or comment-text-type common-lisp:null))
    (visibility common-lisp:nil :type
     (common-lisp:or comment-visibility-type common-lisp:null))
    (notify-collaborators common-lisp:nil :type
@@ -414,12 +431,16 @@
      (create-custom-metadata-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
    (version-id common-lisp:nil :type
     (common-lisp:or document-version-id-type common-lisp:null))
-   (custom-metadata (common-lisp:error ":custom-metadata is required") :type
-    (common-lisp:or custom-metadata-map common-lisp:null)))
+   (custom-metadata
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":custom-metadata is required"))
+    :type (common-lisp:or custom-metadata-map common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-custom-metadata-request
                     'make-create-custom-metadata-request))
@@ -465,8 +486,10 @@
     (common-lisp:or authentication-header-type common-lisp:null))
    (name common-lisp:nil :type
     (common-lisp:or resource-name-type common-lisp:null))
-   (parent-folder-id (common-lisp:error ":parent-folder-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null)))
+   (parent-folder-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":parent-folder-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-folder-request 'make-create-folder-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -507,10 +530,13 @@
                                                 'metadata))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-labels-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
-   (labels (common-lisp:error ":labels is required") :type
-    (common-lisp:or labels common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
+   (labels
+    (common-lisp:error #A((19) common-lisp:base-char . ":labels is required"))
+    :type (common-lisp:or labels common-lisp:null))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null)))
  (common-lisp:export
@@ -547,13 +573,21 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-notification-subscription-request (:copier common-lisp:nil))
-   (organization-id (common-lisp:error ":organization-id is required") :type
-    (common-lisp:or id-type common-lisp:null))
-   (endpoint (common-lisp:error ":endpoint is required") :type
-    (common-lisp:or subscription-end-point-type common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or subscription-protocol-type common-lisp:null))
-   (subscription-type (common-lisp:error ":subscription-type is required")
+   (organization-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":organization-id is required"))
+    :type (common-lisp:or id-type common-lisp:null))
+   (endpoint
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":endpoint is required"))
+    :type (common-lisp:or subscription-end-point-type common-lisp:null))
+   (protocol
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":protocol is required"))
+    :type (common-lisp:or subscription-protocol-type common-lisp:null))
+   (subscription-type
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-type is required"))
     :type (common-lisp:or subscription-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-notification-subscription-request
@@ -605,16 +639,23 @@
  (common-lisp:defstruct (create-user-request (:copier common-lisp:nil))
    (organization-id common-lisp:nil :type
     (common-lisp:or id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
    (email-address common-lisp:nil :type
     (common-lisp:or email-address-type common-lisp:null))
-   (given-name (common-lisp:error ":given-name is required") :type
-    (common-lisp:or user-attribute-value-type common-lisp:null))
-   (surname (common-lisp:error ":surname is required") :type
-    (common-lisp:or user-attribute-value-type common-lisp:null))
-   (password (common-lisp:error ":password is required") :type
-    (common-lisp:or password-type common-lisp:null))
+   (given-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":given-name is required"))
+    :type (common-lisp:or user-attribute-value-type common-lisp:null))
+   (surname
+    (common-lisp:error #A((20) common-lisp:base-char . ":surname is required"))
+    :type (common-lisp:or user-attribute-value-type common-lisp:null))
+   (password
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":password is required"))
+    :type (common-lisp:or password-type common-lisp:null))
    (time-zone-id common-lisp:nil :type
     (common-lisp:or time-zone-id-type common-lisp:null))
    (storage-rule common-lisp:nil :type
@@ -721,8 +762,9 @@
 (common-lisp:deftype custom-metadata-value-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (deactivate-user-request (:copier common-lisp:nil))
-   (user-id (common-lisp:error ":user-id is required") :type
-    (common-lisp:or id-type common-lisp:null))
+   (user-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":user-id is required"))
+    :type (common-lisp:or id-type common-lisp:null))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null)))
  (common-lisp:export
@@ -757,12 +799,18 @@
  (common-lisp:defstruct (delete-comment-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (document-id (common-lisp:error ":document-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
-   (version-id (common-lisp:error ":version-id is required") :type
-    (common-lisp:or document-version-id-type common-lisp:null))
-   (comment-id (common-lisp:error ":comment-id is required") :type
-    (common-lisp:or comment-id-type common-lisp:null)))
+   (document-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":document-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
+   (version-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":version-id is required"))
+    :type (common-lisp:or document-version-id-type common-lisp:null))
+   (comment-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":comment-id is required"))
+    :type (common-lisp:or comment-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-comment-request 'make-delete-comment-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -795,8 +843,10 @@
      (delete-custom-metadata-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
    (version-id common-lisp:nil :type
     (common-lisp:or document-version-id-type common-lisp:null))
    (keys common-lisp:nil :type
@@ -851,8 +901,10 @@
  (common-lisp:defstruct (delete-document-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (document-id (common-lisp:error ":document-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null)))
+   (document-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":document-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-document-request 'make-delete-document-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -875,8 +927,10 @@
      (delete-folder-contents-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (folder-id (common-lisp:error ":folder-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null)))
+   (folder-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":folder-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-folder-contents-request
                     'make-delete-folder-contents-request))
@@ -899,8 +953,10 @@
  (common-lisp:defstruct (delete-folder-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (folder-id (common-lisp:error ":folder-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null)))
+   (folder-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":folder-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-folder-request 'make-delete-folder-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -920,8 +976,10 @@
                                                 'folder-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-labels-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
    (labels common-lisp:nil :type (common-lisp:or labels common-lisp:null))
@@ -966,10 +1024,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-notification-subscription-request (:copier common-lisp:nil))
-   (subscription-id (common-lisp:error ":subscription-id is required") :type
-    (common-lisp:or id-type common-lisp:null))
-   (organization-id (common-lisp:error ":organization-id is required") :type
-    (common-lisp:or id-type common-lisp:null)))
+   (subscription-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":subscription-id is required"))
+    :type (common-lisp:or id-type common-lisp:null))
+   (organization-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":organization-id is required"))
+    :type (common-lisp:or id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-notification-subscription-request
                     'make-delete-notification-subscription-request))
@@ -992,8 +1054,9 @@
  (common-lisp:defstruct (delete-user-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (user-id (common-lisp:error ":user-id is required") :type
-    (common-lisp:or id-type common-lisp:null)))
+   (user-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":user-id is required"))
+    :type (common-lisp:or id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-user-request 'make-delete-user-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1095,10 +1158,14 @@
  (common-lisp:defstruct (describe-comments-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (document-id (common-lisp:error ":document-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
-   (version-id (common-lisp:error ":version-id is required") :type
-    (common-lisp:or document-version-id-type common-lisp:null))
+   (document-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":document-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
+   (version-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":version-id is required"))
+    :type (common-lisp:or document-version-id-type common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or limit-type common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or marker-type common-lisp:null)))
@@ -1164,8 +1231,10 @@
      (describe-document-versions-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (document-id (common-lisp:error ":document-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
+   (document-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":document-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or page-marker-type common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or limit-type common-lisp:null))
@@ -1241,8 +1310,10 @@
      (describe-folder-contents-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (folder-id (common-lisp:error ":folder-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
+   (folder-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":folder-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
    (sort common-lisp:nil :type
     (common-lisp:or resource-sort-type common-lisp:null))
    (order common-lisp:nil :type (common-lisp:or order-type common-lisp:null))
@@ -1336,8 +1407,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-notification-subscriptions-request (:copier common-lisp:nil))
-   (organization-id (common-lisp:error ":organization-id is required") :type
-    (common-lisp:or id-type common-lisp:null))
+   (organization-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":organization-id is required"))
+    :type (common-lisp:or id-type common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or page-marker-type common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or limit-type common-lisp:null)))
@@ -1394,8 +1467,10 @@
      (describe-resource-permissions-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or limit-type common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or page-marker-type common-lisp:null)))
@@ -1456,8 +1531,9 @@
  (common-lisp:defstruct
      (describe-root-folders-request (:copier common-lisp:nil))
    (authentication-token
-    (common-lisp:error ":authentication-token is required") :type
-    (common-lisp:or authentication-header-type common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":authentication-token is required"))
+    :type (common-lisp:or authentication-header-type common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or limit-type common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or page-marker-type common-lisp:null)))
@@ -2008,8 +2084,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (get-current-user-request (:copier common-lisp:nil))
    (authentication-token
-    (common-lisp:error ":authentication-token is required") :type
-    (common-lisp:or authentication-header-type common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":authentication-token is required"))
+    :type (common-lisp:or authentication-header-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-current-user-request 'make-get-current-user-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2042,8 +2119,10 @@
  (common-lisp:defstruct (get-document-path-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (document-id (common-lisp:error ":document-id is required") :type
-    (common-lisp:or id-type common-lisp:null))
+   (document-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":document-id is required"))
+    :type (common-lisp:or id-type common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or limit-type common-lisp:null))
    (fields common-lisp:nil :type
     (common-lisp:or field-names-type common-lisp:null))
@@ -2103,8 +2182,10 @@
  (common-lisp:defstruct (get-document-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (document-id (common-lisp:error ":document-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
+   (document-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":document-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
    (include-custom-metadata common-lisp:nil :type
     (common-lisp:or boolean-type common-lisp:null)))
  (common-lisp:export
@@ -2155,10 +2236,14 @@
      (get-document-version-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (document-id (common-lisp:error ":document-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
-   (version-id (common-lisp:error ":version-id is required") :type
-    (common-lisp:or document-version-id-type common-lisp:null))
+   (document-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":document-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
+   (version-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":version-id is required"))
+    :type (common-lisp:or document-version-id-type common-lisp:null))
    (fields common-lisp:nil :type
     (common-lisp:or field-names-type common-lisp:null))
    (include-custom-metadata common-lisp:nil :type
@@ -2225,8 +2310,10 @@
  (common-lisp:defstruct (get-folder-path-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (folder-id (common-lisp:error ":folder-id is required") :type
-    (common-lisp:or id-type common-lisp:null))
+   (folder-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":folder-id is required"))
+    :type (common-lisp:or id-type common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or limit-type common-lisp:null))
    (fields common-lisp:nil :type
     (common-lisp:or field-names-type common-lisp:null))
@@ -2284,8 +2371,10 @@
  (common-lisp:defstruct (get-folder-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (folder-id (common-lisp:error ":folder-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
+   (folder-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":folder-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
    (include-custom-metadata common-lisp:nil :type
     (common-lisp:or boolean-type common-lisp:null)))
  (common-lisp:export
@@ -2396,8 +2485,10 @@
     (common-lisp:or document-content-type common-lisp:null))
    (document-size-in-bytes common-lisp:nil :type
     (common-lisp:or size-type common-lisp:null))
-   (parent-folder-id (common-lisp:error ":parent-folder-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null)))
+   (parent-folder-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":parent-folder-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'initiate-document-version-upload-request
                     'make-initiate-document-version-upload-request))
@@ -2648,8 +2739,10 @@
      (remove-all-resource-permissions-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-all-resource-permissions-request
                     'make-remove-all-resource-permissions-request))
@@ -2673,10 +2766,14 @@
      (remove-resource-permission-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
-   (principal-id (common-lisp:error ":principal-id is required") :type
-    (common-lisp:or id-type common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
+   (principal-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":principal-id is required"))
+    :type (common-lisp:or id-type common-lisp:null))
    (principal-type common-lisp:nil :type
     (common-lisp:or principal-type common-lisp:null)))
  (common-lisp:export
@@ -2851,12 +2948,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (share-principal (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id-type common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or principal-type common-lisp:null))
-   (role (common-lisp:error ":role is required") :type
-    (common-lisp:or role-type common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or principal-type common-lisp:null))
+   (role
+    (common-lisp:error #A((17) common-lisp:base-char . ":role is required"))
+    :type (common-lisp:or role-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'share-principal 'make-share-principal))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape share-principal))
@@ -3106,8 +3205,10 @@
  (common-lisp:defstruct (update-document-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (document-id (common-lisp:error ":document-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
+   (document-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":document-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
    (name common-lisp:nil :type
     (common-lisp:or resource-name-type common-lisp:null))
    (parent-folder-id common-lisp:nil :type
@@ -3151,10 +3252,14 @@
      (update-document-version-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (document-id (common-lisp:error ":document-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
-   (version-id (common-lisp:error ":version-id is required") :type
-    (common-lisp:or document-version-id-type common-lisp:null))
+   (document-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":document-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
+   (version-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":version-id is required"))
+    :type (common-lisp:or document-version-id-type common-lisp:null))
    (version-status common-lisp:nil :type
     (common-lisp:or document-version-status common-lisp:null)))
  (common-lisp:export
@@ -3189,8 +3294,10 @@
  (common-lisp:defstruct (update-folder-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (folder-id (common-lisp:error ":folder-id is required") :type
-    (common-lisp:or resource-id-type common-lisp:null))
+   (folder-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":folder-id is required"))
+    :type (common-lisp:or resource-id-type common-lisp:null))
    (name common-lisp:nil :type
     (common-lisp:or resource-name-type common-lisp:null))
    (parent-folder-id common-lisp:nil :type
@@ -3233,8 +3340,9 @@
  (common-lisp:defstruct (update-user-request (:copier common-lisp:nil))
    (authentication-token common-lisp:nil :type
     (common-lisp:or authentication-header-type common-lisp:null))
-   (user-id (common-lisp:error ":user-id is required") :type
-    (common-lisp:or id-type common-lisp:null))
+   (user-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":user-id is required"))
+    :type (common-lisp:or id-type common-lisp:null))
    (given-name common-lisp:nil :type
     (common-lisp:or user-attribute-value-type common-lisp:null))
    (surname common-lisp:nil :type
@@ -3531,7 +3639,13 @@
                        'make-abort-document-version-upload-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/documents/~a/versions/~a"
+                                                   documentid versionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"AbortDocumentVersionUpload")
                                   ("Version" ,@"2016-05-01"))
@@ -3549,7 +3663,13 @@
                       (common-lisp:apply 'make-activate-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/users/~a/activation"
+                                                   userid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ActivateUser")
                                   ("Version" ,@"2016-05-01"))
@@ -3569,7 +3689,13 @@
                       (common-lisp:apply 'make-add-resource-permissions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/resources/~a/permissions"
+                                                   resourceid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"AddResourcePermissions")
                                   ("Version" ,@"2016-05-01"))
@@ -3591,7 +3717,13 @@
                       (common-lisp:apply 'make-create-comment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/documents/~a/versions/~a/comment"
+                                                   documentid versionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateComment")
                                   ("Version" ,@"2016-05-01"))
@@ -3612,7 +3744,13 @@
                       (common-lisp:apply 'make-create-custom-metadata-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/resources/~a/customMetadata"
+                                                   resourceid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCustomMetadata")
                                   ("Version" ,@"2016-05-01"))
@@ -3632,7 +3770,9 @@
                       (common-lisp:apply 'make-create-folder-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateFolder")
                                   ("Version" ,@"2016-05-01"))
@@ -3651,7 +3791,13 @@
                       (common-lisp:apply 'make-create-labels-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/resources/~a/labels"
+                                                   resourceid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLabels")
                                   ("Version" ,@"2016-05-01"))
@@ -3673,7 +3819,13 @@
                        'make-create-notification-subscription-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/organizations/~a/subscriptions"
+                                                   organizationid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateNotificationSubscription")
                                   ("Version" ,@"2016-05-01"))
@@ -3695,7 +3847,9 @@
                       (common-lisp:apply 'make-create-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateUser")
                                   ("Version" ,@"2016-05-01"))
@@ -3713,7 +3867,13 @@
                       (common-lisp:apply 'make-deactivate-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/users/~a/activation"
+                                                   userid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeactivateUser")
                                   ("Version" ,@"2016-05-01"))
@@ -3734,7 +3894,14 @@
                       (common-lisp:apply 'make-delete-comment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/documents/~a/versions/~a/comment/~a"
+                                                   documentid versionid
+                                                   commentid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteComment")
                                   ("Version" ,@"2016-05-01"))
@@ -3755,7 +3922,13 @@
                       (common-lisp:apply 'make-delete-custom-metadata-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/resources/~a/customMetadata"
+                                                   resourceid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCustomMetadata")
                                   ("Version" ,@"2016-05-01"))
@@ -3774,7 +3947,13 @@
                       (common-lisp:apply 'make-delete-document-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/documents/~a"
+                                                   documentid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDocument")
                                   ("Version" ,@"2016-05-01"))
@@ -3792,7 +3971,13 @@
                       (common-lisp:apply 'make-delete-folder-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/folders/~a"
+                                                   folderid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFolder")
                                   ("Version" ,@"2016-05-01"))
@@ -3810,7 +3995,13 @@
                       (common-lisp:apply 'make-delete-folder-contents-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/folders/~a/contents"
+                                                   folderid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFolderContents")
                                   ("Version" ,@"2016-05-01"))
@@ -3830,7 +4021,13 @@
                       (common-lisp:apply 'make-delete-labels-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/resources/~a/labels"
+                                                   resourceid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLabels")
                                   ("Version" ,@"2016-05-01"))
@@ -3850,7 +4047,14 @@
                        'make-delete-notification-subscription-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/organizations/~a/subscriptions/~a"
+                                                   organizationid
+                                                   subscriptionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteNotificationSubscription")
                                   ("Version" ,@"2016-05-01"))
@@ -3868,7 +4072,12 @@
                       (common-lisp:apply 'make-delete-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/users/~a" userid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUser")
                                   ("Version" ,@"2016-05-01"))
@@ -3889,7 +4098,9 @@
                       (common-lisp:apply 'make-describe-activities-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeActivities")
                                   ("Version" ,@"2016-05-01"))
@@ -3910,7 +4121,13 @@
                       (common-lisp:apply 'make-describe-comments-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/documents/~a/versions/~a/comments"
+                                                   documentid versionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeComments")
                                   ("Version" ,@"2016-05-01"))
@@ -3932,7 +4149,13 @@
                        'make-describe-document-versions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/documents/~a/versions"
+                                                   documentid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDocumentVersions")
                                   ("Version" ,@"2016-05-01"))
@@ -3953,7 +4176,13 @@
                       (common-lisp:apply 'make-describe-folder-contents-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/folders/~a/contents"
+                                                   folderid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeFolderContents")
                                   ("Version" ,@"2016-05-01"))
@@ -3972,7 +4201,13 @@
                        'make-describe-notification-subscriptions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/organizations/~a/subscriptions"
+                                                   organizationid)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeNotificationSubscriptions")
@@ -3994,7 +4229,13 @@
                        'make-describe-resource-permissions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/resources/~a/permissions"
+                                                   resourceid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeResourcePermissions")
                                   ("Version" ,@"2016-05-01"))
@@ -4013,7 +4254,9 @@
                       (common-lisp:apply 'make-describe-root-folders-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRootFolders")
                                   ("Version" ,@"2016-05-01"))
@@ -4034,7 +4277,9 @@
                       (common-lisp:apply 'make-describe-users-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeUsers")
                                   ("Version" ,@"2016-05-01"))
@@ -4052,7 +4297,9 @@
                       (common-lisp:apply 'make-get-current-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCurrentUser")
                                   ("Version" ,@"2016-05-01"))
@@ -4073,7 +4320,13 @@
                       (common-lisp:apply 'make-get-document-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/documents/~a"
+                                                   documentid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDocument")
                                   ("Version" ,@"2016-05-01"))
@@ -4094,7 +4347,13 @@
                       (common-lisp:apply 'make-get-document-path-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/documents/~a/path"
+                                                   documentid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDocumentPath")
                                   ("Version" ,@"2016-05-01"))
@@ -4115,7 +4374,13 @@
                       (common-lisp:apply 'make-get-document-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/documents/~a/versions/~a"
+                                                   documentid versionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDocumentVersion")
                                   ("Version" ,@"2016-05-01"))
@@ -4136,7 +4401,13 @@
                       (common-lisp:apply 'make-get-folder-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/folders/~a"
+                                                   folderid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetFolder")
                                   ("Version" ,@"2016-05-01"))
@@ -4156,7 +4427,13 @@
                       (common-lisp:apply 'make-get-folder-path-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/folders/~a/path"
+                                                   folderid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetFolderPath")
                                   ("Version" ,@"2016-05-01"))
@@ -4180,7 +4457,9 @@
                        'make-initiate-document-version-upload-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"InitiateDocumentVersionUpload")
                                   ("Version" ,@"2016-05-01"))
@@ -4200,7 +4479,13 @@
                        'make-remove-all-resource-permissions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/resources/~a/permissions"
+                                                   resourceid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveAllResourcePermissions")
                                   ("Version" ,@"2016-05-01"))
@@ -4222,7 +4507,13 @@
                        'make-remove-resource-permission-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/resources/~a/permissions/~a"
+                                                   resourceid principalid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveResourcePermission")
                                   ("Version" ,@"2016-05-01"))
@@ -4243,7 +4534,13 @@
                       (common-lisp:apply 'make-update-document-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/documents/~a"
+                                                   documentid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDocument")
                                   ("Version" ,@"2016-05-01"))
@@ -4264,7 +4561,13 @@
                       (common-lisp:apply 'make-update-document-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/documents/~a/versions/~a"
+                                                   documentid versionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDocumentVersion")
                                   ("Version" ,@"2016-05-01"))
@@ -4285,7 +4588,13 @@
                       (common-lisp:apply 'make-update-folder-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/folders/~a"
+                                                   folderid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateFolder")
                                   ("Version" ,@"2016-05-01"))
@@ -4306,7 +4615,12 @@
                       (common-lisp:apply 'make-update-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workdocs" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "workdocs")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/api/v1/users/~a" userid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateUser")
                                   ("Version" ,@"2016-05-01"))

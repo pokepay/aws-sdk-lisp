@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/sns)
+
 (common-lisp:progn
  (common-lisp:deftype actions-list () '(trivial-types:proper-list |action|))
  (common-lisp:defun |make-actions-list|
@@ -16,14 +17,21 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (add-permission-input (:copier common-lisp:nil))
-   (topic-arn (common-lisp:error ":topic-arn is required") :type
-    (common-lisp:or |topicARN| common-lisp:null))
-   (label (common-lisp:error ":label is required") :type
-    (common-lisp:or |label| common-lisp:null))
-   (awsaccount-id (common-lisp:error ":awsaccount-id is required") :type
-    (common-lisp:or delegates-list common-lisp:null))
-   (action-name (common-lisp:error ":action-name is required") :type
-    (common-lisp:or actions-list common-lisp:null)))
+   (topic-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":topic-arn is required"))
+    :type (common-lisp:or |topicARN| common-lisp:null))
+   (label
+    (common-lisp:error #A((18) common-lisp:base-char . ":label is required"))
+    :type (common-lisp:or |label| common-lisp:null))
+   (awsaccount-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":awsaccount-id is required"))
+    :type (common-lisp:or delegates-list common-lisp:null))
+   (action-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":action-name is required"))
+    :type (common-lisp:or actions-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-permission-input 'make-add-permission-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -72,8 +80,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (check-if-phone-number-is-opted-out-input (:copier common-lisp:nil))
-   (phone-number (common-lisp:error ":phonenumber is required") :type
-    (common-lisp:or phone-number common-lisp:null)))
+   (phone-number
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":phonenumber is required"))
+    :type (common-lisp:or phone-number common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'check-if-phone-number-is-opted-out-input
                     'make-check-if-phone-number-is-opted-out-input))
@@ -107,10 +117,13 @@
                                                 'is-opted-out))))))
 (common-lisp:progn
  (common-lisp:defstruct (confirm-subscription-input (:copier common-lisp:nil))
-   (topic-arn (common-lisp:error ":topic-arn is required") :type
-    (common-lisp:or |topicARN| common-lisp:null))
-   (token (common-lisp:error ":token is required") :type
-    (common-lisp:or |token| common-lisp:null))
+   (topic-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":topic-arn is required"))
+    :type (common-lisp:or |topicARN| common-lisp:null))
+   (token
+    (common-lisp:error #A((18) common-lisp:base-char . ":token is required"))
+    :type (common-lisp:or |token| common-lisp:null))
    (authenticate-on-unsubscribe common-lisp:nil :type
     (common-lisp:or |authenticateOnUnsubscribe| common-lisp:null)))
  (common-lisp:export
@@ -173,12 +186,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-platform-application-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (platform (common-lisp:error ":platform is required") :type
-    (common-lisp:or string common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or map-string-to-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (platform
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":platform is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or map-string-to-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-platform-application-input
                     'make-create-platform-application-input))
@@ -224,10 +242,12 @@
  (common-lisp:defstruct
      (create-platform-endpoint-input (:copier common-lisp:nil))
    (platform-application-arn
-    (common-lisp:error ":platform-application-arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (token (common-lisp:error ":token is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":platform-application-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (token
+    (common-lisp:error #A((18) common-lisp:base-char . ":token is required"))
+    :type (common-lisp:or string common-lisp:null))
    (custom-user-data common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (attributes common-lisp:nil :type
@@ -262,8 +282,9 @@
                                                 'attributes))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-topic-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or |topicName| common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or |topicName| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-topic-input 'make-create-topic-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -300,8 +321,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (delete-endpoint-input (:copier common-lisp:nil))
-   (endpoint-arn (common-lisp:error ":endpoint-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (endpoint-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":endpoint-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-endpoint-input 'make-delete-endpoint-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -318,8 +341,9 @@
  (common-lisp:defstruct
      (delete-platform-application-input (:copier common-lisp:nil))
    (platform-application-arn
-    (common-lisp:error ":platform-application-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":platform-application-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-platform-application-input
                     'make-delete-platform-application-input))
@@ -335,8 +359,10 @@
                                                 'platform-application-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-topic-input (:copier common-lisp:nil))
-   (topic-arn (common-lisp:error ":topic-arn is required") :type
-    (common-lisp:or |topicARN| common-lisp:null)))
+   (topic-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":topic-arn is required"))
+    :type (common-lisp:or |topicARN| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-topic-input 'make-delete-topic-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -387,8 +413,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-endpoint-attributes-input (:copier common-lisp:nil))
-   (endpoint-arn (common-lisp:error ":endpoint-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (endpoint-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":endpoint-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-endpoint-attributes-input
                     'make-get-endpoint-attributes-input))
@@ -424,8 +452,9 @@
  (common-lisp:defstruct
      (get-platform-application-attributes-input (:copier common-lisp:nil))
    (platform-application-arn
-    (common-lisp:error ":platform-application-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":platform-application-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-platform-application-attributes-input
                     'make-get-platform-application-attributes-input))
@@ -493,8 +522,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-subscription-attributes-input (:copier common-lisp:nil))
-   (subscription-arn (common-lisp:error ":subscription-arn is required") :type
-    (common-lisp:or |subscriptionARN| common-lisp:null)))
+   (subscription-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":subscription-arn is required"))
+    :type (common-lisp:or |subscriptionARN| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-subscription-attributes-input
                     'make-get-subscription-attributes-input))
@@ -528,8 +559,10 @@
                                                 'attributes))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-topic-attributes-input (:copier common-lisp:nil))
-   (topic-arn (common-lisp:error ":topic-arn is required") :type
-    (common-lisp:or |topicARN| common-lisp:null)))
+   (topic-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":topic-arn is required"))
+    :type (common-lisp:or |topicARN| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-topic-attributes-input
                     'make-get-topic-attributes-input))
@@ -616,8 +649,9 @@
  (common-lisp:defstruct
      (list-endpoints-by-platform-application-input (:copier common-lisp:nil))
    (platform-application-arn
-    (common-lisp:error ":platform-application-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":platform-application-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-endpoints-by-platform-application-input
@@ -772,8 +806,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-subscriptions-by-topic-input (:copier common-lisp:nil))
-   (topic-arn (common-lisp:error ":topic-arn is required") :type
-    (common-lisp:or |topicARN| common-lisp:null))
+   (topic-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":topic-arn is required"))
+    :type (common-lisp:or |topicARN| common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or |nextToken| common-lisp:null)))
  (common-lisp:export
@@ -907,8 +943,10 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (message-attribute-value (:copier common-lisp:nil))
-   (data-type (common-lisp:error ":data-type is required") :type
-    (common-lisp:or string common-lisp:null))
+   (data-type
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":data-type is required"))
+    :type (common-lisp:or string common-lisp:null))
    (string-value common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (binary-value common-lisp:nil :type
@@ -951,8 +989,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (opt-in-phone-number-input (:copier common-lisp:nil))
-   (phone-number (common-lisp:error ":phonenumber is required") :type
-    (common-lisp:or phone-number common-lisp:null)))
+   (phone-number
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":phonenumber is required"))
+    :type (common-lisp:or phone-number common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'opt-in-phone-number-input
                     'make-opt-in-phone-number-input))
@@ -1032,8 +1072,9 @@
    (target-arn common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (phone-number common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or |message| common-lisp:null))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or |message| common-lisp:null))
    (subject common-lisp:nil :type (common-lisp:or |subject| common-lisp:null))
    (message-structure common-lisp:nil :type
     (common-lisp:or |messageStructure| common-lisp:null))
@@ -1094,10 +1135,13 @@
                                                 'message-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (remove-permission-input (:copier common-lisp:nil))
-   (topic-arn (common-lisp:error ":topic-arn is required") :type
-    (common-lisp:or |topicARN| common-lisp:null))
-   (label (common-lisp:error ":label is required") :type
-    (common-lisp:or |label| common-lisp:null)))
+   (topic-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":topic-arn is required"))
+    :type (common-lisp:or |topicARN| common-lisp:null))
+   (label
+    (common-lisp:error #A((18) common-lisp:base-char . ":label is required"))
+    :type (common-lisp:or |label| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-permission-input 'make-remove-permission-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1118,10 +1162,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-endpoint-attributes-input (:copier common-lisp:nil))
-   (endpoint-arn (common-lisp:error ":endpoint-arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or map-string-to-string common-lisp:null)))
+   (endpoint-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":endpoint-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or map-string-to-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-endpoint-attributes-input
                     'make-set-endpoint-attributes-input))
@@ -1144,10 +1192,13 @@
  (common-lisp:defstruct
      (set-platform-application-attributes-input (:copier common-lisp:nil))
    (platform-application-arn
-    (common-lisp:error ":platform-application-arn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or map-string-to-string common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":platform-application-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or map-string-to-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-platform-application-attributes-input
                     'make-set-platform-application-attributes-input))
@@ -1168,8 +1219,10 @@
                                                 'attributes))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-smsattributes-input (:copier common-lisp:nil))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or map-string-to-string common-lisp:null)))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or map-string-to-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-smsattributes-input 'make-set-smsattributes-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1195,10 +1248,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-subscription-attributes-input (:copier common-lisp:nil))
-   (subscription-arn (common-lisp:error ":subscription-arn is required") :type
-    (common-lisp:or |subscriptionARN| common-lisp:null))
-   (attribute-name (common-lisp:error ":attribute-name is required") :type
-    (common-lisp:or |attributeName| common-lisp:null))
+   (subscription-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":subscription-arn is required"))
+    :type (common-lisp:or |subscriptionARN| common-lisp:null))
+   (attribute-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":attribute-name is required"))
+    :type (common-lisp:or |attributeName| common-lisp:null))
    (attribute-value common-lisp:nil :type
     (common-lisp:or |attributeValue| common-lisp:null)))
  (common-lisp:export
@@ -1226,10 +1283,14 @@
                                                 'attribute-value))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-topic-attributes-input (:copier common-lisp:nil))
-   (topic-arn (common-lisp:error ":topic-arn is required") :type
-    (common-lisp:or |topicARN| common-lisp:null))
-   (attribute-name (common-lisp:error ":attribute-name is required") :type
-    (common-lisp:or |attributeName| common-lisp:null))
+   (topic-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":topic-arn is required"))
+    :type (common-lisp:or |topicARN| common-lisp:null))
+   (attribute-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":attribute-name is required"))
+    :type (common-lisp:or |attributeName| common-lisp:null))
    (attribute-value common-lisp:nil :type
     (common-lisp:or |attributeValue| common-lisp:null)))
  (common-lisp:export
@@ -1258,10 +1319,14 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (subscribe-input (:copier common-lisp:nil))
-   (topic-arn (common-lisp:error ":topic-arn is required") :type
-    (common-lisp:or |topicARN| common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or |protocol| common-lisp:null))
+   (topic-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":topic-arn is required"))
+    :type (common-lisp:or |topicARN| common-lisp:null))
+   (protocol
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":protocol is required"))
+    :type (common-lisp:or |protocol| common-lisp:null))
    (endpoint common-lisp:nil :type
     (common-lisp:or |endpoint| common-lisp:null)))
  (common-lisp:export (common-lisp:list 'subscribe-input 'make-subscribe-input))
@@ -1429,8 +1494,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (unsubscribe-input (:copier common-lisp:nil))
-   (subscription-arn (common-lisp:error ":subscription-arn is required") :type
-    (common-lisp:or |subscriptionARN| common-lisp:null)))
+   (subscription-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":subscription-arn is required"))
+    :type (common-lisp:or |subscriptionARN| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'unsubscribe-input 'make-unsubscribe-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params

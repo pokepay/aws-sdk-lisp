@@ -7,10 +7,13 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/cloudhsmv2)
+
 (common-lisp:progn
  (common-lisp:defstruct (backup (:copier common-lisp:nil))
-   (backup-id (common-lisp:error ":backup-id is required") :type
-    (common-lisp:or backup-id common-lisp:null))
+   (backup-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":backup-id is required"))
+    :type (common-lisp:or backup-id common-lisp:null))
    (backup-state common-lisp:nil :type
     (common-lisp:or backup-state common-lisp:null))
    (cluster-id common-lisp:nil :type
@@ -286,10 +289,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (create-cluster-request (:copier common-lisp:nil))
-   (subnet-ids (common-lisp:error ":subnet-ids is required") :type
-    (common-lisp:or subnet-ids common-lisp:null))
-   (hsm-type (common-lisp:error ":hsm-type is required") :type
-    (common-lisp:or hsm-type common-lisp:null))
+   (subnet-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":subnet-ids is required"))
+    :type (common-lisp:or subnet-ids common-lisp:null))
+   (hsm-type
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":hsm-type is required"))
+    :type (common-lisp:or hsm-type common-lisp:null))
    (source-backup-id common-lisp:nil :type
     (common-lisp:or backup-id common-lisp:null)))
  (common-lisp:export
@@ -331,9 +338,13 @@
                                                 'cluster))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-hsm-request (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
-   (availability-zone (common-lisp:error ":availability-zone is required")
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
+   (availability-zone
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":availability-zone is required"))
     :type (common-lisp:or external-az common-lisp:null))
    (ip-address common-lisp:nil :type
     (common-lisp:or ip-address common-lisp:null)))
@@ -372,8 +383,10 @@
                                                 'hsm))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-cluster-request (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null)))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-cluster-request 'make-delete-cluster-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -403,8 +416,10 @@
                                                 'cluster))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-hsm-request (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
    (hsm-id common-lisp:nil :type (common-lisp:or hsm-id common-lisp:null))
    (eni-id common-lisp:nil :type (common-lisp:or eni-id common-lisp:null))
    (eni-ip common-lisp:nil :type (common-lisp:or ip-address common-lisp:null)))
@@ -576,8 +591,9 @@
     (common-lisp:or subnet-id common-lisp:null))
    (eni-id common-lisp:nil :type (common-lisp:or eni-id common-lisp:null))
    (eni-ip common-lisp:nil :type (common-lisp:or ip-address common-lisp:null))
-   (hsm-id (common-lisp:error ":hsm-id is required") :type
-    (common-lisp:or hsm-id common-lisp:null))
+   (hsm-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":hsm-id is required"))
+    :type (common-lisp:or hsm-id common-lisp:null))
    (state common-lisp:nil :type (common-lisp:or hsm-state common-lisp:null))
    (state-message common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
@@ -637,12 +653,18 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (initialize-cluster-request (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
-   (signed-cert (common-lisp:error ":signed-cert is required") :type
-    (common-lisp:or cert common-lisp:null))
-   (trust-anchor (common-lisp:error ":trust-anchor is required") :type
-    (common-lisp:or cert common-lisp:null)))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
+   (signed-cert
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":signed-cert is required"))
+    :type (common-lisp:or cert common-lisp:null))
+   (trust-anchor
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":trust-anchor is required"))
+    :type (common-lisp:or cert common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'initialize-cluster-request
                     'make-initialize-cluster-request))
@@ -693,8 +715,10 @@
 (common-lisp:deftype ip-address () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (list-tags-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -721,8 +745,10 @@
                                                 'max-results))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-tags-response (:copier common-lisp:nil))
-   (tag-list (common-lisp:error ":tag-list is required") :type
-    (common-lisp:or tag-list common-lisp:null))
+   (tag-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-list is required"))
+    :type (common-lisp:or tag-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null)))
  (common-lisp:export
@@ -763,10 +789,11 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -798,10 +825,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag-resource-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
-   (tag-list (common-lisp:error ":tag-list is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
+   (tag-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-list is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -830,10 +861,14 @@
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (untag-resource-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
-   (tag-key-list (common-lisp:error ":tag-key-list is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
+   (tag-key-list
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":tag-key-list is required"))
+    :type (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -873,7 +908,9 @@
                       (common-lisp:apply 'make-create-cluster-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudhsmv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCluster")
                                   ("Version" ,@"2017-04-28"))
@@ -892,7 +929,9 @@
                       (common-lisp:apply 'make-create-hsm-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudhsmv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateHsm")
                                   ("Version" ,@"2017-04-28"))
@@ -910,7 +949,9 @@
                       (common-lisp:apply 'make-delete-cluster-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudhsmv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCluster")
                                   ("Version" ,@"2017-04-28"))
@@ -929,7 +970,9 @@
                       (common-lisp:apply 'make-delete-hsm-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudhsmv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteHsm")
                                   ("Version" ,@"2017-04-28"))
@@ -947,7 +990,9 @@
                       (common-lisp:apply 'make-describe-backups-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudhsmv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeBackups")
                                   ("Version" ,@"2017-04-28"))
@@ -965,7 +1010,9 @@
                       (common-lisp:apply 'make-describe-clusters-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudhsmv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeClusters")
                                   ("Version" ,@"2017-04-28"))
@@ -984,7 +1031,9 @@
                       (common-lisp:apply 'make-initialize-cluster-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudhsmv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"InitializeCluster")
                                   ("Version" ,@"2017-04-28"))
@@ -1003,7 +1052,9 @@
                       (common-lisp:apply 'make-list-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudhsmv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTags")
                                   ("Version" ,@"2017-04-28"))
@@ -1021,7 +1072,9 @@
                       (common-lisp:apply 'make-tag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudhsmv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TagResource")
                                   ("Version" ,@"2017-04-28"))
@@ -1039,7 +1092,9 @@
                       (common-lisp:apply 'make-untag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudhsmv2" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudhsmv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UntagResource")
                                   ("Version" ,@"2017-04-28"))

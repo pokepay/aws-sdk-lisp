@@ -7,10 +7,13 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/cloudtrail)
+
 (common-lisp:progn
  (common-lisp:defstruct (add-tags-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags-list common-lisp:nil :type
     (common-lisp:or tags-list common-lisp:null)))
  (common-lisp:export
@@ -63,10 +66,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-trail-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (s3bucket-name (common-lisp:error ":s3bucket-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (s3bucket-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":s3bucket-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (s3key-prefix common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (sns-topic-name common-lisp:nil :type
@@ -265,8 +271,9 @@
 (common-lisp:deftype date () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-trail-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-trail-request 'make-delete-trail-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -420,8 +427,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (get-event-selectors-request (:copier common-lisp:nil))
-   (trail-name (common-lisp:error ":trail-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (trail-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":trail-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-event-selectors-request
                     'make-get-event-selectors-request))
@@ -461,8 +470,9 @@
                                                 'event-selectors))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-trail-status-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-trail-status-request 'make-get-trail-status-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -889,8 +899,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-tags-request (:copier common-lisp:nil))
-   (resource-id-list (common-lisp:error ":resource-id-list is required") :type
-    (common-lisp:or resource-id-list common-lisp:null))
+   (resource-id-list
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":resource-id-list is required"))
+    :type (common-lisp:or resource-id-list common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-request 'make-list-tags-request))
@@ -929,10 +941,14 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (lookup-attribute (:copier common-lisp:nil))
-   (attribute-key (common-lisp:error ":attribute-key is required") :type
-    (common-lisp:or lookup-attribute-key common-lisp:null))
-   (attribute-value (common-lisp:error ":attribute-value is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (attribute-key
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":attribute-key is required"))
+    :type (common-lisp:or lookup-attribute-key common-lisp:null))
+   (attribute-value
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":attribute-value is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'lookup-attribute 'make-lookup-attribute))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1088,10 +1104,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (put-event-selectors-request (:copier common-lisp:nil))
-   (trail-name (common-lisp:error ":trail-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (event-selectors (common-lisp:error ":event-selectors is required") :type
-    (common-lisp:or event-selectors common-lisp:null)))
+   (trail-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":trail-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (event-selectors
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":event-selectors is required"))
+    :type (common-lisp:or event-selectors common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-event-selectors-request
                     'make-put-event-selectors-request))
@@ -1137,8 +1157,10 @@
 (common-lisp:deftype read-write-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (remove-tags-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags-list common-lisp:nil :type
     (common-lisp:or tags-list common-lisp:null)))
  (common-lisp:export
@@ -1259,8 +1281,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (start-logging-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-logging-request 'make-start-logging-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1284,8 +1307,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (stop-logging-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-logging-request 'make-stop-logging-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1308,8 +1332,8 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or string common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or string common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1502,8 +1526,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (update-trail-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (s3bucket-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (s3key-prefix common-lisp:nil :type
@@ -1676,7 +1701,9 @@
                       (common-lisp:apply 'make-add-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTags")
                                   ("Version" ,@"2013-11-01"))
@@ -1702,7 +1729,9 @@
                       (common-lisp:apply 'make-create-trail-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTrail")
                                   ("Version" ,@"2013-11-01"))
@@ -1720,7 +1749,9 @@
                       (common-lisp:apply 'make-delete-trail-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTrail")
                                   ("Version" ,@"2013-11-01"))
@@ -1739,7 +1770,9 @@
                       (common-lisp:apply 'make-describe-trails-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTrails")
                                   ("Version" ,@"2013-11-01"))
@@ -1757,7 +1790,9 @@
                       (common-lisp:apply 'make-get-event-selectors-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetEventSelectors")
                                   ("Version" ,@"2013-11-01"))
@@ -1775,7 +1810,9 @@
                       (common-lisp:apply 'make-get-trail-status-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTrailStatus")
                                   ("Version" ,@"2013-11-01"))
@@ -1793,7 +1830,9 @@
                       (common-lisp:apply 'make-list-public-keys-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPublicKeys")
                                   ("Version" ,@"2013-11-01"))
@@ -1811,7 +1850,9 @@
                       (common-lisp:apply 'make-list-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTags")
                                   ("Version" ,@"2013-11-01"))
@@ -1832,7 +1873,9 @@
                       (common-lisp:apply 'make-lookup-events-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"LookupEvents")
                                   ("Version" ,@"2013-11-01"))
@@ -1850,7 +1893,9 @@
                       (common-lisp:apply 'make-put-event-selectors-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutEventSelectors")
                                   ("Version" ,@"2013-11-01"))
@@ -1868,7 +1913,9 @@
                       (common-lisp:apply 'make-remove-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTags")
                                   ("Version" ,@"2013-11-01"))
@@ -1886,7 +1933,9 @@
                       (common-lisp:apply 'make-start-logging-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartLogging")
                                   ("Version" ,@"2013-11-01"))
@@ -1904,7 +1953,9 @@
                       (common-lisp:apply 'make-stop-logging-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopLogging")
                                   ("Version" ,@"2013-11-01"))
@@ -1930,7 +1981,9 @@
                       (common-lisp:apply 'make-update-trail-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudtrail" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudtrail")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTrail")
                                   ("Version" ,@"2013-11-01"))

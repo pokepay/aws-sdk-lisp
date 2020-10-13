@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/entitlement.marketplace)
+
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:deftype double () 'common-lisp:double-float)
 (common-lisp:progn
@@ -112,8 +113,10 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (get-entitlements-request (:copier common-lisp:nil))
-   (product-code (common-lisp:error ":product-code is required") :type
-    (common-lisp:or product-code common-lisp:null))
+   (product-code
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":product-code is required"))
+    :type (common-lisp:or product-code common-lisp:null))
    (filter common-lisp:nil :type
     (common-lisp:or get-entitlement-filters common-lisp:null))
    (next-token common-lisp:nil :type
@@ -236,8 +239,10 @@
                       (common-lisp:apply 'make-get-entitlements-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "entitlement.marketplace" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((23) common-lisp:base-char
+                                  . "entitlement.marketplace")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetEntitlements")
                                   ("Version" ,@"2017-01-11"))

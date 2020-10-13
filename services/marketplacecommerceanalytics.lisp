@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/marketplacecommerceanalytics)
+
 (common-lisp:defstruct
     (customer-defined-values
      (:constructor |make-customer-defined-values|
@@ -22,20 +23,28 @@
 (common-lisp:deftype from-date () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (generate-data-set-request (:copier common-lisp:nil))
-   (data-set-type (common-lisp:error ":datasettype is required") :type
-    (common-lisp:or data-set-type common-lisp:null))
+   (data-set-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":datasettype is required"))
+    :type (common-lisp:or data-set-type common-lisp:null))
    (data-set-publication-date
-    (common-lisp:error ":datasetpublicationdate is required") :type
-    (common-lisp:or data-set-publication-date common-lisp:null))
-   (role-name-arn (common-lisp:error ":rolenamearn is required") :type
-    (common-lisp:or role-name-arn common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":datasetpublicationdate is required"))
+    :type (common-lisp:or data-set-publication-date common-lisp:null))
+   (role-name-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":rolenamearn is required"))
+    :type (common-lisp:or role-name-arn common-lisp:null))
    (destination-s3bucket-name
-    (common-lisp:error ":destinations3bucketname is required") :type
-    (common-lisp:or destination-s3bucket-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":destinations3bucketname is required"))
+    :type (common-lisp:or destination-s3bucket-name common-lisp:null))
    (destination-s3prefix common-lisp:nil :type
     (common-lisp:or destination-s3prefix common-lisp:null))
-   (sns-topic-arn (common-lisp:error ":snstopicarn is required") :type
-    (common-lisp:or sns-topic-arn common-lisp:null))
+   (sns-topic-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":snstopicarn is required"))
+    :type (common-lisp:or sns-topic-arn common-lisp:null))
    (customer-defined-values common-lisp:nil :type
     (common-lisp:or customer-defined-values common-lisp:null)))
  (common-lisp:export
@@ -122,19 +131,28 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-support-data-export-request (:copier common-lisp:nil))
-   (data-set-type (common-lisp:error ":datasettype is required") :type
-    (common-lisp:or support-data-set-type common-lisp:null))
-   (from-date (common-lisp:error ":fromdate is required") :type
-    (common-lisp:or from-date common-lisp:null))
-   (role-name-arn (common-lisp:error ":rolenamearn is required") :type
-    (common-lisp:or role-name-arn common-lisp:null))
+   (data-set-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":datasettype is required"))
+    :type (common-lisp:or support-data-set-type common-lisp:null))
+   (from-date
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fromdate is required"))
+    :type (common-lisp:or from-date common-lisp:null))
+   (role-name-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":rolenamearn is required"))
+    :type (common-lisp:or role-name-arn common-lisp:null))
    (destination-s3bucket-name
-    (common-lisp:error ":destinations3bucketname is required") :type
-    (common-lisp:or destination-s3bucket-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":destinations3bucketname is required"))
+    :type (common-lisp:or destination-s3bucket-name common-lisp:null))
    (destination-s3prefix common-lisp:nil :type
     (common-lisp:or destination-s3prefix common-lisp:null))
-   (sns-topic-arn (common-lisp:error ":snstopicarn is required") :type
-    (common-lisp:or sns-topic-arn common-lisp:null))
+   (sns-topic-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":snstopicarn is required"))
+    :type (common-lisp:or sns-topic-arn common-lisp:null))
    (customer-defined-values common-lisp:nil :type
     (common-lisp:or customer-defined-values common-lisp:null)))
  (common-lisp:export
@@ -215,8 +233,10 @@
                       (common-lisp:apply 'make-generate-data-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "marketplacecommerceanalytics" :method
-                               :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((28) common-lisp:base-char
+                                  . "marketplacecommerceanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GenerateDataSet")
                                   ("Version" ,@"2015-07-01"))
@@ -240,8 +260,10 @@
                        'make-start-support-data-export-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "marketplacecommerceanalytics" :method
-                               :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((28) common-lisp:base-char
+                                  . "marketplacecommerceanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartSupportDataExport")
                                   ("Version" ,@"2015-07-01"))

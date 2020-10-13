@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/runtime.lex)
+
 (common-lisp:deftype accept () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (bad-gateway-exception (:copier common-lisp:nil))
@@ -45,10 +46,12 @@
 (common-lisp:deftype bot-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (button (:copier common-lisp:nil))
-   (text (common-lisp:error ":text is required") :type
-    (common-lisp:or button-text-string-with-length common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or button-value-string-with-length common-lisp:null)))
+   (text
+    (common-lisp:error #A((17) common-lisp:base-char . ":text is required"))
+    :type (common-lisp:or button-text-string-with-length common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or button-value-string-with-length common-lisp:null)))
  (common-lisp:export (common-lisp:list 'button 'make-button))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape button))
@@ -226,19 +229,27 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (post-content-request (:copier common-lisp:nil))
-   (bot-name (common-lisp:error ":botname is required") :type
-    (common-lisp:or bot-name common-lisp:null))
-   (bot-alias (common-lisp:error ":botalias is required") :type
-    (common-lisp:or bot-alias common-lisp:null))
-   (user-id (common-lisp:error ":userid is required") :type
-    (common-lisp:or user-id common-lisp:null))
+   (bot-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":botname is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
+   (bot-alias
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":botalias is required"))
+    :type (common-lisp:or bot-alias common-lisp:null))
+   (user-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":userid is required"))
+    :type (common-lisp:or user-id common-lisp:null))
    (session-attributes common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (content-type (common-lisp:error ":contenttype is required") :type
-    (common-lisp:or http-content-type common-lisp:null))
+   (content-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":contenttype is required"))
+    :type (common-lisp:or http-content-type common-lisp:null))
    (accept common-lisp:nil :type (common-lisp:or accept common-lisp:null))
-   (input-stream (common-lisp:error ":inputstream is required") :type
-    (common-lisp:or blob-stream common-lisp:null)))
+   (input-stream
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":inputstream is required"))
+    :type (common-lisp:or blob-stream common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'post-content-request 'make-post-content-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -351,16 +362,22 @@
                                                 'audio-stream))))))
 (common-lisp:progn
  (common-lisp:defstruct (post-text-request (:copier common-lisp:nil))
-   (bot-name (common-lisp:error ":botname is required") :type
-    (common-lisp:or bot-name common-lisp:null))
-   (bot-alias (common-lisp:error ":botalias is required") :type
-    (common-lisp:or bot-alias common-lisp:null))
-   (user-id (common-lisp:error ":userid is required") :type
-    (common-lisp:or user-id common-lisp:null))
+   (bot-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":botname is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
+   (bot-alias
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":botalias is required"))
+    :type (common-lisp:or bot-alias common-lisp:null))
+   (user-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":userid is required"))
+    :type (common-lisp:or user-id common-lisp:null))
    (session-attributes common-lisp:nil :type
     (common-lisp:or string-map common-lisp:null))
-   (input-text (common-lisp:error ":inputtext is required") :type
-    (common-lisp:or text common-lisp:null)))
+   (input-text
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":inputtext is required"))
+    :type (common-lisp:or text common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'post-text-request 'make-post-text-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -543,7 +560,13 @@
                       (common-lisp:apply 'make-post-content-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "runtime.lex" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "runtime.lex")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bot/~a/alias/~a/user/~a/content"
+                                                   botname botalias userid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PostContent")
                                   ("Version" ,@"2016-11-28"))
@@ -564,7 +587,13 @@
                       (common-lisp:apply 'make-post-text-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "runtime.lex" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "runtime.lex")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bot/~a/alias/~a/user/~a/text"
+                                                   botname botalias userid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PostText")
                                   ("Version" ,@"2016-11-28"))

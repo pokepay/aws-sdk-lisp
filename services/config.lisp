@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/config)
+
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:deftype all-supported () 'common-lisp:boolean)
@@ -274,8 +275,9 @@
    (description common-lisp:nil :type
     (common-lisp:or emptiable-string-with-char-limit256 common-lisp:null))
    (scope common-lisp:nil :type (common-lisp:or scope common-lisp:null))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or source common-lisp:null))
+   (source
+    (common-lisp:error #A((19) common-lisp:base-char . ":source is required"))
+    :type (common-lisp:or source common-lisp:null))
    (input-parameters common-lisp:nil :type
     (common-lisp:or string-with-char-limit1024 common-lisp:null))
    (maximum-execution-frequency common-lisp:nil :type
@@ -765,8 +767,10 @@
 (common-lisp:deftype date () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-config-rule-request (:copier common-lisp:nil))
-   (config-rule-name (common-lisp:error ":config-rule-name is required") :type
-    (common-lisp:or string-with-char-limit64 common-lisp:null)))
+   (config-rule-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":config-rule-name is required"))
+    :type (common-lisp:or string-with-char-limit64 common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-config-rule-request
                     'make-delete-config-rule-request))
@@ -784,8 +788,10 @@
  (common-lisp:defstruct
      (delete-configuration-recorder-request (:copier common-lisp:nil))
    (configuration-recorder-name
-    (common-lisp:error ":configuration-recorder-name is required") :type
-    (common-lisp:or recorder-name common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":configuration-recorder-name is required"))
+    :type (common-lisp:or recorder-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-configuration-recorder-request
                     'make-delete-configuration-recorder-request))
@@ -803,8 +809,9 @@
  (common-lisp:defstruct
      (delete-delivery-channel-request (:copier common-lisp:nil))
    (delivery-channel-name
-    (common-lisp:error ":delivery-channel-name is required") :type
-    (common-lisp:or channel-name common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":delivery-channel-name is required"))
+    :type (common-lisp:or channel-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-delivery-channel-request
                     'make-delete-delivery-channel-request))
@@ -821,8 +828,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-evaluation-results-request (:copier common-lisp:nil))
-   (config-rule-name (common-lisp:error ":config-rule-name is required") :type
-    (common-lisp:or string-with-char-limit64 common-lisp:null)))
+   (config-rule-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":config-rule-name is required"))
+    :type (common-lisp:or string-with-char-limit64 common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-evaluation-results-request
                     'make-delete-evaluation-results-request))
@@ -851,8 +860,9 @@
  (common-lisp:defstruct
      (deliver-config-snapshot-request (:copier common-lisp:nil))
    (delivery-channel-name
-    (common-lisp:error ":deliverychannelname is required") :type
-    (common-lisp:or channel-name common-lisp:null)))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":deliverychannelname is required"))
+    :type (common-lisp:or channel-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deliver-config-snapshot-request
                     'make-deliver-config-snapshot-request))
@@ -1364,16 +1374,22 @@
 (common-lisp:progn
  (common-lisp:defstruct (evaluation (:copier common-lisp:nil))
    (compliance-resource-type
-    (common-lisp:error ":compliance-resource-type is required") :type
-    (common-lisp:or string-with-char-limit256 common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":compliance-resource-type is required"))
+    :type (common-lisp:or string-with-char-limit256 common-lisp:null))
    (compliance-resource-id
-    (common-lisp:error ":compliance-resource-id is required") :type
-    (common-lisp:or string-with-char-limit256 common-lisp:null))
-   (compliance-type (common-lisp:error ":compliance-type is required") :type
-    (common-lisp:or compliance-type common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":compliance-resource-id is required"))
+    :type (common-lisp:or string-with-char-limit256 common-lisp:null))
+   (compliance-type
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":compliance-type is required"))
+    :type (common-lisp:or compliance-type common-lisp:null))
    (annotation common-lisp:nil :type
     (common-lisp:or string-with-char-limit256 common-lisp:null))
-   (ordering-timestamp (common-lisp:error ":ordering-timestamp is required")
+   (ordering-timestamp
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":ordering-timestamp is required"))
     :type (common-lisp:or ordering-timestamp common-lisp:null)))
  (common-lisp:export (common-lisp:list 'evaluation 'make-evaluation))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1528,8 +1544,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-compliance-details-by-config-rule-request (:copier common-lisp:nil))
-   (config-rule-name (common-lisp:error ":config-rule-name is required") :type
-    (common-lisp:or string-with-char-limit64 common-lisp:null))
+   (config-rule-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":config-rule-name is required"))
+    :type (common-lisp:or string-with-char-limit64 common-lisp:null))
    (compliance-types common-lisp:nil :type
     (common-lisp:or compliance-types common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or limit common-lisp:null))
@@ -1591,10 +1609,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-compliance-details-by-resource-request (:copier common-lisp:nil))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or string-with-char-limit256 common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or string-with-char-limit256 common-lisp:null))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or string-with-char-limit256 common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or string-with-char-limit256 common-lisp:null))
    (compliance-types common-lisp:nil :type
     (common-lisp:or compliance-types common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -1772,10 +1794,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-resource-config-history-request (:copier common-lisp:nil))
-   (resource-type (common-lisp:error ":resourcetype is required") :type
-    (common-lisp:or resource-type common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+   (resource-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resourcetype is required"))
+    :type (common-lisp:or resource-type common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (later-time common-lisp:nil :type
     (common-lisp:or later-time common-lisp:null))
    (earlier-time common-lisp:nil :type
@@ -2019,8 +2045,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-discovered-resources-request (:copier common-lisp:nil))
-   (resource-type (common-lisp:error ":resourcetype is required") :type
-    (common-lisp:or resource-type common-lisp:null))
+   (resource-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resourcetype is required"))
+    :type (common-lisp:or resource-type common-lisp:null))
    (resource-ids common-lisp:nil :type
     (common-lisp:or resource-id-list common-lisp:null))
    (resource-name common-lisp:nil :type
@@ -2212,8 +2240,10 @@
 (common-lisp:deftype owner () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (put-config-rule-request (:copier common-lisp:nil))
-   (config-rule (common-lisp:error ":config-rule is required") :type
-    (common-lisp:or config-rule common-lisp:null)))
+   (config-rule
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":config-rule is required"))
+    :type (common-lisp:or config-rule common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-config-rule-request 'make-put-config-rule-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2230,8 +2260,9 @@
  (common-lisp:defstruct
      (put-configuration-recorder-request (:copier common-lisp:nil))
    (configuration-recorder
-    (common-lisp:error ":configuration-recorder is required") :type
-    (common-lisp:or configuration-recorder common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":configuration-recorder is required"))
+    :type (common-lisp:or configuration-recorder common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-configuration-recorder-request
                     'make-put-configuration-recorder-request))
@@ -2248,8 +2279,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-delivery-channel-request (:copier common-lisp:nil))
-   (delivery-channel (common-lisp:error ":delivery-channel is required") :type
-    (common-lisp:or delivery-channel common-lisp:null)))
+   (delivery-channel
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":delivery-channel is required"))
+    :type (common-lisp:or delivery-channel common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-delivery-channel-request
                     'make-put-delivery-channel-request))
@@ -2267,8 +2300,10 @@
  (common-lisp:defstruct (put-evaluations-request (:copier common-lisp:nil))
    (evaluations common-lisp:nil :type
     (common-lisp:or evaluations common-lisp:null))
-   (result-token (common-lisp:error ":result-token is required") :type
-    (common-lisp:or string common-lisp:null))
+   (result-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":result-token is required"))
+    :type (common-lisp:or string common-lisp:null))
    (test-mode common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-evaluations-request 'make-put-evaluations-request))
@@ -2556,9 +2591,12 @@
                                                 'compliance-resource-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (source (:copier common-lisp:nil))
-   (owner (common-lisp:error ":owner is required") :type
-    (common-lisp:or owner common-lisp:null))
-   (source-identifier (common-lisp:error ":source-identifier is required")
+   (owner
+    (common-lisp:error #A((18) common-lisp:base-char . ":owner is required"))
+    :type (common-lisp:or owner common-lisp:null))
+   (source-identifier
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":source-identifier is required"))
     :type (common-lisp:or string-with-char-limit256 common-lisp:null))
    (source-details common-lisp:nil :type
     (common-lisp:or source-details common-lisp:null)))
@@ -2649,8 +2687,10 @@
  (common-lisp:defstruct
      (start-configuration-recorder-request (:copier common-lisp:nil))
    (configuration-recorder-name
-    (common-lisp:error ":configuration-recorder-name is required") :type
-    (common-lisp:or recorder-name common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":configuration-recorder-name is required"))
+    :type (common-lisp:or recorder-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-configuration-recorder-request
                     'make-start-configuration-recorder-request))
@@ -2668,8 +2708,10 @@
  (common-lisp:defstruct
      (stop-configuration-recorder-request (:copier common-lisp:nil))
    (configuration-recorder-name
-    (common-lisp:error ":configuration-recorder-name is required") :type
-    (common-lisp:or recorder-name common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":configuration-recorder-name is required"))
+    :type (common-lisp:or recorder-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-configuration-recorder-request
                     'make-stop-configuration-recorder-request))
@@ -2721,7 +2763,9 @@
                       (common-lisp:apply 'make-delete-config-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConfigRule")
                                   ("Version" ,@"2014-11-12"))
@@ -2740,7 +2784,9 @@
                        'make-delete-configuration-recorder-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConfigurationRecorder")
                                   ("Version" ,@"2014-11-12"))
@@ -2758,7 +2804,9 @@
                       (common-lisp:apply 'make-delete-delivery-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDeliveryChannel")
                                   ("Version" ,@"2014-11-12"))
@@ -2777,7 +2825,9 @@
                        'make-delete-evaluation-results-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEvaluationResults")
                                   ("Version" ,@"2014-11-12"))
@@ -2795,7 +2845,9 @@
                       (common-lisp:apply 'make-deliver-config-snapshot-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeliverConfigSnapshot")
                                   ("Version" ,@"2014-11-12"))
@@ -2816,7 +2868,9 @@
                        'make-describe-compliance-by-config-rule-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeComplianceByConfigRule")
                                   ("Version" ,@"2014-11-12"))
@@ -2838,7 +2892,9 @@
                        'make-describe-compliance-by-resource-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeComplianceByResource")
                                   ("Version" ,@"2014-11-12"))
@@ -2858,7 +2914,9 @@
                        'make-describe-config-rule-evaluation-status-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeConfigRuleEvaluationStatus")
@@ -2877,7 +2935,9 @@
                       (common-lisp:apply 'make-describe-config-rules-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConfigRules")
                                   ("Version" ,@"2014-11-12"))
@@ -2896,7 +2956,9 @@
                        'make-describe-configuration-recorder-status-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeConfigurationRecorderStatus")
@@ -2916,7 +2978,9 @@
                        'make-describe-configuration-recorders-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConfigurationRecorders")
                                   ("Version" ,@"2014-11-12"))
@@ -2935,7 +2999,9 @@
                        'make-describe-delivery-channel-status-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDeliveryChannelStatus")
                                   ("Version" ,@"2014-11-12"))
@@ -2954,7 +3020,9 @@
                        'make-describe-delivery-channels-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDeliveryChannels")
                                   ("Version" ,@"2014-11-12"))
@@ -2975,7 +3043,9 @@
                        'make-get-compliance-details-by-config-rule-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetComplianceDetailsByConfigRule")
@@ -2998,7 +3068,9 @@
                        'make-get-compliance-details-by-resource-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetComplianceDetailsByResource")
                                   ("Version" ,@"2014-11-12"))
@@ -3009,7 +3081,8 @@
 (common-lisp:progn
  (common-lisp:defun get-compliance-summary-by-config-rule ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "config" :method :post :params
+    (aws-sdk/api:aws-request :service #A((6) common-lisp:base-char . "config")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "GetComplianceSummaryByConfigRule"))
     "GetComplianceSummaryByConfigRuleResponse" common-lisp:nil))
@@ -3025,7 +3098,9 @@
                        'make-get-compliance-summary-by-resource-type-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetComplianceSummaryByResourceType")
@@ -3046,7 +3121,9 @@
                        'make-get-discovered-resource-counts-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDiscoveredResourceCounts")
                                   ("Version" ,@"2014-11-12"))
@@ -3068,7 +3145,9 @@
                        'make-get-resource-config-history-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetResourceConfigHistory")
                                   ("Version" ,@"2014-11-12"))
@@ -3090,7 +3169,9 @@
                        'make-list-discovered-resources-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDiscoveredResources")
                                   ("Version" ,@"2014-11-12"))
@@ -3108,7 +3189,9 @@
                       (common-lisp:apply 'make-put-config-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutConfigRule")
                                   ("Version" ,@"2014-11-12"))
@@ -3127,7 +3210,9 @@
                        'make-put-configuration-recorder-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutConfigurationRecorder")
                                   ("Version" ,@"2014-11-12"))
@@ -3145,7 +3230,9 @@
                       (common-lisp:apply 'make-put-delivery-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutDeliveryChannel")
                                   ("Version" ,@"2014-11-12"))
@@ -3164,7 +3251,9 @@
                       (common-lisp:apply 'make-put-evaluations-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutEvaluations")
                                   ("Version" ,@"2014-11-12"))
@@ -3183,7 +3272,9 @@
                        'make-start-config-rules-evaluation-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartConfigRulesEvaluation")
                                   ("Version" ,@"2014-11-12"))
@@ -3202,7 +3293,9 @@
                        'make-start-configuration-recorder-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartConfigurationRecorder")
                                   ("Version" ,@"2014-11-12"))
@@ -3221,7 +3314,9 @@
                        'make-stop-configuration-recorder-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "config" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "config") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopConfigurationRecorder")
                                   ("Version" ,@"2014-11-12"))

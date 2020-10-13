@@ -7,16 +7,25 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/storagegateway)
+
 (common-lisp:progn
  (common-lisp:defstruct (activate-gateway-input (:copier common-lisp:nil))
-   (activation-key (common-lisp:error ":activation-key is required") :type
-    (common-lisp:or activation-key common-lisp:null))
-   (gateway-name (common-lisp:error ":gateway-name is required") :type
-    (common-lisp:or gateway-name common-lisp:null))
-   (gateway-timezone (common-lisp:error ":gateway-timezone is required") :type
-    (common-lisp:or gateway-timezone common-lisp:null))
-   (gateway-region (common-lisp:error ":gateway-region is required") :type
-    (common-lisp:or region-id common-lisp:null))
+   (activation-key
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":activation-key is required"))
+    :type (common-lisp:or activation-key common-lisp:null))
+   (gateway-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":gateway-name is required"))
+    :type (common-lisp:or gateway-name common-lisp:null))
+   (gateway-timezone
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":gateway-timezone is required"))
+    :type (common-lisp:or gateway-timezone common-lisp:null))
+   (gateway-region
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":gateway-region is required"))
+    :type (common-lisp:or region-id common-lisp:null))
    (gateway-type common-lisp:nil :type
     (common-lisp:or gateway-type common-lisp:null))
    (tape-drive-type common-lisp:nil :type
@@ -84,10 +93,14 @@
 (common-lisp:deftype activation-key () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (add-cache-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
-   (disk-ids (common-lisp:error ":disk-ids is required") :type
-    (common-lisp:or disk-ids common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
+   (disk-ids
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":disk-ids is required"))
+    :type (common-lisp:or disk-ids common-lisp:null)))
  (common-lisp:export (common-lisp:list 'add-cache-input 'make-add-cache-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape add-cache-input))
@@ -118,10 +131,13 @@
                                                 'gateway-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (add-tags-to-resource-input (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-tags-to-resource-input
                     'make-add-tags-to-resource-input))
@@ -159,10 +175,14 @@
                                                 'resource-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (add-upload-buffer-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
-   (disk-ids (common-lisp:error ":disk-ids is required") :type
-    (common-lisp:or disk-ids common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
+   (disk-ids
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":disk-ids is required"))
+    :type (common-lisp:or disk-ids common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-upload-buffer-input 'make-add-upload-buffer-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -198,10 +218,14 @@
                                                 'gateway-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (add-working-storage-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
-   (disk-ids (common-lisp:error ":disk-ids is required") :type
-    (common-lisp:or disk-ids common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
+   (disk-ids
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":disk-ids is required"))
+    :type (common-lisp:or disk-ids common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-working-storage-input
                     'make-add-working-storage-input))
@@ -321,10 +345,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (cancel-archival-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
-   (tape-arn (common-lisp:error ":tape-arn is required") :type
-    (common-lisp:or tape-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
+   (tape-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tape-arn is required"))
+    :type (common-lisp:or tape-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-archival-input 'make-cancel-archival-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -359,10 +387,14 @@
                                                 'tape-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (cancel-retrieval-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
-   (tape-arn (common-lisp:error ":tape-arn is required") :type
-    (common-lisp:or tape-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
+   (tape-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tape-arn is required"))
+    :type (common-lisp:or tape-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-retrieval-input 'make-cancel-retrieval-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -442,22 +474,30 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-cachedi-scsivolume-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
    (volume-size-in-bytes
-    (common-lisp:error ":volume-size-in-bytes is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":volume-size-in-bytes is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (snapshot-id common-lisp:nil :type
     (common-lisp:or snapshot-id common-lisp:null))
-   (target-name (common-lisp:error ":target-name is required") :type
-    (common-lisp:or target-name common-lisp:null))
+   (target-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":target-name is required"))
+    :type (common-lisp:or target-name common-lisp:null))
    (source-volume-arn common-lisp:nil :type
     (common-lisp:or volume-arn common-lisp:null))
    (network-interface-id
-    (common-lisp:error ":network-interface-id is required") :type
-    (common-lisp:or network-interface-id common-lisp:null))
-   (client-token (common-lisp:error ":client-token is required") :type
-    (common-lisp:or client-token common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":network-interface-id is required"))
+    :type (common-lisp:or network-interface-id common-lisp:null))
+   (client-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":client-token is required"))
+    :type (common-lisp:or client-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-cachedi-scsivolume-input
                     'make-create-cachedi-scsivolume-input))
@@ -528,19 +568,26 @@
                                                 'target-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-nfsfile-share-input (:copier common-lisp:nil))
-   (client-token (common-lisp:error ":client-token is required") :type
-    (common-lisp:or client-token common-lisp:null))
+   (client-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":client-token is required"))
+    :type (common-lisp:or client-token common-lisp:null))
    (nfsfile-share-defaults common-lisp:nil :type
     (common-lisp:or nfsfile-share-defaults common-lisp:null))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
    (kmsencrypted common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (kmskey common-lisp:nil :type (common-lisp:or kmskey common-lisp:null))
-   (role (common-lisp:error ":role is required") :type
-    (common-lisp:or role common-lisp:null))
-   (location-arn (common-lisp:error ":location-arn is required") :type
-    (common-lisp:or location-arn common-lisp:null))
+   (role
+    (common-lisp:error #A((17) common-lisp:base-char . ":role is required"))
+    :type (common-lisp:or role common-lisp:null))
+   (location-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":location-arn is required"))
+    :type (common-lisp:or location-arn common-lisp:null))
    (default-storage-class common-lisp:nil :type
     (common-lisp:or storage-class common-lisp:null))
    (client-list common-lisp:nil :type
@@ -631,11 +678,14 @@
  (common-lisp:defstruct
      (create-snapshot-from-volume-recovery-point-input
       (:copier common-lisp:nil))
-   (volume-arn (common-lisp:error ":volume-arn is required") :type
-    (common-lisp:or volume-arn common-lisp:null))
+   (volume-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":volume-arn is required"))
+    :type (common-lisp:or volume-arn common-lisp:null))
    (snapshot-description
-    (common-lisp:error ":snapshot-description is required") :type
-    (common-lisp:or snapshot-description common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":snapshot-description is required"))
+    :type (common-lisp:or snapshot-description common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-snapshot-from-volume-recovery-point-input
                     'make-create-snapshot-from-volume-recovery-point-input))
@@ -689,11 +739,14 @@
                                                 'volume-recovery-point-time))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-snapshot-input (:copier common-lisp:nil))
-   (volume-arn (common-lisp:error ":volume-arn is required") :type
-    (common-lisp:or volume-arn common-lisp:null))
+   (volume-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":volume-arn is required"))
+    :type (common-lisp:or volume-arn common-lisp:null))
    (snapshot-description
-    (common-lisp:error ":snapshot-description is required") :type
-    (common-lisp:or snapshot-description common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":snapshot-description is required"))
+    :type (common-lisp:or snapshot-description common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-snapshot-input 'make-create-snapshot-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -737,20 +790,27 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-storedi-scsivolume-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
-   (disk-id (common-lisp:error ":disk-id is required") :type
-    (common-lisp:or disk-id common-lisp:null))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
+   (disk-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":disk-id is required"))
+    :type (common-lisp:or disk-id common-lisp:null))
    (snapshot-id common-lisp:nil :type
     (common-lisp:or snapshot-id common-lisp:null))
    (preserve-existing-data
-    (common-lisp:error ":preserve-existing-data is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null))
-   (target-name (common-lisp:error ":target-name is required") :type
-    (common-lisp:or target-name common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":preserve-existing-data is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null))
+   (target-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":target-name is required"))
+    :type (common-lisp:or target-name common-lisp:null))
    (network-interface-id
-    (common-lisp:error ":network-interface-id is required") :type
-    (common-lisp:or network-interface-id common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":network-interface-id is required"))
+    :type (common-lisp:or network-interface-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-storedi-scsivolume-input
                     'make-create-storedi-scsivolume-input))
@@ -824,12 +884,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-tape-with-barcode-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
-   (tape-size-in-bytes (common-lisp:error ":tape-size-in-bytes is required")
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
+   (tape-size-in-bytes
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":tape-size-in-bytes is required"))
     :type (common-lisp:or tape-size common-lisp:null))
-   (tape-barcode (common-lisp:error ":tape-barcode is required") :type
-    (common-lisp:or tape-barcode common-lisp:null)))
+   (tape-barcode
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":tape-barcode is required"))
+    :type (common-lisp:or tape-barcode common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-tape-with-barcode-input
                     'make-create-tape-with-barcode-input))
@@ -872,15 +938,25 @@
                                                 'tape-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-tapes-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
-   (tape-size-in-bytes (common-lisp:error ":tape-size-in-bytes is required")
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
+   (tape-size-in-bytes
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":tape-size-in-bytes is required"))
     :type (common-lisp:or tape-size common-lisp:null))
-   (client-token (common-lisp:error ":client-token is required") :type
-    (common-lisp:or client-token common-lisp:null))
-   (num-tapes-to-create (common-lisp:error ":num-tapes-to-create is required")
+   (client-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":client-token is required"))
+    :type (common-lisp:or client-token common-lisp:null))
+   (num-tapes-to-create
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":num-tapes-to-create is required"))
     :type (common-lisp:or num-tapes-to-create common-lisp:null))
-   (tape-barcode-prefix (common-lisp:error ":tape-barcode-prefix is required")
+   (tape-barcode-prefix
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":tape-barcode-prefix is required"))
     :type (common-lisp:or tape-barcode-prefix common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-tapes-input 'make-create-tapes-input))
@@ -931,10 +1007,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-bandwidth-rate-limit-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
-   (bandwidth-type (common-lisp:error ":bandwidth-type is required") :type
-    (common-lisp:or bandwidth-type common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
+   (bandwidth-type
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":bandwidth-type is required"))
+    :type (common-lisp:or bandwidth-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bandwidth-rate-limit-input
                     'make-delete-bandwidth-rate-limit-input))
@@ -974,10 +1054,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-chap-credentials-input (:copier common-lisp:nil))
-   (target-arn (common-lisp:error ":target-arn is required") :type
-    (common-lisp:or target-arn common-lisp:null))
-   (initiator-name (common-lisp:error ":initiator-name is required") :type
-    (common-lisp:or iqn-name common-lisp:null)))
+   (target-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":target-arn is required"))
+    :type (common-lisp:or target-arn common-lisp:null))
+   (initiator-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":initiator-name is required"))
+    :type (common-lisp:or iqn-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-chap-credentials-input
                     'make-delete-chap-credentials-input))
@@ -1023,8 +1107,10 @@
                                                 'initiator-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-file-share-input (:copier common-lisp:nil))
-   (file-share-arn (common-lisp:error ":file-share-arn is required") :type
-    (common-lisp:or file-share-arn common-lisp:null))
+   (file-share-arn
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":file-share-arn is required"))
+    :type (common-lisp:or file-share-arn common-lisp:null))
    (force-delete common-lisp:nil :type
     (common-lisp:or common-lisp:boolean common-lisp:null)))
  (common-lisp:export
@@ -1062,8 +1148,10 @@
                                                 'file-share-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-gateway-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-gateway-input 'make-delete-gateway-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1093,8 +1181,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-snapshot-schedule-input (:copier common-lisp:nil))
-   (volume-arn (common-lisp:error ":volume-arn is required") :type
-    (common-lisp:or volume-arn common-lisp:null)))
+   (volume-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":volume-arn is required"))
+    :type (common-lisp:or volume-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-snapshot-schedule-input
                     'make-delete-snapshot-schedule-input))
@@ -1128,8 +1218,10 @@
                                                 'volume-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-tape-archive-input (:copier common-lisp:nil))
-   (tape-arn (common-lisp:error ":tape-arn is required") :type
-    (common-lisp:or tape-arn common-lisp:null)))
+   (tape-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tape-arn is required"))
+    :type (common-lisp:or tape-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-tape-archive-input
                     'make-delete-tape-archive-input))
@@ -1161,10 +1253,14 @@
                                                 'tape-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-tape-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
-   (tape-arn (common-lisp:error ":tape-arn is required") :type
-    (common-lisp:or tape-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
+   (tape-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tape-arn is required"))
+    :type (common-lisp:or tape-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-tape-input 'make-delete-tape-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1195,8 +1291,10 @@
                                                 'tape-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-volume-input (:copier common-lisp:nil))
-   (volume-arn (common-lisp:error ":volume-arn is required") :type
-    (common-lisp:or volume-arn common-lisp:null)))
+   (volume-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":volume-arn is required"))
+    :type (common-lisp:or volume-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-volume-input 'make-delete-volume-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1224,8 +1322,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-bandwidth-rate-limit-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-bandwidth-rate-limit-input
                     'make-describe-bandwidth-rate-limit-input))
@@ -1273,8 +1373,10 @@
                               'average-download-rate-limit-in-bits-per-sec))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-cache-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-cache-input 'make-describe-cache-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1345,8 +1447,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-cachedi-scsivolumes-input (:copier common-lisp:nil))
-   (volume-arns (common-lisp:error ":volume-arns is required") :type
-    (common-lisp:or volume-arns common-lisp:null)))
+   (volume-arns
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":volume-arns is required"))
+    :type (common-lisp:or volume-arns common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-cachedi-scsivolumes-input
                     'make-describe-cachedi-scsivolumes-input))
@@ -1381,8 +1485,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-chap-credentials-input (:copier common-lisp:nil))
-   (target-arn (common-lisp:error ":target-arn is required") :type
-    (common-lisp:or target-arn common-lisp:null)))
+   (target-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":target-arn is required"))
+    :type (common-lisp:or target-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-chap-credentials-input
                     'make-describe-chap-credentials-input))
@@ -1417,8 +1523,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-gateway-information-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-gateway-information-input
                     'make-describe-gateway-information-input))
@@ -1509,8 +1617,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-maintenance-start-time-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-maintenance-start-time-input
                     'make-describe-maintenance-start-time-input))
@@ -1573,7 +1683,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-nfsfile-shares-input (:copier common-lisp:nil))
-   (file-share-arnlist (common-lisp:error ":file-share-arnlist is required")
+   (file-share-arnlist
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":file-share-arnlist is required"))
     :type (common-lisp:or file-share-arnlist common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-nfsfile-shares-input
@@ -1609,8 +1721,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-snapshot-schedule-input (:copier common-lisp:nil))
-   (volume-arn (common-lisp:error ":volume-arn is required") :type
-    (common-lisp:or volume-arn common-lisp:null)))
+   (volume-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":volume-arn is required"))
+    :type (common-lisp:or volume-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-snapshot-schedule-input
                     'make-describe-snapshot-schedule-input))
@@ -1673,8 +1787,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-storedi-scsivolumes-input (:copier common-lisp:nil))
-   (volume-arns (common-lisp:error ":volume-arns is required") :type
-    (common-lisp:or volume-arns common-lisp:null)))
+   (volume-arns
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":volume-arns is required"))
+    :type (common-lisp:or volume-arns common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-storedi-scsivolumes-input
                     'make-describe-storedi-scsivolumes-input))
@@ -1764,8 +1880,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-tape-recovery-points-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or positive-int-object common-lisp:null)))
@@ -1825,8 +1943,10 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-tapes-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
    (tape-arns common-lisp:nil :type
     (common-lisp:or tape-arns common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null))
@@ -1881,8 +2001,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-upload-buffer-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-upload-buffer-input
                     'make-describe-upload-buffer-input))
@@ -1936,8 +2058,10 @@
                                                 'upload-buffer-allocated-in-bytes))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-vtldevices-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
    (vtldevice-arns common-lisp:nil :type
     (common-lisp:or vtldevice-arns common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null))
@@ -2004,8 +2128,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-working-storage-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-working-storage-input
                     'make-describe-working-storage-input))
@@ -2098,8 +2224,10 @@
                                                 'chap-enabled))))))
 (common-lisp:progn
  (common-lisp:defstruct (disable-gateway-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-gateway-input 'make-disable-gateway-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2483,8 +2611,10 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-local-disks-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-local-disks-input 'make-list-local-disks-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2522,8 +2652,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-input (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or positive-int-object common-lisp:null)))
@@ -2630,8 +2762,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-volume-initiators-input (:copier common-lisp:nil))
-   (volume-arn (common-lisp:error ":volume-arn is required") :type
-    (common-lisp:or volume-arn common-lisp:null)))
+   (volume-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":volume-arn is required"))
+    :type (common-lisp:or volume-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-volume-initiators-input
                     'make-list-volume-initiators-input))
@@ -2666,8 +2800,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-volume-recovery-points-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-volume-recovery-points-input
                     'make-list-volume-recovery-points-input))
@@ -2948,8 +3084,10 @@
 (common-lisp:deftype recurrence-in-hours () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (refresh-cache-input (:copier common-lisp:nil))
-   (file-share-arn (common-lisp:error ":file-share-arn is required") :type
-    (common-lisp:or file-share-arn common-lisp:null)))
+   (file-share-arn
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":file-share-arn is required"))
+    :type (common-lisp:or file-share-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'refresh-cache-input 'make-refresh-cache-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2978,10 +3116,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-tags-from-resource-input (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-keys common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-keys common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-from-resource-input
                     'make-remove-tags-from-resource-input))
@@ -3020,8 +3162,10 @@
                                                 'resource-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (reset-cache-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reset-cache-input 'make-reset-cache-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3049,10 +3193,14 @@
 (common-lisp:deftype resource-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (retrieve-tape-archive-input (:copier common-lisp:nil))
-   (tape-arn (common-lisp:error ":tape-arn is required") :type
-    (common-lisp:or tape-arn common-lisp:null))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (tape-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tape-arn is required"))
+    :type (common-lisp:or tape-arn common-lisp:null))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'retrieve-tape-archive-input
                     'make-retrieve-tape-archive-input))
@@ -3091,10 +3239,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (retrieve-tape-recovery-point-input (:copier common-lisp:nil))
-   (tape-arn (common-lisp:error ":tape-arn is required") :type
-    (common-lisp:or tape-arn common-lisp:null))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (tape-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tape-arn is required"))
+    :type (common-lisp:or tape-arn common-lisp:null))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'retrieve-tape-recovery-point-input
                     'make-retrieve-tape-recovery-point-input))
@@ -3158,11 +3310,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-local-console-password-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
    (local-console-password
-    (common-lisp:error ":local-console-password is required") :type
-    (common-lisp:or local-console-password common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":local-console-password is required"))
+    :type (common-lisp:or local-console-password common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-local-console-password-input
                     'make-set-local-console-password-input))
@@ -3201,8 +3356,10 @@
                                                 'gateway-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (shutdown-gateway-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'shutdown-gateway-input 'make-shutdown-gateway-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3236,8 +3393,10 @@
 (common-lisp:deftype squash () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (start-gateway-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-gateway-input 'make-start-gateway-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3380,10 +3539,11 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -3665,8 +3825,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-bandwidth-rate-limit-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
    (average-upload-rate-limit-in-bits-per-sec common-lisp:nil :type
     (common-lisp:or bandwidth-upload-rate-limit common-lisp:null))
    (average-download-rate-limit-in-bits-per-sec common-lisp:nil :type
@@ -3715,13 +3877,19 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-chap-credentials-input (:copier common-lisp:nil))
-   (target-arn (common-lisp:error ":target-arn is required") :type
-    (common-lisp:or target-arn common-lisp:null))
+   (target-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":target-arn is required"))
+    :type (common-lisp:or target-arn common-lisp:null))
    (secret-to-authenticate-initiator
-    (common-lisp:error ":secret-to-authenticate-initiator is required") :type
-    (common-lisp:or chap-secret common-lisp:null))
-   (initiator-name (common-lisp:error ":initiator-name is required") :type
-    (common-lisp:or iqn-name common-lisp:null))
+    (common-lisp:error
+     #A((45) common-lisp:base-char
+        . ":secret-to-authenticate-initiator is required"))
+    :type (common-lisp:or chap-secret common-lisp:null))
+   (initiator-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":initiator-name is required"))
+    :type (common-lisp:or iqn-name common-lisp:null))
    (secret-to-authenticate-target common-lisp:nil :type
     (common-lisp:or chap-secret common-lisp:null)))
  (common-lisp:export
@@ -3780,8 +3948,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-gateway-information-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
    (gateway-name common-lisp:nil :type
     (common-lisp:or gateway-name common-lisp:null))
    (gateway-timezone common-lisp:nil :type
@@ -3837,8 +4007,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-gateway-software-now-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-gateway-software-now-input
                     'make-update-gateway-software-now-input))
@@ -3873,14 +4045,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-maintenance-start-time-input (:copier common-lisp:nil))
-   (gateway-arn (common-lisp:error ":gateway-arn is required") :type
-    (common-lisp:or gateway-arn common-lisp:null))
-   (hour-of-day (common-lisp:error ":hour-of-day is required") :type
-    (common-lisp:or hour-of-day common-lisp:null))
-   (minute-of-hour (common-lisp:error ":minute-of-hour is required") :type
-    (common-lisp:or minute-of-hour common-lisp:null))
-   (day-of-week (common-lisp:error ":day-of-week is required") :type
-    (common-lisp:or day-of-week common-lisp:null)))
+   (gateway-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":gateway-arn is required"))
+    :type (common-lisp:or gateway-arn common-lisp:null))
+   (hour-of-day
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":hour-of-day is required"))
+    :type (common-lisp:or hour-of-day common-lisp:null))
+   (minute-of-hour
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":minute-of-hour is required"))
+    :type (common-lisp:or minute-of-hour common-lisp:null))
+   (day-of-week
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":day-of-week is required"))
+    :type (common-lisp:or day-of-week common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-maintenance-start-time-input
                     'make-update-maintenance-start-time-input))
@@ -3929,8 +4109,10 @@
                                                 'gateway-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-nfsfile-share-input (:copier common-lisp:nil))
-   (file-share-arn (common-lisp:error ":file-share-arn is required") :type
-    (common-lisp:or file-share-arn common-lisp:null))
+   (file-share-arn
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":file-share-arn is required"))
+    :type (common-lisp:or file-share-arn common-lisp:null))
    (kmsencrypted common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (kmskey common-lisp:nil :type (common-lisp:or kmskey common-lisp:null))
@@ -4010,11 +4192,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-snapshot-schedule-input (:copier common-lisp:nil))
-   (volume-arn (common-lisp:error ":volume-arn is required") :type
-    (common-lisp:or volume-arn common-lisp:null))
-   (start-at (common-lisp:error ":start-at is required") :type
-    (common-lisp:or hour-of-day common-lisp:null))
-   (recurrence-in-hours (common-lisp:error ":recurrence-in-hours is required")
+   (volume-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":volume-arn is required"))
+    :type (common-lisp:or volume-arn common-lisp:null))
+   (start-at
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":start-at is required"))
+    :type (common-lisp:or hour-of-day common-lisp:null))
+   (recurrence-in-hours
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":recurrence-in-hours is required"))
     :type (common-lisp:or recurrence-in-hours common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null)))
@@ -4066,10 +4254,14 @@
                                                 'volume-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-vtldevice-type-input (:copier common-lisp:nil))
-   (vtldevice-arn (common-lisp:error ":vtldevice-arn is required") :type
-    (common-lisp:or vtldevice-arn common-lisp:null))
-   (device-type (common-lisp:error ":device-type is required") :type
-    (common-lisp:or device-type common-lisp:null)))
+   (vtldevice-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":vtldevice-arn is required"))
+    :type (common-lisp:or vtldevice-arn common-lisp:null))
+   (device-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":device-type is required"))
+    :type (common-lisp:or device-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-vtldevice-type-input
                     'make-update-vtldevice-type-input))
@@ -4348,7 +4540,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-activate-gateway-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ActivateGateway")
                                   ("Version" ,@"2013-06-30"))
@@ -4366,7 +4561,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-add-cache-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddCache")
                                   ("Version" ,@"2013-06-30"))
@@ -4384,7 +4582,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-add-tags-to-resource-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToResource")
                                   ("Version" ,@"2013-06-30"))
@@ -4402,7 +4603,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-add-upload-buffer-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddUploadBuffer")
                                   ("Version" ,@"2013-06-30"))
@@ -4420,7 +4624,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-add-working-storage-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddWorkingStorage")
                                   ("Version" ,@"2013-06-30"))
@@ -4438,7 +4645,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-cancel-archival-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelArchival")
                                   ("Version" ,@"2013-06-30"))
@@ -4456,7 +4666,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-cancel-retrieval-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelRetrieval")
                                   ("Version" ,@"2013-06-30"))
@@ -4478,7 +4691,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-cachedi-scsivolume-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCachediSCSIVolume")
                                   ("Version" ,@"2013-06-30"))
@@ -4501,7 +4717,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-nfsfile-share-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateNFSFileShare")
                                   ("Version" ,@"2013-06-30"))
@@ -4520,7 +4739,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-snapshot-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSnapshot")
                                   ("Version" ,@"2013-06-30"))
@@ -4540,7 +4762,10 @@ common-lisp:nil
                        'make-create-snapshot-from-volume-recovery-point-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"CreateSnapshotFromVolumeRecoveryPoint")
@@ -4562,7 +4787,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-storedi-scsivolume-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateStorediSCSIVolume")
                                   ("Version" ,@"2013-06-30"))
@@ -4582,7 +4810,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-tape-with-barcode-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTapeWithBarcode")
                                   ("Version" ,@"2013-06-30"))
@@ -4603,7 +4834,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-tapes-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTapes")
                                   ("Version" ,@"2013-06-30"))
@@ -4622,7 +4856,10 @@ common-lisp:nil
                        'make-delete-bandwidth-rate-limit-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBandwidthRateLimit")
                                   ("Version" ,@"2013-06-30"))
@@ -4640,7 +4877,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-chap-credentials-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteChapCredentials")
                                   ("Version" ,@"2013-06-30"))
@@ -4658,7 +4898,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-file-share-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFileShare")
                                   ("Version" ,@"2013-06-30"))
@@ -4676,7 +4919,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-gateway-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteGateway")
                                   ("Version" ,@"2013-06-30"))
@@ -4694,7 +4940,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-snapshot-schedule-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSnapshotSchedule")
                                   ("Version" ,@"2013-06-30"))
@@ -4712,7 +4961,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-tape-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTape")
                                   ("Version" ,@"2013-06-30"))
@@ -4730,7 +4982,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-tape-archive-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTapeArchive")
                                   ("Version" ,@"2013-06-30"))
@@ -4748,7 +5003,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-volume-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteVolume")
                                   ("Version" ,@"2013-06-30"))
@@ -4767,7 +5025,10 @@ common-lisp:nil
                        'make-describe-bandwidth-rate-limit-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeBandwidthRateLimit")
                                   ("Version" ,@"2013-06-30"))
@@ -4785,7 +5046,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-cache-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCache")
                                   ("Version" ,@"2013-06-30"))
@@ -4804,7 +5068,10 @@ common-lisp:nil
                        'make-describe-cachedi-scsivolumes-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCachediSCSIVolumes")
                                   ("Version" ,@"2013-06-30"))
@@ -4822,7 +5089,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-chap-credentials-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeChapCredentials")
                                   ("Version" ,@"2013-06-30"))
@@ -4841,7 +5111,10 @@ common-lisp:nil
                        'make-describe-gateway-information-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeGatewayInformation")
                                   ("Version" ,@"2013-06-30"))
@@ -4860,7 +5133,10 @@ common-lisp:nil
                        'make-describe-maintenance-start-time-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeMaintenanceStartTime")
                                   ("Version" ,@"2013-06-30"))
@@ -4878,7 +5154,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-nfsfile-shares-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeNFSFileShares")
                                   ("Version" ,@"2013-06-30"))
@@ -4896,7 +5175,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-snapshot-schedule-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSnapshotSchedule")
                                   ("Version" ,@"2013-06-30"))
@@ -4915,7 +5197,10 @@ common-lisp:nil
                        'make-describe-storedi-scsivolumes-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStorediSCSIVolumes")
                                   ("Version" ,@"2013-06-30"))
@@ -4933,7 +5218,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-tape-archives-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTapeArchives")
                                   ("Version" ,@"2013-06-30"))
@@ -4952,7 +5240,10 @@ common-lisp:nil
                        'make-describe-tape-recovery-points-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTapeRecoveryPoints")
                                   ("Version" ,@"2013-06-30"))
@@ -4971,7 +5262,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-tapes-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTapes")
                                   ("Version" ,@"2013-06-30"))
@@ -4989,7 +5283,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-upload-buffer-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeUploadBuffer")
                                   ("Version" ,@"2013-06-30"))
@@ -5008,7 +5305,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-vtldevices-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeVTLDevices")
                                   ("Version" ,@"2013-06-30"))
@@ -5026,7 +5326,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-working-storage-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeWorkingStorage")
                                   ("Version" ,@"2013-06-30"))
@@ -5044,7 +5347,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-disable-gateway-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableGateway")
                                   ("Version" ,@"2013-06-30"))
@@ -5062,7 +5368,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-file-shares-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListFileShares")
                                   ("Version" ,@"2013-06-30"))
@@ -5080,7 +5389,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-gateways-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListGateways")
                                   ("Version" ,@"2013-06-30"))
@@ -5098,7 +5410,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-local-disks-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListLocalDisks")
                                   ("Version" ,@"2013-06-30"))
@@ -5116,7 +5431,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-tags-for-resource-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2013-06-30"))
@@ -5134,7 +5452,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-tapes-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTapes")
                                   ("Version" ,@"2013-06-30"))
@@ -5152,7 +5473,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-volume-initiators-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListVolumeInitiators")
                                   ("Version" ,@"2013-06-30"))
@@ -5171,7 +5495,10 @@ common-lisp:nil
                        'make-list-volume-recovery-points-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListVolumeRecoveryPoints")
                                   ("Version" ,@"2013-06-30"))
@@ -5189,7 +5516,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-volumes-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListVolumes")
                                   ("Version" ,@"2013-06-30"))
@@ -5207,7 +5537,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-refresh-cache-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RefreshCache")
                                   ("Version" ,@"2013-06-30"))
@@ -5225,7 +5558,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-remove-tags-from-resource-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromResource")
                                   ("Version" ,@"2013-06-30"))
@@ -5243,7 +5579,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-reset-cache-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResetCache")
                                   ("Version" ,@"2013-06-30"))
@@ -5261,7 +5600,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-retrieve-tape-archive-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RetrieveTapeArchive")
                                   ("Version" ,@"2013-06-30"))
@@ -5280,7 +5622,10 @@ common-lisp:nil
                        'make-retrieve-tape-recovery-point-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RetrieveTapeRecoveryPoint")
                                   ("Version" ,@"2013-06-30"))
@@ -5299,7 +5644,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-set-local-console-password-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetLocalConsolePassword")
                                   ("Version" ,@"2013-06-30"))
@@ -5317,7 +5665,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-shutdown-gateway-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ShutdownGateway")
                                   ("Version" ,@"2013-06-30"))
@@ -5335,7 +5686,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-start-gateway-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartGateway")
                                   ("Version" ,@"2013-06-30"))
@@ -5359,7 +5713,10 @@ common-lisp:nil
                        'make-update-bandwidth-rate-limit-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateBandwidthRateLimit")
                                   ("Version" ,@"2013-06-30"))
@@ -5381,7 +5738,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-update-chap-credentials-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateChapCredentials")
                                   ("Version" ,@"2013-06-30"))
@@ -5401,7 +5761,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-update-gateway-information-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateGatewayInformation")
                                   ("Version" ,@"2013-06-30"))
@@ -5420,7 +5783,10 @@ common-lisp:nil
                        'make-update-gateway-software-now-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateGatewaySoftwareNow")
                                   ("Version" ,@"2013-06-30"))
@@ -5441,7 +5807,10 @@ common-lisp:nil
                        'make-update-maintenance-start-time-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateMaintenanceStartTime")
                                   ("Version" ,@"2013-06-30"))
@@ -5464,7 +5833,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-update-nfsfile-share-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateNFSFileShare")
                                   ("Version" ,@"2013-06-30"))
@@ -5485,7 +5857,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-update-snapshot-schedule-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSnapshotSchedule")
                                   ("Version" ,@"2013-06-30"))
@@ -5503,7 +5878,10 @@ common-lisp:nil
                       (common-lisp:apply 'make-update-vtldevice-type-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "storagegateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "storagegateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateVTLDeviceType")
                                   ("Version" ,@"2013-06-30"))

@@ -7,21 +7,31 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/directconnect)
+
 (common-lisp:deftype asn () 'common-lisp:integer)
 (common-lisp:deftype address-family () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (allocate-connection-on-interconnect-request (:copier common-lisp:nil))
-   (bandwidth (common-lisp:error ":bandwidth is required") :type
-    (common-lisp:or bandwidth common-lisp:null))
-   (connection-name (common-lisp:error ":connectionname is required") :type
-    (common-lisp:or connection-name common-lisp:null))
-   (owner-account (common-lisp:error ":owneraccount is required") :type
-    (common-lisp:or owner-account common-lisp:null))
-   (interconnect-id (common-lisp:error ":interconnectid is required") :type
-    (common-lisp:or interconnect-id common-lisp:null))
-   (vlan (common-lisp:error ":vlan is required") :type
-    (common-lisp:or vlan common-lisp:null)))
+   (bandwidth
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":bandwidth is required"))
+    :type (common-lisp:or bandwidth common-lisp:null))
+   (connection-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":connectionname is required"))
+    :type (common-lisp:or connection-name common-lisp:null))
+   (owner-account
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":owneraccount is required"))
+    :type (common-lisp:or owner-account common-lisp:null))
+   (interconnect-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":interconnectid is required"))
+    :type (common-lisp:or interconnect-id common-lisp:null))
+   (vlan
+    (common-lisp:error #A((17) common-lisp:base-char . ":vlan is required"))
+    :type (common-lisp:or vlan common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'allocate-connection-on-interconnect-request
                     'make-allocate-connection-on-interconnect-request))
@@ -58,16 +68,25 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (allocate-hosted-connection-request (:copier common-lisp:nil))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null))
-   (owner-account (common-lisp:error ":owneraccount is required") :type
-    (common-lisp:or owner-account common-lisp:null))
-   (bandwidth (common-lisp:error ":bandwidth is required") :type
-    (common-lisp:or bandwidth common-lisp:null))
-   (connection-name (common-lisp:error ":connectionname is required") :type
-    (common-lisp:or connection-name common-lisp:null))
-   (vlan (common-lisp:error ":vlan is required") :type
-    (common-lisp:or vlan common-lisp:null)))
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null))
+   (owner-account
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":owneraccount is required"))
+    :type (common-lisp:or owner-account common-lisp:null))
+   (bandwidth
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":bandwidth is required"))
+    :type (common-lisp:or bandwidth common-lisp:null))
+   (connection-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":connectionname is required"))
+    :type (common-lisp:or connection-name common-lisp:null))
+   (vlan
+    (common-lisp:error #A((17) common-lisp:base-char . ":vlan is required"))
+    :type (common-lisp:or vlan common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'allocate-hosted-connection-request
                     'make-allocate-hosted-connection-request))
@@ -104,12 +123,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (allocate-private-virtual-interface-request (:copier common-lisp:nil))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null))
-   (owner-account (common-lisp:error ":owneraccount is required") :type
-    (common-lisp:or owner-account common-lisp:null))
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null))
+   (owner-account
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":owneraccount is required"))
+    :type (common-lisp:or owner-account common-lisp:null))
    (new-private-virtual-interface-allocation
-    (common-lisp:error ":newprivatevirtualinterfaceallocation is required")
+    (common-lisp:error
+     #A((49) common-lisp:base-char
+        . ":newprivatevirtualinterfaceallocation is required"))
     :type
     (common-lisp:or new-private-virtual-interface-allocation
                     common-lisp:null)))
@@ -139,12 +164,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (allocate-public-virtual-interface-request (:copier common-lisp:nil))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null))
-   (owner-account (common-lisp:error ":owneraccount is required") :type
-    (common-lisp:or owner-account common-lisp:null))
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null))
+   (owner-account
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":owneraccount is required"))
+    :type (common-lisp:or owner-account common-lisp:null))
    (new-public-virtual-interface-allocation
-    (common-lisp:error ":newpublicvirtualinterfaceallocation is required")
+    (common-lisp:error
+     #A((48) common-lisp:base-char
+        . ":newpublicvirtualinterfaceallocation is required"))
     :type
     (common-lisp:or new-public-virtual-interface-allocation common-lisp:null)))
  (common-lisp:export
@@ -174,10 +205,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (associate-connection-with-lag-request (:copier common-lisp:nil))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null))
-   (lag-id (common-lisp:error ":lagid is required") :type
-    (common-lisp:or lag-id common-lisp:null)))
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null))
+   (lag-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":lagid is required"))
+    :type (common-lisp:or lag-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'associate-connection-with-lag-request
                     'make-associate-connection-with-lag-request))
@@ -199,9 +233,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (associate-hosted-connection-request (:copier common-lisp:nil))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null))
-   (parent-connection-id (common-lisp:error ":parentconnectionid is required")
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null))
+   (parent-connection-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":parentconnectionid is required"))
     :type (common-lisp:or connection-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'associate-hosted-connection-request
@@ -224,10 +262,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (associate-virtual-interface-request (:copier common-lisp:nil))
-   (virtual-interface-id (common-lisp:error ":virtualinterfaceid is required")
+   (virtual-interface-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":virtualinterfaceid is required"))
     :type (common-lisp:or virtual-interface-id common-lisp:null))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null)))
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'associate-virtual-interface-request
                     'make-associate-virtual-interface-request))
@@ -316,8 +358,10 @@
 (common-lisp:deftype cidr () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (confirm-connection-request (:copier common-lisp:nil))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null)))
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'confirm-connection-request
                     'make-confirm-connection-request))
@@ -351,9 +395,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (confirm-private-virtual-interface-request (:copier common-lisp:nil))
-   (virtual-interface-id (common-lisp:error ":virtualinterfaceid is required")
+   (virtual-interface-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":virtualinterfaceid is required"))
     :type (common-lisp:or virtual-interface-id common-lisp:null))
-   (virtual-gateway-id (common-lisp:error ":virtualgatewayid is required")
+   (virtual-gateway-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":virtualgatewayid is required"))
     :type (common-lisp:or virtual-gateway-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'confirm-private-virtual-interface-request
@@ -394,7 +442,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (confirm-public-virtual-interface-request (:copier common-lisp:nil))
-   (virtual-interface-id (common-lisp:error ":virtualinterfaceid is required")
+   (virtual-interface-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":virtualinterfaceid is required"))
     :type (common-lisp:or virtual-interface-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'confirm-public-virtual-interface-request
@@ -580,12 +630,18 @@
                                                 'virtual-interface))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-connection-request (:copier common-lisp:nil))
-   (location (common-lisp:error ":location is required") :type
-    (common-lisp:or location-code common-lisp:null))
-   (bandwidth (common-lisp:error ":bandwidth is required") :type
-    (common-lisp:or bandwidth common-lisp:null))
-   (connection-name (common-lisp:error ":connectionname is required") :type
-    (common-lisp:or connection-name common-lisp:null))
+   (location
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":location is required"))
+    :type (common-lisp:or location-code common-lisp:null))
+   (bandwidth
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":bandwidth is required"))
+    :type (common-lisp:or bandwidth common-lisp:null))
+   (connection-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":connectionname is required"))
+    :type (common-lisp:or connection-name common-lisp:null))
    (lag-id common-lisp:nil :type (common-lisp:or lag-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-connection-request
@@ -617,12 +673,18 @@
                                                 'lag-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-interconnect-request (:copier common-lisp:nil))
-   (interconnect-name (common-lisp:error ":interconnectname is required") :type
-    (common-lisp:or interconnect-name common-lisp:null))
-   (bandwidth (common-lisp:error ":bandwidth is required") :type
-    (common-lisp:or bandwidth common-lisp:null))
-   (location (common-lisp:error ":location is required") :type
-    (common-lisp:or location-code common-lisp:null))
+   (interconnect-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":interconnectname is required"))
+    :type (common-lisp:or interconnect-name common-lisp:null))
+   (bandwidth
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":bandwidth is required"))
+    :type (common-lisp:or bandwidth common-lisp:null))
+   (location
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":location is required"))
+    :type (common-lisp:or location-code common-lisp:null))
    (lag-id common-lisp:nil :type (common-lisp:or lag-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-interconnect-request
@@ -655,15 +717,20 @@
 (common-lisp:progn
  (common-lisp:defstruct (create-lag-request (:copier common-lisp:nil))
    (number-of-connections
-    (common-lisp:error ":numberofconnections is required") :type
-    (common-lisp:or count common-lisp:null))
-   (location (common-lisp:error ":location is required") :type
-    (common-lisp:or location-code common-lisp:null))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":numberofconnections is required"))
+    :type (common-lisp:or count common-lisp:null))
+   (location
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":location is required"))
+    :type (common-lisp:or location-code common-lisp:null))
    (connections-bandwidth
-    (common-lisp:error ":connectionsbandwidth is required") :type
-    (common-lisp:or bandwidth common-lisp:null))
-   (lag-name (common-lisp:error ":lagname is required") :type
-    (common-lisp:or lag-name common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":connectionsbandwidth is required"))
+    :type (common-lisp:or bandwidth common-lisp:null))
+   (lag-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":lagname is required"))
+    :type (common-lisp:or lag-name common-lisp:null))
    (connection-id common-lisp:nil :type
     (common-lisp:or connection-id common-lisp:null)))
  (common-lisp:export
@@ -699,11 +766,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-private-virtual-interface-request (:copier common-lisp:nil))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null))
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null))
    (new-private-virtual-interface
-    (common-lisp:error ":newprivatevirtualinterface is required") :type
-    (common-lisp:or new-private-virtual-interface common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":newprivatevirtualinterface is required"))
+    :type (common-lisp:or new-private-virtual-interface common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-private-virtual-interface-request
                     'make-create-private-virtual-interface-request))
@@ -725,11 +796,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-public-virtual-interface-request (:copier common-lisp:nil))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null))
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null))
    (new-public-virtual-interface
-    (common-lisp:error ":newpublicvirtualinterface is required") :type
-    (common-lisp:or new-public-virtual-interface common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":newpublicvirtualinterface is required"))
+    :type (common-lisp:or new-public-virtual-interface common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-public-virtual-interface-request
                     'make-create-public-virtual-interface-request))
@@ -796,8 +870,10 @@
                                                 'virtual-interface))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-connection-request (:copier common-lisp:nil))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null)))
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-connection-request
                     'make-delete-connection-request))
@@ -813,8 +889,10 @@
                                                 'connection-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-interconnect-request (:copier common-lisp:nil))
-   (interconnect-id (common-lisp:error ":interconnectid is required") :type
-    (common-lisp:or interconnect-id common-lisp:null)))
+   (interconnect-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":interconnectid is required"))
+    :type (common-lisp:or interconnect-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-interconnect-request
                     'make-delete-interconnect-request))
@@ -848,8 +926,9 @@
                                                 'interconnect-state))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-lag-request (:copier common-lisp:nil))
-   (lag-id (common-lisp:error ":lagid is required") :type
-    (common-lisp:or lag-id common-lisp:null)))
+   (lag-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":lagid is required"))
+    :type (common-lisp:or lag-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-lag-request 'make-delete-lag-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -863,7 +942,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-virtual-interface-request (:copier common-lisp:nil))
-   (virtual-interface-id (common-lisp:error ":virtualinterfaceid is required")
+   (virtual-interface-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":virtualinterfaceid is required"))
     :type (common-lisp:or virtual-interface-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-virtual-interface-request
@@ -899,8 +980,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-connection-loa-request (:copier common-lisp:nil))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null))
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null))
    (provider-name common-lisp:nil :type
     (common-lisp:or provider-name common-lisp:null))
    (loa-content-type common-lisp:nil :type
@@ -948,8 +1031,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-connections-on-interconnect-request (:copier common-lisp:nil))
-   (interconnect-id (common-lisp:error ":interconnectid is required") :type
-    (common-lisp:or interconnect-id common-lisp:null)))
+   (interconnect-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":interconnectid is required"))
+    :type (common-lisp:or interconnect-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-connections-on-interconnect-request
                     'make-describe-connections-on-interconnect-request))
@@ -984,8 +1069,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-hosted-connections-request (:copier common-lisp:nil))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null)))
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-hosted-connections-request
                     'make-describe-hosted-connections-request))
@@ -1002,8 +1089,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-interconnect-loa-request (:copier common-lisp:nil))
-   (interconnect-id (common-lisp:error ":interconnectid is required") :type
-    (common-lisp:or interconnect-id common-lisp:null))
+   (interconnect-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":interconnectid is required"))
+    :type (common-lisp:or interconnect-id common-lisp:null))
    (provider-name common-lisp:nil :type
     (common-lisp:or provider-name common-lisp:null))
    (loa-content-type common-lisp:nil :type
@@ -1083,8 +1172,10 @@
                                                 'lag-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-loa-request (:copier common-lisp:nil))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null))
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null))
    (provider-name common-lisp:nil :type
     (common-lisp:or provider-name common-lisp:null))
    (loa-content-type common-lisp:nil :type
@@ -1111,8 +1202,10 @@
                                                 'loa-content-type))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-tags-request (:copier common-lisp:nil))
-   (resource-arns (common-lisp:error ":resourcearns is required") :type
-    (common-lisp:or resource-arn-list common-lisp:null)))
+   (resource-arns
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resourcearns is required"))
+    :type (common-lisp:or resource-arn-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-tags-request 'make-describe-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1205,10 +1298,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disassociate-connection-from-lag-request (:copier common-lisp:nil))
-   (connection-id (common-lisp:error ":connectionid is required") :type
-    (common-lisp:or connection-id common-lisp:null))
-   (lag-id (common-lisp:error ":lagid is required") :type
-    (common-lisp:or lag-id common-lisp:null)))
+   (connection-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":connectionid is required"))
+    :type (common-lisp:or connection-id common-lisp:null))
+   (lag-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":lagid is required"))
+    :type (common-lisp:or lag-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disassociate-connection-from-lag-request
                     'make-disassociate-connection-from-lag-request))
@@ -1549,12 +1645,14 @@
  (common-lisp:defstruct
      (new-private-virtual-interface (:copier common-lisp:nil))
    (virtual-interface-name
-    (common-lisp:error ":virtualinterfacename is required") :type
-    (common-lisp:or virtual-interface-name common-lisp:null))
-   (vlan (common-lisp:error ":vlan is required") :type
-    (common-lisp:or vlan common-lisp:null))
-   (asn (common-lisp:error ":asn is required") :type
-    (common-lisp:or asn common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":virtualinterfacename is required"))
+    :type (common-lisp:or virtual-interface-name common-lisp:null))
+   (vlan
+    (common-lisp:error #A((17) common-lisp:base-char . ":vlan is required"))
+    :type (common-lisp:or vlan common-lisp:null))
+   (asn (common-lisp:error #A((16) common-lisp:base-char . ":asn is required"))
+    :type (common-lisp:or asn common-lisp:null))
    (auth-key common-lisp:nil :type
     (common-lisp:or bgpauth-key common-lisp:null))
    (amazon-address common-lisp:nil :type
@@ -1563,7 +1661,9 @@
     (common-lisp:or customer-address common-lisp:null))
    (address-family common-lisp:nil :type
     (common-lisp:or address-family common-lisp:null))
-   (virtual-gateway-id (common-lisp:error ":virtualgatewayid is required")
+   (virtual-gateway-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":virtualgatewayid is required"))
     :type (common-lisp:or virtual-gateway-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'new-private-virtual-interface
@@ -1617,12 +1717,14 @@
  (common-lisp:defstruct
      (new-private-virtual-interface-allocation (:copier common-lisp:nil))
    (virtual-interface-name
-    (common-lisp:error ":virtualinterfacename is required") :type
-    (common-lisp:or virtual-interface-name common-lisp:null))
-   (vlan (common-lisp:error ":vlan is required") :type
-    (common-lisp:or vlan common-lisp:null))
-   (asn (common-lisp:error ":asn is required") :type
-    (common-lisp:or asn common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":virtualinterfacename is required"))
+    :type (common-lisp:or virtual-interface-name common-lisp:null))
+   (vlan
+    (common-lisp:error #A((17) common-lisp:base-char . ":vlan is required"))
+    :type (common-lisp:or vlan common-lisp:null))
+   (asn (common-lisp:error #A((16) common-lisp:base-char . ":asn is required"))
+    :type (common-lisp:or asn common-lisp:null))
    (auth-key common-lisp:nil :type
     (common-lisp:or bgpauth-key common-lisp:null))
    (amazon-address common-lisp:nil :type
@@ -1678,12 +1780,14 @@
  (common-lisp:defstruct
      (new-public-virtual-interface (:copier common-lisp:nil))
    (virtual-interface-name
-    (common-lisp:error ":virtualinterfacename is required") :type
-    (common-lisp:or virtual-interface-name common-lisp:null))
-   (vlan (common-lisp:error ":vlan is required") :type
-    (common-lisp:or vlan common-lisp:null))
-   (asn (common-lisp:error ":asn is required") :type
-    (common-lisp:or asn common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":virtualinterfacename is required"))
+    :type (common-lisp:or virtual-interface-name common-lisp:null))
+   (vlan
+    (common-lisp:error #A((17) common-lisp:base-char . ":vlan is required"))
+    :type (common-lisp:or vlan common-lisp:null))
+   (asn (common-lisp:error #A((16) common-lisp:base-char . ":asn is required"))
+    :type (common-lisp:or asn common-lisp:null))
    (auth-key common-lisp:nil :type
     (common-lisp:or bgpauth-key common-lisp:null))
    (amazon-address common-lisp:nil :type
@@ -1746,12 +1850,14 @@
  (common-lisp:defstruct
      (new-public-virtual-interface-allocation (:copier common-lisp:nil))
    (virtual-interface-name
-    (common-lisp:error ":virtualinterfacename is required") :type
-    (common-lisp:or virtual-interface-name common-lisp:null))
-   (vlan (common-lisp:error ":vlan is required") :type
-    (common-lisp:or vlan common-lisp:null))
-   (asn (common-lisp:error ":asn is required") :type
-    (common-lisp:or asn common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":virtualinterfacename is required"))
+    :type (common-lisp:or virtual-interface-name common-lisp:null))
+   (vlan
+    (common-lisp:error #A((17) common-lisp:base-char . ":vlan is required"))
+    :type (common-lisp:or vlan common-lisp:null))
+   (asn (common-lisp:error #A((16) common-lisp:base-char . ":asn is required"))
+    :type (common-lisp:or asn common-lisp:null))
    (auth-key common-lisp:nil :type
     (common-lisp:or bgpauth-key common-lisp:null))
    (amazon-address common-lisp:nil :type
@@ -1874,8 +1980,8 @@
 (common-lisp:deftype router-config () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1908,10 +2014,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag-resource-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resourcearn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1948,10 +2057,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (untag-resource-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resourcearn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (tag-keys
+    (common-lisp:error #A((20) common-lisp:base-char . ":tagkeys is required"))
+    :type (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1980,8 +2092,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (update-lag-request (:copier common-lisp:nil))
-   (lag-id (common-lisp:error ":lagid is required") :type
-    (common-lisp:or lag-id common-lisp:null))
+   (lag-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":lagid is required"))
+    :type (common-lisp:or lag-id common-lisp:null))
    (lag-name common-lisp:nil :type (common-lisp:or lag-name common-lisp:null))
    (minimum-links common-lisp:nil :type
     (common-lisp:or count common-lisp:null)))
@@ -2214,7 +2327,9 @@
                        'make-allocate-connection-on-interconnect-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"AllocateConnectionOnInterconnect")
@@ -2237,7 +2352,9 @@
                        'make-allocate-hosted-connection-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AllocateHostedConnection")
                                   ("Version" ,@"2012-10-25"))
@@ -2259,7 +2376,9 @@
                        'make-allocate-private-virtual-interface-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"AllocatePrivateVirtualInterface")
@@ -2282,7 +2401,9 @@
                        'make-allocate-public-virtual-interface-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AllocatePublicVirtualInterface")
                                   ("Version" ,@"2012-10-25"))
@@ -2301,7 +2422,9 @@
                        'make-associate-connection-with-lag-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AssociateConnectionWithLag")
                                   ("Version" ,@"2012-10-25"))
@@ -2321,7 +2444,9 @@
                        'make-associate-hosted-connection-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AssociateHostedConnection")
                                   ("Version" ,@"2012-10-25"))
@@ -2341,7 +2466,9 @@
                        'make-associate-virtual-interface-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AssociateVirtualInterface")
                                   ("Version" ,@"2012-10-25"))
@@ -2359,7 +2486,9 @@
                       (common-lisp:apply 'make-confirm-connection-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ConfirmConnection")
                                   ("Version" ,@"2012-10-25"))
@@ -2379,7 +2508,9 @@
                        'make-confirm-private-virtual-interface-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ConfirmPrivateVirtualInterface")
                                   ("Version" ,@"2012-10-25"))
@@ -2398,7 +2529,9 @@
                        'make-confirm-public-virtual-interface-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ConfirmPublicVirtualInterface")
                                   ("Version" ,@"2012-10-25"))
@@ -2417,7 +2550,9 @@
                       (common-lisp:apply 'make-create-bgppeer-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateBGPPeer")
                                   ("Version" ,@"2012-10-25"))
@@ -2437,7 +2572,9 @@
                       (common-lisp:apply 'make-create-connection-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateConnection")
                                   ("Version" ,@"2012-10-25"))
@@ -2457,7 +2594,9 @@
                       (common-lisp:apply 'make-create-interconnect-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateInterconnect")
                                   ("Version" ,@"2012-10-25"))
@@ -2478,7 +2617,9 @@
                       (common-lisp:apply 'make-create-lag-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLag")
                                   ("Version" ,@"2012-10-25"))
@@ -2499,7 +2640,9 @@
                        'make-create-private-virtual-interface-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePrivateVirtualInterface")
                                   ("Version" ,@"2012-10-25"))
@@ -2520,7 +2663,9 @@
                        'make-create-public-virtual-interface-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePublicVirtualInterface")
                                   ("Version" ,@"2012-10-25"))
@@ -2540,7 +2685,9 @@
                       (common-lisp:apply 'make-delete-bgppeer-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBGPPeer")
                                   ("Version" ,@"2012-10-25"))
@@ -2558,7 +2705,9 @@
                       (common-lisp:apply 'make-delete-connection-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConnection")
                                   ("Version" ,@"2012-10-25"))
@@ -2576,7 +2725,9 @@
                       (common-lisp:apply 'make-delete-interconnect-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteInterconnect")
                                   ("Version" ,@"2012-10-25"))
@@ -2594,7 +2745,9 @@
                       (common-lisp:apply 'make-delete-lag-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLag")
                                   ("Version" ,@"2012-10-25"))
@@ -2612,7 +2765,9 @@
                       (common-lisp:apply 'make-delete-virtual-interface-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteVirtualInterface")
                                   ("Version" ,@"2012-10-25"))
@@ -2632,7 +2787,9 @@
                       (common-lisp:apply 'make-describe-connection-loa-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConnectionLoa")
                                   ("Version" ,@"2012-10-25"))
@@ -2650,7 +2807,9 @@
                       (common-lisp:apply 'make-describe-connections-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConnections")
                                   ("Version" ,@"2012-10-25"))
@@ -2669,7 +2828,9 @@
                        'make-describe-connections-on-interconnect-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeConnectionsOnInterconnect")
@@ -2689,7 +2850,9 @@
                        'make-describe-hosted-connections-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeHostedConnections")
                                   ("Version" ,@"2012-10-25"))
@@ -2710,7 +2873,9 @@
                        'make-describe-interconnect-loa-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeInterconnectLoa")
                                   ("Version" ,@"2012-10-25"))
@@ -2728,7 +2893,9 @@
                       (common-lisp:apply 'make-describe-interconnects-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeInterconnects")
                                   ("Version" ,@"2012-10-25"))
@@ -2746,7 +2913,9 @@
                       (common-lisp:apply 'make-describe-lags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLags")
                                   ("Version" ,@"2012-10-25"))
@@ -2766,7 +2935,9 @@
                       (common-lisp:apply 'make-describe-loa-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLoa")
                                   ("Version" ,@"2012-10-25"))
@@ -2777,7 +2948,9 @@
 (common-lisp:progn
  (common-lisp:defun describe-locations ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((13) common-lisp:base-char . "directconnect")
+                             :method :post :params
                              (common-lisp:cons "Action" "DescribeLocations"))
     "Locations" common-lisp:nil))
  (common-lisp:export 'describe-locations))
@@ -2791,7 +2964,9 @@
                       (common-lisp:apply 'make-describe-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTags")
                                   ("Version" ,@"2012-10-25"))
@@ -2802,7 +2977,9 @@
 (common-lisp:progn
  (common-lisp:defun describe-virtual-gateways ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((13) common-lisp:base-char . "directconnect")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeVirtualGateways"))
     "VirtualGateways" common-lisp:nil))
@@ -2819,7 +2996,9 @@
                        'make-describe-virtual-interfaces-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeVirtualInterfaces")
                                   ("Version" ,@"2012-10-25"))
@@ -2838,7 +3017,9 @@
                        'make-disassociate-connection-from-lag-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisassociateConnectionFromLag")
                                   ("Version" ,@"2012-10-25"))
@@ -2856,7 +3037,9 @@
                       (common-lisp:apply 'make-tag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TagResource")
                                   ("Version" ,@"2012-10-25"))
@@ -2874,7 +3057,9 @@
                       (common-lisp:apply 'make-untag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UntagResource")
                                   ("Version" ,@"2012-10-25"))
@@ -2892,7 +3077,9 @@
                       (common-lisp:apply 'make-update-lag-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "directconnect" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "directconnect")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateLag")
                                   ("Version" ,@"2012-10-25"))

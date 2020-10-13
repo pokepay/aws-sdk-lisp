@@ -7,11 +7,16 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/sts)
+
 (common-lisp:progn
  (common-lisp:defstruct (assume-role-request (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (role-session-name (common-lisp:error ":role-session-name is required")
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (role-session-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":role-session-name is required"))
     :type (common-lisp:or |roleSessionNameType| common-lisp:null))
    (policy common-lisp:nil :type
     (common-lisp:or |sessionPolicyDocumentType| common-lisp:null))
@@ -94,12 +99,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (assume-role-with-samlrequest (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (principal-arn (common-lisp:error ":principal-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (samlassertion (common-lisp:error ":samlassertion is required") :type
-    (common-lisp:or samlassertion-type common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (principal-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":principal-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (samlassertion
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":samlassertion is required"))
+    :type (common-lisp:or samlassertion-type common-lisp:null))
    (policy common-lisp:nil :type
     (common-lisp:or |sessionPolicyDocumentType| common-lisp:null))
    (duration-seconds common-lisp:nil :type
@@ -204,11 +215,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (assume-role-with-web-identity-request (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (role-session-name (common-lisp:error ":role-session-name is required")
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (role-session-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":role-session-name is required"))
     :type (common-lisp:or |roleSessionNameType| common-lisp:null))
-   (web-identity-token (common-lisp:error ":web-identity-token is required")
+   (web-identity-token
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":web-identity-token is required"))
     :type (common-lisp:or |clientTokenType| common-lisp:null))
    (provider-id common-lisp:nil :type
     (common-lisp:or |urlType| common-lisp:null))
@@ -307,10 +324,12 @@
                                                 'audience))))))
 (common-lisp:progn
  (common-lisp:defstruct (assumed-role-user (:copier common-lisp:nil))
-   (assumed-role-id (common-lisp:error ":assumed-role-id is required") :type
-    (common-lisp:or |assumedRoleIdType| common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+   (assumed-role-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":assumed-role-id is required"))
+    :type (common-lisp:or |assumedRoleIdType| common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'assumed-role-user 'make-assumed-role-user))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -329,14 +348,22 @@
 (common-lisp:deftype audience () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (credentials (:copier common-lisp:nil))
-   (access-key-id (common-lisp:error ":access-key-id is required") :type
-    (common-lisp:or |accessKeyIdType| common-lisp:null))
-   (secret-access-key (common-lisp:error ":secret-access-key is required")
+   (access-key-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":access-key-id is required"))
+    :type (common-lisp:or |accessKeyIdType| common-lisp:null))
+   (secret-access-key
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":secret-access-key is required"))
     :type (common-lisp:or |accessKeySecretType| common-lisp:null))
-   (session-token (common-lisp:error ":session-token is required") :type
-    (common-lisp:or |tokenType| common-lisp:null))
-   (expiration (common-lisp:error ":expiration is required") :type
-    (common-lisp:or |dateType| common-lisp:null)))
+   (session-token
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":session-token is required"))
+    :type (common-lisp:or |tokenType| common-lisp:null))
+   (expiration
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":expiration is required"))
+    :type (common-lisp:or |dateType| common-lisp:null)))
  (common-lisp:export (common-lisp:list 'credentials 'make-credentials))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape credentials))
@@ -364,8 +391,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (decode-authorization-message-request (:copier common-lisp:nil))
-   (encoded-message (common-lisp:error ":encoded-message is required") :type
-    (common-lisp:or |encodedMessageType| common-lisp:null)))
+   (encoded-message
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":encoded-message is required"))
+    :type (common-lisp:or |encodedMessageType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'decode-authorization-message-request
                     'make-decode-authorization-message-request))
@@ -415,10 +444,12 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (federated-user (:copier common-lisp:nil))
-   (federated-user-id (common-lisp:error ":federated-user-id is required")
+   (federated-user-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":federated-user-id is required"))
     :type (common-lisp:or |federatedIdType| common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export (common-lisp:list 'federated-user 'make-federated-user))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape federated-user))
@@ -478,8 +509,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-federation-token-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
    (policy common-lisp:nil :type
     (common-lisp:or |sessionPolicyDocumentType| common-lisp:null))
    (duration-seconds common-lisp:nil :type
@@ -760,7 +792,8 @@
                       (common-lisp:apply 'make-assume-role-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sts" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sts")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AssumeRole")
                                   ("Version" ,@"2011-06-15"))
@@ -781,7 +814,8 @@
                       (common-lisp:apply 'make-assume-role-with-samlrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sts" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sts")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AssumeRoleWithSAML")
                                   ("Version" ,@"2011-06-15"))
@@ -803,7 +837,8 @@
                        'make-assume-role-with-web-identity-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sts" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sts")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AssumeRoleWithWebIdentity")
                                   ("Version" ,@"2011-06-15"))
@@ -822,7 +857,8 @@
                        'make-decode-authorization-message-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sts" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sts")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DecodeAuthorizationMessage")
                                   ("Version" ,@"2011-06-15"))
@@ -834,9 +870,9 @@
 (common-lisp:progn
  (common-lisp:defun get-caller-identity ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "sts" :method :post :params
-                             (common-lisp:list (common-lisp:cons "Action" "GetCallerIdentity")
-                                               '("Version" . "2011-06-15")))
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sts")
+                             :method :post :params
+                             (common-lisp:cons "Action" "GetCallerIdentity"))
     "GetCallerIdentityResponse" "GetCallerIdentityResult"))
  (common-lisp:export 'get-caller-identity))
 (common-lisp:progn
@@ -849,7 +885,8 @@
                       (common-lisp:apply 'make-get-federation-token-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sts" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sts")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetFederationToken")
                                   ("Version" ,@"2011-06-15"))
@@ -869,7 +906,8 @@
                       (common-lisp:apply 'make-get-session-token-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sts" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sts")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSessionToken")
                                   ("Version" ,@"2011-06-15"))

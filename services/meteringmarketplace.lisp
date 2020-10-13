@@ -7,12 +7,17 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/meteringmarketplace)
+
 (common-lisp:progn
  (common-lisp:defstruct (batch-meter-usage-request (:copier common-lisp:nil))
-   (usage-records (common-lisp:error ":usage-records is required") :type
-    (common-lisp:or usage-record-list common-lisp:null))
-   (product-code (common-lisp:error ":product-code is required") :type
-    (common-lisp:or product-code common-lisp:null)))
+   (usage-records
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":usage-records is required"))
+    :type (common-lisp:or usage-record-list common-lisp:null))
+   (product-code
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":product-code is required"))
+    :type (common-lisp:or product-code common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-meter-usage-request
                     'make-batch-meter-usage-request))
@@ -197,16 +202,25 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (meter-usage-request (:copier common-lisp:nil))
-   (product-code (common-lisp:error ":product-code is required") :type
-    (common-lisp:or product-code common-lisp:null))
-   (timestamp (common-lisp:error ":timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (usage-dimension (common-lisp:error ":usage-dimension is required") :type
-    (common-lisp:or usage-dimension common-lisp:null))
-   (usage-quantity (common-lisp:error ":usage-quantity is required") :type
-    (common-lisp:or usage-quantity common-lisp:null))
-   (dry-run (common-lisp:error ":dry-run is required") :type
-    (common-lisp:or boolean common-lisp:null)))
+   (product-code
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":product-code is required"))
+    :type (common-lisp:or product-code common-lisp:null))
+   (timestamp
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":timestamp is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (usage-dimension
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":usage-dimension is required"))
+    :type (common-lisp:or usage-dimension common-lisp:null))
+   (usage-quantity
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":usage-quantity is required"))
+    :type (common-lisp:or usage-quantity common-lisp:null))
+   (dry-run
+    (common-lisp:error #A((20) common-lisp:base-char . ":dry-run is required"))
+    :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'meter-usage-request 'make-meter-usage-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -255,7 +269,9 @@
 (common-lisp:deftype product-code () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (resolve-customer-request (:copier common-lisp:nil))
-   (registration-token (common-lisp:error ":registration-token is required")
+   (registration-token
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":registration-token is required"))
     :type (common-lisp:or non-empty-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'resolve-customer-request 'make-resolve-customer-request))
@@ -330,14 +346,22 @@
 (common-lisp:deftype usage-quantity () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (usage-record (:copier common-lisp:nil))
-   (timestamp (common-lisp:error ":timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (customer-identifier (common-lisp:error ":customer-identifier is required")
+   (timestamp
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":timestamp is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (customer-identifier
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":customer-identifier is required"))
     :type (common-lisp:or customer-identifier common-lisp:null))
-   (dimension (common-lisp:error ":dimension is required") :type
-    (common-lisp:or usage-dimension common-lisp:null))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or usage-quantity common-lisp:null)))
+   (dimension
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":dimension is required"))
+    :type (common-lisp:or usage-dimension common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or usage-quantity common-lisp:null)))
  (common-lisp:export (common-lisp:list 'usage-record 'make-usage-record))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape usage-record))
@@ -418,8 +442,10 @@
                       (common-lisp:apply 'make-batch-meter-usage-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "meteringmarketplace" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((19) common-lisp:base-char
+                                  . "meteringmarketplace")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchMeterUsage")
                                   ("Version" ,@"2016-01-14"))
@@ -440,8 +466,10 @@
                       (common-lisp:apply 'make-meter-usage-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "meteringmarketplace" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((19) common-lisp:base-char
+                                  . "meteringmarketplace")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"MeterUsage")
                                   ("Version" ,@"2016-01-14"))
@@ -459,8 +487,10 @@
                       (common-lisp:apply 'make-resolve-customer-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "meteringmarketplace" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((19) common-lisp:base-char
+                                  . "meteringmarketplace")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResolveCustomer")
                                   ("Version" ,@"2016-01-14"))

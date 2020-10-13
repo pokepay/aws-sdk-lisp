@@ -7,10 +7,12 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/cognito-sync)
+
 (common-lisp:progn
  (common-lisp:defstruct (already-streamed-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or exception-message common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'already-streamed-exception
                     'make-already-streamed-exception))
@@ -37,8 +39,10 @@
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (bulk-publish-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'bulk-publish-request 'make-bulk-publish-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -98,8 +102,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (concurrent-modification-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'concurrent-modification-exception
                     'make-concurrent-modification-exception))
@@ -176,12 +181,18 @@
 (common-lisp:deftype date () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-dataset-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
-   (dataset-name (common-lisp:error ":dataset-name is required") :type
-    (common-lisp:or dataset-name common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null))
+   (dataset-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":dataset-name is required"))
+    :type (common-lisp:or dataset-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-dataset-request 'make-delete-dataset-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -221,12 +232,18 @@
                                                 'dataset))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-dataset-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
-   (dataset-name (common-lisp:error ":dataset-name is required") :type
-    (common-lisp:or dataset-name common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null))
+   (dataset-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":dataset-name is required"))
+    :type (common-lisp:or dataset-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-dataset-request 'make-describe-dataset-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -268,8 +285,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-identity-pool-usage-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-identity-pool-usage-request
                     'make-describe-identity-pool-usage-request))
@@ -304,10 +323,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-identity-usage-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-identity-usage-request
                     'make-describe-identity-usage-request))
@@ -347,8 +370,9 @@
 (common-lisp:deftype device-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (duplicate-request-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or exception-message common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'duplicate-request-exception
                     'make-duplicate-request-exception))
@@ -372,8 +396,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-bulk-publish-details-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bulk-publish-details-request
                     'make-get-bulk-publish-details-request))
@@ -435,8 +461,10 @@
                                                 'failure-message))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-cognito-events-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-cognito-events-request
                     'make-get-cognito-events-request))
@@ -469,8 +497,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-identity-pool-configuration-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-pool-configuration-request
                     'make-get-identity-pool-configuration-request))
@@ -604,8 +634,9 @@
 (common-lisp:deftype integer-string () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (internal-error-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or exception-message common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'internal-error-exception 'make-internal-error-exception))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -621,8 +652,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-configuration-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or exception-message common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'invalid-configuration-exception
                     'make-invalid-configuration-exception))
@@ -639,8 +671,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-lambda-function-output-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or exception-message common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'invalid-lambda-function-output-exception
                     'make-invalid-lambda-function-output-exception))
@@ -656,8 +689,9 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalid-parameter-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or exception-message common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'invalid-parameter-exception
                     'make-invalid-parameter-exception))
@@ -674,8 +708,9 @@
 (common-lisp:deftype lambda-function-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (lambda-throttled-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or exception-message common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'lambda-throttled-exception
                     'make-lambda-throttled-exception))
@@ -691,8 +726,9 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (limit-exceeded-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or exception-message common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -707,10 +743,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-datasets-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or integer-string common-lisp:null)))
@@ -832,12 +872,18 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-records-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
-   (dataset-name (common-lisp:error ":dataset-name is required") :type
-    (common-lisp:or dataset-name common-lisp:null))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null))
+   (dataset-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":dataset-name is required"))
+    :type (common-lisp:or dataset-name common-lisp:null))
    (last-sync-count common-lisp:nil :type
     (common-lisp:or long common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -966,8 +1012,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (not-authorized-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or exception-message common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'not-authorized-exception 'make-not-authorized-exception))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1058,13 +1105,15 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (record-patch (:copier common-lisp:nil))
-   (op (common-lisp:error ":op is required") :type
-    (common-lisp:or operation common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or record-key common-lisp:null))
+   (op (common-lisp:error #A((15) common-lisp:base-char . ":op is required"))
+    :type (common-lisp:or operation common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or record-key common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or record-value common-lisp:null))
-   (sync-count (common-lisp:error ":sync-count is required") :type
-    (common-lisp:or long common-lisp:null))
+   (sync-count
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":sync-count is required"))
+    :type (common-lisp:or long common-lisp:null))
    (device-last-modified-date common-lisp:nil :type
     (common-lisp:or date common-lisp:null)))
  (common-lisp:export (common-lisp:list 'record-patch 'make-record-patch))
@@ -1107,14 +1156,21 @@
 (common-lisp:deftype record-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (register-device-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
-   (platform (common-lisp:error ":platform is required") :type
-    (common-lisp:or platform common-lisp:null))
-   (token (common-lisp:error ":token is required") :type
-    (common-lisp:or push-token common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null))
+   (platform
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":platform is required"))
+    :type (common-lisp:or platform common-lisp:null))
+   (token
+    (common-lisp:error #A((18) common-lisp:base-char . ":token is required"))
+    :type (common-lisp:or push-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-device-request 'make-register-device-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1160,8 +1216,9 @@
                                                 'device-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (resource-conflict-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or exception-message common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'resource-conflict-exception
                     'make-resource-conflict-exception))
@@ -1178,8 +1235,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (resource-not-found-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or exception-message common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'resource-not-found-exception
                     'make-resource-not-found-exception))
@@ -1195,10 +1253,13 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-cognito-events-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (events (common-lisp:error ":events is required") :type
-    (common-lisp:or events common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
+   (events
+    (common-lisp:error #A((19) common-lisp:base-char . ":events is required"))
+    :type (common-lisp:or events common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-cognito-events-request
                     'make-set-cognito-events-request))
@@ -1220,8 +1281,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-identity-pool-configuration-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
    (push-sync common-lisp:nil :type
     (common-lisp:or push-sync common-lisp:null))
    (cognito-streams common-lisp:nil :type
@@ -1287,14 +1350,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (subscribe-to-dataset-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
-   (dataset-name (common-lisp:error ":dataset-name is required") :type
-    (common-lisp:or dataset-name common-lisp:null))
-   (device-id (common-lisp:error ":device-id is required") :type
-    (common-lisp:or device-id common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null))
+   (dataset-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":dataset-name is required"))
+    :type (common-lisp:or dataset-name common-lisp:null))
+   (device-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":device-id is required"))
+    :type (common-lisp:or device-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'subscribe-to-dataset-request
                     'make-subscribe-to-dataset-request))
@@ -1337,8 +1408,9 @@
 (common-lisp:deftype sync-session-token () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (too-many-requests-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or exception-message common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or exception-message common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'too-many-requests-exception
                     'make-too-many-requests-exception))
@@ -1355,14 +1427,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (unsubscribe-from-dataset-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
-   (dataset-name (common-lisp:error ":dataset-name is required") :type
-    (common-lisp:or dataset-name common-lisp:null))
-   (device-id (common-lisp:error ":device-id is required") :type
-    (common-lisp:or device-id common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null))
+   (dataset-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":dataset-name is required"))
+    :type (common-lisp:or dataset-name common-lisp:null))
+   (device-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":device-id is required"))
+    :type (common-lisp:or device-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'unsubscribe-from-dataset-request
                     'make-unsubscribe-from-dataset-request))
@@ -1404,17 +1484,25 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (update-records-request (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
-   (dataset-name (common-lisp:error ":dataset-name is required") :type
-    (common-lisp:or dataset-name common-lisp:null))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null))
+   (dataset-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":dataset-name is required"))
+    :type (common-lisp:or dataset-name common-lisp:null))
    (device-id common-lisp:nil :type
     (common-lisp:or device-id common-lisp:null))
    (record-patches common-lisp:nil :type
     (common-lisp:or record-patch-list common-lisp:null))
-   (sync-session-token (common-lisp:error ":sync-session-token is required")
+   (sync-session-token
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":sync-session-token is required"))
     :type (common-lisp:or sync-session-token common-lisp:null))
    (client-context common-lisp:nil :type
     (common-lisp:or client-context common-lisp:null)))
@@ -1486,7 +1574,13 @@
                       (common-lisp:apply 'make-bulk-publish-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/bulkpublish"
+                                                   identitypoolid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"BulkPublish")
                                   ("Version" ,@"2014-06-30"))
@@ -1506,7 +1600,14 @@
                       (common-lisp:apply 'make-delete-dataset-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/identities/~a/datasets/~a"
+                                                   identitypoolid identityid
+                                                   datasetname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDataset")
                                   ("Version" ,@"2014-06-30"))
@@ -1526,7 +1627,14 @@
                       (common-lisp:apply 'make-describe-dataset-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/identities/~a/datasets/~a"
+                                                   identitypoolid identityid
+                                                   datasetname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDataset")
                                   ("Version" ,@"2014-06-30"))
@@ -1545,7 +1653,13 @@
                        'make-describe-identity-pool-usage-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a"
+                                                   identitypoolid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeIdentityPoolUsage")
                                   ("Version" ,@"2014-06-30"))
@@ -1563,7 +1677,13 @@
                       (common-lisp:apply 'make-describe-identity-usage-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/identities/~a"
+                                                   identitypoolid identityid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeIdentityUsage")
                                   ("Version" ,@"2014-06-30"))
@@ -1581,7 +1701,13 @@
                       (common-lisp:apply 'make-get-bulk-publish-details-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/getBulkPublishDetails"
+                                                   identitypoolid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBulkPublishDetails")
                                   ("Version" ,@"2014-06-30"))
@@ -1599,7 +1725,13 @@
                       (common-lisp:apply 'make-get-cognito-events-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/events"
+                                                   identitypoolid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCognitoEvents")
                                   ("Version" ,@"2014-06-30"))
@@ -1618,7 +1750,13 @@
                        'make-get-identity-pool-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/configuration"
+                                                   identitypoolid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetIdentityPoolConfiguration")
                                   ("Version" ,@"2014-06-30"))
@@ -1639,7 +1777,13 @@
                       (common-lisp:apply 'make-list-datasets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/identities/~a/datasets"
+                                                   identitypoolid identityid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDatasets")
                                   ("Version" ,@"2014-06-30"))
@@ -1657,7 +1801,9 @@
                       (common-lisp:apply 'make-list-identity-pool-usage-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListIdentityPoolUsage")
                                   ("Version" ,@"2014-06-30"))
@@ -1678,7 +1824,14 @@
                       (common-lisp:apply 'make-list-records-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/identities/~a/datasets/~a/records"
+                                                   identitypoolid identityid
+                                                   datasetname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRecords")
                                   ("Version" ,@"2014-06-30"))
@@ -1698,7 +1851,13 @@
                       (common-lisp:apply 'make-register-device-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/identity/~a/device"
+                                                   identitypoolid identityid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterDevice")
                                   ("Version" ,@"2014-06-30"))
@@ -1716,7 +1875,13 @@
                       (common-lisp:apply 'make-set-cognito-events-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/events"
+                                                   identitypoolid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"SetCognitoEvents")
                                   ("Version" ,@"2014-06-30"))
@@ -1737,7 +1902,13 @@
                        'make-set-identity-pool-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/configuration"
+                                                   identitypoolid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"SetIdentityPoolConfiguration")
                                   ("Version" ,@"2014-06-30"))
@@ -1758,7 +1929,14 @@
                       (common-lisp:apply 'make-subscribe-to-dataset-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/identities/~a/datasets/~a/subscriptions/~a"
+                                                   identitypoolid identityid
+                                                   datasetname deviceid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"SubscribeToDataset")
                                   ("Version" ,@"2014-06-30"))
@@ -1779,7 +1957,14 @@
                       (common-lisp:apply 'make-unsubscribe-from-dataset-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/identities/~a/datasets/~a/subscriptions/~a"
+                                                   identitypoolid identityid
+                                                   datasetname deviceid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UnsubscribeFromDataset")
                                   ("Version" ,@"2014-06-30"))
@@ -1801,7 +1986,14 @@
                       (common-lisp:apply 'make-update-records-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-sync" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "cognito-sync")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/identitypools/~a/identities/~a/datasets/~a"
+                                                   identitypoolid identityid
+                                                   datasetname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRecords")
                                   ("Version" ,@"2014-06-30"))

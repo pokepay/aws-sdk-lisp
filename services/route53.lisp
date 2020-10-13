@@ -7,12 +7,15 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/route53)
+
 (common-lisp:progn
  (common-lisp:defstruct (alarm-identifier (:copier common-lisp:nil))
-   (region (common-lisp:error ":region is required") :type
-    (common-lisp:or cloud-watch-region common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or alarm-name common-lisp:null)))
+   (region
+    (common-lisp:error #A((19) common-lisp:base-char . ":region is required"))
+    :type (common-lisp:or cloud-watch-region common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or alarm-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'alarm-identifier 'make-alarm-identifier))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -32,13 +35,17 @@
 (common-lisp:deftype alias-health-enabled () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (alias-target (:copier common-lisp:nil))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (dnsname (common-lisp:error ":dnsname is required") :type
-    (common-lisp:or dnsname common-lisp:null))
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (dnsname
+    (common-lisp:error #A((20) common-lisp:base-char . ":dnsname is required"))
+    :type (common-lisp:or dnsname common-lisp:null))
    (evaluate-target-health
-    (common-lisp:error ":evaluate-target-health is required") :type
-    (common-lisp:or alias-health-enabled common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":evaluate-target-health is required"))
+    :type (common-lisp:or alias-health-enabled common-lisp:null)))
  (common-lisp:export (common-lisp:list 'alias-target 'make-alias-target))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape alias-target))
@@ -62,10 +69,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (associate-vpcwith-hosted-zone-request (:copier common-lisp:nil))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (vpc (common-lisp:error ":vpc is required") :type
-    (common-lisp:or vpc common-lisp:null))
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (vpc (common-lisp:error #A((16) common-lisp:base-char . ":vpc is required"))
+    :type (common-lisp:or vpc common-lisp:null))
    (comment common-lisp:nil :type
     (common-lisp:or associate-vpccomment common-lisp:null)))
  (common-lisp:export
@@ -94,8 +103,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (associate-vpcwith-hosted-zone-response (:copier common-lisp:nil))
-   (change-info (common-lisp:error ":change-info is required") :type
-    (common-lisp:or change-info common-lisp:null)))
+   (change-info
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":change-info is required"))
+    :type (common-lisp:or change-info common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'associate-vpcwith-hosted-zone-response
                     'make-associate-vpcwith-hosted-zone-response))
@@ -111,9 +122,12 @@
                                                 'change-info))))))
 (common-lisp:progn
  (common-lisp:defstruct (change (:copier common-lisp:nil))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or change-action common-lisp:null))
-   (resource-record-set (common-lisp:error ":resource-record-set is required")
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or change-action common-lisp:null))
+   (resource-record-set
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":resource-record-set is required"))
     :type (common-lisp:or resource-record-set common-lisp:null)))
  (common-lisp:export (common-lisp:list 'change 'make-change))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -134,8 +148,9 @@
  (common-lisp:defstruct (change-batch (:copier common-lisp:nil))
    (comment common-lisp:nil :type
     (common-lisp:or resource-description common-lisp:null))
-   (changes (common-lisp:error ":changes is required") :type
-    (common-lisp:or changes common-lisp:null)))
+   (changes
+    (common-lisp:error #A((20) common-lisp:base-char . ":changes is required"))
+    :type (common-lisp:or changes common-lisp:null)))
  (common-lisp:export (common-lisp:list 'change-batch 'make-change-batch))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape change-batch))
@@ -152,12 +167,15 @@
                                                 'changes))))))
 (common-lisp:progn
  (common-lisp:defstruct (change-info (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or change-status common-lisp:null))
-   (submitted-at (common-lisp:error ":submitted-at is required") :type
-    (common-lisp:or time-stamp common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or change-status common-lisp:null))
+   (submitted-at
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":submitted-at is required"))
+    :type (common-lisp:or time-stamp common-lisp:null))
    (comment common-lisp:nil :type
     (common-lisp:or resource-description common-lisp:null)))
  (common-lisp:export (common-lisp:list 'change-info 'make-change-info))
@@ -187,10 +205,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (change-resource-record-sets-request (:copier common-lisp:nil))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-batch (common-lisp:error ":change-batch is required") :type
-    (common-lisp:or change-batch common-lisp:null)))
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-batch
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-batch is required"))
+    :type (common-lisp:or change-batch common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'change-resource-record-sets-request
                     'make-change-resource-record-sets-request))
@@ -212,8 +234,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (change-resource-record-sets-response (:copier common-lisp:nil))
-   (change-info (common-lisp:error ":change-info is required") :type
-    (common-lisp:or change-info common-lisp:null)))
+   (change-info
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":change-info is required"))
+    :type (common-lisp:or change-info common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'change-resource-record-sets-response
                     'make-change-resource-record-sets-response))
@@ -231,10 +255,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (change-tags-for-resource-request (:copier common-lisp:nil))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or tag-resource-type common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or tag-resource-id common-lisp:null))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or tag-resource-type common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or tag-resource-id common-lisp:null))
    (add-tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
    (remove-tag-keys common-lisp:nil :type
     (common-lisp:or tag-key-list common-lisp:null)))
@@ -303,20 +331,33 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (cloud-watch-alarm-configuration (:copier common-lisp:nil))
-   (evaluation-periods (common-lisp:error ":evaluation-periods is required")
+   (evaluation-periods
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":evaluation-periods is required"))
     :type (common-lisp:or evaluation-periods common-lisp:null))
-   (threshold (common-lisp:error ":threshold is required") :type
-    (common-lisp:or threshold common-lisp:null))
-   (comparison-operator (common-lisp:error ":comparison-operator is required")
+   (threshold
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":threshold is required"))
+    :type (common-lisp:or threshold common-lisp:null))
+   (comparison-operator
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":comparison-operator is required"))
     :type (common-lisp:or comparison-operator common-lisp:null))
-   (period (common-lisp:error ":period is required") :type
-    (common-lisp:or period common-lisp:null))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or metric-name common-lisp:null))
-   (namespace (common-lisp:error ":namespace is required") :type
-    (common-lisp:or namespace common-lisp:null))
-   (statistic (common-lisp:error ":statistic is required") :type
-    (common-lisp:or statistic common-lisp:null))
+   (period
+    (common-lisp:error #A((19) common-lisp:base-char . ":period is required"))
+    :type (common-lisp:or period common-lisp:null))
+   (metric-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metric-name is required"))
+    :type (common-lisp:or metric-name common-lisp:null))
+   (namespace
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":namespace is required"))
+    :type (common-lisp:or namespace common-lisp:null))
+   (statistic
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":statistic is required"))
+    :type (common-lisp:or statistic common-lisp:null))
    (dimensions common-lisp:nil :type
     (common-lisp:or dimension-list common-lisp:null)))
  (common-lisp:export
@@ -418,9 +459,13 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-health-check-request (:copier common-lisp:nil))
-   (caller-reference (common-lisp:error ":caller-reference is required") :type
-    (common-lisp:or health-check-nonce common-lisp:null))
-   (health-check-config (common-lisp:error ":health-check-config is required")
+   (caller-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":caller-reference is required"))
+    :type (common-lisp:or health-check-nonce common-lisp:null))
+   (health-check-config
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":health-check-config is required"))
     :type (common-lisp:or health-check-config common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-health-check-request
@@ -443,10 +488,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-health-check-response (:copier common-lisp:nil))
-   (health-check (common-lisp:error ":health-check is required") :type
-    (common-lisp:or health-check common-lisp:null))
-   (location (common-lisp:error ":location is required") :type
-    (common-lisp:or resource-uri common-lisp:null)))
+   (health-check
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":health-check is required"))
+    :type (common-lisp:or health-check common-lisp:null))
+   (location
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":location is required"))
+    :type (common-lisp:or resource-uri common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-health-check-response
                     'make-create-health-check-response))
@@ -467,11 +516,14 @@
                                                 'location))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-hosted-zone-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or dnsname common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or dnsname common-lisp:null))
    (vpc common-lisp:nil :type (common-lisp:or vpc common-lisp:null))
-   (caller-reference (common-lisp:error ":caller-reference is required") :type
-    (common-lisp:or nonce common-lisp:null))
+   (caller-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":caller-reference is required"))
+    :type (common-lisp:or nonce common-lisp:null))
    (hosted-zone-config common-lisp:nil :type
     (common-lisp:or hosted-zone-config common-lisp:null))
    (delegation-set-id common-lisp:nil :type
@@ -511,15 +563,23 @@
                                                 'delegation-set-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-hosted-zone-response (:copier common-lisp:nil))
-   (hosted-zone (common-lisp:error ":hosted-zone is required") :type
-    (common-lisp:or hosted-zone common-lisp:null))
-   (change-info (common-lisp:error ":change-info is required") :type
-    (common-lisp:or change-info common-lisp:null))
-   (delegation-set (common-lisp:error ":delegation-set is required") :type
-    (common-lisp:or delegation-set common-lisp:null))
+   (hosted-zone
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":hosted-zone is required"))
+    :type (common-lisp:or hosted-zone common-lisp:null))
+   (change-info
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":change-info is required"))
+    :type (common-lisp:or change-info common-lisp:null))
+   (delegation-set
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":delegation-set is required"))
+    :type (common-lisp:or delegation-set common-lisp:null))
    (vpc common-lisp:nil :type (common-lisp:or vpc common-lisp:null))
-   (location (common-lisp:error ":location is required") :type
-    (common-lisp:or resource-uri common-lisp:null)))
+   (location
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":location is required"))
+    :type (common-lisp:or resource-uri common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-hosted-zone-response
                     'make-create-hosted-zone-response))
@@ -556,8 +616,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-reusable-delegation-set-request (:copier common-lisp:nil))
-   (caller-reference (common-lisp:error ":caller-reference is required") :type
-    (common-lisp:or nonce common-lisp:null))
+   (caller-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":caller-reference is required"))
+    :type (common-lisp:or nonce common-lisp:null))
    (hosted-zone-id common-lisp:nil :type
     (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
@@ -581,10 +643,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-reusable-delegation-set-response (:copier common-lisp:nil))
-   (delegation-set (common-lisp:error ":delegation-set is required") :type
-    (common-lisp:or delegation-set common-lisp:null))
-   (location (common-lisp:error ":location is required") :type
-    (common-lisp:or resource-uri common-lisp:null)))
+   (delegation-set
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":delegation-set is required"))
+    :type (common-lisp:or delegation-set common-lisp:null))
+   (location
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":location is required"))
+    :type (common-lisp:or resource-uri common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-reusable-delegation-set-response
                     'make-create-reusable-delegation-set-response))
@@ -606,17 +672,23 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-traffic-policy-instance-request (:copier common-lisp:nil))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or dnsname common-lisp:null))
-   (ttl (common-lisp:error ":ttl is required") :type
-    (common-lisp:or ttl common-lisp:null))
-   (traffic-policy-id (common-lisp:error ":traffic-policy-id is required")
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or dnsname common-lisp:null))
+   (ttl (common-lisp:error #A((16) common-lisp:base-char . ":ttl is required"))
+    :type (common-lisp:or ttl common-lisp:null))
+   (traffic-policy-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":traffic-policy-id is required"))
     :type (common-lisp:or traffic-policy-id common-lisp:null))
    (traffic-policy-version
-    (common-lisp:error ":traffic-policy-version is required") :type
-    (common-lisp:or traffic-policy-version common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":traffic-policy-version is required"))
+    :type (common-lisp:or traffic-policy-version common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-traffic-policy-instance-request
                     'make-create-traffic-policy-instance-request))
@@ -654,10 +726,13 @@
  (common-lisp:defstruct
      (create-traffic-policy-instance-response (:copier common-lisp:nil))
    (traffic-policy-instance
-    (common-lisp:error ":traffic-policy-instance is required") :type
-    (common-lisp:or traffic-policy-instance common-lisp:null))
-   (location (common-lisp:error ":location is required") :type
-    (common-lisp:or resource-uri common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":traffic-policy-instance is required"))
+    :type (common-lisp:or traffic-policy-instance common-lisp:null))
+   (location
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":location is required"))
+    :type (common-lisp:or resource-uri common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-traffic-policy-instance-response
                     'make-create-traffic-policy-instance-response))
@@ -679,10 +754,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-traffic-policy-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or traffic-policy-name common-lisp:null))
-   (document (common-lisp:error ":document is required") :type
-    (common-lisp:or traffic-policy-document common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or traffic-policy-name common-lisp:null))
+   (document
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":document is required"))
+    :type (common-lisp:or traffic-policy-document common-lisp:null))
    (comment common-lisp:nil :type
     (common-lisp:or traffic-policy-comment common-lisp:null)))
  (common-lisp:export
@@ -711,10 +789,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-traffic-policy-response (:copier common-lisp:nil))
-   (traffic-policy (common-lisp:error ":traffic-policy is required") :type
-    (common-lisp:or traffic-policy common-lisp:null))
-   (location (common-lisp:error ":location is required") :type
-    (common-lisp:or resource-uri common-lisp:null)))
+   (traffic-policy
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":traffic-policy is required"))
+    :type (common-lisp:or traffic-policy common-lisp:null))
+   (location
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":location is required"))
+    :type (common-lisp:or resource-uri common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-traffic-policy-response
                     'make-create-traffic-policy-response))
@@ -736,10 +818,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-traffic-policy-version-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or traffic-policy-id common-lisp:null))
-   (document (common-lisp:error ":document is required") :type
-    (common-lisp:or traffic-policy-document common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or traffic-policy-id common-lisp:null))
+   (document
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":document is required"))
+    :type (common-lisp:or traffic-policy-document common-lisp:null))
    (comment common-lisp:nil :type
     (common-lisp:or traffic-policy-comment common-lisp:null)))
  (common-lisp:export
@@ -768,10 +852,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-traffic-policy-version-response (:copier common-lisp:nil))
-   (traffic-policy (common-lisp:error ":traffic-policy is required") :type
-    (common-lisp:or traffic-policy common-lisp:null))
-   (location (common-lisp:error ":location is required") :type
-    (common-lisp:or resource-uri common-lisp:null)))
+   (traffic-policy
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":traffic-policy is required"))
+    :type (common-lisp:or traffic-policy common-lisp:null))
+   (location
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":location is required"))
+    :type (common-lisp:or resource-uri common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-traffic-policy-version-response
                     'make-create-traffic-policy-version-response))
@@ -793,10 +881,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-vpcassociation-authorization-request (:copier common-lisp:nil))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (vpc (common-lisp:error ":vpc is required") :type
-    (common-lisp:or vpc common-lisp:null)))
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (vpc (common-lisp:error #A((16) common-lisp:base-char . ":vpc is required"))
+    :type (common-lisp:or vpc common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-vpcassociation-authorization-request
                     'make-create-vpcassociation-authorization-request))
@@ -818,10 +908,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-vpcassociation-authorization-response (:copier common-lisp:nil))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (vpc (common-lisp:error ":vpc is required") :type
-    (common-lisp:or vpc common-lisp:null)))
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (vpc (common-lisp:error #A((16) common-lisp:base-char . ":vpc is required"))
+    :type (common-lisp:or vpc common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-vpcassociation-authorization-response
                     'make-create-vpcassociation-authorization-response))
@@ -847,8 +939,10 @@
    (id common-lisp:nil :type (common-lisp:or resource-id common-lisp:null))
    (caller-reference common-lisp:nil :type
     (common-lisp:or nonce common-lisp:null))
-   (name-servers (common-lisp:error ":name-servers is required") :type
-    (common-lisp:or delegation-set-name-servers common-lisp:null)))
+   (name-servers
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":name-servers is required"))
+    :type (common-lisp:or delegation-set-name-servers common-lisp:null)))
  (common-lisp:export (common-lisp:list 'delegation-set 'make-delegation-set))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape delegation-set))
@@ -973,8 +1067,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (delete-health-check-request (:copier common-lisp:nil))
-   (health-check-id (common-lisp:error ":health-check-id is required") :type
-    (common-lisp:or health-check-id common-lisp:null)))
+   (health-check-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":health-check-id is required"))
+    :type (common-lisp:or health-check-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-health-check-request
                     'make-delete-health-check-request))
@@ -1001,8 +1097,8 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-hosted-zone-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-hosted-zone-request
                     'make-delete-hosted-zone-request))
@@ -1018,8 +1114,10 @@
                                                 'id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-hosted-zone-response (:copier common-lisp:nil))
-   (change-info (common-lisp:error ":change-info is required") :type
-    (common-lisp:or change-info common-lisp:null)))
+   (change-info
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":change-info is required"))
+    :type (common-lisp:or change-info common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-hosted-zone-response
                     'make-delete-hosted-zone-response))
@@ -1036,8 +1134,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-reusable-delegation-set-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-reusable-delegation-set-request
                     'make-delete-reusable-delegation-set-request))
@@ -1065,8 +1163,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-traffic-policy-instance-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or traffic-policy-instance-id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or traffic-policy-instance-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-traffic-policy-instance-request
                     'make-delete-traffic-policy-instance-request))
@@ -1094,10 +1192,11 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-traffic-policy-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or traffic-policy-id common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or traffic-policy-version common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or traffic-policy-id common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or traffic-policy-version common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-traffic-policy-request
                     'make-delete-traffic-policy-request))
@@ -1130,10 +1229,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-vpcassociation-authorization-request (:copier common-lisp:nil))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (vpc (common-lisp:error ":vpc is required") :type
-    (common-lisp:or vpc common-lisp:null)))
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (vpc (common-lisp:error #A((16) common-lisp:base-char . ":vpc is required"))
+    :type (common-lisp:or vpc common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-vpcassociation-authorization-request
                     'make-delete-vpcassociation-authorization-request))
@@ -1165,10 +1266,12 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (dimension (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or dimension-field common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or dimension-field common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or dimension-field common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or dimension-field common-lisp:null)))
  (common-lisp:export (common-lisp:list 'dimension 'make-dimension))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape dimension))
@@ -1195,10 +1298,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disassociate-vpcfrom-hosted-zone-request (:copier common-lisp:nil))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (vpc (common-lisp:error ":vpc is required") :type
-    (common-lisp:or vpc common-lisp:null))
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (vpc (common-lisp:error #A((16) common-lisp:base-char . ":vpc is required"))
+    :type (common-lisp:or vpc common-lisp:null))
    (comment common-lisp:nil :type
     (common-lisp:or disassociate-vpccomment common-lisp:null)))
  (common-lisp:export
@@ -1227,8 +1332,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disassociate-vpcfrom-hosted-zone-response (:copier common-lisp:nil))
-   (change-info (common-lisp:error ":change-info is required") :type
-    (common-lisp:or change-info common-lisp:null)))
+   (change-info
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":change-info is required"))
+    :type (common-lisp:or change-info common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disassociate-vpcfrom-hosted-zone-response
                     'make-disassociate-vpcfrom-hosted-zone-response))
@@ -1347,8 +1454,8 @@
 (common-lisp:deftype geo-location-subdivision-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (get-change-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-change-request 'make-get-change-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1361,8 +1468,10 @@
                                                 'id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-change-response (:copier common-lisp:nil))
-   (change-info (common-lisp:error ":change-info is required") :type
-    (common-lisp:or change-info common-lisp:null)))
+   (change-info
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":change-info is required"))
+    :type (common-lisp:or change-info common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-change-response 'make-get-change-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1387,7 +1496,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-checker-ip-ranges-response (:copier common-lisp:nil))
-   (checker-ip-ranges (common-lisp:error ":checker-ip-ranges is required")
+   (checker-ip-ranges
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":checker-ip-ranges is required"))
     :type (common-lisp:or checker-ip-ranges common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-checker-ip-ranges-response
@@ -1435,8 +1546,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (get-geo-location-response (:copier common-lisp:nil))
    (geo-location-details
-    (common-lisp:error ":geo-location-details is required") :type
-    (common-lisp:or geo-location-details common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":geo-location-details is required"))
+    :type (common-lisp:or geo-location-details common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-geo-location-response
                     'make-get-geo-location-response))
@@ -1464,7 +1576,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-health-check-count-response (:copier common-lisp:nil))
-   (health-check-count (common-lisp:error ":health-check-count is required")
+   (health-check-count
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":health-check-count is required"))
     :type (common-lisp:or health-check-count common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-health-check-count-response
@@ -1482,8 +1596,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-health-check-last-failure-reason-request (:copier common-lisp:nil))
-   (health-check-id (common-lisp:error ":health-check-id is required") :type
-    (common-lisp:or health-check-id common-lisp:null)))
+   (health-check-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":health-check-id is required"))
+    :type (common-lisp:or health-check-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-health-check-last-failure-reason-request
                     'make-get-health-check-last-failure-reason-request))
@@ -1501,8 +1617,9 @@
  (common-lisp:defstruct
      (get-health-check-last-failure-reason-response (:copier common-lisp:nil))
    (health-check-observations
-    (common-lisp:error ":health-check-observations is required") :type
-    (common-lisp:or health-check-observations common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":health-check-observations is required"))
+    :type (common-lisp:or health-check-observations common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-health-check-last-failure-reason-response
                     'make-get-health-check-last-failure-reason-response))
@@ -1518,8 +1635,10 @@
                                                 'health-check-observations))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-health-check-request (:copier common-lisp:nil))
-   (health-check-id (common-lisp:error ":health-check-id is required") :type
-    (common-lisp:or health-check-id common-lisp:null)))
+   (health-check-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":health-check-id is required"))
+    :type (common-lisp:or health-check-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-health-check-request 'make-get-health-check-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1534,8 +1653,10 @@
                                                 'health-check-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-health-check-response (:copier common-lisp:nil))
-   (health-check (common-lisp:error ":health-check is required") :type
-    (common-lisp:or health-check common-lisp:null)))
+   (health-check
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":health-check is required"))
+    :type (common-lisp:or health-check common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-health-check-response
                     'make-get-health-check-response))
@@ -1552,8 +1673,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-health-check-status-request (:copier common-lisp:nil))
-   (health-check-id (common-lisp:error ":health-check-id is required") :type
-    (common-lisp:or health-check-id common-lisp:null)))
+   (health-check-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":health-check-id is required"))
+    :type (common-lisp:or health-check-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-health-check-status-request
                     'make-get-health-check-status-request))
@@ -1571,8 +1694,9 @@
  (common-lisp:defstruct
      (get-health-check-status-response (:copier common-lisp:nil))
    (health-check-observations
-    (common-lisp:error ":health-check-observations is required") :type
-    (common-lisp:or health-check-observations common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":health-check-observations is required"))
+    :type (common-lisp:or health-check-observations common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-health-check-status-response
                     'make-get-health-check-status-response))
@@ -1600,7 +1724,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-hosted-zone-count-response (:copier common-lisp:nil))
-   (hosted-zone-count (common-lisp:error ":hosted-zone-count is required")
+   (hosted-zone-count
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":hosted-zone-count is required"))
     :type (common-lisp:or hosted-zone-count common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-hosted-zone-count-response
@@ -1617,8 +1743,8 @@
                                                 'hosted-zone-count))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-hosted-zone-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-hosted-zone-request 'make-get-hosted-zone-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1633,8 +1759,10 @@
                                                 'id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-hosted-zone-response (:copier common-lisp:nil))
-   (hosted-zone (common-lisp:error ":hosted-zone is required") :type
-    (common-lisp:or hosted-zone common-lisp:null))
+   (hosted-zone
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":hosted-zone is required"))
+    :type (common-lisp:or hosted-zone common-lisp:null))
    (delegation-set common-lisp:nil :type
     (common-lisp:or delegation-set common-lisp:null))
    (vpcs common-lisp:nil :type (common-lisp:or vpcs common-lisp:null)))
@@ -1663,8 +1791,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-reusable-delegation-set-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-reusable-delegation-set-request
                     'make-get-reusable-delegation-set-request))
@@ -1681,8 +1809,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-reusable-delegation-set-response (:copier common-lisp:nil))
-   (delegation-set (common-lisp:error ":delegation-set is required") :type
-    (common-lisp:or delegation-set common-lisp:null)))
+   (delegation-set
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":delegation-set is required"))
+    :type (common-lisp:or delegation-set common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-reusable-delegation-set-response
                     'make-get-reusable-delegation-set-response))
@@ -1711,8 +1841,10 @@
  (common-lisp:defstruct
      (get-traffic-policy-instance-count-response (:copier common-lisp:nil))
    (traffic-policy-instance-count
-    (common-lisp:error ":traffic-policy-instance-count is required") :type
-    (common-lisp:or traffic-policy-instance-count common-lisp:null)))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":traffic-policy-instance-count is required"))
+    :type (common-lisp:or traffic-policy-instance-count common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-traffic-policy-instance-count-response
                     'make-get-traffic-policy-instance-count-response))
@@ -1729,8 +1861,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-traffic-policy-instance-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or traffic-policy-instance-id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or traffic-policy-instance-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-traffic-policy-instance-request
                     'make-get-traffic-policy-instance-request))
@@ -1748,8 +1880,9 @@
  (common-lisp:defstruct
      (get-traffic-policy-instance-response (:copier common-lisp:nil))
    (traffic-policy-instance
-    (common-lisp:error ":traffic-policy-instance is required") :type
-    (common-lisp:or traffic-policy-instance common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":traffic-policy-instance is required"))
+    :type (common-lisp:or traffic-policy-instance common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-traffic-policy-instance-response
                     'make-get-traffic-policy-instance-response))
@@ -1765,10 +1898,11 @@
                                                 'traffic-policy-instance))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-traffic-policy-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or traffic-policy-id common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or traffic-policy-version common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or traffic-policy-id common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or traffic-policy-version common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-traffic-policy-request
                     'make-get-traffic-policy-request))
@@ -1789,8 +1923,10 @@
                                                 'version))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-traffic-policy-response (:copier common-lisp:nil))
-   (traffic-policy (common-lisp:error ":traffic-policy is required") :type
-    (common-lisp:or traffic-policy common-lisp:null)))
+   (traffic-policy
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":traffic-policy is required"))
+    :type (common-lisp:or traffic-policy common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-traffic-policy-response
                     'make-get-traffic-policy-response))
@@ -1806,15 +1942,20 @@
                                                 'traffic-policy))))))
 (common-lisp:progn
  (common-lisp:defstruct (health-check (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or health-check-id common-lisp:null))
-   (caller-reference (common-lisp:error ":caller-reference is required") :type
-    (common-lisp:or health-check-nonce common-lisp:null))
-   (health-check-config (common-lisp:error ":health-check-config is required")
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or health-check-id common-lisp:null))
+   (caller-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":caller-reference is required"))
+    :type (common-lisp:or health-check-nonce common-lisp:null))
+   (health-check-config
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":health-check-config is required"))
     :type (common-lisp:or health-check-config common-lisp:null))
    (health-check-version
-    (common-lisp:error ":health-check-version is required") :type
-    (common-lisp:or health-check-version common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":health-check-version is required"))
+    :type (common-lisp:or health-check-version common-lisp:null))
    (cloud-watch-alarm-configuration common-lisp:nil :type
     (common-lisp:or cloud-watch-alarm-configuration common-lisp:null)))
  (common-lisp:export (common-lisp:list 'health-check 'make-health-check))
@@ -1868,8 +2009,9 @@
    (ipaddress common-lisp:nil :type
     (common-lisp:or ipaddress common-lisp:null))
    (port common-lisp:nil :type (common-lisp:or port common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or health-check-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or health-check-type common-lisp:null))
    (resource-path common-lisp:nil :type
     (common-lisp:or resource-path common-lisp:null))
    (fully-qualified-domain-name common-lisp:nil :type
@@ -2076,12 +2218,15 @@
 (common-lisp:deftype health-threshold () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (hosted-zone (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or dnsname common-lisp:null))
-   (caller-reference (common-lisp:error ":caller-reference is required") :type
-    (common-lisp:or nonce common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or dnsname common-lisp:null))
+   (caller-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":caller-reference is required"))
+    :type (common-lisp:or nonce common-lisp:null))
    (config common-lisp:nil :type
     (common-lisp:or hosted-zone-config common-lisp:null))
    (resource-record-set-count common-lisp:nil :type
@@ -2390,18 +2535,23 @@
 (common-lisp:progn
  (common-lisp:defstruct (list-geo-locations-response (:copier common-lisp:nil))
    (geo-location-details-list
-    (common-lisp:error ":geo-location-details-list is required") :type
-    (common-lisp:or geo-location-details-list common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or page-truncated common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":geo-location-details-list is required"))
+    :type (common-lisp:or geo-location-details-list common-lisp:null))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or page-truncated common-lisp:null))
    (next-continent-code common-lisp:nil :type
     (common-lisp:or geo-location-continent-code common-lisp:null))
    (next-country-code common-lisp:nil :type
     (common-lisp:or geo-location-country-code common-lisp:null))
    (next-subdivision-code common-lisp:nil :type
     (common-lisp:or geo-location-subdivision-code common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or page-max-items common-lisp:null)))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or page-max-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-geo-locations-response
                     'make-list-geo-locations-response))
@@ -2465,16 +2615,23 @@
                                                 'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-health-checks-response (:copier common-lisp:nil))
-   (health-checks (common-lisp:error ":health-checks is required") :type
-    (common-lisp:or health-checks common-lisp:null))
-   (marker (common-lisp:error ":marker is required") :type
-    (common-lisp:or page-marker common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or page-truncated common-lisp:null))
+   (health-checks
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":health-checks is required"))
+    :type (common-lisp:or health-checks common-lisp:null))
+   (marker
+    (common-lisp:error #A((19) common-lisp:base-char . ":marker is required"))
+    :type (common-lisp:or page-marker common-lisp:null))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or page-truncated common-lisp:null))
    (next-marker common-lisp:nil :type
     (common-lisp:or page-marker common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or page-max-items common-lisp:null)))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or page-max-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-health-checks-response
                     'make-list-health-checks-response))
@@ -2542,19 +2699,25 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-hosted-zones-by-name-response (:copier common-lisp:nil))
-   (hosted-zones (common-lisp:error ":hosted-zones is required") :type
-    (common-lisp:or hosted-zones common-lisp:null))
+   (hosted-zones
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":hosted-zones is required"))
+    :type (common-lisp:or hosted-zones common-lisp:null))
    (dnsname common-lisp:nil :type (common-lisp:or dnsname common-lisp:null))
    (hosted-zone-id common-lisp:nil :type
     (common-lisp:or resource-id common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or page-truncated common-lisp:null))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or page-truncated common-lisp:null))
    (next-dnsname common-lisp:nil :type
     (common-lisp:or dnsname common-lisp:null))
    (next-hosted-zone-id common-lisp:nil :type
     (common-lisp:or resource-id common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or page-max-items common-lisp:null)))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or page-max-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-hosted-zones-by-name-response
                     'make-list-hosted-zones-by-name-response))
@@ -2630,16 +2793,23 @@
                                                 'delegation-set-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-hosted-zones-response (:copier common-lisp:nil))
-   (hosted-zones (common-lisp:error ":hosted-zones is required") :type
-    (common-lisp:or hosted-zones common-lisp:null))
-   (marker (common-lisp:error ":marker is required") :type
-    (common-lisp:or page-marker common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or page-truncated common-lisp:null))
+   (hosted-zones
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":hosted-zones is required"))
+    :type (common-lisp:or hosted-zones common-lisp:null))
+   (marker
+    (common-lisp:error #A((19) common-lisp:base-char . ":marker is required"))
+    :type (common-lisp:or page-marker common-lisp:null))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or page-truncated common-lisp:null))
    (next-marker common-lisp:nil :type
     (common-lisp:or page-marker common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or page-max-items common-lisp:null)))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or page-max-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-hosted-zones-response
                     'make-list-hosted-zones-response))
@@ -2676,8 +2846,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-resource-record-sets-request (:copier common-lisp:nil))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (start-record-name common-lisp:nil :type
     (common-lisp:or dnsname common-lisp:null))
    (start-record-type common-lisp:nil :type
@@ -2723,18 +2895,23 @@
  (common-lisp:defstruct
      (list-resource-record-sets-response (:copier common-lisp:nil))
    (resource-record-sets
-    (common-lisp:error ":resource-record-sets is required") :type
-    (common-lisp:or resource-record-sets common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or page-truncated common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":resource-record-sets is required"))
+    :type (common-lisp:or resource-record-sets common-lisp:null))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or page-truncated common-lisp:null))
    (next-record-name common-lisp:nil :type
     (common-lisp:or dnsname common-lisp:null))
    (next-record-type common-lisp:nil :type
     (common-lisp:or rrtype common-lisp:null))
    (next-record-identifier common-lisp:nil :type
     (common-lisp:or resource-record-set-identifier common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or page-max-items common-lisp:null)))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or page-max-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-resource-record-sets-response
                     'make-list-resource-record-sets-response))
@@ -2800,16 +2977,23 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-reusable-delegation-sets-response (:copier common-lisp:nil))
-   (delegation-sets (common-lisp:error ":delegation-sets is required") :type
-    (common-lisp:or delegation-sets common-lisp:null))
-   (marker (common-lisp:error ":marker is required") :type
-    (common-lisp:or page-marker common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or page-truncated common-lisp:null))
+   (delegation-sets
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":delegation-sets is required"))
+    :type (common-lisp:or delegation-sets common-lisp:null))
+   (marker
+    (common-lisp:error #A((19) common-lisp:base-char . ":marker is required"))
+    :type (common-lisp:or page-marker common-lisp:null))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or page-truncated common-lisp:null))
    (next-marker common-lisp:nil :type
     (common-lisp:or page-marker common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or page-max-items common-lisp:null)))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or page-max-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-reusable-delegation-sets-response
                     'make-list-reusable-delegation-sets-response))
@@ -2846,10 +3030,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-request (:copier common-lisp:nil))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or tag-resource-type common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or tag-resource-id common-lisp:null)))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or tag-resource-type common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or tag-resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -2871,8 +3059,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-response (:copier common-lisp:nil))
-   (resource-tag-set (common-lisp:error ":resource-tag-set is required") :type
-    (common-lisp:or resource-tag-set common-lisp:null)))
+   (resource-tag-set
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":resource-tag-set is required"))
+    :type (common-lisp:or resource-tag-set common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -2889,10 +3079,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resources-request (:copier common-lisp:nil))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or tag-resource-type common-lisp:null))
-   (resource-ids (common-lisp:error ":resource-ids is required") :type
-    (common-lisp:or tag-resource-id-list common-lisp:null)))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or tag-resource-type common-lisp:null))
+   (resource-ids
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-ids is required"))
+    :type (common-lisp:or tag-resource-id-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resources-request
                     'make-list-tags-for-resources-request))
@@ -2914,7 +3108,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resources-response (:copier common-lisp:nil))
-   (resource-tag-sets (common-lisp:error ":resource-tag-sets is required")
+   (resource-tag-sets
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":resource-tag-sets is required"))
     :type (common-lisp:or resource-tag-set-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resources-response
@@ -2958,15 +3154,21 @@
  (common-lisp:defstruct
      (list-traffic-policies-response (:copier common-lisp:nil))
    (traffic-policy-summaries
-    (common-lisp:error ":traffic-policy-summaries is required") :type
-    (common-lisp:or traffic-policy-summaries common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or page-truncated common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":traffic-policy-summaries is required"))
+    :type (common-lisp:or traffic-policy-summaries common-lisp:null))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or page-truncated common-lisp:null))
    (traffic-policy-id-marker
-    (common-lisp:error ":traffic-policy-id-marker is required") :type
-    (common-lisp:or traffic-policy-id common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or page-max-items common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":traffic-policy-id-marker is required"))
+    :type (common-lisp:or traffic-policy-id common-lisp:null))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or page-max-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-traffic-policies-response
                     'make-list-traffic-policies-response))
@@ -2999,8 +3201,10 @@
  (common-lisp:defstruct
      (list-traffic-policy-instances-by-hosted-zone-request
       (:copier common-lisp:nil))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (traffic-policy-instance-name-marker common-lisp:nil :type
     (common-lisp:or dnsname common-lisp:null))
    (traffic-policy-instance-type-marker common-lisp:nil :type
@@ -3040,16 +3244,21 @@
      (list-traffic-policy-instances-by-hosted-zone-response
       (:copier common-lisp:nil))
    (traffic-policy-instances
-    (common-lisp:error ":traffic-policy-instances is required") :type
-    (common-lisp:or traffic-policy-instances common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":traffic-policy-instances is required"))
+    :type (common-lisp:or traffic-policy-instances common-lisp:null))
    (traffic-policy-instance-name-marker common-lisp:nil :type
     (common-lisp:or dnsname common-lisp:null))
    (traffic-policy-instance-type-marker common-lisp:nil :type
     (common-lisp:or rrtype common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or page-truncated common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or page-max-items common-lisp:null)))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or page-truncated common-lisp:null))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or page-max-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-traffic-policy-instances-by-hosted-zone-response
                     'make-list-traffic-policy-instances-by-hosted-zone-response))
@@ -3087,11 +3296,14 @@
  (common-lisp:defstruct
      (list-traffic-policy-instances-by-policy-request
       (:copier common-lisp:nil))
-   (traffic-policy-id (common-lisp:error ":traffic-policy-id is required")
+   (traffic-policy-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":traffic-policy-id is required"))
     :type (common-lisp:or traffic-policy-id common-lisp:null))
    (traffic-policy-version
-    (common-lisp:error ":traffic-policy-version is required") :type
-    (common-lisp:or traffic-policy-version common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":traffic-policy-version is required"))
+    :type (common-lisp:or traffic-policy-version common-lisp:null))
    (hosted-zone-id-marker common-lisp:nil :type
     (common-lisp:or resource-id common-lisp:null))
    (traffic-policy-instance-name-marker common-lisp:nil :type
@@ -3143,18 +3355,23 @@
      (list-traffic-policy-instances-by-policy-response
       (:copier common-lisp:nil))
    (traffic-policy-instances
-    (common-lisp:error ":traffic-policy-instances is required") :type
-    (common-lisp:or traffic-policy-instances common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":traffic-policy-instances is required"))
+    :type (common-lisp:or traffic-policy-instances common-lisp:null))
    (hosted-zone-id-marker common-lisp:nil :type
     (common-lisp:or resource-id common-lisp:null))
    (traffic-policy-instance-name-marker common-lisp:nil :type
     (common-lisp:or dnsname common-lisp:null))
    (traffic-policy-instance-type-marker common-lisp:nil :type
     (common-lisp:or rrtype common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or page-truncated common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or page-max-items common-lisp:null)))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or page-truncated common-lisp:null))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or page-max-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-traffic-policy-instances-by-policy-response
                     'make-list-traffic-policy-instances-by-policy-response))
@@ -3236,18 +3453,23 @@
  (common-lisp:defstruct
      (list-traffic-policy-instances-response (:copier common-lisp:nil))
    (traffic-policy-instances
-    (common-lisp:error ":traffic-policy-instances is required") :type
-    (common-lisp:or traffic-policy-instances common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":traffic-policy-instances is required"))
+    :type (common-lisp:or traffic-policy-instances common-lisp:null))
    (hosted-zone-id-marker common-lisp:nil :type
     (common-lisp:or resource-id common-lisp:null))
    (traffic-policy-instance-name-marker common-lisp:nil :type
     (common-lisp:or dnsname common-lisp:null))
    (traffic-policy-instance-type-marker common-lisp:nil :type
     (common-lisp:or rrtype common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or page-truncated common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or page-max-items common-lisp:null)))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or page-truncated common-lisp:null))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or page-max-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-traffic-policy-instances-response
                     'make-list-traffic-policy-instances-response))
@@ -3289,8 +3511,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-traffic-policy-versions-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or traffic-policy-id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or traffic-policy-id common-lisp:null))
    (traffic-policy-version-marker common-lisp:nil :type
     (common-lisp:or traffic-policy-version-marker common-lisp:null))
    (max-items common-lisp:nil :type
@@ -3321,15 +3543,23 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-traffic-policy-versions-response (:copier common-lisp:nil))
-   (traffic-policies (common-lisp:error ":traffic-policies is required") :type
-    (common-lisp:or traffic-policies common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or page-truncated common-lisp:null))
+   (traffic-policies
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":traffic-policies is required"))
+    :type (common-lisp:or traffic-policies common-lisp:null))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or page-truncated common-lisp:null))
    (traffic-policy-version-marker
-    (common-lisp:error ":traffic-policy-version-marker is required") :type
-    (common-lisp:or traffic-policy-version-marker common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or page-max-items common-lisp:null)))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":traffic-policy-version-marker is required"))
+    :type (common-lisp:or traffic-policy-version-marker common-lisp:null))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or page-max-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-traffic-policy-versions-response
                     'make-list-traffic-policy-versions-response))
@@ -3361,8 +3591,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-vpcassociation-authorizations-request (:copier common-lisp:nil))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -3393,12 +3625,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-vpcassociation-authorizations-response (:copier common-lisp:nil))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
-   (vpcs (common-lisp:error ":vpcs is required") :type
-    (common-lisp:or vpcs common-lisp:null)))
+   (vpcs
+    (common-lisp:error #A((17) common-lisp:base-char . ":vpcs is required"))
+    :type (common-lisp:or vpcs common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-vpcassociation-authorizations-response
                     'make-list-vpcassociation-authorizations-response))
@@ -3607,8 +3842,9 @@
 (common-lisp:deftype resource-path () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (resource-record (:copier common-lisp:nil))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or rdata common-lisp:null)))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or rdata common-lisp:null)))
  (common-lisp:export (common-lisp:list 'resource-record 'make-resource-record))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape resource-record))
@@ -3620,10 +3856,12 @@
                                                 'value))))))
 (common-lisp:progn
  (common-lisp:defstruct (resource-record-set (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or dnsname common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or rrtype common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or dnsname common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or rrtype common-lisp:null))
    (set-identifier common-lisp:nil :type
     (common-lisp:or resource-record-set-identifier common-lisp:null))
    (weight common-lisp:nil :type
@@ -3843,12 +4081,18 @@
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (test-dnsanswer-request (:copier common-lisp:nil))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (record-name (common-lisp:error ":record-name is required") :type
-    (common-lisp:or dnsname common-lisp:null))
-   (record-type (common-lisp:error ":record-type is required") :type
-    (common-lisp:or rrtype common-lisp:null))
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (record-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":record-name is required"))
+    :type (common-lisp:or dnsname common-lisp:null))
+   (record-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":record-type is required"))
+    :type (common-lisp:or rrtype common-lisp:null))
    (resolver-ip common-lisp:nil :type
     (common-lisp:or ipaddress common-lisp:null))
    (edns0client-subnet-ip common-lisp:nil :type
@@ -3894,18 +4138,30 @@
                                                 'edns0client-subnet-mask))))))
 (common-lisp:progn
  (common-lisp:defstruct (test-dnsanswer-response (:copier common-lisp:nil))
-   (nameserver (common-lisp:error ":nameserver is required") :type
-    (common-lisp:or nameserver common-lisp:null))
-   (record-name (common-lisp:error ":record-name is required") :type
-    (common-lisp:or dnsname common-lisp:null))
-   (record-type (common-lisp:error ":record-type is required") :type
-    (common-lisp:or rrtype common-lisp:null))
-   (record-data (common-lisp:error ":record-data is required") :type
-    (common-lisp:or record-data common-lisp:null))
-   (response-code (common-lisp:error ":response-code is required") :type
-    (common-lisp:or dnsrcode common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or transport-protocol common-lisp:null)))
+   (nameserver
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":nameserver is required"))
+    :type (common-lisp:or nameserver common-lisp:null))
+   (record-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":record-name is required"))
+    :type (common-lisp:or dnsname common-lisp:null))
+   (record-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":record-type is required"))
+    :type (common-lisp:or rrtype common-lisp:null))
+   (record-data
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":record-data is required"))
+    :type (common-lisp:or record-data common-lisp:null))
+   (response-code
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":response-code is required"))
+    :type (common-lisp:or dnsrcode common-lisp:null))
+   (protocol
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":protocol is required"))
+    :type (common-lisp:or transport-protocol common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'test-dnsanswer-response 'make-test-dnsanswer-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4054,16 +4310,21 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (traffic-policy (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or traffic-policy-id common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or traffic-policy-version common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or traffic-policy-name common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or rrtype common-lisp:null))
-   (document (common-lisp:error ":document is required") :type
-    (common-lisp:or traffic-policy-document common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or traffic-policy-id common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or traffic-policy-version common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or traffic-policy-name common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or rrtype common-lisp:null))
+   (document
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":document is required"))
+    :type (common-lisp:or traffic-policy-document common-lisp:null))
    (comment common-lisp:nil :type
     (common-lisp:or traffic-policy-comment common-lisp:null)))
  (common-lisp:export (common-lisp:list 'traffic-policy 'make-traffic-policy))
@@ -4139,24 +4400,34 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (traffic-policy-instance (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or traffic-policy-instance-id common-lisp:null))
-   (hosted-zone-id (common-lisp:error ":hosted-zone-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or dnsname common-lisp:null))
-   (ttl (common-lisp:error ":ttl is required") :type
-    (common-lisp:or ttl common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or traffic-policy-instance-state common-lisp:null))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or message common-lisp:null))
-   (traffic-policy-id (common-lisp:error ":traffic-policy-id is required")
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or traffic-policy-instance-id common-lisp:null))
+   (hosted-zone-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hosted-zone-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or dnsname common-lisp:null))
+   (ttl (common-lisp:error #A((16) common-lisp:base-char . ":ttl is required"))
+    :type (common-lisp:or ttl common-lisp:null))
+   (state
+    (common-lisp:error #A((18) common-lisp:base-char . ":state is required"))
+    :type (common-lisp:or traffic-policy-instance-state common-lisp:null))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or message common-lisp:null))
+   (traffic-policy-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":traffic-policy-id is required"))
     :type (common-lisp:or traffic-policy-id common-lisp:null))
    (traffic-policy-version
-    (common-lisp:error ":traffic-policy-version is required") :type
-    (common-lisp:or traffic-policy-version common-lisp:null))
-   (traffic-policy-type (common-lisp:error ":traffic-policy-type is required")
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":traffic-policy-version is required"))
+    :type (common-lisp:or traffic-policy-version common-lisp:null))
+   (traffic-policy-type
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":traffic-policy-type is required"))
     :type (common-lisp:or rrtype common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'traffic-policy-instance 'make-traffic-policy-instance))
@@ -4250,17 +4521,22 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (traffic-policy-summary (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or traffic-policy-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or traffic-policy-name common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or rrtype common-lisp:null))
-   (latest-version (common-lisp:error ":latest-version is required") :type
-    (common-lisp:or traffic-policy-version common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or traffic-policy-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or traffic-policy-name common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or rrtype common-lisp:null))
+   (latest-version
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":latest-version is required"))
+    :type (common-lisp:or traffic-policy-version common-lisp:null))
    (traffic-policy-count
-    (common-lisp:error ":traffic-policy-count is required") :type
-    (common-lisp:or traffic-policy-version common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":traffic-policy-count is required"))
+    :type (common-lisp:or traffic-policy-version common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'traffic-policy-summary 'make-traffic-policy-summary))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4298,8 +4574,10 @@
 (common-lisp:deftype transport-protocol () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (update-health-check-request (:copier common-lisp:nil))
-   (health-check-id (common-lisp:error ":health-check-id is required") :type
-    (common-lisp:or health-check-id common-lisp:null))
+   (health-check-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":health-check-id is required"))
+    :type (common-lisp:or health-check-id common-lisp:null))
    (health-check-version common-lisp:nil :type
     (common-lisp:or health-check-version common-lisp:null))
    (ipaddress common-lisp:nil :type
@@ -4412,8 +4690,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-health-check-response (:copier common-lisp:nil))
-   (health-check (common-lisp:error ":health-check is required") :type
-    (common-lisp:or health-check common-lisp:null)))
+   (health-check
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":health-check is required"))
+    :type (common-lisp:or health-check common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-health-check-response
                     'make-update-health-check-response))
@@ -4430,8 +4710,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-hosted-zone-comment-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (comment common-lisp:nil :type
     (common-lisp:or resource-description common-lisp:null)))
  (common-lisp:export
@@ -4455,8 +4735,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-hosted-zone-comment-response (:copier common-lisp:nil))
-   (hosted-zone (common-lisp:error ":hosted-zone is required") :type
-    (common-lisp:or hosted-zone common-lisp:null)))
+   (hosted-zone
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":hosted-zone is required"))
+    :type (common-lisp:or hosted-zone common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-hosted-zone-comment-response
                     'make-update-hosted-zone-comment-response))
@@ -4473,12 +4755,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-traffic-policy-comment-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or traffic-policy-id common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or traffic-policy-version common-lisp:null))
-   (comment (common-lisp:error ":comment is required") :type
-    (common-lisp:or traffic-policy-comment common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or traffic-policy-id common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or traffic-policy-version common-lisp:null))
+   (comment
+    (common-lisp:error #A((20) common-lisp:base-char . ":comment is required"))
+    :type (common-lisp:or traffic-policy-comment common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-traffic-policy-comment-request
                     'make-update-traffic-policy-comment-request))
@@ -4505,8 +4789,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-traffic-policy-comment-response (:copier common-lisp:nil))
-   (traffic-policy (common-lisp:error ":traffic-policy is required") :type
-    (common-lisp:or traffic-policy common-lisp:null)))
+   (traffic-policy
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":traffic-policy is required"))
+    :type (common-lisp:or traffic-policy common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-traffic-policy-comment-response
                     'make-update-traffic-policy-comment-response))
@@ -4523,15 +4809,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-traffic-policy-instance-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or traffic-policy-instance-id common-lisp:null))
-   (ttl (common-lisp:error ":ttl is required") :type
-    (common-lisp:or ttl common-lisp:null))
-   (traffic-policy-id (common-lisp:error ":traffic-policy-id is required")
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or traffic-policy-instance-id common-lisp:null))
+   (ttl (common-lisp:error #A((16) common-lisp:base-char . ":ttl is required"))
+    :type (common-lisp:or ttl common-lisp:null))
+   (traffic-policy-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":traffic-policy-id is required"))
     :type (common-lisp:or traffic-policy-id common-lisp:null))
    (traffic-policy-version
-    (common-lisp:error ":traffic-policy-version is required") :type
-    (common-lisp:or traffic-policy-version common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":traffic-policy-version is required"))
+    :type (common-lisp:or traffic-policy-version common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-traffic-policy-instance-request
                     'make-update-traffic-policy-instance-request))
@@ -4564,8 +4853,9 @@
  (common-lisp:defstruct
      (update-traffic-policy-instance-response (:copier common-lisp:nil))
    (traffic-policy-instance
-    (common-lisp:error ":traffic-policy-instance is required") :type
-    (common-lisp:or traffic-policy-instance common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":traffic-policy-instance is required"))
+    :type (common-lisp:or traffic-policy-instance common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-traffic-policy-instance-response
                     'make-update-traffic-policy-instance-response))
@@ -4652,7 +4942,13 @@
                        'make-associate-vpcwith-hosted-zone-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/hostedzone/~a/associatevpc"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"AssociateVPCWithHostedZone")
                                   ("Version" ,@"2013-04-01"))
@@ -4671,7 +4967,13 @@
                        'make-change-resource-record-sets-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/hostedzone/~a/rrset/"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ChangeResourceRecordSets")
                                   ("Version" ,@"2013-04-01"))
@@ -4691,7 +4993,13 @@
                       (common-lisp:apply 'make-change-tags-for-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/tags/~a/~a"
+                                                   resourcetype resourceid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ChangeTagsForResource")
                                   ("Version" ,@"2013-04-01"))
@@ -4710,7 +5018,9 @@
                       (common-lisp:apply 'make-create-health-check-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateHealthCheck")
                                   ("Version" ,@"2013-04-01"))
@@ -4731,7 +5041,9 @@
                       (common-lisp:apply 'make-create-hosted-zone-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateHostedZone")
                                   ("Version" ,@"2013-04-01"))
@@ -4751,7 +5063,9 @@
                        'make-create-reusable-delegation-set-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateReusableDelegationSet")
                                   ("Version" ,@"2013-04-01"))
@@ -4769,7 +5083,9 @@
                       (common-lisp:apply 'make-create-traffic-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTrafficPolicy")
                                   ("Version" ,@"2013-04-01"))
@@ -4791,7 +5107,9 @@
                        'make-create-traffic-policy-instance-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTrafficPolicyInstance")
                                   ("Version" ,@"2013-04-01"))
@@ -4810,7 +5128,13 @@
                        'make-create-traffic-policy-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/trafficpolicy/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTrafficPolicyVersion")
                                   ("Version" ,@"2013-04-01"))
@@ -4829,7 +5153,13 @@
                        'make-create-vpcassociation-authorization-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/hostedzone/~a/authorizevpcassociation"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"CreateVPCAssociationAuthorization")
@@ -4848,7 +5178,13 @@
                       (common-lisp:apply 'make-delete-health-check-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/healthcheck/~a"
+                                                   healthcheckid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteHealthCheck")
                                   ("Version" ,@"2013-04-01"))
@@ -4866,7 +5202,13 @@
                       (common-lisp:apply 'make-delete-hosted-zone-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/hostedzone/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteHostedZone")
                                   ("Version" ,@"2013-04-01"))
@@ -4885,7 +5227,13 @@
                        'make-delete-reusable-delegation-set-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/delegationset/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReusableDelegationSet")
                                   ("Version" ,@"2013-04-01"))
@@ -4903,7 +5251,13 @@
                       (common-lisp:apply 'make-delete-traffic-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/trafficpolicy/~a/~a"
+                                                   id version)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTrafficPolicy")
                                   ("Version" ,@"2013-04-01"))
@@ -4922,7 +5276,13 @@
                        'make-delete-traffic-policy-instance-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/trafficpolicyinstance/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTrafficPolicyInstance")
                                   ("Version" ,@"2013-04-01"))
@@ -4941,7 +5301,13 @@
                        'make-delete-vpcassociation-authorization-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/hostedzone/~a/deauthorizevpcassociation"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeleteVPCAssociationAuthorization")
@@ -4961,7 +5327,13 @@
                        'make-disassociate-vpcfrom-hosted-zone-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/hostedzone/~a/disassociatevpc"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DisassociateVPCFromHostedZone")
                                   ("Version" ,@"2013-04-01"))
@@ -4979,7 +5351,12 @@
                       (common-lisp:apply 'make-get-change-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/change/~a" id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetChange")
                                   ("Version" ,@"2013-04-01"))
@@ -4990,7 +5367,8 @@
 (common-lisp:progn
  (common-lisp:defun get-checker-ip-ranges ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "route53" :method :get :params
+    (aws-sdk/api:aws-request :service #A((7) common-lisp:base-char . "route53")
+                             :method :get :params
                              (common-lisp:cons "Action" "GetCheckerIpRanges"))
     "GetCheckerIpRangesResponse" common-lisp:nil))
  (common-lisp:export 'get-checker-ip-ranges))
@@ -5006,7 +5384,9 @@
                       (common-lisp:apply 'make-get-geo-location-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetGeoLocation")
                                   ("Version" ,@"2013-04-01"))
@@ -5024,7 +5404,13 @@
                       (common-lisp:apply 'make-get-health-check-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/healthcheck/~a"
+                                                   healthcheckid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetHealthCheck")
                                   ("Version" ,@"2013-04-01"))
@@ -5035,7 +5421,8 @@
 (common-lisp:progn
  (common-lisp:defun get-health-check-count ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "route53" :method :get :params
+    (aws-sdk/api:aws-request :service #A((7) common-lisp:base-char . "route53")
+                             :method :get :params
                              (common-lisp:cons "Action" "GetHealthCheckCount"))
     "GetHealthCheckCountResponse" common-lisp:nil))
  (common-lisp:export 'get-health-check-count))
@@ -5050,7 +5437,13 @@
                        'make-get-health-check-last-failure-reason-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/healthcheck/~a/lastfailurereason"
+                                                   healthcheckid)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetHealthCheckLastFailureReason")
@@ -5069,7 +5462,13 @@
                       (common-lisp:apply 'make-get-health-check-status-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/healthcheck/~a/status"
+                                                   healthcheckid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetHealthCheckStatus")
                                   ("Version" ,@"2013-04-01"))
@@ -5087,7 +5486,13 @@
                       (common-lisp:apply 'make-get-hosted-zone-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/hostedzone/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetHostedZone")
                                   ("Version" ,@"2013-04-01"))
@@ -5098,7 +5503,8 @@
 (common-lisp:progn
  (common-lisp:defun get-hosted-zone-count ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "route53" :method :get :params
+    (aws-sdk/api:aws-request :service #A((7) common-lisp:base-char . "route53")
+                             :method :get :params
                              (common-lisp:cons "Action" "GetHostedZoneCount"))
     "GetHostedZoneCountResponse" common-lisp:nil))
  (common-lisp:export 'get-hosted-zone-count))
@@ -5113,7 +5519,13 @@
                        'make-get-reusable-delegation-set-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/delegationset/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetReusableDelegationSet")
                                   ("Version" ,@"2013-04-01"))
@@ -5131,7 +5543,13 @@
                       (common-lisp:apply 'make-get-traffic-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/trafficpolicy/~a/~a"
+                                                   id version)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTrafficPolicy")
                                   ("Version" ,@"2013-04-01"))
@@ -5150,7 +5568,13 @@
                        'make-get-traffic-policy-instance-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/trafficpolicyinstance/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTrafficPolicyInstance")
                                   ("Version" ,@"2013-04-01"))
@@ -5161,7 +5585,8 @@
 (common-lisp:progn
  (common-lisp:defun get-traffic-policy-instance-count ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "route53" :method :get :params
+    (aws-sdk/api:aws-request :service #A((7) common-lisp:base-char . "route53")
+                             :method :get :params
                              (common-lisp:cons "Action"
                                                "GetTrafficPolicyInstanceCount"))
     "GetTrafficPolicyInstanceCountResponse" common-lisp:nil))
@@ -5179,7 +5604,9 @@
                       (common-lisp:apply 'make-list-geo-locations-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListGeoLocations")
                                   ("Version" ,@"2013-04-01"))
@@ -5197,7 +5624,9 @@
                       (common-lisp:apply 'make-list-health-checks-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListHealthChecks")
                                   ("Version" ,@"2013-04-01"))
@@ -5216,7 +5645,9 @@
                       (common-lisp:apply 'make-list-hosted-zones-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListHostedZones")
                                   ("Version" ,@"2013-04-01"))
@@ -5236,7 +5667,9 @@
                        'make-list-hosted-zones-by-name-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListHostedZonesByName")
                                   ("Version" ,@"2013-04-01"))
@@ -5258,7 +5691,13 @@
                        'make-list-resource-record-sets-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/hostedzone/~a/rrset"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListResourceRecordSets")
                                   ("Version" ,@"2013-04-01"))
@@ -5277,7 +5716,9 @@
                        'make-list-reusable-delegation-sets-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListReusableDelegationSets")
                                   ("Version" ,@"2013-04-01"))
@@ -5295,7 +5736,13 @@
                       (common-lisp:apply 'make-list-tags-for-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/tags/~a/~a"
+                                                   resourcetype resourceid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2013-04-01"))
@@ -5313,7 +5760,13 @@
                       (common-lisp:apply 'make-list-tags-for-resources-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/tags/~a"
+                                                   resourcetype)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResources")
                                   ("Version" ,@"2013-04-01"))
@@ -5332,7 +5785,9 @@
                       (common-lisp:apply 'make-list-traffic-policies-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTrafficPolicies")
                                   ("Version" ,@"2013-04-01"))
@@ -5356,7 +5811,9 @@
                        'make-list-traffic-policy-instances-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTrafficPolicyInstances")
                                   ("Version" ,@"2013-04-01"))
@@ -5379,7 +5836,9 @@
                        'make-list-traffic-policy-instances-by-hosted-zone-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ListTrafficPolicyInstancesByHostedZone")
@@ -5404,7 +5863,9 @@
                        'make-list-traffic-policy-instances-by-policy-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ListTrafficPolicyInstancesByPolicy")
@@ -5426,7 +5887,13 @@
                        'make-list-traffic-policy-versions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/trafficpolicies/~a/versions"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTrafficPolicyVersions")
                                   ("Version" ,@"2013-04-01"))
@@ -5446,7 +5913,13 @@
                        'make-list-vpcassociation-authorizations-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/hostedzone/~a/authorizevpcassociation"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ListVPCAssociationAuthorizations")
@@ -5468,7 +5941,9 @@
                       (common-lisp:apply 'make-test-dnsanswer-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"TestDNSAnswer")
                                   ("Version" ,@"2013-04-01"))
@@ -5494,7 +5969,13 @@
                       (common-lisp:apply 'make-update-health-check-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/healthcheck/~a"
+                                                   healthcheckid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateHealthCheck")
                                   ("Version" ,@"2013-04-01"))
@@ -5513,7 +5994,13 @@
                        'make-update-hosted-zone-comment-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/hostedzone/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateHostedZoneComment")
                                   ("Version" ,@"2013-04-01"))
@@ -5532,7 +6019,13 @@
                        'make-update-traffic-policy-comment-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/trafficpolicy/~a/~a"
+                                                   id version)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTrafficPolicyComment")
                                   ("Version" ,@"2013-04-01"))
@@ -5553,7 +6046,13 @@
                        'make-update-traffic-policy-instance-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "route53")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2013-04-01/trafficpolicyinstance/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTrafficPolicyInstance")
                                   ("Version" ,@"2013-04-01"))

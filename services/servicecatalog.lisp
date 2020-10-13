@@ -7,14 +7,17 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/servicecatalog)
+
 (common-lisp:deftype accept-language () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (accept-portfolio-share-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (portfolio-id (common-lisp:error ":portfolio-id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (portfolio-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":portfolio-id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'accept-portfolio-share-input
                     'make-accept-portfolio-share-input))
@@ -97,12 +100,18 @@
      (associate-principal-with-portfolio-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (portfolio-id (common-lisp:error ":portfolio-id is required") :type
-    (common-lisp:or id common-lisp:null))
-   (principal-arn (common-lisp:error ":principal-arn is required") :type
-    (common-lisp:or principal-arn common-lisp:null))
-   (principal-type (common-lisp:error ":principal-type is required") :type
-    (common-lisp:or principal-type common-lisp:null)))
+   (portfolio-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":portfolio-id is required"))
+    :type (common-lisp:or id common-lisp:null))
+   (principal-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":principal-arn is required"))
+    :type (common-lisp:or principal-arn common-lisp:null))
+   (principal-type
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":principal-type is required"))
+    :type (common-lisp:or principal-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'associate-principal-with-portfolio-input
                     'make-associate-principal-with-portfolio-input))
@@ -147,10 +156,14 @@
      (associate-product-with-portfolio-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (product-id (common-lisp:error ":product-id is required") :type
-    (common-lisp:or id common-lisp:null))
-   (portfolio-id (common-lisp:error ":portfolio-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (product-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":product-id is required"))
+    :type (common-lisp:or id common-lisp:null))
+   (portfolio-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":portfolio-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (source-portfolio-id common-lisp:nil :type
     (common-lisp:or id common-lisp:null)))
  (common-lisp:export
@@ -195,10 +208,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (associate-tag-option-with-resource-input (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (tag-option-id (common-lisp:error ":tag-option-id is required") :type
-    (common-lisp:or tag-option-id common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (tag-option-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":tag-option-id is required"))
+    :type (common-lisp:or tag-option-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'associate-tag-option-with-resource-input
                     'make-associate-tag-option-with-resource-input))
@@ -306,17 +323,26 @@
  (common-lisp:defstruct (create-constraint-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (portfolio-id (common-lisp:error ":portfolio-id is required") :type
-    (common-lisp:or id common-lisp:null))
-   (product-id (common-lisp:error ":product-id is required") :type
-    (common-lisp:or id common-lisp:null))
-   (parameters (common-lisp:error ":parameters is required") :type
-    (common-lisp:or constraint-parameters common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or constraint-type common-lisp:null))
+   (portfolio-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":portfolio-id is required"))
+    :type (common-lisp:or id common-lisp:null))
+   (product-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":product-id is required"))
+    :type (common-lisp:or id common-lisp:null))
+   (parameters
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":parameters is required"))
+    :type (common-lisp:or constraint-parameters common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or constraint-type common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or constraint-description common-lisp:null))
-   (idempotency-token (common-lisp:error ":idempotency-token is required")
+   (idempotency-token
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":idempotency-token is required"))
     :type (common-lisp:or idempotency-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-constraint-input 'make-create-constraint-input))
@@ -393,14 +419,20 @@
  (common-lisp:defstruct (create-portfolio-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (display-name (common-lisp:error ":display-name is required") :type
-    (common-lisp:or portfolio-display-name common-lisp:null))
+   (display-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":display-name is required"))
+    :type (common-lisp:or portfolio-display-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or portfolio-description common-lisp:null))
-   (provider-name (common-lisp:error ":provider-name is required") :type
-    (common-lisp:or provider-name common-lisp:null))
+   (provider-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":provider-name is required"))
+    :type (common-lisp:or provider-name common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or add-tags common-lisp:null))
-   (idempotency-token (common-lisp:error ":idempotency-token is required")
+   (idempotency-token
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":idempotency-token is required"))
     :type (common-lisp:or idempotency-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-portfolio-input 'make-create-portfolio-input))
@@ -466,10 +498,14 @@
      (create-portfolio-share-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (portfolio-id (common-lisp:error ":portfolio-id is required") :type
-    (common-lisp:or id common-lisp:null))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null)))
+   (portfolio-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":portfolio-id is required"))
+    :type (common-lisp:or id common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-portfolio-share-input
                     'make-create-portfolio-share-input))
@@ -508,10 +544,12 @@
  (common-lisp:defstruct (create-product-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or product-view-name common-lisp:null))
-   (owner (common-lisp:error ":owner is required") :type
-    (common-lisp:or product-view-owner common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or product-view-name common-lisp:null))
+   (owner
+    (common-lisp:error #A((18) common-lisp:base-char . ":owner is required"))
+    :type (common-lisp:or product-view-owner common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or product-view-short-description common-lisp:null))
    (distributor common-lisp:nil :type
@@ -522,13 +560,19 @@
     (common-lisp:or support-email common-lisp:null))
    (support-url common-lisp:nil :type
     (common-lisp:or support-url common-lisp:null))
-   (product-type (common-lisp:error ":product-type is required") :type
-    (common-lisp:or product-type common-lisp:null))
+   (product-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":product-type is required"))
+    :type (common-lisp:or product-type common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or add-tags common-lisp:null))
    (provisioning-artifact-parameters
-    (common-lisp:error ":provisioning-artifact-parameters is required") :type
-    (common-lisp:or provisioning-artifact-properties common-lisp:null))
-   (idempotency-token (common-lisp:error ":idempotency-token is required")
+    (common-lisp:error
+     #A((45) common-lisp:base-char
+        . ":provisioning-artifact-parameters is required"))
+    :type (common-lisp:or provisioning-artifact-properties common-lisp:null))
+   (idempotency-token
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":idempotency-token is required"))
     :type (common-lisp:or idempotency-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-product-input 'make-create-product-input))
@@ -629,11 +673,17 @@
      (create-provisioning-artifact-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (product-id (common-lisp:error ":product-id is required") :type
-    (common-lisp:or id common-lisp:null))
-   (parameters (common-lisp:error ":parameters is required") :type
-    (common-lisp:or provisioning-artifact-properties common-lisp:null))
-   (idempotency-token (common-lisp:error ":idempotency-token is required")
+   (product-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":product-id is required"))
+    :type (common-lisp:or id common-lisp:null))
+   (parameters
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":parameters is required"))
+    :type (common-lisp:or provisioning-artifact-properties common-lisp:null))
+   (idempotency-token
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":idempotency-token is required"))
     :type (common-lisp:or idempotency-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-provisioning-artifact-input
@@ -696,10 +746,11 @@
                                                 'status))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-tag-option-input (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-option-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-option-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-option-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or tag-option-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-tag-option-input 'make-create-tag-option-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -740,8 +791,8 @@
  (common-lisp:defstruct (delete-constraint-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-constraint-input 'make-delete-constraint-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -772,8 +823,8 @@
  (common-lisp:defstruct (delete-portfolio-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-portfolio-input 'make-delete-portfolio-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -805,10 +856,14 @@
      (delete-portfolio-share-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (portfolio-id (common-lisp:error ":portfolio-id is required") :type
-    (common-lisp:or id common-lisp:null))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null)))
+   (portfolio-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":portfolio-id is required"))
+    :type (common-lisp:or id common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-portfolio-share-input
                     'make-delete-portfolio-share-input))
@@ -847,8 +902,8 @@
  (common-lisp:defstruct (delete-product-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-product-input 'make-delete-product-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -878,11 +933,14 @@
      (delete-provisioning-artifact-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (product-id (common-lisp:error ":product-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (product-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":product-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (provisioning-artifact-id
-    (common-lisp:error ":provisioning-artifact-id is required") :type
-    (common-lisp:or id common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":provisioning-artifact-id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-provisioning-artifact-input
                     'make-delete-provisioning-artifact-input))
@@ -921,8 +979,8 @@
  (common-lisp:defstruct (describe-constraint-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-constraint-input
                     'make-describe-constraint-input))
@@ -975,8 +1033,8 @@
  (common-lisp:defstruct (describe-portfolio-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-portfolio-input 'make-describe-portfolio-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1029,8 +1087,8 @@
      (describe-product-as-admin-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-product-as-admin-input
                     'make-describe-product-as-admin-input))
@@ -1091,8 +1149,8 @@
  (common-lisp:defstruct (describe-product-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-product-input 'make-describe-product-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1137,8 +1195,8 @@
  (common-lisp:defstruct (describe-product-view-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-product-view-input
                     'make-describe-product-view-input))
@@ -1187,8 +1245,8 @@
      (describe-provisioned-product-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-provisioned-product-input
                     'make-describe-provisioned-product-input))
@@ -1231,10 +1289,13 @@
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
    (provisioning-artifact-id
-    (common-lisp:error ":provisioning-artifact-id is required") :type
-    (common-lisp:or id common-lisp:null))
-   (product-id (common-lisp:error ":product-id is required") :type
-    (common-lisp:or id common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":provisioning-artifact-id is required"))
+    :type (common-lisp:or id common-lisp:null))
+   (product-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":product-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (verbose common-lisp:nil :type (common-lisp:or verbose common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-provisioning-artifact-input
@@ -1300,11 +1361,14 @@
      (describe-provisioning-parameters-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (product-id (common-lisp:error ":product-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (product-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":product-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (provisioning-artifact-id
-    (common-lisp:error ":provisioning-artifact-id is required") :type
-    (common-lisp:or id common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":provisioning-artifact-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (path-id common-lisp:nil :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-provisioning-parameters-input
@@ -1377,8 +1441,8 @@
  (common-lisp:defstruct (describe-record-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null))
    (page-size common-lisp:nil :type
@@ -1442,8 +1506,8 @@
                                                 'next-page-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-tag-option-input (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or tag-option-id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or tag-option-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-tag-option-input
                     'make-describe-tag-option-input))
@@ -1480,10 +1544,14 @@
      (disassociate-principal-from-portfolio-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (portfolio-id (common-lisp:error ":portfolio-id is required") :type
-    (common-lisp:or id common-lisp:null))
-   (principal-arn (common-lisp:error ":principal-arn is required") :type
-    (common-lisp:or principal-arn common-lisp:null)))
+   (portfolio-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":portfolio-id is required"))
+    :type (common-lisp:or id common-lisp:null))
+   (principal-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":principal-arn is required"))
+    :type (common-lisp:or principal-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disassociate-principal-from-portfolio-input
                     'make-disassociate-principal-from-portfolio-input))
@@ -1523,10 +1591,14 @@
      (disassociate-product-from-portfolio-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (product-id (common-lisp:error ":product-id is required") :type
-    (common-lisp:or id common-lisp:null))
-   (portfolio-id (common-lisp:error ":portfolio-id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (product-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":product-id is required"))
+    :type (common-lisp:or id common-lisp:null))
+   (portfolio-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":portfolio-id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disassociate-product-from-portfolio-input
                     'make-disassociate-product-from-portfolio-input))
@@ -1564,10 +1636,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disassociate-tag-option-from-resource-input (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (tag-option-id (common-lisp:error ":tag-option-id is required") :type
-    (common-lisp:or tag-option-id common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (tag-option-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":tag-option-id is required"))
+    :type (common-lisp:or tag-option-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disassociate-tag-option-from-resource-input
                     'make-disassociate-tag-option-from-resource-input))
@@ -1749,8 +1825,10 @@
      (list-constraints-for-portfolio-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (portfolio-id (common-lisp:error ":portfolio-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (portfolio-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":portfolio-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (product-id common-lisp:nil :type (common-lisp:or id common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or page-size common-lisp:null))
@@ -1818,8 +1896,10 @@
  (common-lisp:defstruct (list-launch-paths-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (product-id (common-lisp:error ":product-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (product-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":product-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or page-size common-lisp:null))
    (page-token common-lisp:nil :type
@@ -1878,8 +1958,10 @@
  (common-lisp:defstruct (list-portfolio-access-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (portfolio-id (common-lisp:error ":portfolio-id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (portfolio-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":portfolio-id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-portfolio-access-input
                     'make-list-portfolio-access-input))
@@ -1928,8 +2010,10 @@
      (list-portfolios-for-product-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (product-id (common-lisp:error ":product-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (product-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":product-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null))
    (page-size common-lisp:nil :type
@@ -2045,8 +2129,10 @@
      (list-principals-for-portfolio-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (portfolio-id (common-lisp:error ":portfolio-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (portfolio-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":portfolio-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or page-size common-lisp:null))
    (page-token common-lisp:nil :type
@@ -2109,8 +2195,10 @@
      (list-provisioning-artifacts-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (product-id (common-lisp:error ":product-id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (product-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":product-id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-provisioning-artifacts-input
                     'make-list-provisioning-artifacts-input))
@@ -2251,8 +2339,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-resources-for-tag-option-input (:copier common-lisp:nil))
-   (tag-option-id (common-lisp:error ":tag-option-id is required") :type
-    (common-lisp:or tag-option-id common-lisp:null))
+   (tag-option-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":tag-option-id is required"))
+    :type (common-lisp:or tag-option-id common-lisp:null))
    (resource-type common-lisp:nil :type
     (common-lisp:or resource-type common-lisp:null))
    (page-size common-lisp:nil :type
@@ -2715,22 +2805,28 @@
  (common-lisp:defstruct (provision-product-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (product-id (common-lisp:error ":product-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (product-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":product-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (provisioning-artifact-id
-    (common-lisp:error ":provisioning-artifact-id is required") :type
-    (common-lisp:or id common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":provisioning-artifact-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (path-id common-lisp:nil :type (common-lisp:or id common-lisp:null))
    (provisioned-product-name
-    (common-lisp:error ":provisioned-product-name is required") :type
-    (common-lisp:or provisioned-product-name common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":provisioned-product-name is required"))
+    :type (common-lisp:or provisioned-product-name common-lisp:null))
    (provisioning-parameters common-lisp:nil :type
     (common-lisp:or provisioning-parameters common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null))
    (notification-arns common-lisp:nil :type
     (common-lisp:or notification-arns common-lisp:null))
-   (provision-token (common-lisp:error ":provision-token is required") :type
-    (common-lisp:or idempotency-token common-lisp:null)))
+   (provision-token
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":provision-token is required"))
+    :type (common-lisp:or idempotency-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'provision-product-input 'make-provision-product-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3056,8 +3152,9 @@
     (common-lisp:or provisioning-artifact-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or provisioning-artifact-description common-lisp:null))
-   (info (common-lisp:error ":info is required") :type
-    (common-lisp:or provisioning-artifact-info common-lisp:null))
+   (info
+    (common-lisp:error #A((17) common-lisp:base-char . ":info is required"))
+    :type (common-lisp:or provisioning-artifact-info common-lisp:null))
    (type common-lisp:nil :type
     (common-lisp:or provisioning-artifact-type common-lisp:null)))
  (common-lisp:export
@@ -3380,8 +3477,10 @@
      (reject-portfolio-share-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (portfolio-id (common-lisp:error ":portfolio-id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (portfolio-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":portfolio-id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reject-portfolio-share-input
                     'make-reject-portfolio-share-input))
@@ -3734,10 +3833,11 @@
 (common-lisp:deftype support-url () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -3867,8 +3967,10 @@
     (common-lisp:or provisioned-product-name-or-arn common-lisp:null))
    (provisioned-product-id common-lisp:nil :type
     (common-lisp:or id common-lisp:null))
-   (terminate-token (common-lisp:error ":terminate-token is required") :type
-    (common-lisp:or idempotency-token common-lisp:null))
+   (terminate-token
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":terminate-token is required"))
+    :type (common-lisp:or idempotency-token common-lisp:null))
    (ignore-errors common-lisp:nil :type
     (common-lisp:or ignore-errors common-lisp:null))
    (accept-language common-lisp:nil :type
@@ -3928,8 +4030,8 @@
  (common-lisp:defstruct (update-constraint-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or constraint-description common-lisp:null)))
  (common-lisp:export
@@ -3987,8 +4089,8 @@
  (common-lisp:defstruct (update-portfolio-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (display-name common-lisp:nil :type
     (common-lisp:or portfolio-display-name common-lisp:null))
    (description common-lisp:nil :type
@@ -4066,8 +4168,8 @@
  (common-lisp:defstruct (update-product-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (name common-lisp:nil :type
     (common-lisp:or product-view-name common-lisp:null))
    (owner common-lisp:nil :type
@@ -4182,8 +4284,10 @@
    (path-id common-lisp:nil :type (common-lisp:or id common-lisp:null))
    (provisioning-parameters common-lisp:nil :type
     (common-lisp:or update-provisioning-parameters common-lisp:null))
-   (update-token (common-lisp:error ":update-token is required") :type
-    (common-lisp:or idempotency-token common-lisp:null)))
+   (update-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":update-token is required"))
+    :type (common-lisp:or idempotency-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-provisioned-product-input
                     'make-update-provisioned-product-input))
@@ -4255,11 +4359,14 @@
      (update-provisioning-artifact-input (:copier common-lisp:nil))
    (accept-language common-lisp:nil :type
     (common-lisp:or accept-language common-lisp:null))
-   (product-id (common-lisp:error ":product-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (product-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":product-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (provisioning-artifact-id
-    (common-lisp:error ":provisioning-artifact-id is required") :type
-    (common-lisp:or id common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":provisioning-artifact-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (name common-lisp:nil :type
     (common-lisp:or provisioning-artifact-name common-lisp:null))
    (description common-lisp:nil :type
@@ -4370,8 +4477,8 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (update-tag-option-input (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or tag-option-id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or tag-option-id common-lisp:null))
    (value common-lisp:nil :type
     (common-lisp:or tag-option-value common-lisp:null))
    (active common-lisp:nil :type
@@ -4456,7 +4563,10 @@
                       (common-lisp:apply 'make-accept-portfolio-share-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AcceptPortfolioShare")
                                   ("Version" ,@"2015-12-10"))
@@ -4478,7 +4588,10 @@
                        'make-associate-principal-with-portfolio-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"AssociatePrincipalWithPortfolio")
@@ -4501,7 +4614,10 @@
                        'make-associate-product-with-portfolio-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AssociateProductWithPortfolio")
                                   ("Version" ,@"2015-12-10"))
@@ -4520,7 +4636,10 @@
                        'make-associate-tag-option-with-resource-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AssociateTagOptionWithResource")
                                   ("Version" ,@"2015-12-10"))
@@ -4541,7 +4660,10 @@
                       (common-lisp:apply 'make-create-constraint-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateConstraint")
                                   ("Version" ,@"2015-12-10"))
@@ -4562,7 +4684,10 @@
                       (common-lisp:apply 'make-create-portfolio-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePortfolio")
                                   ("Version" ,@"2015-12-10"))
@@ -4581,7 +4706,10 @@
                       (common-lisp:apply 'make-create-portfolio-share-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePortfolioShare")
                                   ("Version" ,@"2015-12-10"))
@@ -4605,7 +4733,10 @@
                       (common-lisp:apply 'make-create-product-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateProduct")
                                   ("Version" ,@"2015-12-10"))
@@ -4627,7 +4758,10 @@
                        'make-create-provisioning-artifact-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateProvisioningArtifact")
                                   ("Version" ,@"2015-12-10"))
@@ -4645,7 +4779,10 @@
                       (common-lisp:apply 'make-create-tag-option-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTagOption")
                                   ("Version" ,@"2015-12-10"))
@@ -4663,7 +4800,10 @@
                       (common-lisp:apply 'make-delete-constraint-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConstraint")
                                   ("Version" ,@"2015-12-10"))
@@ -4681,7 +4821,10 @@
                       (common-lisp:apply 'make-delete-portfolio-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePortfolio")
                                   ("Version" ,@"2015-12-10"))
@@ -4700,7 +4843,10 @@
                       (common-lisp:apply 'make-delete-portfolio-share-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePortfolioShare")
                                   ("Version" ,@"2015-12-10"))
@@ -4718,7 +4864,10 @@
                       (common-lisp:apply 'make-delete-product-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteProduct")
                                   ("Version" ,@"2015-12-10"))
@@ -4740,7 +4889,10 @@
                        'make-delete-provisioning-artifact-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteProvisioningArtifact")
                                   ("Version" ,@"2015-12-10"))
@@ -4758,7 +4910,10 @@
                       (common-lisp:apply 'make-describe-constraint-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConstraint")
                                   ("Version" ,@"2015-12-10"))
@@ -4776,7 +4931,10 @@
                       (common-lisp:apply 'make-describe-portfolio-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribePortfolio")
                                   ("Version" ,@"2015-12-10"))
@@ -4794,7 +4952,10 @@
                       (common-lisp:apply 'make-describe-product-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProduct")
                                   ("Version" ,@"2015-12-10"))
@@ -4812,7 +4973,10 @@
                       (common-lisp:apply 'make-describe-product-as-admin-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProductAsAdmin")
                                   ("Version" ,@"2015-12-10"))
@@ -4830,7 +4994,10 @@
                       (common-lisp:apply 'make-describe-product-view-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProductView")
                                   ("Version" ,@"2015-12-10"))
@@ -4849,7 +5016,10 @@
                        'make-describe-provisioned-product-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProvisionedProduct")
                                   ("Version" ,@"2015-12-10"))
@@ -4871,7 +5041,10 @@
                        'make-describe-provisioning-artifact-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProvisioningArtifact")
                                   ("Version" ,@"2015-12-10"))
@@ -4893,7 +5066,10 @@
                        'make-describe-provisioning-parameters-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProvisioningParameters")
                                   ("Version" ,@"2015-12-10"))
@@ -4912,7 +5088,10 @@
                       (common-lisp:apply 'make-describe-record-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRecord")
                                   ("Version" ,@"2015-12-10"))
@@ -4930,7 +5109,10 @@
                       (common-lisp:apply 'make-describe-tag-option-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTagOption")
                                   ("Version" ,@"2015-12-10"))
@@ -4951,7 +5133,10 @@
                        'make-disassociate-principal-from-portfolio-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DisassociatePrincipalFromPortfolio")
@@ -4972,7 +5157,10 @@
                        'make-disassociate-product-from-portfolio-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DisassociateProductFromPortfolio")
@@ -4992,7 +5180,10 @@
                        'make-disassociate-tag-option-from-resource-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DisassociateTagOptionFromResource")
@@ -5013,7 +5204,10 @@
                        'make-list-accepted-portfolio-shares-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAcceptedPortfolioShares")
                                   ("Version" ,@"2015-12-10"))
@@ -5035,7 +5229,10 @@
                        'make-list-constraints-for-portfolio-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListConstraintsForPortfolio")
                                   ("Version" ,@"2015-12-10"))
@@ -5055,7 +5252,10 @@
                       (common-lisp:apply 'make-list-launch-paths-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListLaunchPaths")
                                   ("Version" ,@"2015-12-10"))
@@ -5073,7 +5273,10 @@
                       (common-lisp:apply 'make-list-portfolio-access-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPortfolioAccess")
                                   ("Version" ,@"2015-12-10"))
@@ -5092,7 +5295,10 @@
                       (common-lisp:apply 'make-list-portfolios-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPortfolios")
                                   ("Version" ,@"2015-12-10"))
@@ -5113,7 +5319,10 @@
                        'make-list-portfolios-for-product-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPortfoliosForProduct")
                                   ("Version" ,@"2015-12-10"))
@@ -5134,7 +5343,10 @@
                        'make-list-principals-for-portfolio-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPrincipalsForPortfolio")
                                   ("Version" ,@"2015-12-10"))
@@ -5153,7 +5365,10 @@
                        'make-list-provisioning-artifacts-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListProvisioningArtifacts")
                                   ("Version" ,@"2015-12-10"))
@@ -5174,7 +5389,10 @@
                       (common-lisp:apply 'make-list-record-history-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRecordHistory")
                                   ("Version" ,@"2015-12-10"))
@@ -5195,7 +5413,10 @@
                        'make-list-resources-for-tag-option-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListResourcesForTagOption")
                                   ("Version" ,@"2015-12-10"))
@@ -5213,7 +5434,10 @@
                       (common-lisp:apply 'make-list-tag-options-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagOptions")
                                   ("Version" ,@"2015-12-10"))
@@ -5237,7 +5461,10 @@
                       (common-lisp:apply 'make-provision-product-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ProvisionProduct")
                                   ("Version" ,@"2015-12-10"))
@@ -5255,7 +5482,10 @@
                       (common-lisp:apply 'make-reject-portfolio-share-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RejectPortfolioShare")
                                   ("Version" ,@"2015-12-10"))
@@ -5276,7 +5506,10 @@
                       (common-lisp:apply 'make-scan-provisioned-products-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ScanProvisionedProducts")
                                   ("Version" ,@"2015-12-10"))
@@ -5297,7 +5530,10 @@
                       (common-lisp:apply 'make-search-products-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SearchProducts")
                                   ("Version" ,@"2015-12-10"))
@@ -5318,7 +5554,10 @@
                       (common-lisp:apply 'make-search-products-as-admin-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SearchProductsAsAdmin")
                                   ("Version" ,@"2015-12-10"))
@@ -5341,7 +5580,10 @@
                        'make-terminate-provisioned-product-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TerminateProvisionedProduct")
                                   ("Version" ,@"2015-12-10"))
@@ -5359,7 +5601,10 @@
                       (common-lisp:apply 'make-update-constraint-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateConstraint")
                                   ("Version" ,@"2015-12-10"))
@@ -5380,7 +5625,10 @@
                       (common-lisp:apply 'make-update-portfolio-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdatePortfolio")
                                   ("Version" ,@"2015-12-10"))
@@ -5403,7 +5651,10 @@
                       (common-lisp:apply 'make-update-product-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateProduct")
                                   ("Version" ,@"2015-12-10"))
@@ -5426,7 +5677,10 @@
                       (common-lisp:apply 'make-update-provisioned-product-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateProvisionedProduct")
                                   ("Version" ,@"2015-12-10"))
@@ -5448,7 +5702,10 @@
                        'make-update-provisioning-artifact-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateProvisioningArtifact")
                                   ("Version" ,@"2015-12-10"))
@@ -5466,7 +5723,10 @@
                       (common-lisp:apply 'make-update-tag-option-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "servicecatalog" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "servicecatalog")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTagOption")
                                   ("Version" ,@"2015-12-10"))

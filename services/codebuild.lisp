@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/codebuild)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (account-limit-exceeded-exception (:copier common-lisp:nil)))
@@ -23,8 +24,8 @@
 (common-lisp:deftype artifacts-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (batch-get-builds-input (:copier common-lisp:nil))
-   (ids (common-lisp:error ":ids is required") :type
-    (common-lisp:or build-ids common-lisp:null)))
+   (ids (common-lisp:error #A((16) common-lisp:base-char . ":ids is required"))
+    :type (common-lisp:or build-ids common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-get-builds-input 'make-batch-get-builds-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -61,8 +62,9 @@
                                                 'builds-not-found))))))
 (common-lisp:progn
  (common-lisp:defstruct (batch-get-projects-input (:copier common-lisp:nil))
-   (names (common-lisp:error ":names is required") :type
-    (common-lisp:or project-names common-lisp:null)))
+   (names
+    (common-lisp:error #A((18) common-lisp:base-char . ":names is required"))
+    :type (common-lisp:or project-names common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-get-projects-input 'make-batch-get-projects-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -311,16 +313,22 @@
 (common-lisp:deftype compute-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (create-project-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or project-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or project-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or project-description common-lisp:null))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or project-source common-lisp:null))
-   (artifacts (common-lisp:error ":artifacts is required") :type
-    (common-lisp:or project-artifacts common-lisp:null))
-   (environment (common-lisp:error ":environment is required") :type
-    (common-lisp:or project-environment common-lisp:null))
+   (source
+    (common-lisp:error #A((19) common-lisp:base-char . ":source is required"))
+    :type (common-lisp:or project-source common-lisp:null))
+   (artifacts
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":artifacts is required"))
+    :type (common-lisp:or project-artifacts common-lisp:null))
+   (environment
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":environment is required"))
+    :type (common-lisp:or project-environment common-lisp:null))
    (service-role common-lisp:nil :type
     (common-lisp:or non-empty-string common-lisp:null))
    (timeout-in-minutes common-lisp:nil :type
@@ -395,8 +403,9 @@
                                                 'project))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-project-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-project-input 'make-delete-project-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -505,10 +514,12 @@
 (common-lisp:deftype environment-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (environment-variable (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or non-empty-string common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'environment-variable 'make-environment-variable))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -546,8 +557,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-builds-for-project-input (:copier common-lisp:nil))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or non-empty-string common-lisp:null))
+   (project-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":projectname is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null))
    (sort-order common-lisp:nil :type
     (common-lisp:or sort-order-type common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -853,8 +866,9 @@
                                                 'last-modified))))))
 (common-lisp:progn
  (common-lisp:defstruct (project-artifacts (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or artifacts-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or artifacts-type common-lisp:null))
    (location common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (path common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (namespace-type common-lisp:nil :type
@@ -900,12 +914,16 @@
 (common-lisp:deftype project-description () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (project-environment (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or environment-type common-lisp:null))
-   (image (common-lisp:error ":image is required") :type
-    (common-lisp:or non-empty-string common-lisp:null))
-   (compute-type (common-lisp:error ":computetype is required") :type
-    (common-lisp:or compute-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or environment-type common-lisp:null))
+   (image
+    (common-lisp:error #A((18) common-lisp:base-char . ":image is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null))
+   (compute-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":computetype is required"))
+    :type (common-lisp:or compute-type common-lisp:null))
    (environment-variables common-lisp:nil :type
     (common-lisp:or environment-variables common-lisp:null))
    (privileged-mode common-lisp:nil :type
@@ -952,8 +970,9 @@
 (common-lisp:deftype project-sort-by-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (project-source (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or source-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or source-type common-lisp:null))
    (location common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (buildspec common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (auth common-lisp:nil :type (common-lisp:or source-auth common-lisp:null)))
@@ -1013,8 +1032,9 @@
 (common-lisp:deftype sort-order-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (source-auth (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or source-auth-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or source-auth-type common-lisp:null))
    (resource common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'source-auth 'make-source-auth))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1034,8 +1054,10 @@
 (common-lisp:deftype source-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (start-build-input (:copier common-lisp:nil))
-   (project-name (common-lisp:error ":projectname is required") :type
-    (common-lisp:or non-empty-string common-lisp:null))
+   (project-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":projectname is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null))
    (source-version common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (artifacts-override common-lisp:nil :type
@@ -1097,8 +1119,8 @@
 (common-lisp:deftype status-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (stop-build-input (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-build-input 'make-stop-build-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1152,8 +1174,9 @@
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (update-project-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or non-empty-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or project-description common-lisp:null))
    (source common-lisp:nil :type
@@ -1248,7 +1271,9 @@
                       (common-lisp:apply 'make-batch-get-builds-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codebuild" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "codebuild")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetBuilds")
                                   ("Version" ,@"2016-10-06"))
@@ -1266,7 +1291,9 @@
                       (common-lisp:apply 'make-batch-get-projects-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codebuild" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "codebuild")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetProjects")
                                   ("Version" ,@"2016-10-06"))
@@ -1288,7 +1315,9 @@
                       (common-lisp:apply 'make-create-project-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codebuild" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "codebuild")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateProject")
                                   ("Version" ,@"2016-10-06"))
@@ -1306,7 +1335,9 @@
                       (common-lisp:apply 'make-delete-project-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codebuild" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "codebuild")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteProject")
                                   ("Version" ,@"2016-10-06"))
@@ -1324,7 +1355,9 @@
                       (common-lisp:apply 'make-list-builds-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codebuild" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "codebuild")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListBuilds")
                                   ("Version" ,@"2016-10-06"))
@@ -1343,7 +1376,9 @@
                       (common-lisp:apply 'make-list-builds-for-project-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codebuild" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "codebuild")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListBuildsForProject")
                                   ("Version" ,@"2016-10-06"))
@@ -1354,7 +1389,9 @@
 (common-lisp:progn
  (common-lisp:defun list-curated-environment-images ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "codebuild" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((9) common-lisp:base-char . "codebuild")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "ListCuratedEnvironmentImages"))
     "ListCuratedEnvironmentImagesOutput" common-lisp:nil))
@@ -1369,7 +1406,9 @@
                       (common-lisp:apply 'make-list-projects-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codebuild" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "codebuild")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListProjects")
                                   ("Version" ,@"2016-10-06"))
@@ -1392,7 +1431,9 @@
                       (common-lisp:apply 'make-start-build-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codebuild" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "codebuild")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartBuild")
                                   ("Version" ,@"2016-10-06"))
@@ -1410,7 +1451,9 @@
                       (common-lisp:apply 'make-stop-build-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codebuild" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "codebuild")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopBuild")
                                   ("Version" ,@"2016-10-06"))
@@ -1432,7 +1475,9 @@
                       (common-lisp:apply 'make-update-project-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codebuild" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "codebuild")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateProject")
                                   ("Version" ,@"2016-10-06"))

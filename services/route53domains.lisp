@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/route53domains)
+
 (common-lisp:deftype address-line () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (billing-record (:copier common-lisp:nil))
@@ -60,8 +61,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (check-domain-availability-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (idn-lang-code common-lisp:nil :type
     (common-lisp:or lang-code common-lisp:null)))
  (common-lisp:export
@@ -85,8 +88,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (check-domain-availability-response (:copier common-lisp:nil))
-   (availability (common-lisp:error ":availability is required") :type
-    (common-lisp:or domain-availability common-lisp:null)))
+   (availability
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":availability is required"))
+    :type (common-lisp:or domain-availability common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'check-domain-availability-response
                     'make-check-domain-availability-response))
@@ -209,10 +214,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-tags-for-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (tags-to-delete (common-lisp:error ":tags-to-delete is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (tags-to-delete
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":tags-to-delete is required"))
+    :type (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-tags-for-domain-request
                     'make-delete-tags-for-domain-request))
@@ -245,8 +254,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disable-domain-auto-renew-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-domain-auto-renew-request
                     'make-disable-domain-auto-renew-request))
@@ -274,8 +285,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disable-domain-transfer-lock-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-domain-transfer-lock-request
                     'make-disable-domain-transfer-lock-request))
@@ -292,8 +305,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disable-domain-transfer-lock-response (:copier common-lisp:nil))
-   (operation-id (common-lisp:error ":operation-id is required") :type
-    (common-lisp:or operation-id common-lisp:null)))
+   (operation-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":operation-id is required"))
+    :type (common-lisp:or operation-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-domain-transfer-lock-response
                     'make-disable-domain-transfer-lock-response))
@@ -366,8 +381,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (domain-summary (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (auto-renew common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
    (transfer-lock common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
@@ -423,8 +440,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (enable-domain-auto-renew-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-domain-auto-renew-request
                     'make-enable-domain-auto-renew-request))
@@ -452,8 +471,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (enable-domain-transfer-lock-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-domain-transfer-lock-request
                     'make-enable-domain-transfer-lock-request))
@@ -470,8 +491,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (enable-domain-transfer-lock-response (:copier common-lisp:nil))
-   (operation-id (common-lisp:error ":operation-id is required") :type
-    (common-lisp:or operation-id common-lisp:null)))
+   (operation-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":operation-id is required"))
+    :type (common-lisp:or operation-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-domain-transfer-lock-response
                     'make-enable-domain-transfer-lock-response))
@@ -488,10 +511,12 @@
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (extra-param (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or extra-param-name common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or extra-param-value common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or extra-param-name common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or extra-param-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'extra-param 'make-extra-param))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape extra-param))
@@ -562,8 +587,10 @@
                                                 'status))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-domain-detail-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-domain-detail-request
                     'make-get-domain-detail-request))
@@ -579,17 +606,27 @@
                                                 'domain-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-domain-detail-response (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (nameservers (common-lisp:error ":nameservers is required") :type
-    (common-lisp:or nameserver-list common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (nameservers
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":nameservers is required"))
+    :type (common-lisp:or nameserver-list common-lisp:null))
    (auto-renew common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (admin-contact (common-lisp:error ":admin-contact is required") :type
-    (common-lisp:or contact-detail common-lisp:null))
-   (registrant-contact (common-lisp:error ":registrant-contact is required")
+   (admin-contact
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":admin-contact is required"))
     :type (common-lisp:or contact-detail common-lisp:null))
-   (tech-contact (common-lisp:error ":tech-contact is required") :type
-    (common-lisp:or contact-detail common-lisp:null))
+   (registrant-contact
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":registrant-contact is required"))
+    :type (common-lisp:or contact-detail common-lisp:null))
+   (tech-contact
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":tech-contact is required"))
+    :type (common-lisp:or contact-detail common-lisp:null))
    (admin-privacy common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (registrant-privacy common-lisp:nil :type
@@ -734,12 +771,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-domain-suggestions-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (suggestion-count (common-lisp:error ":suggestion-count is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (only-available (common-lisp:error ":only-available is required") :type
-    (common-lisp:or boolean common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (suggestion-count
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":suggestion-count is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (only-available
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":only-available is required"))
+    :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-domain-suggestions-request
                     'make-get-domain-suggestions-request))
@@ -784,8 +827,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-operation-detail-request (:copier common-lisp:nil))
-   (operation-id (common-lisp:error ":operation-id is required") :type
-    (common-lisp:or operation-id common-lisp:null)))
+   (operation-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":operation-id is required"))
+    :type (common-lisp:or operation-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-operation-detail-request
                     'make-get-operation-detail-request))
@@ -899,8 +944,9 @@
                                                 'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-domains-response (:copier common-lisp:nil))
-   (domains (common-lisp:error ":domains is required") :type
-    (common-lisp:or domain-summary-list common-lisp:null))
+   (domains
+    (common-lisp:error #A((20) common-lisp:base-char . ":domains is required"))
+    :type (common-lisp:or domain-summary-list common-lisp:null))
    (next-page-marker common-lisp:nil :type
     (common-lisp:or page-marker common-lisp:null)))
  (common-lisp:export
@@ -944,8 +990,10 @@
                                                 'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-operations-response (:copier common-lisp:nil))
-   (operations (common-lisp:error ":operations is required") :type
-    (common-lisp:or operation-summary-list common-lisp:null))
+   (operations
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":operations is required"))
+    :type (common-lisp:or operation-summary-list common-lisp:null))
    (next-page-marker common-lisp:nil :type
     (common-lisp:or page-marker common-lisp:null)))
  (common-lisp:export
@@ -968,8 +1016,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-domain-request
                     'make-list-tags-for-domain-request))
@@ -986,8 +1036,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-domain-response (:copier common-lisp:nil))
-   (tag-list (common-lisp:error ":tag-list is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (tag-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-list is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-domain-response
                     'make-list-tags-for-domain-response))
@@ -1003,8 +1055,9 @@
                                                 'tag-list))))))
 (common-lisp:progn
  (common-lisp:defstruct (nameserver (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or host-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or host-name common-lisp:null))
    (glue-ips common-lisp:nil :type
     (common-lisp:or glue-ip-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'nameserver 'make-nameserver))
@@ -1049,14 +1102,20 @@
 (common-lisp:deftype operation-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (operation-summary (:copier common-lisp:nil))
-   (operation-id (common-lisp:error ":operation-id is required") :type
-    (common-lisp:or operation-id common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or operation-status common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or operation-type common-lisp:null))
-   (submitted-date (common-lisp:error ":submitted-date is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (operation-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":operation-id is required"))
+    :type (common-lisp:or operation-id common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or operation-status common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or operation-type common-lisp:null))
+   (submitted-date
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":submitted-date is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'operation-summary 'make-operation-summary))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1097,19 +1156,29 @@
 (common-lisp:deftype reachability-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (register-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (idn-lang-code common-lisp:nil :type
     (common-lisp:or lang-code common-lisp:null))
-   (duration-in-years (common-lisp:error ":duration-in-years is required")
+   (duration-in-years
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":duration-in-years is required"))
     :type (common-lisp:or duration-in-years common-lisp:null))
    (auto-renew common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (admin-contact (common-lisp:error ":admin-contact is required") :type
-    (common-lisp:or contact-detail common-lisp:null))
-   (registrant-contact (common-lisp:error ":registrant-contact is required")
+   (admin-contact
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":admin-contact is required"))
     :type (common-lisp:or contact-detail common-lisp:null))
-   (tech-contact (common-lisp:error ":tech-contact is required") :type
-    (common-lisp:or contact-detail common-lisp:null))
+   (registrant-contact
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":registrant-contact is required"))
+    :type (common-lisp:or contact-detail common-lisp:null))
+   (tech-contact
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":tech-contact is required"))
+    :type (common-lisp:or contact-detail common-lisp:null))
    (privacy-protect-admin-contact common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (privacy-protect-registrant-contact common-lisp:nil :type
@@ -1175,8 +1244,10 @@
                                                 'privacy-protect-tech-contact))))))
 (common-lisp:progn
  (common-lisp:defstruct (register-domain-response (:copier common-lisp:nil))
-   (operation-id (common-lisp:error ":operation-id is required") :type
-    (common-lisp:or operation-id common-lisp:null)))
+   (operation-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":operation-id is required"))
+    :type (common-lisp:or operation-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-domain-response 'make-register-domain-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1195,11 +1266,15 @@
 (common-lisp:deftype registry-domain-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (renew-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (duration-in-years common-lisp:nil :type
     (common-lisp:or duration-in-years common-lisp:null))
-   (current-expiry-year (common-lisp:error ":current-expiry-year is required")
+   (current-expiry-year
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":current-expiry-year is required"))
     :type (common-lisp:or current-expiry-year common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'renew-domain-request 'make-renew-domain-request))
@@ -1223,8 +1298,10 @@
                                                 'current-expiry-year))))))
 (common-lisp:progn
  (common-lisp:defstruct (renew-domain-response (:copier common-lisp:nil))
-   (operation-id (common-lisp:error ":operation-id is required") :type
-    (common-lisp:or operation-id common-lisp:null)))
+   (operation-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":operation-id is required"))
+    :type (common-lisp:or operation-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'renew-domain-response 'make-renew-domain-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1291,8 +1368,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (retrieve-domain-auth-code-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'retrieve-domain-auth-code-request
                     'make-retrieve-domain-auth-code-request))
@@ -1309,8 +1388,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (retrieve-domain-auth-code-response (:copier common-lisp:nil))
-   (auth-code (common-lisp:error ":auth-code is required") :type
-    (common-lisp:or domain-auth-code common-lisp:null)))
+   (auth-code
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":auth-code is required"))
+    :type (common-lisp:or domain-auth-code common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'retrieve-domain-auth-code-response
                     'make-retrieve-domain-auth-code-response))
@@ -1377,23 +1458,33 @@
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (transfer-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (idn-lang-code common-lisp:nil :type
     (common-lisp:or lang-code common-lisp:null))
-   (duration-in-years (common-lisp:error ":duration-in-years is required")
+   (duration-in-years
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":duration-in-years is required"))
     :type (common-lisp:or duration-in-years common-lisp:null))
    (nameservers common-lisp:nil :type
     (common-lisp:or nameserver-list common-lisp:null))
    (auth-code common-lisp:nil :type
     (common-lisp:or domain-auth-code common-lisp:null))
    (auto-renew common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
-   (admin-contact (common-lisp:error ":admin-contact is required") :type
-    (common-lisp:or contact-detail common-lisp:null))
-   (registrant-contact (common-lisp:error ":registrant-contact is required")
+   (admin-contact
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":admin-contact is required"))
     :type (common-lisp:or contact-detail common-lisp:null))
-   (tech-contact (common-lisp:error ":tech-contact is required") :type
-    (common-lisp:or contact-detail common-lisp:null))
+   (registrant-contact
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":registrant-contact is required"))
+    :type (common-lisp:or contact-detail common-lisp:null))
+   (tech-contact
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":tech-contact is required"))
+    :type (common-lisp:or contact-detail common-lisp:null))
    (privacy-protect-admin-contact common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (privacy-protect-registrant-contact common-lisp:nil :type
@@ -1469,8 +1560,10 @@
                                                 'privacy-protect-tech-contact))))))
 (common-lisp:progn
  (common-lisp:defstruct (transfer-domain-response (:copier common-lisp:nil))
-   (operation-id (common-lisp:error ":operation-id is required") :type
-    (common-lisp:or operation-id common-lisp:null)))
+   (operation-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":operation-id is required"))
+    :type (common-lisp:or operation-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'transfer-domain-response 'make-transfer-domain-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1499,8 +1592,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-domain-contact-privacy-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (admin-privacy common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (registrant-privacy common-lisp:nil :type
@@ -1538,8 +1633,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-domain-contact-privacy-response (:copier common-lisp:nil))
-   (operation-id (common-lisp:error ":operation-id is required") :type
-    (common-lisp:or operation-id common-lisp:null)))
+   (operation-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":operation-id is required"))
+    :type (common-lisp:or operation-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-domain-contact-privacy-response
                     'make-update-domain-contact-privacy-response))
@@ -1556,8 +1653,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-domain-contact-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (admin-contact common-lisp:nil :type
     (common-lisp:or contact-detail common-lisp:null))
    (registrant-contact common-lisp:nil :type
@@ -1595,8 +1694,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-domain-contact-response (:copier common-lisp:nil))
-   (operation-id (common-lisp:error ":operation-id is required") :type
-    (common-lisp:or operation-id common-lisp:null)))
+   (operation-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":operation-id is required"))
+    :type (common-lisp:or operation-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-domain-contact-response
                     'make-update-domain-contact-response))
@@ -1613,12 +1714,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-domain-nameservers-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (fiauth-key common-lisp:nil :type
     (common-lisp:or fiauth-key common-lisp:null))
-   (nameservers (common-lisp:error ":nameservers is required") :type
-    (common-lisp:or nameserver-list common-lisp:null)))
+   (nameservers
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":nameservers is required"))
+    :type (common-lisp:or nameserver-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-domain-nameservers-request
                     'make-update-domain-nameservers-request))
@@ -1645,8 +1750,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-domain-nameservers-response (:copier common-lisp:nil))
-   (operation-id (common-lisp:error ":operation-id is required") :type
-    (common-lisp:or operation-id common-lisp:null)))
+   (operation-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":operation-id is required"))
+    :type (common-lisp:or operation-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-domain-nameservers-response
                     'make-update-domain-nameservers-response))
@@ -1663,8 +1770,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-tags-for-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (tags-to-update common-lisp:nil :type
     (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
@@ -1763,7 +1872,10 @@
                        'make-check-domain-availability-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CheckDomainAvailability")
                                   ("Version" ,@"2014-05-15"))
@@ -1781,7 +1893,10 @@
                       (common-lisp:apply 'make-delete-tags-for-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTagsForDomain")
                                   ("Version" ,@"2014-05-15"))
@@ -1800,7 +1915,10 @@
                        'make-disable-domain-auto-renew-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableDomainAutoRenew")
                                   ("Version" ,@"2014-05-15"))
@@ -1819,7 +1937,10 @@
                        'make-disable-domain-transfer-lock-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableDomainTransferLock")
                                   ("Version" ,@"2014-05-15"))
@@ -1837,7 +1958,10 @@
                       (common-lisp:apply 'make-enable-domain-auto-renew-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableDomainAutoRenew")
                                   ("Version" ,@"2014-05-15"))
@@ -1856,7 +1980,10 @@
                        'make-enable-domain-transfer-lock-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableDomainTransferLock")
                                   ("Version" ,@"2014-05-15"))
@@ -1875,7 +2002,10 @@
                        'make-get-contact-reachability-status-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetContactReachabilityStatus")
                                   ("Version" ,@"2014-05-15"))
@@ -1893,7 +2023,10 @@
                       (common-lisp:apply 'make-get-domain-detail-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDomainDetail")
                                   ("Version" ,@"2014-05-15"))
@@ -1913,7 +2046,10 @@
                       (common-lisp:apply 'make-get-domain-suggestions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDomainSuggestions")
                                   ("Version" ,@"2014-05-15"))
@@ -1931,7 +2067,10 @@
                       (common-lisp:apply 'make-get-operation-detail-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetOperationDetail")
                                   ("Version" ,@"2014-05-15"))
@@ -1949,7 +2088,10 @@
                       (common-lisp:apply 'make-list-domains-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDomains")
                                   ("Version" ,@"2014-05-15"))
@@ -1967,7 +2109,10 @@
                       (common-lisp:apply 'make-list-operations-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListOperations")
                                   ("Version" ,@"2014-05-15"))
@@ -1985,7 +2130,10 @@
                       (common-lisp:apply 'make-list-tags-for-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForDomain")
                                   ("Version" ,@"2014-05-15"))
@@ -2012,7 +2160,10 @@
                       (common-lisp:apply 'make-register-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterDomain")
                                   ("Version" ,@"2014-05-15"))
@@ -2032,7 +2183,10 @@
                       (common-lisp:apply 'make-renew-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RenewDomain")
                                   ("Version" ,@"2014-05-15"))
@@ -2051,7 +2205,10 @@
                        'make-resend-contact-reachability-email-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResendContactReachabilityEmail")
                                   ("Version" ,@"2014-05-15"))
@@ -2070,7 +2227,10 @@
                        'make-retrieve-domain-auth-code-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RetrieveDomainAuthCode")
                                   ("Version" ,@"2014-05-15"))
@@ -2097,7 +2257,10 @@
                       (common-lisp:apply 'make-transfer-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TransferDomain")
                                   ("Version" ,@"2014-05-15"))
@@ -2118,7 +2281,10 @@
                       (common-lisp:apply 'make-update-domain-contact-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDomainContact")
                                   ("Version" ,@"2014-05-15"))
@@ -2140,7 +2306,10 @@
                        'make-update-domain-contact-privacy-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDomainContactPrivacy")
                                   ("Version" ,@"2014-05-15"))
@@ -2160,7 +2329,10 @@
                        'make-update-domain-nameservers-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDomainNameservers")
                                   ("Version" ,@"2014-05-15"))
@@ -2178,7 +2350,10 @@
                       (common-lisp:apply 'make-update-tags-for-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTagsForDomain")
                                   ("Version" ,@"2014-05-15"))
@@ -2196,7 +2371,10 @@
                       (common-lisp:apply 'make-view-billing-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "route53domains" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "route53domains")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ViewBilling")
                                   ("Version" ,@"2014-05-15"))

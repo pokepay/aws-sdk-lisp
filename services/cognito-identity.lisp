@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/cognito-identity)
+
 (common-lisp:deftype arnstring () 'common-lisp:string)
 (common-lisp:deftype access-key-string () 'common-lisp:string)
 (common-lisp:deftype account-id () 'common-lisp:string)
@@ -76,11 +77,15 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-identity-pool-input (:copier common-lisp:nil))
-   (identity-pool-name (common-lisp:error ":identity-pool-name is required")
+   (identity-pool-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":identity-pool-name is required"))
     :type (common-lisp:or identity-pool-name common-lisp:null))
    (allow-unauthenticated-identities
-    (common-lisp:error ":allow-unauthenticated-identities is required") :type
-    (common-lisp:or identity-pool-unauthenticated common-lisp:null))
+    (common-lisp:error
+     #A((45) common-lisp:base-char
+        . ":allow-unauthenticated-identities is required"))
+    :type (common-lisp:or identity-pool-unauthenticated common-lisp:null))
    (supported-login-providers common-lisp:nil :type
     (common-lisp:or identity-providers common-lisp:null))
    (developer-provider-name common-lisp:nil :type
@@ -172,8 +177,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (delete-identities-input (:copier common-lisp:nil))
    (identity-ids-to-delete
-    (common-lisp:error ":identity-ids-to-delete is required") :type
-    (common-lisp:or identity-id-list common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":identity-ids-to-delete is required"))
+    :type (common-lisp:or identity-id-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-identities-input 'make-delete-identities-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -205,8 +211,10 @@
                                                 'unprocessed-identity-ids))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-identity-pool-input (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-identity-pool-input
                     'make-delete-identity-pool-input))
@@ -222,8 +230,10 @@
                                                 'identity-pool-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-identity-input (:copier common-lisp:nil))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null)))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-identity-input 'make-describe-identity-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -239,8 +249,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-identity-pool-input (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-identity-pool-input
                     'make-describe-identity-pool-input))
@@ -302,8 +314,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-credentials-for-identity-input (:copier common-lisp:nil))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null))
    (logins common-lisp:nil :type (common-lisp:or logins-map common-lisp:null))
    (custom-role-arn common-lisp:nil :type
     (common-lisp:or arnstring common-lisp:null)))
@@ -359,8 +373,10 @@
  (common-lisp:defstruct (get-id-input (:copier common-lisp:nil))
    (account-id common-lisp:nil :type
     (common-lisp:or account-id common-lisp:null))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
    (logins common-lisp:nil :type (common-lisp:or logins-map common-lisp:null)))
  (common-lisp:export (common-lisp:list 'get-id-input 'make-get-id-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -397,8 +413,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-identity-pool-roles-input (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null)))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-pool-roles-input
                     'make-get-identity-pool-roles-input))
@@ -446,12 +464,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-open-id-token-for-developer-identity-input (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
    (identity-id common-lisp:nil :type
     (common-lisp:or identity-id common-lisp:null))
-   (logins (common-lisp:error ":logins is required") :type
-    (common-lisp:or logins-map common-lisp:null))
+   (logins
+    (common-lisp:error #A((19) common-lisp:base-char . ":logins is required"))
+    :type (common-lisp:or logins-map common-lisp:null))
    (token-duration common-lisp:nil :type
     (common-lisp:or token-duration common-lisp:null)))
  (common-lisp:export
@@ -509,8 +530,10 @@
                                                 'token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-open-id-token-input (:copier common-lisp:nil))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null))
    (logins common-lisp:nil :type (common-lisp:or logins-map common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-open-id-token-input 'make-get-open-id-token-input))
@@ -606,13 +629,19 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (identity-pool (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (identity-pool-name (common-lisp:error ":identity-pool-name is required")
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-pool-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":identity-pool-name is required"))
     :type (common-lisp:or identity-pool-name common-lisp:null))
    (allow-unauthenticated-identities
-    (common-lisp:error ":allow-unauthenticated-identities is required") :type
-    (common-lisp:or identity-pool-unauthenticated common-lisp:null))
+    (common-lisp:error
+     #A((45) common-lisp:base-char
+        . ":allow-unauthenticated-identities is required"))
+    :type (common-lisp:or identity-pool-unauthenticated common-lisp:null))
    (supported-login-providers common-lisp:nil :type
     (common-lisp:or identity-providers common-lisp:null))
    (developer-provider-name common-lisp:nil :type
@@ -778,10 +807,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-identities-input (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (max-results (common-lisp:error ":max-results is required") :type
-    (common-lisp:or query-limit common-lisp:null))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
+   (max-results
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":max-results is required"))
+    :type (common-lisp:or query-limit common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-key common-lisp:null))
    (hide-disabled common-lisp:nil :type
@@ -845,8 +878,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-identity-pools-input (:copier common-lisp:nil))
-   (max-results (common-lisp:error ":max-results is required") :type
-    (common-lisp:or query-limit common-lisp:null))
+   (max-results
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":max-results is required"))
+    :type (common-lisp:or query-limit common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-key common-lisp:null)))
  (common-lisp:export
@@ -909,8 +944,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (lookup-developer-identity-input (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
    (identity-id common-lisp:nil :type
     (common-lisp:or identity-id common-lisp:null))
    (developer-user-identifier common-lisp:nil :type
@@ -986,14 +1023,20 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (mapping-rule (:copier common-lisp:nil))
-   (claim (common-lisp:error ":claim is required") :type
-    (common-lisp:or claim-name common-lisp:null))
-   (match-type (common-lisp:error ":match-type is required") :type
-    (common-lisp:or mapping-rule-match-type common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or claim-value common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or arnstring common-lisp:null)))
+   (claim
+    (common-lisp:error #A((18) common-lisp:base-char . ":claim is required"))
+    :type (common-lisp:or claim-name common-lisp:null))
+   (match-type
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":match-type is required"))
+    :type (common-lisp:or mapping-rule-match-type common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or claim-value common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or arnstring common-lisp:null)))
  (common-lisp:export (common-lisp:list 'mapping-rule 'make-mapping-rule))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape mapping-rule))
@@ -1031,16 +1074,22 @@
  (common-lisp:defstruct
      (merge-developer-identities-input (:copier common-lisp:nil))
    (source-user-identifier
-    (common-lisp:error ":source-user-identifier is required") :type
-    (common-lisp:or developer-user-identifier common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":source-user-identifier is required"))
+    :type (common-lisp:or developer-user-identifier common-lisp:null))
    (destination-user-identifier
-    (common-lisp:error ":destination-user-identifier is required") :type
-    (common-lisp:or developer-user-identifier common-lisp:null))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":destination-user-identifier is required"))
+    :type (common-lisp:or developer-user-identifier common-lisp:null))
    (developer-provider-name
-    (common-lisp:error ":developer-provider-name is required") :type
-    (common-lisp:or developer-provider-name common-lisp:null))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":developer-provider-name is required"))
+    :type (common-lisp:or developer-provider-name common-lisp:null))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'merge-developer-identities-input
                     'make-merge-developer-identities-input))
@@ -1148,8 +1197,9 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (role-mapping (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or role-mapping-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or role-mapping-type common-lisp:null))
    (ambiguous-role-resolution common-lisp:nil :type
     (common-lisp:or ambiguous-role-resolution-type common-lisp:null))
    (rules-configuration common-lisp:nil :type
@@ -1189,8 +1239,9 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (rules-configuration-type (:copier common-lisp:nil))
-   (rules (common-lisp:error ":rules is required") :type
-    (common-lisp:or mapping-rules-list common-lisp:null)))
+   (rules
+    (common-lisp:error #A((18) common-lisp:base-char . ":rules is required"))
+    :type (common-lisp:or mapping-rules-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'rules-configuration-type 'make-rules-configuration-type))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1216,10 +1267,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-identity-pool-roles-input (:copier common-lisp:nil))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
-   (roles (common-lisp:error ":roles is required") :type
-    (common-lisp:or roles-map common-lisp:null))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
+   (roles
+    (common-lisp:error #A((18) common-lisp:base-char . ":roles is required"))
+    :type (common-lisp:or roles-map common-lisp:null))
    (role-mappings common-lisp:nil :type
     (common-lisp:or role-mapping-map common-lisp:null)))
  (common-lisp:export
@@ -1266,16 +1320,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (unlink-developer-identity-input (:copier common-lisp:nil))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
-   (identity-pool-id (common-lisp:error ":identity-pool-id is required") :type
-    (common-lisp:or identity-pool-id common-lisp:null))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null))
+   (identity-pool-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":identity-pool-id is required"))
+    :type (common-lisp:or identity-pool-id common-lisp:null))
    (developer-provider-name
-    (common-lisp:error ":developer-provider-name is required") :type
-    (common-lisp:or developer-provider-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":developer-provider-name is required"))
+    :type (common-lisp:or developer-provider-name common-lisp:null))
    (developer-user-identifier
-    (common-lisp:error ":developer-user-identifier is required") :type
-    (common-lisp:or developer-user-identifier common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":developer-user-identifier is required"))
+    :type (common-lisp:or developer-user-identifier common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'unlink-developer-identity-input
                     'make-unlink-developer-identity-input))
@@ -1306,12 +1366,17 @@
                                                 'developer-user-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (unlink-identity-input (:copier common-lisp:nil))
-   (identity-id (common-lisp:error ":identity-id is required") :type
-    (common-lisp:or identity-id common-lisp:null))
-   (logins (common-lisp:error ":logins is required") :type
-    (common-lisp:or logins-map common-lisp:null))
-   (logins-to-remove (common-lisp:error ":logins-to-remove is required") :type
-    (common-lisp:or logins-list common-lisp:null)))
+   (identity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":identity-id is required"))
+    :type (common-lisp:or identity-id common-lisp:null))
+   (logins
+    (common-lisp:error #A((19) common-lisp:base-char . ":logins is required"))
+    :type (common-lisp:or logins-map common-lisp:null))
+   (logins-to-remove
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":logins-to-remove is required"))
+    :type (common-lisp:or logins-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'unlink-identity-input 'make-unlink-identity-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1382,8 +1447,10 @@
                       (common-lisp:apply 'make-create-identity-pool-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateIdentityPool")
                                   ("Version" ,@"2014-06-30"))
@@ -1401,8 +1468,10 @@
                       (common-lisp:apply 'make-delete-identities-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIdentities")
                                   ("Version" ,@"2014-06-30"))
@@ -1420,8 +1489,10 @@
                       (common-lisp:apply 'make-delete-identity-pool-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIdentityPool")
                                   ("Version" ,@"2014-06-30"))
@@ -1439,8 +1510,10 @@
                       (common-lisp:apply 'make-describe-identity-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeIdentity")
                                   ("Version" ,@"2014-06-30"))
@@ -1458,8 +1531,10 @@
                       (common-lisp:apply 'make-describe-identity-pool-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeIdentityPool")
                                   ("Version" ,@"2014-06-30"))
@@ -1479,8 +1554,10 @@
                        'make-get-credentials-for-identity-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCredentialsForIdentity")
                                   ("Version" ,@"2014-06-30"))
@@ -1499,8 +1576,10 @@
                       (common-lisp:apply 'make-get-id-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetId")
                                   ("Version" ,@"2014-06-30"))
@@ -1518,8 +1597,10 @@
                       (common-lisp:apply 'make-get-identity-pool-roles-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetIdentityPoolRoles")
                                   ("Version" ,@"2014-06-30"))
@@ -1537,8 +1618,10 @@
                       (common-lisp:apply 'make-get-open-id-token-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetOpenIdToken")
                                   ("Version" ,@"2014-06-30"))
@@ -1559,8 +1642,10 @@
                        'make-get-open-id-token-for-developer-identity-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetOpenIdTokenForDeveloperIdentity")
@@ -1582,8 +1667,10 @@
                       (common-lisp:apply 'make-list-identities-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListIdentities")
                                   ("Version" ,@"2014-06-30"))
@@ -1601,8 +1688,10 @@
                       (common-lisp:apply 'make-list-identity-pools-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListIdentityPools")
                                   ("Version" ,@"2014-06-30"))
@@ -1623,8 +1712,10 @@
                       (common-lisp:apply 'make-lookup-developer-identity-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"LookupDeveloperIdentity")
                                   ("Version" ,@"2014-06-30"))
@@ -1646,8 +1737,10 @@
                       (common-lisp:apply 'make-merge-developer-identities-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"MergeDeveloperIdentities")
                                   ("Version" ,@"2014-06-30"))
@@ -1666,8 +1759,10 @@
                       (common-lisp:apply 'make-set-identity-pool-roles-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetIdentityPoolRoles")
                                   ("Version" ,@"2014-06-30"))
@@ -1688,8 +1783,10 @@
                       (common-lisp:apply 'make-unlink-developer-identity-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UnlinkDeveloperIdentity")
                                   ("Version" ,@"2014-06-30"))
@@ -1708,8 +1805,10 @@
                       (common-lisp:apply 'make-unlink-identity-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UnlinkIdentity")
                                   ("Version" ,@"2014-06-30"))
@@ -1734,8 +1833,10 @@
                       (common-lisp:apply 'make-identity-pool
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-identity" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "cognito-identity")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateIdentityPool")
                                   ("Version" ,@"2014-06-30"))

@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/autoscaling)
+
 (common-lisp:progn
  (common-lisp:deftype activities () '(trivial-types:proper-list activity))
  (common-lisp:defun |make-activities|
@@ -16,8 +17,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (activities-type (:copier common-lisp:nil))
-   (activities (common-lisp:error ":activities is required") :type
-    (common-lisp:or activities common-lisp:null))
+   (activities
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":activities is required"))
+    :type (common-lisp:or activities common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or xml-string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'activities-type 'make-activities-type))
@@ -36,21 +39,29 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (activity (:copier common-lisp:nil))
-   (activity-id (common-lisp:error ":activity-id is required") :type
-    (common-lisp:or xml-string common-lisp:null))
+   (activity-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":activity-id is required"))
+    :type (common-lisp:or xml-string common-lisp:null))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or xml-string common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or xml-string-max-len1023 common-lisp:null))
-   (start-time (common-lisp:error ":start-time is required") :type
-    (common-lisp:or timestamp-type common-lisp:null))
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type (common-lisp:or xml-string-max-len1023 common-lisp:null))
+   (start-time
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":start-time is required"))
+    :type (common-lisp:or timestamp-type common-lisp:null))
    (end-time common-lisp:nil :type
     (common-lisp:or timestamp-type common-lisp:null))
-   (status-code (common-lisp:error ":status-code is required") :type
-    (common-lisp:or scaling-activity-status-code common-lisp:null))
+   (status-code
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":status-code is required"))
+    :type (common-lisp:or scaling-activity-status-code common-lisp:null))
    (status-message common-lisp:nil :type
     (common-lisp:or xml-string-max-len255 common-lisp:null))
    (progress common-lisp:nil :type (common-lisp:or progress common-lisp:null))
@@ -198,8 +209,9 @@
    (instance-ids common-lisp:nil :type
     (common-lisp:or instance-ids common-lisp:null))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-instances-query 'make-attach-instances-query))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -233,9 +245,12 @@
  (common-lisp:defstruct
      (attach-load-balancer-target-groups-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (target-group-arns (common-lisp:error ":target-group-arns is required")
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (target-group-arns
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":target-group-arns is required"))
     :type (common-lisp:or target-group-arns common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-load-balancer-target-groups-type
@@ -269,9 +284,12 @@
 (common-lisp:progn
  (common-lisp:defstruct (attach-load-balancers-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (load-balancer-names (common-lisp:error ":load-balancer-names is required")
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (load-balancer-names
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":load-balancer-names is required"))
     :type (common-lisp:or load-balancer-names common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-load-balancers-type
@@ -294,34 +312,50 @@
 (common-lisp:progn
  (common-lisp:defstruct (auto-scaling-group (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null))
    (auto-scaling-group-arn common-lisp:nil :type
     (common-lisp:or resource-name common-lisp:null))
    (launch-configuration-name common-lisp:nil :type
     (common-lisp:or xml-string-max-len255 common-lisp:null))
-   (min-size (common-lisp:error ":min-size is required") :type
-    (common-lisp:or auto-scaling-group-min-size common-lisp:null))
-   (max-size (common-lisp:error ":max-size is required") :type
-    (common-lisp:or auto-scaling-group-max-size common-lisp:null))
-   (desired-capacity (common-lisp:error ":desired-capacity is required") :type
+   (min-size
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":min-size is required"))
+    :type (common-lisp:or auto-scaling-group-min-size common-lisp:null))
+   (max-size
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":max-size is required"))
+    :type (common-lisp:or auto-scaling-group-max-size common-lisp:null))
+   (desired-capacity
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":desired-capacity is required"))
+    :type
     (common-lisp:or auto-scaling-group-desired-capacity common-lisp:null))
-   (default-cooldown (common-lisp:error ":default-cooldown is required") :type
-    (common-lisp:or cooldown common-lisp:null))
-   (availability-zones (common-lisp:error ":availability-zones is required")
+   (default-cooldown
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":default-cooldown is required"))
+    :type (common-lisp:or cooldown common-lisp:null))
+   (availability-zones
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":availability-zones is required"))
     :type (common-lisp:or availability-zones common-lisp:null))
    (load-balancer-names common-lisp:nil :type
     (common-lisp:or load-balancer-names common-lisp:null))
    (target-group-arns common-lisp:nil :type
     (common-lisp:or target-group-arns common-lisp:null))
-   (health-check-type (common-lisp:error ":health-check-type is required")
+   (health-check-type
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":health-check-type is required"))
     :type (common-lisp:or xml-string-max-len32 common-lisp:null))
    (health-check-grace-period common-lisp:nil :type
     (common-lisp:or health-check-grace-period common-lisp:null))
    (instances common-lisp:nil :type
     (common-lisp:or instances common-lisp:null))
-   (created-time (common-lisp:error ":created-time is required") :type
-    (common-lisp:or timestamp-type common-lisp:null))
+   (created-time
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":created-time is required"))
+    :type (common-lisp:or timestamp-type common-lisp:null))
    (suspended-processes common-lisp:nil :type
     (common-lisp:or suspended-processes common-lisp:null))
    (placement-group common-lisp:nil :type
@@ -507,7 +541,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (auto-scaling-groups-type (:copier common-lisp:nil))
-   (auto-scaling-groups (common-lisp:error ":auto-scaling-groups is required")
+   (auto-scaling-groups
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":auto-scaling-groups is required"))
     :type (common-lisp:or auto-scaling-groups common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or xml-string common-lisp:null)))
@@ -531,23 +567,34 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (auto-scaling-instance-details (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or xml-string-max-len19 common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or xml-string-max-len19 common-lisp:null))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null))
-   (availability-zone (common-lisp:error ":availability-zone is required")
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
     :type (common-lisp:or xml-string-max-len255 common-lisp:null))
-   (lifecycle-state (common-lisp:error ":lifecycle-state is required") :type
-    (common-lisp:or xml-string-max-len32 common-lisp:null))
-   (health-status (common-lisp:error ":health-status is required") :type
-    (common-lisp:or xml-string-max-len32 common-lisp:null))
+   (availability-zone
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":availability-zone is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null))
+   (lifecycle-state
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":lifecycle-state is required"))
+    :type (common-lisp:or xml-string-max-len32 common-lisp:null))
+   (health-status
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":health-status is required"))
+    :type (common-lisp:or xml-string-max-len32 common-lisp:null))
    (launch-configuration-name
-    (common-lisp:error ":launch-configuration-name is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":launch-configuration-name is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null))
    (protected-from-scale-in
-    (common-lisp:error ":protected-from-scale-in is required") :type
-    (common-lisp:or instance-protected common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":protected-from-scale-in is required"))
+    :type (common-lisp:or instance-protected common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'auto-scaling-instance-details
                     'make-auto-scaling-instance-details))
@@ -650,8 +697,10 @@
  (common-lisp:defstruct (block-device-mapping (:copier common-lisp:nil))
    (virtual-name common-lisp:nil :type
     (common-lisp:or xml-string-max-len255 common-lisp:null))
-   (device-name (common-lisp:error ":device-name is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null))
+   (device-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":device-name is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null))
    (ebs common-lisp:nil :type (common-lisp:or ebs common-lisp:null))
    (no-device common-lisp:nil :type
     (common-lisp:or no-device common-lisp:null)))
@@ -710,16 +759,20 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (complete-lifecycle-action-type (:copier common-lisp:nil))
-   (lifecycle-hook-name (common-lisp:error ":lifecycle-hook-name is required")
+   (lifecycle-hook-name
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":lifecycle-hook-name is required"))
     :type (common-lisp:or ascii-string-max-len255 common-lisp:null))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (lifecycle-action-token common-lisp:nil :type
     (common-lisp:or lifecycle-action-token common-lisp:null))
    (lifecycle-action-result
-    (common-lisp:error ":lifecycle-action-result is required") :type
-    (common-lisp:or lifecycle-action-result common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":lifecycle-action-result is required"))
+    :type (common-lisp:or lifecycle-action-result common-lisp:null))
    (instance-id common-lisp:nil :type
     (common-lisp:or xml-string-max-len19 common-lisp:null)))
  (common-lisp:export
@@ -760,16 +813,21 @@
  (common-lisp:defstruct
      (create-auto-scaling-group-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null))
    (launch-configuration-name common-lisp:nil :type
     (common-lisp:or resource-name common-lisp:null))
    (instance-id common-lisp:nil :type
     (common-lisp:or xml-string-max-len19 common-lisp:null))
-   (min-size (common-lisp:error ":min-size is required") :type
-    (common-lisp:or auto-scaling-group-min-size common-lisp:null))
-   (max-size (common-lisp:error ":max-size is required") :type
-    (common-lisp:or auto-scaling-group-max-size common-lisp:null))
+   (min-size
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":min-size is required"))
+    :type (common-lisp:or auto-scaling-group-min-size common-lisp:null))
+   (max-size
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":max-size is required"))
+    :type (common-lisp:or auto-scaling-group-max-size common-lisp:null))
    (desired-capacity common-lisp:nil :type
     (common-lisp:or auto-scaling-group-desired-capacity common-lisp:null))
    (default-cooldown common-lisp:nil :type
@@ -890,8 +948,9 @@
  (common-lisp:defstruct
      (create-launch-configuration-type (:copier common-lisp:nil))
    (launch-configuration-name
-    (common-lisp:error ":launch-configuration-name is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":launch-configuration-name is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null))
    (image-id common-lisp:nil :type
     (common-lisp:or xml-string-max-len255 common-lisp:null))
    (key-name common-lisp:nil :type
@@ -1026,8 +1085,9 @@
                                                 'placement-tenancy))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-or-update-tags-type (:copier common-lisp:nil))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-or-update-tags-type
                     'make-create-or-update-tags-type))
@@ -1044,14 +1104,20 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (customized-metric-specification (:copier common-lisp:nil))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or metric-name common-lisp:null))
-   (namespace (common-lisp:error ":namespace is required") :type
-    (common-lisp:or metric-namespace common-lisp:null))
+   (metric-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metric-name is required"))
+    :type (common-lisp:or metric-name common-lisp:null))
+   (namespace
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":namespace is required"))
+    :type (common-lisp:or metric-namespace common-lisp:null))
    (dimensions common-lisp:nil :type
     (common-lisp:or metric-dimensions common-lisp:null))
-   (statistic (common-lisp:error ":statistic is required") :type
-    (common-lisp:or metric-statistic common-lisp:null))
+   (statistic
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":statistic is required"))
+    :type (common-lisp:or metric-statistic common-lisp:null))
    (unit common-lisp:nil :type (common-lisp:or metric-unit common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'customized-metric-specification
@@ -1090,8 +1156,9 @@
  (common-lisp:defstruct
      (delete-auto-scaling-group-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (force-delete common-lisp:nil :type
     (common-lisp:or force-delete common-lisp:null)))
  (common-lisp:export
@@ -1125,11 +1192,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-lifecycle-hook-type (:copier common-lisp:nil))
-   (lifecycle-hook-name (common-lisp:error ":lifecycle-hook-name is required")
+   (lifecycle-hook-name
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":lifecycle-hook-name is required"))
     :type (common-lisp:or ascii-string-max-len255 common-lisp:null))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-lifecycle-hook-type
                     'make-delete-lifecycle-hook-type))
@@ -1152,10 +1222,13 @@
  (common-lisp:defstruct
      (delete-notification-configuration-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (topic-arn (common-lisp:error ":topic-arn is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (topic-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":topic-arn is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-notification-configuration-type
                     'make-delete-notification-configuration-type))
@@ -1178,8 +1251,10 @@
  (common-lisp:defstruct (delete-policy-type (:copier common-lisp:nil))
    (auto-scaling-group-name common-lisp:nil :type
     (common-lisp:or resource-name common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-policy-type 'make-delete-policy-type))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1199,11 +1274,13 @@
  (common-lisp:defstruct
      (delete-scheduled-action-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (scheduled-action-name
-    (common-lisp:error ":scheduled-action-name is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":scheduled-action-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-scheduled-action-type
                     'make-delete-scheduled-action-type))
@@ -1224,8 +1301,9 @@
                                                 'scheduled-action-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-tags-type (:copier common-lisp:nil))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-tags-type 'make-delete-tags-type))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1384,8 +1462,9 @@
  (common-lisp:defstruct
      (describe-lifecycle-hooks-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (lifecycle-hook-names common-lisp:nil :type
     (common-lisp:or lifecycle-hook-names common-lisp:null)))
  (common-lisp:export
@@ -1410,8 +1489,9 @@
  (common-lisp:defstruct
      (describe-load-balancer-target-groups-request (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or xml-string common-lisp:null))
    (max-records common-lisp:nil :type
@@ -1468,8 +1548,9 @@
  (common-lisp:defstruct
      (describe-load-balancers-request (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or xml-string common-lisp:null))
    (max-records common-lisp:nil :type
@@ -1551,8 +1632,10 @@
  (common-lisp:defstruct
      (describe-notification-configurations-answer (:copier common-lisp:nil))
    (notification-configurations
-    (common-lisp:error ":notification-configurations is required") :type
-    (common-lisp:or notification-configurations common-lisp:null))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":notification-configurations is required"))
+    :type (common-lisp:or notification-configurations common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or xml-string common-lisp:null)))
  (common-lisp:export
@@ -1807,11 +1890,14 @@
    (instance-ids common-lisp:nil :type
     (common-lisp:or instance-ids common-lisp:null))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (should-decrement-desired-capacity
-    (common-lisp:error ":should-decrement-desired-capacity is required") :type
-    (common-lisp:or should-decrement-desired-capacity common-lisp:null)))
+    (common-lisp:error
+     #A((46) common-lisp:base-char
+        . ":should-decrement-desired-capacity is required"))
+    :type (common-lisp:or should-decrement-desired-capacity common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-instances-query 'make-detach-instances-query))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1850,9 +1936,12 @@
  (common-lisp:defstruct
      (detach-load-balancer-target-groups-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (target-group-arns (common-lisp:error ":target-group-arns is required")
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (target-group-arns
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":target-group-arns is required"))
     :type (common-lisp:or target-group-arns common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-load-balancer-target-groups-type
@@ -1886,9 +1975,12 @@
 (common-lisp:progn
  (common-lisp:defstruct (detach-load-balancers-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (load-balancer-names (common-lisp:error ":load-balancer-names is required")
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (load-balancer-names
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":load-balancer-names is required"))
     :type (common-lisp:or load-balancer-names common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-load-balancers-type
@@ -1912,8 +2004,9 @@
  (common-lisp:defstruct
      (disable-metrics-collection-query (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (metrics common-lisp:nil :type (common-lisp:or metrics common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-metrics-collection-query
@@ -1987,11 +2080,14 @@
  (common-lisp:defstruct
      (enable-metrics-collection-query (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (metrics common-lisp:nil :type (common-lisp:or metrics common-lisp:null))
-   (granularity (common-lisp:error ":granularity is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null)))
+   (granularity
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":granularity is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-metrics-collection-query
                     'make-enable-metrics-collection-query))
@@ -2062,11 +2158,14 @@
    (instance-ids common-lisp:nil :type
     (common-lisp:or instance-ids common-lisp:null))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (should-decrement-desired-capacity
-    (common-lisp:error ":should-decrement-desired-capacity is required") :type
-    (common-lisp:or should-decrement-desired-capacity common-lisp:null)))
+    (common-lisp:error
+     #A((46) common-lisp:base-char
+        . ":should-decrement-desired-capacity is required"))
+    :type (common-lisp:or should-decrement-desired-capacity common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enter-standby-query 'make-enter-standby-query))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2092,8 +2191,10 @@
  (common-lisp:defstruct (execute-policy-type (:copier common-lisp:nil))
    (auto-scaling-group-name common-lisp:nil :type
     (common-lisp:or resource-name common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (honor-cooldown common-lisp:nil :type
     (common-lisp:or honor-cooldown common-lisp:null))
    (metric-value common-lisp:nil :type
@@ -2149,8 +2250,9 @@
    (instance-ids common-lisp:nil :type
     (common-lisp:or instance-ids common-lisp:null))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'exit-standby-query 'make-exit-standby-query))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2198,20 +2300,30 @@
 (common-lisp:deftype honor-cooldown () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (instance (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or xml-string-max-len19 common-lisp:null))
-   (availability-zone (common-lisp:error ":availability-zone is required")
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or xml-string-max-len19 common-lisp:null))
+   (availability-zone
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":availability-zone is required"))
     :type (common-lisp:or xml-string-max-len255 common-lisp:null))
-   (lifecycle-state (common-lisp:error ":lifecycle-state is required") :type
-    (common-lisp:or lifecycle-state common-lisp:null))
-   (health-status (common-lisp:error ":health-status is required") :type
-    (common-lisp:or xml-string-max-len32 common-lisp:null))
+   (lifecycle-state
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":lifecycle-state is required"))
+    :type (common-lisp:or lifecycle-state common-lisp:null))
+   (health-status
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":health-status is required"))
+    :type (common-lisp:or xml-string-max-len32 common-lisp:null))
    (launch-configuration-name
-    (common-lisp:error ":launch-configuration-name is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":launch-configuration-name is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null))
    (protected-from-scale-in
-    (common-lisp:error ":protected-from-scale-in is required") :type
-    (common-lisp:or instance-protected common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":protected-from-scale-in is required"))
+    :type (common-lisp:or instance-protected common-lisp:null)))
  (common-lisp:export (common-lisp:list 'instance 'make-instance))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape instance))
@@ -2293,12 +2405,15 @@
 (common-lisp:progn
  (common-lisp:defstruct (launch-configuration (:copier common-lisp:nil))
    (launch-configuration-name
-    (common-lisp:error ":launch-configuration-name is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":launch-configuration-name is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null))
    (launch-configuration-arn common-lisp:nil :type
     (common-lisp:or resource-name common-lisp:null))
-   (image-id (common-lisp:error ":image-id is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null))
+   (image-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":image-id is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null))
    (key-name common-lisp:nil :type
     (common-lisp:or xml-string-max-len255 common-lisp:null))
    (security-groups common-lisp:nil :type
@@ -2309,8 +2424,10 @@
     (common-lisp:or classic-link-vpcsecurity-groups common-lisp:null))
    (user-data common-lisp:nil :type
     (common-lisp:or xml-string-user-data common-lisp:null))
-   (instance-type (common-lisp:error ":instance-type is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null))
+   (instance-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instance-type is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null))
    (kernel-id common-lisp:nil :type
     (common-lisp:or xml-string-max-len255 common-lisp:null))
    (ramdisk-id common-lisp:nil :type
@@ -2323,8 +2440,10 @@
     (common-lisp:or spot-price common-lisp:null))
    (iam-instance-profile common-lisp:nil :type
     (common-lisp:or xml-string-max-len1600 common-lisp:null))
-   (created-time (common-lisp:error ":created-time is required") :type
-    (common-lisp:or timestamp-type common-lisp:null))
+   (created-time
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":created-time is required"))
+    :type (common-lisp:or timestamp-type common-lisp:null))
    (ebs-optimized common-lisp:nil :type
     (common-lisp:or ebs-optimized common-lisp:null))
    (associate-public-ip-address common-lisp:nil :type
@@ -2435,8 +2554,9 @@
  (common-lisp:defstruct
      (launch-configuration-name-type (:copier common-lisp:nil))
    (launch-configuration-name
-    (common-lisp:error ":launch-configuration-name is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":launch-configuration-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'launch-configuration-name-type
                     'make-launch-configuration-name-type))
@@ -2501,8 +2621,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (launch-configurations-type (:copier common-lisp:nil))
    (launch-configurations
-    (common-lisp:error ":launch-configurations is required") :type
-    (common-lisp:or launch-configurations common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":launch-configurations is required"))
+    :type (common-lisp:or launch-configurations common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or xml-string common-lisp:null)))
  (common-lisp:export
@@ -2727,10 +2848,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (metric-dimension (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or metric-dimension-name common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or metric-dimension-value common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or metric-dimension-name common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or metric-dimension-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'metric-dimension 'make-metric-dimension))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2901,8 +3024,9 @@
  (common-lisp:defstruct
      (predefined-metric-specification (:copier common-lisp:nil))
    (predefined-metric-type
-    (common-lisp:error ":predefined-metric-type is required") :type
-    (common-lisp:or metric-type common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":predefined-metric-type is required"))
+    :type (common-lisp:or metric-type common-lisp:null))
    (resource-label common-lisp:nil :type
     (common-lisp:or xml-string-max-len1023 common-lisp:null)))
  (common-lisp:export
@@ -2933,8 +3057,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (process-type (:copier common-lisp:nil))
-   (process-name (common-lisp:error ":process-name is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null)))
+   (process-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":process-name is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null)))
  (common-lisp:export (common-lisp:list 'process-type 'make-process-type))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape process-type))
@@ -2979,11 +3105,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (put-lifecycle-hook-type (:copier common-lisp:nil))
-   (lifecycle-hook-name (common-lisp:error ":lifecycle-hook-name is required")
+   (lifecycle-hook-name
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":lifecycle-hook-name is required"))
     :type (common-lisp:or ascii-string-max-len255 common-lisp:null))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (lifecycle-transition common-lisp:nil :type
     (common-lisp:or lifecycle-transition common-lisp:null))
    (role-arn common-lisp:nil :type
@@ -3047,11 +3176,16 @@
  (common-lisp:defstruct
      (put-notification-configuration-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (topic-arn (common-lisp:error ":topic-arn is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (notification-types (common-lisp:error ":notification-types is required")
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (topic-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":topic-arn is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (notification-types
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":notification-types is required"))
     :type (common-lisp:or auto-scaling-notification-types common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-notification-configuration-type
@@ -3079,10 +3213,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (put-scaling-policy-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null))
    (policy-type common-lisp:nil :type
     (common-lisp:or xml-string-max-len64 common-lisp:null))
    (adjustment-type common-lisp:nil :type
@@ -3173,11 +3310,13 @@
  (common-lisp:defstruct
      (put-scheduled-update-group-action-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (scheduled-action-name
-    (common-lisp:error ":scheduled-action-name is required") :type
-    (common-lisp:or xml-string-max-len255 common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":scheduled-action-name is required"))
+    :type (common-lisp:or xml-string-max-len255 common-lisp:null))
    (time common-lisp:nil :type
     (common-lisp:or timestamp-type common-lisp:null))
    (start-time common-lisp:nil :type
@@ -3259,11 +3398,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (record-lifecycle-action-heartbeat-type (:copier common-lisp:nil))
-   (lifecycle-hook-name (common-lisp:error ":lifecycle-hook-name is required")
+   (lifecycle-hook-name
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":lifecycle-hook-name is required"))
     :type (common-lisp:or ascii-string-max-len255 common-lisp:null))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (lifecycle-action-token common-lisp:nil :type
     (common-lisp:or lifecycle-action-token common-lisp:null))
    (instance-id common-lisp:nil :type
@@ -3462,8 +3604,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (scaling-process-query (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (scaling-processes common-lisp:nil :type
     (common-lisp:or process-names common-lisp:null)))
  (common-lisp:export
@@ -3615,9 +3758,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (set-desired-capacity-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (desired-capacity (common-lisp:error ":desired-capacity is required") :type
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (desired-capacity
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":desired-capacity is required"))
+    :type
     (common-lisp:or auto-scaling-group-desired-capacity common-lisp:null))
    (honor-cooldown common-lisp:nil :type
     (common-lisp:or honor-cooldown common-lisp:null)))
@@ -3646,10 +3793,14 @@
                                                 'honor-cooldown))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-instance-health-query (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or xml-string-max-len19 common-lisp:null))
-   (health-status (common-lisp:error ":health-status is required") :type
-    (common-lisp:or xml-string-max-len32 common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or xml-string-max-len19 common-lisp:null))
+   (health-status
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":health-status is required"))
+    :type (common-lisp:or xml-string-max-len32 common-lisp:null))
    (should-respect-grace-period common-lisp:nil :type
     (common-lisp:or should-respect-grace-period common-lisp:null)))
  (common-lisp:export
@@ -3689,14 +3840,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-instance-protection-query (:copier common-lisp:nil))
-   (instance-ids (common-lisp:error ":instance-ids is required") :type
-    (common-lisp:or instance-ids common-lisp:null))
+   (instance-ids
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instance-ids is required"))
+    :type (common-lisp:or instance-ids common-lisp:null))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (protected-from-scale-in
-    (common-lisp:error ":protected-from-scale-in is required") :type
-    (common-lisp:or protected-from-scale-in common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":protected-from-scale-in is required"))
+    :type (common-lisp:or protected-from-scale-in common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-instance-protection-query
                     'make-set-instance-protection-query))
@@ -3729,7 +3884,9 @@
     (common-lisp:or metric-scale common-lisp:null))
    (metric-interval-upper-bound common-lisp:nil :type
     (common-lisp:or metric-scale common-lisp:null))
-   (scaling-adjustment (common-lisp:error ":scaling-adjustment is required")
+   (scaling-adjustment
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":scaling-adjustment is required"))
     :type (common-lisp:or policy-increment common-lisp:null)))
  (common-lisp:export (common-lisp:list 'step-adjustment 'make-step-adjustment))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3793,8 +3950,8 @@
     (common-lisp:or xml-string common-lisp:null))
    (resource-type common-lisp:nil :type
     (common-lisp:or xml-string common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or tag-value common-lisp:null))
    (propagate-at-launch common-lisp:nil :type
     (common-lisp:or propagate-at-launch common-lisp:null)))
@@ -3918,8 +4075,10 @@
     (common-lisp:or predefined-metric-specification common-lisp:null))
    (customized-metric-specification common-lisp:nil :type
     (common-lisp:or customized-metric-specification common-lisp:null))
-   (target-value (common-lisp:error ":target-value is required") :type
-    (common-lisp:or metric-scale common-lisp:null))
+   (target-value
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":target-value is required"))
+    :type (common-lisp:or metric-scale common-lisp:null))
    (disable-scale-in common-lisp:nil :type
     (common-lisp:or disable-scale-in common-lisp:null)))
  (common-lisp:export
@@ -3953,11 +4112,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (terminate-instance-in-auto-scaling-group-type (:copier common-lisp:nil))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or xml-string-max-len19 common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or xml-string-max-len19 common-lisp:null))
    (should-decrement-desired-capacity
-    (common-lisp:error ":should-decrement-desired-capacity is required") :type
-    (common-lisp:or should-decrement-desired-capacity common-lisp:null)))
+    (common-lisp:error
+     #A((46) common-lisp:base-char
+        . ":should-decrement-desired-capacity is required"))
+    :type (common-lisp:or should-decrement-desired-capacity common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'terminate-instance-in-auto-scaling-group-type
                     'make-terminate-instance-in-auto-scaling-group-type))
@@ -3989,8 +4152,9 @@
  (common-lisp:defstruct
      (update-auto-scaling-group-type (:copier common-lisp:nil))
    (auto-scaling-group-name
-    (common-lisp:error ":auto-scaling-group-name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":auto-scaling-group-name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
    (launch-configuration-name common-lisp:nil :type
     (common-lisp:or resource-name common-lisp:null))
    (min-size common-lisp:nil :type
@@ -4116,7 +4280,9 @@
                       (common-lisp:apply 'make-attach-instances-query
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachInstances")
                                   ("Version" ,@"2011-01-01"))
@@ -4137,7 +4303,9 @@
                        'make-attach-load-balancer-target-groups-type
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachLoadBalancerTargetGroups")
                                   ("Version" ,@"2011-01-01"))
@@ -4158,7 +4326,9 @@
                       (common-lisp:apply 'make-attach-load-balancers-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachLoadBalancers")
                                   ("Version" ,@"2011-01-01"))
@@ -4180,7 +4350,9 @@
                       (common-lisp:apply 'make-complete-lifecycle-action-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CompleteLifecycleAction")
                                   ("Version" ,@"2011-01-01"))
@@ -4209,7 +4381,9 @@
                       (common-lisp:apply 'make-create-auto-scaling-group-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAutoScalingGroup")
                                   ("Version" ,@"2011-01-01"))
@@ -4238,7 +4412,9 @@
                       (common-lisp:apply 'make-create-launch-configuration-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLaunchConfiguration")
                                   ("Version" ,@"2011-01-01"))
@@ -4256,7 +4432,9 @@
                       (common-lisp:apply 'make-create-or-update-tags-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateOrUpdateTags")
                                   ("Version" ,@"2011-01-01"))
@@ -4275,7 +4453,9 @@
                       (common-lisp:apply 'make-delete-auto-scaling-group-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAutoScalingGroup")
                                   ("Version" ,@"2011-01-01"))
@@ -4293,7 +4473,9 @@
                       (common-lisp:apply 'make-launch-configuration-name-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLaunchConfiguration")
                                   ("Version" ,@"2011-01-01"))
@@ -4313,7 +4495,9 @@
                       (common-lisp:apply 'make-delete-lifecycle-hook-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLifecycleHook")
                                   ("Version" ,@"2011-01-01"))
@@ -4333,7 +4517,9 @@
                        'make-delete-notification-configuration-type
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeleteNotificationConfiguration")
@@ -4353,7 +4539,9 @@
                       (common-lisp:apply 'make-delete-policy-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePolicy")
                                   ("Version" ,@"2011-01-01"))
@@ -4373,7 +4561,9 @@
                       (common-lisp:apply 'make-delete-scheduled-action-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteScheduledAction")
                                   ("Version" ,@"2011-01-01"))
@@ -4391,7 +4581,9 @@
                       (common-lisp:apply 'make-delete-tags-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTags")
                                   ("Version" ,@"2011-01-01"))
@@ -4402,7 +4594,9 @@
 (common-lisp:progn
  (common-lisp:defun describe-account-limits ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((11) common-lisp:base-char . "autoscaling")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeAccountLimits"))
     "DescribeAccountLimitsAnswer" "DescribeAccountLimitsResult"))
@@ -4410,7 +4604,9 @@
 (common-lisp:progn
  (common-lisp:defun describe-adjustment-types ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((11) common-lisp:base-char . "autoscaling")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeAdjustmentTypes"))
     "DescribeAdjustmentTypesAnswer" "DescribeAdjustmentTypesResult"))
@@ -4427,7 +4623,9 @@
                       (common-lisp:apply 'make-auto-scaling-group-names-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAutoScalingGroups")
                                   ("Version" ,@"2011-01-01"))
@@ -4447,7 +4645,9 @@
                        'make-describe-auto-scaling-instances-type
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAutoScalingInstances")
                                   ("Version" ,@"2011-01-01"))
@@ -4458,7 +4658,9 @@
 (common-lisp:progn
  (common-lisp:defun describe-auto-scaling-notification-types ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((11) common-lisp:base-char . "autoscaling")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeAutoScalingNotificationTypes"))
     "DescribeAutoScalingNotificationTypesAnswer"
@@ -4476,7 +4678,9 @@
                       (common-lisp:apply 'make-launch-configuration-names-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLaunchConfigurations")
                                   ("Version" ,@"2011-01-01"))
@@ -4487,7 +4691,9 @@
 (common-lisp:progn
  (common-lisp:defun describe-lifecycle-hook-types ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((11) common-lisp:base-char . "autoscaling")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeLifecycleHookTypes"))
     "DescribeLifecycleHookTypesAnswer" "DescribeLifecycleHookTypesResult"))
@@ -4504,7 +4710,9 @@
                       (common-lisp:apply 'make-describe-lifecycle-hooks-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLifecycleHooks")
                                   ("Version" ,@"2011-01-01"))
@@ -4525,7 +4733,9 @@
                        'make-describe-load-balancer-target-groups-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeLoadBalancerTargetGroups")
@@ -4547,7 +4757,9 @@
                       (common-lisp:apply 'make-describe-load-balancers-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLoadBalancers")
                                   ("Version" ,@"2011-01-01"))
@@ -4558,7 +4770,9 @@
 (common-lisp:progn
  (common-lisp:defun describe-metric-collection-types ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((11) common-lisp:base-char . "autoscaling")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeMetricCollectionTypes"))
     "DescribeMetricCollectionTypesAnswer"
@@ -4577,7 +4791,9 @@
                        'make-describe-notification-configurations-type
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeNotificationConfigurations")
@@ -4600,7 +4816,9 @@
                       (common-lisp:apply 'make-describe-policies-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribePolicies")
                                   ("Version" ,@"2011-01-01"))
@@ -4621,7 +4839,9 @@
                       (common-lisp:apply 'make-describe-scaling-activities-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeScalingActivities")
                                   ("Version" ,@"2011-01-01"))
@@ -4632,7 +4852,9 @@
 (common-lisp:progn
  (common-lisp:defun describe-scaling-process-types ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((11) common-lisp:base-char . "autoscaling")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeScalingProcessTypes"))
     "ProcessesType" "DescribeScalingProcessTypesResult"))
@@ -4651,7 +4873,9 @@
                       (common-lisp:apply 'make-describe-scheduled-actions-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeScheduledActions")
                                   ("Version" ,@"2011-01-01"))
@@ -4669,7 +4893,9 @@
                       (common-lisp:apply 'make-describe-tags-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTags")
                                   ("Version" ,@"2011-01-01"))
@@ -4680,7 +4906,9 @@
 (common-lisp:progn
  (common-lisp:defun describe-termination-policy-types ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((11) common-lisp:base-char . "autoscaling")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeTerminationPolicyTypes"))
     "DescribeTerminationPolicyTypesAnswer"
@@ -4699,7 +4927,9 @@
                       (common-lisp:apply 'make-detach-instances-query
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachInstances")
                                   ("Version" ,@"2011-01-01"))
@@ -4720,7 +4950,9 @@
                        'make-detach-load-balancer-target-groups-type
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachLoadBalancerTargetGroups")
                                   ("Version" ,@"2011-01-01"))
@@ -4741,7 +4973,9 @@
                       (common-lisp:apply 'make-detach-load-balancers-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachLoadBalancers")
                                   ("Version" ,@"2011-01-01"))
@@ -4760,7 +4994,9 @@
                       (common-lisp:apply 'make-disable-metrics-collection-query
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableMetricsCollection")
                                   ("Version" ,@"2011-01-01"))
@@ -4780,7 +5016,9 @@
                       (common-lisp:apply 'make-enable-metrics-collection-query
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableMetricsCollection")
                                   ("Version" ,@"2011-01-01"))
@@ -4801,7 +5039,9 @@
                       (common-lisp:apply 'make-enter-standby-query
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnterStandby")
                                   ("Version" ,@"2011-01-01"))
@@ -4822,7 +5062,9 @@
                       (common-lisp:apply 'make-execute-policy-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ExecutePolicy")
                                   ("Version" ,@"2011-01-01"))
@@ -4841,7 +5083,9 @@
                       (common-lisp:apply 'make-exit-standby-query
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ExitStandby")
                                   ("Version" ,@"2011-01-01"))
@@ -4865,7 +5109,9 @@
                       (common-lisp:apply 'make-put-lifecycle-hook-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutLifecycleHook")
                                   ("Version" ,@"2011-01-01"))
@@ -4887,7 +5133,9 @@
                        'make-put-notification-configuration-type
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutNotificationConfiguration")
                                   ("Version" ,@"2011-01-01"))
@@ -4913,7 +5161,9 @@
                       (common-lisp:apply 'make-put-scaling-policy-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutScalingPolicy")
                                   ("Version" ,@"2011-01-01"))
@@ -4936,7 +5186,9 @@
                        'make-put-scheduled-update-group-action-type
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutScheduledUpdateGroupAction")
                                   ("Version" ,@"2011-01-01"))
@@ -4959,7 +5211,9 @@
                        'make-record-lifecycle-action-heartbeat-type
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RecordLifecycleActionHeartbeat")
                                   ("Version" ,@"2011-01-01"))
@@ -4980,7 +5234,9 @@
                       (common-lisp:apply 'make-scaling-process-query
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResumeProcesses")
                                   ("Version" ,@"2011-01-01"))
@@ -5001,7 +5257,9 @@
                       (common-lisp:apply 'make-set-desired-capacity-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetDesiredCapacity")
                                   ("Version" ,@"2011-01-01"))
@@ -5022,7 +5280,9 @@
                       (common-lisp:apply 'make-set-instance-health-query
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetInstanceHealth")
                                   ("Version" ,@"2011-01-01"))
@@ -5043,7 +5303,9 @@
                       (common-lisp:apply 'make-set-instance-protection-query
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetInstanceProtection")
                                   ("Version" ,@"2011-01-01"))
@@ -5063,7 +5325,9 @@
                       (common-lisp:apply 'make-scaling-process-query
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SuspendProcesses")
                                   ("Version" ,@"2011-01-01"))
@@ -5084,7 +5348,9 @@
                        'make-terminate-instance-in-auto-scaling-group-type
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"TerminateInstanceInAutoScalingGroup")
@@ -5113,7 +5379,9 @@
                       (common-lisp:apply 'make-update-auto-scaling-group-type
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "autoscaling")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAutoScalingGroup")
                                   ("Version" ,@"2011-01-01"))

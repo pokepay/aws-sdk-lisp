@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/rds)
+
 (common-lisp:progn
  (common-lisp:defstruct (account-attributes-message (:copier common-lisp:nil))
    (account-quotas common-lisp:nil :type
@@ -61,10 +62,13 @@
  (common-lisp:defstruct
      (add-role-to-dbcluster-message (:copier common-lisp:nil))
    (dbcluster-identifier
-    (common-lisp:error ":dbcluster-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":dbcluster-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-role-to-dbcluster-message
                     'make-add-role-to-dbcluster-message))
@@ -86,9 +90,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-source-identifier-to-subscription-message (:copier common-lisp:nil))
-   (subscription-name (common-lisp:error ":subscription-name is required")
+   (subscription-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-name is required"))
     :type (common-lisp:or string common-lisp:null))
-   (source-identifier (common-lisp:error ":source-identifier is required")
+   (source-identifier
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":source-identifier is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-source-identifier-to-subscription-message
@@ -129,10 +137,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-resource-message (:copier common-lisp:nil))
-   (resource-name (common-lisp:error ":resource-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-tags-to-resource-message
                     'make-add-tags-to-resource-message))
@@ -155,12 +166,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (apply-pending-maintenance-action-message (:copier common-lisp:nil))
-   (resource-identifier (common-lisp:error ":resource-identifier is required")
+   (resource-identifier
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":resource-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
-   (apply-action (common-lisp:error ":apply-action is required") :type
-    (common-lisp:or string common-lisp:null))
-   (opt-in-type (common-lisp:error ":opt-in-type is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (apply-action
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":apply-action is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (opt-in-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":opt-in-type is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'apply-pending-maintenance-action-message
                     'make-apply-pending-maintenance-action-message))
@@ -247,8 +264,9 @@
  (common-lisp:defstruct
      (authorize-dbsecurity-group-ingress-message (:copier common-lisp:nil))
    (dbsecurity-group-name
-    (common-lisp:error ":dbsecurity-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbsecurity-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (cidrip common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (ec2security-group-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -447,15 +465,18 @@
      (copy-dbcluster-parameter-group-message (:copier common-lisp:nil))
    (source-dbcluster-parameter-group-identifier
     (common-lisp:error
-     ":source-dbcluster-parameter-group-identifier is required")
+     #A((56) common-lisp:base-char
+        . ":source-dbcluster-parameter-group-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (target-dbcluster-parameter-group-identifier
     (common-lisp:error
-     ":target-dbcluster-parameter-group-identifier is required")
+     #A((56) common-lisp:base-char
+        . ":target-dbcluster-parameter-group-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (target-dbcluster-parameter-group-description
     (common-lisp:error
-     ":target-dbcluster-parameter-group-description is required")
+     #A((57) common-lisp:base-char
+        . ":target-dbcluster-parameter-group-description is required"))
     :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
@@ -508,10 +529,14 @@
  (common-lisp:defstruct
      (copy-dbcluster-snapshot-message (:copier common-lisp:nil))
    (source-dbcluster-snapshot-identifier
-    (common-lisp:error ":source-dbcluster-snapshot-identifier is required")
+    (common-lisp:error
+     #A((49) common-lisp:base-char
+        . ":source-dbcluster-snapshot-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (target-dbcluster-snapshot-identifier
-    (common-lisp:error ":target-dbcluster-snapshot-identifier is required")
+    (common-lisp:error
+     #A((49) common-lisp:base-char
+        . ":target-dbcluster-snapshot-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (kms-key-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (pre-signed-url common-lisp:nil :type
@@ -579,13 +604,19 @@
  (common-lisp:defstruct
      (copy-dbparameter-group-message (:copier common-lisp:nil))
    (source-dbparameter-group-identifier
-    (common-lisp:error ":source-dbparameter-group-identifier is required")
+    (common-lisp:error
+     #A((48) common-lisp:base-char
+        . ":source-dbparameter-group-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (target-dbparameter-group-identifier
-    (common-lisp:error ":target-dbparameter-group-identifier is required")
+    (common-lisp:error
+     #A((48) common-lisp:base-char
+        . ":target-dbparameter-group-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (target-dbparameter-group-description
-    (common-lisp:error ":target-dbparameter-group-description is required")
+    (common-lisp:error
+     #A((49) common-lisp:base-char
+        . ":target-dbparameter-group-description is required"))
     :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
@@ -637,11 +668,15 @@
 (common-lisp:progn
  (common-lisp:defstruct (copy-dbsnapshot-message (:copier common-lisp:nil))
    (source-dbsnapshot-identifier
-    (common-lisp:error ":source-dbsnapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":source-dbsnapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (target-dbsnapshot-identifier
-    (common-lisp:error ":target-dbsnapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":target-dbsnapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (kms-key-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
    (copy-tags common-lisp:nil :type
@@ -711,14 +746,20 @@
 (common-lisp:progn
  (common-lisp:defstruct (copy-option-group-message (:copier common-lisp:nil))
    (source-option-group-identifier
-    (common-lisp:error ":source-option-group-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":source-option-group-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (target-option-group-identifier
-    (common-lisp:error ":target-option-group-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":target-option-group-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (target-option-group-description
-    (common-lisp:error ":target-option-group-description is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((44) common-lisp:base-char
+        . ":target-option-group-description is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'copy-option-group-message
@@ -775,16 +816,18 @@
    (database-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (dbcluster-identifier
-    (common-lisp:error ":dbcluster-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":dbcluster-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (dbcluster-parameter-group-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (vpc-security-group-ids common-lisp:nil :type
     (common-lisp:or vpc-security-group-id-list common-lisp:null))
    (dbsubnet-group-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (engine (common-lisp:error ":engine is required") :type
-    (common-lisp:or string common-lisp:null))
+   (engine
+    (common-lisp:error #A((19) common-lisp:base-char . ":engine is required"))
+    :type (common-lisp:or string common-lisp:null))
    (engine-version common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (port common-lisp:nil :type
@@ -930,13 +973,18 @@
  (common-lisp:defstruct
      (create-dbcluster-parameter-group-message (:copier common-lisp:nil))
    (dbcluster-parameter-group-name
-    (common-lisp:error ":dbcluster-parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":dbcluster-parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (dbparameter-group-family
-    (common-lisp:error ":dbparameter-group-family is required") :type
-    (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":dbparameter-group-family is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-dbcluster-parameter-group-message
@@ -1004,11 +1052,14 @@
  (common-lisp:defstruct
      (create-dbcluster-snapshot-message (:copier common-lisp:nil))
    (dbcluster-snapshot-identifier
-    (common-lisp:error ":dbcluster-snapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":dbcluster-snapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (dbcluster-identifier
-    (common-lisp:error ":dbcluster-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":dbcluster-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-dbcluster-snapshot-message
@@ -1055,14 +1106,18 @@
  (common-lisp:defstruct (create-dbinstance-message (:copier common-lisp:nil))
    (dbname common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (dbinstance-identifier
-    (common-lisp:error ":dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (allocated-storage common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
-   (dbinstance-class (common-lisp:error ":dbinstance-class is required") :type
-    (common-lisp:or string common-lisp:null))
-   (engine (common-lisp:error ":engine is required") :type
-    (common-lisp:or string common-lisp:null))
+   (dbinstance-class
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":dbinstance-class is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (engine
+    (common-lisp:error #A((19) common-lisp:base-char . ":engine is required"))
+    :type (common-lisp:or string common-lisp:null))
    (master-username common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (master-user-password common-lisp:nil :type
@@ -1334,11 +1389,14 @@
  (common-lisp:defstruct
      (create-dbinstance-read-replica-message (:copier common-lisp:nil))
    (dbinstance-identifier
-    (common-lisp:error ":dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (source-dbinstance-identifier
-    (common-lisp:error ":source-dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":source-dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (dbinstance-class common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (availability-zone common-lisp:nil :type
@@ -1505,13 +1563,17 @@
  (common-lisp:defstruct
      (create-dbparameter-group-message (:copier common-lisp:nil))
    (dbparameter-group-name
-    (common-lisp:error ":dbparameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":dbparameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (dbparameter-group-family
-    (common-lisp:error ":dbparameter-group-family is required") :type
-    (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":dbparameter-group-family is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-dbparameter-group-message
@@ -1563,11 +1625,14 @@
  (common-lisp:defstruct
      (create-dbsecurity-group-message (:copier common-lisp:nil))
    (dbsecurity-group-name
-    (common-lisp:error ":dbsecurity-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbsecurity-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (dbsecurity-group-description
-    (common-lisp:error ":dbsecurity-group-description is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":dbsecurity-group-description is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-dbsecurity-group-message
@@ -1613,11 +1678,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (create-dbsnapshot-message (:copier common-lisp:nil))
    (dbsnapshot-identifier
-    (common-lisp:error ":dbsnapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbsnapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (dbinstance-identifier
-    (common-lisp:error ":dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-dbsnapshot-message
@@ -1661,13 +1728,19 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-dbsubnet-group-message (:copier common-lisp:nil))
-   (dbsubnet-group-name (common-lisp:error ":dbsubnet-group-name is required")
+   (dbsubnet-group-name
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":dbsubnet-group-name is required"))
     :type (common-lisp:or string common-lisp:null))
    (dbsubnet-group-description
-    (common-lisp:error ":dbsubnet-group-description is required") :type
-    (common-lisp:or string common-lisp:null))
-   (subnet-ids (common-lisp:error ":subnet-ids is required") :type
-    (common-lisp:or subnet-identifier-list common-lisp:null))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":dbsubnet-group-description is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (subnet-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":subnet-ids is required"))
+    :type (common-lisp:or subnet-identifier-list common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-dbsubnet-group-message
@@ -1718,10 +1791,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-event-subscription-message (:copier common-lisp:nil))
-   (subscription-name (common-lisp:error ":subscription-name is required")
+   (subscription-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-name is required"))
     :type (common-lisp:or string common-lisp:null))
-   (sns-topic-arn (common-lisp:error ":sns-topic-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+   (sns-topic-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":sns-topic-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (source-type common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (event-categories common-lisp:nil :type
     (common-lisp:or event-categories-list common-lisp:null))
@@ -1793,16 +1870,22 @@
                                                 'event-subscription))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-option-group-message (:copier common-lisp:nil))
-   (option-group-name (common-lisp:error ":option-group-name is required")
+   (option-group-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":option-group-name is required"))
     :type (common-lisp:or string common-lisp:null))
-   (engine-name (common-lisp:error ":engine-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (engine-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":engine-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (major-engine-version
-    (common-lisp:error ":major-engine-version is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":major-engine-version is required"))
+    :type (common-lisp:or string common-lisp:null))
    (option-group-description
-    (common-lisp:error ":option-group-description is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":option-group-description is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-option-group-message
@@ -3993,8 +4076,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (delete-dbcluster-message (:copier common-lisp:nil))
    (dbcluster-identifier
-    (common-lisp:error ":dbcluster-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":dbcluster-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (skip-final-snapshot common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (final-dbsnapshot-identifier common-lisp:nil :type
@@ -4025,8 +4109,10 @@
  (common-lisp:defstruct
      (delete-dbcluster-parameter-group-message (:copier common-lisp:nil))
    (dbcluster-parameter-group-name
-    (common-lisp:error ":dbcluster-parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":dbcluster-parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-dbcluster-parameter-group-message
                     'make-delete-dbcluster-parameter-group-message))
@@ -4060,8 +4146,10 @@
  (common-lisp:defstruct
      (delete-dbcluster-snapshot-message (:copier common-lisp:nil))
    (dbcluster-snapshot-identifier
-    (common-lisp:error ":dbcluster-snapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":dbcluster-snapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-dbcluster-snapshot-message
                     'make-delete-dbcluster-snapshot-message))
@@ -4096,8 +4184,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (delete-dbinstance-message (:copier common-lisp:nil))
    (dbinstance-identifier
-    (common-lisp:error ":dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (skip-final-snapshot common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (final-dbsnapshot-identifier common-lisp:nil :type
@@ -4145,8 +4234,9 @@
  (common-lisp:defstruct
      (delete-dbparameter-group-message (:copier common-lisp:nil))
    (dbparameter-group-name
-    (common-lisp:error ":dbparameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":dbparameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-dbparameter-group-message
                     'make-delete-dbparameter-group-message))
@@ -4164,8 +4254,9 @@
  (common-lisp:defstruct
      (delete-dbsecurity-group-message (:copier common-lisp:nil))
    (dbsecurity-group-name
-    (common-lisp:error ":dbsecurity-group-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbsecurity-group-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-dbsecurity-group-message
                     'make-delete-dbsecurity-group-message))
@@ -4182,8 +4273,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (delete-dbsnapshot-message (:copier common-lisp:nil))
    (dbsnapshot-identifier
-    (common-lisp:error ":dbsnapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbsnapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-dbsnapshot-message
                     'make-delete-dbsnapshot-message))
@@ -4216,7 +4308,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-dbsubnet-group-message (:copier common-lisp:nil))
-   (dbsubnet-group-name (common-lisp:error ":dbsubnet-group-name is required")
+   (dbsubnet-group-name
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":dbsubnet-group-name is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-dbsubnet-group-message
@@ -4234,7 +4328,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-event-subscription-message (:copier common-lisp:nil))
-   (subscription-name (common-lisp:error ":subscription-name is required")
+   (subscription-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-name is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-event-subscription-message
@@ -4269,7 +4365,9 @@
                                                 'event-subscription))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-option-group-message (:copier common-lisp:nil))
-   (option-group-name (common-lisp:error ":option-group-name is required")
+   (option-group-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":option-group-name is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-option-group-message
@@ -4375,8 +4473,10 @@
  (common-lisp:defstruct
      (describe-dbcluster-parameters-message (:copier common-lisp:nil))
    (dbcluster-parameter-group-name
-    (common-lisp:error ":dbcluster-parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":dbcluster-parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (source common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (filters common-lisp:nil :type
     (common-lisp:or filter-list common-lisp:null))
@@ -4420,8 +4520,10 @@
  (common-lisp:defstruct
      (describe-dbcluster-snapshot-attributes-message (:copier common-lisp:nil))
    (dbcluster-snapshot-identifier
-    (common-lisp:error ":dbcluster-snapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":dbcluster-snapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-dbcluster-snapshot-attributes-message
                     'make-describe-dbcluster-snapshot-attributes-message))
@@ -4709,8 +4811,9 @@
  (common-lisp:defstruct
      (describe-dblog-files-message (:copier common-lisp:nil))
    (dbinstance-identifier
-    (common-lisp:error ":dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (filename-contains common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (file-last-written common-lisp:nil :type
@@ -4830,8 +4933,9 @@
  (common-lisp:defstruct
      (describe-dbparameters-message (:copier common-lisp:nil))
    (dbparameter-group-name
-    (common-lisp:error ":dbparameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":dbparameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (source common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (filters common-lisp:nil :type
     (common-lisp:or filter-list common-lisp:null))
@@ -4913,8 +5017,9 @@
  (common-lisp:defstruct
      (describe-dbsnapshot-attributes-message (:copier common-lisp:nil))
    (dbsnapshot-identifier
-    (common-lisp:error ":dbsnapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbsnapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-dbsnapshot-attributes-message
                     'make-describe-dbsnapshot-attributes-message))
@@ -5055,8 +5160,9 @@
      (describe-engine-default-cluster-parameters-message
       (:copier common-lisp:nil))
    (dbparameter-group-family
-    (common-lisp:error ":dbparameter-group-family is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":dbparameter-group-family is required"))
+    :type (common-lisp:or string common-lisp:null))
    (filters common-lisp:nil :type
     (common-lisp:or filter-list common-lisp:null))
    (max-records common-lisp:nil :type
@@ -5113,8 +5219,9 @@
  (common-lisp:defstruct
      (describe-engine-default-parameters-message (:copier common-lisp:nil))
    (dbparameter-group-family
-    (common-lisp:error ":dbparameter-group-family is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":dbparameter-group-family is required"))
+    :type (common-lisp:or string common-lisp:null))
    (filters common-lisp:nil :type
     (common-lisp:or filter-list common-lisp:null))
    (max-records common-lisp:nil :type
@@ -5300,8 +5407,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-option-group-options-message (:copier common-lisp:nil))
-   (engine-name (common-lisp:error ":engine-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (engine-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":engine-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (major-engine-version common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (filters common-lisp:nil :type
@@ -5396,8 +5505,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-orderable-dbinstance-options-message (:copier common-lisp:nil))
-   (engine (common-lisp:error ":engine is required") :type
-    (common-lisp:or string common-lisp:null))
+   (engine
+    (common-lisp:error #A((19) common-lisp:base-char . ":engine is required"))
+    :type (common-lisp:or string common-lisp:null))
    (engine-version common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (dbinstance-class common-lisp:nil :type
@@ -5771,10 +5881,13 @@
  (common-lisp:defstruct
      (download-dblog-file-portion-message (:copier common-lisp:nil))
    (dbinstance-identifier
-    (common-lisp:error ":dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
-   (log-file-name (common-lisp:error ":log-file-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (log-file-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":log-file-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (number-of-lines common-lisp:nil :type
     (common-lisp:or integer common-lisp:null)))
@@ -6180,10 +6293,12 @@
                                                 'dbcluster))))))
 (common-lisp:progn
  (common-lisp:defstruct (filter (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or filter-value-list common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (values
+    (common-lisp:error #A((19) common-lisp:base-char . ":values is required"))
+    :type (common-lisp:or filter-value-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'filter 'make-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape filter))
@@ -6460,8 +6575,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-message (:copier common-lisp:nil))
-   (resource-name (common-lisp:error ":resource-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (resource-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (filters common-lisp:nil :type
     (common-lisp:or filter-list common-lisp:null)))
  (common-lisp:export
@@ -6486,8 +6603,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (modify-dbcluster-message (:copier common-lisp:nil))
    (dbcluster-identifier
-    (common-lisp:error ":dbcluster-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":dbcluster-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (new-dbcluster-identifier common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (apply-immediately common-lisp:nil :type
@@ -6581,10 +6699,14 @@
  (common-lisp:defstruct
      (modify-dbcluster-parameter-group-message (:copier common-lisp:nil))
    (dbcluster-parameter-group-name
-    (common-lisp:error ":dbcluster-parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (parameters (common-lisp:error ":parameters is required") :type
-    (common-lisp:or parameters-list common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":dbcluster-parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (parameters
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":parameters is required"))
+    :type (common-lisp:or parameters-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-dbcluster-parameter-group-message
                     'make-modify-dbcluster-parameter-group-message))
@@ -6623,10 +6745,14 @@
  (common-lisp:defstruct
      (modify-dbcluster-snapshot-attribute-message (:copier common-lisp:nil))
    (dbcluster-snapshot-identifier
-    (common-lisp:error ":dbcluster-snapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
-   (attribute-name (common-lisp:error ":attribute-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":dbcluster-snapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (attribute-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":attribute-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (values-to-add common-lisp:nil :type
     (common-lisp:or attribute-value-list common-lisp:null))
    (values-to-remove common-lisp:nil :type
@@ -6680,8 +6806,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (modify-dbinstance-message (:copier common-lisp:nil))
    (dbinstance-identifier
-    (common-lisp:error ":dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (allocated-storage common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
    (dbinstance-class common-lisp:nil :type
@@ -6938,10 +7065,13 @@
  (common-lisp:defstruct
      (modify-dbparameter-group-message (:copier common-lisp:nil))
    (dbparameter-group-name
-    (common-lisp:error ":dbparameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (parameters (common-lisp:error ":parameters is required") :type
-    (common-lisp:or parameters-list common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":dbparameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (parameters
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":parameters is required"))
+    :type (common-lisp:or parameters-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-dbparameter-group-message
                     'make-modify-dbparameter-group-message))
@@ -6964,10 +7094,13 @@
  (common-lisp:defstruct
      (modify-dbsnapshot-attribute-message (:copier common-lisp:nil))
    (dbsnapshot-identifier
-    (common-lisp:error ":dbsnapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
-   (attribute-name (common-lisp:error ":attribute-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbsnapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (attribute-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":attribute-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (values-to-add common-lisp:nil :type
     (common-lisp:or attribute-value-list common-lisp:null))
    (values-to-remove common-lisp:nil :type
@@ -7021,8 +7154,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (modify-dbsnapshot-message (:copier common-lisp:nil))
    (dbsnapshot-identifier
-    (common-lisp:error ":dbsnapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbsnapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (engine-version common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -7062,12 +7196,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (modify-dbsubnet-group-message (:copier common-lisp:nil))
-   (dbsubnet-group-name (common-lisp:error ":dbsubnet-group-name is required")
+   (dbsubnet-group-name
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":dbsubnet-group-name is required"))
     :type (common-lisp:or string common-lisp:null))
    (dbsubnet-group-description common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (subnet-ids (common-lisp:error ":subnet-ids is required") :type
-    (common-lisp:or subnet-identifier-list common-lisp:null)))
+   (subnet-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":subnet-ids is required"))
+    :type (common-lisp:or subnet-identifier-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-dbsubnet-group-message
                     'make-modify-dbsubnet-group-message))
@@ -7112,7 +7250,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (modify-event-subscription-message (:copier common-lisp:nil))
-   (subscription-name (common-lisp:error ":subscription-name is required")
+   (subscription-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-name is required"))
     :type (common-lisp:or string common-lisp:null))
    (sns-topic-arn common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -7174,7 +7314,9 @@
                                                 'event-subscription))))))
 (common-lisp:progn
  (common-lisp:defstruct (modify-option-group-message (:copier common-lisp:nil))
-   (option-group-name (common-lisp:error ":option-group-name is required")
+   (option-group-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":option-group-name is required"))
     :type (common-lisp:or string common-lisp:null))
    (options-to-include common-lisp:nil :type
     (common-lisp:or option-configuration-list common-lisp:null))
@@ -7295,8 +7437,10 @@
                                                 'vpc-security-group-memberships))))))
 (common-lisp:progn
  (common-lisp:defstruct (option-configuration (:copier common-lisp:nil))
-   (option-name (common-lisp:error ":option-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (option-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":option-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (port common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
    (option-version common-lisp:nil :type
@@ -8242,8 +8386,9 @@
  (common-lisp:defstruct
      (promote-read-replica-dbcluster-message (:copier common-lisp:nil))
    (dbcluster-identifier
-    (common-lisp:error ":dbcluster-identifier is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":dbcluster-identifier is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'promote-read-replica-dbcluster-message
                     'make-promote-read-replica-dbcluster-message))
@@ -8279,8 +8424,9 @@
  (common-lisp:defstruct
      (promote-read-replica-message (:copier common-lisp:nil))
    (dbinstance-identifier
-    (common-lisp:error ":dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (backup-retention-period common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
    (preferred-backup-window common-lisp:nil :type
@@ -8340,8 +8486,10 @@
  (common-lisp:defstruct
      (purchase-reserved-dbinstances-offering-message (:copier common-lisp:nil))
    (reserved-dbinstances-offering-id
-    (common-lisp:error ":reserved-dbinstances-offering-id is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((45) common-lisp:base-char
+        . ":reserved-dbinstances-offering-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (reserved-dbinstance-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (dbinstance-count common-lisp:nil :type
@@ -8420,8 +8568,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (reboot-dbinstance-message (:copier common-lisp:nil))
    (dbinstance-identifier
-    (common-lisp:error ":dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (force-failover common-lisp:nil :type
     (common-lisp:or boolean-optional common-lisp:null)))
  (common-lisp:export
@@ -8491,10 +8640,13 @@
  (common-lisp:defstruct
      (remove-role-from-dbcluster-message (:copier common-lisp:nil))
    (dbcluster-identifier
-    (common-lisp:error ":dbcluster-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":dbcluster-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-role-from-dbcluster-message
                     'make-remove-role-from-dbcluster-message))
@@ -8517,9 +8669,13 @@
  (common-lisp:defstruct
      (remove-source-identifier-from-subscription-message
       (:copier common-lisp:nil))
-   (subscription-name (common-lisp:error ":subscription-name is required")
+   (subscription-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-name is required"))
     :type (common-lisp:or string common-lisp:null))
-   (source-identifier (common-lisp:error ":source-identifier is required")
+   (source-identifier
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":source-identifier is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-source-identifier-from-subscription-message
@@ -8561,10 +8717,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-tags-from-resource-message (:copier common-lisp:nil))
-   (resource-name (common-lisp:error ":resource-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or key-list common-lisp:null)))
+   (resource-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-from-resource-message
                     'make-remove-tags-from-resource-message))
@@ -8878,8 +9038,10 @@
  (common-lisp:defstruct
      (reset-dbcluster-parameter-group-message (:copier common-lisp:nil))
    (dbcluster-parameter-group-name
-    (common-lisp:error ":dbcluster-parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":dbcluster-parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (reset-all-parameters common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (parameters common-lisp:nil :type
@@ -8911,8 +9073,9 @@
  (common-lisp:defstruct
      (reset-dbparameter-group-message (:copier common-lisp:nil))
    (dbparameter-group-name
-    (common-lisp:error ":dbparameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":dbparameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (reset-all-parameters common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (parameters common-lisp:nil :type
@@ -8986,25 +9149,30 @@
    (database-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (dbcluster-identifier
-    (common-lisp:error ":dbcluster-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":dbcluster-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (dbcluster-parameter-group-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (vpc-security-group-ids common-lisp:nil :type
     (common-lisp:or vpc-security-group-id-list common-lisp:null))
    (dbsubnet-group-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (engine (common-lisp:error ":engine is required") :type
-    (common-lisp:or string common-lisp:null))
+   (engine
+    (common-lisp:error #A((19) common-lisp:base-char . ":engine is required"))
+    :type (common-lisp:or string common-lisp:null))
    (engine-version common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (port common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
-   (master-username (common-lisp:error ":master-username is required") :type
-    (common-lisp:or string common-lisp:null))
+   (master-username
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":master-username is required"))
+    :type (common-lisp:or string common-lisp:null))
    (master-user-password
-    (common-lisp:error ":master-user-password is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":master-user-password is required"))
+    :type (common-lisp:or string common-lisp:null))
    (option-group-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (preferred-backup-window common-lisp:nil :type
@@ -9017,17 +9185,23 @@
    (kms-key-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (enable-iamdatabase-authentication common-lisp:nil :type
     (common-lisp:or boolean-optional common-lisp:null))
-   (source-engine (common-lisp:error ":source-engine is required") :type
-    (common-lisp:or string common-lisp:null))
+   (source-engine
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":source-engine is required"))
+    :type (common-lisp:or string common-lisp:null))
    (source-engine-version
-    (common-lisp:error ":source-engine-version is required") :type
-    (common-lisp:or string common-lisp:null))
-   (s3bucket-name (common-lisp:error ":s3bucket-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":source-engine-version is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (s3bucket-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":s3bucket-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (s3prefix common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (s3ingestion-role-arn
-    (common-lisp:error ":s3ingestion-role-arn is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":s3ingestion-role-arn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'restore-dbcluster-from-s3message
                     'make-restore-dbcluster-from-s3message))
@@ -9185,12 +9359,16 @@
    (availability-zones common-lisp:nil :type
     (common-lisp:or availability-zones common-lisp:null))
    (dbcluster-identifier
-    (common-lisp:error ":dbcluster-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
-   (snapshot-identifier (common-lisp:error ":snapshot-identifier is required")
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":dbcluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
-   (engine (common-lisp:error ":engine is required") :type
-    (common-lisp:or string common-lisp:null))
+   (snapshot-identifier
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":snapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (engine
+    (common-lisp:error #A((19) common-lisp:base-char . ":engine is required"))
+    :type (common-lisp:or string common-lisp:null))
    (engine-version common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (port common-lisp:nil :type
@@ -9302,13 +9480,16 @@
  (common-lisp:defstruct
      (restore-dbcluster-to-point-in-time-message (:copier common-lisp:nil))
    (dbcluster-identifier
-    (common-lisp:error ":dbcluster-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":dbcluster-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (restore-type common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (source-dbcluster-identifier
-    (common-lisp:error ":source-dbcluster-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":source-dbcluster-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (restore-to-time common-lisp:nil :type
     (common-lisp:or tstamp common-lisp:null))
    (use-latest-restorable-time common-lisp:nil :type
@@ -9415,11 +9596,13 @@
  (common-lisp:defstruct
      (restore-dbinstance-from-dbsnapshot-message (:copier common-lisp:nil))
    (dbinstance-identifier
-    (common-lisp:error ":dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (dbsnapshot-identifier
-    (common-lisp:error ":dbsnapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbsnapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (dbinstance-class common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (port common-lisp:nil :type
@@ -9596,11 +9779,15 @@
  (common-lisp:defstruct
      (restore-dbinstance-to-point-in-time-message (:copier common-lisp:nil))
    (source-dbinstance-identifier
-    (common-lisp:error ":source-dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":source-dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (target-dbinstance-identifier
-    (common-lisp:error ":target-dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":target-dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (restore-time common-lisp:nil :type
     (common-lisp:or tstamp common-lisp:null))
    (use-latest-restorable-time common-lisp:nil :type
@@ -9791,8 +9978,9 @@
  (common-lisp:defstruct
      (revoke-dbsecurity-group-ingress-message (:copier common-lisp:nil))
    (dbsecurity-group-name
-    (common-lisp:error ":dbsecurity-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbsecurity-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (cidrip common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (ec2security-group-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -9977,8 +10165,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (start-dbinstance-message (:copier common-lisp:nil))
    (dbinstance-identifier
-    (common-lisp:error ":dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-dbinstance-message 'make-start-dbinstance-message))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -10010,8 +10199,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (stop-dbinstance-message (:copier common-lisp:nil))
    (dbinstance-identifier
-    (common-lisp:error ":dbinstance-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":dbinstance-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (dbsnapshot-identifier common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -10320,7 +10510,8 @@
                       (common-lisp:apply 'make-add-role-to-dbcluster-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddRoleToDBCluster")
                                   ("Version" ,@"2014-10-31"))
@@ -10340,7 +10531,8 @@
                        'make-add-source-identifier-to-subscription-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"AddSourceIdentifierToSubscription")
@@ -10360,7 +10552,8 @@
                       (common-lisp:apply 'make-add-tags-to-resource-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToResource")
                                   ("Version" ,@"2014-10-31"))
@@ -10381,7 +10574,8 @@
                        'make-apply-pending-maintenance-action-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ApplyPendingMaintenanceAction")
                                   ("Version" ,@"2014-10-31"))
@@ -10405,7 +10599,8 @@
                        'make-authorize-dbsecurity-group-ingress-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"AuthorizeDBSecurityGroupIngress")
@@ -10432,7 +10627,8 @@
                        'make-copy-dbcluster-parameter-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CopyDBClusterParameterGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -10456,7 +10652,8 @@
                       (common-lisp:apply 'make-copy-dbcluster-snapshot-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CopyDBClusterSnapshot")
                                   ("Version" ,@"2014-10-31"))
@@ -10479,7 +10676,8 @@
                       (common-lisp:apply 'make-copy-dbparameter-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CopyDBParameterGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -10502,7 +10700,8 @@
                       (common-lisp:apply 'make-copy-dbsnapshot-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CopyDBSnapshot")
                                   ("Version" ,@"2014-10-31"))
@@ -10524,7 +10723,8 @@
                       (common-lisp:apply 'make-copy-option-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CopyOptionGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -10557,7 +10757,8 @@
                       (common-lisp:apply 'make-create-dbcluster-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBCluster")
                                   ("Version" ,@"2014-10-31"))
@@ -10579,7 +10780,8 @@
                        'make-create-dbcluster-parameter-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBClusterParameterGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -10602,7 +10804,8 @@
                        'make-create-dbcluster-snapshot-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBClusterSnapshot")
                                   ("Version" ,@"2014-10-31"))
@@ -10645,7 +10848,8 @@
                       (common-lisp:apply 'make-create-dbinstance-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBInstance")
                                   ("Version" ,@"2014-10-31"))
@@ -10675,7 +10879,8 @@
                        'make-create-dbinstance-read-replica-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBInstanceReadReplica")
                                   ("Version" ,@"2014-10-31"))
@@ -10697,7 +10902,8 @@
                       (common-lisp:apply 'make-create-dbparameter-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBParameterGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -10718,7 +10924,8 @@
                       (common-lisp:apply 'make-create-dbsecurity-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBSecurityGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -10738,7 +10945,8 @@
                       (common-lisp:apply 'make-create-dbsnapshot-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBSnapshot")
                                   ("Version" ,@"2014-10-31"))
@@ -10759,7 +10967,8 @@
                       (common-lisp:apply 'make-create-dbsubnet-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDBSubnetGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -10781,7 +10990,8 @@
                        'make-create-event-subscription-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateEventSubscription")
                                   ("Version" ,@"2014-10-31"))
@@ -10802,7 +11012,8 @@
                       (common-lisp:apply 'make-create-option-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateOptionGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -10823,7 +11034,8 @@
                       (common-lisp:apply 'make-delete-dbcluster-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBCluster")
                                   ("Version" ,@"2014-10-31"))
@@ -10842,7 +11054,8 @@
                        'make-delete-dbcluster-parameter-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBClusterParameterGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -10861,7 +11074,8 @@
                        'make-delete-dbcluster-snapshot-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBClusterSnapshot")
                                   ("Version" ,@"2014-10-31"))
@@ -10882,7 +11096,8 @@
                       (common-lisp:apply 'make-delete-dbinstance-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBInstance")
                                   ("Version" ,@"2014-10-31"))
@@ -10900,7 +11115,8 @@
                       (common-lisp:apply 'make-delete-dbparameter-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBParameterGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -10918,7 +11134,8 @@
                       (common-lisp:apply 'make-delete-dbsecurity-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBSecurityGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -10936,7 +11153,8 @@
                       (common-lisp:apply 'make-delete-dbsnapshot-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBSnapshot")
                                   ("Version" ,@"2014-10-31"))
@@ -10954,7 +11172,8 @@
                       (common-lisp:apply 'make-delete-dbsubnet-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDBSubnetGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -10973,7 +11192,8 @@
                        'make-delete-event-subscription-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEventSubscription")
                                   ("Version" ,@"2014-10-31"))
@@ -10991,7 +11211,8 @@
                       (common-lisp:apply 'make-delete-option-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteOptionGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -11002,7 +11223,8 @@
 (common-lisp:progn
  (common-lisp:defun describe-account-attributes ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "rds" :method :post :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeAccountAttributes"))
     "AccountAttributesMessage" "DescribeAccountAttributesResult"))
@@ -11019,7 +11241,8 @@
                       (common-lisp:apply 'make-describe-certificates-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCertificates")
                                   ("Version" ,@"2014-10-31"))
@@ -11041,7 +11264,8 @@
                        'make-describe-dbcluster-parameter-groups-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeDBClusterParameterGroups")
@@ -11065,7 +11289,8 @@
                        'make-describe-dbcluster-parameters-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBClusterParameters")
                                   ("Version" ,@"2014-10-31"))
@@ -11084,7 +11309,8 @@
                        'make-describe-dbcluster-snapshot-attributes-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeDBClusterSnapshotAttributes")
@@ -11109,7 +11335,8 @@
                        'make-describe-dbcluster-snapshots-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBClusterSnapshots")
                                   ("Version" ,@"2014-10-31"))
@@ -11129,7 +11356,8 @@
                       (common-lisp:apply 'make-describe-dbclusters-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBClusters")
                                   ("Version" ,@"2014-10-31"))
@@ -11154,7 +11382,8 @@
                        'make-describe-dbengine-versions-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBEngineVersions")
                                   ("Version" ,@"2014-10-31"))
@@ -11174,7 +11403,8 @@
                       (common-lisp:apply 'make-describe-dbinstances-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBInstances")
                                   ("Version" ,@"2014-10-31"))
@@ -11195,7 +11425,8 @@
                       (common-lisp:apply 'make-describe-dblog-files-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBLogFiles")
                                   ("Version" ,@"2014-10-31"))
@@ -11216,7 +11447,8 @@
                        'make-describe-dbparameter-groups-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBParameterGroups")
                                   ("Version" ,@"2014-10-31"))
@@ -11237,7 +11469,8 @@
                       (common-lisp:apply 'make-describe-dbparameters-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBParameters")
                                   ("Version" ,@"2014-10-31"))
@@ -11258,7 +11491,8 @@
                        'make-describe-dbsecurity-groups-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBSecurityGroups")
                                   ("Version" ,@"2014-10-31"))
@@ -11277,7 +11511,8 @@
                        'make-describe-dbsnapshot-attributes-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBSnapshotAttributes")
                                   ("Version" ,@"2014-10-31"))
@@ -11300,7 +11535,8 @@
                       (common-lisp:apply 'make-describe-dbsnapshots-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBSnapshots")
                                   ("Version" ,@"2014-10-31"))
@@ -11320,7 +11556,8 @@
                       (common-lisp:apply 'make-describe-dbsubnet-groups-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDBSubnetGroups")
                                   ("Version" ,@"2014-10-31"))
@@ -11342,7 +11579,8 @@
                        'make-describe-engine-default-cluster-parameters-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeEngineDefaultClusterParameters")
@@ -11366,7 +11604,8 @@
                        'make-describe-engine-default-parameters-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeEngineDefaultParameters")
@@ -11387,7 +11626,8 @@
                        'make-describe-event-categories-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEventCategories")
                                   ("Version" ,@"2014-10-31"))
@@ -11408,7 +11648,8 @@
                        'make-describe-event-subscriptions-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEventSubscriptions")
                                   ("Version" ,@"2014-10-31"))
@@ -11430,7 +11671,8 @@
                       (common-lisp:apply 'make-describe-events-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEvents")
                                   ("Version" ,@"2014-10-31"))
@@ -11452,7 +11694,8 @@
                        'make-describe-option-group-options-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeOptionGroupOptions")
                                   ("Version" ,@"2014-10-31"))
@@ -11473,7 +11716,8 @@
                       (common-lisp:apply 'make-describe-option-groups-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeOptionGroups")
                                   ("Version" ,@"2014-10-31"))
@@ -11495,7 +11739,8 @@
                        'make-describe-orderable-dbinstance-options-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeOrderableDBInstanceOptions")
@@ -11518,7 +11763,8 @@
                        'make-describe-pending-maintenance-actions-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribePendingMaintenanceActions")
@@ -11545,7 +11791,8 @@
                        'make-describe-reserved-dbinstances-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReservedDBInstances")
                                   ("Version" ,@"2014-10-31"))
@@ -11569,7 +11816,8 @@
                        'make-describe-reserved-dbinstances-offerings-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeReservedDBInstancesOfferings")
@@ -11590,7 +11838,8 @@
                       (common-lisp:apply 'make-describe-source-regions-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSourceRegions")
                                   ("Version" ,@"2014-10-31"))
@@ -11612,7 +11861,8 @@
                        'make-download-dblog-file-portion-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DownloadDBLogFilePortion")
                                   ("Version" ,@"2014-10-31"))
@@ -11632,7 +11882,8 @@
                       (common-lisp:apply 'make-failover-dbcluster-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"FailoverDBCluster")
                                   ("Version" ,@"2014-10-31"))
@@ -11650,7 +11901,8 @@
                       (common-lisp:apply 'make-list-tags-for-resource-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2014-10-31"))
@@ -11679,7 +11931,8 @@
                       (common-lisp:apply 'make-modify-dbcluster-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBCluster")
                                   ("Version" ,@"2014-10-31"))
@@ -11700,7 +11953,8 @@
                        'make-modify-dbcluster-parameter-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBClusterParameterGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -11723,7 +11977,8 @@
                        'make-modify-dbcluster-snapshot-attribute-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ModifyDBClusterSnapshotAttribute")
@@ -11767,7 +12022,8 @@
                       (common-lisp:apply 'make-modify-dbinstance-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBInstance")
                                   ("Version" ,@"2014-10-31"))
@@ -11786,7 +12042,8 @@
                       (common-lisp:apply 'make-modify-dbparameter-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBParameterGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -11805,7 +12062,8 @@
                       (common-lisp:apply 'make-modify-dbsnapshot-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBSnapshot")
                                   ("Version" ,@"2014-10-31"))
@@ -11827,7 +12085,8 @@
                        'make-modify-dbsnapshot-attribute-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBSnapshotAttribute")
                                   ("Version" ,@"2014-10-31"))
@@ -11848,7 +12107,8 @@
                       (common-lisp:apply 'make-modify-dbsubnet-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyDBSubnetGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -11870,7 +12130,8 @@
                        'make-modify-event-subscription-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyEventSubscription")
                                   ("Version" ,@"2014-10-31"))
@@ -11891,7 +12152,8 @@
                       (common-lisp:apply 'make-modify-option-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyOptionGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -11912,7 +12174,8 @@
                       (common-lisp:apply 'make-promote-read-replica-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PromoteReadReplica")
                                   ("Version" ,@"2014-10-31"))
@@ -11931,7 +12194,8 @@
                        'make-promote-read-replica-dbcluster-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PromoteReadReplicaDBCluster")
                                   ("Version" ,@"2014-10-31"))
@@ -11954,7 +12218,8 @@
                        'make-purchase-reserved-dbinstances-offering-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"PurchaseReservedDBInstancesOffering")
@@ -11975,7 +12240,8 @@
                       (common-lisp:apply 'make-reboot-dbinstance-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RebootDBInstance")
                                   ("Version" ,@"2014-10-31"))
@@ -11994,7 +12260,8 @@
                        'make-remove-role-from-dbcluster-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveRoleFromDBCluster")
                                   ("Version" ,@"2014-10-31"))
@@ -12014,7 +12281,8 @@
                        'make-remove-source-identifier-from-subscription-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"RemoveSourceIdentifierFromSubscription")
@@ -12035,7 +12303,8 @@
                        'make-remove-tags-from-resource-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromResource")
                                   ("Version" ,@"2014-10-31"))
@@ -12057,7 +12326,8 @@
                        'make-reset-dbcluster-parameter-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResetDBClusterParameterGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -12079,7 +12349,8 @@
                       (common-lisp:apply 'make-reset-dbparameter-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResetDBParameterGroup")
                                   ("Version" ,@"2014-10-31"))
@@ -12114,7 +12385,8 @@
                       (common-lisp:apply 'make-restore-dbcluster-from-s3message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RestoreDBClusterFromS3")
                                   ("Version" ,@"2014-10-31"))
@@ -12141,7 +12413,8 @@
                        'make-restore-dbcluster-from-snapshot-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RestoreDBClusterFromSnapshot")
                                   ("Version" ,@"2014-10-31"))
@@ -12169,7 +12442,8 @@
                        'make-restore-dbcluster-to-point-in-time-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RestoreDBClusterToPointInTime")
                                   ("Version" ,@"2014-10-31"))
@@ -12202,7 +12476,8 @@
                        'make-restore-dbinstance-from-dbsnapshot-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"RestoreDBInstanceFromDBSnapshot")
@@ -12238,7 +12513,8 @@
                        'make-restore-dbinstance-to-point-in-time-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RestoreDBInstanceToPointInTime")
                                   ("Version" ,@"2014-10-31"))
@@ -12262,7 +12538,8 @@
                        'make-revoke-dbsecurity-group-ingress-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RevokeDBSecurityGroupIngress")
                                   ("Version" ,@"2014-10-31"))
@@ -12281,7 +12558,8 @@
                       (common-lisp:apply 'make-start-dbinstance-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartDBInstance")
                                   ("Version" ,@"2014-10-31"))
@@ -12301,7 +12579,8 @@
                       (common-lisp:apply 'make-stop-dbinstance-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "rds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopDBInstance")
                                   ("Version" ,@"2014-10-31"))

@@ -7,13 +7,18 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/ds)
+
 (common-lisp:deftype access-url () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (add-ip-routes-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (ip-routes (common-lisp:error ":ip-routes is required") :type
-    (common-lisp:or ip-routes common-lisp:null))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (ip-routes
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":ip-routes is required"))
+    :type (common-lisp:or ip-routes common-lisp:null))
    (update-security-group-for-directory-controllers common-lisp:nil :type
     (common-lisp:or update-security-group-for-directory-controllers
                     common-lisp:null)))
@@ -49,10 +54,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-resource-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-tags-to-resource-request
                     'make-add-tags-to-resource-request))
@@ -150,9 +158,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (cancel-schema-extension-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (schema-extension-id (common-lisp:error ":schema-extension-id is required")
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (schema-extension-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":schema-extension-id is required"))
     :type (common-lisp:or schema-extension-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-schema-extension-request
@@ -282,18 +294,24 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (connect-directory-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or directory-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or directory-name common-lisp:null))
    (short-name common-lisp:nil :type
     (common-lisp:or directory-short-name common-lisp:null))
-   (password (common-lisp:error ":password is required") :type
-    (common-lisp:or connect-password common-lisp:null))
+   (password
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":password is required"))
+    :type (common-lisp:or connect-password common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
-   (size (common-lisp:error ":size is required") :type
-    (common-lisp:or directory-size common-lisp:null))
-   (connect-settings (common-lisp:error ":connect-settings is required") :type
-    (common-lisp:or directory-connect-settings common-lisp:null)))
+   (size
+    (common-lisp:error #A((17) common-lisp:base-char . ":size is required"))
+    :type (common-lisp:or directory-size common-lisp:null))
+   (connect-settings
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":connect-settings is required"))
+    :type (common-lisp:or directory-connect-settings common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'connect-directory-request
                     'make-connect-directory-request))
@@ -353,10 +371,13 @@
   'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (create-alias-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (alias (common-lisp:error ":alias is required") :type
-    (common-lisp:or alias-name common-lisp:null)))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (alias
+    (common-lisp:error #A((18) common-lisp:base-char . ":alias is required"))
+    :type (common-lisp:or alias-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-alias-request 'make-create-alias-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -394,12 +415,18 @@
                                                 'alias))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-computer-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (computer-name (common-lisp:error ":computer-name is required") :type
-    (common-lisp:or computer-name common-lisp:null))
-   (password (common-lisp:error ":password is required") :type
-    (common-lisp:or computer-password common-lisp:null))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (computer-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":computer-name is required"))
+    :type (common-lisp:or computer-name common-lisp:null))
+   (password
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":password is required"))
+    :type (common-lisp:or computer-password common-lisp:null))
    (organizational-unit-distinguished-name common-lisp:nil :type
     (common-lisp:or organizational-unit-dn common-lisp:null))
    (computer-attributes common-lisp:nil :type
@@ -454,12 +481,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-conditional-forwarder-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (remote-domain-name (common-lisp:error ":remote-domain-name is required")
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (remote-domain-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":remote-domain-name is required"))
     :type (common-lisp:or remote-domain-name common-lisp:null))
-   (dns-ip-addrs (common-lisp:error ":dns-ip-addrs is required") :type
-    (common-lisp:or dns-ip-addrs common-lisp:null)))
+   (dns-ip-addrs
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":dns-ip-addrs is required"))
+    :type (common-lisp:or dns-ip-addrs common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-conditional-forwarder-request
                     'make-create-conditional-forwarder-request))
@@ -496,16 +529,20 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-directory-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or directory-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or directory-name common-lisp:null))
    (short-name common-lisp:nil :type
     (common-lisp:or directory-short-name common-lisp:null))
-   (password (common-lisp:error ":password is required") :type
-    (common-lisp:or password common-lisp:null))
+   (password
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":password is required"))
+    :type (common-lisp:or password common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
-   (size (common-lisp:error ":size is required") :type
-    (common-lisp:or directory-size common-lisp:null))
+   (size
+    (common-lisp:error #A((17) common-lisp:base-char . ":size is required"))
+    :type (common-lisp:or directory-size common-lisp:null))
    (vpc-settings common-lisp:nil :type
     (common-lisp:or directory-vpc-settings common-lisp:null)))
  (common-lisp:export
@@ -563,16 +600,21 @@
                                                 'directory-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-microsoft-adrequest (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or directory-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or directory-name common-lisp:null))
    (short-name common-lisp:nil :type
     (common-lisp:or directory-short-name common-lisp:null))
-   (password (common-lisp:error ":password is required") :type
-    (common-lisp:or password common-lisp:null))
+   (password
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":password is required"))
+    :type (common-lisp:or password common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
-   (vpc-settings (common-lisp:error ":vpc-settings is required") :type
-    (common-lisp:or directory-vpc-settings common-lisp:null)))
+   (vpc-settings
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":vpc-settings is required"))
+    :type (common-lisp:or directory-vpc-settings common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-microsoft-adrequest
                     'make-create-microsoft-adrequest))
@@ -627,8 +669,10 @@
   'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (create-snapshot-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
    (name common-lisp:nil :type
     (common-lisp:or snapshot-name common-lisp:null)))
  (common-lisp:export
@@ -666,14 +710,22 @@
                                                 'snapshot-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-trust-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (remote-domain-name (common-lisp:error ":remote-domain-name is required")
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (remote-domain-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":remote-domain-name is required"))
     :type (common-lisp:or remote-domain-name common-lisp:null))
-   (trust-password (common-lisp:error ":trust-password is required") :type
-    (common-lisp:or trust-password common-lisp:null))
-   (trust-direction (common-lisp:error ":trust-direction is required") :type
-    (common-lisp:or trust-direction common-lisp:null))
+   (trust-password
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":trust-password is required"))
+    :type (common-lisp:or trust-password common-lisp:null))
+   (trust-direction
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":trust-direction is required"))
+    :type (common-lisp:or trust-direction common-lisp:null))
    (trust-type common-lisp:nil :type
     (common-lisp:or trust-type common-lisp:null))
    (conditional-forwarder-ip-addrs common-lisp:nil :type
@@ -732,9 +784,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-conditional-forwarder-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (remote-domain-name (common-lisp:error ":remote-domain-name is required")
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (remote-domain-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":remote-domain-name is required"))
     :type (common-lisp:or remote-domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-conditional-forwarder-request
@@ -767,8 +823,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-directory-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null)))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-directory-request 'make-delete-directory-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -799,8 +857,10 @@
                                                 'directory-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-snapshot-request (:copier common-lisp:nil))
-   (snapshot-id (common-lisp:error ":snapshot-id is required") :type
-    (common-lisp:or snapshot-id common-lisp:null)))
+   (snapshot-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":snapshot-id is required"))
+    :type (common-lisp:or snapshot-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-snapshot-request 'make-delete-snapshot-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -831,8 +891,10 @@
                                                 'snapshot-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-trust-request (:copier common-lisp:nil))
-   (trust-id (common-lisp:error ":trust-id is required") :type
-    (common-lisp:or trust-id common-lisp:null))
+   (trust-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":trust-id is required"))
+    :type (common-lisp:or trust-id common-lisp:null))
    (delete-associated-conditional-forwarder common-lisp:nil :type
     (common-lisp:or delete-associated-conditional-forwarder common-lisp:null)))
  (common-lisp:export
@@ -866,10 +928,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (deregister-event-topic-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (topic-name (common-lisp:error ":topic-name is required") :type
-    (common-lisp:or topic-name common-lisp:null)))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (topic-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":topic-name is required"))
+    :type (common-lisp:or topic-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-event-topic-request
                     'make-deregister-event-topic-request))
@@ -902,8 +968,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-conditional-forwarders-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
    (remote-domain-names common-lisp:nil :type
     (common-lisp:or remote-domain-names common-lisp:null)))
  (common-lisp:export
@@ -1000,8 +1068,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-domain-controllers-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
    (domain-controller-ids common-lisp:nil :type
     (common-lisp:or domain-controller-ids common-lisp:null))
    (next-token common-lisp:nil :type
@@ -1227,13 +1297,20 @@
   'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (directory-connect-settings (:copier common-lisp:nil))
-   (vpc-id (common-lisp:error ":vpc-id is required") :type
-    (common-lisp:or vpc-id common-lisp:null))
-   (subnet-ids (common-lisp:error ":subnet-ids is required") :type
-    (common-lisp:or subnet-ids common-lisp:null))
-   (customer-dns-ips (common-lisp:error ":customer-dns-ips is required") :type
-    (common-lisp:or dns-ip-addrs common-lisp:null))
-   (customer-user-name (common-lisp:error ":customer-user-name is required")
+   (vpc-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":vpc-id is required"))
+    :type (common-lisp:or vpc-id common-lisp:null))
+   (subnet-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":subnet-ids is required"))
+    :type (common-lisp:or subnet-ids common-lisp:null))
+   (customer-dns-ips
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":customer-dns-ips is required"))
+    :type (common-lisp:or dns-ip-addrs common-lisp:null))
+   (customer-user-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":customer-user-name is required"))
     :type (common-lisp:or user-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'directory-connect-settings
@@ -1600,10 +1677,13 @@
                                                 'request-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (directory-vpc-settings (:copier common-lisp:nil))
-   (vpc-id (common-lisp:error ":vpc-id is required") :type
-    (common-lisp:or vpc-id common-lisp:null))
-   (subnet-ids (common-lisp:error ":subnet-ids is required") :type
-    (common-lisp:or subnet-ids common-lisp:null)))
+   (vpc-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":vpc-id is required"))
+    :type (common-lisp:or vpc-id common-lisp:null))
+   (subnet-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":subnet-ids is required"))
+    :type (common-lisp:or subnet-ids common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'directory-vpc-settings 'make-directory-vpc-settings))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1661,8 +1741,10 @@
                                                 'availability-zones))))))
 (common-lisp:progn
  (common-lisp:defstruct (disable-radius-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null)))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-radius-request 'make-disable-radius-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1686,8 +1768,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (disable-sso-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
    (user-name common-lisp:nil :type
     (common-lisp:or user-name common-lisp:null))
    (password common-lisp:nil :type
@@ -1848,10 +1932,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (enable-radius-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (radius-settings (common-lisp:error ":radius-settings is required") :type
-    (common-lisp:or radius-settings common-lisp:null)))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (radius-settings
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":radius-settings is required"))
+    :type (common-lisp:or radius-settings common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-radius-request 'make-enable-radius-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1878,8 +1966,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (enable-sso-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
    (user-name common-lisp:nil :type
     (common-lisp:or user-name common-lisp:null))
    (password common-lisp:nil :type
@@ -2041,8 +2131,10 @@
                                                 'directory-limits))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-snapshot-limits-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null)))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-snapshot-limits-request
                     'make-get-snapshot-limits-request))
@@ -2269,8 +2361,10 @@
 (common-lisp:deftype limit () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (list-ip-routes-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or limit common-lisp:null)))
@@ -2322,8 +2416,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-schema-extensions-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or limit common-lisp:null)))
@@ -2378,8 +2474,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or limit common-lisp:null)))
@@ -2506,10 +2604,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-event-topic-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (topic-name (common-lisp:error ":topic-name is required") :type
-    (common-lisp:or topic-name common-lisp:null)))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (topic-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":topic-name is required"))
+    :type (common-lisp:or topic-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-event-topic-request
                     'make-register-event-topic-request))
@@ -2550,10 +2652,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (remove-ip-routes-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (cidr-ips (common-lisp:error ":cidr-ips is required") :type
-    (common-lisp:or cidr-ips common-lisp:null)))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (cidr-ips
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":cidr-ips is required"))
+    :type (common-lisp:or cidr-ips common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-ip-routes-request 'make-remove-ip-routes-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2583,10 +2689,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-tags-from-resource-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-keys common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-keys common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-from-resource-request
                     'make-remove-tags-from-resource-request))
@@ -2622,8 +2732,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (restore-from-snapshot-request (:copier common-lisp:nil))
-   (snapshot-id (common-lisp:error ":snapshot-id is required") :type
-    (common-lisp:or snapshot-id common-lisp:null)))
+   (snapshot-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":snapshot-id is required"))
+    :type (common-lisp:or snapshot-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'restore-from-snapshot-request
                     'make-restore-from-snapshot-request))
@@ -2870,16 +2982,24 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-schema-extension-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
    (create-snapshot-before-schema-extension
-    (common-lisp:error ":create-snapshot-before-schema-extension is required")
+    (common-lisp:error
+     #A((52) common-lisp:base-char
+        . ":create-snapshot-before-schema-extension is required"))
     :type
     (common-lisp:or create-snapshot-before-schema-extension common-lisp:null))
-   (ldif-content (common-lisp:error ":ldif-content is required") :type
-    (common-lisp:or ldif-content common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or description common-lisp:null)))
+   (ldif-content
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":ldif-content is required"))
+    :type (common-lisp:or ldif-content common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or description common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-schema-extension-request
                     'make-start-schema-extension-request))
@@ -2938,10 +3058,11 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -3130,12 +3251,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-conditional-forwarder-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (remote-domain-name (common-lisp:error ":remote-domain-name is required")
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (remote-domain-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":remote-domain-name is required"))
     :type (common-lisp:or remote-domain-name common-lisp:null))
-   (dns-ip-addrs (common-lisp:error ":dns-ip-addrs is required") :type
-    (common-lisp:or dns-ip-addrs common-lisp:null)))
+   (dns-ip-addrs
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":dns-ip-addrs is required"))
+    :type (common-lisp:or dns-ip-addrs common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-conditional-forwarder-request
                     'make-update-conditional-forwarder-request))
@@ -3173,9 +3300,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-number-of-domain-controllers-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (desired-number (common-lisp:error ":desired-number is required") :type
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (desired-number
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":desired-number is required"))
+    :type
     (common-lisp:or desired-number-of-domain-controllers common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-number-of-domain-controllers-request
@@ -3208,10 +3340,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (update-radius-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (radius-settings (common-lisp:error ":radius-settings is required") :type
-    (common-lisp:or radius-settings common-lisp:null)))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (radius-settings
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":radius-settings is required"))
+    :type (common-lisp:or radius-settings common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-radius-request 'make-update-radius-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3242,8 +3378,10 @@
 (common-lisp:deftype user-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (verify-trust-request (:copier common-lisp:nil))
-   (trust-id (common-lisp:error ":trust-id is required") :type
-    (common-lisp:or trust-id common-lisp:null)))
+   (trust-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":trust-id is required"))
+    :type (common-lisp:or trust-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'verify-trust-request 'make-verify-trust-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3281,7 +3419,8 @@
                       (common-lisp:apply 'make-add-ip-routes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddIpRoutes")
                                   ("Version" ,@"2015-04-16"))
@@ -3299,7 +3438,8 @@
                       (common-lisp:apply 'make-add-tags-to-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToResource")
                                   ("Version" ,@"2015-04-16"))
@@ -3318,7 +3458,8 @@
                       (common-lisp:apply 'make-cancel-schema-extension-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelSchemaExtension")
                                   ("Version" ,@"2015-04-16"))
@@ -3339,7 +3480,8 @@
                       (common-lisp:apply 'make-connect-directory-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ConnectDirectory")
                                   ("Version" ,@"2015-04-16"))
@@ -3357,7 +3499,8 @@
                       (common-lisp:apply 'make-create-alias-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAlias")
                                   ("Version" ,@"2015-04-16"))
@@ -3379,7 +3522,8 @@
                       (common-lisp:apply 'make-create-computer-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateComputer")
                                   ("Version" ,@"2015-04-16"))
@@ -3400,7 +3544,8 @@
                        'make-create-conditional-forwarder-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateConditionalForwarder")
                                   ("Version" ,@"2015-04-16"))
@@ -3421,7 +3566,8 @@
                       (common-lisp:apply 'make-create-directory-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDirectory")
                                   ("Version" ,@"2015-04-16"))
@@ -3441,7 +3587,8 @@
                       (common-lisp:apply 'make-create-microsoft-adrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateMicrosoftAD")
                                   ("Version" ,@"2015-04-16"))
@@ -3459,7 +3606,8 @@
                       (common-lisp:apply 'make-create-snapshot-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSnapshot")
                                   ("Version" ,@"2015-04-16"))
@@ -3481,7 +3629,8 @@
                       (common-lisp:apply 'make-create-trust-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTrust")
                                   ("Version" ,@"2015-04-16"))
@@ -3501,7 +3650,8 @@
                        'make-delete-conditional-forwarder-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConditionalForwarder")
                                   ("Version" ,@"2015-04-16"))
@@ -3519,7 +3669,8 @@
                       (common-lisp:apply 'make-delete-directory-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDirectory")
                                   ("Version" ,@"2015-04-16"))
@@ -3537,7 +3688,8 @@
                       (common-lisp:apply 'make-delete-snapshot-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSnapshot")
                                   ("Version" ,@"2015-04-16"))
@@ -3557,7 +3709,8 @@
                       (common-lisp:apply 'make-delete-trust-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTrust")
                                   ("Version" ,@"2015-04-16"))
@@ -3575,7 +3728,8 @@
                       (common-lisp:apply 'make-deregister-event-topic-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterEventTopic")
                                   ("Version" ,@"2015-04-16"))
@@ -3595,7 +3749,8 @@
                        'make-describe-conditional-forwarders-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConditionalForwarders")
                                   ("Version" ,@"2015-04-16"))
@@ -3613,7 +3768,8 @@
                       (common-lisp:apply 'make-describe-directories-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDirectories")
                                   ("Version" ,@"2015-04-16"))
@@ -3635,7 +3791,8 @@
                        'make-describe-domain-controllers-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDomainControllers")
                                   ("Version" ,@"2015-04-16"))
@@ -3653,7 +3810,8 @@
                       (common-lisp:apply 'make-describe-event-topics-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEventTopics")
                                   ("Version" ,@"2015-04-16"))
@@ -3673,7 +3831,8 @@
                       (common-lisp:apply 'make-describe-snapshots-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSnapshots")
                                   ("Version" ,@"2015-04-16"))
@@ -3692,7 +3851,8 @@
                       (common-lisp:apply 'make-describe-trusts-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTrusts")
                                   ("Version" ,@"2015-04-16"))
@@ -3710,7 +3870,8 @@
                       (common-lisp:apply 'make-disable-radius-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableRadius")
                                   ("Version" ,@"2015-04-16"))
@@ -3729,7 +3890,8 @@
                       (common-lisp:apply 'make-disable-sso-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableSso")
                                   ("Version" ,@"2015-04-16"))
@@ -3747,7 +3909,8 @@
                       (common-lisp:apply 'make-enable-radius-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableRadius")
                                   ("Version" ,@"2015-04-16"))
@@ -3766,7 +3929,8 @@
                       (common-lisp:apply 'make-enable-sso-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableSso")
                                   ("Version" ,@"2015-04-16"))
@@ -3777,7 +3941,8 @@
 (common-lisp:progn
  (common-lisp:defun get-directory-limits ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "ds" :method :post :params
+    (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                             :method :post :params
                              (common-lisp:cons "Action" "GetDirectoryLimits"))
     "GetDirectoryLimitsResult" common-lisp:nil))
  (common-lisp:export 'get-directory-limits))
@@ -3791,7 +3956,8 @@
                       (common-lisp:apply 'make-get-snapshot-limits-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSnapshotLimits")
                                   ("Version" ,@"2015-04-16"))
@@ -3809,7 +3975,8 @@
                       (common-lisp:apply 'make-list-ip-routes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListIpRoutes")
                                   ("Version" ,@"2015-04-16"))
@@ -3827,7 +3994,8 @@
                       (common-lisp:apply 'make-list-schema-extensions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListSchemaExtensions")
                                   ("Version" ,@"2015-04-16"))
@@ -3845,7 +4013,8 @@
                       (common-lisp:apply 'make-list-tags-for-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2015-04-16"))
@@ -3863,7 +4032,8 @@
                       (common-lisp:apply 'make-register-event-topic-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterEventTopic")
                                   ("Version" ,@"2015-04-16"))
@@ -3881,7 +4051,8 @@
                       (common-lisp:apply 'make-remove-ip-routes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveIpRoutes")
                                   ("Version" ,@"2015-04-16"))
@@ -3900,7 +4071,8 @@
                        'make-remove-tags-from-resource-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromResource")
                                   ("Version" ,@"2015-04-16"))
@@ -3918,7 +4090,8 @@
                       (common-lisp:apply 'make-restore-from-snapshot-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RestoreFromSnapshot")
                                   ("Version" ,@"2015-04-16"))
@@ -3940,7 +4113,8 @@
                       (common-lisp:apply 'make-start-schema-extension-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartSchemaExtension")
                                   ("Version" ,@"2015-04-16"))
@@ -3961,7 +4135,8 @@
                        'make-update-conditional-forwarder-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateConditionalForwarder")
                                   ("Version" ,@"2015-04-16"))
@@ -3980,7 +4155,8 @@
                        'make-update-number-of-domain-controllers-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"UpdateNumberOfDomainControllers")
@@ -3999,7 +4175,8 @@
                       (common-lisp:apply 'make-update-radius-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRadius")
                                   ("Version" ,@"2015-04-16"))
@@ -4017,7 +4194,8 @@
                       (common-lisp:apply 'make-verify-trust-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "ds" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "ds")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"VerifyTrust")
                                   ("Version" ,@"2015-04-16"))

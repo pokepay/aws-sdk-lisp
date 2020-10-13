@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/shield)
+
 (common-lisp:progn
  (common-lisp:defstruct (attack-detail (:copier common-lisp:nil))
    (attack-id common-lisp:nil :type
@@ -114,8 +115,10 @@
 (common-lisp:deftype attack-timestamp () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (attack-vector-description (:copier common-lisp:nil))
-   (vector-type (common-lisp:error ":vector-type is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (vector-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":vector-type is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attack-vector-description
                     'make-attack-vector-description))
@@ -140,10 +143,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (create-protection-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or protection-name common-lisp:null))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or protection-name common-lisp:null))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-protection-request
                     'make-create-protection-request))
@@ -203,8 +209,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-protection-request (:copier common-lisp:nil))
-   (protection-id (common-lisp:error ":protection-id is required") :type
-    (common-lisp:or protection-id common-lisp:null)))
+   (protection-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":protection-id is required"))
+    :type (common-lisp:or protection-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-protection-request
                     'make-delete-protection-request))
@@ -252,8 +260,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (describe-attack-request (:copier common-lisp:nil))
-   (attack-id (common-lisp:error ":attack-id is required") :type
-    (common-lisp:or attack-id common-lisp:null)))
+   (attack-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":attack-id is required"))
+    :type (common-lisp:or attack-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-attack-request 'make-describe-attack-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -284,8 +294,10 @@
                                                 'attack))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-protection-request (:copier common-lisp:nil))
-   (protection-id (common-lisp:error ":protection-id is required") :type
-    (common-lisp:or protection-id common-lisp:null)))
+   (protection-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":protection-id is required"))
+    :type (common-lisp:or protection-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-protection-request
                     'make-describe-protection-request))
@@ -759,8 +771,10 @@
                                                 'time-commitment-in-seconds))))))
 (common-lisp:progn
  (common-lisp:defstruct (summarized-attack-vector (:copier common-lisp:nil))
-   (vector-type (common-lisp:error ":vector-type is required") :type
-    (common-lisp:or string common-lisp:null))
+   (vector-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":vector-type is required"))
+    :type (common-lisp:or string common-lisp:null))
    (vector-counters common-lisp:nil :type
     (common-lisp:or summarized-counter-list common-lisp:null)))
  (common-lisp:export
@@ -873,7 +887,9 @@
                       (common-lisp:apply 'make-create-protection-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "shield" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "shield") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateProtection")
                                   ("Version" ,@"2016-06-02"))
@@ -884,7 +900,8 @@
 (common-lisp:progn
  (common-lisp:defun create-subscription ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "shield" :method :post :params
+    (aws-sdk/api:aws-request :service #A((6) common-lisp:base-char . "shield")
+                             :method :post :params
                              (common-lisp:cons "Action" "CreateSubscription"))
     "CreateSubscriptionResponse" common-lisp:nil))
  (common-lisp:export 'create-subscription))
@@ -898,7 +915,9 @@
                       (common-lisp:apply 'make-delete-protection-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "shield" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "shield") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteProtection")
                                   ("Version" ,@"2016-06-02"))
@@ -909,7 +928,8 @@
 (common-lisp:progn
  (common-lisp:defun delete-subscription ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "shield" :method :post :params
+    (aws-sdk/api:aws-request :service #A((6) common-lisp:base-char . "shield")
+                             :method :post :params
                              (common-lisp:cons "Action" "DeleteSubscription"))
     "DeleteSubscriptionResponse" common-lisp:nil))
  (common-lisp:export 'delete-subscription))
@@ -923,7 +943,9 @@
                       (common-lisp:apply 'make-describe-attack-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "shield" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "shield") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAttack")
                                   ("Version" ,@"2016-06-02"))
@@ -941,7 +963,9 @@
                       (common-lisp:apply 'make-describe-protection-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "shield" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "shield") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProtection")
                                   ("Version" ,@"2016-06-02"))
@@ -952,7 +976,8 @@
 (common-lisp:progn
  (common-lisp:defun describe-subscription ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "shield" :method :post :params
+    (aws-sdk/api:aws-request :service #A((6) common-lisp:base-char . "shield")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeSubscription"))
     "DescribeSubscriptionResponse" common-lisp:nil))
@@ -970,7 +995,9 @@
                       (common-lisp:apply 'make-list-attacks-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "shield" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "shield") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAttacks")
                                   ("Version" ,@"2016-06-02"))
@@ -988,7 +1015,9 @@
                       (common-lisp:apply 'make-list-protections-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "shield" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "shield") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListProtections")
                                   ("Version" ,@"2016-06-02"))

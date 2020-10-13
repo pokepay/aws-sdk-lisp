@@ -7,14 +7,21 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/gamelift)
+
 (common-lisp:progn
  (common-lisp:defstruct (accept-match-input (:copier common-lisp:nil))
-   (ticket-id (common-lisp:error ":ticket-id is required") :type
-    (common-lisp:or matchmaking-id-string-model common-lisp:null))
-   (player-ids (common-lisp:error ":player-ids is required") :type
-    (common-lisp:or matchmaking-player-id-list common-lisp:null))
-   (acceptance-type (common-lisp:error ":acceptance-type is required") :type
-    (common-lisp:or acceptance-type common-lisp:null)))
+   (ticket-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":ticket-id is required"))
+    :type (common-lisp:or matchmaking-id-string-model common-lisp:null))
+   (player-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":player-ids is required"))
+    :type (common-lisp:or matchmaking-player-id-list common-lisp:null))
+   (acceptance-type
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":acceptance-type is required"))
+    :type (common-lisp:or acceptance-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'accept-match-input 'make-accept-match-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -244,12 +251,16 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-alias-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type
     (common-lisp:or non-blank-and-length-constraint-string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or non-zero-and-max-string common-lisp:null))
-   (routing-strategy (common-lisp:error ":routing-strategy is required") :type
-    (common-lisp:or routing-strategy common-lisp:null)))
+   (routing-strategy
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":routing-strategy is required"))
+    :type (common-lisp:or routing-strategy common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-alias-input 'make-create-alias-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -347,20 +358,25 @@
                                                 'storage-location))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-fleet-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or non-zero-and-max-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or non-zero-and-max-string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or non-zero-and-max-string common-lisp:null))
-   (build-id (common-lisp:error ":build-id is required") :type
-    (common-lisp:or build-id common-lisp:null))
+   (build-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":build-id is required"))
+    :type (common-lisp:or build-id common-lisp:null))
    (server-launch-path common-lisp:nil :type
     (common-lisp:or non-zero-and-max-string common-lisp:null))
    (server-launch-parameters common-lisp:nil :type
     (common-lisp:or non-zero-and-max-string common-lisp:null))
    (log-paths common-lisp:nil :type
     (common-lisp:or string-list common-lisp:null))
-   (ec2instance-type (common-lisp:error ":ec2instance-type is required") :type
-    (common-lisp:or ec2instance-type common-lisp:null))
+   (ec2instance-type
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":ec2instance-type is required"))
+    :type (common-lisp:or ec2instance-type common-lisp:null))
    (ec2inbound-permissions common-lisp:nil :type
     (common-lisp:or ip-permissions-list common-lisp:null))
    (new-game-session-protection-policy common-lisp:nil :type
@@ -455,8 +471,10 @@
    (fleet-id common-lisp:nil :type (common-lisp:or fleet-id common-lisp:null))
    (alias-id common-lisp:nil :type (common-lisp:or alias-id common-lisp:null))
    (maximum-player-session-count
-    (common-lisp:error ":maximum-player-session-count is required") :type
-    (common-lisp:or whole-number common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":maximum-player-session-count is required"))
+    :type (common-lisp:or whole-number common-lisp:null))
    (name common-lisp:nil :type
     (common-lisp:or non-zero-and-max-string common-lisp:null))
    (game-properties common-lisp:nil :type
@@ -542,8 +560,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-game-session-queue-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or game-session-queue-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or game-session-queue-name common-lisp:null))
    (timeout-in-seconds common-lisp:nil :type
     (common-lisp:or whole-number common-lisp:null))
    (player-latency-policies common-lisp:nil :type
@@ -599,22 +618,30 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-matchmaking-configuration-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or matchmaking-id-string-model common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or matchmaking-id-string-model common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or non-zero-and-max-string common-lisp:null))
    (game-session-queue-arns
-    (common-lisp:error ":game-session-queue-arns is required") :type
-    (common-lisp:or queue-arns-list common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":game-session-queue-arns is required"))
+    :type (common-lisp:or queue-arns-list common-lisp:null))
    (request-timeout-seconds
-    (common-lisp:error ":request-timeout-seconds is required") :type
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":request-timeout-seconds is required"))
+    :type
     (common-lisp:or matchmaking-request-timeout-integer common-lisp:null))
    (acceptance-timeout-seconds common-lisp:nil :type
     (common-lisp:or matchmaking-acceptance-timeout-integer common-lisp:null))
-   (acceptance-required (common-lisp:error ":acceptance-required is required")
+   (acceptance-required
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":acceptance-required is required"))
     :type (common-lisp:or boolean common-lisp:null))
-   (rule-set-name (common-lisp:error ":rule-set-name is required") :type
-    (common-lisp:or matchmaking-id-string-model common-lisp:null))
+   (rule-set-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-name is required"))
+    :type (common-lisp:or matchmaking-id-string-model common-lisp:null))
    (notification-target common-lisp:nil :type
     (common-lisp:or sns-arn-string-model common-lisp:null))
    (additional-player-count common-lisp:nil :type
@@ -714,10 +741,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-matchmaking-rule-set-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or matchmaking-id-string-model common-lisp:null))
-   (rule-set-body (common-lisp:error ":rule-set-body is required") :type
-    (common-lisp:or rule-set-body common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or matchmaking-id-string-model common-lisp:null))
+   (rule-set-body
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-body is required"))
+    :type (common-lisp:or rule-set-body common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-matchmaking-rule-set-input
                     'make-create-matchmaking-rule-set-input))
@@ -739,8 +769,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-matchmaking-rule-set-output (:copier common-lisp:nil))
-   (rule-set (common-lisp:error ":rule-set is required") :type
-    (common-lisp:or matchmaking-rule-set common-lisp:null)))
+   (rule-set
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":rule-set is required"))
+    :type (common-lisp:or matchmaking-rule-set common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-matchmaking-rule-set-output
                     'make-create-matchmaking-rule-set-output))
@@ -756,10 +788,14 @@
                                                 'rule-set))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-player-session-input (:copier common-lisp:nil))
-   (game-session-id (common-lisp:error ":game-session-id is required") :type
-    (common-lisp:or arn-string-model common-lisp:null))
-   (player-id (common-lisp:error ":player-id is required") :type
-    (common-lisp:or non-zero-and-max-string common-lisp:null))
+   (game-session-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":game-session-id is required"))
+    :type (common-lisp:or arn-string-model common-lisp:null))
+   (player-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":player-id is required"))
+    :type (common-lisp:or non-zero-and-max-string common-lisp:null))
    (player-data common-lisp:nil :type
     (common-lisp:or player-data common-lisp:null)))
  (common-lisp:export
@@ -806,10 +842,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-player-sessions-input (:copier common-lisp:nil))
-   (game-session-id (common-lisp:error ":game-session-id is required") :type
-    (common-lisp:or arn-string-model common-lisp:null))
-   (player-ids (common-lisp:error ":player-ids is required") :type
-    (common-lisp:or player-id-list common-lisp:null))
+   (game-session-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":game-session-id is required"))
+    :type (common-lisp:or arn-string-model common-lisp:null))
+   (player-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":player-ids is required"))
+    :type (common-lisp:or player-id-list common-lisp:null))
    (player-data-map common-lisp:nil :type
     (common-lisp:or player-data-map common-lisp:null)))
  (common-lisp:export
@@ -856,8 +896,10 @@
 (common-lisp:deftype custom-event-data () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-alias-input (:copier common-lisp:nil))
-   (alias-id (common-lisp:error ":alias-id is required") :type
-    (common-lisp:or alias-id common-lisp:null)))
+   (alias-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":alias-id is required"))
+    :type (common-lisp:or alias-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-alias-input 'make-delete-alias-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -870,8 +912,10 @@
                                                 'alias-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-build-input (:copier common-lisp:nil))
-   (build-id (common-lisp:error ":build-id is required") :type
-    (common-lisp:or build-id common-lisp:null)))
+   (build-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":build-id is required"))
+    :type (common-lisp:or build-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-build-input 'make-delete-build-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -884,8 +928,10 @@
                                                 'build-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-fleet-input (:copier common-lisp:nil))
-   (fleet-id (common-lisp:error ":fleet-id is required") :type
-    (common-lisp:or fleet-id common-lisp:null)))
+   (fleet-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fleet-id is required"))
+    :type (common-lisp:or fleet-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-fleet-input 'make-delete-fleet-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -899,8 +945,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-game-session-queue-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or game-session-queue-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or game-session-queue-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-game-session-queue-input
                     'make-delete-game-session-queue-input))
@@ -928,8 +975,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-matchmaking-configuration-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or matchmaking-id-string-model common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or matchmaking-id-string-model common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-matchmaking-configuration-input
                     'make-delete-matchmaking-configuration-input))
@@ -956,10 +1004,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-scaling-policy-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or non-zero-and-max-string common-lisp:null))
-   (fleet-id (common-lisp:error ":fleet-id is required") :type
-    (common-lisp:or fleet-id common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or non-zero-and-max-string common-lisp:null))
+   (fleet-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fleet-id is required"))
+    :type (common-lisp:or fleet-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-scaling-policy-input
                     'make-delete-scaling-policy-input))
@@ -980,8 +1031,10 @@
                                                 'fleet-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-alias-input (:copier common-lisp:nil))
-   (alias-id (common-lisp:error ":alias-id is required") :type
-    (common-lisp:or alias-id common-lisp:null)))
+   (alias-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":alias-id is required"))
+    :type (common-lisp:or alias-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-alias-input 'make-describe-alias-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1009,8 +1062,10 @@
                                                 'alias))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-build-input (:copier common-lisp:nil))
-   (build-id (common-lisp:error ":build-id is required") :type
-    (common-lisp:or build-id common-lisp:null)))
+   (build-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":build-id is required"))
+    :type (common-lisp:or build-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-build-input 'make-describe-build-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1188,8 +1243,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-fleet-events-input (:copier common-lisp:nil))
-   (fleet-id (common-lisp:error ":fleet-id is required") :type
-    (common-lisp:or fleet-id common-lisp:null))
+   (fleet-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fleet-id is required"))
+    :type (common-lisp:or fleet-id common-lisp:null))
    (start-time common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
    (end-time common-lisp:nil :type (common-lisp:or timestamp common-lisp:null))
@@ -1257,8 +1314,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-fleet-port-settings-input (:copier common-lisp:nil))
-   (fleet-id (common-lisp:error ":fleet-id is required") :type
-    (common-lisp:or fleet-id common-lisp:null)))
+   (fleet-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fleet-id is required"))
+    :type (common-lisp:or fleet-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-fleet-port-settings-input
                     'make-describe-fleet-port-settings-input))
@@ -1426,8 +1485,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-game-session-placement-input (:copier common-lisp:nil))
-   (placement-id (common-lisp:error ":placement-id is required") :type
-    (common-lisp:or id-string-model common-lisp:null)))
+   (placement-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":placement-id is required"))
+    :type (common-lisp:or id-string-model common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-game-session-placement-input
                     'make-describe-game-session-placement-input))
@@ -1594,8 +1655,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-instances-input (:copier common-lisp:nil))
-   (fleet-id (common-lisp:error ":fleet-id is required") :type
-    (common-lisp:or fleet-id common-lisp:null))
+   (fleet-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fleet-id is required"))
+    :type (common-lisp:or fleet-id common-lisp:null))
    (instance-id common-lisp:nil :type
     (common-lisp:or instance-id common-lisp:null))
    (limit common-lisp:nil :type
@@ -1719,8 +1782,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-matchmaking-input (:copier common-lisp:nil))
-   (ticket-ids (common-lisp:error ":ticket-ids is required") :type
-    (common-lisp:or matchmaking-id-list common-lisp:null)))
+   (ticket-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":ticket-ids is required"))
+    :type (common-lisp:or matchmaking-id-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-matchmaking-input
                     'make-describe-matchmaking-input))
@@ -1786,8 +1851,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-matchmaking-rule-sets-output (:copier common-lisp:nil))
-   (rule-sets (common-lisp:error ":rule-sets is required") :type
-    (common-lisp:or matchmaking-rule-set-list common-lisp:null))
+   (rule-sets
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":rule-sets is required"))
+    :type (common-lisp:or matchmaking-rule-set-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or non-zero-and-max-string common-lisp:null)))
  (common-lisp:export
@@ -1889,8 +1956,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-runtime-configuration-input (:copier common-lisp:nil))
-   (fleet-id (common-lisp:error ":fleet-id is required") :type
-    (common-lisp:or fleet-id common-lisp:null)))
+   (fleet-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fleet-id is required"))
+    :type (common-lisp:or fleet-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-runtime-configuration-input
                     'make-describe-runtime-configuration-input))
@@ -1925,8 +1994,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-scaling-policies-input (:copier common-lisp:nil))
-   (fleet-id (common-lisp:error ":fleet-id is required") :type
-    (common-lisp:or fleet-id common-lisp:null))
+   (fleet-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fleet-id is required"))
+    :type (common-lisp:or fleet-id common-lisp:null))
    (status-filter common-lisp:nil :type
     (common-lisp:or scaling-status-type common-lisp:null))
    (limit common-lisp:nil :type
@@ -2399,10 +2470,11 @@
 (common-lisp:deftype free-text () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (game-property (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or game-property-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or game-property-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or game-property-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or game-property-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'game-property 'make-game-property))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape game-property))
@@ -2835,8 +2907,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-game-session-log-url-input (:copier common-lisp:nil))
-   (game-session-id (common-lisp:error ":game-session-id is required") :type
-    (common-lisp:or arn-string-model common-lisp:null)))
+   (game-session-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":game-session-id is required"))
+    :type (common-lisp:or arn-string-model common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-game-session-log-url-input
                     'make-get-game-session-log-url-input))
@@ -2870,10 +2944,14 @@
                                                 'pre-signed-url))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-instance-access-input (:copier common-lisp:nil))
-   (fleet-id (common-lisp:error ":fleet-id is required") :type
-    (common-lisp:or fleet-id common-lisp:null))
-   (instance-id (common-lisp:error ":instance-id is required") :type
-    (common-lisp:or instance-id common-lisp:null)))
+   (fleet-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fleet-id is required"))
+    :type (common-lisp:or fleet-id common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instance-id is required"))
+    :type (common-lisp:or instance-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-instance-access-input
                     'make-get-instance-access-input))
@@ -3126,14 +3204,21 @@
 (common-lisp:deftype ip-address () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (ip-permission (:copier common-lisp:nil))
-   (from-port (common-lisp:error ":from-port is required") :type
-    (common-lisp:or port-number common-lisp:null))
-   (to-port (common-lisp:error ":to-port is required") :type
-    (common-lisp:or port-number common-lisp:null))
-   (ip-range (common-lisp:error ":ip-range is required") :type
-    (common-lisp:or non-blank-string common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or ip-protocol common-lisp:null)))
+   (from-port
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":from-port is required"))
+    :type (common-lisp:or port-number common-lisp:null))
+   (to-port
+    (common-lisp:error #A((20) common-lisp:base-char . ":to-port is required"))
+    :type (common-lisp:or port-number common-lisp:null))
+   (ip-range
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":ip-range is required"))
+    :type (common-lisp:or non-blank-string common-lisp:null))
+   (protocol
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":protocol is required"))
+    :type (common-lisp:or ip-protocol common-lisp:null)))
  (common-lisp:export (common-lisp:list 'ip-permission 'make-ip-permission))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape ip-permission))
@@ -3508,8 +3593,10 @@
  (common-lisp:defstruct (matchmaking-rule-set (:copier common-lisp:nil))
    (rule-set-name common-lisp:nil :type
     (common-lisp:or matchmaking-id-string-model common-lisp:null))
-   (rule-set-body (common-lisp:error ":rule-set-body is required") :type
-    (common-lisp:or rule-set-body common-lisp:null))
+   (rule-set-body
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-body is required"))
+    :type (common-lisp:or rule-set-body common-lisp:null))
    (creation-time common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
@@ -3903,23 +3990,37 @@
 (common-lisp:deftype protection-policy () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (put-scaling-policy-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or non-zero-and-max-string common-lisp:null))
-   (fleet-id (common-lisp:error ":fleet-id is required") :type
-    (common-lisp:or fleet-id common-lisp:null))
-   (scaling-adjustment (common-lisp:error ":scaling-adjustment is required")
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or non-zero-and-max-string common-lisp:null))
+   (fleet-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fleet-id is required"))
+    :type (common-lisp:or fleet-id common-lisp:null))
+   (scaling-adjustment
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":scaling-adjustment is required"))
     :type (common-lisp:or integer common-lisp:null))
    (scaling-adjustment-type
-    (common-lisp:error ":scaling-adjustment-type is required") :type
-    (common-lisp:or scaling-adjustment-type common-lisp:null))
-   (threshold (common-lisp:error ":threshold is required") :type
-    (common-lisp:or double common-lisp:null))
-   (comparison-operator (common-lisp:error ":comparison-operator is required")
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":scaling-adjustment-type is required"))
+    :type (common-lisp:or scaling-adjustment-type common-lisp:null))
+   (threshold
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":threshold is required"))
+    :type (common-lisp:or double common-lisp:null))
+   (comparison-operator
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":comparison-operator is required"))
     :type (common-lisp:or comparison-operator-type common-lisp:null))
-   (evaluation-periods (common-lisp:error ":evaluation-periods is required")
+   (evaluation-periods
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":evaluation-periods is required"))
     :type (common-lisp:or positive-integer common-lisp:null))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or metric-name common-lisp:null)))
+   (metric-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metric-name is required"))
+    :type (common-lisp:or metric-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-scaling-policy-input 'make-put-scaling-policy-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3995,8 +4096,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (request-upload-credentials-input (:copier common-lisp:nil))
-   (build-id (common-lisp:error ":build-id is required") :type
-    (common-lisp:or build-id common-lisp:null)))
+   (build-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":build-id is required"))
+    :type (common-lisp:or build-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'request-upload-credentials-input
                     'make-request-upload-credentials-input))
@@ -4037,8 +4140,10 @@
                                                 'storage-location))))))
 (common-lisp:progn
  (common-lisp:defstruct (resolve-alias-input (:copier common-lisp:nil))
-   (alias-id (common-lisp:error ":alias-id is required") :type
-    (common-lisp:or alias-id common-lisp:null)))
+   (alias-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":alias-id is required"))
+    :type (common-lisp:or alias-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'resolve-alias-input 'make-resolve-alias-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4326,13 +4431,16 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (server-process (:copier common-lisp:nil))
-   (launch-path (common-lisp:error ":launch-path is required") :type
-    (common-lisp:or non-zero-and-max-string common-lisp:null))
+   (launch-path
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":launch-path is required"))
+    :type (common-lisp:or non-zero-and-max-string common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or non-zero-and-max-string common-lisp:null))
    (concurrent-executions
-    (common-lisp:error ":concurrent-executions is required") :type
-    (common-lisp:or positive-integer common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":concurrent-executions is required"))
+    :type (common-lisp:or positive-integer common-lisp:null)))
  (common-lisp:export (common-lisp:list 'server-process 'make-server-process))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape server-process))
@@ -4364,16 +4472,21 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-game-session-placement-input (:copier common-lisp:nil))
-   (placement-id (common-lisp:error ":placement-id is required") :type
-    (common-lisp:or id-string-model common-lisp:null))
+   (placement-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":placement-id is required"))
+    :type (common-lisp:or id-string-model common-lisp:null))
    (game-session-queue-name
-    (common-lisp:error ":game-session-queue-name is required") :type
-    (common-lisp:or game-session-queue-name common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":game-session-queue-name is required"))
+    :type (common-lisp:or game-session-queue-name common-lisp:null))
    (game-properties common-lisp:nil :type
     (common-lisp:or game-property-list common-lisp:null))
    (maximum-player-session-count
-    (common-lisp:error ":maximum-player-session-count is required") :type
-    (common-lisp:or whole-number common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":maximum-player-session-count is required"))
+    :type (common-lisp:or whole-number common-lisp:null))
    (game-session-name common-lisp:nil :type
     (common-lisp:or non-zero-and-max-string common-lisp:null))
    (player-latencies common-lisp:nil :type
@@ -4452,10 +4565,13 @@
  (common-lisp:defstruct (start-matchmaking-input (:copier common-lisp:nil))
    (ticket-id common-lisp:nil :type
     (common-lisp:or matchmaking-id-string-model common-lisp:null))
-   (configuration-name (common-lisp:error ":configuration-name is required")
+   (configuration-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":configuration-name is required"))
     :type (common-lisp:or matchmaking-id-string-model common-lisp:null))
-   (players (common-lisp:error ":players is required") :type
-    (common-lisp:or player-list common-lisp:null)))
+   (players
+    (common-lisp:error #A((20) common-lisp:base-char . ":players is required"))
+    :type (common-lisp:or player-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-matchmaking-input 'make-start-matchmaking-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4497,8 +4613,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (stop-game-session-placement-input (:copier common-lisp:nil))
-   (placement-id (common-lisp:error ":placement-id is required") :type
-    (common-lisp:or id-string-model common-lisp:null)))
+   (placement-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":placement-id is required"))
+    :type (common-lisp:or id-string-model common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-game-session-placement-input
                     'make-stop-game-session-placement-input))
@@ -4532,8 +4650,10 @@
                                                 'game-session-placement))))))
 (common-lisp:progn
  (common-lisp:defstruct (stop-matchmaking-input (:copier common-lisp:nil))
-   (ticket-id (common-lisp:error ":ticket-id is required") :type
-    (common-lisp:or matchmaking-id-string-model common-lisp:null)))
+   (ticket-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":ticket-id is required"))
+    :type (common-lisp:or matchmaking-id-string-model common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-matchmaking-input 'make-stop-matchmaking-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4625,8 +4745,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-alias-input (:copier common-lisp:nil))
-   (alias-id (common-lisp:error ":alias-id is required") :type
-    (common-lisp:or alias-id common-lisp:null))
+   (alias-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":alias-id is required"))
+    :type (common-lisp:or alias-id common-lisp:null))
    (name common-lisp:nil :type
     (common-lisp:or non-blank-and-length-constraint-string common-lisp:null))
    (description common-lisp:nil :type
@@ -4673,8 +4795,10 @@
                                                 'alias))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-build-input (:copier common-lisp:nil))
-   (build-id (common-lisp:error ":build-id is required") :type
-    (common-lisp:or build-id common-lisp:null))
+   (build-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":build-id is required"))
+    :type (common-lisp:or build-id common-lisp:null))
    (name common-lisp:nil :type
     (common-lisp:or non-zero-and-max-string common-lisp:null))
    (version common-lisp:nil :type
@@ -4715,8 +4839,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-fleet-attributes-input (:copier common-lisp:nil))
-   (fleet-id (common-lisp:error ":fleet-id is required") :type
-    (common-lisp:or fleet-id common-lisp:null))
+   (fleet-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fleet-id is required"))
+    :type (common-lisp:or fleet-id common-lisp:null))
    (name common-lisp:nil :type
     (common-lisp:or non-zero-and-max-string common-lisp:null))
    (description common-lisp:nil :type
@@ -4784,8 +4910,10 @@
                                                 'fleet-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-fleet-capacity-input (:copier common-lisp:nil))
-   (fleet-id (common-lisp:error ":fleet-id is required") :type
-    (common-lisp:or fleet-id common-lisp:null))
+   (fleet-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fleet-id is required"))
+    :type (common-lisp:or fleet-id common-lisp:null))
    (desired-instances common-lisp:nil :type
     (common-lisp:or whole-number common-lisp:null))
    (min-size common-lisp:nil :type
@@ -4840,8 +4968,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-fleet-port-settings-input (:copier common-lisp:nil))
-   (fleet-id (common-lisp:error ":fleet-id is required") :type
-    (common-lisp:or fleet-id common-lisp:null))
+   (fleet-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fleet-id is required"))
+    :type (common-lisp:or fleet-id common-lisp:null))
    (inbound-permission-authorizations common-lisp:nil :type
     (common-lisp:or ip-permissions-list common-lisp:null))
    (inbound-permission-revocations common-lisp:nil :type
@@ -4888,8 +5018,10 @@
                                                 'fleet-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-game-session-input (:copier common-lisp:nil))
-   (game-session-id (common-lisp:error ":game-session-id is required") :type
-    (common-lisp:or arn-string-model common-lisp:null))
+   (game-session-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":game-session-id is required"))
+    :type (common-lisp:or arn-string-model common-lisp:null))
    (maximum-player-session-count common-lisp:nil :type
     (common-lisp:or whole-number common-lisp:null))
    (name common-lisp:nil :type
@@ -4951,8 +5083,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-game-session-queue-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or game-session-queue-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or game-session-queue-name common-lisp:null))
    (timeout-in-seconds common-lisp:nil :type
     (common-lisp:or whole-number common-lisp:null))
    (player-latency-policies common-lisp:nil :type
@@ -5008,8 +5141,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-matchmaking-configuration-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or matchmaking-id-string-model common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or matchmaking-id-string-model common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or non-zero-and-max-string common-lisp:null))
    (game-session-queue-arns common-lisp:nil :type
@@ -5121,11 +5255,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-runtime-configuration-input (:copier common-lisp:nil))
-   (fleet-id (common-lisp:error ":fleet-id is required") :type
-    (common-lisp:or fleet-id common-lisp:null))
+   (fleet-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":fleet-id is required"))
+    :type (common-lisp:or fleet-id common-lisp:null))
    (runtime-configuration
-    (common-lisp:error ":runtime-configuration is required") :type
-    (common-lisp:or runtime-configuration common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":runtime-configuration is required"))
+    :type (common-lisp:or runtime-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-runtime-configuration-input
                     'make-update-runtime-configuration-input))
@@ -5165,8 +5302,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (validate-matchmaking-rule-set-input (:copier common-lisp:nil))
-   (rule-set-body (common-lisp:error ":rule-set-body is required") :type
-    (common-lisp:or rule-set-body common-lisp:null)))
+   (rule-set-body
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-body is required"))
+    :type (common-lisp:or rule-set-body common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'validate-matchmaking-rule-set-input
                     'make-validate-matchmaking-rule-set-input))
@@ -5209,7 +5348,9 @@
                       (common-lisp:apply 'make-accept-match-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AcceptMatch")
                                   ("Version" ,@"2015-10-01"))
@@ -5228,7 +5369,9 @@
                       (common-lisp:apply 'make-create-alias-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAlias")
                                   ("Version" ,@"2015-10-01"))
@@ -5248,7 +5391,9 @@
                       (common-lisp:apply 'make-create-build-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateBuild")
                                   ("Version" ,@"2015-10-01"))
@@ -5274,7 +5419,9 @@
                       (common-lisp:apply 'make-create-fleet-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateFleet")
                                   ("Version" ,@"2015-10-01"))
@@ -5298,7 +5445,9 @@
                       (common-lisp:apply 'make-create-game-session-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateGameSession")
                                   ("Version" ,@"2015-10-01"))
@@ -5319,7 +5468,9 @@
                       (common-lisp:apply 'make-create-game-session-queue-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateGameSessionQueue")
                                   ("Version" ,@"2015-10-01"))
@@ -5346,7 +5497,9 @@
                        'make-create-matchmaking-configuration-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateMatchmakingConfiguration")
                                   ("Version" ,@"2015-10-01"))
@@ -5365,7 +5518,9 @@
                        'make-create-matchmaking-rule-set-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateMatchmakingRuleSet")
                                   ("Version" ,@"2015-10-01"))
@@ -5384,7 +5539,9 @@
                       (common-lisp:apply 'make-create-player-session-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePlayerSession")
                                   ("Version" ,@"2015-10-01"))
@@ -5404,7 +5561,9 @@
                       (common-lisp:apply 'make-create-player-sessions-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePlayerSessions")
                                   ("Version" ,@"2015-10-01"))
@@ -5422,7 +5581,9 @@
                       (common-lisp:apply 'make-delete-alias-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAlias")
                                   ("Version" ,@"2015-10-01"))
@@ -5440,7 +5601,9 @@
                       (common-lisp:apply 'make-delete-build-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBuild")
                                   ("Version" ,@"2015-10-01"))
@@ -5458,7 +5621,9 @@
                       (common-lisp:apply 'make-delete-fleet-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFleet")
                                   ("Version" ,@"2015-10-01"))
@@ -5476,7 +5641,9 @@
                       (common-lisp:apply 'make-delete-game-session-queue-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteGameSessionQueue")
                                   ("Version" ,@"2015-10-01"))
@@ -5495,7 +5662,9 @@
                        'make-delete-matchmaking-configuration-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteMatchmakingConfiguration")
                                   ("Version" ,@"2015-10-01"))
@@ -5513,7 +5682,9 @@
                       (common-lisp:apply 'make-delete-scaling-policy-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteScalingPolicy")
                                   ("Version" ,@"2015-10-01"))
@@ -5531,7 +5702,9 @@
                       (common-lisp:apply 'make-describe-alias-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAlias")
                                   ("Version" ,@"2015-10-01"))
@@ -5549,7 +5722,9 @@
                       (common-lisp:apply 'make-describe-build-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeBuild")
                                   ("Version" ,@"2015-10-01"))
@@ -5568,7 +5743,9 @@
                        'make-describe-ec2instance-limits-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEC2InstanceLimits")
                                   ("Version" ,@"2015-10-01"))
@@ -5586,7 +5763,9 @@
                       (common-lisp:apply 'make-describe-fleet-attributes-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeFleetAttributes")
                                   ("Version" ,@"2015-10-01"))
@@ -5604,7 +5783,9 @@
                       (common-lisp:apply 'make-describe-fleet-capacity-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeFleetCapacity")
                                   ("Version" ,@"2015-10-01"))
@@ -5624,7 +5805,9 @@
                       (common-lisp:apply 'make-describe-fleet-events-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeFleetEvents")
                                   ("Version" ,@"2015-10-01"))
@@ -5643,7 +5826,9 @@
                        'make-describe-fleet-port-settings-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeFleetPortSettings")
                                   ("Version" ,@"2015-10-01"))
@@ -5661,7 +5846,9 @@
                       (common-lisp:apply 'make-describe-fleet-utilization-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeFleetUtilization")
                                   ("Version" ,@"2015-10-01"))
@@ -5683,7 +5870,9 @@
                        'make-describe-game-session-details-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeGameSessionDetails")
                                   ("Version" ,@"2015-10-01"))
@@ -5702,7 +5891,9 @@
                        'make-describe-game-session-placement-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeGameSessionPlacement")
                                   ("Version" ,@"2015-10-01"))
@@ -5721,7 +5912,9 @@
                        'make-describe-game-session-queues-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeGameSessionQueues")
                                   ("Version" ,@"2015-10-01"))
@@ -5742,7 +5935,9 @@
                       (common-lisp:apply 'make-describe-game-sessions-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeGameSessions")
                                   ("Version" ,@"2015-10-01"))
@@ -5761,7 +5956,9 @@
                       (common-lisp:apply 'make-describe-instances-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeInstances")
                                   ("Version" ,@"2015-10-01"))
@@ -5779,7 +5976,9 @@
                       (common-lisp:apply 'make-describe-matchmaking-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeMatchmaking")
                                   ("Version" ,@"2015-10-01"))
@@ -5799,7 +5998,9 @@
                        'make-describe-matchmaking-configurations-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeMatchmakingConfigurations")
@@ -5819,7 +6020,9 @@
                        'make-describe-matchmaking-rule-sets-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeMatchmakingRuleSets")
                                   ("Version" ,@"2015-10-01"))
@@ -5841,7 +6044,9 @@
                       (common-lisp:apply 'make-describe-player-sessions-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribePlayerSessions")
                                   ("Version" ,@"2015-10-01"))
@@ -5860,7 +6065,9 @@
                        'make-describe-runtime-configuration-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRuntimeConfiguration")
                                   ("Version" ,@"2015-10-01"))
@@ -5879,7 +6086,9 @@
                       (common-lisp:apply 'make-describe-scaling-policies-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeScalingPolicies")
                                   ("Version" ,@"2015-10-01"))
@@ -5897,7 +6106,9 @@
                       (common-lisp:apply 'make-get-game-session-log-url-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetGameSessionLogUrl")
                                   ("Version" ,@"2015-10-01"))
@@ -5915,7 +6126,9 @@
                       (common-lisp:apply 'make-get-instance-access-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetInstanceAccess")
                                   ("Version" ,@"2015-10-01"))
@@ -5935,7 +6148,9 @@
                       (common-lisp:apply 'make-list-aliases-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAliases")
                                   ("Version" ,@"2015-10-01"))
@@ -5953,7 +6168,9 @@
                       (common-lisp:apply 'make-list-builds-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListBuilds")
                                   ("Version" ,@"2015-10-01"))
@@ -5971,7 +6188,9 @@
                       (common-lisp:apply 'make-list-fleets-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListFleets")
                                   ("Version" ,@"2015-10-01"))
@@ -5994,7 +6213,9 @@
                       (common-lisp:apply 'make-put-scaling-policy-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutScalingPolicy")
                                   ("Version" ,@"2015-10-01"))
@@ -6012,7 +6233,9 @@
                       (common-lisp:apply 'make-request-upload-credentials-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RequestUploadCredentials")
                                   ("Version" ,@"2015-10-01"))
@@ -6030,7 +6253,9 @@
                       (common-lisp:apply 'make-resolve-alias-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResolveAlias")
                                   ("Version" ,@"2015-10-01"))
@@ -6051,7 +6276,9 @@
                       (common-lisp:apply 'make-search-game-sessions-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SearchGameSessions")
                                   ("Version" ,@"2015-10-01"))
@@ -6076,7 +6303,9 @@
                        'make-start-game-session-placement-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartGameSessionPlacement")
                                   ("Version" ,@"2015-10-01"))
@@ -6095,7 +6324,9 @@
                       (common-lisp:apply 'make-start-matchmaking-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartMatchmaking")
                                   ("Version" ,@"2015-10-01"))
@@ -6114,7 +6345,9 @@
                        'make-stop-game-session-placement-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopGameSessionPlacement")
                                   ("Version" ,@"2015-10-01"))
@@ -6132,7 +6365,9 @@
                       (common-lisp:apply 'make-stop-matchmaking-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopMatchmaking")
                                   ("Version" ,@"2015-10-01"))
@@ -6152,7 +6387,9 @@
                       (common-lisp:apply 'make-update-alias-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAlias")
                                   ("Version" ,@"2015-10-01"))
@@ -6170,7 +6407,9 @@
                       (common-lisp:apply 'make-update-build-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateBuild")
                                   ("Version" ,@"2015-10-01"))
@@ -6193,7 +6432,9 @@
                       (common-lisp:apply 'make-update-fleet-attributes-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateFleetAttributes")
                                   ("Version" ,@"2015-10-01"))
@@ -6213,7 +6454,9 @@
                       (common-lisp:apply 'make-update-fleet-capacity-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateFleetCapacity")
                                   ("Version" ,@"2015-10-01"))
@@ -6235,7 +6478,9 @@
                       (common-lisp:apply 'make-update-fleet-port-settings-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateFleetPortSettings")
                                   ("Version" ,@"2015-10-01"))
@@ -6257,7 +6502,9 @@
                       (common-lisp:apply 'make-update-game-session-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateGameSession")
                                   ("Version" ,@"2015-10-01"))
@@ -6278,7 +6525,9 @@
                       (common-lisp:apply 'make-update-game-session-queue-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateGameSessionQueue")
                                   ("Version" ,@"2015-10-01"))
@@ -6305,7 +6554,9 @@
                        'make-update-matchmaking-configuration-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateMatchmakingConfiguration")
                                   ("Version" ,@"2015-10-01"))
@@ -6324,7 +6575,9 @@
                        'make-update-runtime-configuration-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRuntimeConfiguration")
                                   ("Version" ,@"2015-10-01"))
@@ -6343,7 +6596,9 @@
                        'make-validate-matchmaking-rule-set-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "gamelift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "gamelift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ValidateMatchmakingRuleSet")
                                   ("Version" ,@"2015-10-01"))

@@ -7,11 +7,14 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/elasticfilesystem)
+
 (common-lisp:deftype aws-account-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (bad-request (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export (common-lisp:list 'bad-request 'make-bad-request))
@@ -30,8 +33,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-file-system-request (:copier common-lisp:nil))
-   (creation-token (common-lisp:error ":creation-token is required") :type
-    (common-lisp:or creation-token common-lisp:null))
+   (creation-token
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":creation-token is required"))
+    :type (common-lisp:or creation-token common-lisp:null))
    (performance-mode common-lisp:nil :type
     (common-lisp:or performance-mode common-lisp:null))
    (encrypted common-lisp:nil :type
@@ -68,10 +73,14 @@
                                                 'kms-key-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-mount-target-request (:copier common-lisp:nil))
-   (file-system-id (common-lisp:error ":file-system-id is required") :type
-    (common-lisp:or file-system-id common-lisp:null))
-   (subnet-id (common-lisp:error ":subnet-id is required") :type
-    (common-lisp:or subnet-id common-lisp:null))
+   (file-system-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":file-system-id is required"))
+    :type (common-lisp:or file-system-id common-lisp:null))
+   (subnet-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":subnet-id is required"))
+    :type (common-lisp:or subnet-id common-lisp:null))
    (ip-address common-lisp:nil :type
     (common-lisp:or ip-address common-lisp:null))
    (security-groups common-lisp:nil :type
@@ -106,10 +115,13 @@
                                                 'security-groups))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-tags-request (:copier common-lisp:nil))
-   (file-system-id (common-lisp:error ":file-system-id is required") :type
-    (common-lisp:or file-system-id common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+   (file-system-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":file-system-id is required"))
+    :type (common-lisp:or file-system-id common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-tags-request 'make-create-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -128,8 +140,10 @@
 (common-lisp:deftype creation-token () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-file-system-request (:copier common-lisp:nil))
-   (file-system-id (common-lisp:error ":file-system-id is required") :type
-    (common-lisp:or file-system-id common-lisp:null)))
+   (file-system-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":file-system-id is required"))
+    :type (common-lisp:or file-system-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-file-system-request
                     'make-delete-file-system-request))
@@ -145,8 +159,10 @@
                                                 'file-system-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-mount-target-request (:copier common-lisp:nil))
-   (mount-target-id (common-lisp:error ":mount-target-id is required") :type
-    (common-lisp:or mount-target-id common-lisp:null)))
+   (mount-target-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":mount-target-id is required"))
+    :type (common-lisp:or mount-target-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-mount-target-request
                     'make-delete-mount-target-request))
@@ -162,10 +178,14 @@
                                                 'mount-target-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-tags-request (:copier common-lisp:nil))
-   (file-system-id (common-lisp:error ":file-system-id is required") :type
-    (common-lisp:or file-system-id common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-keys common-lisp:null)))
+   (file-system-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":file-system-id is required"))
+    :type (common-lisp:or file-system-id common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-keys common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-tags-request 'make-delete-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -183,8 +203,10 @@
                                                 'tag-keys))))))
 (common-lisp:progn
  (common-lisp:defstruct (dependency-timeout (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -274,8 +296,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-mount-target-security-groups-request (:copier common-lisp:nil))
-   (mount-target-id (common-lisp:error ":mount-target-id is required") :type
-    (common-lisp:or mount-target-id common-lisp:null)))
+   (mount-target-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":mount-target-id is required"))
+    :type (common-lisp:or mount-target-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-mount-target-security-groups-request
                     'make-describe-mount-target-security-groups-request))
@@ -292,8 +316,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-mount-target-security-groups-response (:copier common-lisp:nil))
-   (security-groups (common-lisp:error ":security-groups is required") :type
-    (common-lisp:or security-groups common-lisp:null)))
+   (security-groups
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":security-groups is required"))
+    :type (common-lisp:or security-groups common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-mount-target-security-groups-response
                     'make-describe-mount-target-security-groups-response))
@@ -381,8 +407,10 @@
    (max-items common-lisp:nil :type
     (common-lisp:or max-items common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null))
-   (file-system-id (common-lisp:error ":file-system-id is required") :type
-    (common-lisp:or file-system-id common-lisp:null)))
+   (file-system-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":file-system-id is required"))
+    :type (common-lisp:or file-system-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-tags-request 'make-describe-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -408,8 +436,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (describe-tags-response (:copier common-lisp:nil))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tags common-lisp:null))
    (next-marker common-lisp:nil :type
     (common-lisp:or marker common-lisp:null)))
  (common-lisp:export
@@ -439,12 +468,16 @@
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (file-system-already-exists (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null))
-   (file-system-id (common-lisp:error ":file-system-id is required") :type
-    (common-lisp:or file-system-id common-lisp:null)))
+   (file-system-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":file-system-id is required"))
+    :type (common-lisp:or file-system-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'file-system-already-exists
                     'make-file-system-already-exists))
@@ -470,24 +503,39 @@
                                                 'file-system-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (file-system-description (:copier common-lisp:nil))
-   (owner-id (common-lisp:error ":owner-id is required") :type
-    (common-lisp:or aws-account-id common-lisp:null))
-   (creation-token (common-lisp:error ":creation-token is required") :type
-    (common-lisp:or creation-token common-lisp:null))
-   (file-system-id (common-lisp:error ":file-system-id is required") :type
-    (common-lisp:or file-system-id common-lisp:null))
-   (creation-time (common-lisp:error ":creation-time is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (life-cycle-state (common-lisp:error ":life-cycle-state is required") :type
-    (common-lisp:or life-cycle-state common-lisp:null))
+   (owner-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":owner-id is required"))
+    :type (common-lisp:or aws-account-id common-lisp:null))
+   (creation-token
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":creation-token is required"))
+    :type (common-lisp:or creation-token common-lisp:null))
+   (file-system-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":file-system-id is required"))
+    :type (common-lisp:or file-system-id common-lisp:null))
+   (creation-time
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":creation-time is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (life-cycle-state
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":life-cycle-state is required"))
+    :type (common-lisp:or life-cycle-state common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or tag-value common-lisp:null))
    (number-of-mount-targets
-    (common-lisp:error ":number-of-mount-targets is required") :type
-    (common-lisp:or mount-target-count common-lisp:null))
-   (size-in-bytes (common-lisp:error ":size-in-bytes is required") :type
-    (common-lisp:or file-system-size common-lisp:null))
-   (performance-mode (common-lisp:error ":performance-mode is required") :type
-    (common-lisp:or performance-mode common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":number-of-mount-targets is required"))
+    :type (common-lisp:or mount-target-count common-lisp:null))
+   (size-in-bytes
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":size-in-bytes is required"))
+    :type (common-lisp:or file-system-size common-lisp:null))
+   (performance-mode
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":performance-mode is required"))
+    :type (common-lisp:or performance-mode common-lisp:null))
    (encrypted common-lisp:nil :type
     (common-lisp:or encrypted common-lisp:null))
    (kms-key-id common-lisp:nil :type
@@ -565,8 +613,10 @@
 (common-lisp:deftype file-system-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (file-system-in-use (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -586,8 +636,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (file-system-limit-exceeded (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -610,8 +662,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (file-system-not-found (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -633,8 +687,9 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (file-system-size (:copier common-lisp:nil))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or file-system-size-value common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or file-system-size-value common-lisp:null))
    (timestamp common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
@@ -656,8 +711,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (incorrect-file-system-life-cycle-state (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -681,8 +738,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (incorrect-mount-target-state (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -705,8 +764,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (internal-server-error (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -729,8 +790,10 @@
 (common-lisp:deftype ip-address () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (ip-address-in-use (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -755,8 +818,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (modify-mount-target-security-groups-request (:copier common-lisp:nil))
-   (mount-target-id (common-lisp:error ":mount-target-id is required") :type
-    (common-lisp:or mount-target-id common-lisp:null))
+   (mount-target-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":mount-target-id is required"))
+    :type (common-lisp:or mount-target-id common-lisp:null))
    (security-groups common-lisp:nil :type
     (common-lisp:or security-groups common-lisp:null)))
  (common-lisp:export
@@ -779,8 +844,10 @@
                                                 'security-groups))))))
 (common-lisp:progn
  (common-lisp:defstruct (mount-target-conflict (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -805,14 +872,22 @@
  (common-lisp:defstruct (mount-target-description (:copier common-lisp:nil))
    (owner-id common-lisp:nil :type
     (common-lisp:or aws-account-id common-lisp:null))
-   (mount-target-id (common-lisp:error ":mount-target-id is required") :type
-    (common-lisp:or mount-target-id common-lisp:null))
-   (file-system-id (common-lisp:error ":file-system-id is required") :type
-    (common-lisp:or file-system-id common-lisp:null))
-   (subnet-id (common-lisp:error ":subnet-id is required") :type
-    (common-lisp:or subnet-id common-lisp:null))
-   (life-cycle-state (common-lisp:error ":life-cycle-state is required") :type
-    (common-lisp:or life-cycle-state common-lisp:null))
+   (mount-target-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":mount-target-id is required"))
+    :type (common-lisp:or mount-target-id common-lisp:null))
+   (file-system-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":file-system-id is required"))
+    :type (common-lisp:or file-system-id common-lisp:null))
+   (subnet-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":subnet-id is required"))
+    :type (common-lisp:or subnet-id common-lisp:null))
+   (life-cycle-state
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":life-cycle-state is required"))
+    :type (common-lisp:or life-cycle-state common-lisp:null))
    (ip-address common-lisp:nil :type
     (common-lisp:or ip-address common-lisp:null))
    (network-interface-id common-lisp:nil :type
@@ -871,8 +946,10 @@
 (common-lisp:deftype mount-target-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (mount-target-not-found (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -896,8 +973,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (network-interface-limit-exceeded (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -920,8 +999,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (no-free-addresses-in-subnet (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -947,8 +1028,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (security-group-limit-exceeded (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -971,8 +1054,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (security-group-not-found (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -1003,8 +1088,10 @@
 (common-lisp:deftype subnet-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (subnet-not-found (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -1024,10 +1111,11 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -1062,8 +1150,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (unsupported-availability-zone (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or error-code common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or error-code common-lisp:null))
    (message common-lisp:nil :type
     (common-lisp:or error-message common-lisp:null)))
  (common-lisp:export
@@ -1097,8 +1187,10 @@
                       (common-lisp:apply 'make-create-file-system-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticfilesystem" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elasticfilesystem")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateFileSystem")
                                   ("Version" ,@"2015-02-01"))
@@ -1119,8 +1211,10 @@
                       (common-lisp:apply 'make-create-mount-target-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticfilesystem" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elasticfilesystem")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateMountTarget")
                                   ("Version" ,@"2015-02-01"))
@@ -1138,7 +1232,13 @@
                       (common-lisp:apply 'make-create-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticfilesystem" :method :post
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elasticfilesystem")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-02-01/create-tags/~a"
+                                                   filesystemid)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTags")
@@ -1157,7 +1257,13 @@
                       (common-lisp:apply 'make-delete-file-system-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticfilesystem" :method :delete
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elasticfilesystem")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-02-01/file-systems/~a"
+                                                   filesystemid)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFileSystem")
@@ -1176,7 +1282,13 @@
                       (common-lisp:apply 'make-delete-mount-target-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticfilesystem" :method :delete
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elasticfilesystem")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-02-01/mount-targets/~a"
+                                                   mounttargetid)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteMountTarget")
@@ -1195,7 +1307,13 @@
                       (common-lisp:apply 'make-delete-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticfilesystem" :method :post
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elasticfilesystem")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-02-01/delete-tags/~a"
+                                                   filesystemid)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTags")
@@ -1216,8 +1334,10 @@
                       (common-lisp:apply 'make-describe-file-systems-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticfilesystem" :method :get
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elasticfilesystem")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeFileSystems")
                                   ("Version" ,@"2015-02-01"))
@@ -1236,7 +1356,13 @@
                        'make-describe-mount-target-security-groups-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticfilesystem" :method :get
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elasticfilesystem")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-02-01/mount-targets/~a/security-groups"
+                                                   mounttargetid)
                                :params
                                (common-lisp:append
                                 `(("Action"
@@ -1258,8 +1384,10 @@
                       (common-lisp:apply 'make-describe-mount-targets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticfilesystem" :method :get
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elasticfilesystem")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeMountTargets")
                                   ("Version" ,@"2015-02-01"))
@@ -1278,7 +1406,13 @@
                       (common-lisp:apply 'make-describe-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticfilesystem" :method :get
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elasticfilesystem")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-02-01/tags/~a/"
+                                                   filesystemid)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTags")
@@ -1299,7 +1433,13 @@
                        'make-modify-mount-target-security-groups-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticfilesystem" :method :put
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elasticfilesystem")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-02-01/mount-targets/~a/security-groups"
+                                                   mounttargetid)
                                :params
                                (common-lisp:append
                                 `(("Action"

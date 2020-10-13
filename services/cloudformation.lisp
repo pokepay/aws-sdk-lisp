@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/cloudformation)
+
 (common-lisp:deftype account () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (account-gate-result (:copier common-lisp:nil))
@@ -84,8 +85,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (cancel-update-stack-input (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name common-lisp:null))
    (client-request-token common-lisp:nil :type
     (common-lisp:or client-request-token common-lisp:null)))
  (common-lisp:export
@@ -244,8 +247,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (continue-update-rollback-input (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name-or-id common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name-or-id common-lisp:null))
    (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
    (resources-to-skip common-lisp:nil :type
     (common-lisp:or resources-to-skip common-lisp:null))
@@ -292,8 +297,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-change-set-input (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name-or-id common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name-or-id common-lisp:null))
    (template-body common-lisp:nil :type
     (common-lisp:or template-body common-lisp:null))
    (template-url common-lisp:nil :type
@@ -310,8 +317,10 @@
    (notification-arns common-lisp:nil :type
     (common-lisp:or notification-arns common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null))
-   (change-set-name (common-lisp:error ":change-set-name is required") :type
-    (common-lisp:or change-set-name common-lisp:null))
+   (change-set-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":change-set-name is required"))
+    :type (common-lisp:or change-set-name common-lisp:null))
    (client-token common-lisp:nil :type
     (common-lisp:or client-token common-lisp:null))
    (description common-lisp:nil :type
@@ -418,8 +427,10 @@
                                                 'stack-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-stack-input (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name common-lisp:null))
    (template-body common-lisp:nil :type
     (common-lisp:or template-body common-lisp:null))
    (template-url common-lisp:nil :type
@@ -529,12 +540,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-stack-instances-input (:copier common-lisp:nil))
-   (stack-set-name (common-lisp:error ":stack-set-name is required") :type
-    (common-lisp:or stack-set-name common-lisp:null))
-   (accounts (common-lisp:error ":accounts is required") :type
-    (common-lisp:or account-list common-lisp:null))
-   (regions (common-lisp:error ":regions is required") :type
-    (common-lisp:or region-list common-lisp:null))
+   (stack-set-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":stack-set-name is required"))
+    :type (common-lisp:or stack-set-name common-lisp:null))
+   (accounts
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":accounts is required"))
+    :type (common-lisp:or account-list common-lisp:null))
+   (regions
+    (common-lisp:error #A((20) common-lisp:base-char . ":regions is required"))
+    :type (common-lisp:or region-list common-lisp:null))
    (operation-preferences common-lisp:nil :type
     (common-lisp:or stack-set-operation-preferences common-lisp:null))
    (operation-id common-lisp:nil :type
@@ -605,8 +621,10 @@
                                                 'stack-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-stack-set-input (:copier common-lisp:nil))
-   (stack-set-name (common-lisp:error ":stack-set-name is required") :type
-    (common-lisp:or stack-set-name common-lisp:null))
+   (stack-set-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":stack-set-name is required"))
+    :type (common-lisp:or stack-set-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (template-body common-lisp:nil :type
@@ -697,8 +715,10 @@
 (common-lisp:deftype creation-time () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-change-set-input (:copier common-lisp:nil))
-   (change-set-name (common-lisp:error ":change-set-name is required") :type
-    (common-lisp:or change-set-name-or-id common-lisp:null))
+   (change-set-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":change-set-name is required"))
+    :type (common-lisp:or change-set-name-or-id common-lisp:null))
    (stack-name common-lisp:nil :type
     (common-lisp:or stack-name-or-id common-lisp:null)))
  (common-lisp:export
@@ -729,8 +749,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-stack-input (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name common-lisp:null))
    (retain-resources common-lisp:nil :type
     (common-lisp:or retain-resources common-lisp:null))
    (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
@@ -764,16 +786,23 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-stack-instances-input (:copier common-lisp:nil))
-   (stack-set-name (common-lisp:error ":stack-set-name is required") :type
-    (common-lisp:or stack-set-name common-lisp:null))
-   (accounts (common-lisp:error ":accounts is required") :type
-    (common-lisp:or account-list common-lisp:null))
-   (regions (common-lisp:error ":regions is required") :type
-    (common-lisp:or region-list common-lisp:null))
+   (stack-set-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":stack-set-name is required"))
+    :type (common-lisp:or stack-set-name common-lisp:null))
+   (accounts
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":accounts is required"))
+    :type (common-lisp:or account-list common-lisp:null))
+   (regions
+    (common-lisp:error #A((20) common-lisp:base-char . ":regions is required"))
+    :type (common-lisp:or region-list common-lisp:null))
    (operation-preferences common-lisp:nil :type
     (common-lisp:or stack-set-operation-preferences common-lisp:null))
-   (retain-stacks (common-lisp:error ":retain-stacks is required") :type
-    (common-lisp:or retain-stacks common-lisp:null))
+   (retain-stacks
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":retain-stacks is required"))
+    :type (common-lisp:or retain-stacks common-lisp:null))
    (operation-id common-lisp:nil :type
     (common-lisp:or client-request-token common-lisp:null)))
  (common-lisp:export
@@ -834,8 +863,10 @@
                                                 'operation-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-stack-set-input (:copier common-lisp:nil))
-   (stack-set-name (common-lisp:error ":stack-set-name is required") :type
-    (common-lisp:or stack-set-name common-lisp:null)))
+   (stack-set-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":stack-set-name is required"))
+    :type (common-lisp:or stack-set-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-stack-set-input 'make-delete-stack-set-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -903,8 +934,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-change-set-input (:copier common-lisp:nil))
-   (change-set-name (common-lisp:error ":change-set-name is required") :type
-    (common-lisp:or change-set-name-or-id common-lisp:null))
+   (change-set-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":change-set-name is required"))
+    :type (common-lisp:or change-set-name-or-id common-lisp:null))
    (stack-name common-lisp:nil :type
     (common-lisp:or stack-name-or-id common-lisp:null))
    (next-token common-lisp:nil :type
@@ -1096,14 +1129,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-stack-instance-input (:copier common-lisp:nil))
-   (stack-set-name (common-lisp:error ":stack-set-name is required") :type
-    (common-lisp:or stack-set-name common-lisp:null))
+   (stack-set-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":stack-set-name is required"))
+    :type (common-lisp:or stack-set-name common-lisp:null))
    (stack-instance-account
-    (common-lisp:error ":stack-instance-account is required") :type
-    (common-lisp:or account common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":stack-instance-account is required"))
+    :type (common-lisp:or account common-lisp:null))
    (stack-instance-region
-    (common-lisp:error ":stack-instance-region is required") :type
-    (common-lisp:or region common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":stack-instance-region is required"))
+    :type (common-lisp:or region common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-stack-instance-input
                     'make-describe-stack-instance-input))
@@ -1148,9 +1185,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-stack-resource-input (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name common-lisp:null))
-   (logical-resource-id (common-lisp:error ":logical-resource-id is required")
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name common-lisp:null))
+   (logical-resource-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":logical-resource-id is required"))
     :type (common-lisp:or logical-resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-stack-resource-input
@@ -1240,8 +1281,10 @@
                                                 'stack-resources))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-stack-set-input (:copier common-lisp:nil))
-   (stack-set-name (common-lisp:error ":stack-set-name is required") :type
-    (common-lisp:or stack-set-name common-lisp:null)))
+   (stack-set-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":stack-set-name is required"))
+    :type (common-lisp:or stack-set-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-stack-set-input 'make-describe-stack-set-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1257,10 +1300,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-stack-set-operation-input (:copier common-lisp:nil))
-   (stack-set-name (common-lisp:error ":stack-set-name is required") :type
-    (common-lisp:or stack-set-name common-lisp:null))
-   (operation-id (common-lisp:error ":operation-id is required") :type
-    (common-lisp:or client-request-token common-lisp:null)))
+   (stack-set-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":stack-set-name is required"))
+    :type (common-lisp:or stack-set-name common-lisp:null))
+   (operation-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":operation-id is required"))
+    :type (common-lisp:or client-request-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-stack-set-operation-input
                     'make-describe-stack-set-operation-input))
@@ -1414,8 +1461,10 @@
 (common-lisp:deftype event-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (execute-change-set-input (:copier common-lisp:nil))
-   (change-set-name (common-lisp:error ":change-set-name is required") :type
-    (common-lisp:or change-set-name-or-id common-lisp:null))
+   (change-set-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":change-set-name is required"))
+    :type (common-lisp:or change-set-name-or-id common-lisp:null))
    (stack-name common-lisp:nil :type
     (common-lisp:or stack-name-or-id common-lisp:null))
    (client-request-token common-lisp:nil :type
@@ -1492,8 +1541,10 @@
 (common-lisp:deftype failure-tolerance-percentage () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (get-stack-policy-input (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name common-lisp:null)))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-stack-policy-input 'make-get-stack-policy-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1727,8 +1778,10 @@
 (common-lisp:deftype limit-value () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (list-change-sets-input (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name-or-id common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name-or-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null)))
  (common-lisp:export
@@ -1807,8 +1860,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-imports-input (:copier common-lisp:nil))
-   (export-name (common-lisp:error ":export-name is required") :type
-    (common-lisp:or export-name common-lisp:null))
+   (export-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":export-name is required"))
+    :type (common-lisp:or export-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null)))
  (common-lisp:export
@@ -1848,8 +1903,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-stack-instances-input (:copier common-lisp:nil))
-   (stack-set-name (common-lisp:error ":stack-set-name is required") :type
-    (common-lisp:or stack-set-name common-lisp:null))
+   (stack-set-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":stack-set-name is required"))
+    :type (common-lisp:or stack-set-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1917,8 +1974,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-stack-resources-input (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null)))
  (common-lisp:export
@@ -1966,10 +2025,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-stack-set-operation-results-input (:copier common-lisp:nil))
-   (stack-set-name (common-lisp:error ":stack-set-name is required") :type
-    (common-lisp:or stack-set-name common-lisp:null))
-   (operation-id (common-lisp:error ":operation-id is required") :type
-    (common-lisp:or client-request-token common-lisp:null))
+   (stack-set-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":stack-set-name is required"))
+    :type (common-lisp:or stack-set-name common-lisp:null))
+   (operation-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":operation-id is required"))
+    :type (common-lisp:or client-request-token common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -2030,8 +2093,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-stack-set-operations-input (:copier common-lisp:nil))
-   (stack-set-name (common-lisp:error ":stack-set-name is required") :type
-    (common-lisp:or stack-set-name common-lisp:null))
+   (stack-set-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":stack-set-name is required"))
+    :type (common-lisp:or stack-set-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -2580,8 +2645,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (set-stack-policy-input (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name common-lisp:null))
    (stack-policy-body common-lisp:nil :type
     (common-lisp:or stack-policy-body common-lisp:null))
    (stack-policy-url common-lisp:nil :type
@@ -2610,14 +2677,21 @@
                                                 'stack-policy-url))))))
 (common-lisp:progn
  (common-lisp:defstruct (signal-resource-input (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name-or-id common-lisp:null))
-   (logical-resource-id (common-lisp:error ":logical-resource-id is required")
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name-or-id common-lisp:null))
+   (logical-resource-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":logical-resource-id is required"))
     :type (common-lisp:or logical-resource-id common-lisp:null))
-   (unique-id (common-lisp:error ":unique-id is required") :type
-    (common-lisp:or resource-signal-unique-id common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or resource-signal-status common-lisp:null)))
+   (unique-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":unique-id is required"))
+    :type (common-lisp:or resource-signal-unique-id common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or resource-signal-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'signal-resource-input 'make-signal-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2648,20 +2722,26 @@
 (common-lisp:progn
  (common-lisp:defstruct (stack (:copier common-lisp:nil))
    (stack-id common-lisp:nil :type (common-lisp:or stack-id common-lisp:null))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name common-lisp:null))
    (change-set-id common-lisp:nil :type
     (common-lisp:or change-set-id common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or parameters common-lisp:null))
-   (creation-time (common-lisp:error ":creation-time is required") :type
-    (common-lisp:or creation-time common-lisp:null))
+   (creation-time
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":creation-time is required"))
+    :type (common-lisp:or creation-time common-lisp:null))
    (last-updated-time common-lisp:nil :type
     (common-lisp:or last-updated-time common-lisp:null))
-   (stack-status (common-lisp:error ":stack-status is required") :type
-    (common-lisp:or stack-status common-lisp:null))
+   (stack-status
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":stack-status is required"))
+    :type (common-lisp:or stack-status common-lisp:null))
    (stack-status-reason common-lisp:nil :type
     (common-lisp:or stack-status-reason common-lisp:null))
    (disable-rollback common-lisp:nil :type
@@ -2761,20 +2841,28 @@
                                                 'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (stack-event (:copier common-lisp:nil))
-   (stack-id (common-lisp:error ":stack-id is required") :type
-    (common-lisp:or stack-id common-lisp:null))
-   (event-id (common-lisp:error ":event-id is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name common-lisp:null))
+   (stack-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":stack-id is required"))
+    :type (common-lisp:or stack-id common-lisp:null))
+   (event-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":event-id is required"))
+    :type (common-lisp:or event-id common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name common-lisp:null))
    (logical-resource-id common-lisp:nil :type
     (common-lisp:or logical-resource-id common-lisp:null))
    (physical-resource-id common-lisp:nil :type
     (common-lisp:or physical-resource-id common-lisp:null))
    (resource-type common-lisp:nil :type
     (common-lisp:or resource-type common-lisp:null))
-   (timestamp (common-lisp:error ":timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
+   (timestamp
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":timestamp is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
    (resource-status common-lisp:nil :type
     (common-lisp:or resource-status common-lisp:null))
    (resource-status-reason common-lisp:nil :type
@@ -2974,16 +3062,24 @@
    (stack-name common-lisp:nil :type
     (common-lisp:or stack-name common-lisp:null))
    (stack-id common-lisp:nil :type (common-lisp:or stack-id common-lisp:null))
-   (logical-resource-id (common-lisp:error ":logical-resource-id is required")
+   (logical-resource-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":logical-resource-id is required"))
     :type (common-lisp:or logical-resource-id common-lisp:null))
    (physical-resource-id common-lisp:nil :type
     (common-lisp:or physical-resource-id common-lisp:null))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or resource-type common-lisp:null))
-   (timestamp (common-lisp:error ":timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (resource-status (common-lisp:error ":resource-status is required") :type
-    (common-lisp:or resource-status common-lisp:null))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or resource-type common-lisp:null))
+   (timestamp
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":timestamp is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (resource-status
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":resource-status is required"))
+    :type (common-lisp:or resource-status common-lisp:null))
    (resource-status-reason common-lisp:nil :type
     (common-lisp:or resource-status-reason common-lisp:null))
    (description common-lisp:nil :type
@@ -3042,17 +3138,24 @@
    (stack-name common-lisp:nil :type
     (common-lisp:or stack-name common-lisp:null))
    (stack-id common-lisp:nil :type (common-lisp:or stack-id common-lisp:null))
-   (logical-resource-id (common-lisp:error ":logical-resource-id is required")
+   (logical-resource-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":logical-resource-id is required"))
     :type (common-lisp:or logical-resource-id common-lisp:null))
    (physical-resource-id common-lisp:nil :type
     (common-lisp:or physical-resource-id common-lisp:null))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or resource-type common-lisp:null))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or resource-type common-lisp:null))
    (last-updated-timestamp
-    (common-lisp:error ":last-updated-timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (resource-status (common-lisp:error ":resource-status is required") :type
-    (common-lisp:or resource-status common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":last-updated-timestamp is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (resource-status
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":resource-status is required"))
+    :type (common-lisp:or resource-status common-lisp:null))
    (resource-status-reason common-lisp:nil :type
     (common-lisp:or resource-status-reason common-lisp:null))
    (description common-lisp:nil :type
@@ -3125,17 +3228,24 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (stack-resource-summary (:copier common-lisp:nil))
-   (logical-resource-id (common-lisp:error ":logical-resource-id is required")
+   (logical-resource-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":logical-resource-id is required"))
     :type (common-lisp:or logical-resource-id common-lisp:null))
    (physical-resource-id common-lisp:nil :type
     (common-lisp:or physical-resource-id common-lisp:null))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or resource-type common-lisp:null))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or resource-type common-lisp:null))
    (last-updated-timestamp
-    (common-lisp:error ":last-updated-timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (resource-status (common-lisp:error ":resource-status is required") :type
-    (common-lisp:or resource-status common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":last-updated-timestamp is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (resource-status
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":resource-status is required"))
+    :type (common-lisp:or resource-status common-lisp:null))
    (resource-status-reason common-lisp:nil :type
     (common-lisp:or resource-status-reason common-lisp:null)))
  (common-lisp:export
@@ -3553,18 +3663,24 @@
 (common-lisp:progn
  (common-lisp:defstruct (stack-summary (:copier common-lisp:nil))
    (stack-id common-lisp:nil :type (common-lisp:or stack-id common-lisp:null))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name common-lisp:null))
    (template-description common-lisp:nil :type
     (common-lisp:or template-description common-lisp:null))
-   (creation-time (common-lisp:error ":creation-time is required") :type
-    (common-lisp:or creation-time common-lisp:null))
+   (creation-time
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":creation-time is required"))
+    :type (common-lisp:or creation-time common-lisp:null))
    (last-updated-time common-lisp:nil :type
     (common-lisp:or last-updated-time common-lisp:null))
    (deletion-time common-lisp:nil :type
     (common-lisp:or deletion-time common-lisp:null))
-   (stack-status (common-lisp:error ":stack-status is required") :type
-    (common-lisp:or stack-status common-lisp:null))
+   (stack-status
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":stack-status is required"))
+    :type (common-lisp:or stack-status common-lisp:null))
    (stack-status-reason common-lisp:nil :type
     (common-lisp:or stack-status-reason common-lisp:null)))
  (common-lisp:export (common-lisp:list 'stack-summary 'make-stack-summary))
@@ -3638,10 +3754,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (stop-stack-set-operation-input (:copier common-lisp:nil))
-   (stack-set-name (common-lisp:error ":stack-set-name is required") :type
-    (common-lisp:or stack-set-name common-lisp:null))
-   (operation-id (common-lisp:error ":operation-id is required") :type
-    (common-lisp:or client-request-token common-lisp:null)))
+   (stack-set-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":stack-set-name is required"))
+    :type (common-lisp:or stack-set-name common-lisp:null))
+   (operation-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":operation-id is required"))
+    :type (common-lisp:or client-request-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-stack-set-operation-input
                     'make-stop-stack-set-operation-input))
@@ -3673,10 +3793,11 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -3770,8 +3891,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (update-stack-input (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or stack-name common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or stack-name common-lisp:null))
    (template-body common-lisp:nil :type
     (common-lisp:or template-body common-lisp:null))
    (template-url common-lisp:nil :type
@@ -3893,8 +4016,10 @@
                                                 'stack-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-stack-set-input (:copier common-lisp:nil))
-   (stack-set-name (common-lisp:error ":stack-set-name is required") :type
-    (common-lisp:or stack-set-name common-lisp:null))
+   (stack-set-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":stack-set-name is required"))
+    :type (common-lisp:or stack-set-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (template-body common-lisp:nil :type
@@ -4067,7 +4192,10 @@
                       (common-lisp:apply 'make-cancel-update-stack-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelUpdateStack")
                                   ("Version" ,@"2010-05-15"))
@@ -4088,7 +4216,10 @@
                       (common-lisp:apply 'make-continue-update-rollback-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ContinueUpdateRollback")
                                   ("Version" ,@"2010-05-15"))
@@ -4113,7 +4244,10 @@
                       (common-lisp:apply 'make-create-change-set-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateChangeSet")
                                   ("Version" ,@"2010-05-15"))
@@ -4139,7 +4273,10 @@
                       (common-lisp:apply 'make-create-stack-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateStack")
                                   ("Version" ,@"2010-05-15"))
@@ -4160,7 +4297,10 @@
                       (common-lisp:apply 'make-create-stack-instances-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateStackInstances")
                                   ("Version" ,@"2010-05-15"))
@@ -4182,7 +4322,10 @@
                       (common-lisp:apply 'make-create-stack-set-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateStackSet")
                                   ("Version" ,@"2010-05-15"))
@@ -4200,7 +4343,10 @@
                       (common-lisp:apply 'make-delete-change-set-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteChangeSet")
                                   ("Version" ,@"2010-05-15"))
@@ -4221,7 +4367,10 @@
                       (common-lisp:apply 'make-delete-stack-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteStack")
                                   ("Version" ,@"2010-05-15"))
@@ -4242,7 +4391,10 @@
                       (common-lisp:apply 'make-delete-stack-instances-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteStackInstances")
                                   ("Version" ,@"2010-05-15"))
@@ -4260,7 +4412,10 @@
                       (common-lisp:apply 'make-delete-stack-set-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteStackSet")
                                   ("Version" ,@"2010-05-15"))
@@ -4278,7 +4433,10 @@
                       (common-lisp:apply 'make-describe-account-limits-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAccountLimits")
                                   ("Version" ,@"2010-05-15"))
@@ -4297,7 +4455,10 @@
                       (common-lisp:apply 'make-describe-change-set-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeChangeSet")
                                   ("Version" ,@"2010-05-15"))
@@ -4315,7 +4476,10 @@
                       (common-lisp:apply 'make-describe-stack-events-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStackEvents")
                                   ("Version" ,@"2010-05-15"))
@@ -4336,7 +4500,10 @@
                       (common-lisp:apply 'make-describe-stack-instance-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStackInstance")
                                   ("Version" ,@"2010-05-15"))
@@ -4354,7 +4521,10 @@
                       (common-lisp:apply 'make-describe-stack-resource-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStackResource")
                                   ("Version" ,@"2010-05-15"))
@@ -4375,7 +4545,10 @@
                       (common-lisp:apply 'make-describe-stack-resources-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStackResources")
                                   ("Version" ,@"2010-05-15"))
@@ -4393,7 +4566,10 @@
                       (common-lisp:apply 'make-describe-stack-set-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStackSet")
                                   ("Version" ,@"2010-05-15"))
@@ -4412,7 +4588,10 @@
                        'make-describe-stack-set-operation-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStackSetOperation")
                                   ("Version" ,@"2010-05-15"))
@@ -4430,7 +4609,10 @@
                       (common-lisp:apply 'make-describe-stacks-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStacks")
                                   ("Version" ,@"2010-05-15"))
@@ -4449,7 +4631,10 @@
                       (common-lisp:apply 'make-estimate-template-cost-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EstimateTemplateCost")
                                   ("Version" ,@"2010-05-15"))
@@ -4469,7 +4654,10 @@
                       (common-lisp:apply 'make-execute-change-set-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ExecuteChangeSet")
                                   ("Version" ,@"2010-05-15"))
@@ -4487,7 +4675,10 @@
                       (common-lisp:apply 'make-get-stack-policy-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetStackPolicy")
                                   ("Version" ,@"2010-05-15"))
@@ -4507,7 +4698,10 @@
                       (common-lisp:apply 'make-get-template-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTemplate")
                                   ("Version" ,@"2010-05-15"))
@@ -4528,7 +4722,10 @@
                       (common-lisp:apply 'make-get-template-summary-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTemplateSummary")
                                   ("Version" ,@"2010-05-15"))
@@ -4546,7 +4743,10 @@
                       (common-lisp:apply 'make-list-change-sets-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListChangeSets")
                                   ("Version" ,@"2010-05-15"))
@@ -4564,7 +4764,10 @@
                       (common-lisp:apply 'make-list-exports-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListExports")
                                   ("Version" ,@"2010-05-15"))
@@ -4582,7 +4785,10 @@
                       (common-lisp:apply 'make-list-imports-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListImports")
                                   ("Version" ,@"2010-05-15"))
@@ -4603,7 +4809,10 @@
                       (common-lisp:apply 'make-list-stack-instances-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListStackInstances")
                                   ("Version" ,@"2010-05-15"))
@@ -4621,7 +4830,10 @@
                       (common-lisp:apply 'make-list-stack-resources-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListStackResources")
                                   ("Version" ,@"2010-05-15"))
@@ -4642,7 +4854,10 @@
                        'make-list-stack-set-operation-results-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListStackSetOperationResults")
                                   ("Version" ,@"2010-05-15"))
@@ -4662,7 +4877,10 @@
                       (common-lisp:apply 'make-list-stack-set-operations-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListStackSetOperations")
                                   ("Version" ,@"2010-05-15"))
@@ -4680,7 +4898,10 @@
                       (common-lisp:apply 'make-list-stack-sets-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListStackSets")
                                   ("Version" ,@"2010-05-15"))
@@ -4698,7 +4919,10 @@
                       (common-lisp:apply 'make-list-stacks-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListStacks")
                                   ("Version" ,@"2010-05-15"))
@@ -4718,7 +4942,10 @@
                       (common-lisp:apply 'make-set-stack-policy-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetStackPolicy")
                                   ("Version" ,@"2010-05-15"))
@@ -4738,7 +4965,10 @@
                       (common-lisp:apply 'make-signal-resource-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SignalResource")
                                   ("Version" ,@"2010-05-15"))
@@ -4756,7 +4986,10 @@
                       (common-lisp:apply 'make-stop-stack-set-operation-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopStackSetOperation")
                                   ("Version" ,@"2010-05-15"))
@@ -4783,7 +5016,10 @@
                       (common-lisp:apply 'make-update-stack-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateStack")
                                   ("Version" ,@"2010-05-15"))
@@ -4806,7 +5042,10 @@
                       (common-lisp:apply 'make-update-stack-set-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateStackSet")
                                   ("Version" ,@"2010-05-15"))
@@ -4824,7 +5063,10 @@
                       (common-lisp:apply 'make-validate-template-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudformation" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "cloudformation")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ValidateTemplate")
                                   ("Version" ,@"2010-05-15"))

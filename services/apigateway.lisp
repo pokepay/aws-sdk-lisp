@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/apigateway)
+
 (common-lisp:progn
  (common-lisp:defstruct (account (:copier common-lisp:nil))
    (cloudwatch-role-arn common-lisp:nil :type
@@ -457,12 +458,16 @@
                                                 'customer-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-authorizer-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or authorizer-type common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or authorizer-type common-lisp:null))
    (provider-arns common-lisp:nil :type
     (common-lisp:or list-of-arns common-lisp:null))
    (auth-type common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -470,8 +475,10 @@
     (common-lisp:or string common-lisp:null))
    (authorizer-credentials common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (identity-source (common-lisp:error ":identitysource is required") :type
-    (common-lisp:or string common-lisp:null))
+   (identity-source
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":identitysource is required"))
+    :type (common-lisp:or string common-lisp:null))
    (identity-validation-expression common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (authorizer-result-ttl-in-seconds common-lisp:nil :type
@@ -537,11 +544,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-base-path-mapping-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or string common-lisp:null))
    (base-path common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (stage common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-base-path-mapping-request
@@ -573,8 +584,10 @@
                                                 'stage))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-deployment-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (stage-name common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (stage-description common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -631,12 +644,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-documentation-part-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (location (common-lisp:error ":location is required") :type
-    (common-lisp:or documentation-part-location common-lisp:null))
-   (properties (common-lisp:error ":properties is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (location
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":location is required"))
+    :type (common-lisp:or documentation-part-location common-lisp:null))
+   (properties
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":properties is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-documentation-part-request
                     'make-create-documentation-part-request))
@@ -663,11 +682,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-documentation-version-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (documentation-version
-    (common-lisp:error ":documentationversion is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":documentationversion is required"))
+    :type (common-lisp:or string common-lisp:null))
    (stage-name common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
@@ -701,8 +723,10 @@
                                                 'description))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-domain-name-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or string common-lisp:null))
    (certificate-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (certificate-body common-lisp:nil :type
@@ -753,14 +777,19 @@
                                                 'certificate-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-model-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (schema common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (content-type (common-lisp:error ":contenttype is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (content-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":contenttype is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-model-request 'make-create-model-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -794,8 +823,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-request-validator-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (validate-request-body common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
@@ -831,12 +862,18 @@
                                                 'validate-request-parameters))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-resource-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (parent-id (common-lisp:error ":parentid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (path-part (common-lisp:error ":pathpart is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (parent-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":parentid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (path-part
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":pathpart is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-resource-request 'make-create-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -861,8 +898,9 @@
                                                 'path-part))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-rest-api-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (version common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (clone-from common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -902,12 +940,18 @@
                                                 'binary-media-types))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-stage-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (stage-name (common-lisp:error ":stagename is required") :type
-    (common-lisp:or string common-lisp:null))
-   (deployment-id (common-lisp:error ":deploymentid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (stage-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":stagename is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (deployment-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":deploymentid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (cache-cluster-enabled common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
@@ -965,12 +1009,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-usage-plan-key-request (:copier common-lisp:nil))
-   (usage-plan-id (common-lisp:error ":usageplanid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (key-id (common-lisp:error ":keyid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (key-type (common-lisp:error ":keytype is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (usage-plan-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":usageplanid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (key-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":keyid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (key-type
+    (common-lisp:error #A((20) common-lisp:base-char . ":keytype is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-usage-plan-key-request
                     'make-create-usage-plan-key-request))
@@ -996,8 +1044,9 @@
                                                 'key-type))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-usage-plan-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (api-stages common-lisp:nil :type
     (common-lisp:or list-of-api-stage common-lisp:null))
@@ -1040,8 +1089,9 @@
                                                 'quota))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-api-key-request (:copier common-lisp:nil))
-   (api-key (common-lisp:error ":apikey is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (api-key
+    (common-lisp:error #A((19) common-lisp:base-char . ":apikey is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-api-key-request 'make-delete-api-key-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1056,10 +1106,14 @@
                                                 'api-key))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-authorizer-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (authorizer-id (common-lisp:error ":authorizerid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (authorizer-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":authorizerid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-authorizer-request
                     'make-delete-authorizer-request))
@@ -1081,10 +1135,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-base-path-mapping-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (base-path (common-lisp:error ":basepath is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (base-path
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":basepath is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-base-path-mapping-request
                     'make-delete-base-path-mapping-request))
@@ -1107,8 +1165,9 @@
  (common-lisp:defstruct
      (delete-client-certificate-request (:copier common-lisp:nil))
    (client-certificate-id
-    (common-lisp:error ":clientcertificateid is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":clientcertificateid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-client-certificate-request
                     'make-delete-client-certificate-request))
@@ -1124,10 +1183,14 @@
                                                 'client-certificate-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-deployment-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (deployment-id (common-lisp:error ":deploymentid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (deployment-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":deploymentid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-deployment-request
                     'make-delete-deployment-request))
@@ -1149,11 +1212,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-documentation-part-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (documentation-part-id
-    (common-lisp:error ":documentationpartid is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":documentationpartid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-documentation-part-request
                     'make-delete-documentation-part-request))
@@ -1175,11 +1241,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-documentation-version-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (documentation-version
-    (common-lisp:error ":documentationversion is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":documentationversion is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-documentation-version-request
                     'make-delete-documentation-version-request))
@@ -1200,8 +1269,10 @@
                                                 'documentation-version))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-domain-name-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-domain-name-request
                     'make-delete-domain-name-request))
@@ -1218,10 +1289,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-gateway-response-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (response-type (common-lisp:error ":responsetype is required") :type
-    (common-lisp:or gateway-response-type common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (response-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":responsetype is required"))
+    :type (common-lisp:or gateway-response-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-gateway-response-request
                     'make-delete-gateway-response-request))
@@ -1242,12 +1317,18 @@
                                                 'response-type))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-integration-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-integration-request
                     'make-delete-integration-request))
@@ -1274,14 +1355,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-integration-response-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null))
-   (status-code (common-lisp:error ":statuscode is required") :type
-    (common-lisp:or status-code common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (status-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":statuscode is required"))
+    :type (common-lisp:or status-code common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-integration-response-request
                     'make-delete-integration-response-request))
@@ -1312,12 +1401,18 @@
                                                 'status-code))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-method-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-method-request 'make-delete-method-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1343,14 +1438,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-method-response-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null))
-   (status-code (common-lisp:error ":statuscode is required") :type
-    (common-lisp:or status-code common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (status-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":statuscode is required"))
+    :type (common-lisp:or status-code common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-method-response-request
                     'make-delete-method-response-request))
@@ -1381,10 +1484,14 @@
                                                 'status-code))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-model-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (model-name (common-lisp:error ":modelname is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (model-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":modelname is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-model-request 'make-delete-model-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1403,9 +1510,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-request-validator-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (request-validator-id (common-lisp:error ":requestvalidatorid is required")
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (request-validator-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":requestvalidatorid is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-request-validator-request
@@ -1427,10 +1538,14 @@
                                                 'request-validator-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-resource-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-resource-request 'make-delete-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1450,8 +1565,10 @@
                                                 'resource-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-rest-api-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-rest-api-request 'make-delete-rest-api-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1466,10 +1583,14 @@
                                                 'rest-api-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-stage-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (stage-name (common-lisp:error ":stagename is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (stage-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":stagename is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-stage-request 'make-delete-stage-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1488,10 +1609,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-usage-plan-key-request (:copier common-lisp:nil))
-   (usage-plan-id (common-lisp:error ":usageplanid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (key-id (common-lisp:error ":keyid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (usage-plan-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":usageplanid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (key-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":keyid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-usage-plan-key-request
                     'make-delete-usage-plan-key-request))
@@ -1512,8 +1636,10 @@
                                                 'key-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-usage-plan-request (:copier common-lisp:nil))
-   (usage-plan-id (common-lisp:error ":usageplanid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (usage-plan-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":usageplanid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-usage-plan-request
                     'make-delete-usage-plan-request))
@@ -1628,8 +1754,9 @@
                                                 'warnings))))))
 (common-lisp:progn
  (common-lisp:defstruct (documentation-part-location (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or documentation-part-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or documentation-part-type common-lisp:null))
    (path common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (method common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (status-code common-lisp:nil :type
@@ -1831,10 +1958,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (flush-stage-authorizers-cache-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (stage-name (common-lisp:error ":stagename is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (stage-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":stagename is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'flush-stage-authorizers-cache-request
                     'make-flush-stage-authorizers-cache-request))
@@ -1855,10 +1986,14 @@
                                                 'stage-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (flush-stage-cache-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (stage-name (common-lisp:error ":stagename is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (stage-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":stagename is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'flush-stage-cache-request
                     'make-flush-stage-cache-request))
@@ -1967,8 +2102,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (get-api-key-request (:copier common-lisp:nil))
-   (api-key (common-lisp:error ":apikey is required") :type
-    (common-lisp:or string common-lisp:null))
+   (api-key
+    (common-lisp:error #A((19) common-lisp:base-char . ":apikey is required"))
+    :type (common-lisp:or string common-lisp:null))
    (include-value common-lisp:nil :type
     (common-lisp:or nullable-boolean common-lisp:null)))
  (common-lisp:export
@@ -2027,10 +2163,14 @@
                                                 'include-values))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-authorizer-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (authorizer-id (common-lisp:error ":authorizerid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (authorizer-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":authorizerid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-authorizer-request 'make-get-authorizer-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2050,8 +2190,10 @@
                                                 'authorizer-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-authorizers-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (position common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or nullable-integer common-lisp:null)))
@@ -2080,10 +2222,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-base-path-mapping-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (base-path (common-lisp:error ":basepath is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (base-path
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":basepath is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-base-path-mapping-request
                     'make-get-base-path-mapping-request))
@@ -2105,8 +2251,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-base-path-mappings-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or string common-lisp:null))
    (position common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or nullable-integer common-lisp:null)))
@@ -2137,8 +2285,9 @@
  (common-lisp:defstruct
      (get-client-certificate-request (:copier common-lisp:nil))
    (client-certificate-id
-    (common-lisp:error ":clientcertificateid is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":clientcertificateid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-client-certificate-request
                     'make-get-client-certificate-request))
@@ -2178,10 +2327,14 @@
                                                 'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-deployment-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (deployment-id (common-lisp:error ":deploymentid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (deployment-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":deploymentid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (embed common-lisp:nil :type
     (common-lisp:or list-of-string common-lisp:null)))
  (common-lisp:export
@@ -2208,8 +2361,10 @@
                                                 'embed))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-deployments-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (position common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or nullable-integer common-lisp:null)))
@@ -2238,11 +2393,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-documentation-part-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (documentation-part-id
-    (common-lisp:error ":documentationpartid is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":documentationpartid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-documentation-part-request
                     'make-get-documentation-part-request))
@@ -2264,8 +2422,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-documentation-parts-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (type common-lisp:nil :type
     (common-lisp:or documentation-part-type common-lisp:null))
    (name-query common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -2314,11 +2474,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-documentation-version-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (documentation-version
-    (common-lisp:error ":documentationversion is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":documentationversion is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-documentation-version-request
                     'make-get-documentation-version-request))
@@ -2340,8 +2503,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-documentation-versions-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (position common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or nullable-integer common-lisp:null)))
@@ -2370,8 +2535,10 @@
                                                 'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-domain-name-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-domain-name-request 'make-get-domain-name-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2408,12 +2575,18 @@
                                                 'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-export-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (stage-name (common-lisp:error ":stagename is required") :type
-    (common-lisp:or string common-lisp:null))
-   (export-type (common-lisp:error ":exporttype is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (stage-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":stagename is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (export-type
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":exporttype is required"))
+    :type (common-lisp:or string common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or map-of-string-to-string common-lisp:null))
    (accepts common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -2450,10 +2623,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-gateway-response-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (response-type (common-lisp:error ":responsetype is required") :type
-    (common-lisp:or gateway-response-type common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (response-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":responsetype is required"))
+    :type (common-lisp:or gateway-response-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-gateway-response-request
                     'make-get-gateway-response-request))
@@ -2475,8 +2652,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-gateway-responses-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (position common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or nullable-integer common-lisp:null)))
@@ -2505,12 +2684,18 @@
                                                 'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-integration-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-integration-request 'make-get-integration-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2536,14 +2721,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-integration-response-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null))
-   (status-code (common-lisp:error ":statuscode is required") :type
-    (common-lisp:or status-code common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (status-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":statuscode is required"))
+    :type (common-lisp:or status-code common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-integration-response-request
                     'make-get-integration-response-request))
@@ -2574,12 +2767,18 @@
                                                 'status-code))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-method-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-method-request 'make-get-method-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2602,14 +2801,22 @@
                                                 'http-method))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-method-response-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null))
-   (status-code (common-lisp:error ":statuscode is required") :type
-    (common-lisp:or status-code common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (status-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":statuscode is required"))
+    :type (common-lisp:or status-code common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-method-response-request
                     'make-get-method-response-request))
@@ -2640,10 +2847,14 @@
                                                 'status-code))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-model-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (model-name (common-lisp:error ":modelname is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (model-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":modelname is required"))
+    :type (common-lisp:or string common-lisp:null))
    (flatten common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-model-request 'make-get-model-request))
@@ -2667,10 +2878,14 @@
                                                 'flatten))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-model-template-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (model-name (common-lisp:error ":modelname is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (model-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":modelname is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-model-template-request
                     'make-get-model-template-request))
@@ -2691,8 +2906,10 @@
                                                 'model-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-models-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (position common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or nullable-integer common-lisp:null)))
@@ -2719,9 +2936,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-request-validator-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (request-validator-id (common-lisp:error ":requestvalidatorid is required")
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (request-validator-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":requestvalidatorid is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-request-validator-request
@@ -2744,8 +2965,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-request-validators-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (position common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or nullable-integer common-lisp:null)))
@@ -2774,10 +2997,14 @@
                                                 'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-resource-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (embed common-lisp:nil :type
     (common-lisp:or list-of-string common-lisp:null)))
  (common-lisp:export
@@ -2802,8 +3029,10 @@
                                                 'embed))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-resources-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (position common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or nullable-integer common-lisp:null))
@@ -2838,8 +3067,10 @@
                                                 'embed))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-rest-api-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-rest-api-request 'make-get-rest-api-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2874,12 +3105,17 @@
                                                 'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-sdk-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (stage-name (common-lisp:error ":stagename is required") :type
-    (common-lisp:or string common-lisp:null))
-   (sdk-type (common-lisp:error ":sdktype is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (stage-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":stagename is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (sdk-type
+    (common-lisp:error #A((20) common-lisp:base-char . ":sdktype is required"))
+    :type (common-lisp:or string common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or map-of-string-to-string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'get-sdk-request 'make-get-sdk-request))
@@ -2908,8 +3144,8 @@
                                                 'parameters))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-sdk-type-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-sdk-type-request 'make-get-sdk-type-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2944,10 +3180,14 @@
                                                 'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-stage-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (stage-name (common-lisp:error ":stagename is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (stage-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":stagename is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-stage-request 'make-get-stage-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2965,8 +3205,10 @@
                                                 'stage-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-stages-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (deployment-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -2986,10 +3228,13 @@
                                                 'deployment-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-usage-plan-key-request (:copier common-lisp:nil))
-   (usage-plan-id (common-lisp:error ":usageplanid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (key-id (common-lisp:error ":keyid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (usage-plan-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":usageplanid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (key-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":keyid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-usage-plan-key-request
                     'make-get-usage-plan-key-request))
@@ -3010,8 +3255,10 @@
                                                 'key-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-usage-plan-keys-request (:copier common-lisp:nil))
-   (usage-plan-id (common-lisp:error ":usageplanid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (usage-plan-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":usageplanid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (position common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or nullable-integer common-lisp:null))
@@ -3046,8 +3293,10 @@
                                                 'name-query))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-usage-plan-request (:copier common-lisp:nil))
-   (usage-plan-id (common-lisp:error ":usageplanid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (usage-plan-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":usageplanid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-usage-plan-request 'make-get-usage-plan-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3090,13 +3339,18 @@
                                                 'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-usage-request (:copier common-lisp:nil))
-   (usage-plan-id (common-lisp:error ":usageplanid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (usage-plan-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":usageplanid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (key-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (start-date (common-lisp:error ":startdate is required") :type
-    (common-lisp:or string common-lisp:null))
-   (end-date (common-lisp:error ":enddate is required") :type
-    (common-lisp:or string common-lisp:null))
+   (start-date
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":startdate is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (end-date
+    (common-lisp:error #A((20) common-lisp:base-char . ":enddate is required"))
+    :type (common-lisp:or string common-lisp:null))
    (position common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or nullable-integer common-lisp:null)))
@@ -3137,10 +3391,12 @@
                                                 'limit))))))
 (common-lisp:progn
  (common-lisp:defstruct (import-api-keys-request (:copier common-lisp:nil))
-   (body (common-lisp:error ":body is required") :type
-    (common-lisp:or blob common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or api-keys-format common-lisp:null))
+   (body
+    (common-lisp:error #A((17) common-lisp:base-char . ":body is required"))
+    :type (common-lisp:or blob common-lisp:null))
+   (format
+    (common-lisp:error #A((19) common-lisp:base-char . ":format is required"))
+    :type (common-lisp:or api-keys-format common-lisp:null))
    (fail-on-warnings common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
@@ -3168,13 +3424,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (import-documentation-parts-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (mode common-lisp:nil :type (common-lisp:or put-mode common-lisp:null))
    (fail-on-warnings common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
-   (body (common-lisp:error ":body is required") :type
-    (common-lisp:or blob common-lisp:null)))
+   (body
+    (common-lisp:error #A((17) common-lisp:base-char . ":body is required"))
+    :type (common-lisp:or blob common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'import-documentation-parts-request
                     'make-import-documentation-parts-request))
@@ -3209,8 +3468,9 @@
     (common-lisp:or boolean common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or map-of-string-to-string common-lisp:null))
-   (body (common-lisp:error ":body is required") :type
-    (common-lisp:or blob common-lisp:null)))
+   (body
+    (common-lisp:error #A((17) common-lisp:base-char . ":body is required"))
+    :type (common-lisp:or blob common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'import-rest-api-request 'make-import-rest-api-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3947,10 +4207,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-gateway-response-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (response-type (common-lisp:error ":responsetype is required") :type
-    (common-lisp:or gateway-response-type common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (response-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":responsetype is required"))
+    :type (common-lisp:or gateway-response-type common-lisp:null))
    (status-code common-lisp:nil :type
     (common-lisp:or status-code common-lisp:null))
    (response-parameters common-lisp:nil :type
@@ -3992,14 +4256,21 @@
                                                 'response-templates))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-integration-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or integration-type common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or integration-type common-lisp:null))
    (integration-http-method common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (uri common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -4091,14 +4362,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-integration-response-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null))
-   (status-code (common-lisp:error ":statuscode is required") :type
-    (common-lisp:or status-code common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (status-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":statuscode is required"))
+    :type (common-lisp:or status-code common-lisp:null))
    (selection-pattern common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (response-parameters common-lisp:nil :type
@@ -4157,13 +4436,21 @@
                                                 'content-handling))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-method-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null))
-   (authorization-type (common-lisp:error ":authorizationtype is required")
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (authorization-type
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":authorizationtype is required"))
     :type (common-lisp:or string common-lisp:null))
    (authorizer-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -4234,14 +4521,22 @@
                                                 'request-validator-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-method-response-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null))
-   (status-code (common-lisp:error ":statuscode is required") :type
-    (common-lisp:or status-code common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (status-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":statuscode is required"))
+    :type (common-lisp:or status-code common-lisp:null))
    (response-parameters common-lisp:nil :type
     (common-lisp:or map-of-string-to-boolean common-lisp:null))
    (response-models common-lisp:nil :type
@@ -4287,15 +4582,18 @@
 (common-lisp:deftype put-mode () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (put-rest-api-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (mode common-lisp:nil :type (common-lisp:or put-mode common-lisp:null))
    (fail-on-warnings common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or map-of-string-to-string common-lisp:null))
-   (body (common-lisp:error ":body is required") :type
-    (common-lisp:or blob common-lisp:null)))
+   (body
+    (common-lisp:error #A((17) common-lisp:base-char . ":body is required"))
+    :type (common-lisp:or blob common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-rest-api-request 'make-put-rest-api-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4810,10 +5108,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (test-invoke-authorizer-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (authorizer-id (common-lisp:error ":authorizerid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (authorizer-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":authorizerid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (headers common-lisp:nil :type
     (common-lisp:or map-of-header-values common-lisp:null))
    (path-with-query-string common-lisp:nil :type
@@ -4925,12 +5227,18 @@
                                                 'claims))))))
 (common-lisp:progn
  (common-lisp:defstruct (test-invoke-method-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null))
    (path-with-query-string common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (body common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -5108,8 +5416,9 @@
                                                 'patch-operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-api-key-request (:copier common-lisp:nil))
-   (api-key (common-lisp:error ":apikey is required") :type
-    (common-lisp:or string common-lisp:null))
+   (api-key
+    (common-lisp:error #A((19) common-lisp:base-char . ":apikey is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5131,10 +5440,14 @@
                                                 'patch-operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-authorizer-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (authorizer-id (common-lisp:error ":authorizerid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (authorizer-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":authorizerid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5163,10 +5476,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-base-path-mapping-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (base-path (common-lisp:error ":basepath is required") :type
-    (common-lisp:or string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (base-path
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":basepath is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5196,8 +5513,9 @@
  (common-lisp:defstruct
      (update-client-certificate-request (:copier common-lisp:nil))
    (client-certificate-id
-    (common-lisp:error ":clientcertificateid is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":clientcertificateid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5220,10 +5538,14 @@
                                                 'patch-operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-deployment-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (deployment-id (common-lisp:error ":deploymentid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (deployment-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":deploymentid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5252,11 +5574,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-documentation-part-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (documentation-part-id
-    (common-lisp:error ":documentationpartid is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":documentationpartid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5285,11 +5610,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-documentation-version-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (documentation-version
-    (common-lisp:error ":documentationversion is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":documentationversion is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5317,8 +5645,10 @@
                                                 'patch-operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-domain-name-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domainname is required") :type
-    (common-lisp:or string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domainname is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5342,10 +5672,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-gateway-response-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (response-type (common-lisp:error ":responsetype is required") :type
-    (common-lisp:or gateway-response-type common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (response-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":responsetype is required"))
+    :type (common-lisp:or gateway-response-type common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5373,12 +5707,18 @@
                                                 'patch-operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-integration-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5412,14 +5752,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-integration-response-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null))
-   (status-code (common-lisp:error ":statuscode is required") :type
-    (common-lisp:or status-code common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (status-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":statuscode is required"))
+    :type (common-lisp:or status-code common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5457,12 +5805,18 @@
                                                 'patch-operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-method-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5495,14 +5849,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-method-response-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (http-method (common-lisp:error ":httpmethod is required") :type
-    (common-lisp:or string common-lisp:null))
-   (status-code (common-lisp:error ":statuscode is required") :type
-    (common-lisp:or status-code common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (http-method
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":httpmethod is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (status-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":statuscode is required"))
+    :type (common-lisp:or status-code common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5540,10 +5902,14 @@
                                                 'patch-operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-model-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (model-name (common-lisp:error ":modelname is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (model-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":modelname is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5569,9 +5935,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-request-validator-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (request-validator-id (common-lisp:error ":requestvalidatorid is required")
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (request-validator-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":requestvalidatorid is required"))
     :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
@@ -5600,10 +5970,14 @@
                                                 'patch-operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-resource-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5630,8 +6004,10 @@
                                                 'patch-operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-rest-api-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5653,10 +6029,14 @@
                                                 'patch-operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-stage-request (:copier common-lisp:nil))
-   (rest-api-id (common-lisp:error ":restapiid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (stage-name (common-lisp:error ":stagename is required") :type
-    (common-lisp:or string common-lisp:null))
+   (rest-api-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":restapiid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (stage-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":stagename is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5681,8 +6061,10 @@
                                                 'patch-operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-usage-plan-request (:copier common-lisp:nil))
-   (usage-plan-id (common-lisp:error ":usageplanid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (usage-plan-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":usageplanid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5705,10 +6087,13 @@
                                                 'patch-operations))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-usage-request (:copier common-lisp:nil))
-   (usage-plan-id (common-lisp:error ":usageplanid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (key-id (common-lisp:error ":keyid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (usage-plan-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":usageplanid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (key-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":keyid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (patch-operations common-lisp:nil :type
     (common-lisp:or list-of-patch-operation common-lisp:null)))
  (common-lisp:export
@@ -5902,7 +6287,9 @@
                       (common-lisp:apply 'make-create-api-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateApiKey")
                                   ("Version" ,@"2015-07-09"))
@@ -5926,7 +6313,13 @@
                       (common-lisp:apply 'make-create-authorizer-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/authorizers"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAuthorizer")
                                   ("Version" ,@"2015-07-09"))
@@ -5945,7 +6338,13 @@
                       (common-lisp:apply 'make-create-base-path-mapping-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/domainnames/~a/basepathmappings"
+                                                   domain_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateBasePathMapping")
                                   ("Version" ,@"2015-07-09"))
@@ -5967,7 +6366,13 @@
                       (common-lisp:apply 'make-create-deployment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/deployments"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDeployment")
                                   ("Version" ,@"2015-07-09"))
@@ -5987,7 +6392,13 @@
                        'make-create-documentation-part-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/documentation/parts"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDocumentationPart")
                                   ("Version" ,@"2015-07-09"))
@@ -6009,7 +6420,13 @@
                        'make-create-documentation-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/documentation/versions"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDocumentationVersion")
                                   ("Version" ,@"2015-07-09"))
@@ -6031,7 +6448,9 @@
                       (common-lisp:apply 'make-create-domain-name-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDomainName")
                                   ("Version" ,@"2015-07-09"))
@@ -6051,7 +6470,13 @@
                       (common-lisp:apply 'make-create-model-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/models"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateModel")
                                   ("Version" ,@"2015-07-09"))
@@ -6072,7 +6497,13 @@
                       (common-lisp:apply 'make-create-request-validator-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/requestvalidators"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateRequestValidator")
                                   ("Version" ,@"2015-07-09"))
@@ -6091,7 +6522,13 @@
                       (common-lisp:apply 'make-create-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a"
+                                                   restapi_id parent_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateResource")
                                   ("Version" ,@"2015-07-09"))
@@ -6112,7 +6549,9 @@
                       (common-lisp:apply 'make-create-rest-api-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateRestApi")
                                   ("Version" ,@"2015-07-09"))
@@ -6134,7 +6573,13 @@
                       (common-lisp:apply 'make-create-stage-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/stages"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateStage")
                                   ("Version" ,@"2015-07-09"))
@@ -6154,7 +6599,9 @@
                       (common-lisp:apply 'make-create-usage-plan-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateUsagePlan")
                                   ("Version" ,@"2015-07-09"))
@@ -6172,7 +6619,13 @@
                       (common-lisp:apply 'make-create-usage-plan-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/usageplans/~a/keys"
+                                                   usageplanid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateUsagePlanKey")
                                   ("Version" ,@"2015-07-09"))
@@ -6190,7 +6643,12 @@
                       (common-lisp:apply 'make-delete-api-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/apikeys/~a" api_key)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApiKey")
                                   ("Version" ,@"2015-07-09"))
@@ -6208,7 +6666,13 @@
                       (common-lisp:apply 'make-delete-authorizer-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/authorizers/~a"
+                                                   restapi_id authorizer_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAuthorizer")
                                   ("Version" ,@"2015-07-09"))
@@ -6226,7 +6690,13 @@
                       (common-lisp:apply 'make-delete-base-path-mapping-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/domainnames/~a/basepathmappings/~a"
+                                                   domain_name base_path)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBasePathMapping")
                                   ("Version" ,@"2015-07-09"))
@@ -6245,7 +6715,13 @@
                        'make-delete-client-certificate-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/clientcertificates/~a"
+                                                   clientcertificate_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteClientCertificate")
                                   ("Version" ,@"2015-07-09"))
@@ -6263,7 +6739,13 @@
                       (common-lisp:apply 'make-delete-deployment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/deployments/~a"
+                                                   restapi_id deployment_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDeployment")
                                   ("Version" ,@"2015-07-09"))
@@ -6283,7 +6765,13 @@
                        'make-delete-documentation-part-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/documentation/parts/~a"
+                                                   restapi_id part_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDocumentationPart")
                                   ("Version" ,@"2015-07-09"))
@@ -6303,7 +6791,13 @@
                        'make-delete-documentation-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/documentation/versions/~a"
+                                                   restapi_id doc_version)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDocumentationVersion")
                                   ("Version" ,@"2015-07-09"))
@@ -6321,7 +6815,13 @@
                       (common-lisp:apply 'make-delete-domain-name-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/domainnames/~a"
+                                                   domain_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDomainName")
                                   ("Version" ,@"2015-07-09"))
@@ -6339,7 +6839,13 @@
                       (common-lisp:apply 'make-delete-gateway-response-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/gatewayresponses/~a"
+                                                   restapi_id response_type)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteGatewayResponse")
                                   ("Version" ,@"2015-07-09"))
@@ -6358,7 +6864,14 @@
                       (common-lisp:apply 'make-delete-integration-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a/integration"
+                                                   restapi_id resource_id
+                                                   http_method)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIntegration")
                                   ("Version" ,@"2015-07-09"))
@@ -6379,7 +6892,14 @@
                        'make-delete-integration-response-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a/integration/responses/~a"
+                                                   restapi_id resource_id
+                                                   http_method status_code)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIntegrationResponse")
                                   ("Version" ,@"2015-07-09"))
@@ -6398,7 +6918,14 @@
                       (common-lisp:apply 'make-delete-method-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a"
+                                                   restapi_id resource_id
+                                                   http_method)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteMethod")
                                   ("Version" ,@"2015-07-09"))
@@ -6418,7 +6945,14 @@
                       (common-lisp:apply 'make-delete-method-response-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a/responses/~a"
+                                                   restapi_id resource_id
+                                                   http_method status_code)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteMethodResponse")
                                   ("Version" ,@"2015-07-09"))
@@ -6436,7 +6970,13 @@
                       (common-lisp:apply 'make-delete-model-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/models/~a"
+                                                   restapi_id model_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteModel")
                                   ("Version" ,@"2015-07-09"))
@@ -6455,7 +6995,14 @@
                       (common-lisp:apply 'make-delete-request-validator-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/requestvalidators/~a"
+                                                   restapi_id
+                                                   requestvalidator_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRequestValidator")
                                   ("Version" ,@"2015-07-09"))
@@ -6473,7 +7020,13 @@
                       (common-lisp:apply 'make-delete-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a"
+                                                   restapi_id resource_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteResource")
                                   ("Version" ,@"2015-07-09"))
@@ -6491,7 +7044,12 @@
                       (common-lisp:apply 'make-delete-rest-api-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a" restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRestApi")
                                   ("Version" ,@"2015-07-09"))
@@ -6509,7 +7067,13 @@
                       (common-lisp:apply 'make-delete-stage-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/stages/~a"
+                                                   restapi_id stage_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteStage")
                                   ("Version" ,@"2015-07-09"))
@@ -6527,7 +7091,13 @@
                       (common-lisp:apply 'make-delete-usage-plan-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/usageplans/~a"
+                                                   usageplanid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUsagePlan")
                                   ("Version" ,@"2015-07-09"))
@@ -6545,7 +7115,13 @@
                       (common-lisp:apply 'make-delete-usage-plan-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/usageplans/~a/keys/~a"
+                                                   usageplanid keyid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUsagePlanKey")
                                   ("Version" ,@"2015-07-09"))
@@ -6564,7 +7140,13 @@
                        'make-flush-stage-authorizers-cache-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/stages/~a/cache/authorizers"
+                                                   restapi_id stage_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"FlushStageAuthorizersCache")
                                   ("Version" ,@"2015-07-09"))
@@ -6582,7 +7164,13 @@
                       (common-lisp:apply 'make-flush-stage-cache-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/stages/~a/cache/data"
+                                                   restapi_id stage_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"FlushStageCache")
                                   ("Version" ,@"2015-07-09"))
@@ -6601,7 +7189,9 @@
                        'make-generate-client-certificate-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GenerateClientCertificate")
                                   ("Version" ,@"2015-07-09"))
@@ -6612,7 +7202,9 @@
 (common-lisp:progn
  (common-lisp:defun get-account ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+    (aws-sdk/api:aws-request :service
+                             #A((10) common-lisp:base-char . "apigateway")
+                             :method :get :params
                              (common-lisp:cons "Action" "GetAccount"))
     "Account" common-lisp:nil))
  (common-lisp:export 'get-account))
@@ -6626,7 +7218,12 @@
                       (common-lisp:apply 'make-get-api-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/apikeys/~a" api_key)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetApiKey")
                                   ("Version" ,@"2015-07-09"))
@@ -6647,7 +7244,9 @@
                       (common-lisp:apply 'make-get-api-keys-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetApiKeys")
                                   ("Version" ,@"2015-07-09"))
@@ -6665,7 +7264,13 @@
                       (common-lisp:apply 'make-get-authorizer-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/authorizers/~a"
+                                                   restapi_id authorizer_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetAuthorizer")
                                   ("Version" ,@"2015-07-09"))
@@ -6683,7 +7288,13 @@
                       (common-lisp:apply 'make-get-authorizers-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/authorizers"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetAuthorizers")
                                   ("Version" ,@"2015-07-09"))
@@ -6701,7 +7312,13 @@
                       (common-lisp:apply 'make-get-base-path-mapping-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/domainnames/~a/basepathmappings/~a"
+                                                   domain_name base_path)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBasePathMapping")
                                   ("Version" ,@"2015-07-09"))
@@ -6719,7 +7336,13 @@
                       (common-lisp:apply 'make-get-base-path-mappings-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/domainnames/~a/basepathmappings"
+                                                   domain_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBasePathMappings")
                                   ("Version" ,@"2015-07-09"))
@@ -6737,7 +7360,13 @@
                       (common-lisp:apply 'make-get-client-certificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/clientcertificates/~a"
+                                                   clientcertificate_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetClientCertificate")
                                   ("Version" ,@"2015-07-09"))
@@ -6755,7 +7384,9 @@
                       (common-lisp:apply 'make-get-client-certificates-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetClientCertificates")
                                   ("Version" ,@"2015-07-09"))
@@ -6774,7 +7405,13 @@
                       (common-lisp:apply 'make-get-deployment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/deployments/~a"
+                                                   restapi_id deployment_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDeployment")
                                   ("Version" ,@"2015-07-09"))
@@ -6792,7 +7429,13 @@
                       (common-lisp:apply 'make-get-deployments-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/deployments"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDeployments")
                                   ("Version" ,@"2015-07-09"))
@@ -6811,7 +7454,13 @@
                       (common-lisp:apply 'make-get-documentation-part-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/documentation/parts/~a"
+                                                   restapi_id part_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDocumentationPart")
                                   ("Version" ,@"2015-07-09"))
@@ -6831,7 +7480,13 @@
                       (common-lisp:apply 'make-get-documentation-parts-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/documentation/parts"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDocumentationParts")
                                   ("Version" ,@"2015-07-09"))
@@ -6851,7 +7506,13 @@
                        'make-get-documentation-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/documentation/versions/~a"
+                                                   restapi_id doc_version)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDocumentationVersion")
                                   ("Version" ,@"2015-07-09"))
@@ -6870,7 +7531,13 @@
                        'make-get-documentation-versions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/documentation/versions"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDocumentationVersions")
                                   ("Version" ,@"2015-07-09"))
@@ -6888,7 +7555,13 @@
                       (common-lisp:apply 'make-get-domain-name-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/domainnames/~a"
+                                                   domain_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDomainName")
                                   ("Version" ,@"2015-07-09"))
@@ -6906,7 +7579,9 @@
                       (common-lisp:apply 'make-get-domain-names-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDomainNames")
                                   ("Version" ,@"2015-07-09"))
@@ -6927,7 +7602,14 @@
                       (common-lisp:apply 'make-get-export-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/stages/~a/exports/~a"
+                                                   restapi_id stage_name
+                                                   export_type)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetExport")
                                   ("Version" ,@"2015-07-09"))
@@ -6945,7 +7627,13 @@
                       (common-lisp:apply 'make-get-gateway-response-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/gatewayresponses/~a"
+                                                   restapi_id response_type)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetGatewayResponse")
                                   ("Version" ,@"2015-07-09"))
@@ -6963,7 +7651,13 @@
                       (common-lisp:apply 'make-get-gateway-responses-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/gatewayresponses"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetGatewayResponses")
                                   ("Version" ,@"2015-07-09"))
@@ -6982,7 +7676,14 @@
                       (common-lisp:apply 'make-get-integration-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a/integration"
+                                                   restapi_id resource_id
+                                                   http_method)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetIntegration")
                                   ("Version" ,@"2015-07-09"))
@@ -7002,7 +7703,14 @@
                       (common-lisp:apply 'make-get-integration-response-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a/integration/responses/~a"
+                                                   restapi_id resource_id
+                                                   http_method status_code)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetIntegrationResponse")
                                   ("Version" ,@"2015-07-09"))
@@ -7021,7 +7729,14 @@
                       (common-lisp:apply 'make-get-method-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a"
+                                                   restapi_id resource_id
+                                                   http_method)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetMethod")
                                   ("Version" ,@"2015-07-09"))
@@ -7041,7 +7756,14 @@
                       (common-lisp:apply 'make-get-method-response-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a/responses/~a"
+                                                   restapi_id resource_id
+                                                   http_method status_code)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetMethodResponse")
                                   ("Version" ,@"2015-07-09"))
@@ -7059,7 +7781,13 @@
                       (common-lisp:apply 'make-get-model-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/models/~a"
+                                                   restapi_id model_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetModel")
                                   ("Version" ,@"2015-07-09"))
@@ -7077,7 +7805,13 @@
                       (common-lisp:apply 'make-get-model-template-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/models/~a/default_template"
+                                                   restapi_id model_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetModelTemplate")
                                   ("Version" ,@"2015-07-09"))
@@ -7095,7 +7829,13 @@
                       (common-lisp:apply 'make-get-models-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/models"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetModels")
                                   ("Version" ,@"2015-07-09"))
@@ -7114,7 +7854,14 @@
                       (common-lisp:apply 'make-get-request-validator-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/requestvalidators/~a"
+                                                   restapi_id
+                                                   requestvalidator_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRequestValidator")
                                   ("Version" ,@"2015-07-09"))
@@ -7132,7 +7879,13 @@
                       (common-lisp:apply 'make-get-request-validators-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/requestvalidators"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRequestValidators")
                                   ("Version" ,@"2015-07-09"))
@@ -7150,7 +7903,13 @@
                       (common-lisp:apply 'make-get-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a"
+                                                   restapi_id resource_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetResource")
                                   ("Version" ,@"2015-07-09"))
@@ -7169,7 +7928,13 @@
                       (common-lisp:apply 'make-get-resources-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetResources")
                                   ("Version" ,@"2015-07-09"))
@@ -7187,7 +7952,12 @@
                       (common-lisp:apply 'make-get-rest-api-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a" restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRestApi")
                                   ("Version" ,@"2015-07-09"))
@@ -7205,7 +7975,9 @@
                       (common-lisp:apply 'make-get-rest-apis-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRestApis")
                                   ("Version" ,@"2015-07-09"))
@@ -7225,7 +7997,14 @@
                       (common-lisp:apply 'make-get-sdk-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/stages/~a/sdks/~a"
+                                                   restapi_id stage_name
+                                                   sdk_type)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSdk")
                                   ("Version" ,@"2015-07-09"))
@@ -7243,7 +8022,12 @@
                       (common-lisp:apply 'make-get-sdk-type-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/sdktypes/~a" sdktype_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSdkType")
                                   ("Version" ,@"2015-07-09"))
@@ -7261,7 +8045,9 @@
                       (common-lisp:apply 'make-get-sdk-types-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSdkTypes")
                                   ("Version" ,@"2015-07-09"))
@@ -7279,7 +8065,13 @@
                       (common-lisp:apply 'make-get-stage-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/stages/~a"
+                                                   restapi_id stage_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetStage")
                                   ("Version" ,@"2015-07-09"))
@@ -7297,7 +8089,13 @@
                       (common-lisp:apply 'make-get-stages-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/stages"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetStages")
                                   ("Version" ,@"2015-07-09"))
@@ -7318,7 +8116,13 @@
                       (common-lisp:apply 'make-get-usage-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/usageplans/~a/usage"
+                                                   usageplanid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetUsage")
                                   ("Version" ,@"2015-07-09"))
@@ -7336,7 +8140,13 @@
                       (common-lisp:apply 'make-get-usage-plan-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/usageplans/~a"
+                                                   usageplanid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetUsagePlan")
                                   ("Version" ,@"2015-07-09"))
@@ -7354,7 +8164,13 @@
                       (common-lisp:apply 'make-get-usage-plan-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/usageplans/~a/keys/~a"
+                                                   usageplanid keyid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetUsagePlanKey")
                                   ("Version" ,@"2015-07-09"))
@@ -7373,7 +8189,13 @@
                       (common-lisp:apply 'make-get-usage-plan-keys-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/usageplans/~a/keys"
+                                                   usageplanid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetUsagePlanKeys")
                                   ("Version" ,@"2015-07-09"))
@@ -7391,7 +8213,9 @@
                       (common-lisp:apply 'make-get-usage-plans-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetUsagePlans")
                                   ("Version" ,@"2015-07-09"))
@@ -7409,7 +8233,9 @@
                       (common-lisp:apply 'make-import-api-keys-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ImportApiKeys")
                                   ("Version" ,@"2015-07-09"))
@@ -7429,7 +8255,13 @@
                        'make-import-documentation-parts-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/documentation/parts"
+                                                   restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ImportDocumentationParts")
                                   ("Version" ,@"2015-07-09"))
@@ -7448,7 +8280,9 @@
                       (common-lisp:apply 'make-import-rest-api-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ImportRestApi")
                                   ("Version" ,@"2015-07-09"))
@@ -7469,7 +8303,13 @@
                       (common-lisp:apply 'make-put-gateway-response-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/gatewayresponses/~a"
+                                                   restapi_id response_type)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutGatewayResponse")
                                   ("Version" ,@"2015-07-09"))
@@ -7494,7 +8334,14 @@
                       (common-lisp:apply 'make-put-integration-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a/integration"
+                                                   restapi_id resource_id
+                                                   http_method)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutIntegration")
                                   ("Version" ,@"2015-07-09"))
@@ -7517,7 +8364,14 @@
                       (common-lisp:apply 'make-put-integration-response-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a/integration/responses/~a"
+                                                   restapi_id resource_id
+                                                   http_method status_code)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutIntegrationResponse")
                                   ("Version" ,@"2015-07-09"))
@@ -7541,7 +8395,14 @@
                       (common-lisp:apply 'make-put-method-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a"
+                                                   restapi_id resource_id
+                                                   http_method)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutMethod")
                                   ("Version" ,@"2015-07-09"))
@@ -7562,7 +8423,14 @@
                       (common-lisp:apply 'make-put-method-response-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a/responses/~a"
+                                                   restapi_id resource_id
+                                                   http_method status_code)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutMethodResponse")
                                   ("Version" ,@"2015-07-09"))
@@ -7582,7 +8450,12 @@
                       (common-lisp:apply 'make-put-rest-api-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a" restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutRestApi")
                                   ("Version" ,@"2015-07-09"))
@@ -7604,7 +8477,13 @@
                       (common-lisp:apply 'make-test-invoke-authorizer-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/authorizers/~a"
+                                                   restapi_id authorizer_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"TestInvokeAuthorizer")
                                   ("Version" ,@"2015-07-09"))
@@ -7627,7 +8506,14 @@
                       (common-lisp:apply 'make-test-invoke-method-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a"
+                                                   restapi_id resource_id
+                                                   http_method)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"TestInvokeMethod")
                                   ("Version" ,@"2015-07-09"))
@@ -7645,7 +8531,9 @@
                       (common-lisp:apply 'make-update-account-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAccount")
                                   ("Version" ,@"2015-07-09"))
@@ -7663,7 +8551,12 @@
                       (common-lisp:apply 'make-update-api-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/apikeys/~a" api_key)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApiKey")
                                   ("Version" ,@"2015-07-09"))
@@ -7683,7 +8576,13 @@
                       (common-lisp:apply 'make-update-authorizer-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/authorizers/~a"
+                                                   restapi_id authorizer_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAuthorizer")
                                   ("Version" ,@"2015-07-09"))
@@ -7702,7 +8601,13 @@
                       (common-lisp:apply 'make-update-base-path-mapping-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/domainnames/~a/basepathmappings/~a"
+                                                   domain_name base_path)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateBasePathMapping")
                                   ("Version" ,@"2015-07-09"))
@@ -7722,7 +8627,13 @@
                        'make-update-client-certificate-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/clientcertificates/~a"
+                                                   clientcertificate_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateClientCertificate")
                                   ("Version" ,@"2015-07-09"))
@@ -7742,7 +8653,13 @@
                       (common-lisp:apply 'make-update-deployment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/deployments/~a"
+                                                   restapi_id deployment_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDeployment")
                                   ("Version" ,@"2015-07-09"))
@@ -7763,7 +8680,13 @@
                        'make-update-documentation-part-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/documentation/parts/~a"
+                                                   restapi_id part_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDocumentationPart")
                                   ("Version" ,@"2015-07-09"))
@@ -7784,7 +8707,13 @@
                        'make-update-documentation-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/documentation/versions/~a"
+                                                   restapi_id doc_version)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDocumentationVersion")
                                   ("Version" ,@"2015-07-09"))
@@ -7802,7 +8731,13 @@
                       (common-lisp:apply 'make-update-domain-name-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/domainnames/~a"
+                                                   domain_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDomainName")
                                   ("Version" ,@"2015-07-09"))
@@ -7822,7 +8757,13 @@
                       (common-lisp:apply 'make-update-gateway-response-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/gatewayresponses/~a"
+                                                   restapi_id response_type)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateGatewayResponse")
                                   ("Version" ,@"2015-07-09"))
@@ -7843,7 +8784,14 @@
                       (common-lisp:apply 'make-update-integration-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a/integration"
+                                                   restapi_id resource_id
+                                                   http_method)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateIntegration")
                                   ("Version" ,@"2015-07-09"))
@@ -7865,7 +8813,14 @@
                        'make-update-integration-response-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a/integration/responses/~a"
+                                                   restapi_id resource_id
+                                                   http_method status_code)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateIntegrationResponse")
                                   ("Version" ,@"2015-07-09"))
@@ -7886,7 +8841,14 @@
                       (common-lisp:apply 'make-update-method-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a"
+                                                   restapi_id resource_id
+                                                   http_method)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateMethod")
                                   ("Version" ,@"2015-07-09"))
@@ -7907,7 +8869,14 @@
                       (common-lisp:apply 'make-update-method-response-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a/methods/~a/responses/~a"
+                                                   restapi_id resource_id
+                                                   http_method status_code)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateMethodResponse")
                                   ("Version" ,@"2015-07-09"))
@@ -7926,7 +8895,13 @@
                       (common-lisp:apply 'make-update-model-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/models/~a"
+                                                   restapi_id model_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateModel")
                                   ("Version" ,@"2015-07-09"))
@@ -7946,7 +8921,14 @@
                       (common-lisp:apply 'make-update-request-validator-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/requestvalidators/~a"
+                                                   restapi_id
+                                                   requestvalidator_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRequestValidator")
                                   ("Version" ,@"2015-07-09"))
@@ -7965,7 +8947,13 @@
                       (common-lisp:apply 'make-update-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/resources/~a"
+                                                   restapi_id resource_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateResource")
                                   ("Version" ,@"2015-07-09"))
@@ -7983,7 +8971,12 @@
                       (common-lisp:apply 'make-update-rest-api-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a" restapi_id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRestApi")
                                   ("Version" ,@"2015-07-09"))
@@ -8002,7 +8995,13 @@
                       (common-lisp:apply 'make-update-stage-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/restapis/~a/stages/~a"
+                                                   restapi_id stage_name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateStage")
                                   ("Version" ,@"2015-07-09"))
@@ -8021,7 +9020,13 @@
                       (common-lisp:apply 'make-update-usage-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/usageplans/~a/keys/~a/usage"
+                                                   usageplanid keyid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateUsage")
                                   ("Version" ,@"2015-07-09"))
@@ -8039,7 +9044,13 @@
                       (common-lisp:apply 'make-update-usage-plan-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "apigateway" :method :patch :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "apigateway")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/usageplans/~a"
+                                                   usageplanid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateUsagePlan")
                                   ("Version" ,@"2015-07-09"))

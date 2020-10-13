@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/importexport)
+
 (common-lisp:deftype apiversion () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (artifact (:copier common-lisp:nil))
@@ -53,8 +54,9 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (cancel-job-input (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":job-id is required") :type
-    (common-lisp:or job-id common-lisp:null))
+   (job-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":job-id is required"))
+    :type (common-lisp:or job-id common-lisp:null))
    (apiversion common-lisp:nil :type
     (common-lisp:or apiversion common-lisp:null)))
  (common-lisp:export
@@ -105,14 +107,20 @@
 (common-lisp:deftype carrier () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (create-job-input (:copier common-lisp:nil))
-   (job-type (common-lisp:error ":job-type is required") :type
-    (common-lisp:or job-type common-lisp:null))
-   (manifest (common-lisp:error ":manifest is required") :type
-    (common-lisp:or manifest common-lisp:null))
+   (job-type
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":job-type is required"))
+    :type (common-lisp:or job-type common-lisp:null))
+   (manifest
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":manifest is required"))
+    :type (common-lisp:or manifest common-lisp:null))
    (manifest-addendum common-lisp:nil :type
     (common-lisp:or manifest-addendum common-lisp:null))
-   (validate-only (common-lisp:error ":validate-only is required") :type
-    (common-lisp:or validate-only common-lisp:null))
+   (validate-only
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":validate-only is required"))
+    :type (common-lisp:or validate-only common-lisp:null))
    (apiversion common-lisp:nil :type
     (common-lisp:or apiversion common-lisp:null)))
  (common-lisp:export
@@ -234,8 +242,9 @@
 (common-lisp:deftype generic-string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (get-shipping-label-input (:copier common-lisp:nil))
-   (job-ids (common-lisp:error ":jobids is required") :type
-    (common-lisp:or job-id-list common-lisp:null))
+   (job-ids
+    (common-lisp:error #A((19) common-lisp:base-char . ":jobids is required"))
+    :type (common-lisp:or job-id-list common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or |name| common-lisp:null))
    (company common-lisp:nil :type (common-lisp:or |company| common-lisp:null))
    (phone-number common-lisp:nil :type
@@ -344,8 +353,9 @@
                                                 'warning))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-status-input (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":job-id is required") :type
-    (common-lisp:or job-id common-lisp:null))
+   (job-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":job-id is required"))
+    :type (common-lisp:or job-id common-lisp:null))
    (apiversion common-lisp:nil :type
     (common-lisp:or apiversion common-lisp:null)))
  (common-lisp:export
@@ -868,14 +878,21 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-job-input (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":job-id is required") :type
-    (common-lisp:or job-id common-lisp:null))
-   (manifest (common-lisp:error ":manifest is required") :type
-    (common-lisp:or manifest common-lisp:null))
-   (job-type (common-lisp:error ":job-type is required") :type
-    (common-lisp:or job-type common-lisp:null))
-   (validate-only (common-lisp:error ":validate-only is required") :type
-    (common-lisp:or validate-only common-lisp:null))
+   (job-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":job-id is required"))
+    :type (common-lisp:or job-id common-lisp:null))
+   (manifest
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":manifest is required"))
+    :type (common-lisp:or manifest common-lisp:null))
+   (job-type
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":job-type is required"))
+    :type (common-lisp:or job-type common-lisp:null))
+   (validate-only
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":validate-only is required"))
+    :type (common-lisp:or validate-only common-lisp:null))
    (apiversion common-lisp:nil :type
     (common-lisp:or apiversion common-lisp:null)))
  (common-lisp:export
@@ -957,7 +974,9 @@
                       (common-lisp:apply 'make-cancel-job-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "importexport" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "importexport")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelJob")
                                   ("Version" ,@"2010-06-01"))
@@ -978,7 +997,9 @@
                       (common-lisp:apply 'make-create-job-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "importexport" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "importexport")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateJob")
                                   ("Version" ,@"2010-06-01"))
@@ -1000,7 +1021,9 @@
                       (common-lisp:apply 'make-get-shipping-label-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "importexport" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "importexport")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetShippingLabel")
                                   ("Version" ,@"2010-06-01"))
@@ -1018,7 +1041,9 @@
                       (common-lisp:apply 'make-get-status-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "importexport" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "importexport")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetStatus")
                                   ("Version" ,@"2010-06-01"))
@@ -1036,7 +1061,9 @@
                       (common-lisp:apply 'make-list-jobs-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "importexport" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "importexport")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListJobs")
                                   ("Version" ,@"2010-06-01"))
@@ -1056,7 +1083,9 @@
                       (common-lisp:apply 'make-update-job-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "importexport" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "importexport")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateJob")
                                   ("Version" ,@"2010-06-01"))

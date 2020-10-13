@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/batch)
+
 (common-lisp:progn
  (common-lisp:defstruct (attempt-container-detail (:copier common-lisp:nil))
    (container-instance-arn common-lisp:nil :type
@@ -95,10 +96,12 @@
 (common-lisp:deftype crtype () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (cancel-job-request (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (reason (common-lisp:error ":reason is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (reason
+    (common-lisp:error #A((19) common-lisp:base-char . ":reason is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-job-request 'make-cancel-job-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -137,13 +140,17 @@
 (common-lisp:progn
  (common-lisp:defstruct (compute-environment-detail (:copier common-lisp:nil))
    (compute-environment-name
-    (common-lisp:error ":computeenvironmentname is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":computeenvironmentname is required"))
+    :type (common-lisp:or string common-lisp:null))
    (compute-environment-arn
-    (common-lisp:error ":computeenvironmentarn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (ecs-cluster-arn (common-lisp:error ":ecsclusterarn is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":computeenvironmentarn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (ecs-cluster-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":ecsclusterarn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (type common-lisp:nil :type (common-lisp:or cetype common-lisp:null))
    (state common-lisp:nil :type (common-lisp:or cestate common-lisp:null))
    (status common-lisp:nil :type (common-lisp:or cestatus common-lisp:null))
@@ -217,9 +224,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (compute-environment-order (:copier common-lisp:nil))
-   (order (common-lisp:error ":order is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (compute-environment (common-lisp:error ":computeenvironment is required")
+   (order
+    (common-lisp:error #A((18) common-lisp:base-char . ":order is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (compute-environment
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":computeenvironment is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'compute-environment-order
@@ -250,24 +260,36 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (compute-resource (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or crtype common-lisp:null))
-   (minv-cpus (common-lisp:error ":minvcpus is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (maxv-cpus (common-lisp:error ":maxvcpus is required") :type
-    (common-lisp:or integer common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or crtype common-lisp:null))
+   (minv-cpus
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":minvcpus is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (maxv-cpus
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":maxvcpus is required"))
+    :type (common-lisp:or integer common-lisp:null))
    (desiredv-cpus common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
-   (instance-types (common-lisp:error ":instancetypes is required") :type
-    (common-lisp:or string-list common-lisp:null))
+   (instance-types
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instancetypes is required"))
+    :type (common-lisp:or string-list common-lisp:null))
    (image-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (subnets (common-lisp:error ":subnets is required") :type
-    (common-lisp:or string-list common-lisp:null))
-   (security-group-ids (common-lisp:error ":securitygroupids is required")
+   (subnets
+    (common-lisp:error #A((20) common-lisp:base-char . ":subnets is required"))
+    :type (common-lisp:or string-list common-lisp:null))
+   (security-group-ids
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":securitygroupids is required"))
     :type (common-lisp:or string-list common-lisp:null))
    (ec2key-pair common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (instance-role (common-lisp:error ":instancerole is required") :type
-    (common-lisp:or string common-lisp:null))
+   (instance-role
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancerole is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tags-map common-lisp:null))
    (bid-percentage common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
@@ -522,12 +544,15 @@
                                                 'environment))))))
 (common-lisp:progn
  (common-lisp:defstruct (container-properties (:copier common-lisp:nil))
-   (image (common-lisp:error ":image is required") :type
-    (common-lisp:or string common-lisp:null))
-   (vcpus (common-lisp:error ":vcpus is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (memory (common-lisp:error ":memory is required") :type
-    (common-lisp:or integer common-lisp:null))
+   (image
+    (common-lisp:error #A((18) common-lisp:base-char . ":image is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (vcpus
+    (common-lisp:error #A((18) common-lisp:base-char . ":vcpus is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (memory
+    (common-lisp:error #A((19) common-lisp:base-char . ":memory is required"))
+    :type (common-lisp:or integer common-lisp:null))
    (command common-lisp:nil :type
     (common-lisp:or string-list common-lisp:null))
    (job-role-arn common-lisp:nil :type
@@ -611,15 +636,19 @@
  (common-lisp:defstruct
      (create-compute-environment-request (:copier common-lisp:nil))
    (compute-environment-name
-    (common-lisp:error ":computeenvironmentname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or cetype common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":computeenvironmentname is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or cetype common-lisp:null))
    (state common-lisp:nil :type (common-lisp:or cestate common-lisp:null))
    (compute-resources common-lisp:nil :type
     (common-lisp:or compute-resource common-lisp:null))
-   (service-role (common-lisp:error ":servicerole is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (service-role
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":servicerole is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-compute-environment-request
                     'make-create-compute-environment-request))
@@ -680,14 +709,19 @@
                                                 'compute-environment-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-job-queue-request (:copier common-lisp:nil))
-   (job-queue-name (common-lisp:error ":jobqueuename is required") :type
-    (common-lisp:or string common-lisp:null))
+   (job-queue-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":jobqueuename is required"))
+    :type (common-lisp:or string common-lisp:null))
    (state common-lisp:nil :type (common-lisp:or jqstate common-lisp:null))
-   (priority (common-lisp:error ":priority is required") :type
-    (common-lisp:or integer common-lisp:null))
+   (priority
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":priority is required"))
+    :type (common-lisp:or integer common-lisp:null))
    (compute-environment-order
-    (common-lisp:error ":computeenvironmentorder is required") :type
-    (common-lisp:or compute-environment-orders common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":computeenvironmentorder is required"))
+    :type (common-lisp:or compute-environment-orders common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-job-queue-request 'make-create-job-queue-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -717,10 +751,14 @@
                                                 'compute-environment-order))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-job-queue-response (:copier common-lisp:nil))
-   (job-queue-name (common-lisp:error ":jobqueuename is required") :type
-    (common-lisp:or string common-lisp:null))
-   (job-queue-arn (common-lisp:error ":jobqueuearn is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (job-queue-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":jobqueuename is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (job-queue-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":jobqueuearn is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-job-queue-response
                     'make-create-job-queue-response))
@@ -742,7 +780,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-compute-environment-request (:copier common-lisp:nil))
-   (compute-environment (common-lisp:error ":computeenvironment is required")
+   (compute-environment
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":computeenvironment is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-compute-environment-request
@@ -770,8 +810,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-job-queue-request (:copier common-lisp:nil))
-   (job-queue (common-lisp:error ":jobqueue is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (job-queue
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":jobqueue is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-job-queue-request 'make-delete-job-queue-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -797,8 +839,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (deregister-job-definition-request (:copier common-lisp:nil))
-   (job-definition (common-lisp:error ":jobdefinition is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (job-definition
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":jobdefinition is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-job-definition-request
                     'make-deregister-job-definition-request))
@@ -1002,8 +1046,9 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-jobs-request (:copier common-lisp:nil))
-   (jobs (common-lisp:error ":jobs is required") :type
-    (common-lisp:or string-list common-lisp:null)))
+   (jobs
+    (common-lisp:error #A((17) common-lisp:base-char . ":jobs is required"))
+    :type (common-lisp:or string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-jobs-request 'make-describe-jobs-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1058,15 +1103,22 @@
 (common-lisp:deftype jqstatus () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (job-definition (:copier common-lisp:nil))
-   (job-definition-name (common-lisp:error ":jobdefinitionname is required")
+   (job-definition-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":jobdefinitionname is required"))
     :type (common-lisp:or string common-lisp:null))
-   (job-definition-arn (common-lisp:error ":jobdefinitionarn is required")
+   (job-definition-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":jobdefinitionarn is required"))
     :type (common-lisp:or string common-lisp:null))
-   (revision (common-lisp:error ":revision is required") :type
-    (common-lisp:or integer common-lisp:null))
+   (revision
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":revision is required"))
+    :type (common-lisp:or integer common-lisp:null))
    (status common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or string common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or string common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or parameters-map common-lisp:null))
    (retry-strategy common-lisp:nil :type
@@ -1148,14 +1200,19 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (job-detail (:copier common-lisp:nil))
-   (job-name (common-lisp:error ":jobname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (job-queue (common-lisp:error ":jobqueue is required") :type
-    (common-lisp:or string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or job-status common-lisp:null))
+   (job-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":jobname is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (job-queue
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":jobqueue is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or job-status common-lisp:null))
    (attempts common-lisp:nil :type
     (common-lisp:or attempt-details common-lisp:null))
    (status-reason common-lisp:nil :type
@@ -1163,13 +1220,17 @@
    (created-at common-lisp:nil :type (common-lisp:or long common-lisp:null))
    (retry-strategy common-lisp:nil :type
     (common-lisp:or retry-strategy common-lisp:null))
-   (started-at (common-lisp:error ":startedat is required") :type
-    (common-lisp:or long common-lisp:null))
+   (started-at
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":startedat is required"))
+    :type (common-lisp:or long common-lisp:null))
    (stopped-at common-lisp:nil :type (common-lisp:or long common-lisp:null))
    (depends-on common-lisp:nil :type
     (common-lisp:or job-dependency-list common-lisp:null))
-   (job-definition (common-lisp:error ":jobdefinition is required") :type
-    (common-lisp:or string common-lisp:null))
+   (job-definition
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":jobdefinition is required"))
+    :type (common-lisp:or string common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or parameters-map common-lisp:null))
    (container common-lisp:nil :type
@@ -1258,20 +1319,28 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (job-queue-detail (:copier common-lisp:nil))
-   (job-queue-name (common-lisp:error ":jobqueuename is required") :type
-    (common-lisp:or string common-lisp:null))
-   (job-queue-arn (common-lisp:error ":jobqueuearn is required") :type
-    (common-lisp:or string common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or jqstate common-lisp:null))
+   (job-queue-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":jobqueuename is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (job-queue-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":jobqueuearn is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (state
+    (common-lisp:error #A((18) common-lisp:base-char . ":state is required"))
+    :type (common-lisp:or jqstate common-lisp:null))
    (status common-lisp:nil :type (common-lisp:or jqstatus common-lisp:null))
    (status-reason common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (priority (common-lisp:error ":priority is required") :type
-    (common-lisp:or integer common-lisp:null))
+   (priority
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":priority is required"))
+    :type (common-lisp:or integer common-lisp:null))
    (compute-environment-order
-    (common-lisp:error ":computeenvironmentorder is required") :type
-    (common-lisp:or compute-environment-orders common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":computeenvironmentorder is required"))
+    :type (common-lisp:or compute-environment-orders common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'job-queue-detail 'make-job-queue-detail))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1323,10 +1392,12 @@
 (common-lisp:deftype job-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (job-summary (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (job-name (common-lisp:error ":jobname is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (job-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":jobname is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'job-summary 'make-job-summary))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape job-summary))
@@ -1369,8 +1440,10 @@
                                                 'value))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-jobs-request (:copier common-lisp:nil))
-   (job-queue (common-lisp:error ":jobqueue is required") :type
-    (common-lisp:or string common-lisp:null))
+   (job-queue
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":jobqueue is required"))
+    :type (common-lisp:or string common-lisp:null))
    (job-status common-lisp:nil :type
     (common-lisp:or job-status common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1403,8 +1476,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-jobs-response (:copier common-lisp:nil))
-   (job-summary-list (common-lisp:error ":jobsummarylist is required") :type
-    (common-lisp:or job-summary-list common-lisp:null))
+   (job-summary-list
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":jobsummarylist is required"))
+    :type (common-lisp:or job-summary-list common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-jobs-response 'make-list-jobs-response))
@@ -1464,10 +1539,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-job-definition-request (:copier common-lisp:nil))
-   (job-definition-name (common-lisp:error ":jobdefinitionname is required")
+   (job-definition-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":jobdefinitionname is required"))
     :type (common-lisp:or string common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or job-definition-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or job-definition-type common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or parameters-map common-lisp:null))
    (container-properties common-lisp:nil :type
@@ -1510,12 +1588,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-job-definition-response (:copier common-lisp:nil))
-   (job-definition-name (common-lisp:error ":jobdefinitionname is required")
+   (job-definition-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":jobdefinitionname is required"))
     :type (common-lisp:or string common-lisp:null))
-   (job-definition-arn (common-lisp:error ":jobdefinitionarn is required")
+   (job-definition-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":jobdefinitionarn is required"))
     :type (common-lisp:or string common-lisp:null))
-   (revision (common-lisp:error ":revision is required") :type
-    (common-lisp:or integer common-lisp:null)))
+   (revision
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":revision is required"))
+    :type (common-lisp:or integer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-job-definition-response
                     'make-register-job-definition-response))
@@ -1574,14 +1658,19 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (submit-job-request (:copier common-lisp:nil))
-   (job-name (common-lisp:error ":jobname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (job-queue (common-lisp:error ":jobqueue is required") :type
-    (common-lisp:or string common-lisp:null))
+   (job-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":jobname is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (job-queue
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":jobqueue is required"))
+    :type (common-lisp:or string common-lisp:null))
    (depends-on common-lisp:nil :type
     (common-lisp:or job-dependency-list common-lisp:null))
-   (job-definition (common-lisp:error ":jobdefinition is required") :type
-    (common-lisp:or string common-lisp:null))
+   (job-definition
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":jobdefinition is required"))
+    :type (common-lisp:or string common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or parameters-map common-lisp:null))
    (container-overrides common-lisp:nil :type
@@ -1630,10 +1719,12 @@
                                                 'retry-strategy))))))
 (common-lisp:progn
  (common-lisp:defstruct (submit-job-response (:copier common-lisp:nil))
-   (job-name (common-lisp:error ":jobname is required") :type
-    (common-lisp:or string common-lisp:null))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (job-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":jobname is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'submit-job-response 'make-submit-job-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1657,10 +1748,12 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (terminate-job-request (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (reason (common-lisp:error ":reason is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (reason
+    (common-lisp:error #A((19) common-lisp:base-char . ":reason is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'terminate-job-request 'make-terminate-job-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1689,12 +1782,17 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (ulimit (:copier common-lisp:nil))
-   (hard-limit (common-lisp:error ":hardlimit is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (soft-limit (common-lisp:error ":softlimit is required") :type
-    (common-lisp:or integer common-lisp:null)))
+   (hard-limit
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":hardlimit is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (soft-limit
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":softlimit is required"))
+    :type (common-lisp:or integer common-lisp:null)))
  (common-lisp:export (common-lisp:list 'ulimit 'make-ulimit))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape ulimit))
@@ -1724,7 +1822,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-compute-environment-request (:copier common-lisp:nil))
-   (compute-environment (common-lisp:error ":computeenvironment is required")
+   (compute-environment
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":computeenvironment is required"))
     :type (common-lisp:or string common-lisp:null))
    (state common-lisp:nil :type (common-lisp:or cestate common-lisp:null))
    (compute-resources common-lisp:nil :type
@@ -1786,8 +1886,10 @@
                                                 'compute-environment-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-job-queue-request (:copier common-lisp:nil))
-   (job-queue (common-lisp:error ":jobqueue is required") :type
-    (common-lisp:or string common-lisp:null))
+   (job-queue
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":jobqueue is required"))
+    :type (common-lisp:or string common-lisp:null))
    (state common-lisp:nil :type (common-lisp:or jqstate common-lisp:null))
    (priority common-lisp:nil :type (common-lisp:or integer common-lisp:null))
    (compute-environment-order common-lisp:nil :type
@@ -1878,7 +1980,8 @@
                       (common-lisp:apply 'make-cancel-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelJob")
                                   ("Version" ,@"2016-08-10"))
@@ -1900,7 +2003,8 @@
                        'make-create-compute-environment-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateComputeEnvironment")
                                   ("Version" ,@"2016-08-10"))
@@ -1921,7 +2025,8 @@
                       (common-lisp:apply 'make-create-job-queue-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateJobQueue")
                                   ("Version" ,@"2016-08-10"))
@@ -1940,7 +2045,8 @@
                        'make-delete-compute-environment-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteComputeEnvironment")
                                   ("Version" ,@"2016-08-10"))
@@ -1958,7 +2064,8 @@
                       (common-lisp:apply 'make-delete-job-queue-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteJobQueue")
                                   ("Version" ,@"2016-08-10"))
@@ -1977,7 +2084,8 @@
                        'make-deregister-job-definition-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterJobDefinition")
                                   ("Version" ,@"2016-08-10"))
@@ -1998,7 +2106,8 @@
                        'make-describe-compute-environments-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeComputeEnvironments")
                                   ("Version" ,@"2016-08-10"))
@@ -2019,7 +2128,8 @@
                       (common-lisp:apply 'make-describe-job-definitions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeJobDefinitions")
                                   ("Version" ,@"2016-08-10"))
@@ -2038,7 +2148,8 @@
                       (common-lisp:apply 'make-describe-job-queues-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeJobQueues")
                                   ("Version" ,@"2016-08-10"))
@@ -2056,7 +2167,8 @@
                       (common-lisp:apply 'make-describe-jobs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeJobs")
                                   ("Version" ,@"2016-08-10"))
@@ -2076,7 +2188,8 @@
                       (common-lisp:apply 'make-list-jobs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListJobs")
                                   ("Version" ,@"2016-08-10"))
@@ -2097,7 +2210,8 @@
                       (common-lisp:apply 'make-register-job-definition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterJobDefinition")
                                   ("Version" ,@"2016-08-10"))
@@ -2119,7 +2233,8 @@
                       (common-lisp:apply 'make-submit-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SubmitJob")
                                   ("Version" ,@"2016-08-10"))
@@ -2137,7 +2252,8 @@
                       (common-lisp:apply 'make-terminate-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TerminateJob")
                                   ("Version" ,@"2016-08-10"))
@@ -2159,7 +2275,8 @@
                        'make-update-compute-environment-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateComputeEnvironment")
                                   ("Version" ,@"2016-08-10"))
@@ -2179,7 +2296,8 @@
                       (common-lisp:apply 'make-update-job-queue-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "batch" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "batch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateJobQueue")
                                   ("Version" ,@"2016-08-10"))

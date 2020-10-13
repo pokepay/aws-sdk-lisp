@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/mobileanalytics)
+
 (common-lisp:progn
  (common-lisp:defstruct (bad-request-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -25,10 +26,13 @@
 (common-lisp:deftype double () 'common-lisp:double-float)
 (common-lisp:progn
  (common-lisp:defstruct (event (:copier common-lisp:nil))
-   (event-type (common-lisp:error ":eventtype is required") :type
-    (common-lisp:or string50chars common-lisp:null))
-   (timestamp (common-lisp:error ":string is required") :type
-    (common-lisp:or iso8601timestamp common-lisp:null))
+   (event-type
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":eventtype is required"))
+    :type (common-lisp:or string50chars common-lisp:null))
+   (timestamp
+    (common-lisp:error #A((19) common-lisp:base-char . ":string is required"))
+    :type (common-lisp:or iso8601timestamp common-lisp:null))
    (session common-lisp:nil :type (common-lisp:or session common-lisp:null))
    (version common-lisp:nil :type
     (common-lisp:or string10chars common-lisp:null))
@@ -94,10 +98,13 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (put-events-input (:copier common-lisp:nil))
-   (events (common-lisp:error ":events is required") :type
-    (common-lisp:or event-list-definition common-lisp:null))
-   (client-context (common-lisp:error ":clientcontext is required") :type
-    (common-lisp:or string common-lisp:null))
+   (events
+    (common-lisp:error #A((19) common-lisp:base-char . ":events is required"))
+    :type (common-lisp:or event-list-definition common-lisp:null))
+   (client-context
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":clientcontext is required"))
+    :type (common-lisp:or string common-lisp:null))
    (client-context-encoding common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -168,7 +175,10 @@
                       (common-lisp:apply 'make-put-events-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mobileanalytics" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mobileanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutEvents")
                                   ("Version" ,@"2014-06-05"))

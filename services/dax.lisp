@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/dax)
+
 (common-lisp:progn
  (common-lisp:deftype availability-zone-list ()
    '(trivial-types:proper-list string))
@@ -177,12 +178,18 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-cluster-request (:copier common-lisp:nil))
-   (cluster-name (common-lisp:error ":cluster-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (node-type (common-lisp:error ":node-type is required") :type
-    (common-lisp:or string common-lisp:null))
+   (cluster-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":cluster-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (node-type
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":node-type is required"))
+    :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (replication-factor (common-lisp:error ":replication-factor is required")
+   (replication-factor
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":replication-factor is required"))
     :type (common-lisp:or integer common-lisp:null))
    (availability-zones common-lisp:nil :type
     (common-lisp:or availability-zone-list common-lisp:null))
@@ -194,8 +201,10 @@
     (common-lisp:or string common-lisp:null))
    (notification-topic-arn common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (iam-role-arn (common-lisp:error ":iam-role-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+   (iam-role-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":iam-role-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (parameter-group-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
@@ -285,8 +294,9 @@
  (common-lisp:defstruct
      (create-parameter-group-request (:copier common-lisp:nil))
    (parameter-group-name
-    (common-lisp:error ":parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -327,11 +337,15 @@
                                                 'parameter-group))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-subnet-group-request (:copier common-lisp:nil))
-   (subnet-group-name (common-lisp:error ":subnet-group-name is required")
+   (subnet-group-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subnet-group-name is required"))
     :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (subnet-ids (common-lisp:error ":subnet-ids is required") :type
-    (common-lisp:or subnet-identifier-list common-lisp:null)))
+   (subnet-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":subnet-ids is required"))
+    :type (common-lisp:or subnet-identifier-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-subnet-group-request
                     'make-create-subnet-group-request))
@@ -376,11 +390,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (decrease-replication-factor-request (:copier common-lisp:nil))
-   (cluster-name (common-lisp:error ":cluster-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (cluster-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":cluster-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (new-replication-factor
-    (common-lisp:error ":new-replication-factor is required") :type
-    (common-lisp:or integer common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":new-replication-factor is required"))
+    :type (common-lisp:or integer common-lisp:null))
    (availability-zones common-lisp:nil :type
     (common-lisp:or availability-zone-list common-lisp:null))
    (node-ids-to-remove common-lisp:nil :type
@@ -432,8 +449,10 @@
                                                 'cluster))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-cluster-request (:copier common-lisp:nil))
-   (cluster-name (common-lisp:error ":cluster-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (cluster-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":cluster-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-cluster-request 'make-delete-cluster-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -465,8 +484,9 @@
  (common-lisp:defstruct
      (delete-parameter-group-request (:copier common-lisp:nil))
    (parameter-group-name
-    (common-lisp:error ":parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-parameter-group-request
                     'make-delete-parameter-group-request))
@@ -500,7 +520,9 @@
                                                 'deletion-message))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-subnet-group-request (:copier common-lisp:nil))
-   (subnet-group-name (common-lisp:error ":subnet-group-name is required")
+   (subnet-group-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subnet-group-name is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-subnet-group-request
@@ -767,8 +789,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (describe-parameters-request (:copier common-lisp:nil))
    (parameter-group-name
-    (common-lisp:error ":parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (source common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
@@ -939,11 +962,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (increase-replication-factor-request (:copier common-lisp:nil))
-   (cluster-name (common-lisp:error ":cluster-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (cluster-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":cluster-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (new-replication-factor
-    (common-lisp:error ":new-replication-factor is required") :type
-    (common-lisp:or integer common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":new-replication-factor is required"))
+    :type (common-lisp:or integer common-lisp:null))
    (availability-zones common-lisp:nil :type
     (common-lisp:or availability-zone-list common-lisp:null)))
  (common-lisp:export
@@ -1091,8 +1117,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (list-tags-request (:copier common-lisp:nil))
-   (resource-name (common-lisp:error ":resource-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (resource-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-request 'make-list-tags-request))
@@ -1481,10 +1509,13 @@
 (common-lisp:deftype parameter-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (reboot-node-request (:copier common-lisp:nil))
-   (cluster-name (common-lisp:error ":cluster-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (node-id (common-lisp:error ":node-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (cluster-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":cluster-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (node-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":node-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reboot-node-request 'make-reboot-node-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1744,10 +1775,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (tag-resource-request (:copier common-lisp:nil))
-   (resource-name (common-lisp:error ":resource-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1780,10 +1814,14 @@
                                                 'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (untag-resource-request (:copier common-lisp:nil))
-   (resource-name (common-lisp:error ":resource-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or key-list common-lisp:null)))
+   (resource-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1818,8 +1856,10 @@
                                                 'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-cluster-request (:copier common-lisp:nil))
-   (cluster-name (common-lisp:error ":cluster-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (cluster-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":cluster-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (preferred-maintenance-window common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -1892,11 +1932,13 @@
  (common-lisp:defstruct
      (update-parameter-group-request (:copier common-lisp:nil))
    (parameter-group-name
-    (common-lisp:error ":parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (parameter-name-values
-    (common-lisp:error ":parameter-name-values is required") :type
-    (common-lisp:or parameter-name-value-list common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":parameter-name-values is required"))
+    :type (common-lisp:or parameter-name-value-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-parameter-group-request
                     'make-update-parameter-group-request))
@@ -1935,7 +1977,9 @@
                                                 'parameter-group))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-subnet-group-request (:copier common-lisp:nil))
-   (subnet-group-name (common-lisp:error ":subnet-group-name is required")
+   (subnet-group-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subnet-group-name is required"))
     :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (subnet-ids common-lisp:nil :type
@@ -1999,7 +2043,8 @@
                       (common-lisp:apply 'make-create-cluster-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCluster")
                                   ("Version" ,@"2017-04-19"))
@@ -2018,7 +2063,8 @@
                       (common-lisp:apply 'make-create-parameter-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateParameterGroup")
                                   ("Version" ,@"2017-04-19"))
@@ -2037,7 +2083,8 @@
                       (common-lisp:apply 'make-create-subnet-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSubnetGroup")
                                   ("Version" ,@"2017-04-19"))
@@ -2059,7 +2106,8 @@
                        'make-decrease-replication-factor-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DecreaseReplicationFactor")
                                   ("Version" ,@"2017-04-19"))
@@ -2077,7 +2125,8 @@
                       (common-lisp:apply 'make-delete-cluster-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCluster")
                                   ("Version" ,@"2017-04-19"))
@@ -2095,7 +2144,8 @@
                       (common-lisp:apply 'make-delete-parameter-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteParameterGroup")
                                   ("Version" ,@"2017-04-19"))
@@ -2113,7 +2163,8 @@
                       (common-lisp:apply 'make-delete-subnet-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSubnetGroup")
                                   ("Version" ,@"2017-04-19"))
@@ -2132,7 +2183,8 @@
                       (common-lisp:apply 'make-describe-clusters-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeClusters")
                                   ("Version" ,@"2017-04-19"))
@@ -2151,7 +2203,8 @@
                        'make-describe-default-parameters-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDefaultParameters")
                                   ("Version" ,@"2017-04-19"))
@@ -2172,7 +2225,8 @@
                       (common-lisp:apply 'make-describe-events-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEvents")
                                   ("Version" ,@"2017-04-19"))
@@ -2193,7 +2247,8 @@
                        'make-describe-parameter-groups-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeParameterGroups")
                                   ("Version" ,@"2017-04-19"))
@@ -2213,7 +2268,8 @@
                       (common-lisp:apply 'make-describe-parameters-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeParameters")
                                   ("Version" ,@"2017-04-19"))
@@ -2233,7 +2289,8 @@
                       (common-lisp:apply 'make-describe-subnet-groups-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSubnetGroups")
                                   ("Version" ,@"2017-04-19"))
@@ -2255,7 +2312,8 @@
                        'make-increase-replication-factor-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"IncreaseReplicationFactor")
                                   ("Version" ,@"2017-04-19"))
@@ -2273,7 +2331,8 @@
                       (common-lisp:apply 'make-list-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTags")
                                   ("Version" ,@"2017-04-19"))
@@ -2291,7 +2350,8 @@
                       (common-lisp:apply 'make-reboot-node-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RebootNode")
                                   ("Version" ,@"2017-04-19"))
@@ -2309,7 +2369,8 @@
                       (common-lisp:apply 'make-tag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TagResource")
                                   ("Version" ,@"2017-04-19"))
@@ -2327,7 +2388,8 @@
                       (common-lisp:apply 'make-untag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UntagResource")
                                   ("Version" ,@"2017-04-19"))
@@ -2351,7 +2413,8 @@
                       (common-lisp:apply 'make-update-cluster-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateCluster")
                                   ("Version" ,@"2017-04-19"))
@@ -2371,7 +2434,8 @@
                       (common-lisp:apply 'make-update-parameter-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateParameterGroup")
                                   ("Version" ,@"2017-04-19"))
@@ -2390,7 +2454,8 @@
                       (common-lisp:apply 'make-update-subnet-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dax" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "dax")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSubnetGroup")
                                   ("Version" ,@"2017-04-19"))

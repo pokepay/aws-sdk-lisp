@@ -7,14 +7,21 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/codepipeline)
+
 (common-lisp:progn
  (common-lisp:defstruct (awssession-credentials (:copier common-lisp:nil))
-   (access-key-id (common-lisp:error ":accesskeyid is required") :type
-    (common-lisp:or access-key-id common-lisp:null))
-   (secret-access-key (common-lisp:error ":secretaccesskey is required") :type
-    (common-lisp:or secret-access-key common-lisp:null))
-   (session-token (common-lisp:error ":sessiontoken is required") :type
-    (common-lisp:or session-token common-lisp:null)))
+   (access-key-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":accesskeyid is required"))
+    :type (common-lisp:or access-key-id common-lisp:null))
+   (secret-access-key
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":secretaccesskey is required"))
+    :type (common-lisp:or secret-access-key common-lisp:null))
+   (session-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":sessiontoken is required"))
+    :type (common-lisp:or session-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'awssession-credentials 'make-awssession-credentials))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -41,10 +48,12 @@
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (acknowledge-job-input (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null))
-   (nonce (common-lisp:error ":nonce is required") :type
-    (common-lisp:or nonce common-lisp:null)))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or job-id common-lisp:null))
+   (nonce
+    (common-lisp:error #A((18) common-lisp:base-char . ":nonce is required"))
+    :type (common-lisp:or nonce common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'acknowledge-job-input 'make-acknowledge-job-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -80,12 +89,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (acknowledge-third-party-job-input (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or third-party-job-id common-lisp:null))
-   (nonce (common-lisp:error ":nonce is required") :type
-    (common-lisp:or nonce common-lisp:null))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token common-lisp:null)))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or third-party-job-id common-lisp:null))
+   (nonce
+    (common-lisp:error #A((18) common-lisp:base-char . ":nonce is required"))
+    :type (common-lisp:or nonce common-lisp:null))
+   (client-token
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":clienttoken is required"))
+    :type (common-lisp:or client-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'acknowledge-third-party-job-input
                     'make-acknowledge-third-party-job-input))
@@ -151,14 +164,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (action-configuration-property (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or action-configuration-key common-lisp:null))
-   (required (common-lisp:error ":required is required") :type
-    (common-lisp:or boolean common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or boolean common-lisp:null))
-   (secret (common-lisp:error ":secret is required") :type
-    (common-lisp:or boolean common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or action-configuration-key common-lisp:null))
+   (required
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":required is required"))
+    :type (common-lisp:or boolean common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or boolean common-lisp:null))
+   (secret
+    (common-lisp:error #A((19) common-lisp:base-char . ":secret is required"))
+    :type (common-lisp:or boolean common-lisp:null))
    (queryable common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
@@ -234,10 +251,13 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (action-declaration (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or action-name common-lisp:null))
-   (action-type-id (common-lisp:error ":actiontypeid is required") :type
-    (common-lisp:or action-type-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or action-name common-lisp:null))
+   (action-type-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":actiontypeid is required"))
+    :type (common-lisp:or action-type-id common-lisp:null))
    (run-order common-lisp:nil :type
     (common-lisp:or action-run-order common-lisp:null))
    (configuration common-lisp:nil :type
@@ -374,12 +394,17 @@
 (common-lisp:deftype action-provider () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (action-revision (:copier common-lisp:nil))
-   (revision-id (common-lisp:error ":revisionid is required") :type
-    (common-lisp:or revision common-lisp:null))
-   (revision-change-id (common-lisp:error ":revisionchangeid is required")
+   (revision-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":revisionid is required"))
+    :type (common-lisp:or revision common-lisp:null))
+   (revision-change-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":revisionchangeid is required"))
     :type (common-lisp:or revision-change-identifier common-lisp:null))
-   (created (common-lisp:error ":created is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (created
+    (common-lisp:error #A((20) common-lisp:base-char . ":created is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export (common-lisp:list 'action-revision 'make-action-revision))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape action-revision))
@@ -449,18 +474,20 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (action-type (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or action-type-id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or action-type-id common-lisp:null))
    (settings common-lisp:nil :type
     (common-lisp:or action-type-settings common-lisp:null))
    (action-configuration-properties common-lisp:nil :type
     (common-lisp:or action-configuration-property-list common-lisp:null))
    (input-artifact-details
-    (common-lisp:error ":inputartifactdetails is required") :type
-    (common-lisp:or artifact-details common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":inputartifactdetails is required"))
+    :type (common-lisp:or artifact-details common-lisp:null))
    (output-artifact-details
-    (common-lisp:error ":outputartifactdetails is required") :type
-    (common-lisp:or artifact-details common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":outputartifactdetails is required"))
+    :type (common-lisp:or artifact-details common-lisp:null)))
  (common-lisp:export (common-lisp:list 'action-type 'make-action-type))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape action-type))
@@ -492,14 +519,20 @@
                                                 'output-artifact-details))))))
 (common-lisp:progn
  (common-lisp:defstruct (action-type-id (:copier common-lisp:nil))
-   (category (common-lisp:error ":category is required") :type
-    (common-lisp:or action-category common-lisp:null))
-   (owner (common-lisp:error ":owner is required") :type
-    (common-lisp:or action-owner common-lisp:null))
-   (provider (common-lisp:error ":provider is required") :type
-    (common-lisp:or action-provider common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null)))
+   (category
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":category is required"))
+    :type (common-lisp:or action-category common-lisp:null))
+   (owner
+    (common-lisp:error #A((18) common-lisp:base-char . ":owner is required"))
+    :type (common-lisp:or action-owner common-lisp:null))
+   (provider
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":provider is required"))
+    :type (common-lisp:or action-provider common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or version common-lisp:null)))
  (common-lisp:export (common-lisp:list 'action-type-id 'make-action-type-id))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape action-type-id))
@@ -591,10 +624,12 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (approval-result (:copier common-lisp:nil))
-   (summary (common-lisp:error ":summary is required") :type
-    (common-lisp:or approval-summary common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or approval-status common-lisp:null)))
+   (summary
+    (common-lisp:error #A((20) common-lisp:base-char . ":summary is required"))
+    :type (common-lisp:or approval-summary common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or approval-status common-lisp:null)))
  (common-lisp:export (common-lisp:list 'approval-result 'make-approval-result))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape approval-result))
@@ -639,10 +674,14 @@
                                                 'location))))))
 (common-lisp:progn
  (common-lisp:defstruct (artifact-details (:copier common-lisp:nil))
-   (minimum-count (common-lisp:error ":minimumcount is required") :type
-    (common-lisp:or minimum-artifact-count common-lisp:null))
-   (maximum-count (common-lisp:error ":maximumcount is required") :type
-    (common-lisp:or maximum-artifact-count common-lisp:null)))
+   (minimum-count
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":minimumcount is required"))
+    :type (common-lisp:or minimum-artifact-count common-lisp:null))
+   (maximum-count
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":maximumcount is required"))
+    :type (common-lisp:or maximum-artifact-count common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'artifact-details 'make-artifact-details))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -744,10 +783,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (artifact-store (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or artifact-store-type common-lisp:null))
-   (location (common-lisp:error ":location is required") :type
-    (common-lisp:or artifact-store-location common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or artifact-store-type common-lisp:null))
+   (location
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":location is required"))
+    :type (common-lisp:or artifact-store-location common-lisp:null))
    (encryption-key common-lisp:nil :type
     (common-lisp:or encryption-key common-lisp:null)))
  (common-lisp:export (common-lisp:list 'artifact-store 'make-artifact-store))
@@ -773,10 +815,12 @@
 (common-lisp:deftype artifact-store-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (blocker-declaration (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or blocker-name common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or blocker-type common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or blocker-name common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or blocker-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'blocker-declaration 'make-blocker-declaration))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -802,22 +846,29 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-custom-action-type-input (:copier common-lisp:nil))
-   (category (common-lisp:error ":category is required") :type
-    (common-lisp:or action-category common-lisp:null))
-   (provider (common-lisp:error ":provider is required") :type
-    (common-lisp:or action-provider common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null))
+   (category
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":category is required"))
+    :type (common-lisp:or action-category common-lisp:null))
+   (provider
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":provider is required"))
+    :type (common-lisp:or action-provider common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or version common-lisp:null))
    (settings common-lisp:nil :type
     (common-lisp:or action-type-settings common-lisp:null))
    (configuration-properties common-lisp:nil :type
     (common-lisp:or action-configuration-property-list common-lisp:null))
    (input-artifact-details
-    (common-lisp:error ":inputartifactdetails is required") :type
-    (common-lisp:or artifact-details common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":inputartifactdetails is required"))
+    :type (common-lisp:or artifact-details common-lisp:null))
    (output-artifact-details
-    (common-lisp:error ":outputartifactdetails is required") :type
-    (common-lisp:or artifact-details common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":outputartifactdetails is required"))
+    :type (common-lisp:or artifact-details common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-custom-action-type-input
                     'make-create-custom-action-type-input))
@@ -864,8 +915,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-custom-action-type-output (:copier common-lisp:nil))
-   (action-type (common-lisp:error ":actiontype is required") :type
-    (common-lisp:or action-type common-lisp:null)))
+   (action-type
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":actiontype is required"))
+    :type (common-lisp:or action-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-custom-action-type-output
                     'make-create-custom-action-type-output))
@@ -881,8 +934,10 @@
                                                 'action-type))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-pipeline-input (:copier common-lisp:nil))
-   (pipeline (common-lisp:error ":pipeline is required") :type
-    (common-lisp:or pipeline-declaration common-lisp:null)))
+   (pipeline
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":pipeline is required"))
+    :type (common-lisp:or pipeline-declaration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-pipeline-input 'make-create-pipeline-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -913,10 +968,14 @@
                                                 'pipeline))))))
 (common-lisp:progn
  (common-lisp:defstruct (current-revision (:copier common-lisp:nil))
-   (revision (common-lisp:error ":revision is required") :type
-    (common-lisp:or revision common-lisp:null))
-   (change-identifier (common-lisp:error ":changeidentifier is required") :type
-    (common-lisp:or revision-change-identifier common-lisp:null))
+   (revision
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":revision is required"))
+    :type (common-lisp:or revision common-lisp:null))
+   (change-identifier
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":changeidentifier is required"))
+    :type (common-lisp:or revision-change-identifier common-lisp:null))
    (created common-lisp:nil :type (common-lisp:or time common-lisp:null))
    (revision-summary common-lisp:nil :type
     (common-lisp:or revision-summary common-lisp:null)))
@@ -948,12 +1007,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-custom-action-type-input (:copier common-lisp:nil))
-   (category (common-lisp:error ":category is required") :type
-    (common-lisp:or action-category common-lisp:null))
-   (provider (common-lisp:error ":provider is required") :type
-    (common-lisp:or action-provider common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null)))
+   (category
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":category is required"))
+    :type (common-lisp:or action-category common-lisp:null))
+   (provider
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":provider is required"))
+    :type (common-lisp:or action-provider common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or version common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-custom-action-type-input
                     'make-delete-custom-action-type-input))
@@ -979,8 +1043,9 @@
                                                 'version))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-pipeline-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or pipeline-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or pipeline-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-pipeline-input 'make-delete-pipeline-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -997,14 +1062,21 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disable-stage-transition-input (:copier common-lisp:nil))
-   (pipeline-name (common-lisp:error ":pipelinename is required") :type
-    (common-lisp:or pipeline-name common-lisp:null))
-   (stage-name (common-lisp:error ":stagename is required") :type
-    (common-lisp:or stage-name common-lisp:null))
-   (transition-type (common-lisp:error ":transitiontype is required") :type
-    (common-lisp:or stage-transition-type common-lisp:null))
-   (reason (common-lisp:error ":reason is required") :type
-    (common-lisp:or disabled-reason common-lisp:null)))
+   (pipeline-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":pipelinename is required"))
+    :type (common-lisp:or pipeline-name common-lisp:null))
+   (stage-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":stagename is required"))
+    :type (common-lisp:or stage-name common-lisp:null))
+   (transition-type
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":transitiontype is required"))
+    :type (common-lisp:or stage-transition-type common-lisp:null))
+   (reason
+    (common-lisp:error #A((19) common-lisp:base-char . ":reason is required"))
+    :type (common-lisp:or disabled-reason common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-stage-transition-input
                     'make-disable-stage-transition-input))
@@ -1037,12 +1109,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (enable-stage-transition-input (:copier common-lisp:nil))
-   (pipeline-name (common-lisp:error ":pipelinename is required") :type
-    (common-lisp:or pipeline-name common-lisp:null))
-   (stage-name (common-lisp:error ":stagename is required") :type
-    (common-lisp:or stage-name common-lisp:null))
-   (transition-type (common-lisp:error ":transitiontype is required") :type
-    (common-lisp:or stage-transition-type common-lisp:null)))
+   (pipeline-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":pipelinename is required"))
+    :type (common-lisp:or pipeline-name common-lisp:null))
+   (stage-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":stagename is required"))
+    :type (common-lisp:or stage-name common-lisp:null))
+   (transition-type
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":transitiontype is required"))
+    :type (common-lisp:or stage-transition-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-stage-transition-input
                     'make-enable-stage-transition-input))
@@ -1069,10 +1147,11 @@
 (common-lisp:deftype enabled () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (encryption-key (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or encryption-key-id common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or encryption-key-type common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or encryption-key-id common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or encryption-key-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'encryption-key 'make-encryption-key))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape encryption-key))
@@ -1139,10 +1218,12 @@
 (common-lisp:deftype execution-summary () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (failure-details (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or failure-type common-lisp:null))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or message common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or failure-type common-lisp:null))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or message common-lisp:null))
    (external-execution-id common-lisp:nil :type
     (common-lisp:or execution-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'failure-details 'make-failure-details))
@@ -1167,8 +1248,9 @@
 (common-lisp:deftype failure-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (get-job-details-input (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null)))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or job-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-job-details-input 'make-get-job-details-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1200,11 +1282,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-pipeline-execution-input (:copier common-lisp:nil))
-   (pipeline-name (common-lisp:error ":pipelinename is required") :type
-    (common-lisp:or pipeline-name common-lisp:null))
+   (pipeline-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":pipelinename is required"))
+    :type (common-lisp:or pipeline-name common-lisp:null))
    (pipeline-execution-id
-    (common-lisp:error ":pipelineexecutionid is required") :type
-    (common-lisp:or pipeline-execution-id common-lisp:null)))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":pipelineexecutionid is required"))
+    :type (common-lisp:or pipeline-execution-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-pipeline-execution-input
                     'make-get-pipeline-execution-input))
@@ -1243,8 +1328,9 @@
                                                 'pipeline-execution))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-pipeline-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or pipeline-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or pipeline-name common-lisp:null))
    (version common-lisp:nil :type
     (common-lisp:or pipeline-version common-lisp:null)))
  (common-lisp:export
@@ -1278,8 +1364,9 @@
                                                 'pipeline))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-pipeline-state-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or pipeline-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or pipeline-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-pipeline-state-input 'make-get-pipeline-state-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1338,10 +1425,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-third-party-job-details-input (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or third-party-job-id common-lisp:null))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token common-lisp:null)))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or third-party-job-id common-lisp:null))
+   (client-token
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":clienttoken is required"))
+    :type (common-lisp:or client-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-third-party-job-details-input
                     'make-get-third-party-job-details-input))
@@ -1380,8 +1470,9 @@
                                                 'job-details))))))
 (common-lisp:progn
  (common-lisp:defstruct (input-artifact (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or artifact-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or artifact-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'input-artifact 'make-input-artifact))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape input-artifact))
@@ -1678,8 +1769,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-action-types-output (:copier common-lisp:nil))
-   (action-types (common-lisp:error ":actiontypes is required") :type
-    (common-lisp:or action-type-list common-lisp:null))
+   (action-types
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":actiontypes is required"))
+    :type (common-lisp:or action-type-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null)))
  (common-lisp:export
@@ -1702,8 +1795,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-pipeline-executions-input (:copier common-lisp:nil))
-   (pipeline-name (common-lisp:error ":pipelinename is required") :type
-    (common-lisp:or pipeline-name common-lisp:null))
+   (pipeline-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":pipelinename is required"))
+    :type (common-lisp:or pipeline-name common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or max-results common-lisp:null))
    (next-token common-lisp:nil :type
@@ -1813,8 +1908,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (output-artifact (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or artifact-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or artifact-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'output-artifact 'make-output-artifact))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape output-artifact))
@@ -1863,14 +1959,19 @@
                                                 'action))))))
 (common-lisp:progn
  (common-lisp:defstruct (pipeline-declaration (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or pipeline-name common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (artifact-store (common-lisp:error ":artifactstore is required") :type
-    (common-lisp:or artifact-store common-lisp:null))
-   (stages (common-lisp:error ":stages is required") :type
-    (common-lisp:or pipeline-stage-declaration-list common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or pipeline-name common-lisp:null))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
+   (artifact-store
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":artifactstore is required"))
+    :type (common-lisp:or artifact-store common-lisp:null))
+   (stages
+    (common-lisp:error #A((19) common-lisp:base-char . ":stages is required"))
+    :type (common-lisp:or pipeline-stage-declaration-list common-lisp:null))
    (version common-lisp:nil :type
     (common-lisp:or pipeline-version common-lisp:null)))
  (common-lisp:export
@@ -2090,8 +2191,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (poll-for-jobs-input (:copier common-lisp:nil))
-   (action-type-id (common-lisp:error ":actiontypeid is required") :type
-    (common-lisp:or action-type-id common-lisp:null))
+   (action-type-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":actiontypeid is required"))
+    :type (common-lisp:or action-type-id common-lisp:null))
    (max-batch-size common-lisp:nil :type
     (common-lisp:or max-batch-size common-lisp:null))
    (query-param common-lisp:nil :type
@@ -2132,8 +2235,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (poll-for-third-party-jobs-input (:copier common-lisp:nil))
-   (action-type-id (common-lisp:error ":actiontypeid is required") :type
-    (common-lisp:or action-type-id common-lisp:null))
+   (action-type-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":actiontypeid is required"))
+    :type (common-lisp:or action-type-id common-lisp:null))
    (max-batch-size common-lisp:nil :type
     (common-lisp:or max-batch-size common-lisp:null)))
  (common-lisp:export
@@ -2174,14 +2279,22 @@
                                                 'jobs))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-action-revision-input (:copier common-lisp:nil))
-   (pipeline-name (common-lisp:error ":pipelinename is required") :type
-    (common-lisp:or pipeline-name common-lisp:null))
-   (stage-name (common-lisp:error ":stagename is required") :type
-    (common-lisp:or stage-name common-lisp:null))
-   (action-name (common-lisp:error ":actionname is required") :type
-    (common-lisp:or action-name common-lisp:null))
-   (action-revision (common-lisp:error ":actionrevision is required") :type
-    (common-lisp:or action-revision common-lisp:null)))
+   (pipeline-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":pipelinename is required"))
+    :type (common-lisp:or pipeline-name common-lisp:null))
+   (stage-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":stagename is required"))
+    :type (common-lisp:or stage-name common-lisp:null))
+   (action-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":actionname is required"))
+    :type (common-lisp:or action-name common-lisp:null))
+   (action-revision
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":actionrevision is required"))
+    :type (common-lisp:or action-revision common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-action-revision-input
                     'make-put-action-revision-input))
@@ -2236,16 +2349,24 @@
                                                 'pipeline-execution-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-approval-result-input (:copier common-lisp:nil))
-   (pipeline-name (common-lisp:error ":pipelinename is required") :type
-    (common-lisp:or pipeline-name common-lisp:null))
-   (stage-name (common-lisp:error ":stagename is required") :type
-    (common-lisp:or stage-name common-lisp:null))
-   (action-name (common-lisp:error ":actionname is required") :type
-    (common-lisp:or action-name common-lisp:null))
-   (result (common-lisp:error ":result is required") :type
-    (common-lisp:or approval-result common-lisp:null))
-   (token (common-lisp:error ":token is required") :type
-    (common-lisp:or approval-token common-lisp:null)))
+   (pipeline-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":pipelinename is required"))
+    :type (common-lisp:or pipeline-name common-lisp:null))
+   (stage-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":stagename is required"))
+    :type (common-lisp:or stage-name common-lisp:null))
+   (action-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":actionname is required"))
+    :type (common-lisp:or action-name common-lisp:null))
+   (result
+    (common-lisp:error #A((19) common-lisp:base-char . ":result is required"))
+    :type (common-lisp:or approval-result common-lisp:null))
+   (token
+    (common-lisp:error #A((18) common-lisp:base-char . ":token is required"))
+    :type (common-lisp:or approval-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-approval-result-input
                     'make-put-approval-result-input))
@@ -2299,10 +2420,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-job-failure-result-input (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null))
-   (failure-details (common-lisp:error ":failuredetails is required") :type
-    (common-lisp:or failure-details common-lisp:null)))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or job-id common-lisp:null))
+   (failure-details
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":failuredetails is required"))
+    :type (common-lisp:or failure-details common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-job-failure-result-input
                     'make-put-job-failure-result-input))
@@ -2324,8 +2448,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-job-success-result-input (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or job-id common-lisp:null))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or job-id common-lisp:null))
    (current-revision common-lisp:nil :type
     (common-lisp:or current-revision common-lisp:null))
    (continuation-token common-lisp:nil :type
@@ -2363,12 +2488,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-third-party-job-failure-result-input (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or third-party-job-id common-lisp:null))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token common-lisp:null))
-   (failure-details (common-lisp:error ":failuredetails is required") :type
-    (common-lisp:or failure-details common-lisp:null)))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or third-party-job-id common-lisp:null))
+   (client-token
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":clienttoken is required"))
+    :type (common-lisp:or client-token common-lisp:null))
+   (failure-details
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":failuredetails is required"))
+    :type (common-lisp:or failure-details common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-third-party-job-failure-result-input
                     'make-put-third-party-job-failure-result-input))
@@ -2395,10 +2525,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-third-party-job-success-result-input (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or third-party-job-id common-lisp:null))
-   (client-token (common-lisp:error ":clienttoken is required") :type
-    (common-lisp:or client-token common-lisp:null))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or third-party-job-id common-lisp:null))
+   (client-token
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":clienttoken is required"))
+    :type (common-lisp:or client-token common-lisp:null))
    (current-revision common-lisp:nil :type
     (common-lisp:or current-revision common-lisp:null))
    (continuation-token common-lisp:nil :type
@@ -2446,15 +2579,22 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (retry-stage-execution-input (:copier common-lisp:nil))
-   (pipeline-name (common-lisp:error ":pipelinename is required") :type
-    (common-lisp:or pipeline-name common-lisp:null))
-   (stage-name (common-lisp:error ":stagename is required") :type
-    (common-lisp:or stage-name common-lisp:null))
+   (pipeline-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":pipelinename is required"))
+    :type (common-lisp:or pipeline-name common-lisp:null))
+   (stage-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":stagename is required"))
+    :type (common-lisp:or stage-name common-lisp:null))
    (pipeline-execution-id
-    (common-lisp:error ":pipelineexecutionid is required") :type
-    (common-lisp:or pipeline-execution-id common-lisp:null))
-   (retry-mode (common-lisp:error ":retrymode is required") :type
-    (common-lisp:or stage-retry-mode common-lisp:null)))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":pipelineexecutionid is required"))
+    :type (common-lisp:or pipeline-execution-id common-lisp:null))
+   (retry-mode
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":retrymode is required"))
+    :type (common-lisp:or stage-retry-mode common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'retry-stage-execution-input
                     'make-retry-stage-execution-input))
@@ -2507,10 +2647,14 @@
 (common-lisp:deftype role-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (s3artifact-location (:copier common-lisp:nil))
-   (bucket-name (common-lisp:error ":bucketname is required") :type
-    (common-lisp:or s3bucket-name common-lisp:null))
-   (object-key (common-lisp:error ":objectkey is required") :type
-    (common-lisp:or s3object-key common-lisp:null)))
+   (bucket-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":bucketname is required"))
+    :type (common-lisp:or s3bucket-name common-lisp:null))
+   (object-key
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":objectkey is required"))
+    :type (common-lisp:or s3object-key common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 's3artifact-location 'make-s3artifact-location))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2560,12 +2704,14 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (stage-declaration (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or stage-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or stage-name common-lisp:null))
    (blockers common-lisp:nil :type
     (common-lisp:or stage-blocker-declaration-list common-lisp:null))
-   (actions (common-lisp:error ":actions is required") :type
-    (common-lisp:or stage-action-declaration-list common-lisp:null)))
+   (actions
+    (common-lisp:error #A((20) common-lisp:base-char . ":actions is required"))
+    :type (common-lisp:or stage-action-declaration-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stage-declaration 'make-stage-declaration))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2589,10 +2735,12 @@
 (common-lisp:progn
  (common-lisp:defstruct (stage-execution (:copier common-lisp:nil))
    (pipeline-execution-id
-    (common-lisp:error ":pipelineexecutionid is required") :type
-    (common-lisp:or pipeline-execution-id common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or stage-execution-status common-lisp:null)))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":pipelineexecutionid is required"))
+    :type (common-lisp:or pipeline-execution-id common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or stage-execution-status common-lisp:null)))
  (common-lisp:export (common-lisp:list 'stage-execution 'make-stage-execution))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape stage-execution))
@@ -2677,8 +2825,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-pipeline-execution-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or pipeline-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or pipeline-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-pipeline-execution-input
                     'make-start-pipeline-execution-input))
@@ -2868,8 +3017,10 @@
                                                 'disabled-reason))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-pipeline-input (:copier common-lisp:nil))
-   (pipeline (common-lisp:error ":pipeline is required") :type
-    (common-lisp:or pipeline-declaration common-lisp:null)))
+   (pipeline
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":pipeline is required"))
+    :type (common-lisp:or pipeline-declaration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-pipeline-input 'make-update-pipeline-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2918,7 +3069,9 @@
                       (common-lisp:apply 'make-acknowledge-job-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AcknowledgeJob")
                                   ("Version" ,@"2015-07-09"))
@@ -2937,7 +3090,9 @@
                        'make-acknowledge-third-party-job-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AcknowledgeThirdPartyJob")
                                   ("Version" ,@"2015-07-09"))
@@ -2959,7 +3114,9 @@
                       (common-lisp:apply 'make-create-custom-action-type-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCustomActionType")
                                   ("Version" ,@"2015-07-09"))
@@ -2977,7 +3134,9 @@
                       (common-lisp:apply 'make-create-pipeline-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePipeline")
                                   ("Version" ,@"2015-07-09"))
@@ -2995,7 +3154,9 @@
                       (common-lisp:apply 'make-delete-custom-action-type-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCustomActionType")
                                   ("Version" ,@"2015-07-09"))
@@ -3013,7 +3174,9 @@
                       (common-lisp:apply 'make-delete-pipeline-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePipeline")
                                   ("Version" ,@"2015-07-09"))
@@ -3033,7 +3196,9 @@
                       (common-lisp:apply 'make-disable-stage-transition-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableStageTransition")
                                   ("Version" ,@"2015-07-09"))
@@ -3052,7 +3217,9 @@
                       (common-lisp:apply 'make-enable-stage-transition-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableStageTransition")
                                   ("Version" ,@"2015-07-09"))
@@ -3070,7 +3237,9 @@
                       (common-lisp:apply 'make-get-job-details-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetJobDetails")
                                   ("Version" ,@"2015-07-09"))
@@ -3088,7 +3257,9 @@
                       (common-lisp:apply 'make-get-pipeline-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPipeline")
                                   ("Version" ,@"2015-07-09"))
@@ -3107,7 +3278,9 @@
                       (common-lisp:apply 'make-get-pipeline-execution-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPipelineExecution")
                                   ("Version" ,@"2015-07-09"))
@@ -3125,7 +3298,9 @@
                       (common-lisp:apply 'make-get-pipeline-state-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPipelineState")
                                   ("Version" ,@"2015-07-09"))
@@ -3144,7 +3319,9 @@
                        'make-get-third-party-job-details-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetThirdPartyJobDetails")
                                   ("Version" ,@"2015-07-09"))
@@ -3162,7 +3339,9 @@
                       (common-lisp:apply 'make-list-action-types-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListActionTypes")
                                   ("Version" ,@"2015-07-09"))
@@ -3181,7 +3360,9 @@
                       (common-lisp:apply 'make-list-pipeline-executions-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPipelineExecutions")
                                   ("Version" ,@"2015-07-09"))
@@ -3199,7 +3380,9 @@
                       (common-lisp:apply 'make-list-pipelines-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPipelines")
                                   ("Version" ,@"2015-07-09"))
@@ -3219,7 +3402,9 @@
                       (common-lisp:apply 'make-poll-for-jobs-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PollForJobs")
                                   ("Version" ,@"2015-07-09"))
@@ -3237,7 +3422,9 @@
                       (common-lisp:apply 'make-poll-for-third-party-jobs-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PollForThirdPartyJobs")
                                   ("Version" ,@"2015-07-09"))
@@ -3258,7 +3445,9 @@
                       (common-lisp:apply 'make-put-action-revision-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutActionRevision")
                                   ("Version" ,@"2015-07-09"))
@@ -3278,7 +3467,9 @@
                       (common-lisp:apply 'make-put-approval-result-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutApprovalResult")
                                   ("Version" ,@"2015-07-09"))
@@ -3296,7 +3487,9 @@
                       (common-lisp:apply 'make-put-job-failure-result-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutJobFailureResult")
                                   ("Version" ,@"2015-07-09"))
@@ -3317,7 +3510,9 @@
                       (common-lisp:apply 'make-put-job-success-result-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutJobSuccessResult")
                                   ("Version" ,@"2015-07-09"))
@@ -3337,7 +3532,9 @@
                        'make-put-third-party-job-failure-result-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutThirdPartyJobFailureResult")
                                   ("Version" ,@"2015-07-09"))
@@ -3359,7 +3556,9 @@
                        'make-put-third-party-job-success-result-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutThirdPartyJobSuccessResult")
                                   ("Version" ,@"2015-07-09"))
@@ -3380,7 +3579,9 @@
                       (common-lisp:apply 'make-retry-stage-execution-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RetryStageExecution")
                                   ("Version" ,@"2015-07-09"))
@@ -3398,7 +3599,9 @@
                       (common-lisp:apply 'make-start-pipeline-execution-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartPipelineExecution")
                                   ("Version" ,@"2015-07-09"))
@@ -3416,7 +3619,9 @@
                       (common-lisp:apply 'make-update-pipeline-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codepipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "codepipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdatePipeline")
                                   ("Version" ,@"2015-07-09"))

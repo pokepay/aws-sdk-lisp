@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/lambda)
+
 (common-lisp:progn
  (common-lisp:defstruct (account-limit (:copier common-lisp:nil))
    (total-code-size common-lisp:nil :type
@@ -64,14 +65,21 @@
 (common-lisp:deftype action () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (add-permission-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or function-name common-lisp:null))
-   (statement-id (common-lisp:error ":statement-id is required") :type
-    (common-lisp:or statement-id common-lisp:null))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or action common-lisp:null))
-   (principal (common-lisp:error ":principal is required") :type
-    (common-lisp:or principal common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
+   (statement-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":statement-id is required"))
+    :type (common-lisp:or statement-id common-lisp:null))
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or action common-lisp:null))
+   (principal
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":principal is required"))
+    :type (common-lisp:or principal common-lisp:null))
    (source-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
    (source-account common-lisp:nil :type
     (common-lisp:or source-owner common-lisp:null))
@@ -216,12 +224,17 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-alias-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or function-name common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or alias common-lisp:null))
-   (function-version (common-lisp:error ":function-version is required") :type
-    (common-lisp:or version common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or alias common-lisp:null))
+   (function-version
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":function-version is required"))
+    :type (common-lisp:or version common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null)))
  (common-lisp:export
@@ -252,14 +265,20 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-event-source-mapping-request (:copier common-lisp:nil))
-   (event-source-arn (common-lisp:error ":event-source-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or function-name common-lisp:null))
+   (event-source-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":event-source-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
    (enabled common-lisp:nil :type (common-lisp:or enabled common-lisp:null))
    (batch-size common-lisp:nil :type
     (common-lisp:or batch-size common-lisp:null))
-   (starting-position (common-lisp:error ":starting-position is required")
+   (starting-position
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":starting-position is required"))
     :type (common-lisp:or event-source-position common-lisp:null))
    (starting-position-timestamp common-lisp:nil :type
     (common-lisp:or date common-lisp:null)))
@@ -303,16 +322,22 @@
                                                 'starting-position-timestamp))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-function-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or function-name common-lisp:null))
-   (runtime (common-lisp:error ":runtime is required") :type
-    (common-lisp:or runtime common-lisp:null))
-   (role (common-lisp:error ":role is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (handler (common-lisp:error ":handler is required") :type
-    (common-lisp:or handler common-lisp:null))
-   (code (common-lisp:error ":code is required") :type
-    (common-lisp:or function-code common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
+   (runtime
+    (common-lisp:error #A((20) common-lisp:base-char . ":runtime is required"))
+    :type (common-lisp:or runtime common-lisp:null))
+   (role
+    (common-lisp:error #A((17) common-lisp:base-char . ":role is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
+   (handler
+    (common-lisp:error #A((20) common-lisp:base-char . ":handler is required"))
+    :type (common-lisp:or handler common-lisp:null))
+   (code
+    (common-lisp:error #A((17) common-lisp:base-char . ":code is required"))
+    :type (common-lisp:or function-code common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (timeout common-lisp:nil :type (common-lisp:or timeout common-lisp:null))
@@ -429,10 +454,13 @@
                                                 'target-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-alias-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or function-name common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or alias common-lisp:null)))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or alias common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-alias-request 'make-delete-alias-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -451,8 +479,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-event-source-mapping-request (:copier common-lisp:nil))
-   (uuid (common-lisp:error ":uuid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (uuid
+    (common-lisp:error #A((17) common-lisp:base-char . ":uuid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-event-source-mapping-request
                     'make-delete-event-source-mapping-request))
@@ -468,8 +497,10 @@
                                                 'uuid))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-function-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or function-name common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
    (qualifier common-lisp:nil :type
     (common-lisp:or qualifier common-lisp:null)))
  (common-lisp:export
@@ -951,10 +982,13 @@
                                                 'account-usage))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-alias-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or function-name common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or alias common-lisp:null)))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or alias common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-alias-request 'make-get-alias-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -973,8 +1007,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-event-source-mapping-request (:copier common-lisp:nil))
-   (uuid (common-lisp:error ":uuid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (uuid
+    (common-lisp:error #A((17) common-lisp:base-char . ":uuid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-event-source-mapping-request
                     'make-get-event-source-mapping-request))
@@ -991,8 +1026,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-function-configuration-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or namespaced-function-name common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or namespaced-function-name common-lisp:null))
    (qualifier common-lisp:nil :type
     (common-lisp:or qualifier common-lisp:null)))
  (common-lisp:export
@@ -1015,8 +1052,10 @@
                                                 'qualifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-function-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or namespaced-function-name common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or namespaced-function-name common-lisp:null))
    (qualifier common-lisp:nil :type
     (common-lisp:or qualifier common-lisp:null)))
  (common-lisp:export
@@ -1065,8 +1104,10 @@
                                                 'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-policy-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or namespaced-function-name common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or namespaced-function-name common-lisp:null))
    (qualifier common-lisp:nil :type
     (common-lisp:or qualifier common-lisp:null)))
  (common-lisp:export
@@ -1237,8 +1278,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invocation-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or namespaced-function-name common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or namespaced-function-name common-lisp:null))
    (invocation-type common-lisp:nil :type
     (common-lisp:or invocation-type common-lisp:null))
    (log-type common-lisp:nil :type (common-lisp:or log-type common-lisp:null))
@@ -1318,10 +1361,14 @@
 (common-lisp:deftype invocation-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (invoke-async-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or namespaced-function-name common-lisp:null))
-   (invoke-args (common-lisp:error ":invoke-args is required") :type
-    (common-lisp:or blob-stream common-lisp:null)))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or namespaced-function-name common-lisp:null))
+   (invoke-args
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":invoke-args is required"))
+    :type (common-lisp:or blob-stream common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'invoke-async-request 'make-invoke-async-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1442,8 +1489,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-aliases-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or function-name common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
    (function-version common-lisp:nil :type
     (common-lisp:or version common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -1618,8 +1667,10 @@
                                                 'functions))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-tags-request (:copier common-lisp:nil))
-   (resource (common-lisp:error ":resource is required") :type
-    (common-lisp:or function-arn common-lisp:null)))
+   (resource
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":resource is required"))
+    :type (common-lisp:or function-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-request 'make-list-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1646,8 +1697,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-versions-by-function-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or namespaced-function-name common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or namespaced-function-name common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (max-items common-lisp:nil :type
     (common-lisp:or max-list-items common-lisp:null)))
@@ -1732,8 +1785,10 @@
 (common-lisp:deftype principal () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (publish-version-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or function-name common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
    (code-sha256 common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null)))
@@ -1762,10 +1817,14 @@
 (common-lisp:deftype qualifier () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (remove-permission-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or function-name common-lisp:null))
-   (statement-id (common-lisp:error ":statement-id is required") :type
-    (common-lisp:or namespaced-statement-id common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
+   (statement-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":statement-id is required"))
+    :type (common-lisp:or namespaced-statement-id common-lisp:null))
    (qualifier common-lisp:nil :type
     (common-lisp:or qualifier common-lisp:null)))
  (common-lisp:export
@@ -1937,10 +1996,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag-resource-request (:copier common-lisp:nil))
-   (resource (common-lisp:error ":resource is required") :type
-    (common-lisp:or function-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+   (resource
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":resource is required"))
+    :type (common-lisp:or function-arn common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2055,10 +2117,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (untag-resource-request (:copier common-lisp:nil))
-   (resource (common-lisp:error ":resource is required") :type
-    (common-lisp:or function-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+   (resource
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":resource is required"))
+    :type (common-lisp:or function-arn common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2078,10 +2144,13 @@
                                                 'tag-keys))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-alias-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or function-name common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or alias common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or alias common-lisp:null))
    (function-version common-lisp:nil :type
     (common-lisp:or version common-lisp:null))
    (description common-lisp:nil :type
@@ -2114,8 +2183,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-event-source-mapping-request (:copier common-lisp:nil))
-   (uuid (common-lisp:error ":uuid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (uuid
+    (common-lisp:error #A((17) common-lisp:base-char . ":uuid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (function-name common-lisp:nil :type
     (common-lisp:or function-name common-lisp:null))
    (enabled common-lisp:nil :type (common-lisp:or enabled common-lisp:null))
@@ -2152,8 +2222,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-function-code-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or function-name common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
    (zip-file common-lisp:nil :type (common-lisp:or blob common-lisp:null))
    (s3bucket common-lisp:nil :type (common-lisp:or s3bucket common-lisp:null))
    (s3key common-lisp:nil :type (common-lisp:or s3key common-lisp:null))
@@ -2207,8 +2279,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-function-configuration-request (:copier common-lisp:nil))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or function-name common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
    (role common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
    (handler common-lisp:nil :type (common-lisp:or handler common-lisp:null))
    (description common-lisp:nil :type
@@ -2358,7 +2432,11 @@
                       (common-lisp:apply 'make-add-permission-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :post :params
+      (aws-sdk/api:aws-request :service "lambda" :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/policy"
+                                                   functionname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"AddPermission")
                                   ("Version" ,@"2015-03-31"))
@@ -2378,7 +2456,11 @@
                       (common-lisp:apply 'make-create-alias-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :post :params
+      (aws-sdk/api:aws-request :service "lambda" :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/aliases"
+                                                   functionname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAlias")
                                   ("Version" ,@"2015-03-31"))
@@ -2442,7 +2524,11 @@
                       (common-lisp:apply 'make-delete-alias-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :delete :params
+      (aws-sdk/api:aws-request :service "lambda" :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/aliases/~a"
+                                                   functionname name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAlias")
                                   ("Version" ,@"2015-03-31"))
@@ -2461,7 +2547,11 @@
                        'make-delete-event-source-mapping-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :delete :params
+      (aws-sdk/api:aws-request :service "lambda" :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/event-source-mappings/~a"
+                                                   uuid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEventSourceMapping")
                                   ("Version" ,@"2015-03-31"))
@@ -2479,7 +2569,11 @@
                       (common-lisp:apply 'make-delete-function-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :delete :params
+      (aws-sdk/api:aws-request :service "lambda" :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a"
+                                                   functionname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFunction")
                                   ("Version" ,@"2015-03-31"))
@@ -2504,7 +2598,11 @@
                       (common-lisp:apply 'make-get-alias-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :get :params
+      (aws-sdk/api:aws-request :service "lambda" :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/aliases/~a"
+                                                   functionname name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetAlias")
                                   ("Version" ,@"2015-03-31"))
@@ -2522,7 +2620,11 @@
                       (common-lisp:apply 'make-get-event-source-mapping-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :get :params
+      (aws-sdk/api:aws-request :service "lambda" :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/event-source-mappings/~a"
+                                                   uuid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetEventSourceMapping")
                                   ("Version" ,@"2015-03-31"))
@@ -2540,7 +2642,11 @@
                       (common-lisp:apply 'make-get-function-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :get :params
+      (aws-sdk/api:aws-request :service "lambda" :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a"
+                                                   functionname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetFunction")
                                   ("Version" ,@"2015-03-31"))
@@ -2559,7 +2665,11 @@
                        'make-get-function-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :get :params
+      (aws-sdk/api:aws-request :service "lambda" :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/configuration"
+                                                   functionname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetFunctionConfiguration")
                                   ("Version" ,@"2015-03-31"))
@@ -2577,7 +2687,11 @@
                       (common-lisp:apply 'make-get-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :get :params
+      (aws-sdk/api:aws-request :service "lambda" :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/policy"
+                                                   functionname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPolicy")
                                   ("Version" ,@"2015-03-31"))
@@ -2598,7 +2712,11 @@
                       (common-lisp:apply 'make-invocation-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :post :params
+      (aws-sdk/api:aws-request :service "lambda" :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/invocations"
+                                                   functionname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"Invoke")
                                   ("Version" ,@"2015-03-31"))
@@ -2616,7 +2734,11 @@
                       (common-lisp:apply 'make-invoke-async-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :post :params
+      (aws-sdk/api:aws-request :service "lambda" :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2014-11-13/functions/~a/invoke-async/"
+                                                   functionname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"InvokeAsync")
                                   ("Version" ,@"2015-03-31"))
@@ -2636,7 +2758,11 @@
                       (common-lisp:apply 'make-list-aliases-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :get :params
+      (aws-sdk/api:aws-request :service "lambda" :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/aliases"
+                                                   functionname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAliases")
                                   ("Version" ,@"2015-03-31"))
@@ -2695,7 +2821,10 @@
                       (common-lisp:apply 'make-list-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :get :params
+      (aws-sdk/api:aws-request :service "lambda" :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-31/tags/~a" arn)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTags")
                                   ("Version" ,@"2015-03-31"))
@@ -2714,7 +2843,11 @@
                        'make-list-versions-by-function-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :get :params
+      (aws-sdk/api:aws-request :service "lambda" :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/versions"
+                                                   functionname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListVersionsByFunction")
                                   ("Version" ,@"2015-03-31"))
@@ -2733,7 +2866,11 @@
                       (common-lisp:apply 'make-publish-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :post :params
+      (aws-sdk/api:aws-request :service "lambda" :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/versions"
+                                                   functionname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PublishVersion")
                                   ("Version" ,@"2015-03-31"))
@@ -2752,7 +2889,11 @@
                       (common-lisp:apply 'make-remove-permission-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :delete :params
+      (aws-sdk/api:aws-request :service "lambda" :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/policy/~a"
+                                                   functionname statementid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"RemovePermission")
                                   ("Version" ,@"2015-03-31"))
@@ -2770,7 +2911,10 @@
                       (common-lisp:apply 'make-tag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :post :params
+      (aws-sdk/api:aws-request :service "lambda" :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-31/tags/~a" arn)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"TagResource")
                                   ("Version" ,@"2015-03-31"))
@@ -2788,7 +2932,10 @@
                       (common-lisp:apply 'make-untag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :delete :params
+      (aws-sdk/api:aws-request :service "lambda" :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-31/tags/~a" arn)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UntagResource")
                                   ("Version" ,@"2015-03-31"))
@@ -2808,7 +2955,11 @@
                       (common-lisp:apply 'make-update-alias-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :put :params
+      (aws-sdk/api:aws-request :service "lambda" :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/aliases/~a"
+                                                   functionname name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAlias")
                                   ("Version" ,@"2015-03-31"))
@@ -2828,7 +2979,11 @@
                        'make-update-event-source-mapping-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :put :params
+      (aws-sdk/api:aws-request :service "lambda" :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/event-source-mappings/~a"
+                                                   uuid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateEventSourceMapping")
                                   ("Version" ,@"2015-03-31"))
@@ -2849,7 +3004,11 @@
                       (common-lisp:apply 'make-update-function-code-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :put :params
+      (aws-sdk/api:aws-request :service "lambda" :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/code"
+                                                   functionname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateFunctionCode")
                                   ("Version" ,@"2015-03-31"))
@@ -2873,7 +3032,11 @@
                        'make-update-function-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lambda" :method :put :params
+      (aws-sdk/api:aws-request :service "lambda" :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-03-31/functions/~a/configuration"
+                                                   functionname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateFunctionConfiguration")
                                   ("Version" ,@"2015-03-31"))

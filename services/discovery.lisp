@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/discovery)
+
 (common-lisp:progn
  (common-lisp:defstruct (agent-configuration-status (:copier common-lisp:nil))
    (agent-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -176,10 +177,14 @@
      (associate-configuration-items-to-application-request
       (:copier common-lisp:nil))
    (application-configuration-id
-    (common-lisp:error ":applicationconfigurationid is required") :type
-    (common-lisp:or application-id common-lisp:null))
-   (configuration-ids (common-lisp:error ":configurationids is required") :type
-    (common-lisp:or configuration-id-list common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":applicationconfigurationid is required"))
+    :type (common-lisp:or application-id common-lisp:null))
+   (configuration-ids
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":configurationids is required"))
+    :type (common-lisp:or configuration-id-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'associate-configuration-items-to-application-request
                     'make-associate-configuration-items-to-application-request))
@@ -306,8 +311,9 @@
 (common-lisp:deftype configurations-export-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (create-application-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -347,10 +353,13 @@
                                                 'configuration-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-tags-request (:copier common-lisp:nil))
-   (configuration-ids (common-lisp:error ":configurationids is required") :type
-    (common-lisp:or configuration-id-list common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-set common-lisp:null)))
+   (configuration-ids
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":configurationids is required"))
+    :type (common-lisp:or configuration-id-list common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-set common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-tags-request 'make-create-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -375,20 +384,34 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (customer-agent-info (:copier common-lisp:nil))
-   (active-agents (common-lisp:error ":activeagents is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (healthy-agents (common-lisp:error ":healthyagents is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (black-listed-agents (common-lisp:error ":blacklistedagents is required")
+   (active-agents
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":activeagents is required"))
     :type (common-lisp:or integer common-lisp:null))
-   (shutdown-agents (common-lisp:error ":shutdownagents is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (unhealthy-agents (common-lisp:error ":unhealthyagents is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (total-agents (common-lisp:error ":totalagents is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (unknown-agents (common-lisp:error ":unknownagents is required") :type
-    (common-lisp:or integer common-lisp:null)))
+   (healthy-agents
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":healthyagents is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (black-listed-agents
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":blacklistedagents is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (shutdown-agents
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":shutdownagents is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (unhealthy-agents
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":unhealthyagents is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (total-agents
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":totalagents is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (unknown-agents
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":unknownagents is required"))
+    :type (common-lisp:or integer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'customer-agent-info 'make-customer-agent-info))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -431,20 +454,33 @@
                                                 'unknown-agents))))))
 (common-lisp:progn
  (common-lisp:defstruct (customer-connector-info (:copier common-lisp:nil))
-   (active-connectors (common-lisp:error ":activeconnectors is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (healthy-connectors (common-lisp:error ":healthyconnectors is required")
+   (active-connectors
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":activeconnectors is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (healthy-connectors
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":healthyconnectors is required"))
     :type (common-lisp:or integer common-lisp:null))
    (black-listed-connectors
-    (common-lisp:error ":blacklistedconnectors is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (shutdown-connectors (common-lisp:error ":shutdownconnectors is required")
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":blacklistedconnectors is required"))
     :type (common-lisp:or integer common-lisp:null))
-   (unhealthy-connectors (common-lisp:error ":unhealthyconnectors is required")
+   (shutdown-connectors
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":shutdownconnectors is required"))
     :type (common-lisp:or integer common-lisp:null))
-   (total-connectors (common-lisp:error ":totalconnectors is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (unknown-connectors (common-lisp:error ":unknownconnectors is required")
+   (unhealthy-connectors
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":unhealthyconnectors is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (total-connectors
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":totalconnectors is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (unknown-connectors
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":unknownconnectors is required"))
     :type (common-lisp:or integer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'customer-connector-info 'make-customer-connector-info))
@@ -490,8 +526,10 @@
                                                 'unknown-connectors))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-applications-request (:copier common-lisp:nil))
-   (configuration-ids (common-lisp:error ":configurationids is required") :type
-    (common-lisp:or application-ids-list common-lisp:null)))
+   (configuration-ids
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":configurationids is required"))
+    :type (common-lisp:or application-ids-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-applications-request
                     'make-delete-applications-request))
@@ -518,8 +556,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-tags-request (:copier common-lisp:nil))
-   (configuration-ids (common-lisp:error ":configurationids is required") :type
-    (common-lisp:or configuration-id-list common-lisp:null))
+   (configuration-ids
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":configurationids is required"))
+    :type (common-lisp:or configuration-id-list common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-set common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-tags-request 'make-delete-tags-request))
@@ -620,8 +660,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-configurations-request (:copier common-lisp:nil))
-   (configuration-ids (common-lisp:error ":configurationids is required") :type
-    (common-lisp:or configuration-id-list common-lisp:null)))
+   (configuration-ids
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":configurationids is required"))
+    :type (common-lisp:or configuration-id-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-configurations-request
                     'make-describe-configurations-request))
@@ -832,10 +874,14 @@
      (disassociate-configuration-items-from-application-request
       (:copier common-lisp:nil))
    (application-configuration-id
-    (common-lisp:error ":applicationconfigurationid is required") :type
-    (common-lisp:or application-id common-lisp:null))
-   (configuration-ids (common-lisp:error ":configurationids is required") :type
-    (common-lisp:or configuration-id-list common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":applicationconfigurationid is required"))
+    :type (common-lisp:or application-id common-lisp:null))
+   (configuration-ids
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":configurationids is required"))
+    :type (common-lisp:or configuration-id-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disassociate-configuration-items-from-application-request
                     'make-disassociate-configuration-items-from-application-request))
@@ -895,12 +941,16 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (export-filter (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or filter-name common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or filter-values common-lisp:null))
-   (condition (common-lisp:error ":condition is required") :type
-    (common-lisp:or condition common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or filter-name common-lisp:null))
+   (values
+    (common-lisp:error #A((19) common-lisp:base-char . ":values is required"))
+    :type (common-lisp:or filter-values common-lisp:null))
+   (condition
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":condition is required"))
+    :type (common-lisp:or condition common-lisp:null)))
  (common-lisp:export (common-lisp:list 'export-filter 'make-export-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape export-filter))
@@ -939,15 +989,23 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (export-info (:copier common-lisp:nil))
-   (export-id (common-lisp:error ":exportid is required") :type
-    (common-lisp:or configurations-export-id common-lisp:null))
-   (export-status (common-lisp:error ":exportstatus is required") :type
-    (common-lisp:or export-status common-lisp:null))
-   (status-message (common-lisp:error ":statusmessage is required") :type
-    (common-lisp:or export-status-message common-lisp:null))
+   (export-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":exportid is required"))
+    :type (common-lisp:or configurations-export-id common-lisp:null))
+   (export-status
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":exportstatus is required"))
+    :type (common-lisp:or export-status common-lisp:null))
+   (status-message
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":statusmessage is required"))
+    :type (common-lisp:or export-status-message common-lisp:null))
    (configurations-download-url common-lisp:nil :type
     (common-lisp:or configurations-download-url common-lisp:null))
-   (export-request-time (common-lisp:error ":exportrequesttime is required")
+   (export-request-time
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":exportrequesttime is required"))
     :type (common-lisp:or export-request-time common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
@@ -1011,12 +1069,16 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (filter (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or filter-values common-lisp:null))
-   (condition (common-lisp:error ":condition is required") :type
-    (common-lisp:or condition common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (values
+    (common-lisp:error #A((19) common-lisp:base-char . ":values is required"))
+    :type (common-lisp:or filter-values common-lisp:null))
+   (condition
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":condition is required"))
+    :type (common-lisp:or condition common-lisp:null)))
  (common-lisp:export (common-lisp:list 'filter 'make-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape filter))
@@ -1151,7 +1213,9 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-configurations-request (:copier common-lisp:nil))
-   (configuration-type (common-lisp:error ":configurationtype is required")
+   (configuration-type
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":configurationtype is required"))
     :type (common-lisp:or configuration-item-type common-lisp:null))
    (filters common-lisp:nil :type (common-lisp:or filters common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1221,8 +1285,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-server-neighbors-request (:copier common-lisp:nil))
-   (configuration-id (common-lisp:error ":configurationid is required") :type
-    (common-lisp:or configuration-id common-lisp:null))
+   (configuration-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":configurationid is required"))
+    :type (common-lisp:or configuration-id common-lisp:null))
    (port-information-needed common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (neighbor-configuration-ids common-lisp:nil :type
@@ -1266,8 +1332,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-server-neighbors-response (:copier common-lisp:nil))
-   (neighbors (common-lisp:error ":neighbors is required") :type
-    (common-lisp:or neighbor-details-list common-lisp:null))
+   (neighbors
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":neighbors is required"))
+    :type (common-lisp:or neighbor-details-list common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (known-dependency-count common-lisp:nil :type
     (common-lisp:or long common-lisp:null)))
@@ -1298,17 +1366,22 @@
 (common-lisp:deftype message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (neighbor-connection-detail (:copier common-lisp:nil))
-   (source-server-id (common-lisp:error ":sourceserverid is required") :type
-    (common-lisp:or configuration-id common-lisp:null))
+   (source-server-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":sourceserverid is required"))
+    :type (common-lisp:or configuration-id common-lisp:null))
    (destination-server-id
-    (common-lisp:error ":destinationserverid is required") :type
-    (common-lisp:or configuration-id common-lisp:null))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":destinationserverid is required"))
+    :type (common-lisp:or configuration-id common-lisp:null))
    (destination-port common-lisp:nil :type
     (common-lisp:or boxed-integer common-lisp:null))
    (transport-protocol common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (connections-count (common-lisp:error ":connectionscount is required") :type
-    (common-lisp:or long common-lisp:null)))
+   (connections-count
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":connectionscount is required"))
+    :type (common-lisp:or long common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'neighbor-connection-detail
                     'make-neighbor-connection-detail))
@@ -1371,8 +1444,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (order-by-element (:copier common-lisp:nil))
-   (field-name (common-lisp:error ":fieldname is required") :type
-    (common-lisp:or string common-lisp:null))
+   (field-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":fieldname is required"))
+    :type (common-lisp:or string common-lisp:null))
    (sort-order common-lisp:nil :type
     (common-lisp:or |orderString| common-lisp:null)))
  (common-lisp:export
@@ -1435,8 +1510,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-data-collection-by-agent-ids-request (:copier common-lisp:nil))
-   (agent-ids (common-lisp:error ":agentids is required") :type
-    (common-lisp:or agent-ids common-lisp:null)))
+   (agent-ids
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":agentids is required"))
+    :type (common-lisp:or agent-ids common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-data-collection-by-agent-ids-request
                     'make-start-data-collection-by-agent-ids-request))
@@ -1526,8 +1603,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (stop-data-collection-by-agent-ids-request (:copier common-lisp:nil))
-   (agent-ids (common-lisp:error ":agentids is required") :type
-    (common-lisp:or agent-ids common-lisp:null)))
+   (agent-ids
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":agentids is required"))
+    :type (common-lisp:or agent-ids common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-data-collection-by-agent-ids-request
                     'make-stop-data-collection-by-agent-ids-request))
@@ -1562,10 +1641,11 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -1582,10 +1662,12 @@
                                                 'value))))))
 (common-lisp:progn
  (common-lisp:defstruct (tag-filter (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or filter-name common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or filter-values common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or filter-name common-lisp:null))
+   (values
+    (common-lisp:error #A((19) common-lisp:base-char . ":values is required"))
+    :type (common-lisp:or filter-values common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag-filter 'make-tag-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag-filter))
@@ -1619,8 +1701,10 @@
 (common-lisp:deftype time-stamp () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (update-application-request (:copier common-lisp:nil))
-   (configuration-id (common-lisp:error ":configurationid is required") :type
-    (common-lisp:or application-id common-lisp:null))
+   (configuration-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":configurationid is required"))
+    :type (common-lisp:or application-id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
@@ -1672,7 +1756,9 @@
                        'make-associate-configuration-items-to-application-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"AssociateConfigurationItemsToApplication")
@@ -1691,7 +1777,9 @@
                       (common-lisp:apply 'make-create-application-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateApplication")
                                   ("Version" ,@"2015-11-01"))
@@ -1709,7 +1797,9 @@
                       (common-lisp:apply 'make-create-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTags")
                                   ("Version" ,@"2015-11-01"))
@@ -1727,7 +1817,9 @@
                       (common-lisp:apply 'make-delete-applications-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApplications")
                                   ("Version" ,@"2015-11-01"))
@@ -1745,7 +1837,9 @@
                       (common-lisp:apply 'make-delete-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTags")
                                   ("Version" ,@"2015-11-01"))
@@ -1764,7 +1858,9 @@
                       (common-lisp:apply 'make-describe-agents-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAgents")
                                   ("Version" ,@"2015-11-01"))
@@ -1782,7 +1878,9 @@
                       (common-lisp:apply 'make-describe-configurations-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConfigurations")
                                   ("Version" ,@"2015-11-01"))
@@ -1802,7 +1900,9 @@
                        'make-describe-export-configurations-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeExportConfigurations")
                                   ("Version" ,@"2015-11-01"))
@@ -1822,7 +1922,9 @@
                       (common-lisp:apply 'make-describe-export-tasks-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeExportTasks")
                                   ("Version" ,@"2015-11-01"))
@@ -1840,7 +1942,9 @@
                       (common-lisp:apply 'make-describe-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTags")
                                   ("Version" ,@"2015-11-01"))
@@ -1861,7 +1965,9 @@
                        'make-disassociate-configuration-items-from-application-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DisassociateConfigurationItemsFromApplication")
@@ -1874,7 +1980,9 @@
 (common-lisp:progn
  (common-lisp:defun export-configurations ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "discovery" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((9) common-lisp:base-char . "discovery")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "ExportConfigurations"))
     "ExportConfigurationsResponse" common-lisp:nil))
@@ -1882,7 +1990,9 @@
 (common-lisp:progn
  (common-lisp:defun get-discovery-summary ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "discovery" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((9) common-lisp:base-char . "discovery")
+                             :method :post :params
                              (common-lisp:cons "Action" "GetDiscoverySummary"))
     "GetDiscoverySummaryResponse" common-lisp:nil))
  (common-lisp:export 'get-discovery-summary))
@@ -1899,7 +2009,9 @@
                       (common-lisp:apply 'make-list-configurations-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListConfigurations")
                                   ("Version" ,@"2015-11-01"))
@@ -1920,7 +2032,9 @@
                       (common-lisp:apply 'make-list-server-neighbors-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListServerNeighbors")
                                   ("Version" ,@"2015-11-01"))
@@ -1939,7 +2053,9 @@
                        'make-start-data-collection-by-agent-ids-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartDataCollectionByAgentIds")
                                   ("Version" ,@"2015-11-01"))
@@ -1959,7 +2075,9 @@
                       (common-lisp:apply 'make-start-export-task-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartExportTask")
                                   ("Version" ,@"2015-11-01"))
@@ -1978,7 +2096,9 @@
                        'make-stop-data-collection-by-agent-ids-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopDataCollectionByAgentIds")
                                   ("Version" ,@"2015-11-01"))
@@ -1997,7 +2117,9 @@
                       (common-lisp:apply 'make-update-application-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "discovery" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "discovery")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApplication")
                                   ("Version" ,@"2015-11-01"))

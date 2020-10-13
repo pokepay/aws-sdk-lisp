@@ -7,25 +7,38 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/budgets)
+
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (budget (:copier common-lisp:nil))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (budget-limit (common-lisp:error ":budget-limit is required") :type
-    (common-lisp:or spend common-lisp:null))
+   (budget-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":budget-name is required"))
+    :type (common-lisp:or budget-name common-lisp:null))
+   (budget-limit
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":budget-limit is required"))
+    :type (common-lisp:or spend common-lisp:null))
    (cost-filters common-lisp:nil :type
     (common-lisp:or cost-filters common-lisp:null))
-   (cost-types (common-lisp:error ":cost-types is required") :type
-    (common-lisp:or cost-types common-lisp:null))
-   (time-unit (common-lisp:error ":time-unit is required") :type
-    (common-lisp:or time-unit common-lisp:null))
-   (time-period (common-lisp:error ":time-period is required") :type
-    (common-lisp:or time-period common-lisp:null))
+   (cost-types
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cost-types is required"))
+    :type (common-lisp:or cost-types common-lisp:null))
+   (time-unit
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":time-unit is required"))
+    :type (common-lisp:or time-unit common-lisp:null))
+   (time-period
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":time-period is required"))
+    :type (common-lisp:or time-period common-lisp:null))
    (calculated-spend common-lisp:nil :type
     (common-lisp:or calculated-spend common-lisp:null))
-   (budget-type (common-lisp:error ":budget-type is required") :type
-    (common-lisp:or budget-type common-lisp:null)))
+   (budget-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":budget-type is required"))
+    :type (common-lisp:or budget-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'budget 'make-budget))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape budget))
@@ -81,8 +94,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (calculated-spend (:copier common-lisp:nil))
-   (actual-spend (common-lisp:error ":actual-spend is required") :type
-    (common-lisp:or spend common-lisp:null))
+   (actual-spend
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":actual-spend is required"))
+    :type (common-lisp:or spend common-lisp:null))
    (forecasted-spend common-lisp:nil :type
     (common-lisp:or spend common-lisp:null)))
  (common-lisp:export
@@ -109,13 +124,18 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (cost-types (:copier common-lisp:nil))
-   (include-tax (common-lisp:error ":include-tax is required") :type
-    (common-lisp:or generic-boolean common-lisp:null))
+   (include-tax
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":include-tax is required"))
+    :type (common-lisp:or generic-boolean common-lisp:null))
    (include-subscription
-    (common-lisp:error ":include-subscription is required") :type
-    (common-lisp:or generic-boolean common-lisp:null))
-   (use-blended (common-lisp:error ":use-blended is required") :type
-    (common-lisp:or generic-boolean common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":include-subscription is required"))
+    :type (common-lisp:or generic-boolean common-lisp:null))
+   (use-blended
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":use-blended is required"))
+    :type (common-lisp:or generic-boolean common-lisp:null)))
  (common-lisp:export (common-lisp:list 'cost-types 'make-cost-types))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape cost-types))
@@ -137,10 +157,13 @@
                                                 'use-blended))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-budget-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget (common-lisp:error ":budget is required") :type
-    (common-lisp:or budget common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
+   (budget
+    (common-lisp:error #A((19) common-lisp:base-char . ":budget is required"))
+    :type (common-lisp:or budget common-lisp:null))
    (notifications-with-subscribers common-lisp:nil :type
     (common-lisp:or notification-with-subscribers-list common-lisp:null)))
  (common-lisp:export
@@ -176,14 +199,22 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-notification-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null))
-   (subscribers (common-lisp:error ":subscribers is required") :type
-    (common-lisp:or subscribers common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
+   (budget-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":budget-name is required"))
+    :type (common-lisp:or budget-name common-lisp:null))
+   (notification
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":notification is required"))
+    :type (common-lisp:or notification common-lisp:null))
+   (subscribers
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":subscribers is required"))
+    :type (common-lisp:or subscribers common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-notification-request
                     'make-create-notification-request))
@@ -225,14 +256,22 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-subscriber-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null))
-   (subscriber (common-lisp:error ":subscriber is required") :type
-    (common-lisp:or subscriber common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
+   (budget-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":budget-name is required"))
+    :type (common-lisp:or budget-name common-lisp:null))
+   (notification
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":notification is required"))
+    :type (common-lisp:or notification common-lisp:null))
+   (subscriber
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":subscriber is required"))
+    :type (common-lisp:or subscriber common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-subscriber-request
                     'make-create-subscriber-request))
@@ -291,10 +330,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-budget-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
+   (budget-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":budget-name is required"))
+    :type (common-lisp:or budget-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-budget-request 'make-delete-budget-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -323,12 +366,18 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-notification-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
+   (budget-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":budget-name is required"))
+    :type (common-lisp:or budget-name common-lisp:null))
+   (notification
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":notification is required"))
+    :type (common-lisp:or notification common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-notification-request
                     'make-delete-notification-request))
@@ -365,14 +414,22 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-subscriber-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null))
-   (subscriber (common-lisp:error ":subscriber is required") :type
-    (common-lisp:or subscriber common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
+   (budget-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":budget-name is required"))
+    :type (common-lisp:or budget-name common-lisp:null))
+   (notification
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":notification is required"))
+    :type (common-lisp:or notification common-lisp:null))
+   (subscriber
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":subscriber is required"))
+    :type (common-lisp:or subscriber common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-subscriber-request
                     'make-delete-subscriber-request))
@@ -413,10 +470,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (describe-budget-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
+   (budget-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":budget-name is required"))
+    :type (common-lisp:or budget-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-budget-request 'make-describe-budget-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -451,8 +512,10 @@
                                                 'budget))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-budgets-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or max-results common-lisp:null))
    (next-token common-lisp:nil :type
@@ -505,10 +568,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-notifications-for-budget-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
+   (budget-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":budget-name is required"))
+    :type (common-lisp:or budget-name common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or max-results common-lisp:null))
    (next-token common-lisp:nil :type
@@ -569,12 +636,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-subscribers-for-notification-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
+   (budget-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":budget-name is required"))
+    :type (common-lisp:or budget-name common-lisp:null))
+   (notification
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":notification is required"))
+    :type (common-lisp:or notification common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or max-results common-lisp:null))
    (next-token common-lisp:nil :type
@@ -751,12 +824,18 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (notification (:copier common-lisp:nil))
-   (notification-type (common-lisp:error ":notification-type is required")
+   (notification-type
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":notification-type is required"))
     :type (common-lisp:or notification-type common-lisp:null))
-   (comparison-operator (common-lisp:error ":comparison-operator is required")
+   (comparison-operator
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":comparison-operator is required"))
     :type (common-lisp:or comparison-operator common-lisp:null))
-   (threshold (common-lisp:error ":threshold is required") :type
-    (common-lisp:or notification-threshold common-lisp:null)))
+   (threshold
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":threshold is required"))
+    :type (common-lisp:or notification-threshold common-lisp:null)))
  (common-lisp:export (common-lisp:list 'notification 'make-notification))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape notification))
@@ -781,10 +860,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (notification-with-subscribers (:copier common-lisp:nil))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null))
-   (subscribers (common-lisp:error ":subscribers is required") :type
-    (common-lisp:or subscribers common-lisp:null)))
+   (notification
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":notification is required"))
+    :type (common-lisp:or notification common-lisp:null))
+   (subscribers
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":subscribers is required"))
+    :type (common-lisp:or subscribers common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'notification-with-subscribers
                     'make-notification-with-subscribers))
@@ -823,10 +906,12 @@
 (common-lisp:deftype numeric-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (spend (:copier common-lisp:nil))
-   (amount (common-lisp:error ":amount is required") :type
-    (common-lisp:or numeric-value common-lisp:null))
-   (unit (common-lisp:error ":unit is required") :type
-    (common-lisp:or unit-value common-lisp:null)))
+   (amount
+    (common-lisp:error #A((19) common-lisp:base-char . ":amount is required"))
+    :type (common-lisp:or numeric-value common-lisp:null))
+   (unit
+    (common-lisp:error #A((17) common-lisp:base-char . ":unit is required"))
+    :type (common-lisp:or unit-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'spend 'make-spend))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape spend))
@@ -843,10 +928,13 @@
                                                 'unit))))))
 (common-lisp:progn
  (common-lisp:defstruct (subscriber (:copier common-lisp:nil))
-   (subscription-type (common-lisp:error ":subscription-type is required")
+   (subscription-type
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-type is required"))
     :type (common-lisp:or subscription-type common-lisp:null))
-   (address (common-lisp:error ":address is required") :type
-    (common-lisp:or generic-string common-lisp:null)))
+   (address
+    (common-lisp:error #A((20) common-lisp:base-char . ":address is required"))
+    :type (common-lisp:or generic-string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'subscriber 'make-subscriber))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape subscriber))
@@ -871,10 +959,11 @@
 (common-lisp:deftype subscription-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (time-period (:copier common-lisp:nil))
-   (start (common-lisp:error ":start is required") :type
-    (common-lisp:or generic-timestamp common-lisp:null))
-   (end (common-lisp:error ":end is required") :type
-    (common-lisp:or generic-timestamp common-lisp:null)))
+   (start
+    (common-lisp:error #A((18) common-lisp:base-char . ":start is required"))
+    :type (common-lisp:or generic-timestamp common-lisp:null))
+   (end (common-lisp:error #A((16) common-lisp:base-char . ":end is required"))
+    :type (common-lisp:or generic-timestamp common-lisp:null)))
  (common-lisp:export (common-lisp:list 'time-period 'make-time-period))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape time-period))
@@ -893,10 +982,14 @@
 (common-lisp:deftype unit-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (update-budget-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (new-budget (common-lisp:error ":new-budget is required") :type
-    (common-lisp:or budget common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
+   (new-budget
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":new-budget is required"))
+    :type (common-lisp:or budget common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-budget-request 'make-update-budget-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -925,14 +1018,22 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (update-notification-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (old-notification (common-lisp:error ":old-notification is required") :type
-    (common-lisp:or notification common-lisp:null))
-   (new-notification (common-lisp:error ":new-notification is required") :type
-    (common-lisp:or notification common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
+   (budget-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":budget-name is required"))
+    :type (common-lisp:or budget-name common-lisp:null))
+   (old-notification
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":old-notification is required"))
+    :type (common-lisp:or notification common-lisp:null))
+   (new-notification
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":new-notification is required"))
+    :type (common-lisp:or notification common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-notification-request
                     'make-update-notification-request))
@@ -974,16 +1075,26 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (update-subscriber-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (budget-name (common-lisp:error ":budget-name is required") :type
-    (common-lisp:or budget-name common-lisp:null))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification common-lisp:null))
-   (old-subscriber (common-lisp:error ":old-subscriber is required") :type
-    (common-lisp:or subscriber common-lisp:null))
-   (new-subscriber (common-lisp:error ":new-subscriber is required") :type
-    (common-lisp:or subscriber common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
+   (budget-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":budget-name is required"))
+    :type (common-lisp:or budget-name common-lisp:null))
+   (notification
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":notification is required"))
+    :type (common-lisp:or notification common-lisp:null))
+   (old-subscriber
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":old-subscriber is required"))
+    :type (common-lisp:or subscriber common-lisp:null))
+   (new-subscriber
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":new-subscriber is required"))
+    :type (common-lisp:or subscriber common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-subscriber-request
                     'make-update-subscriber-request))
@@ -1040,7 +1151,9 @@
                       (common-lisp:apply 'make-create-budget-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "budgets" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "budgets")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateBudget")
                                   ("Version" ,@"2016-10-20"))
@@ -1060,7 +1173,9 @@
                       (common-lisp:apply 'make-create-notification-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "budgets" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "budgets")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateNotification")
                                   ("Version" ,@"2016-10-20"))
@@ -1080,7 +1195,9 @@
                       (common-lisp:apply 'make-create-subscriber-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "budgets" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "budgets")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSubscriber")
                                   ("Version" ,@"2016-10-20"))
@@ -1098,7 +1215,9 @@
                       (common-lisp:apply 'make-delete-budget-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "budgets" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "budgets")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBudget")
                                   ("Version" ,@"2016-10-20"))
@@ -1117,7 +1236,9 @@
                       (common-lisp:apply 'make-delete-notification-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "budgets" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "budgets")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteNotification")
                                   ("Version" ,@"2016-10-20"))
@@ -1137,7 +1258,9 @@
                       (common-lisp:apply 'make-delete-subscriber-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "budgets" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "budgets")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSubscriber")
                                   ("Version" ,@"2016-10-20"))
@@ -1155,7 +1278,9 @@
                       (common-lisp:apply 'make-describe-budget-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "budgets" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "budgets")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeBudget")
                                   ("Version" ,@"2016-10-20"))
@@ -1174,7 +1299,9 @@
                       (common-lisp:apply 'make-describe-budgets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "budgets" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "budgets")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeBudgets")
                                   ("Version" ,@"2016-10-20"))
@@ -1195,7 +1322,9 @@
                        'make-describe-notifications-for-budget-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "budgets" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "budgets")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeNotificationsForBudget")
                                   ("Version" ,@"2016-10-20"))
@@ -1217,7 +1346,9 @@
                        'make-describe-subscribers-for-notification-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "budgets" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "budgets")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeSubscribersForNotification")
@@ -1236,7 +1367,9 @@
                       (common-lisp:apply 'make-update-budget-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "budgets" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "budgets")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateBudget")
                                   ("Version" ,@"2016-10-20"))
@@ -1257,7 +1390,9 @@
                       (common-lisp:apply 'make-update-notification-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "budgets" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "budgets")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateNotification")
                                   ("Version" ,@"2016-10-20"))
@@ -1278,7 +1413,9 @@
                       (common-lisp:apply 'make-update-subscriber-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "budgets" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "budgets")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSubscriber")
                                   ("Version" ,@"2016-10-20"))

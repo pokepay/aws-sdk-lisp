@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/ecr)
+
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (authorization-data (:copier common-lisp:nil))
@@ -50,9 +51,14 @@
      (batch-check-layer-availability-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (layer-digests (common-lisp:error ":layerdigests is required") :type
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (layer-digests
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":layerdigests is required"))
+    :type
     (common-lisp:or batched-operation-layer-digest-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-check-layer-availability-request
@@ -105,10 +111,14 @@
  (common-lisp:defstruct (batch-delete-image-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (image-ids (common-lisp:error ":imageids is required") :type
-    (common-lisp:or image-identifier-list common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (image-ids
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":imageids is required"))
+    :type (common-lisp:or image-identifier-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-delete-image-request
                     'make-batch-delete-image-request))
@@ -160,10 +170,14 @@
  (common-lisp:defstruct (batch-get-image-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (image-ids (common-lisp:error ":imageids is required") :type
-    (common-lisp:or image-identifier-list common-lisp:null))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (image-ids
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":imageids is required"))
+    :type (common-lisp:or image-identifier-list common-lisp:null))
    (accepted-media-types common-lisp:nil :type
     (common-lisp:or media-type-list common-lisp:null)))
  (common-lisp:export
@@ -230,12 +244,18 @@
      (complete-layer-upload-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (upload-id (common-lisp:error ":uploadid is required") :type
-    (common-lisp:or upload-id common-lisp:null))
-   (layer-digests (common-lisp:error ":layerdigests is required") :type
-    (common-lisp:or layer-digest-list common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (upload-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":uploadid is required"))
+    :type (common-lisp:or upload-id common-lisp:null))
+   (layer-digests
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":layerdigests is required"))
+    :type (common-lisp:or layer-digest-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'complete-layer-upload-request
                     'make-complete-layer-upload-request))
@@ -305,8 +325,10 @@
                                                 'layer-digest))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-repository-request (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-repository-request
                     'make-create-repository-request))
@@ -343,8 +365,10 @@
      (delete-repository-policy-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-repository-policy-request
                     'make-delete-repository-policy-request))
@@ -399,8 +423,10 @@
  (common-lisp:defstruct (delete-repository-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
    (force common-lisp:nil :type (common-lisp:or force-flag common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-repository-request
@@ -462,8 +488,10 @@
  (common-lisp:defstruct (describe-images-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
    (image-ids common-lisp:nil :type
     (common-lisp:or image-identifier-list common-lisp:null))
    (next-token common-lisp:nil :type
@@ -665,10 +693,14 @@
      (get-download-url-for-layer-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (layer-digest (common-lisp:error ":layerdigest is required") :type
-    (common-lisp:or layer-digest common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (layer-digest
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":layerdigest is required"))
+    :type (common-lisp:or layer-digest common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-download-url-for-layer-request
                     'make-get-download-url-for-layer-request))
@@ -721,8 +753,10 @@
      (get-repository-policy-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-repository-policy-request
                     'make-get-repository-policy-request))
@@ -987,8 +1021,10 @@
      (initiate-layer-upload-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'initiate-layer-upload-request
                     'make-initiate-layer-upload-request))
@@ -1307,8 +1343,10 @@
  (common-lisp:defstruct (list-images-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1384,10 +1422,14 @@
  (common-lisp:defstruct (put-image-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (image-manifest (common-lisp:error ":imagemanifest is required") :type
-    (common-lisp:or image-manifest common-lisp:null))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (image-manifest
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":imagemanifest is required"))
+    :type (common-lisp:or image-manifest common-lisp:null))
    (image-tag common-lisp:nil :type
     (common-lisp:or image-tag common-lisp:null)))
  (common-lisp:export
@@ -1577,10 +1619,14 @@
      (set-repository-policy-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (policy-text (common-lisp:error ":policytext is required") :type
-    (common-lisp:or repository-policy-text common-lisp:null))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (policy-text
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policytext is required"))
+    :type (common-lisp:or repository-policy-text common-lisp:null))
    (force common-lisp:nil :type (common-lisp:or force-flag common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-repository-policy-request
@@ -1648,16 +1694,26 @@
  (common-lisp:defstruct (upload-layer-part-request (:copier common-lisp:nil))
    (registry-id common-lisp:nil :type
     (common-lisp:or registry-id common-lisp:null))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (upload-id (common-lisp:error ":uploadid is required") :type
-    (common-lisp:or upload-id common-lisp:null))
-   (part-first-byte (common-lisp:error ":partfirstbyte is required") :type
-    (common-lisp:or part-size common-lisp:null))
-   (part-last-byte (common-lisp:error ":partlastbyte is required") :type
-    (common-lisp:or part-size common-lisp:null))
-   (layer-part-blob (common-lisp:error ":layerpartblob is required") :type
-    (common-lisp:or layer-part-blob common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (upload-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":uploadid is required"))
+    :type (common-lisp:or upload-id common-lisp:null))
+   (part-first-byte
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":partfirstbyte is required"))
+    :type (common-lisp:or part-size common-lisp:null))
+   (part-last-byte
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":partlastbyte is required"))
+    :type (common-lisp:or part-size common-lisp:null))
+   (layer-part-blob
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":layerpartblob is required"))
+    :type (common-lisp:or layer-part-blob common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'upload-layer-part-request
                     'make-upload-layer-part-request))

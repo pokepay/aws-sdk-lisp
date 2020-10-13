@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/elasticache)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (apicall-rate-for-customer-exceeded-fault (:copier common-lisp:nil)))
@@ -22,10 +23,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-resource-message (:copier common-lisp:nil))
-   (resource-name (common-lisp:error ":resource-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-tags-to-resource-message
                     'make-add-tags-to-resource-message))
@@ -88,14 +92,18 @@
  (common-lisp:defstruct
      (authorize-cache-security-group-ingress-message (:copier common-lisp:nil))
    (cache-security-group-name
-    (common-lisp:error ":cache-security-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":cache-security-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (ec2security-group-name
-    (common-lisp:error ":ec2security-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":ec2security-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (ec2security-group-owner-id
-    (common-lisp:error ":ec2security-group-owner-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":ec2security-group-owner-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'authorize-cache-security-group-ingress-message
                     'make-authorize-cache-security-group-ingress-message))
@@ -1086,11 +1094,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (copy-snapshot-message (:copier common-lisp:nil))
    (source-snapshot-name
-    (common-lisp:error ":source-snapshot-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":source-snapshot-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (target-snapshot-name
-    (common-lisp:error ":target-snapshot-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":target-snapshot-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (target-bucket common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -1131,8 +1141,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-cache-cluster-message (:copier common-lisp:nil))
-   (cache-cluster-id (common-lisp:error ":cache-cluster-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (cache-cluster-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":cache-cluster-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (replication-group-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (azmode common-lisp:nil :type (common-lisp:or azmode common-lisp:null))
@@ -1317,13 +1329,19 @@
  (common-lisp:defstruct
      (create-cache-parameter-group-message (:copier common-lisp:nil))
    (cache-parameter-group-name
-    (common-lisp:error ":cache-parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":cache-parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (cache-parameter-group-family
-    (common-lisp:error ":cache-parameter-group-family is required") :type
-    (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":cache-parameter-group-family is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-cache-parameter-group-message
                     'make-create-cache-parameter-group-message))
@@ -1369,10 +1387,13 @@
  (common-lisp:defstruct
      (create-cache-security-group-message (:copier common-lisp:nil))
    (cache-security-group-name
-    (common-lisp:error ":cache-security-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":cache-security-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-cache-security-group-message
                     'make-create-cache-security-group-message))
@@ -1413,13 +1434,18 @@
  (common-lisp:defstruct
      (create-cache-subnet-group-message (:copier common-lisp:nil))
    (cache-subnet-group-name
-    (common-lisp:error ":cache-subnet-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":cache-subnet-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (cache-subnet-group-description
-    (common-lisp:error ":cache-subnet-group-description is required") :type
-    (common-lisp:or string common-lisp:null))
-   (subnet-ids (common-lisp:error ":subnet-ids is required") :type
-    (common-lisp:or subnet-identifier-list common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":cache-subnet-group-description is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (subnet-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":subnet-ids is required"))
+    :type (common-lisp:or subnet-identifier-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-cache-subnet-group-message
                     'make-create-cache-subnet-group-message))
@@ -1465,11 +1491,14 @@
  (common-lisp:defstruct
      (create-replication-group-message (:copier common-lisp:nil))
    (replication-group-id
-    (common-lisp:error ":replication-group-id is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":replication-group-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (replication-group-description
-    (common-lisp:error ":replication-group-description is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":replication-group-description is required"))
+    :type (common-lisp:or string common-lisp:null))
    (primary-cluster-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (automatic-failover-enabled common-lisp:nil :type
@@ -1677,8 +1706,10 @@
     (common-lisp:or string common-lisp:null))
    (cache-cluster-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (snapshot-name (common-lisp:error ":snapshot-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (snapshot-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":snapshot-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-snapshot-message 'make-create-snapshot-message))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1719,8 +1750,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-cache-cluster-message (:copier common-lisp:nil))
-   (cache-cluster-id (common-lisp:error ":cache-cluster-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (cache-cluster-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":cache-cluster-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (final-snapshot-identifier common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -1762,8 +1795,10 @@
  (common-lisp:defstruct
      (delete-cache-parameter-group-message (:copier common-lisp:nil))
    (cache-parameter-group-name
-    (common-lisp:error ":cache-parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":cache-parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-cache-parameter-group-message
                     'make-delete-cache-parameter-group-message))
@@ -1781,8 +1816,9 @@
  (common-lisp:defstruct
      (delete-cache-security-group-message (:copier common-lisp:nil))
    (cache-security-group-name
-    (common-lisp:error ":cache-security-group-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":cache-security-group-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-cache-security-group-message
                     'make-delete-cache-security-group-message))
@@ -1800,8 +1836,9 @@
  (common-lisp:defstruct
      (delete-cache-subnet-group-message (:copier common-lisp:nil))
    (cache-subnet-group-name
-    (common-lisp:error ":cache-subnet-group-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":cache-subnet-group-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-cache-subnet-group-message
                     'make-delete-cache-subnet-group-message))
@@ -1819,8 +1856,9 @@
  (common-lisp:defstruct
      (delete-replication-group-message (:copier common-lisp:nil))
    (replication-group-id
-    (common-lisp:error ":replication-group-id is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":replication-group-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (retain-primary-cluster common-lisp:nil :type
     (common-lisp:or boolean-optional common-lisp:null))
    (final-snapshot-identifier common-lisp:nil :type
@@ -1868,8 +1906,10 @@
                                                 'replication-group))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-snapshot-message (:copier common-lisp:nil))
-   (snapshot-name (common-lisp:error ":snapshot-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (snapshot-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":snapshot-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-snapshot-message 'make-delete-snapshot-message))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2028,8 +2068,10 @@
  (common-lisp:defstruct
      (describe-cache-parameters-message (:copier common-lisp:nil))
    (cache-parameter-group-name
-    (common-lisp:error ":cache-parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":cache-parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (source common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (max-records common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
@@ -2128,8 +2170,10 @@
  (common-lisp:defstruct
      (describe-engine-default-parameters-message (:copier common-lisp:nil))
    (cache-parameter-group-family
-    (common-lisp:error ":cache-parameter-group-family is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":cache-parameter-group-family is required"))
+    :type (common-lisp:or string common-lisp:null))
    (max-records common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -2774,8 +2818,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-message (:copier common-lisp:nil))
-   (resource-name (common-lisp:error ":resource-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (resource-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-message
                     'make-list-tags-for-resource-message))
@@ -2792,8 +2838,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (modify-cache-cluster-message (:copier common-lisp:nil))
-   (cache-cluster-id (common-lisp:error ":cache-cluster-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (cache-cluster-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":cache-cluster-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (num-cache-nodes common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
    (cache-node-ids-to-remove common-lisp:nil :type
@@ -2939,11 +2987,14 @@
  (common-lisp:defstruct
      (modify-cache-parameter-group-message (:copier common-lisp:nil))
    (cache-parameter-group-name
-    (common-lisp:error ":cache-parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":cache-parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (parameter-name-values
-    (common-lisp:error ":parameter-name-values is required") :type
-    (common-lisp:or parameter-name-value-list common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":parameter-name-values is required"))
+    :type (common-lisp:or parameter-name-value-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-cache-parameter-group-message
                     'make-modify-cache-parameter-group-message))
@@ -2966,8 +3017,9 @@
  (common-lisp:defstruct
      (modify-cache-subnet-group-message (:copier common-lisp:nil))
    (cache-subnet-group-name
-    (common-lisp:error ":cache-subnet-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":cache-subnet-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (cache-subnet-group-description common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (subnet-ids common-lisp:nil :type
@@ -3017,8 +3069,9 @@
  (common-lisp:defstruct
      (modify-replication-group-message (:copier common-lisp:nil))
    (replication-group-id
-    (common-lisp:error ":replication-group-id is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":replication-group-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (replication-group-description common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (primary-cluster-id common-lisp:nil :type
@@ -3600,8 +3653,10 @@
  (common-lisp:defstruct
      (purchase-reserved-cache-nodes-offering-message (:copier common-lisp:nil))
    (reserved-cache-nodes-offering-id
-    (common-lisp:error ":reserved-cache-nodes-offering-id is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((45) common-lisp:base-char
+        . ":reserved-cache-nodes-offering-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (reserved-cache-node-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (cache-node-count common-lisp:nil :type
@@ -3650,11 +3705,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (reboot-cache-cluster-message (:copier common-lisp:nil))
-   (cache-cluster-id (common-lisp:error ":cache-cluster-id is required") :type
-    (common-lisp:or string common-lisp:null))
+   (cache-cluster-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":cache-cluster-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (cache-node-ids-to-reboot
-    (common-lisp:error ":cache-node-ids-to-reboot is required") :type
-    (common-lisp:or cache-node-ids-list common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":cache-node-ids-to-reboot is required"))
+    :type (common-lisp:or cache-node-ids-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reboot-cache-cluster-message
                     'make-reboot-cache-cluster-message))
@@ -3722,10 +3780,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-tags-from-resource-message (:copier common-lisp:nil))
-   (resource-name (common-lisp:error ":resource-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or key-list common-lisp:null)))
+   (resource-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-from-resource-message
                     'make-remove-tags-from-resource-message))
@@ -4181,8 +4243,10 @@
  (common-lisp:defstruct
      (reset-cache-parameter-group-message (:copier common-lisp:nil))
    (cache-parameter-group-name
-    (common-lisp:error ":cache-parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":cache-parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (reset-all-parameters common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (parameter-name-values common-lisp:nil :type
@@ -4214,14 +4278,18 @@
  (common-lisp:defstruct
      (revoke-cache-security-group-ingress-message (:copier common-lisp:nil))
    (cache-security-group-name
-    (common-lisp:error ":cache-security-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":cache-security-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (ec2security-group-name
-    (common-lisp:error ":ec2security-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":ec2security-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (ec2security-group-owner-id
-    (common-lisp:error ":ec2security-group-owner-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":ec2security-group-owner-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'revoke-cache-security-group-ingress-message
                     'make-revoke-cache-security-group-ingress-message))
@@ -4634,10 +4702,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (test-failover-message (:copier common-lisp:nil))
    (replication-group-id
-    (common-lisp:error ":replication-group-id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (node-group-id (common-lisp:error ":node-group-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":replication-group-id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (node-group-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":node-group-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'test-failover-message 'make-test-failover-message))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4690,7 +4761,9 @@
                       (common-lisp:apply 'make-add-tags-to-resource-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToResource")
                                   ("Version" ,@"2015-02-02"))
@@ -4712,7 +4785,9 @@
                        'make-authorize-cache-security-group-ingress-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"AuthorizeCacheSecurityGroupIngress")
@@ -4735,7 +4810,9 @@
                       (common-lisp:apply 'make-copy-snapshot-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CopySnapshot")
                                   ("Version" ,@"2015-02-02"))
@@ -4768,7 +4845,9 @@
                       (common-lisp:apply 'make-create-cache-cluster-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCacheCluster")
                                   ("Version" ,@"2015-02-02"))
@@ -4790,7 +4869,9 @@
                        'make-create-cache-parameter-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCacheParameterGroup")
                                   ("Version" ,@"2015-02-02"))
@@ -4810,7 +4891,9 @@
                        'make-create-cache-security-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCacheSecurityGroup")
                                   ("Version" ,@"2015-02-02"))
@@ -4832,7 +4915,9 @@
                        'make-create-cache-subnet-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCacheSubnetGroup")
                                   ("Version" ,@"2015-02-02"))
@@ -4869,7 +4954,9 @@
                       (common-lisp:apply 'make-create-replication-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateReplicationGroup")
                                   ("Version" ,@"2015-02-02"))
@@ -4890,7 +4977,9 @@
                       (common-lisp:apply 'make-create-snapshot-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSnapshot")
                                   ("Version" ,@"2015-02-02"))
@@ -4910,7 +4999,9 @@
                       (common-lisp:apply 'make-delete-cache-cluster-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCacheCluster")
                                   ("Version" ,@"2015-02-02"))
@@ -4929,7 +5020,9 @@
                        'make-delete-cache-parameter-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCacheParameterGroup")
                                   ("Version" ,@"2015-02-02"))
@@ -4948,7 +5041,9 @@
                        'make-delete-cache-security-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCacheSecurityGroup")
                                   ("Version" ,@"2015-02-02"))
@@ -4967,7 +5062,9 @@
                        'make-delete-cache-subnet-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCacheSubnetGroup")
                                   ("Version" ,@"2015-02-02"))
@@ -4988,7 +5085,9 @@
                       (common-lisp:apply 'make-delete-replication-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReplicationGroup")
                                   ("Version" ,@"2015-02-02"))
@@ -5006,7 +5105,9 @@
                       (common-lisp:apply 'make-delete-snapshot-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSnapshot")
                                   ("Version" ,@"2015-02-02"))
@@ -5028,7 +5129,9 @@
                       (common-lisp:apply 'make-describe-cache-clusters-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCacheClusters")
                                   ("Version" ,@"2015-02-02"))
@@ -5051,7 +5154,9 @@
                        'make-describe-cache-engine-versions-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCacheEngineVersions")
                                   ("Version" ,@"2015-02-02"))
@@ -5072,7 +5177,9 @@
                        'make-describe-cache-parameter-groups-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCacheParameterGroups")
                                   ("Version" ,@"2015-02-02"))
@@ -5094,7 +5201,9 @@
                        'make-describe-cache-parameters-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCacheParameters")
                                   ("Version" ,@"2015-02-02"))
@@ -5115,7 +5224,9 @@
                        'make-describe-cache-security-groups-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCacheSecurityGroups")
                                   ("Version" ,@"2015-02-02"))
@@ -5136,7 +5247,9 @@
                        'make-describe-cache-subnet-groups-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCacheSubnetGroups")
                                   ("Version" ,@"2015-02-02"))
@@ -5157,7 +5270,9 @@
                        'make-describe-engine-default-parameters-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeEngineDefaultParameters")
@@ -5180,7 +5295,9 @@
                       (common-lisp:apply 'make-describe-events-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEvents")
                                   ("Version" ,@"2015-02-02"))
@@ -5200,7 +5317,9 @@
                        'make-describe-replication-groups-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReplicationGroups")
                                   ("Version" ,@"2015-02-02"))
@@ -5224,7 +5343,9 @@
                        'make-describe-reserved-cache-nodes-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReservedCacheNodes")
                                   ("Version" ,@"2015-02-02"))
@@ -5247,7 +5368,9 @@
                        'make-describe-reserved-cache-nodes-offerings-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeReservedCacheNodesOfferings")
@@ -5271,7 +5394,9 @@
                       (common-lisp:apply 'make-describe-snapshots-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSnapshots")
                                   ("Version" ,@"2015-02-02"))
@@ -5291,7 +5416,9 @@
                        'make-list-allowed-node-type-modifications-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ListAllowedNodeTypeModifications")
@@ -5311,7 +5438,9 @@
                       (common-lisp:apply 'make-list-tags-for-resource-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2015-02-02"))
@@ -5343,7 +5472,9 @@
                       (common-lisp:apply 'make-modify-cache-cluster-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyCacheCluster")
                                   ("Version" ,@"2015-02-02"))
@@ -5364,7 +5495,9 @@
                        'make-modify-cache-parameter-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyCacheParameterGroup")
                                   ("Version" ,@"2015-02-02"))
@@ -5386,7 +5519,9 @@
                        'make-modify-cache-subnet-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyCacheSubnetGroup")
                                   ("Version" ,@"2015-02-02"))
@@ -5419,7 +5554,9 @@
                       (common-lisp:apply 'make-modify-replication-group-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyReplicationGroup")
                                   ("Version" ,@"2015-02-02"))
@@ -5441,7 +5578,9 @@
                        'make-purchase-reserved-cache-nodes-offering-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"PurchaseReservedCacheNodesOffering")
@@ -5463,7 +5602,9 @@
                       (common-lisp:apply 'make-reboot-cache-cluster-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RebootCacheCluster")
                                   ("Version" ,@"2015-02-02"))
@@ -5482,7 +5623,9 @@
                        'make-remove-tags-from-resource-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromResource")
                                   ("Version" ,@"2015-02-02"))
@@ -5504,7 +5647,9 @@
                        'make-reset-cache-parameter-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResetCacheParameterGroup")
                                   ("Version" ,@"2015-02-02"))
@@ -5526,7 +5671,9 @@
                        'make-revoke-cache-security-group-ingress-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"RevokeCacheSecurityGroupIngress")
@@ -5547,7 +5694,9 @@
                       (common-lisp:apply 'make-test-failover-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticache" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "elasticache")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TestFailover")
                                   ("Version" ,@"2015-02-02"))

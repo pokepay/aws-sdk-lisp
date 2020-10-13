@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/elasticbeanstalk)
+
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -391,8 +392,10 @@
     (common-lisp:or string common-lisp:null))
    (environment-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (action-id (common-lisp:error ":action-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (action-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":action-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'apply-environment-managed-action-request
                     'make-apply-environment-managed-action-request))
@@ -499,12 +502,14 @@
    (artifact-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (code-build-service-role
-    (common-lisp:error ":code-build-service-role is required") :type
-    (common-lisp:or non-empty-string common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":code-build-service-role is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null))
    (compute-type common-lisp:nil :type
     (common-lisp:or compute-type common-lisp:null))
-   (image (common-lisp:error ":image is required") :type
-    (common-lisp:or non-empty-string common-lisp:null))
+   (image
+    (common-lisp:error #A((18) common-lisp:base-char . ":image is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null))
    (timeout-in-minutes common-lisp:nil :type
     (common-lisp:or boxed-int common-lisp:null)))
  (common-lisp:export
@@ -615,8 +620,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (check-dnsavailability-message (:copier common-lisp:nil))
-   (cnameprefix (common-lisp:error ":cnameprefix is required") :type
-    (common-lisp:or dnscname-prefix common-lisp:null)))
+   (cnameprefix
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":cnameprefix is required"))
+    :type (common-lisp:or dnscname-prefix common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'check-dnsavailability-message
                     'make-check-dnsavailability-message))
@@ -1031,8 +1038,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (create-application-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (resource-lifecycle-config common-lisp:nil :type
@@ -1063,10 +1072,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-application-version-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
-   (version-label (common-lisp:error ":version-label is required") :type
-    (common-lisp:or version-label common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
+   (version-label
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":version-label is required"))
+    :type (common-lisp:or version-label common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (source-build-information common-lisp:nil :type
@@ -1130,10 +1143,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-configuration-template-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
-   (template-name (common-lisp:error ":template-name is required") :type
-    (common-lisp:or configuration-template-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
+   (template-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":template-name is required"))
+    :type (common-lisp:or configuration-template-name common-lisp:null))
    (solution-stack-name common-lisp:nil :type
     (common-lisp:or solution-stack-name common-lisp:null))
    (platform-arn common-lisp:nil :type
@@ -1196,8 +1213,10 @@
                                                 'option-settings))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-environment-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (environment-name common-lisp:nil :type
     (common-lisp:or environment-name common-lisp:null))
    (group-name common-lisp:nil :type
@@ -1297,13 +1316,19 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-platform-version-request (:copier common-lisp:nil))
-   (platform-name (common-lisp:error ":platform-name is required") :type
-    (common-lisp:or platform-name common-lisp:null))
-   (platform-version (common-lisp:error ":platform-version is required") :type
-    (common-lisp:or platform-version common-lisp:null))
+   (platform-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":platform-name is required"))
+    :type (common-lisp:or platform-name common-lisp:null))
+   (platform-version
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":platform-version is required"))
+    :type (common-lisp:or platform-version common-lisp:null))
    (platform-definition-bundle
-    (common-lisp:error ":platform-definition-bundle is required") :type
-    (common-lisp:or s3location common-lisp:null))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":platform-definition-bundle is required"))
+    :type (common-lisp:or s3location common-lisp:null))
    (environment-name common-lisp:nil :type
     (common-lisp:or environment-name common-lisp:null))
    (option-settings common-lisp:nil :type
@@ -1414,8 +1439,10 @@
 (common-lisp:deftype dnscname-prefix () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-application-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (terminate-env-by-force common-lisp:nil :type
     (common-lisp:or terminate-env-force common-lisp:null)))
  (common-lisp:export
@@ -1439,10 +1466,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-application-version-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
-   (version-label (common-lisp:error ":version-label is required") :type
-    (common-lisp:or version-label common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
+   (version-label
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":version-label is required"))
+    :type (common-lisp:or version-label common-lisp:null))
    (delete-source-bundle common-lisp:nil :type
     (common-lisp:or delete-source-bundle common-lisp:null)))
  (common-lisp:export
@@ -1471,10 +1502,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-configuration-template-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
-   (template-name (common-lisp:error ":template-name is required") :type
-    (common-lisp:or configuration-template-name common-lisp:null)))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
+   (template-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":template-name is required"))
+    :type (common-lisp:or configuration-template-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-configuration-template-message
                     'make-delete-configuration-template-message))
@@ -1496,10 +1531,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-environment-configuration-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
-   (environment-name (common-lisp:error ":environment-name is required") :type
-    (common-lisp:or environment-name common-lisp:null)))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
+   (environment-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":environment-name is required"))
+    :type (common-lisp:or environment-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-environment-configuration-message
                     'make-delete-environment-configuration-message))
@@ -1701,8 +1740,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-configuration-settings-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (template-name common-lisp:nil :type
     (common-lisp:or configuration-template-name common-lisp:null))
    (environment-name common-lisp:nil :type
@@ -3281,8 +3322,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (max-age-rule (:copier common-lisp:nil))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or boxed-boolean common-lisp:null))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or boxed-boolean common-lisp:null))
    (max-age-in-days common-lisp:nil :type
     (common-lisp:or boxed-int common-lisp:null))
    (delete-source-from-s3 common-lisp:nil :type
@@ -3308,8 +3350,9 @@
                                                 'delete-source-from-s3))))))
 (common-lisp:progn
  (common-lisp:defstruct (max-count-rule (:copier common-lisp:nil))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or boxed-boolean common-lisp:null))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or boxed-boolean common-lisp:null))
    (max-count common-lisp:nil :type
     (common-lisp:or boxed-int common-lisp:null))
    (delete-source-from-s3 common-lisp:nil :type
@@ -3802,8 +3845,10 @@
     (common-lisp:or environment-id common-lisp:null))
    (environment-name common-lisp:nil :type
     (common-lisp:or environment-name common-lisp:null))
-   (info-type (common-lisp:error ":info-type is required") :type
-    (common-lisp:or environment-info-type common-lisp:null)))
+   (info-type
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":info-type is required"))
+    :type (common-lisp:or environment-info-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'request-environment-info-message
                     'make-request-environment-info-message))
@@ -3861,8 +3906,10 @@
     (common-lisp:or environment-id common-lisp:null))
    (environment-name common-lisp:nil :type
     (common-lisp:or environment-name common-lisp:null))
-   (info-type (common-lisp:error ":info-type is required") :type
-    (common-lisp:or environment-info-type common-lisp:null)))
+   (info-type
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":info-type is required"))
+    :type (common-lisp:or environment-info-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'retrieve-environment-info-message
                     'make-retrieve-environment-info-message))
@@ -4059,12 +4106,18 @@
 (common-lisp:deftype solution-stack-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (source-build-information (:copier common-lisp:nil))
-   (source-type (common-lisp:error ":source-type is required") :type
-    (common-lisp:or source-type common-lisp:null))
-   (source-repository (common-lisp:error ":source-repository is required")
+   (source-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":source-type is required"))
+    :type (common-lisp:or source-type common-lisp:null))
+   (source-repository
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":source-repository is required"))
     :type (common-lisp:or source-repository common-lisp:null))
-   (source-location (common-lisp:error ":source-location is required") :type
-    (common-lisp:or source-location common-lisp:null)))
+   (source-location
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":source-location is required"))
+    :type (common-lisp:or source-location common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'source-build-information 'make-source-build-information))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4392,8 +4445,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (update-application-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null)))
  (common-lisp:export
@@ -4417,10 +4472,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-application-resource-lifecycle-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (resource-lifecycle-config
-    (common-lisp:error ":resource-lifecycle-config is required") :type
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":resource-lifecycle-config is required"))
+    :type
     (common-lisp:or application-resource-lifecycle-config common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-application-resource-lifecycle-message
@@ -4443,10 +4502,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-application-version-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
-   (version-label (common-lisp:error ":version-label is required") :type
-    (common-lisp:or version-label common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
+   (version-label
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":version-label is required"))
+    :type (common-lisp:or version-label common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null)))
  (common-lisp:export
@@ -4475,10 +4538,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-configuration-template-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
-   (template-name (common-lisp:error ":template-name is required") :type
-    (common-lisp:or configuration-template-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
+   (template-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":template-name is required"))
+    :type (common-lisp:or configuration-template-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (option-settings common-lisp:nil :type
@@ -4617,13 +4684,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (validate-configuration-settings-message (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (template-name common-lisp:nil :type
     (common-lisp:or configuration-template-name common-lisp:null))
    (environment-name common-lisp:nil :type
     (common-lisp:or environment-name common-lisp:null))
-   (option-settings (common-lisp:error ":option-settings is required") :type
+   (option-settings
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":option-settings is required"))
+    :type
     (common-lisp:or configuration-option-settings-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'validate-configuration-settings-message
@@ -4727,8 +4799,10 @@
                       (common-lisp:apply 'make-abort-environment-update-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AbortEnvironmentUpdate")
                                   ("Version" ,@"2010-12-01"))
@@ -4749,8 +4823,10 @@
                        'make-apply-environment-managed-action-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ApplyEnvironmentManagedAction")
                                   ("Version" ,@"2010-12-01"))
@@ -4769,8 +4845,10 @@
                       (common-lisp:apply 'make-check-dnsavailability-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CheckDNSAvailability")
                                   ("Version" ,@"2010-12-01"))
@@ -4790,8 +4868,10 @@
                       (common-lisp:apply 'make-compose-environments-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ComposeEnvironments")
                                   ("Version" ,@"2010-12-01"))
@@ -4812,8 +4892,10 @@
                       (common-lisp:apply 'make-create-application-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateApplication")
                                   ("Version" ,@"2010-12-01"))
@@ -4837,8 +4919,10 @@
                        'make-create-application-version-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateApplicationVersion")
                                   ("Version" ,@"2010-12-01"))
@@ -4863,8 +4947,10 @@
                        'make-create-configuration-template-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateConfigurationTemplate")
                                   ("Version" ,@"2010-12-01"))
@@ -4888,8 +4974,10 @@
                       (common-lisp:apply 'make-create-environment-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateEnvironment")
                                   ("Version" ,@"2010-12-01"))
@@ -4911,8 +4999,10 @@
                       (common-lisp:apply 'make-create-platform-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePlatformVersion")
                                   ("Version" ,@"2010-12-01"))
@@ -4923,7 +5013,10 @@
 (common-lisp:progn
  (common-lisp:defun create-storage-location ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((16) common-lisp:base-char
+                                . "elasticbeanstalk")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "CreateStorageLocation"))
     "CreateStorageLocationResultMessage" "CreateStorageLocationResult"))
@@ -4939,8 +5032,10 @@
                       (common-lisp:apply 'make-delete-application-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApplication")
                                   ("Version" ,@"2010-12-01"))
@@ -4962,8 +5057,10 @@
                        'make-delete-application-version-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApplicationVersion")
                                   ("Version" ,@"2010-12-01"))
@@ -4982,8 +5079,10 @@
                        'make-delete-configuration-template-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConfigurationTemplate")
                                   ("Version" ,@"2010-12-01"))
@@ -5003,8 +5102,10 @@
                        'make-delete-environment-configuration-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEnvironmentConfiguration")
                                   ("Version" ,@"2010-12-01"))
@@ -5022,8 +5123,10 @@
                       (common-lisp:apply 'make-delete-platform-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePlatformVersion")
                                   ("Version" ,@"2010-12-01"))
@@ -5045,8 +5148,10 @@
                        'make-describe-application-versions-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeApplicationVersions")
                                   ("Version" ,@"2010-12-01"))
@@ -5065,8 +5170,10 @@
                       (common-lisp:apply 'make-describe-applications-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeApplications")
                                   ("Version" ,@"2010-12-01"))
@@ -5088,8 +5195,10 @@
                        'make-describe-configuration-options-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConfigurationOptions")
                                   ("Version" ,@"2010-12-01"))
@@ -5110,8 +5219,10 @@
                        'make-describe-configuration-settings-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConfigurationSettings")
                                   ("Version" ,@"2010-12-01"))
@@ -5133,8 +5244,10 @@
                        'make-describe-environment-health-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEnvironmentHealth")
                                   ("Version" ,@"2010-12-01"))
@@ -5156,8 +5269,10 @@
                        'make-describe-environment-managed-action-history-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeEnvironmentManagedActionHistory")
@@ -5179,8 +5294,10 @@
                        'make-describe-environment-managed-actions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeEnvironmentManagedActions")
@@ -5202,8 +5319,10 @@
                        'make-describe-environment-resources-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEnvironmentResources")
                                   ("Version" ,@"2010-12-01"))
@@ -5227,8 +5346,10 @@
                       (common-lisp:apply 'make-describe-environments-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEnvironments")
                                   ("Version" ,@"2010-12-01"))
@@ -5252,8 +5373,10 @@
                       (common-lisp:apply 'make-describe-events-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEvents")
                                   ("Version" ,@"2010-12-01"))
@@ -5275,8 +5398,10 @@
                        'make-describe-instances-health-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeInstancesHealth")
                                   ("Version" ,@"2010-12-01"))
@@ -5295,8 +5420,10 @@
                        'make-describe-platform-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribePlatformVersion")
                                   ("Version" ,@"2010-12-01"))
@@ -5307,7 +5434,10 @@
 (common-lisp:progn
  (common-lisp:defun list-available-solution-stacks ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((16) common-lisp:base-char
+                                . "elasticbeanstalk")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "ListAvailableSolutionStacks"))
     "ListAvailableSolutionStacksResultMessage"
@@ -5323,8 +5453,10 @@
                       (common-lisp:apply 'make-list-platform-versions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPlatformVersions")
                                   ("Version" ,@"2010-12-01"))
@@ -5343,8 +5475,10 @@
                       (common-lisp:apply 'make-rebuild-environment-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RebuildEnvironment")
                                   ("Version" ,@"2010-12-01"))
@@ -5364,8 +5498,10 @@
                       (common-lisp:apply 'make-request-environment-info-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RequestEnvironmentInfo")
                                   ("Version" ,@"2010-12-01"))
@@ -5384,8 +5520,10 @@
                       (common-lisp:apply 'make-restart-app-server-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RestartAppServer")
                                   ("Version" ,@"2010-12-01"))
@@ -5406,8 +5544,10 @@
                        'make-retrieve-environment-info-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RetrieveEnvironmentInfo")
                                   ("Version" ,@"2010-12-01"))
@@ -5429,8 +5569,10 @@
                       (common-lisp:apply 'make-swap-environment-cnames-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SwapEnvironmentCNAMEs")
                                   ("Version" ,@"2010-12-01"))
@@ -5451,8 +5593,10 @@
                       (common-lisp:apply 'make-terminate-environment-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TerminateEnvironment")
                                   ("Version" ,@"2010-12-01"))
@@ -5470,8 +5614,10 @@
                       (common-lisp:apply 'make-update-application-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApplication")
                                   ("Version" ,@"2010-12-01"))
@@ -5492,8 +5638,10 @@
                        'make-update-application-resource-lifecycle-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"UpdateApplicationResourceLifecycle")
@@ -5516,8 +5664,10 @@
                        'make-update-application-version-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApplicationVersion")
                                   ("Version" ,@"2010-12-01"))
@@ -5540,8 +5690,10 @@
                        'make-update-configuration-template-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateConfigurationTemplate")
                                   ("Version" ,@"2010-12-01"))
@@ -5565,8 +5717,10 @@
                       (common-lisp:apply 'make-update-environment-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateEnvironment")
                                   ("Version" ,@"2010-12-01"))
@@ -5588,8 +5742,10 @@
                        'make-validate-configuration-settings-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticbeanstalk")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ValidateConfigurationSettings")
                                   ("Version" ,@"2010-12-01"))

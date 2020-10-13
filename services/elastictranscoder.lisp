@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/elastictranscoder)
+
 (common-lisp:deftype access-control () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:deftype access-controls ()
@@ -185,8 +186,8 @@
 (common-lisp:deftype bucket-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (cancel-job-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-job-request 'make-cancel-job-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -481,8 +482,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (create-job-request (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipeline-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (pipeline-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":pipeline-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or job-input common-lisp:null))
    (inputs common-lisp:nil :type (common-lisp:or job-inputs common-lisp:null))
    (output common-lisp:nil :type
@@ -555,14 +558,18 @@
                                                 'job))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-pipeline-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (input-bucket (common-lisp:error ":input-bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
+   (input-bucket
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":input-bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (output-bucket common-lisp:nil :type
     (common-lisp:or bucket-name common-lisp:null))
-   (role (common-lisp:error ":role is required") :type
-    (common-lisp:or role common-lisp:null))
+   (role
+    (common-lisp:error #A((17) common-lisp:base-char . ":role is required"))
+    :type (common-lisp:or role common-lisp:null))
    (aws-kms-key-arn common-lisp:nil :type
     (common-lisp:or key-arn common-lisp:null))
    (notifications common-lisp:nil :type
@@ -641,12 +648,15 @@
                                                 'warnings))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-preset-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
-   (container (common-lisp:error ":container is required") :type
-    (common-lisp:or preset-container common-lisp:null))
+   (container
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":container is required"))
+    :type (common-lisp:or preset-container common-lisp:null))
    (video common-lisp:nil :type
     (common-lisp:or video-parameters common-lisp:null))
    (audio common-lisp:nil :type
@@ -713,8 +723,8 @@
                                                 'warning))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-pipeline-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-pipeline-request 'make-delete-pipeline-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -738,8 +748,8 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-preset-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-preset-request 'make-delete-preset-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1350,8 +1360,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-jobs-by-pipeline-request (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipeline-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (pipeline-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":pipeline-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (ascending common-lisp:nil :type
     (common-lisp:or ascending common-lisp:null))
    (page-token common-lisp:nil :type (common-lisp:or id common-lisp:null)))
@@ -1404,8 +1416,9 @@
                                                 'next-page-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-jobs-by-status-request (:copier common-lisp:nil))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or job-status common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or job-status common-lisp:null))
    (ascending common-lisp:nil :type
     (common-lisp:or ascending common-lisp:null))
    (page-token common-lisp:nil :type (common-lisp:or id common-lisp:null)))
@@ -2011,8 +2024,8 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (read-job-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'read-job-request 'make-read-job-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2038,8 +2051,8 @@
                                                 'job))))))
 (common-lisp:progn
  (common-lisp:defstruct (read-pipeline-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'read-pipeline-request 'make-read-pipeline-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2075,8 +2088,8 @@
                                                 'warnings))))))
 (common-lisp:progn
  (common-lisp:defstruct (read-preset-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'read-preset-request 'make-read-preset-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2139,14 +2152,20 @@
 (common-lisp:deftype target () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (test-role-request (:copier common-lisp:nil))
-   (role (common-lisp:error ":role is required") :type
-    (common-lisp:or role common-lisp:null))
-   (input-bucket (common-lisp:error ":input-bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (output-bucket (common-lisp:error ":output-bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (topics (common-lisp:error ":topics is required") :type
-    (common-lisp:or sns-topics common-lisp:null)))
+   (role
+    (common-lisp:error #A((17) common-lisp:base-char . ":role is required"))
+    :type (common-lisp:or role common-lisp:null))
+   (input-bucket
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":input-bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (output-bucket
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":output-bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (topics
+    (common-lisp:error #A((19) common-lisp:base-char . ":topics is required"))
+    :type (common-lisp:or sns-topics common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'test-role-request 'make-test-role-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2304,10 +2323,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-pipeline-notifications-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null))
-   (notifications (common-lisp:error ":notifications is required") :type
-    (common-lisp:or notifications common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null))
+   (notifications
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":notifications is required"))
+    :type (common-lisp:or notifications common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-pipeline-notifications-request
                     'make-update-pipeline-notifications-request))
@@ -2345,8 +2366,8 @@
                                                 'pipeline))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-pipeline-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
    (input-bucket common-lisp:nil :type
     (common-lisp:or bucket-name common-lisp:null))
@@ -2430,10 +2451,11 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-pipeline-status-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or pipeline-status common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or pipeline-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-pipeline-status-request
                     'make-update-pipeline-status-request))
@@ -2635,7 +2657,12 @@
                       (common-lisp:apply 'make-cancel-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :delete
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2012-09-25/jobs/~a" id)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelJob")
@@ -2657,8 +2684,10 @@
                       (common-lisp:apply 'make-create-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateJob")
                                   ("Version" ,@"2012-09-25"))
@@ -2680,8 +2709,10 @@
                       (common-lisp:apply 'make-create-pipeline-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePipeline")
                                   ("Version" ,@"2012-09-25"))
@@ -2701,8 +2732,10 @@
                       (common-lisp:apply 'make-create-preset-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePreset")
                                   ("Version" ,@"2012-09-25"))
@@ -2720,7 +2753,13 @@
                       (common-lisp:apply 'make-delete-pipeline-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :delete
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2012-09-25/pipelines/~a"
+                                                   id)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePipeline")
@@ -2739,7 +2778,12 @@
                       (common-lisp:apply 'make-delete-preset-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :delete
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2012-09-25/presets/~a" id)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePreset")
@@ -2759,7 +2803,13 @@
                       (common-lisp:apply 'make-list-jobs-by-pipeline-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :get
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2012-09-25/jobsByPipeline/~a"
+                                                   pipelineid)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"ListJobsByPipeline")
@@ -2778,7 +2828,13 @@
                       (common-lisp:apply 'make-list-jobs-by-status-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :get
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2012-09-25/jobsByStatus/~a"
+                                                   status)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"ListJobsByStatus")
@@ -2797,8 +2853,10 @@
                       (common-lisp:apply 'make-list-pipelines-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :get
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPipelines")
                                   ("Version" ,@"2012-09-25"))
@@ -2816,8 +2874,10 @@
                       (common-lisp:apply 'make-list-presets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :get
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPresets")
                                   ("Version" ,@"2012-09-25"))
@@ -2835,7 +2895,12 @@
                       (common-lisp:apply 'make-read-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :get
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2012-09-25/jobs/~a" id)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"ReadJob")
@@ -2854,7 +2919,13 @@
                       (common-lisp:apply 'make-read-pipeline-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :get
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2012-09-25/pipelines/~a"
+                                                   id)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"ReadPipeline")
@@ -2873,7 +2944,12 @@
                       (common-lisp:apply 'make-read-preset-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :get
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2012-09-25/presets/~a" id)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"ReadPreset")
@@ -2893,8 +2969,10 @@
                       (common-lisp:apply 'make-test-role-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TestRole")
                                   ("Version" ,@"2012-09-25"))
@@ -2915,7 +2993,13 @@
                       (common-lisp:apply 'make-update-pipeline-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :put
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2012-09-25/pipelines/~a"
+                                                   id)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdatePipeline")
@@ -2935,7 +3019,13 @@
                        'make-update-pipeline-notifications-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :post
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2012-09-25/pipelines/~a/notifications"
+                                                   id)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdatePipelineNotifications")
@@ -2954,7 +3044,13 @@
                       (common-lisp:apply 'make-update-pipeline-status-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elastictranscoder" :method :post
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "elastictranscoder")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2012-09-25/pipelines/~a/status"
+                                                   id)
                                :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdatePipelineStatus")

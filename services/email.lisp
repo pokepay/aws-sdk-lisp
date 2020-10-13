@@ -7,12 +7,17 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/email)
+
 (common-lisp:progn
  (common-lisp:defstruct (add-header-action (:copier common-lisp:nil))
-   (header-name (common-lisp:error ":header-name is required") :type
-    (common-lisp:or header-name common-lisp:null))
-   (header-value (common-lisp:error ":header-value is required") :type
-    (common-lisp:or header-value common-lisp:null)))
+   (header-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":header-name is required"))
+    :type (common-lisp:or header-name common-lisp:null))
+   (header-value
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":header-value is required"))
+    :type (common-lisp:or header-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-header-action 'make-add-header-action))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -77,14 +82,18 @@
  (common-lisp:defstruct (bounce-action (:copier common-lisp:nil))
    (topic-arn common-lisp:nil :type
     (common-lisp:or amazon-resource-name common-lisp:null))
-   (smtp-reply-code (common-lisp:error ":smtp-reply-code is required") :type
-    (common-lisp:or bounce-smtp-reply-code common-lisp:null))
+   (smtp-reply-code
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":smtp-reply-code is required"))
+    :type (common-lisp:or bounce-smtp-reply-code common-lisp:null))
    (status-code common-lisp:nil :type
     (common-lisp:or bounce-status-code common-lisp:null))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or bounce-message common-lisp:null))
-   (sender (common-lisp:error ":sender is required") :type
-    (common-lisp:or address common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or bounce-message common-lisp:null))
+   (sender
+    (common-lisp:error #A((19) common-lisp:base-char . ":sender is required"))
+    :type (common-lisp:or address common-lisp:null)))
  (common-lisp:export (common-lisp:list 'bounce-action 'make-bounce-action))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape bounce-action))
@@ -120,8 +129,10 @@
 (common-lisp:deftype bounce-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (bounced-recipient-info (:copier common-lisp:nil))
-   (recipient (common-lisp:error ":recipient is required") :type
-    (common-lisp:or address common-lisp:null))
+   (recipient
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":recipient is required"))
+    :type (common-lisp:or address common-lisp:null))
    (recipient-arn common-lisp:nil :type
     (common-lisp:or amazon-resource-name common-lisp:null))
    (bounce-type common-lisp:nil :type
@@ -184,11 +195,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (clone-receipt-rule-set-request (:copier common-lisp:nil))
-   (rule-set-name (common-lisp:error ":rule-set-name is required") :type
-    (common-lisp:or receipt-rule-set-name common-lisp:null))
+   (rule-set-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-name is required"))
+    :type (common-lisp:or receipt-rule-set-name common-lisp:null))
    (original-rule-set-name
-    (common-lisp:error ":original-rule-set-name is required") :type
-    (common-lisp:or receipt-rule-set-name common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":original-rule-set-name is required"))
+    :type (common-lisp:or receipt-rule-set-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'clone-receipt-rule-set-request
                     'make-clone-receipt-rule-set-request))
@@ -221,7 +235,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (cloud-watch-destination (:copier common-lisp:nil))
    (dimension-configurations
-    (common-lisp:error ":dimension-configurations is required") :type
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":dimension-configurations is required"))
+    :type
     (common-lisp:or cloud-watch-dimension-configurations common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cloud-watch-destination 'make-cloud-watch-destination))
@@ -238,14 +254,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (cloud-watch-dimension-configuration (:copier common-lisp:nil))
-   (dimension-name (common-lisp:error ":dimension-name is required") :type
-    (common-lisp:or dimension-name common-lisp:null))
+   (dimension-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":dimension-name is required"))
+    :type (common-lisp:or dimension-name common-lisp:null))
    (dimension-value-source
-    (common-lisp:error ":dimension-value-source is required") :type
-    (common-lisp:or dimension-value-source common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":dimension-value-source is required"))
+    :type (common-lisp:or dimension-value-source common-lisp:null))
    (default-dimension-value
-    (common-lisp:error ":default-dimension-value is required") :type
-    (common-lisp:or default-dimension-value common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":default-dimension-value is required"))
+    :type (common-lisp:or default-dimension-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cloud-watch-dimension-configuration
                     'make-cloud-watch-dimension-configuration))
@@ -280,8 +300,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (configuration-set (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or configuration-set-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or configuration-set-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'configuration-set 'make-configuration-set))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -349,8 +370,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (content (:copier common-lisp:nil))
-   (data (common-lisp:error ":data is required") :type
-    (common-lisp:or message-data common-lisp:null))
+   (data
+    (common-lisp:error #A((17) common-lisp:base-char . ":data is required"))
+    :type (common-lisp:or message-data common-lisp:null))
    (charset common-lisp:nil :type (common-lisp:or charset common-lisp:null)))
  (common-lisp:export (common-lisp:list 'content 'make-content))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -372,9 +394,12 @@
      (create-configuration-set-event-destination-request
       (:copier common-lisp:nil))
    (configuration-set-name
-    (common-lisp:error ":configuration-set-name is required") :type
-    (common-lisp:or configuration-set-name common-lisp:null))
-   (event-destination (common-lisp:error ":event-destination is required")
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":configuration-set-name is required"))
+    :type (common-lisp:or configuration-set-name common-lisp:null))
+   (event-destination
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":event-destination is required"))
     :type (common-lisp:or event-destination common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-configuration-set-event-destination-request
@@ -409,7 +434,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-configuration-set-request (:copier common-lisp:nil))
-   (configuration-set (common-lisp:error ":configuration-set is required")
+   (configuration-set
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":configuration-set is required"))
     :type (common-lisp:or configuration-set common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-configuration-set-request
@@ -438,8 +465,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-receipt-filter-request (:copier common-lisp:nil))
-   (filter (common-lisp:error ":filter is required") :type
-    (common-lisp:or receipt-filter common-lisp:null)))
+   (filter
+    (common-lisp:error #A((19) common-lisp:base-char . ":filter is required"))
+    :type (common-lisp:or receipt-filter common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-receipt-filter-request
                     'make-create-receipt-filter-request))
@@ -466,12 +494,15 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-receipt-rule-request (:copier common-lisp:nil))
-   (rule-set-name (common-lisp:error ":rule-set-name is required") :type
-    (common-lisp:or receipt-rule-set-name common-lisp:null))
+   (rule-set-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-name is required"))
+    :type (common-lisp:or receipt-rule-set-name common-lisp:null))
    (after common-lisp:nil :type
     (common-lisp:or receipt-rule-name common-lisp:null))
-   (rule (common-lisp:error ":rule is required") :type
-    (common-lisp:or receipt-rule common-lisp:null)))
+   (rule
+    (common-lisp:error #A((17) common-lisp:base-char . ":rule is required"))
+    :type (common-lisp:or receipt-rule common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-receipt-rule-request
                     'make-create-receipt-rule-request))
@@ -509,8 +540,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-receipt-rule-set-request (:copier common-lisp:nil))
-   (rule-set-name (common-lisp:error ":rule-set-name is required") :type
-    (common-lisp:or receipt-rule-set-name common-lisp:null)))
+   (rule-set-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-name is required"))
+    :type (common-lisp:or receipt-rule-set-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-receipt-rule-set-request
                     'make-create-receipt-rule-set-request))
@@ -542,11 +575,13 @@
      (delete-configuration-set-event-destination-request
       (:copier common-lisp:nil))
    (configuration-set-name
-    (common-lisp:error ":configuration-set-name is required") :type
-    (common-lisp:or configuration-set-name common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":configuration-set-name is required"))
+    :type (common-lisp:or configuration-set-name common-lisp:null))
    (event-destination-name
-    (common-lisp:error ":event-destination-name is required") :type
-    (common-lisp:or event-destination-name common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":event-destination-name is required"))
+    :type (common-lisp:or event-destination-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-configuration-set-event-destination-request
                     'make-delete-configuration-set-event-destination-request))
@@ -581,8 +616,9 @@
  (common-lisp:defstruct
      (delete-configuration-set-request (:copier common-lisp:nil))
    (configuration-set-name
-    (common-lisp:error ":configuration-set-name is required") :type
-    (common-lisp:or configuration-set-name common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":configuration-set-name is required"))
+    :type (common-lisp:or configuration-set-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-configuration-set-request
                     'make-delete-configuration-set-request))
@@ -610,10 +646,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-identity-policy-request (:copier common-lisp:nil))
-   (identity (common-lisp:error ":identity is required") :type
-    (common-lisp:or identity common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or policy-name common-lisp:null)))
+   (identity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":identity is required"))
+    :type (common-lisp:or identity common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or policy-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-identity-policy-request
                     'make-delete-identity-policy-request))
@@ -645,8 +685,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-identity-request (:copier common-lisp:nil))
-   (identity (common-lisp:error ":identity is required") :type
-    (common-lisp:or identity common-lisp:null)))
+   (identity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":identity is required"))
+    :type (common-lisp:or identity common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-identity-request 'make-delete-identity-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -671,8 +713,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-receipt-filter-request (:copier common-lisp:nil))
-   (filter-name (common-lisp:error ":filter-name is required") :type
-    (common-lisp:or receipt-filter-name common-lisp:null)))
+   (filter-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":filter-name is required"))
+    :type (common-lisp:or receipt-filter-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-receipt-filter-request
                     'make-delete-receipt-filter-request))
@@ -699,10 +743,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-receipt-rule-request (:copier common-lisp:nil))
-   (rule-set-name (common-lisp:error ":rule-set-name is required") :type
-    (common-lisp:or receipt-rule-set-name common-lisp:null))
-   (rule-name (common-lisp:error ":rule-name is required") :type
-    (common-lisp:or receipt-rule-name common-lisp:null)))
+   (rule-set-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-name is required"))
+    :type (common-lisp:or receipt-rule-set-name common-lisp:null))
+   (rule-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":rule-name is required"))
+    :type (common-lisp:or receipt-rule-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-receipt-rule-request
                     'make-delete-receipt-rule-request))
@@ -735,8 +783,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-receipt-rule-set-request (:copier common-lisp:nil))
-   (rule-set-name (common-lisp:error ":rule-set-name is required") :type
-    (common-lisp:or receipt-rule-set-name common-lisp:null)))
+   (rule-set-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-name is required"))
+    :type (common-lisp:or receipt-rule-set-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-receipt-rule-set-request
                     'make-delete-receipt-rule-set-request))
@@ -764,8 +814,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-verified-email-address-request (:copier common-lisp:nil))
-   (email-address (common-lisp:error ":email-address is required") :type
-    (common-lisp:or address common-lisp:null)))
+   (email-address
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":email-address is required"))
+    :type (common-lisp:or address common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-verified-email-address-request
                     'make-delete-verified-email-address-request))
@@ -819,8 +871,9 @@
  (common-lisp:defstruct
      (describe-configuration-set-request (:copier common-lisp:nil))
    (configuration-set-name
-    (common-lisp:error ":configuration-set-name is required") :type
-    (common-lisp:or configuration-set-name common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":configuration-set-name is required"))
+    :type (common-lisp:or configuration-set-name common-lisp:null))
    (configuration-set-attribute-names common-lisp:nil :type
     (common-lisp:or configuration-set-attribute-list common-lisp:null)))
  (common-lisp:export
@@ -869,10 +922,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-receipt-rule-request (:copier common-lisp:nil))
-   (rule-set-name (common-lisp:error ":rule-set-name is required") :type
-    (common-lisp:or receipt-rule-set-name common-lisp:null))
-   (rule-name (common-lisp:error ":rule-name is required") :type
-    (common-lisp:or receipt-rule-name common-lisp:null)))
+   (rule-set-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-name is required"))
+    :type (common-lisp:or receipt-rule-set-name common-lisp:null))
+   (rule-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":rule-name is required"))
+    :type (common-lisp:or receipt-rule-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-receipt-rule-request
                     'make-describe-receipt-rule-request))
@@ -911,8 +968,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-receipt-rule-set-request (:copier common-lisp:nil))
-   (rule-set-name (common-lisp:error ":rule-set-name is required") :type
-    (common-lisp:or receipt-rule-set-name common-lisp:null)))
+   (rule-set-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-name is required"))
+    :type (common-lisp:or receipt-rule-set-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-receipt-rule-set-request
                     'make-describe-receipt-rule-set-request))
@@ -993,12 +1052,14 @@
 (common-lisp:deftype enabled () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (event-destination (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or event-destination-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or event-destination-name common-lisp:null))
    (enabled common-lisp:nil :type (common-lisp:or enabled common-lisp:null))
    (matching-event-types
-    (common-lisp:error ":matching-event-types is required") :type
-    (common-lisp:or event-types common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":matching-event-types is required"))
+    :type (common-lisp:or event-types common-lisp:null))
    (kinesis-firehose-destination common-lisp:nil :type
     (common-lisp:or kinesis-firehose-destination common-lisp:null))
    (cloud-watch-destination common-lisp:nil :type
@@ -1110,10 +1171,12 @@
 (common-lisp:deftype explanation () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (extension-field (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or extension-field-name common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or extension-field-value common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or extension-field-name common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or extension-field-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'extension-field 'make-extension-field))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape extension-field))
@@ -1141,8 +1204,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-identity-dkim-attributes-request (:copier common-lisp:nil))
-   (identities (common-lisp:error ":identities is required") :type
-    (common-lisp:or identity-list common-lisp:null)))
+   (identities
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":identities is required"))
+    :type (common-lisp:or identity-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-dkim-attributes-request
                     'make-get-identity-dkim-attributes-request))
@@ -1159,8 +1224,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-identity-dkim-attributes-response (:copier common-lisp:nil))
-   (dkim-attributes (common-lisp:error ":dkim-attributes is required") :type
-    (common-lisp:or dkim-attributes common-lisp:null)))
+   (dkim-attributes
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":dkim-attributes is required"))
+    :type (common-lisp:or dkim-attributes common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-dkim-attributes-response
                     'make-get-identity-dkim-attributes-response))
@@ -1178,8 +1245,10 @@
  (common-lisp:defstruct
      (get-identity-mail-from-domain-attributes-request
       (:copier common-lisp:nil))
-   (identities (common-lisp:error ":identities is required") :type
-    (common-lisp:or identity-list common-lisp:null)))
+   (identities
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":identities is required"))
+    :type (common-lisp:or identity-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-mail-from-domain-attributes-request
                     'make-get-identity-mail-from-domain-attributes-request))
@@ -1198,8 +1267,10 @@
      (get-identity-mail-from-domain-attributes-response
       (:copier common-lisp:nil))
    (mail-from-domain-attributes
-    (common-lisp:error ":mail-from-domain-attributes is required") :type
-    (common-lisp:or mail-from-domain-attributes common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":mail-from-domain-attributes is required"))
+    :type (common-lisp:or mail-from-domain-attributes common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-mail-from-domain-attributes-response
                     'make-get-identity-mail-from-domain-attributes-response))
@@ -1216,8 +1287,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-identity-notification-attributes-request (:copier common-lisp:nil))
-   (identities (common-lisp:error ":identities is required") :type
-    (common-lisp:or identity-list common-lisp:null)))
+   (identities
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":identities is required"))
+    :type (common-lisp:or identity-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-notification-attributes-request
                     'make-get-identity-notification-attributes-request))
@@ -1235,8 +1308,9 @@
  (common-lisp:defstruct
      (get-identity-notification-attributes-response (:copier common-lisp:nil))
    (notification-attributes
-    (common-lisp:error ":notification-attributes is required") :type
-    (common-lisp:or notification-attributes common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":notification-attributes is required"))
+    :type (common-lisp:or notification-attributes common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-notification-attributes-response
                     'make-get-identity-notification-attributes-response))
@@ -1253,10 +1327,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-identity-policies-request (:copier common-lisp:nil))
-   (identity (common-lisp:error ":identity is required") :type
-    (common-lisp:or identity common-lisp:null))
-   (policy-names (common-lisp:error ":policy-names is required") :type
-    (common-lisp:or policy-name-list common-lisp:null)))
+   (identity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":identity is required"))
+    :type (common-lisp:or identity common-lisp:null))
+   (policy-names
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":policy-names is required"))
+    :type (common-lisp:or policy-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-policies-request
                     'make-get-identity-policies-request))
@@ -1278,8 +1356,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-identity-policies-response (:copier common-lisp:nil))
-   (policies (common-lisp:error ":policies is required") :type
-    (common-lisp:or policy-map common-lisp:null)))
+   (policies
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":policies is required"))
+    :type (common-lisp:or policy-map common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-policies-response
                     'make-get-identity-policies-response))
@@ -1296,8 +1376,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-identity-verification-attributes-request (:copier common-lisp:nil))
-   (identities (common-lisp:error ":identities is required") :type
-    (common-lisp:or identity-list common-lisp:null)))
+   (identities
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":identities is required"))
+    :type (common-lisp:or identity-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-verification-attributes-request
                     'make-get-identity-verification-attributes-request))
@@ -1315,8 +1397,9 @@
  (common-lisp:defstruct
      (get-identity-verification-attributes-response (:copier common-lisp:nil))
    (verification-attributes
-    (common-lisp:error ":verification-attributes is required") :type
-    (common-lisp:or verification-attributes common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":verification-attributes is required"))
+    :type (common-lisp:or verification-attributes common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-verification-attributes-response
                     'make-get-identity-verification-attributes-response))
@@ -1383,11 +1466,14 @@
 (common-lisp:deftype identity () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (identity-dkim-attributes (:copier common-lisp:nil))
-   (dkim-enabled (common-lisp:error ":dkim-enabled is required") :type
-    (common-lisp:or enabled common-lisp:null))
+   (dkim-enabled
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":dkim-enabled is required"))
+    :type (common-lisp:or enabled common-lisp:null))
    (dkim-verification-status
-    (common-lisp:error ":dkim-verification-status is required") :type
-    (common-lisp:or verification-status common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":dkim-verification-status is required"))
+    :type (common-lisp:or verification-status common-lisp:null))
    (dkim-tokens common-lisp:nil :type
     (common-lisp:or verification-token-list common-lisp:null)))
  (common-lisp:export
@@ -1422,14 +1508,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (identity-mail-from-domain-attributes (:copier common-lisp:nil))
-   (mail-from-domain (common-lisp:error ":mail-from-domain is required") :type
-    (common-lisp:or mail-from-domain-name common-lisp:null))
+   (mail-from-domain
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":mail-from-domain is required"))
+    :type (common-lisp:or mail-from-domain-name common-lisp:null))
    (mail-from-domain-status
-    (common-lisp:error ":mail-from-domain-status is required") :type
-    (common-lisp:or custom-mail-from-status common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":mail-from-domain-status is required"))
+    :type (common-lisp:or custom-mail-from-status common-lisp:null))
    (behavior-on-mxfailure
-    (common-lisp:error ":behavior-on-mxfailure is required") :type
-    (common-lisp:or behavior-on-mxfailure common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":behavior-on-mxfailure is required"))
+    :type (common-lisp:or behavior-on-mxfailure common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'identity-mail-from-domain-attributes
                     'make-identity-mail-from-domain-attributes))
@@ -1456,13 +1546,21 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (identity-notification-attributes (:copier common-lisp:nil))
-   (bounce-topic (common-lisp:error ":bounce-topic is required") :type
-    (common-lisp:or notification-topic common-lisp:null))
-   (complaint-topic (common-lisp:error ":complaint-topic is required") :type
-    (common-lisp:or notification-topic common-lisp:null))
-   (delivery-topic (common-lisp:error ":delivery-topic is required") :type
-    (common-lisp:or notification-topic common-lisp:null))
-   (forwarding-enabled (common-lisp:error ":forwarding-enabled is required")
+   (bounce-topic
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":bounce-topic is required"))
+    :type (common-lisp:or notification-topic common-lisp:null))
+   (complaint-topic
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":complaint-topic is required"))
+    :type (common-lisp:or notification-topic common-lisp:null))
+   (delivery-topic
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":delivery-topic is required"))
+    :type (common-lisp:or notification-topic common-lisp:null))
+   (forwarding-enabled
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":forwarding-enabled is required"))
     :type (common-lisp:or enabled common-lisp:null))
    (headers-in-bounce-notifications-enabled common-lisp:nil :type
     (common-lisp:or enabled common-lisp:null))
@@ -1517,7 +1615,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (identity-verification-attributes (:copier common-lisp:nil))
-   (verification-status (common-lisp:error ":verification-status is required")
+   (verification-status
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":verification-status is required"))
     :type (common-lisp:or verification-status common-lisp:null))
    (verification-token common-lisp:nil :type
     (common-lisp:or verification-token common-lisp:null)))
@@ -1691,9 +1791,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (kinesis-firehose-destination (:copier common-lisp:nil))
-   (iamrole-arn (common-lisp:error ":iamrole-arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (delivery-stream-arn (common-lisp:error ":delivery-stream-arn is required")
+   (iamrole-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":iamrole-arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
+   (delivery-stream-arn
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":delivery-stream-arn is required"))
     :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'kinesis-firehose-destination
@@ -1717,8 +1821,10 @@
  (common-lisp:defstruct (lambda-action (:copier common-lisp:nil))
    (topic-arn common-lisp:nil :type
     (common-lisp:or amazon-resource-name common-lisp:null))
-   (function-arn (common-lisp:error ":function-arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (function-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":function-arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (invocation-type common-lisp:nil :type
     (common-lisp:or invocation-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'lambda-action 'make-lambda-action))
@@ -1832,8 +1938,10 @@
                                                 'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-identities-response (:copier common-lisp:nil))
-   (identities (common-lisp:error ":identities is required") :type
-    (common-lisp:or identity-list common-lisp:null))
+   (identities
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":identities is required"))
+    :type (common-lisp:or identity-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null)))
  (common-lisp:export
@@ -1856,8 +1964,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-identity-policies-request (:copier common-lisp:nil))
-   (identity (common-lisp:error ":identity is required") :type
-    (common-lisp:or identity common-lisp:null)))
+   (identity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":identity is required"))
+    :type (common-lisp:or identity common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-identity-policies-request
                     'make-list-identity-policies-request))
@@ -1874,8 +1984,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-identity-policies-response (:copier common-lisp:nil))
-   (policy-names (common-lisp:error ":policy-names is required") :type
-    (common-lisp:or policy-name-list common-lisp:null)))
+   (policy-names
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":policy-names is required"))
+    :type (common-lisp:or policy-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-identity-policies-response
                     'make-list-identity-policies-response))
@@ -2002,10 +2114,12 @@
 (common-lisp:deftype max-send-rate () 'common-lisp:double-float)
 (common-lisp:progn
  (common-lisp:defstruct (message (:copier common-lisp:nil))
-   (subject (common-lisp:error ":subject is required") :type
-    (common-lisp:or content common-lisp:null))
-   (body (common-lisp:error ":body is required") :type
-    (common-lisp:or body common-lisp:null)))
+   (subject
+    (common-lisp:error #A((20) common-lisp:base-char . ":subject is required"))
+    :type (common-lisp:or content common-lisp:null))
+   (body
+    (common-lisp:error #A((17) common-lisp:base-char . ":body is required"))
+    :type (common-lisp:or body common-lisp:null)))
  (common-lisp:export (common-lisp:list 'message 'make-message))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape message))
@@ -2023,8 +2137,10 @@
 (common-lisp:deftype message-data () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (message-dsn (:copier common-lisp:nil))
-   (reporting-mta (common-lisp:error ":reporting-mta is required") :type
-    (common-lisp:or reporting-mta common-lisp:null))
+   (reporting-mta
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":reporting-mta is required"))
+    :type (common-lisp:or reporting-mta common-lisp:null))
    (arrival-date common-lisp:nil :type
     (common-lisp:or arrival-date common-lisp:null))
    (extension-fields common-lisp:nil :type
@@ -2058,10 +2174,12 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (message-tag (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or message-tag-name common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or message-tag-value common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or message-tag-name common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or message-tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'message-tag 'make-message-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape message-tag))
@@ -2113,12 +2231,17 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (put-identity-policy-request (:copier common-lisp:nil))
-   (identity (common-lisp:error ":identity is required") :type
-    (common-lisp:or identity common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or policy-name common-lisp:null))
-   (policy (common-lisp:error ":policy is required") :type
-    (common-lisp:or policy common-lisp:null)))
+   (identity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":identity is required"))
+    :type (common-lisp:or identity common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or policy-name common-lisp:null))
+   (policy
+    (common-lisp:error #A((19) common-lisp:base-char . ":policy is required"))
+    :type (common-lisp:or policy common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-identity-policy-request
                     'make-put-identity-policy-request))
@@ -2155,8 +2278,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (raw-message (:copier common-lisp:nil))
-   (data (common-lisp:error ":data is required") :type
-    (common-lisp:or raw-message-data common-lisp:null)))
+   (data
+    (common-lisp:error #A((17) common-lisp:base-char . ":data is required"))
+    :type (common-lisp:or raw-message-data common-lisp:null)))
  (common-lisp:export (common-lisp:list 'raw-message 'make-raw-message))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape raw-message))
@@ -2232,10 +2356,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (receipt-filter (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or receipt-filter-name common-lisp:null))
-   (ip-filter (common-lisp:error ":ip-filter is required") :type
-    (common-lisp:or receipt-ip-filter common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or receipt-filter-name common-lisp:null))
+   (ip-filter
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":ip-filter is required"))
+    :type (common-lisp:or receipt-ip-filter common-lisp:null)))
  (common-lisp:export (common-lisp:list 'receipt-filter 'make-receipt-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape receipt-filter))
@@ -2262,10 +2389,12 @@
 (common-lisp:deftype receipt-filter-policy () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (receipt-ip-filter (:copier common-lisp:nil))
-   (policy (common-lisp:error ":policy is required") :type
-    (common-lisp:or receipt-filter-policy common-lisp:null))
-   (cidr (common-lisp:error ":cidr is required") :type
-    (common-lisp:or cidr common-lisp:null)))
+   (policy
+    (common-lisp:error #A((19) common-lisp:base-char . ":policy is required"))
+    :type (common-lisp:or receipt-filter-policy common-lisp:null))
+   (cidr
+    (common-lisp:error #A((17) common-lisp:base-char . ":cidr is required"))
+    :type (common-lisp:or cidr common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'receipt-ip-filter 'make-receipt-ip-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2283,8 +2412,9 @@
                                                 'cidr))))))
 (common-lisp:progn
  (common-lisp:defstruct (receipt-rule (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or receipt-rule-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or receipt-rule-name common-lisp:null))
    (enabled common-lisp:nil :type (common-lisp:or enabled common-lisp:null))
    (tls-policy common-lisp:nil :type
     (common-lisp:or tls-policy common-lisp:null))
@@ -2384,12 +2514,14 @@
  (common-lisp:defstruct (recipient-dsn-fields (:copier common-lisp:nil))
    (final-recipient common-lisp:nil :type
     (common-lisp:or address common-lisp:null))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or dsn-action common-lisp:null))
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or dsn-action common-lisp:null))
    (remote-mta common-lisp:nil :type
     (common-lisp:or remote-mta common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or dsn-status common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or dsn-status common-lisp:null))
    (diagnostic-code common-lisp:nil :type
     (common-lisp:or diagnostic-code common-lisp:null))
    (last-attempt-date common-lisp:nil :type
@@ -2448,10 +2580,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (reorder-receipt-rule-set-request (:copier common-lisp:nil))
-   (rule-set-name (common-lisp:error ":rule-set-name is required") :type
-    (common-lisp:or receipt-rule-set-name common-lisp:null))
-   (rule-names (common-lisp:error ":rule-names is required") :type
-    (common-lisp:or receipt-rule-names-list common-lisp:null)))
+   (rule-set-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-name is required"))
+    :type (common-lisp:or receipt-rule-set-name common-lisp:null))
+   (rule-names
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":rule-names is required"))
+    :type (common-lisp:or receipt-rule-names-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reorder-receipt-rule-set-request
                     'make-reorder-receipt-rule-set-request))
@@ -2523,8 +2659,10 @@
  (common-lisp:defstruct (s3action (:copier common-lisp:nil))
    (topic-arn common-lisp:nil :type
     (common-lisp:or amazon-resource-name common-lisp:null))
-   (bucket-name (common-lisp:error ":bucket-name is required") :type
-    (common-lisp:or s3bucket-name common-lisp:null))
+   (bucket-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":bucket-name is required"))
+    :type (common-lisp:or s3bucket-name common-lisp:null))
    (object-key-prefix common-lisp:nil :type
     (common-lisp:or s3key-prefix common-lisp:null))
    (kms-key-arn common-lisp:nil :type
@@ -2557,8 +2695,10 @@
 (common-lisp:deftype s3key-prefix () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (snsaction (:copier common-lisp:nil))
-   (topic-arn (common-lisp:error ":topic-arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (topic-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":topic-arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (encoding common-lisp:nil :type
     (common-lisp:or snsaction-encoding common-lisp:null)))
  (common-lisp:export (common-lisp:list 'snsaction 'make-snsaction))
@@ -2578,8 +2718,10 @@
 (common-lisp:deftype snsaction-encoding () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (snsdestination (:copier common-lisp:nil))
-   (topic-arn (common-lisp:error ":topic-arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (topic-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":topic-arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'snsdestination 'make-snsdestination))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape snsdestination))
@@ -2591,17 +2733,23 @@
                                                 'topic-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (send-bounce-request (:copier common-lisp:nil))
-   (original-message-id (common-lisp:error ":original-message-id is required")
+   (original-message-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":original-message-id is required"))
     :type (common-lisp:or message-id common-lisp:null))
-   (bounce-sender (common-lisp:error ":bounce-sender is required") :type
-    (common-lisp:or address common-lisp:null))
+   (bounce-sender
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":bounce-sender is required"))
+    :type (common-lisp:or address common-lisp:null))
    (explanation common-lisp:nil :type
     (common-lisp:or explanation common-lisp:null))
    (message-dsn common-lisp:nil :type
     (common-lisp:or message-dsn common-lisp:null))
    (bounced-recipient-info-list
-    (common-lisp:error ":bounced-recipient-info-list is required") :type
-    (common-lisp:or bounced-recipient-info-list common-lisp:null))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":bounced-recipient-info-list is required"))
+    :type (common-lisp:or bounced-recipient-info-list common-lisp:null))
    (bounce-sender-arn common-lisp:nil :type
     (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
@@ -2701,12 +2849,16 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (send-email-request (:copier common-lisp:nil))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or address common-lisp:null))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or destination common-lisp:null))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or message common-lisp:null))
+   (source
+    (common-lisp:error #A((19) common-lisp:base-char . ":source is required"))
+    :type (common-lisp:or address common-lisp:null))
+   (destination
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":destination is required"))
+    :type (common-lisp:or destination common-lisp:null))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or message common-lisp:null))
    (reply-to-addresses common-lisp:nil :type
     (common-lisp:or address-list common-lisp:null))
    (return-path common-lisp:nil :type
@@ -2771,8 +2923,10 @@
                                                 'configuration-set-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (send-email-response (:copier common-lisp:nil))
-   (message-id (common-lisp:error ":message-id is required") :type
-    (common-lisp:or message-id common-lisp:null)))
+   (message-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":message-id is required"))
+    :type (common-lisp:or message-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'send-email-response 'make-send-email-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2788,8 +2942,10 @@
    (source common-lisp:nil :type (common-lisp:or address common-lisp:null))
    (destinations common-lisp:nil :type
     (common-lisp:or address-list common-lisp:null))
-   (raw-message (common-lisp:error ":raw-message is required") :type
-    (common-lisp:or raw-message common-lisp:null))
+   (raw-message
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":raw-message is required"))
+    :type (common-lisp:or raw-message common-lisp:null))
    (from-arn common-lisp:nil :type
     (common-lisp:or amazon-resource-name common-lisp:null))
    (source-arn common-lisp:nil :type
@@ -2849,8 +3005,10 @@
                                                 'configuration-set-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (send-raw-email-response (:copier common-lisp:nil))
-   (message-id (common-lisp:error ":message-id is required") :type
-    (common-lisp:or message-id common-lisp:null)))
+   (message-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":message-id is required"))
+    :type (common-lisp:or message-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'send-raw-email-response 'make-send-raw-email-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2896,10 +3054,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-identity-dkim-enabled-request (:copier common-lisp:nil))
-   (identity (common-lisp:error ":identity is required") :type
-    (common-lisp:or identity common-lisp:null))
-   (dkim-enabled (common-lisp:error ":dkim-enabled is required") :type
-    (common-lisp:or enabled common-lisp:null)))
+   (identity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":identity is required"))
+    :type (common-lisp:or identity common-lisp:null))
+   (dkim-enabled
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":dkim-enabled is required"))
+    :type (common-lisp:or enabled common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-identity-dkim-enabled-request
                     'make-set-identity-dkim-enabled-request))
@@ -2933,9 +3095,13 @@
  (common-lisp:defstruct
      (set-identity-feedback-forwarding-enabled-request
       (:copier common-lisp:nil))
-   (identity (common-lisp:error ":identity is required") :type
-    (common-lisp:or identity common-lisp:null))
-   (forwarding-enabled (common-lisp:error ":forwarding-enabled is required")
+   (identity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":identity is required"))
+    :type (common-lisp:or identity common-lisp:null))
+   (forwarding-enabled
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":forwarding-enabled is required"))
     :type (common-lisp:or enabled common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-identity-feedback-forwarding-enabled-request
@@ -2971,12 +3137,17 @@
  (common-lisp:defstruct
      (set-identity-headers-in-notifications-enabled-request
       (:copier common-lisp:nil))
-   (identity (common-lisp:error ":identity is required") :type
-    (common-lisp:or identity common-lisp:null))
-   (notification-type (common-lisp:error ":notification-type is required")
+   (identity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":identity is required"))
+    :type (common-lisp:or identity common-lisp:null))
+   (notification-type
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":notification-type is required"))
     :type (common-lisp:or notification-type common-lisp:null))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or enabled common-lisp:null)))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or enabled common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-identity-headers-in-notifications-enabled-request
                     'make-set-identity-headers-in-notifications-enabled-request))
@@ -3015,8 +3186,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-identity-mail-from-domain-request (:copier common-lisp:nil))
-   (identity (common-lisp:error ":identity is required") :type
-    (common-lisp:or identity common-lisp:null))
+   (identity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":identity is required"))
+    :type (common-lisp:or identity common-lisp:null))
    (mail-from-domain common-lisp:nil :type
     (common-lisp:or mail-from-domain-name common-lisp:null))
    (behavior-on-mxfailure common-lisp:nil :type
@@ -3058,9 +3231,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-identity-notification-topic-request (:copier common-lisp:nil))
-   (identity (common-lisp:error ":identity is required") :type
-    (common-lisp:or identity common-lisp:null))
-   (notification-type (common-lisp:error ":notification-type is required")
+   (identity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":identity is required"))
+    :type (common-lisp:or identity common-lisp:null))
+   (notification-type
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":notification-type is required"))
     :type (common-lisp:or notification-type common-lisp:null))
    (sns-topic common-lisp:nil :type
     (common-lisp:or notification-topic common-lisp:null)))
@@ -3101,10 +3278,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-receipt-rule-position-request (:copier common-lisp:nil))
-   (rule-set-name (common-lisp:error ":rule-set-name is required") :type
-    (common-lisp:or receipt-rule-set-name common-lisp:null))
-   (rule-name (common-lisp:error ":rule-name is required") :type
-    (common-lisp:or receipt-rule-name common-lisp:null))
+   (rule-set-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-name is required"))
+    :type (common-lisp:or receipt-rule-set-name common-lisp:null))
+   (rule-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":rule-name is required"))
+    :type (common-lisp:or receipt-rule-name common-lisp:null))
    (after common-lisp:nil :type
     (common-lisp:or receipt-rule-name common-lisp:null)))
  (common-lisp:export
@@ -3143,8 +3324,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (stop-action (:copier common-lisp:nil))
-   (scope (common-lisp:error ":scope is required") :type
-    (common-lisp:or stop-scope common-lisp:null))
+   (scope
+    (common-lisp:error #A((18) common-lisp:base-char . ":scope is required"))
+    :type (common-lisp:or stop-scope common-lisp:null))
    (topic-arn common-lisp:nil :type
     (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'stop-action 'make-stop-action))
@@ -3169,9 +3351,12 @@
      (update-configuration-set-event-destination-request
       (:copier common-lisp:nil))
    (configuration-set-name
-    (common-lisp:error ":configuration-set-name is required") :type
-    (common-lisp:or configuration-set-name common-lisp:null))
-   (event-destination (common-lisp:error ":event-destination is required")
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":configuration-set-name is required"))
+    :type (common-lisp:or configuration-set-name common-lisp:null))
+   (event-destination
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":event-destination is required"))
     :type (common-lisp:or event-destination common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-configuration-set-event-destination-request
@@ -3205,10 +3390,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (update-receipt-rule-request (:copier common-lisp:nil))
-   (rule-set-name (common-lisp:error ":rule-set-name is required") :type
-    (common-lisp:or receipt-rule-set-name common-lisp:null))
-   (rule (common-lisp:error ":rule is required") :type
-    (common-lisp:or receipt-rule common-lisp:null)))
+   (rule-set-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rule-set-name is required"))
+    :type (common-lisp:or receipt-rule-set-name common-lisp:null))
+   (rule
+    (common-lisp:error #A((17) common-lisp:base-char . ":rule is required"))
+    :type (common-lisp:or receipt-rule common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-receipt-rule-request
                     'make-update-receipt-rule-request))
@@ -3256,8 +3444,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (verify-domain-dkim-request (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain common-lisp:null)))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'verify-domain-dkim-request
                     'make-verify-domain-dkim-request))
@@ -3273,8 +3462,10 @@
                                                 'domain))))))
 (common-lisp:progn
  (common-lisp:defstruct (verify-domain-dkim-response (:copier common-lisp:nil))
-   (dkim-tokens (common-lisp:error ":dkim-tokens is required") :type
-    (common-lisp:or verification-token-list common-lisp:null)))
+   (dkim-tokens
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":dkim-tokens is required"))
+    :type (common-lisp:or verification-token-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'verify-domain-dkim-response
                     'make-verify-domain-dkim-response))
@@ -3291,8 +3482,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (verify-domain-identity-request (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain common-lisp:null)))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'verify-domain-identity-request
                     'make-verify-domain-identity-request))
@@ -3309,7 +3501,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (verify-domain-identity-response (:copier common-lisp:nil))
-   (verification-token (common-lisp:error ":verification-token is required")
+   (verification-token
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":verification-token is required"))
     :type (common-lisp:or verification-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'verify-domain-identity-response
@@ -3327,8 +3521,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (verify-email-address-request (:copier common-lisp:nil))
-   (email-address (common-lisp:error ":email-address is required") :type
-    (common-lisp:or address common-lisp:null)))
+   (email-address
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":email-address is required"))
+    :type (common-lisp:or address common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'verify-email-address-request
                     'make-verify-email-address-request))
@@ -3345,8 +3541,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (verify-email-identity-request (:copier common-lisp:nil))
-   (email-address (common-lisp:error ":email-address is required") :type
-    (common-lisp:or address common-lisp:null)))
+   (email-address
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":email-address is required"))
+    :type (common-lisp:or address common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'verify-email-identity-request
                     'make-verify-email-identity-request))
@@ -3375,8 +3573,10 @@
  (common-lisp:defstruct (workmail-action (:copier common-lisp:nil))
    (topic-arn common-lisp:nil :type
     (common-lisp:or amazon-resource-name common-lisp:null))
-   (organization-arn (common-lisp:error ":organization-arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (organization-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":organization-arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'workmail-action 'make-workmail-action))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape workmail-action))
@@ -3402,7 +3602,8 @@
                       (common-lisp:apply 'make-clone-receipt-rule-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CloneReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))
@@ -3420,7 +3621,8 @@
                       (common-lisp:apply 'make-create-configuration-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateConfigurationSet")
                                   ("Version" ,@"2010-12-01"))
@@ -3440,7 +3642,8 @@
                        'make-create-configuration-set-event-destination-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"CreateConfigurationSetEventDestination")
@@ -3460,7 +3663,8 @@
                       (common-lisp:apply 'make-create-receipt-filter-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateReceiptFilter")
                                   ("Version" ,@"2010-12-01"))
@@ -3478,7 +3682,8 @@
                       (common-lisp:apply 'make-create-receipt-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateReceiptRule")
                                   ("Version" ,@"2010-12-01"))
@@ -3496,7 +3701,8 @@
                       (common-lisp:apply 'make-create-receipt-rule-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))
@@ -3514,7 +3720,8 @@
                       (common-lisp:apply 'make-delete-configuration-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConfigurationSet")
                                   ("Version" ,@"2010-12-01"))
@@ -3535,7 +3742,8 @@
                        'make-delete-configuration-set-event-destination-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeleteConfigurationSetEventDestination")
@@ -3555,7 +3763,8 @@
                       (common-lisp:apply 'make-delete-identity-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIdentity")
                                   ("Version" ,@"2010-12-01"))
@@ -3573,7 +3782,8 @@
                       (common-lisp:apply 'make-delete-identity-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIdentityPolicy")
                                   ("Version" ,@"2010-12-01"))
@@ -3591,7 +3801,8 @@
                       (common-lisp:apply 'make-delete-receipt-filter-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReceiptFilter")
                                   ("Version" ,@"2010-12-01"))
@@ -3609,7 +3820,8 @@
                       (common-lisp:apply 'make-delete-receipt-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReceiptRule")
                                   ("Version" ,@"2010-12-01"))
@@ -3627,7 +3839,8 @@
                       (common-lisp:apply 'make-delete-receipt-rule-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))
@@ -3646,7 +3859,8 @@
                        'make-delete-verified-email-address-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteVerifiedEmailAddress")
                                   ("Version" ,@"2010-12-01"))
@@ -3657,7 +3871,8 @@
 (common-lisp:progn
  (common-lisp:defun describe-active-receipt-rule-set ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "email" :method :post :params
+    (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeActiveReceiptRuleSet"))
     "DescribeActiveReceiptRuleSetResponse"
@@ -3677,7 +3892,8 @@
                        'make-describe-configuration-set-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeConfigurationSet")
                                   ("Version" ,@"2010-12-01"))
@@ -3695,7 +3911,8 @@
                       (common-lisp:apply 'make-describe-receipt-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReceiptRule")
                                   ("Version" ,@"2010-12-01"))
@@ -3714,7 +3931,8 @@
                        'make-describe-receipt-rule-set-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))
@@ -3733,7 +3951,8 @@
                        'make-get-identity-dkim-attributes-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetIdentityDkimAttributes")
                                   ("Version" ,@"2010-12-01"))
@@ -3752,7 +3971,8 @@
                        'make-get-identity-mail-from-domain-attributes-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetIdentityMailFromDomainAttributes")
@@ -3773,7 +3993,8 @@
                        'make-get-identity-notification-attributes-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetIdentityNotificationAttributes")
@@ -3793,7 +4014,8 @@
                       (common-lisp:apply 'make-get-identity-policies-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetIdentityPolicies")
                                   ("Version" ,@"2010-12-01"))
@@ -3812,7 +4034,8 @@
                        'make-get-identity-verification-attributes-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetIdentityVerificationAttributes")
@@ -3825,14 +4048,16 @@
 (common-lisp:progn
  (common-lisp:defun get-send-quota ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "email" :method :post :params
+    (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                             :method :post :params
                              (common-lisp:cons "Action" "GetSendQuota"))
     "GetSendQuotaResponse" "GetSendQuotaResult"))
  (common-lisp:export 'get-send-quota))
 (common-lisp:progn
  (common-lisp:defun get-send-statistics ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "email" :method :post :params
+    (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                             :method :post :params
                              (common-lisp:cons "Action" "GetSendStatistics"))
     "GetSendStatisticsResponse" "GetSendStatisticsResult"))
  (common-lisp:export 'get-send-statistics))
@@ -3846,7 +4071,8 @@
                       (common-lisp:apply 'make-list-configuration-sets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListConfigurationSets")
                                   ("Version" ,@"2010-12-01"))
@@ -3865,7 +4091,8 @@
                       (common-lisp:apply 'make-list-identities-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListIdentities")
                                   ("Version" ,@"2010-12-01"))
@@ -3883,7 +4110,8 @@
                       (common-lisp:apply 'make-list-identity-policies-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListIdentityPolicies")
                                   ("Version" ,@"2010-12-01"))
@@ -3894,7 +4122,8 @@
 (common-lisp:progn
  (common-lisp:defun list-receipt-filters ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "email" :method :post :params
+    (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                             :method :post :params
                              (common-lisp:cons "Action" "ListReceiptFilters"))
     "ListReceiptFiltersResponse" "ListReceiptFiltersResult"))
  (common-lisp:export 'list-receipt-filters))
@@ -3908,7 +4137,8 @@
                       (common-lisp:apply 'make-list-receipt-rule-sets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListReceiptRuleSets")
                                   ("Version" ,@"2010-12-01"))
@@ -3919,7 +4149,8 @@
 (common-lisp:progn
  (common-lisp:defun list-verified-email-addresses ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "email" :method :post :params
+    (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "ListVerifiedEmailAddresses"))
     "ListVerifiedEmailAddressesResponse" "ListVerifiedEmailAddressesResult"))
@@ -3934,7 +4165,8 @@
                       (common-lisp:apply 'make-put-identity-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutIdentityPolicy")
                                   ("Version" ,@"2010-12-01"))
@@ -3952,7 +4184,8 @@
                       (common-lisp:apply 'make-reorder-receipt-rule-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ReorderReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))
@@ -3974,7 +4207,8 @@
                       (common-lisp:apply 'make-send-bounce-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SendBounce")
                                   ("Version" ,@"2010-12-01"))
@@ -3996,7 +4230,8 @@
                       (common-lisp:apply 'make-send-email-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SendEmail")
                                   ("Version" ,@"2010-12-01"))
@@ -4017,7 +4252,8 @@
                       (common-lisp:apply 'make-send-raw-email-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SendRawEmail")
                                   ("Version" ,@"2010-12-01"))
@@ -4036,7 +4272,8 @@
                        'make-set-active-receipt-rule-set-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetActiveReceiptRuleSet")
                                   ("Version" ,@"2010-12-01"))
@@ -4055,7 +4292,8 @@
                        'make-set-identity-dkim-enabled-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetIdentityDkimEnabled")
                                   ("Version" ,@"2010-12-01"))
@@ -4074,7 +4312,8 @@
                        'make-set-identity-feedback-forwarding-enabled-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"SetIdentityFeedbackForwardingEnabled")
@@ -4096,7 +4335,8 @@
                        'make-set-identity-headers-in-notifications-enabled-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"SetIdentityHeadersInNotificationsEnabled")
@@ -4119,7 +4359,8 @@
                        'make-set-identity-mail-from-domain-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetIdentityMailFromDomain")
                                   ("Version" ,@"2010-12-01"))
@@ -4139,7 +4380,8 @@
                        'make-set-identity-notification-topic-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetIdentityNotificationTopic")
                                   ("Version" ,@"2010-12-01"))
@@ -4159,7 +4401,8 @@
                        'make-set-receipt-rule-position-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetReceiptRulePosition")
                                   ("Version" ,@"2010-12-01"))
@@ -4179,7 +4422,8 @@
                        'make-update-configuration-set-event-destination-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"UpdateConfigurationSetEventDestination")
@@ -4199,7 +4443,8 @@
                       (common-lisp:apply 'make-update-receipt-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateReceiptRule")
                                   ("Version" ,@"2010-12-01"))
@@ -4217,7 +4462,8 @@
                       (common-lisp:apply 'make-verify-domain-dkim-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"VerifyDomainDkim")
                                   ("Version" ,@"2010-12-01"))
@@ -4235,7 +4481,8 @@
                       (common-lisp:apply 'make-verify-domain-identity-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"VerifyDomainIdentity")
                                   ("Version" ,@"2010-12-01"))
@@ -4253,7 +4500,8 @@
                       (common-lisp:apply 'make-verify-email-address-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"VerifyEmailAddress")
                                   ("Version" ,@"2010-12-01"))
@@ -4271,7 +4519,8 @@
                       (common-lisp:apply 'make-verify-email-identity-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "email" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "email")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"VerifyEmailIdentity")
                                   ("Version" ,@"2010-12-01"))

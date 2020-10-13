@@ -7,10 +7,12 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/elasticloadbalancing)
+
 (common-lisp:progn
  (common-lisp:defstruct (access-log (:copier common-lisp:nil))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or access-log-enabled common-lisp:null))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or access-log-enabled common-lisp:null))
    (s3bucket-name common-lisp:nil :type
     (common-lisp:or s3bucket-name common-lisp:null))
    (emit-interval common-lisp:nil :type
@@ -60,9 +62,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-availability-zones-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (availability-zones (common-lisp:error ":availability-zones is required")
+   (availability-zones
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":availability-zones is required"))
     :type (common-lisp:or availability-zones common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-availability-zones-input
@@ -102,10 +108,13 @@
                                                 'availability-zones))))))
 (common-lisp:progn
  (common-lisp:defstruct (add-tags-input (:copier common-lisp:nil))
-   (load-balancer-names (common-lisp:error ":load-balancer-names is required")
+   (load-balancer-names
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":load-balancer-names is required"))
     :type (common-lisp:or load-balancer-names common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'add-tags-input 'make-add-tags-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape add-tags-input))
@@ -194,10 +203,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (apply-security-groups-to-load-balancer-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (security-groups (common-lisp:error ":security-groups is required") :type
-    (common-lisp:or security-groups common-lisp:null)))
+   (security-groups
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":security-groups is required"))
+    :type (common-lisp:or security-groups common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'apply-security-groups-to-load-balancer-input
                     'make-apply-security-groups-to-load-balancer-input))
@@ -237,10 +250,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (attach-load-balancer-to-subnets-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (subnets (common-lisp:error ":subnets is required") :type
-    (common-lisp:or subnets common-lisp:null)))
+   (subnets
+    (common-lisp:error #A((20) common-lisp:base-char . ":subnets is required"))
+    :type (common-lisp:or subnets common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-load-balancer-to-subnets-input
                     'make-attach-load-balancer-to-subnets-input))
@@ -336,10 +352,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (configure-health-check-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (health-check (common-lisp:error ":health-check is required") :type
-    (common-lisp:or health-check common-lisp:null)))
+   (health-check
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":health-check is required"))
+    :type (common-lisp:or health-check common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'configure-health-check-input
                     'make-configure-health-check-input))
@@ -378,8 +398,9 @@
                                                 'health-check))))))
 (common-lisp:progn
  (common-lisp:defstruct (connection-draining (:copier common-lisp:nil))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or connection-draining-enabled common-lisp:null))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or connection-draining-enabled common-lisp:null))
    (timeout common-lisp:nil :type
     (common-lisp:or connection-draining-timeout common-lisp:null)))
  (common-lisp:export
@@ -401,8 +422,10 @@
 (common-lisp:deftype connection-draining-timeout () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (connection-settings (:copier common-lisp:nil))
-   (idle-timeout (common-lisp:error ":idle-timeout is required") :type
-    (common-lisp:or idle-timeout common-lisp:null)))
+   (idle-timeout
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":idle-timeout is required"))
+    :type (common-lisp:or idle-timeout common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'connection-settings 'make-connection-settings))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -417,10 +440,14 @@
 (common-lisp:deftype cookie-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (create-access-point-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (listeners (common-lisp:error ":listeners is required") :type
-    (common-lisp:or listeners common-lisp:null))
+   (listeners
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":listeners is required"))
+    :type (common-lisp:or listeners common-lisp:null))
    (availability-zones common-lisp:nil :type
     (common-lisp:or availability-zones common-lisp:null))
    (subnets common-lisp:nil :type (common-lisp:or subnets common-lisp:null))
@@ -491,12 +518,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-app-cookie-stickiness-policy-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or policy-name common-lisp:null))
-   (cookie-name (common-lisp:error ":cookie-name is required") :type
-    (common-lisp:or cookie-name common-lisp:null)))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or policy-name common-lisp:null))
+   (cookie-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":cookie-name is required"))
+    :type (common-lisp:or cookie-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-app-cookie-stickiness-policy-input
                     'make-create-app-cookie-stickiness-policy-input))
@@ -534,10 +567,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-lbcookie-stickiness-policy-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or policy-name common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or policy-name common-lisp:null))
    (cookie-expiration-period common-lisp:nil :type
     (common-lisp:or cookie-expiration-period common-lisp:null)))
  (common-lisp:export
@@ -577,10 +614,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-load-balancer-listener-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (listeners (common-lisp:error ":listeners is required") :type
-    (common-lisp:or listeners common-lisp:null)))
+   (listeners
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":listeners is required"))
+    :type (common-lisp:or listeners common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-load-balancer-listener-input
                     'make-create-load-balancer-listener-input))
@@ -613,12 +654,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-load-balancer-policy-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or policy-name common-lisp:null))
-   (policy-type-name (common-lisp:error ":policy-type-name is required") :type
-    (common-lisp:or policy-type-name common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or policy-name common-lisp:null))
+   (policy-type-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":policy-type-name is required"))
+    :type (common-lisp:or policy-type-name common-lisp:null))
    (policy-attributes common-lisp:nil :type
     (common-lisp:or policy-attributes common-lisp:null)))
  (common-lisp:export
@@ -663,8 +710,9 @@
 (common-lisp:deftype created-time () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (cross-zone-load-balancing (:copier common-lisp:nil))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or cross-zone-load-balancing-enabled common-lisp:null)))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or cross-zone-load-balancing-enabled common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cross-zone-load-balancing
                     'make-cross-zone-load-balancing))
@@ -683,7 +731,9 @@
 (common-lisp:deftype default-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-access-point-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-access-point-input
@@ -711,9 +761,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-load-balancer-listener-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (load-balancer-ports (common-lisp:error ":load-balancer-ports is required")
+   (load-balancer-ports
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":load-balancer-ports is required"))
     :type (common-lisp:or ports common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-load-balancer-listener-input
@@ -747,10 +801,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-load-balancer-policy-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or policy-name common-lisp:null)))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or policy-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-load-balancer-policy-input
                     'make-delete-load-balancer-policy-input))
@@ -793,10 +851,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (deregister-end-points-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (instances (common-lisp:error ":instances is required") :type
-    (common-lisp:or instances common-lisp:null)))
+   (instances
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":instances is required"))
+    :type (common-lisp:or instances common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-end-points-input
                     'make-deregister-end-points-input))
@@ -940,7 +1002,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-end-point-state-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
    (instances common-lisp:nil :type
     (common-lisp:or instances common-lisp:null)))
@@ -983,7 +1047,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-load-balancer-attributes-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-load-balancer-attributes-input
@@ -1097,7 +1163,9 @@
                                                 'policy-type-descriptions))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-tags-input (:copier common-lisp:nil))
-   (load-balancer-names (common-lisp:error ":load-balancer-names is required")
+   (load-balancer-names
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":load-balancer-names is required"))
     :type (common-lisp:or load-balancer-names-max20 common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-tags-input 'make-describe-tags-input))
@@ -1127,10 +1195,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (detach-load-balancer-from-subnets-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (subnets (common-lisp:error ":subnets is required") :type
-    (common-lisp:or subnets common-lisp:null)))
+   (subnets
+    (common-lisp:error #A((20) common-lisp:base-char . ":subnets is required"))
+    :type (common-lisp:or subnets common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-load-balancer-from-subnets-input
                     'make-detach-load-balancer-from-subnets-input))
@@ -1213,15 +1284,23 @@
 (common-lisp:deftype end-point-port () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (health-check (:copier common-lisp:nil))
-   (target (common-lisp:error ":target is required") :type
-    (common-lisp:or health-check-target common-lisp:null))
-   (interval (common-lisp:error ":interval is required") :type
-    (common-lisp:or health-check-interval common-lisp:null))
-   (timeout (common-lisp:error ":timeout is required") :type
-    (common-lisp:or health-check-timeout common-lisp:null))
-   (unhealthy-threshold (common-lisp:error ":unhealthy-threshold is required")
+   (target
+    (common-lisp:error #A((19) common-lisp:base-char . ":target is required"))
+    :type (common-lisp:or health-check-target common-lisp:null))
+   (interval
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":interval is required"))
+    :type (common-lisp:or health-check-interval common-lisp:null))
+   (timeout
+    (common-lisp:error #A((20) common-lisp:base-char . ":timeout is required"))
+    :type (common-lisp:or health-check-timeout common-lisp:null))
+   (unhealthy-threshold
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":unhealthy-threshold is required"))
     :type (common-lisp:or unhealthy-threshold common-lisp:null))
-   (healthy-threshold (common-lisp:error ":healthy-threshold is required")
+   (healthy-threshold
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":healthy-threshold is required"))
     :type (common-lisp:or healthy-threshold common-lisp:null)))
  (common-lisp:export (common-lisp:list 'health-check 'make-health-check))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1431,14 +1510,20 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (listener (:copier common-lisp:nil))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or protocol common-lisp:null))
-   (load-balancer-port (common-lisp:error ":load-balancer-port is required")
+   (protocol
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":protocol is required"))
+    :type (common-lisp:or protocol common-lisp:null))
+   (load-balancer-port
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-port is required"))
     :type (common-lisp:or access-point-port common-lisp:null))
    (instance-protocol common-lisp:nil :type
     (common-lisp:or protocol common-lisp:null))
-   (instance-port (common-lisp:error ":instance-port is required") :type
-    (common-lisp:or instance-port common-lisp:null))
+   (instance-port
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instance-port is required"))
+    :type (common-lisp:or instance-port common-lisp:null))
    (sslcertificate-id common-lisp:nil :type
     (common-lisp:or sslcertificate-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'listener 'make-listener))
@@ -1720,11 +1805,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (modify-load-balancer-attributes-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
    (load-balancer-attributes
-    (common-lisp:error ":load-balancer-attributes is required") :type
-    (common-lisp:or load-balancer-attributes common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":load-balancer-attributes is required"))
+    :type (common-lisp:or load-balancer-attributes common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-load-balancer-attributes-input
                     'make-modify-load-balancer-attributes-input))
@@ -2038,10 +2126,14 @@
 (common-lisp:deftype reason-code () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (register-end-points-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (instances (common-lisp:error ":instances is required") :type
-    (common-lisp:or instances common-lisp:null)))
+   (instances
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":instances is required"))
+    :type (common-lisp:or instances common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-end-points-input
                     'make-register-end-points-input))
@@ -2080,9 +2172,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-availability-zones-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (availability-zones (common-lisp:error ":availability-zones is required")
+   (availability-zones
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":availability-zones is required"))
     :type (common-lisp:or availability-zones common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-availability-zones-input
@@ -2122,10 +2218,13 @@
                                                 'availability-zones))))))
 (common-lisp:progn
  (common-lisp:defstruct (remove-tags-input (:copier common-lisp:nil))
-   (load-balancer-names (common-lisp:error ":load-balancer-names is required")
+   (load-balancer-names
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":load-balancer-names is required"))
     :type (common-lisp:or load-balancer-names common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-input 'make-remove-tags-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2165,11 +2264,17 @@
  (common-lisp:defstruct
      (set-load-balancer-listener-sslcertificate-input
       (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (load-balancer-port (common-lisp:error ":load-balancer-port is required")
+   (load-balancer-port
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-port is required"))
     :type (common-lisp:or access-point-port common-lisp:null))
-   (sslcertificate-id (common-lisp:error ":sslcertificate-id is required")
+   (sslcertificate-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":sslcertificate-id is required"))
     :type (common-lisp:or sslcertificate-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-load-balancer-listener-sslcertificate-input
@@ -2210,12 +2315,18 @@
  (common-lisp:defstruct
      (set-load-balancer-policies-for-backend-server-input
       (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (instance-port (common-lisp:error ":instance-port is required") :type
-    (common-lisp:or end-point-port common-lisp:null))
-   (policy-names (common-lisp:error ":policy-names is required") :type
-    (common-lisp:or policy-names common-lisp:null)))
+   (instance-port
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instance-port is required"))
+    :type (common-lisp:or end-point-port common-lisp:null))
+   (policy-names
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":policy-names is required"))
+    :type (common-lisp:or policy-names common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-load-balancer-policies-for-backend-server-input
                     'make-set-load-balancer-policies-for-backend-server-input))
@@ -2254,12 +2365,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-load-balancer-policies-of-listener-input (:copier common-lisp:nil))
-   (load-balancer-name (common-lisp:error ":load-balancer-name is required")
+   (load-balancer-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-name is required"))
     :type (common-lisp:or access-point-name common-lisp:null))
-   (load-balancer-port (common-lisp:error ":load-balancer-port is required")
+   (load-balancer-port
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":load-balancer-port is required"))
     :type (common-lisp:or access-point-port common-lisp:null))
-   (policy-names (common-lisp:error ":policy-names is required") :type
-    (common-lisp:or policy-names common-lisp:null)))
+   (policy-names
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":policy-names is required"))
+    :type (common-lisp:or policy-names common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-load-balancer-policies-of-listener-input
                     'make-set-load-balancer-policies-of-listener-input))
@@ -2338,8 +2455,8 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2465,8 +2582,10 @@
                       (common-lisp:apply 'make-add-tags-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTags")
                                   ("Version" ,@"2012-06-01"))
@@ -2486,8 +2605,10 @@
                        'make-apply-security-groups-to-load-balancer-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ApplySecurityGroupsToLoadBalancer")
@@ -2508,8 +2629,10 @@
                        'make-attach-load-balancer-to-subnets-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachLoadBalancerToSubnets")
                                   ("Version" ,@"2012-06-01"))
@@ -2529,8 +2652,10 @@
                       (common-lisp:apply 'make-configure-health-check-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ConfigureHealthCheck")
                                   ("Version" ,@"2012-06-01"))
@@ -2551,8 +2676,10 @@
                        'make-create-app-cookie-stickiness-policy-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"CreateAppCookieStickinessPolicy")
@@ -2576,8 +2703,10 @@
                        'make-create-lbcookie-stickiness-policy-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLBCookieStickinessPolicy")
                                   ("Version" ,@"2012-06-01"))
@@ -2599,8 +2728,10 @@
                       (common-lisp:apply 'make-create-access-point-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLoadBalancer")
                                   ("Version" ,@"2012-06-01"))
@@ -2619,8 +2750,10 @@
                        'make-create-load-balancer-listener-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLoadBalancerListeners")
                                   ("Version" ,@"2012-06-01"))
@@ -2642,8 +2775,10 @@
                        'make-create-load-balancer-policy-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLoadBalancerPolicy")
                                   ("Version" ,@"2012-06-01"))
@@ -2661,8 +2796,10 @@
                       (common-lisp:apply 'make-delete-access-point-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLoadBalancer")
                                   ("Version" ,@"2012-06-01"))
@@ -2682,8 +2819,10 @@
                        'make-delete-load-balancer-listener-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLoadBalancerListeners")
                                   ("Version" ,@"2012-06-01"))
@@ -2702,8 +2841,10 @@
                        'make-delete-load-balancer-policy-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLoadBalancerPolicy")
                                   ("Version" ,@"2012-06-01"))
@@ -2721,8 +2862,10 @@
                       (common-lisp:apply 'make-deregister-end-points-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeregisterInstancesFromLoadBalancer")
@@ -2742,8 +2885,10 @@
                       (common-lisp:apply 'make-describe-account-limits-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAccountLimits")
                                   ("Version" ,@"2012-06-01"))
@@ -2761,8 +2906,10 @@
                       (common-lisp:apply 'make-describe-end-point-state-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeInstanceHealth")
                                   ("Version" ,@"2012-06-01"))
@@ -2781,8 +2928,10 @@
                        'make-describe-load-balancer-attributes-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLoadBalancerAttributes")
                                   ("Version" ,@"2012-06-01"))
@@ -2803,8 +2952,10 @@
                        'make-describe-load-balancer-policies-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLoadBalancerPolicies")
                                   ("Version" ,@"2012-06-01"))
@@ -2824,8 +2975,10 @@
                        'make-describe-load-balancer-policy-types-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeLoadBalancerPolicyTypes")
@@ -2846,8 +2999,10 @@
                       (common-lisp:apply 'make-describe-access-points-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLoadBalancers")
                                   ("Version" ,@"2012-06-01"))
@@ -2865,8 +3020,10 @@
                       (common-lisp:apply 'make-describe-tags-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTags")
                                   ("Version" ,@"2012-06-01"))
@@ -2885,8 +3042,10 @@
                        'make-detach-load-balancer-from-subnets-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachLoadBalancerFromSubnets")
                                   ("Version" ,@"2012-06-01"))
@@ -2906,8 +3065,10 @@
                       (common-lisp:apply 'make-remove-availability-zones-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DisableAvailabilityZonesForLoadBalancer")
@@ -2928,8 +3089,10 @@
                       (common-lisp:apply 'make-add-availability-zones-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"EnableAvailabilityZonesForLoadBalancer")
@@ -2952,8 +3115,10 @@
                        'make-modify-load-balancer-attributes-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyLoadBalancerAttributes")
                                   ("Version" ,@"2012-06-01"))
@@ -2972,8 +3137,10 @@
                       (common-lisp:apply 'make-register-end-points-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"RegisterInstancesWithLoadBalancer")
@@ -2992,8 +3159,10 @@
                       (common-lisp:apply 'make-remove-tags-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTags")
                                   ("Version" ,@"2012-06-01"))
@@ -3015,8 +3184,10 @@
                        'make-set-load-balancer-listener-sslcertificate-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"SetLoadBalancerListenerSSLCertificate")
@@ -3039,8 +3210,10 @@
                        'make-set-load-balancer-policies-for-backend-server-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"SetLoadBalancerPoliciesForBackendServer")
@@ -3063,8 +3236,10 @@
                        'make-set-load-balancer-policies-of-listener-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancing" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((20) common-lisp:base-char
+                                  . "elasticloadbalancing")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"SetLoadBalancerPoliciesOfListener")

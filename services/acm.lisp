@@ -7,13 +7,17 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/acm)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-certificate-request (:copier common-lisp:nil))
-   (certificate-arn (common-lisp:error ":certificate-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (certificate-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":certificate-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-tags-to-certificate-request
                     'make-add-tags-to-certificate-request))
@@ -225,8 +229,10 @@
 (common-lisp:deftype certificate-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-certificate-request (:copier common-lisp:nil))
-   (certificate-arn (common-lisp:error ":certificate-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (certificate-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":certificate-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-certificate-request
                     'make-delete-certificate-request))
@@ -243,8 +249,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-certificate-request (:copier common-lisp:nil))
-   (certificate-arn (common-lisp:error ":certificate-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (certificate-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":certificate-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-certificate-request
                     'make-describe-certificate-request))
@@ -288,8 +296,10 @@
 (common-lisp:deftype domain-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (domain-validation (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name-string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name-string common-lisp:null))
    (validation-emails common-lisp:nil :type
     (common-lisp:or validation-email-list common-lisp:null))
    (validation-domain common-lisp:nil :type
@@ -331,9 +341,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (domain-validation-option (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name-string common-lisp:null))
-   (validation-domain (common-lisp:error ":validation-domain is required")
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name-string common-lisp:null))
+   (validation-domain
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":validation-domain is required"))
     :type (common-lisp:or domain-name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'domain-validation-option 'make-domain-validation-option))
@@ -364,8 +378,10 @@
 (common-lisp:deftype failure-reason () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (get-certificate-request (:copier common-lisp:nil))
-   (certificate-arn (common-lisp:error ":certificate-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (certificate-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":certificate-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-certificate-request 'make-get-certificate-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -406,10 +422,14 @@
  (common-lisp:defstruct (import-certificate-request (:copier common-lisp:nil))
    (certificate-arn common-lisp:nil :type
     (common-lisp:or arn common-lisp:null))
-   (certificate (common-lisp:error ":certificate is required") :type
-    (common-lisp:or certificate-body-blob common-lisp:null))
-   (private-key (common-lisp:error ":private-key is required") :type
-    (common-lisp:or private-key-blob common-lisp:null))
+   (certificate
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":certificate is required"))
+    :type (common-lisp:or certificate-body-blob common-lisp:null))
+   (private-key
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":private-key is required"))
+    :type (common-lisp:or private-key-blob common-lisp:null))
    (certificate-chain common-lisp:nil :type
     (common-lisp:or certificate-chain-blob common-lisp:null)))
  (common-lisp:export
@@ -600,8 +620,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-certificate-request (:copier common-lisp:nil))
-   (certificate-arn (common-lisp:error ":certificate-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (certificate-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":certificate-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-certificate-request
                     'make-list-tags-for-certificate-request))
@@ -639,10 +661,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-tags-from-certificate-request (:copier common-lisp:nil))
-   (certificate-arn (common-lisp:error ":certificate-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (certificate-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":certificate-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-from-certificate-request
                     'make-remove-tags-from-certificate-request))
@@ -664,11 +689,14 @@
 (common-lisp:deftype renewal-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (renewal-summary (:copier common-lisp:nil))
-   (renewal-status (common-lisp:error ":renewal-status is required") :type
-    (common-lisp:or renewal-status common-lisp:null))
+   (renewal-status
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":renewal-status is required"))
+    :type (common-lisp:or renewal-status common-lisp:null))
    (domain-validation-options
-    (common-lisp:error ":domain-validation-options is required") :type
-    (common-lisp:or domain-validation-list common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":domain-validation-options is required"))
+    :type (common-lisp:or domain-validation-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'renewal-summary 'make-renewal-summary))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape renewal-summary))
@@ -685,8 +713,10 @@
                                                 'domain-validation-options))))))
 (common-lisp:progn
  (common-lisp:defstruct (request-certificate-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name-string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name-string common-lisp:null))
    (subject-alternative-names common-lisp:nil :type
     (common-lisp:or domain-list common-lisp:null))
    (idempotency-token common-lisp:nil :type
@@ -759,11 +789,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (resend-validation-email-request (:copier common-lisp:nil))
-   (certificate-arn (common-lisp:error ":certificate-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name-string common-lisp:null))
-   (validation-domain (common-lisp:error ":validation-domain is required")
+   (certificate-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":certificate-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name-string common-lisp:null))
+   (validation-domain
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":validation-domain is required"))
     :type (common-lisp:or domain-name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'resend-validation-email-request
@@ -826,8 +861,8 @@
 (common-lisp:deftype tstamp () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -885,7 +920,8 @@
                       (common-lisp:apply 'make-add-tags-to-certificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "acm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "acm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToCertificate")
                                   ("Version" ,@"2015-12-08"))
@@ -903,7 +939,8 @@
                       (common-lisp:apply 'make-delete-certificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "acm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "acm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCertificate")
                                   ("Version" ,@"2015-12-08"))
@@ -921,7 +958,8 @@
                       (common-lisp:apply 'make-describe-certificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "acm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "acm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCertificate")
                                   ("Version" ,@"2015-12-08"))
@@ -939,7 +977,8 @@
                       (common-lisp:apply 'make-get-certificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "acm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "acm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCertificate")
                                   ("Version" ,@"2015-12-08"))
@@ -960,7 +999,8 @@
                       (common-lisp:apply 'make-import-certificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "acm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "acm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ImportCertificate")
                                   ("Version" ,@"2015-12-08"))
@@ -980,7 +1020,8 @@
                       (common-lisp:apply 'make-list-certificates-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "acm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "acm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListCertificates")
                                   ("Version" ,@"2015-12-08"))
@@ -999,7 +1040,8 @@
                        'make-list-tags-for-certificate-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "acm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "acm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForCertificate")
                                   ("Version" ,@"2015-12-08"))
@@ -1018,7 +1060,8 @@
                        'make-remove-tags-from-certificate-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "acm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "acm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromCertificate")
                                   ("Version" ,@"2015-12-08"))
@@ -1039,7 +1082,8 @@
                       (common-lisp:apply 'make-request-certificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "acm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "acm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RequestCertificate")
                                   ("Version" ,@"2015-12-08"))
@@ -1058,7 +1102,8 @@
                       (common-lisp:apply 'make-resend-validation-email-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "acm" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "acm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResendValidationEmail")
                                   ("Version" ,@"2015-12-08"))

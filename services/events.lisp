@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/events)
+
 (common-lisp:deftype action () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:deftype boolean () 'common-lisp:boolean)
@@ -23,8 +24,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-rule-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or rule-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or rule-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-rule-request 'make-delete-rule-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -75,8 +77,9 @@
                                                 'policy))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-rule-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or rule-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or rule-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-rule-request 'make-describe-rule-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -145,8 +148,9 @@
                                                 'role-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (disable-rule-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or rule-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or rule-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-rule-request 'make-disable-rule-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -159,7 +163,9 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (ecs-parameters (:copier common-lisp:nil))
-   (task-definition-arn (common-lisp:error ":task-definition-arn is required")
+   (task-definition-arn
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":task-definition-arn is required"))
     :type (common-lisp:or arn common-lisp:null))
    (task-count common-lisp:nil :type
     (common-lisp:or limit-min1 common-lisp:null)))
@@ -179,8 +185,9 @@
                                                 'task-count))))))
 (common-lisp:progn
  (common-lisp:defstruct (enable-rule-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or rule-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or rule-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-rule-request 'make-enable-rule-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -209,8 +216,10 @@
  (common-lisp:defstruct (input-transformer (:copier common-lisp:nil))
    (input-paths-map common-lisp:nil :type
     (common-lisp:or transformer-paths common-lisp:null))
-   (input-template (common-lisp:error ":input-template is required") :type
-    (common-lisp:or transformer-input common-lisp:null)))
+   (input-template
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":input-template is required"))
+    :type (common-lisp:or transformer-input common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'input-transformer 'make-input-transformer))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -248,7 +257,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (kinesis-parameters (:copier common-lisp:nil))
-   (partition-key-path (common-lisp:error ":partition-key-path is required")
+   (partition-key-path
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":partition-key-path is required"))
     :type (common-lisp:or target-partition-key-path common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'kinesis-parameters 'make-kinesis-parameters))
@@ -274,8 +285,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-rule-names-by-target-request (:copier common-lisp:nil))
-   (target-arn (common-lisp:error ":target-arn is required") :type
-    (common-lisp:or target-arn common-lisp:null))
+   (target-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":target-arn is required"))
+    :type (common-lisp:or target-arn common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (limit common-lisp:nil :type
@@ -380,8 +393,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-targets-by-rule-request (:copier common-lisp:nil))
-   (rule (common-lisp:error ":rule is required") :type
-    (common-lisp:or rule-name common-lisp:null))
+   (rule
+    (common-lisp:error #A((17) common-lisp:base-char . ":rule is required"))
+    :type (common-lisp:or rule-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (limit common-lisp:nil :type
@@ -449,8 +463,9 @@
 (common-lisp:deftype principal () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (put-events-request (:copier common-lisp:nil))
-   (entries (common-lisp:error ":entries is required") :type
-    (common-lisp:or put-events-request-entry-list common-lisp:null)))
+   (entries
+    (common-lisp:error #A((20) common-lisp:base-char . ":entries is required"))
+    :type (common-lisp:or put-events-request-entry-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-events-request 'make-put-events-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -570,12 +585,17 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (put-permission-request (:copier common-lisp:nil))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or action common-lisp:null))
-   (principal (common-lisp:error ":principal is required") :type
-    (common-lisp:or principal common-lisp:null))
-   (statement-id (common-lisp:error ":statement-id is required") :type
-    (common-lisp:or statement-id common-lisp:null)))
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or action common-lisp:null))
+   (principal
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":principal is required"))
+    :type (common-lisp:or principal common-lisp:null))
+   (statement-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":statement-id is required"))
+    :type (common-lisp:or statement-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-permission-request 'make-put-permission-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -600,8 +620,9 @@
                                                 'statement-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-rule-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or rule-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or rule-name common-lisp:null))
    (schedule-expression common-lisp:nil :type
     (common-lisp:or schedule-expression common-lisp:null))
    (event-pattern common-lisp:nil :type
@@ -660,10 +681,12 @@
                                                 'rule-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-targets-request (:copier common-lisp:nil))
-   (rule (common-lisp:error ":rule is required") :type
-    (common-lisp:or rule-name common-lisp:null))
-   (targets (common-lisp:error ":targets is required") :type
-    (common-lisp:or target-list common-lisp:null)))
+   (rule
+    (common-lisp:error #A((17) common-lisp:base-char . ":rule is required"))
+    :type (common-lisp:or rule-name common-lisp:null))
+   (targets
+    (common-lisp:error #A((20) common-lisp:base-char . ":targets is required"))
+    :type (common-lisp:or target-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-targets-request 'make-put-targets-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -741,8 +764,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (remove-permission-request (:copier common-lisp:nil))
-   (statement-id (common-lisp:error ":statement-id is required") :type
-    (common-lisp:or statement-id common-lisp:null)))
+   (statement-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":statement-id is required"))
+    :type (common-lisp:or statement-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-permission-request
                     'make-remove-permission-request))
@@ -758,10 +783,11 @@
                                                 'statement-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (remove-targets-request (:copier common-lisp:nil))
-   (rule (common-lisp:error ":rule is required") :type
-    (common-lisp:or rule-name common-lisp:null))
-   (ids (common-lisp:error ":ids is required") :type
-    (common-lisp:or target-id-list common-lisp:null)))
+   (rule
+    (common-lisp:error #A((17) common-lisp:base-char . ":rule is required"))
+    :type (common-lisp:or rule-name common-lisp:null))
+   (ids (common-lisp:error #A((16) common-lisp:base-char . ":ids is required"))
+    :type (common-lisp:or target-id-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-targets-request 'make-remove-targets-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -925,7 +951,9 @@
 (common-lisp:deftype rule-state () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (run-command-parameters (:copier common-lisp:nil))
-   (run-command-targets (common-lisp:error ":run-command-targets is required")
+   (run-command-targets
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":run-command-targets is required"))
     :type (common-lisp:or run-command-targets common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'run-command-parameters 'make-run-command-parameters))
@@ -941,10 +969,11 @@
                                                 'run-command-targets))))))
 (common-lisp:progn
  (common-lisp:defstruct (run-command-target (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or run-command-target-key common-lisp:null))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or run-command-target-values common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or run-command-target-key common-lisp:null))
+   (values
+    (common-lisp:error #A((19) common-lisp:base-char . ":values is required"))
+    :type (common-lisp:or run-command-target-values common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'run-command-target 'make-run-command-target))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -984,10 +1013,10 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (target (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or target-id common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or target-arn common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or target-id common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or target-arn common-lisp:null))
    (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or target-input common-lisp:null))
    (input-path common-lisp:nil :type
@@ -1070,10 +1099,13 @@
 (common-lisp:deftype target-partition-key-path () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (test-event-pattern-request (:copier common-lisp:nil))
-   (event-pattern (common-lisp:error ":event-pattern is required") :type
-    (common-lisp:or event-pattern common-lisp:null))
-   (event (common-lisp:error ":event is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (event-pattern
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":event-pattern is required"))
+    :type (common-lisp:or event-pattern common-lisp:null))
+   (event
+    (common-lisp:error #A((18) common-lisp:base-char . ":event is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'test-event-pattern-request
                     'make-test-event-pattern-request))
@@ -1125,7 +1157,9 @@
                       (common-lisp:apply 'make-delete-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRule")
                                   ("Version" ,@"2015-10-07"))
@@ -1136,7 +1170,8 @@
 (common-lisp:progn
  (common-lisp:defun describe-event-bus ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "events" :method :post :params
+    (aws-sdk/api:aws-request :service #A((6) common-lisp:base-char . "events")
+                             :method :post :params
                              (common-lisp:cons "Action" "DescribeEventBus"))
     "DescribeEventBusResponse" common-lisp:nil))
  (common-lisp:export 'describe-event-bus))
@@ -1150,7 +1185,9 @@
                       (common-lisp:apply 'make-describe-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRule")
                                   ("Version" ,@"2015-10-07"))
@@ -1168,7 +1205,9 @@
                       (common-lisp:apply 'make-disable-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableRule")
                                   ("Version" ,@"2015-10-07"))
@@ -1186,7 +1225,9 @@
                       (common-lisp:apply 'make-enable-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableRule")
                                   ("Version" ,@"2015-10-07"))
@@ -1205,7 +1246,9 @@
                        'make-list-rule-names-by-target-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRuleNamesByTarget")
                                   ("Version" ,@"2015-10-07"))
@@ -1223,7 +1266,9 @@
                       (common-lisp:apply 'make-list-rules-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRules")
                                   ("Version" ,@"2015-10-07"))
@@ -1241,7 +1286,9 @@
                       (common-lisp:apply 'make-list-targets-by-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTargetsByRule")
                                   ("Version" ,@"2015-10-07"))
@@ -1259,7 +1306,9 @@
                       (common-lisp:apply 'make-put-events-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutEvents")
                                   ("Version" ,@"2015-10-07"))
@@ -1277,7 +1326,9 @@
                       (common-lisp:apply 'make-put-permission-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutPermission")
                                   ("Version" ,@"2015-10-07"))
@@ -1298,7 +1349,9 @@
                       (common-lisp:apply 'make-put-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutRule")
                                   ("Version" ,@"2015-10-07"))
@@ -1316,7 +1369,9 @@
                       (common-lisp:apply 'make-put-targets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutTargets")
                                   ("Version" ,@"2015-10-07"))
@@ -1334,7 +1389,9 @@
                       (common-lisp:apply 'make-remove-permission-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemovePermission")
                                   ("Version" ,@"2015-10-07"))
@@ -1352,7 +1409,9 @@
                       (common-lisp:apply 'make-remove-targets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTargets")
                                   ("Version" ,@"2015-10-07"))
@@ -1370,7 +1429,9 @@
                       (common-lisp:apply 'make-test-event-pattern-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "events" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "events") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TestEventPattern")
                                   ("Version" ,@"2015-10-07"))

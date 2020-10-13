@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/devicefarm)
+
 (common-lisp:deftype awsaccount-number () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (account-settings (:copier common-lisp:nil))
@@ -212,14 +213,18 @@
                                                 'skipped))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-device-pool-request (:copier common-lisp:nil))
-   (project-arn (common-lisp:error ":projectarn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
+   (project-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":projectarn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or message common-lisp:null))
-   (rules (common-lisp:error ":rules is required") :type
-    (common-lisp:or rules common-lisp:null)))
+   (rules
+    (common-lisp:error #A((18) common-lisp:base-char . ":rules is required"))
+    :type (common-lisp:or rules common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-device-pool-request
                     'make-create-device-pool-request))
@@ -268,10 +273,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-network-profile-request (:copier common-lisp:nil))
-   (project-arn (common-lisp:error ":projectarn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
+   (project-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":projectarn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or message common-lisp:null))
    (type common-lisp:nil :type
@@ -380,8 +388,9 @@
                                                 'network-profile))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-project-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
    (default-job-timeout-minutes common-lisp:nil :type
     (common-lisp:or job-timeout-minutes common-lisp:null)))
  (common-lisp:export
@@ -437,10 +446,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-remote-access-session-request (:copier common-lisp:nil))
-   (project-arn (common-lisp:error ":projectarn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (device-arn (common-lisp:error ":devicearn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (project-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":projectarn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
+   (device-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":devicearn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
    (configuration common-lisp:nil :type
     (common-lisp:or create-remote-access-session-configuration
@@ -493,12 +506,16 @@
                                                 'remote-access-session))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-upload-request (:copier common-lisp:nil))
-   (project-arn (common-lisp:error ":projectarn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or upload-type common-lisp:null))
+   (project-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":projectarn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or upload-type common-lisp:null))
    (content-type common-lisp:nil :type
     (common-lisp:or content-type common-lisp:null)))
  (common-lisp:export
@@ -545,8 +562,8 @@
 (common-lisp:deftype date-time () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-device-pool-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-device-pool-request
                     'make-delete-device-pool-request))
@@ -573,8 +590,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-network-profile-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-network-profile-request
                     'make-delete-network-profile-request))
@@ -601,8 +618,8 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-project-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-project-request 'make-delete-project-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -627,8 +644,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-remote-access-session-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-remote-access-session-request
                     'make-delete-remote-access-session-request))
@@ -655,8 +672,8 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-run-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-run-request 'make-delete-run-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -676,8 +693,8 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-upload-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-upload-request 'make-delete-upload-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -996,8 +1013,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-device-pool-compatibility-request (:copier common-lisp:nil))
-   (device-pool-arn (common-lisp:error ":devicepoolarn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (device-pool-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":devicepoolarn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (app-arn common-lisp:nil :type
     (common-lisp:or amazon-resource-name common-lisp:null))
    (test-type common-lisp:nil :type
@@ -1059,8 +1078,8 @@
                                                 'incompatible-devices))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-device-pool-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-device-pool-request 'make-get-device-pool-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1091,8 +1110,8 @@
                                                 'device-pool))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-device-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-device-request 'make-get-device-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1118,8 +1137,8 @@
                                                 'device))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-job-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'get-job-request 'make-get-job-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape get-job-request))
@@ -1143,8 +1162,8 @@
                                                 'job))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-network-profile-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-network-profile-request
                     'make-get-network-profile-request))
@@ -1225,8 +1244,8 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-project-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-project-request 'make-get-project-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1253,8 +1272,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-remote-access-session-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-remote-access-session-request
                     'make-get-remote-access-session-request))
@@ -1288,8 +1307,8 @@
                                                 'remote-access-session))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-run-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'get-run-request 'make-get-run-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape get-run-request))
@@ -1313,8 +1332,8 @@
                                                 'run))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-suite-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-suite-request 'make-get-suite-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1340,8 +1359,8 @@
                                                 'suite))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-test-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-test-request 'make-get-test-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1366,8 +1385,8 @@
                                                 'test))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-upload-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-upload-request 'make-get-upload-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1440,10 +1459,12 @@
  (common-lisp:defstruct
      (install-to-remote-access-session-request (:copier common-lisp:nil))
    (remote-access-session-arn
-    (common-lisp:error ":remoteaccesssessionarn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (app-arn (common-lisp:error ":apparn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":remoteaccesssessionarn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
+   (app-arn
+    (common-lisp:error #A((19) common-lisp:base-char . ":apparn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'install-to-remote-access-session-request
                     'make-install-to-remote-access-session-request))
@@ -1587,10 +1608,11 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-artifacts-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or artifact-category common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or artifact-category common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -1640,8 +1662,8 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-device-pools-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (type common-lisp:nil :type
     (common-lisp:or device-pool-type common-lisp:null))
    (next-token common-lisp:nil :type
@@ -1735,8 +1757,8 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-jobs-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -1777,8 +1799,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-network-profiles-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (type common-lisp:nil :type
     (common-lisp:or network-profile-type common-lisp:null))
    (next-token common-lisp:nil :type
@@ -2002,8 +2024,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-remote-access-sessions-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -2051,8 +2073,8 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-runs-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -2092,8 +2114,8 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-samples-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -2133,8 +2155,8 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-suites-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -2174,8 +2196,8 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-tests-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -2216,8 +2238,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-unique-problems-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -2264,8 +2286,8 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-uploads-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -2305,10 +2327,14 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (location (:copier common-lisp:nil))
-   (latitude (common-lisp:error ":latitude is required") :type
-    (common-lisp:or double common-lisp:null))
-   (longitude (common-lisp:error ":longitude is required") :type
-    (common-lisp:or double common-lisp:null)))
+   (latitude
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":latitude is required"))
+    :type (common-lisp:or double common-lisp:null))
+   (longitude
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":longitude is required"))
+    :type (common-lisp:or double common-lisp:null)))
  (common-lisp:export (common-lisp:list 'location 'make-location))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape location))
@@ -3268,15 +3294,20 @@
                                                 'billing-method))))))
 (common-lisp:progn
  (common-lisp:defstruct (schedule-run-request (:copier common-lisp:nil))
-   (project-arn (common-lisp:error ":projectarn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (project-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":projectarn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (app-arn common-lisp:nil :type
     (common-lisp:or amazon-resource-name common-lisp:null))
-   (device-pool-arn (common-lisp:error ":devicepoolarn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (device-pool-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":devicepoolarn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (test (common-lisp:error ":test is required") :type
-    (common-lisp:or schedule-run-test common-lisp:null))
+   (test
+    (common-lisp:error #A((17) common-lisp:base-char . ":test is required"))
+    :type (common-lisp:or schedule-run-test common-lisp:null))
    (configuration common-lisp:nil :type
     (common-lisp:or schedule-run-configuration common-lisp:null))
    (execution-configuration common-lisp:nil :type
@@ -3336,8 +3367,9 @@
                                                 'run))))))
 (common-lisp:progn
  (common-lisp:defstruct (schedule-run-test (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or test-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or test-type common-lisp:null))
    (test-package-arn common-lisp:nil :type
     (common-lisp:or amazon-resource-name common-lisp:null))
    (filter common-lisp:nil :type (common-lisp:or filter common-lisp:null))
@@ -3387,8 +3419,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (stop-remote-access-session-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-remote-access-session-request
                     'make-stop-remote-access-session-request))
@@ -3422,8 +3454,8 @@
                                                 'remote-access-session))))))
 (common-lisp:progn
  (common-lisp:defstruct (stop-run-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-run-request 'make-stop-run-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3674,8 +3706,8 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (update-device-pool-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or message common-lisp:null))
@@ -3728,8 +3760,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-network-profile-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or message common-lisp:null))
@@ -3839,8 +3871,8 @@
                                                 'network-profile))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-project-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or amazon-resource-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or amazon-resource-name common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
    (default-job-timeout-minutes common-lisp:nil :type
     (common-lisp:or job-timeout-minutes common-lisp:null)))
@@ -3964,7 +3996,9 @@
                       (common-lisp:apply 'make-create-device-pool-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDevicePool")
                                   ("Version" ,@"2015-06-23"))
@@ -3990,7 +4024,9 @@
                       (common-lisp:apply 'make-create-network-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateNetworkProfile")
                                   ("Version" ,@"2015-06-23"))
@@ -4009,7 +4045,9 @@
                       (common-lisp:apply 'make-create-project-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateProject")
                                   ("Version" ,@"2015-06-23"))
@@ -4030,7 +4068,9 @@
                        'make-create-remote-access-session-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateRemoteAccessSession")
                                   ("Version" ,@"2015-06-23"))
@@ -4049,7 +4089,9 @@
                       (common-lisp:apply 'make-create-upload-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateUpload")
                                   ("Version" ,@"2015-06-23"))
@@ -4067,7 +4109,9 @@
                       (common-lisp:apply 'make-delete-device-pool-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDevicePool")
                                   ("Version" ,@"2015-06-23"))
@@ -4085,7 +4129,9 @@
                       (common-lisp:apply 'make-delete-network-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteNetworkProfile")
                                   ("Version" ,@"2015-06-23"))
@@ -4103,7 +4149,9 @@
                       (common-lisp:apply 'make-delete-project-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteProject")
                                   ("Version" ,@"2015-06-23"))
@@ -4122,7 +4170,9 @@
                        'make-delete-remote-access-session-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRemoteAccessSession")
                                   ("Version" ,@"2015-06-23"))
@@ -4140,7 +4190,9 @@
                       (common-lisp:apply 'make-delete-run-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRun")
                                   ("Version" ,@"2015-06-23"))
@@ -4158,7 +4210,9 @@
                       (common-lisp:apply 'make-delete-upload-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUpload")
                                   ("Version" ,@"2015-06-23"))
@@ -4169,7 +4223,9 @@
 (common-lisp:progn
  (common-lisp:defun get-account-settings ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((10) common-lisp:base-char . "devicefarm")
+                             :method :post :params
                              (common-lisp:cons "Action" "GetAccountSettings"))
     "GetAccountSettingsResult" common-lisp:nil))
  (common-lisp:export 'get-account-settings))
@@ -4183,7 +4239,9 @@
                       (common-lisp:apply 'make-get-device-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDevice")
                                   ("Version" ,@"2015-06-23"))
@@ -4201,7 +4259,9 @@
                       (common-lisp:apply 'make-get-device-pool-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDevicePool")
                                   ("Version" ,@"2015-06-23"))
@@ -4221,7 +4281,9 @@
                        'make-get-device-pool-compatibility-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDevicePoolCompatibility")
                                   ("Version" ,@"2015-06-23"))
@@ -4239,7 +4301,9 @@
                       (common-lisp:apply 'make-get-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetJob")
                                   ("Version" ,@"2015-06-23"))
@@ -4257,7 +4321,9 @@
                       (common-lisp:apply 'make-get-network-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetNetworkProfile")
                                   ("Version" ,@"2015-06-23"))
@@ -4275,7 +4341,9 @@
                       (common-lisp:apply 'make-get-offering-status-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetOfferingStatus")
                                   ("Version" ,@"2015-06-23"))
@@ -4293,7 +4361,9 @@
                       (common-lisp:apply 'make-get-project-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetProject")
                                   ("Version" ,@"2015-06-23"))
@@ -4312,7 +4382,9 @@
                        'make-get-remote-access-session-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRemoteAccessSession")
                                   ("Version" ,@"2015-06-23"))
@@ -4330,7 +4402,9 @@
                       (common-lisp:apply 'make-get-run-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRun")
                                   ("Version" ,@"2015-06-23"))
@@ -4348,7 +4422,9 @@
                       (common-lisp:apply 'make-get-suite-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSuite")
                                   ("Version" ,@"2015-06-23"))
@@ -4366,7 +4442,9 @@
                       (common-lisp:apply 'make-get-test-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTest")
                                   ("Version" ,@"2015-06-23"))
@@ -4384,7 +4462,9 @@
                       (common-lisp:apply 'make-get-upload-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetUpload")
                                   ("Version" ,@"2015-06-23"))
@@ -4404,7 +4484,9 @@
                        'make-install-to-remote-access-session-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"InstallToRemoteAccessSession")
                                   ("Version" ,@"2015-06-23"))
@@ -4422,7 +4504,9 @@
                       (common-lisp:apply 'make-list-artifacts-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListArtifacts")
                                   ("Version" ,@"2015-06-23"))
@@ -4440,7 +4524,9 @@
                       (common-lisp:apply 'make-list-device-pools-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDevicePools")
                                   ("Version" ,@"2015-06-23"))
@@ -4458,7 +4544,9 @@
                       (common-lisp:apply 'make-list-devices-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDevices")
                                   ("Version" ,@"2015-06-23"))
@@ -4476,7 +4564,9 @@
                       (common-lisp:apply 'make-list-jobs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListJobs")
                                   ("Version" ,@"2015-06-23"))
@@ -4494,7 +4584,9 @@
                       (common-lisp:apply 'make-list-network-profiles-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListNetworkProfiles")
                                   ("Version" ,@"2015-06-23"))
@@ -4512,7 +4604,9 @@
                       (common-lisp:apply 'make-list-offering-promotions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListOfferingPromotions")
                                   ("Version" ,@"2015-06-23"))
@@ -4531,7 +4625,9 @@
                        'make-list-offering-transactions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListOfferingTransactions")
                                   ("Version" ,@"2015-06-23"))
@@ -4549,7 +4645,9 @@
                       (common-lisp:apply 'make-list-offerings-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListOfferings")
                                   ("Version" ,@"2015-06-23"))
@@ -4567,7 +4665,9 @@
                       (common-lisp:apply 'make-list-projects-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListProjects")
                                   ("Version" ,@"2015-06-23"))
@@ -4586,7 +4686,9 @@
                        'make-list-remote-access-sessions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRemoteAccessSessions")
                                   ("Version" ,@"2015-06-23"))
@@ -4604,7 +4706,9 @@
                       (common-lisp:apply 'make-list-runs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRuns")
                                   ("Version" ,@"2015-06-23"))
@@ -4622,7 +4726,9 @@
                       (common-lisp:apply 'make-list-samples-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListSamples")
                                   ("Version" ,@"2015-06-23"))
@@ -4640,7 +4746,9 @@
                       (common-lisp:apply 'make-list-suites-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListSuites")
                                   ("Version" ,@"2015-06-23"))
@@ -4658,7 +4766,9 @@
                       (common-lisp:apply 'make-list-tests-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTests")
                                   ("Version" ,@"2015-06-23"))
@@ -4676,7 +4786,9 @@
                       (common-lisp:apply 'make-list-unique-problems-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListUniqueProblems")
                                   ("Version" ,@"2015-06-23"))
@@ -4694,7 +4806,9 @@
                       (common-lisp:apply 'make-list-uploads-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListUploads")
                                   ("Version" ,@"2015-06-23"))
@@ -4714,7 +4828,9 @@
                       (common-lisp:apply 'make-purchase-offering-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PurchaseOffering")
                                   ("Version" ,@"2015-06-23"))
@@ -4732,7 +4848,9 @@
                       (common-lisp:apply 'make-renew-offering-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RenewOffering")
                                   ("Version" ,@"2015-06-23"))
@@ -4753,7 +4871,9 @@
                       (common-lisp:apply 'make-schedule-run-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ScheduleRun")
                                   ("Version" ,@"2015-06-23"))
@@ -4772,7 +4892,9 @@
                        'make-stop-remote-access-session-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopRemoteAccessSession")
                                   ("Version" ,@"2015-06-23"))
@@ -4790,7 +4912,9 @@
                       (common-lisp:apply 'make-stop-run-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopRun")
                                   ("Version" ,@"2015-06-23"))
@@ -4808,7 +4932,9 @@
                       (common-lisp:apply 'make-update-device-pool-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDevicePool")
                                   ("Version" ,@"2015-06-23"))
@@ -4833,7 +4959,9 @@
                       (common-lisp:apply 'make-update-network-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateNetworkProfile")
                                   ("Version" ,@"2015-06-23"))
@@ -4852,7 +4980,9 @@
                       (common-lisp:apply 'make-update-project-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "devicefarm")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateProject")
                                   ("Version" ,@"2015-06-23"))

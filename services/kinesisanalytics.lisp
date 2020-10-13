@@ -7,18 +7,25 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/kinesisanalytics)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (add-application-cloud-watch-logging-option-request
       (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (current-application-version-id
-    (common-lisp:error ":current-application-version-id is required") :type
-    (common-lisp:or application-version-id common-lisp:null))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":current-application-version-id is required"))
+    :type (common-lisp:or application-version-id common-lisp:null))
    (cloud-watch-logging-option
-    (common-lisp:error ":cloud-watch-logging-option is required") :type
-    (common-lisp:or cloud-watch-logging-option common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":cloud-watch-logging-option is required"))
+    :type (common-lisp:or cloud-watch-logging-option common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-application-cloud-watch-logging-option-request
                     'make-add-application-cloud-watch-logging-option-request))
@@ -57,13 +64,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-application-input-request (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (current-application-version-id
-    (common-lisp:error ":current-application-version-id is required") :type
-    (common-lisp:or application-version-id common-lisp:null))
-   (input (common-lisp:error ":input is required") :type
-    (common-lisp:or input common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":current-application-version-id is required"))
+    :type (common-lisp:or application-version-id common-lisp:null))
+   (input
+    (common-lisp:error #A((18) common-lisp:base-char . ":input is required"))
+    :type (common-lisp:or input common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-application-input-request
                     'make-add-application-input-request))
@@ -101,13 +113,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-application-output-request (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (current-application-version-id
-    (common-lisp:error ":current-application-version-id is required") :type
-    (common-lisp:or application-version-id common-lisp:null))
-   (output (common-lisp:error ":output is required") :type
-    (common-lisp:or output common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":current-application-version-id is required"))
+    :type (common-lisp:or application-version-id common-lisp:null))
+   (output
+    (common-lisp:error #A((19) common-lisp:base-char . ":output is required"))
+    :type (common-lisp:or output common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-application-output-request
                     'make-add-application-output-request))
@@ -145,14 +162,19 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-application-reference-data-source-request (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (current-application-version-id
-    (common-lisp:error ":current-application-version-id is required") :type
-    (common-lisp:or application-version-id common-lisp:null))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":current-application-version-id is required"))
+    :type (common-lisp:or application-version-id common-lisp:null))
    (reference-data-source
-    (common-lisp:error ":reference-data-source is required") :type
-    (common-lisp:or reference-data-source common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":reference-data-source is required"))
+    :type (common-lisp:or reference-data-source common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-application-reference-data-source-request
                     'make-add-application-reference-data-source-request))
@@ -192,13 +214,19 @@
 (common-lisp:deftype application-description () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (application-detail (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (application-description common-lisp:nil :type
     (common-lisp:or application-description common-lisp:null))
-   (application-arn (common-lisp:error ":application-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (application-status (common-lisp:error ":application-status is required")
+   (application-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":application-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (application-status
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":application-status is required"))
     :type (common-lisp:or application-status common-lisp:null))
    (create-timestamp common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
@@ -215,8 +243,9 @@
    (application-code common-lisp:nil :type
     (common-lisp:or application-code common-lisp:null))
    (application-version-id
-    (common-lisp:error ":application-version-id is required") :type
-    (common-lisp:or application-version-id common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":application-version-id is required"))
+    :type (common-lisp:or application-version-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'application-detail 'make-application-detail))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -294,11 +323,17 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (application-summary (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
-   (application-arn (common-lisp:error ":application-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (application-status (common-lisp:error ":application-status is required")
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
+   (application-arn
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":application-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (application-status
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":application-status is required"))
     :type (common-lisp:or application-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'application-summary 'make-application-summary))
@@ -368,11 +403,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (csvmapping-parameters (:copier common-lisp:nil))
    (record-row-delimiter
-    (common-lisp:error ":record-row-delimiter is required") :type
-    (common-lisp:or record-row-delimiter common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":record-row-delimiter is required"))
+    :type (common-lisp:or record-row-delimiter common-lisp:null))
    (record-column-delimiter
-    (common-lisp:error ":record-column-delimiter is required") :type
-    (common-lisp:or record-column-delimiter common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":record-column-delimiter is required"))
+    :type (common-lisp:or record-column-delimiter common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'csvmapping-parameters 'make-csvmapping-parameters))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -392,10 +429,14 @@
                                                 'record-column-delimiter))))))
 (common-lisp:progn
  (common-lisp:defstruct (cloud-watch-logging-option (:copier common-lisp:nil))
-   (log-stream-arn (common-lisp:error ":log-stream-arn is required") :type
-    (common-lisp:or log-stream-arn common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null)))
+   (log-stream-arn
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":log-stream-arn is required"))
+    :type (common-lisp:or log-stream-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cloud-watch-logging-option
                     'make-cloud-watch-logging-option))
@@ -419,10 +460,14 @@
      (cloud-watch-logging-option-description (:copier common-lisp:nil))
    (cloud-watch-logging-option-id common-lisp:nil :type
     (common-lisp:or id common-lisp:null))
-   (log-stream-arn (common-lisp:error ":log-stream-arn is required") :type
-    (common-lisp:or log-stream-arn common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null)))
+   (log-stream-arn
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":log-stream-arn is required"))
+    :type (common-lisp:or log-stream-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cloud-watch-logging-option-description
                     'make-cloud-watch-logging-option-description))
@@ -459,8 +504,10 @@
  (common-lisp:defstruct
      (cloud-watch-logging-option-update (:copier common-lisp:nil))
    (cloud-watch-logging-option-id
-    (common-lisp:error ":cloud-watch-logging-option-id is required") :type
-    (common-lisp:or id common-lisp:null))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":cloud-watch-logging-option-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (log-stream-arnupdate common-lisp:nil :type
     (common-lisp:or log-stream-arn common-lisp:null))
    (role-arnupdate common-lisp:nil :type
@@ -543,8 +590,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-application-request (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (application-description common-lisp:nil :type
     (common-lisp:or application-description common-lisp:null))
    (inputs common-lisp:nil :type (common-lisp:or inputs common-lisp:null))
@@ -593,7 +642,9 @@
                                                 'application-code))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-application-response (:copier common-lisp:nil))
-   (application-summary (common-lisp:error ":application-summary is required")
+   (application-summary
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":application-summary is required"))
     :type (common-lisp:or application-summary common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-application-response
@@ -612,14 +663,20 @@
  (common-lisp:defstruct
      (delete-application-cloud-watch-logging-option-request
       (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (current-application-version-id
-    (common-lisp:error ":current-application-version-id is required") :type
-    (common-lisp:or application-version-id common-lisp:null))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":current-application-version-id is required"))
+    :type (common-lisp:or application-version-id common-lisp:null))
    (cloud-watch-logging-option-id
-    (common-lisp:error ":cloud-watch-logging-option-id is required") :type
-    (common-lisp:or id common-lisp:null)))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":cloud-watch-logging-option-id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-application-cloud-watch-logging-option-request
                     'make-delete-application-cloud-watch-logging-option-request))
@@ -658,13 +715,19 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-application-output-request (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (current-application-version-id
-    (common-lisp:error ":current-application-version-id is required") :type
-    (common-lisp:or application-version-id common-lisp:null))
-   (output-id (common-lisp:error ":output-id is required") :type
-    (common-lisp:or id common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":current-application-version-id is required"))
+    :type (common-lisp:or application-version-id common-lisp:null))
+   (output-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":output-id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-application-output-request
                     'make-delete-application-output-request))
@@ -703,13 +766,19 @@
  (common-lisp:defstruct
      (delete-application-reference-data-source-request
       (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (current-application-version-id
-    (common-lisp:error ":current-application-version-id is required") :type
-    (common-lisp:or application-version-id common-lisp:null))
-   (reference-id (common-lisp:error ":reference-id is required") :type
-    (common-lisp:or id common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":current-application-version-id is required"))
+    :type (common-lisp:or application-version-id common-lisp:null))
+   (reference-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":reference-id is required"))
+    :type (common-lisp:or id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-application-reference-data-source-request
                     'make-delete-application-reference-data-source-request))
@@ -747,10 +816,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-application-request (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
-   (create-timestamp (common-lisp:error ":create-timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
+   (create-timestamp
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":create-timestamp is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-application-request
                     'make-delete-application-request))
@@ -783,8 +856,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-application-request (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null)))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-application-request
                     'make-describe-application-request))
@@ -801,7 +876,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-application-response (:copier common-lisp:nil))
-   (application-detail (common-lisp:error ":application-detail is required")
+   (application-detail
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":application-detail is required"))
     :type (common-lisp:or application-detail common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-application-response
@@ -833,12 +910,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (discover-input-schema-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
    (input-starting-position-configuration
-    (common-lisp:error ":input-starting-position-configuration is required")
+    (common-lisp:error
+     #A((50) common-lisp:base-char
+        . ":input-starting-position-configuration is required"))
     :type
     (common-lisp:or input-starting-position-configuration common-lisp:null)))
  (common-lisp:export
@@ -911,16 +994,20 @@
 (common-lisp:deftype in-app-table-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (input (:copier common-lisp:nil))
-   (name-prefix (common-lisp:error ":name-prefix is required") :type
-    (common-lisp:or in-app-stream-name common-lisp:null))
+   (name-prefix
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":name-prefix is required"))
+    :type (common-lisp:or in-app-stream-name common-lisp:null))
    (kinesis-streams-input common-lisp:nil :type
     (common-lisp:or kinesis-streams-input common-lisp:null))
    (kinesis-firehose-input common-lisp:nil :type
     (common-lisp:or kinesis-firehose-input common-lisp:null))
    (input-parallelism common-lisp:nil :type
     (common-lisp:or input-parallelism common-lisp:null))
-   (input-schema (common-lisp:error ":input-schema is required") :type
-    (common-lisp:or source-schema common-lisp:null)))
+   (input-schema
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":input-schema is required"))
+    :type (common-lisp:or source-schema common-lisp:null)))
  (common-lisp:export (common-lisp:list 'input 'make-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape input))
@@ -952,10 +1039,12 @@
                                                 'input-schema))))))
 (common-lisp:progn
  (common-lisp:defstruct (input-configuration (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (input-starting-position-configuration
-    (common-lisp:error ":input-starting-position-configuration is required")
+    (common-lisp:error
+     #A((50) common-lisp:base-char
+        . ":input-starting-position-configuration is required"))
     :type
     (common-lisp:or input-starting-position-configuration common-lisp:null)))
  (common-lisp:export
@@ -1131,8 +1220,10 @@
                                                 'input-starting-position))))))
 (common-lisp:progn
  (common-lisp:defstruct (input-update (:copier common-lisp:nil))
-   (input-id (common-lisp:error ":input-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (input-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":input-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (name-prefix-update common-lisp:nil :type
     (common-lisp:or in-app-stream-name common-lisp:null))
    (kinesis-streams-input-update common-lisp:nil :type
@@ -1229,8 +1320,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (jsonmapping-parameters (:copier common-lisp:nil))
-   (record-row-path (common-lisp:error ":record-row-path is required") :type
-    (common-lisp:or record-row-path common-lisp:null)))
+   (record-row-path
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":record-row-path is required"))
+    :type (common-lisp:or record-row-path common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'jsonmapping-parameters 'make-jsonmapping-parameters))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1245,10 +1338,14 @@
                                                 'record-row-path))))))
 (common-lisp:progn
  (common-lisp:defstruct (kinesis-firehose-input (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'kinesis-firehose-input 'make-kinesis-firehose-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1317,10 +1414,14 @@
                                                 'role-arnupdate))))))
 (common-lisp:progn
  (common-lisp:defstruct (kinesis-firehose-output (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'kinesis-firehose-output 'make-kinesis-firehose-output))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1389,10 +1490,14 @@
                                                 'role-arnupdate))))))
 (common-lisp:progn
  (common-lisp:defstruct (kinesis-streams-input (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'kinesis-streams-input 'make-kinesis-streams-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1461,10 +1566,14 @@
                                                 'role-arnupdate))))))
 (common-lisp:progn
  (common-lisp:defstruct (kinesis-streams-output (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'kinesis-streams-output 'make-kinesis-streams-output))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1575,11 +1684,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (list-applications-response (:copier common-lisp:nil))
    (application-summaries
-    (common-lisp:error ":application-summaries is required") :type
-    (common-lisp:or application-summaries common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":application-summaries is required"))
+    :type (common-lisp:or application-summaries common-lisp:null))
    (has-more-applications
-    (common-lisp:error ":has-more-applications is required") :type
-    (common-lisp:or boolean-object common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":has-more-applications is required"))
+    :type (common-lisp:or boolean-object common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-applications-response
                     'make-list-applications-response))
@@ -1622,13 +1733,16 @@
                                                 'csvmapping-parameters))))))
 (common-lisp:progn
  (common-lisp:defstruct (output (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or in-app-stream-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or in-app-stream-name common-lisp:null))
    (kinesis-streams-output common-lisp:nil :type
     (common-lisp:or kinesis-streams-output common-lisp:null))
    (kinesis-firehose-output common-lisp:nil :type
     (common-lisp:or kinesis-firehose-output common-lisp:null))
-   (destination-schema (common-lisp:error ":destination-schema is required")
+   (destination-schema
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":destination-schema is required"))
     :type (common-lisp:or destination-schema common-lisp:null)))
  (common-lisp:export (common-lisp:list 'output 'make-output))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1705,8 +1819,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (output-update (:copier common-lisp:nil))
-   (output-id (common-lisp:error ":output-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (output-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":output-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (name-update common-lisp:nil :type
     (common-lisp:or in-app-stream-name common-lisp:null))
    (kinesis-streams-output-update common-lisp:nil :type
@@ -1788,12 +1904,15 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (record-column (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or record-column-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or record-column-name common-lisp:null))
    (mapping common-lisp:nil :type
     (common-lisp:or record-column-mapping common-lisp:null))
-   (sql-type (common-lisp:error ":sql-type is required") :type
-    (common-lisp:or record-column-sql-type common-lisp:null)))
+   (sql-type
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":sql-type is required"))
+    :type (common-lisp:or record-column-sql-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'record-column 'make-record-column))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape record-column))
@@ -1828,7 +1947,9 @@
 (common-lisp:deftype record-encoding () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (record-format (:copier common-lisp:nil))
-   (record-format-type (common-lisp:error ":record-format-type is required")
+   (record-format-type
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":record-format-type is required"))
     :type (common-lisp:or record-format-type common-lisp:null))
    (mapping-parameters common-lisp:nil :type
     (common-lisp:or mapping-parameters common-lisp:null)))
@@ -1851,12 +1972,16 @@
 (common-lisp:deftype record-row-path () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (reference-data-source (:copier common-lisp:nil))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or in-app-table-name common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or in-app-table-name common-lisp:null))
    (s3reference-data-source common-lisp:nil :type
     (common-lisp:or s3reference-data-source common-lisp:null))
-   (reference-schema (common-lisp:error ":reference-schema is required") :type
-    (common-lisp:or source-schema common-lisp:null)))
+   (reference-schema
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":reference-schema is required"))
+    :type (common-lisp:or source-schema common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reference-data-source 'make-reference-data-source))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1882,12 +2007,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (reference-data-source-description (:copier common-lisp:nil))
-   (reference-id (common-lisp:error ":reference-id is required") :type
-    (common-lisp:or id common-lisp:null))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or in-app-table-name common-lisp:null))
+   (reference-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":reference-id is required"))
+    :type (common-lisp:or id common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or in-app-table-name common-lisp:null))
    (s3reference-data-source-description
-    (common-lisp:error ":s3reference-data-source-description is required")
+    (common-lisp:error
+     #A((48) common-lisp:base-char
+        . ":s3reference-data-source-description is required"))
     :type
     (common-lisp:or s3reference-data-source-description common-lisp:null))
    (reference-schema common-lisp:nil :type
@@ -1932,8 +2063,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (reference-data-source-update (:copier common-lisp:nil))
-   (reference-id (common-lisp:error ":reference-id is required") :type
-    (common-lisp:or id common-lisp:null))
+   (reference-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":reference-id is required"))
+    :type (common-lisp:or id common-lisp:null))
    (table-name-update common-lisp:nil :type
     (common-lisp:or in-app-table-name common-lisp:null))
    (s3reference-data-source-update common-lisp:nil :type
@@ -2035,11 +2168,17 @@
 (common-lisp:deftype role-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (s3reference-data-source (:copier common-lisp:nil))
-   (bucket-arn (common-lisp:error ":bucket-arn is required") :type
-    (common-lisp:or bucket-arn common-lisp:null))
-   (file-key (common-lisp:error ":file-key is required") :type
-    (common-lisp:or file-key common-lisp:null))
-   (reference-role-arn (common-lisp:error ":reference-role-arn is required")
+   (bucket-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":bucket-arn is required"))
+    :type (common-lisp:or bucket-arn common-lisp:null))
+   (file-key
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":file-key is required"))
+    :type (common-lisp:or file-key common-lisp:null))
+   (reference-role-arn
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":reference-role-arn is required"))
     :type (common-lisp:or role-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 's3reference-data-source 'make-s3reference-data-source))
@@ -2066,11 +2205,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (s3reference-data-source-description (:copier common-lisp:nil))
-   (bucket-arn (common-lisp:error ":bucket-arn is required") :type
-    (common-lisp:or bucket-arn common-lisp:null))
-   (file-key (common-lisp:error ":file-key is required") :type
-    (common-lisp:or file-key common-lisp:null))
-   (reference-role-arn (common-lisp:error ":reference-role-arn is required")
+   (bucket-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":bucket-arn is required"))
+    :type (common-lisp:or bucket-arn common-lisp:null))
+   (file-key
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":file-key is required"))
+    :type (common-lisp:or file-key common-lisp:null))
+   (reference-role-arn
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":reference-role-arn is required"))
     :type (common-lisp:or role-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 's3reference-data-source-description
@@ -2147,12 +2292,16 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (source-schema (:copier common-lisp:nil))
-   (record-format (common-lisp:error ":record-format is required") :type
-    (common-lisp:or record-format common-lisp:null))
+   (record-format
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":record-format is required"))
+    :type (common-lisp:or record-format common-lisp:null))
    (record-encoding common-lisp:nil :type
     (common-lisp:or record-encoding common-lisp:null))
-   (record-columns (common-lisp:error ":record-columns is required") :type
-    (common-lisp:or record-columns common-lisp:null)))
+   (record-columns
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":record-columns is required"))
+    :type (common-lisp:or record-columns common-lisp:null)))
  (common-lisp:export (common-lisp:list 'source-schema 'make-source-schema))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape source-schema))
@@ -2174,11 +2323,14 @@
                                                 'record-columns))))))
 (common-lisp:progn
  (common-lisp:defstruct (start-application-request (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (input-configurations
-    (common-lisp:error ":input-configurations is required") :type
-    (common-lisp:or input-configurations common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":input-configurations is required"))
+    :type (common-lisp:or input-configurations common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-application-request
                     'make-start-application-request))
@@ -2209,8 +2361,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (stop-application-request (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null)))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-application-request 'make-stop-application-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2261,12 +2415,18 @@
                                                 'raw-input-records))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-application-request (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":application-name is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":application-name is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (current-application-version-id
-    (common-lisp:error ":current-application-version-id is required") :type
-    (common-lisp:or application-version-id common-lisp:null))
-   (application-update (common-lisp:error ":application-update is required")
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":current-application-version-id is required"))
+    :type (common-lisp:or application-version-id common-lisp:null))
+   (application-update
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":application-update is required"))
     :type (common-lisp:or application-update common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-application-request
@@ -2316,8 +2476,10 @@
                        'make-add-application-cloud-watch-logging-option-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"AddApplicationCloudWatchLoggingOption")
@@ -2339,8 +2501,10 @@
                       (common-lisp:apply 'make-add-application-input-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddApplicationInput")
                                   ("Version" ,@"2015-08-14"))
@@ -2361,8 +2525,10 @@
                       (common-lisp:apply 'make-add-application-output-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddApplicationOutput")
                                   ("Version" ,@"2015-08-14"))
@@ -2384,8 +2550,10 @@
                        'make-add-application-reference-data-source-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"AddApplicationReferenceDataSource")
@@ -2408,8 +2576,10 @@
                       (common-lisp:apply 'make-create-application-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateApplication")
                                   ("Version" ,@"2015-08-14"))
@@ -2428,8 +2598,10 @@
                       (common-lisp:apply 'make-delete-application-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApplication")
                                   ("Version" ,@"2015-08-14"))
@@ -2452,8 +2624,10 @@
                        'make-delete-application-cloud-watch-logging-option-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeleteApplicationCloudWatchLoggingOption")
@@ -2476,8 +2650,10 @@
                        'make-delete-application-output-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApplicationOutput")
                                   ("Version" ,@"2015-08-14"))
@@ -2499,8 +2675,10 @@
                        'make-delete-application-reference-data-source-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeleteApplicationReferenceDataSource")
@@ -2519,8 +2697,10 @@
                       (common-lisp:apply 'make-describe-application-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeApplication")
                                   ("Version" ,@"2015-08-14"))
@@ -2541,8 +2721,10 @@
                       (common-lisp:apply 'make-discover-input-schema-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DiscoverInputSchema")
                                   ("Version" ,@"2015-08-14"))
@@ -2561,8 +2743,10 @@
                       (common-lisp:apply 'make-list-applications-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListApplications")
                                   ("Version" ,@"2015-08-14"))
@@ -2581,8 +2765,10 @@
                       (common-lisp:apply 'make-start-application-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartApplication")
                                   ("Version" ,@"2015-08-14"))
@@ -2600,8 +2786,10 @@
                       (common-lisp:apply 'make-stop-application-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopApplication")
                                   ("Version" ,@"2015-08-14"))
@@ -2622,8 +2810,10 @@
                       (common-lisp:apply 'make-update-application-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesisanalytics" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "kinesisanalytics")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApplication")
                                   ("Version" ,@"2015-08-14"))

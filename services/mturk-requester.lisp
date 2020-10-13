@@ -7,12 +7,14 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/mturk-requester)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (accept-qualification-request-request (:copier common-lisp:nil))
    (qualification-request-id
-    (common-lisp:error ":qualification-request-id is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":qualification-request-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (integer-value common-lisp:nil :type
     (common-lisp:or integer common-lisp:null)))
  (common-lisp:export
@@ -46,8 +48,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (approve-assignment-request (:copier common-lisp:nil))
-   (assignment-id (common-lisp:error ":assignment-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (assignment-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":assignment-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (requester-feedback common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (override-rejection common-lisp:nil :type
@@ -194,10 +198,13 @@
  (common-lisp:defstruct
      (associate-qualification-with-worker-request (:copier common-lisp:nil))
    (qualification-type-id
-    (common-lisp:error ":qualification-type-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
-   (worker-id (common-lisp:error ":worker-id is required") :type
-    (common-lisp:or customer-id common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":qualification-type-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
+   (worker-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":worker-id is required"))
+    :type (common-lisp:or customer-id common-lisp:null))
    (integer-value common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
    (send-notification common-lisp:nil :type
@@ -295,8 +302,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-additional-assignments-for-hitrequest (:copier common-lisp:nil))
-   (hitid (common-lisp:error ":hitid is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (hitid
+    (common-lisp:error #A((18) common-lisp:base-char . ":hitid is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (number-of-additional-assignments common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
    (unique-request-token common-lisp:nil :type
@@ -341,18 +349,26 @@
     (common-lisp:or integer common-lisp:null))
    (auto-approval-delay-in-seconds common-lisp:nil :type
     (common-lisp:or long common-lisp:null))
-   (lifetime-in-seconds (common-lisp:error ":lifetime-in-seconds is required")
+   (lifetime-in-seconds
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":lifetime-in-seconds is required"))
     :type (common-lisp:or long common-lisp:null))
    (assignment-duration-in-seconds
-    (common-lisp:error ":assignment-duration-in-seconds is required") :type
-    (common-lisp:or long common-lisp:null))
-   (reward (common-lisp:error ":reward is required") :type
-    (common-lisp:or numeric-value common-lisp:null))
-   (title (common-lisp:error ":title is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":assignment-duration-in-seconds is required"))
+    :type (common-lisp:or long common-lisp:null))
+   (reward
+    (common-lisp:error #A((19) common-lisp:base-char . ":reward is required"))
+    :type (common-lisp:or numeric-value common-lisp:null))
+   (title
+    (common-lisp:error #A((18) common-lisp:base-char . ":title is required"))
+    :type (common-lisp:or string common-lisp:null))
    (keywords common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or string common-lisp:null))
    (question common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (requester-annotation common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -471,15 +487,21 @@
    (auto-approval-delay-in-seconds common-lisp:nil :type
     (common-lisp:or long common-lisp:null))
    (assignment-duration-in-seconds
-    (common-lisp:error ":assignment-duration-in-seconds is required") :type
-    (common-lisp:or long common-lisp:null))
-   (reward (common-lisp:error ":reward is required") :type
-    (common-lisp:or numeric-value common-lisp:null))
-   (title (common-lisp:error ":title is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":assignment-duration-in-seconds is required"))
+    :type (common-lisp:or long common-lisp:null))
+   (reward
+    (common-lisp:error #A((19) common-lisp:base-char . ":reward is required"))
+    :type (common-lisp:or numeric-value common-lisp:null))
+   (title
+    (common-lisp:error #A((18) common-lisp:base-char . ":title is required"))
+    :type (common-lisp:or string common-lisp:null))
    (keywords common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or string common-lisp:null))
    (qualification-requirements common-lisp:nil :type
     (common-lisp:or qualification-requirement-list common-lisp:null)))
  (common-lisp:export
@@ -543,11 +565,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-hitwith-hittype-request (:copier common-lisp:nil))
-   (hittype-id (common-lisp:error ":hittype-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (hittype-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":hittype-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (max-assignments common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
-   (lifetime-in-seconds (common-lisp:error ":lifetime-in-seconds is required")
+   (lifetime-in-seconds
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":lifetime-in-seconds is required"))
     :type (common-lisp:or long common-lisp:null))
    (question common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (requester-annotation common-lisp:nil :type
@@ -640,14 +666,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-qualification-type-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (keywords common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or string common-lisp:null))
    (qualification-type-status
-    (common-lisp:error ":qualification-type-status is required") :type
-    (common-lisp:or qualification-type-status common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":qualification-type-status is required"))
+    :type (common-lisp:or qualification-type-status common-lisp:null))
    (retry-delay-in-seconds common-lisp:nil :type
     (common-lisp:or long common-lisp:null))
    (test common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -736,10 +766,13 @@
                                                 'qualification-type))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-worker-block-request (:copier common-lisp:nil))
-   (worker-id (common-lisp:error ":worker-id is required") :type
-    (common-lisp:or customer-id common-lisp:null))
-   (reason (common-lisp:error ":reason is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (worker-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":worker-id is required"))
+    :type (common-lisp:or customer-id common-lisp:null))
+   (reason
+    (common-lisp:error #A((19) common-lisp:base-char . ":reason is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-worker-block-request
                     'make-create-worker-block-request))
@@ -780,8 +813,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (delete-hitrequest (:copier common-lisp:nil))
-   (hitid (common-lisp:error ":hitid is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+   (hitid
+    (common-lisp:error #A((18) common-lisp:base-char . ":hitid is required"))
+    :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-hitrequest 'make-delete-hitrequest))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -803,8 +837,9 @@
  (common-lisp:defstruct
      (delete-qualification-type-request (:copier common-lisp:nil))
    (qualification-type-id
-    (common-lisp:error ":qualification-type-id is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":qualification-type-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-qualification-type-request
                     'make-delete-qualification-type-request))
@@ -831,8 +866,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-worker-block-request (:copier common-lisp:nil))
-   (worker-id (common-lisp:error ":worker-id is required") :type
-    (common-lisp:or customer-id common-lisp:null))
+   (worker-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":worker-id is required"))
+    :type (common-lisp:or customer-id common-lisp:null))
    (reason common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-worker-block-request
@@ -866,11 +903,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disassociate-qualification-from-worker-request (:copier common-lisp:nil))
-   (worker-id (common-lisp:error ":worker-id is required") :type
-    (common-lisp:or customer-id common-lisp:null))
+   (worker-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":worker-id is required"))
+    :type (common-lisp:or customer-id common-lisp:null))
    (qualification-type-id
-    (common-lisp:error ":qualification-type-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":qualification-type-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (reason common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disassociate-qualification-from-worker-request
@@ -956,8 +996,10 @@
                                                 'on-hold-balance))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-assignment-request (:copier common-lisp:nil))
-   (assignment-id (common-lisp:error ":assignment-id is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+   (assignment-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":assignment-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-assignment-request 'make-get-assignment-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -994,9 +1036,13 @@
                                                 'hit))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-file-upload-urlrequest (:copier common-lisp:nil))
-   (assignment-id (common-lisp:error ":assignment-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
-   (question-identifier (common-lisp:error ":question-identifier is required")
+   (assignment-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":assignment-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
+   (question-identifier
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":question-identifier is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-file-upload-urlrequest
@@ -1035,8 +1081,9 @@
                                                 'file-upload-url))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-hitrequest (:copier common-lisp:nil))
-   (hitid (common-lisp:error ":hitid is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+   (hitid
+    (common-lisp:error #A((18) common-lisp:base-char . ":hitid is required"))
+    :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'get-hitrequest 'make-get-hitrequest))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape get-hitrequest))
@@ -1062,10 +1109,13 @@
  (common-lisp:defstruct
      (get-qualification-score-request (:copier common-lisp:nil))
    (qualification-type-id
-    (common-lisp:error ":qualification-type-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
-   (worker-id (common-lisp:error ":worker-id is required") :type
-    (common-lisp:or customer-id common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":qualification-type-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
+   (worker-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":worker-id is required"))
+    :type (common-lisp:or customer-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-qualification-score-request
                     'make-get-qualification-score-request))
@@ -1106,8 +1156,9 @@
  (common-lisp:defstruct
      (get-qualification-type-request (:copier common-lisp:nil))
    (qualification-type-id
-    (common-lisp:error ":qualification-type-id is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":qualification-type-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-qualification-type-request
                     'make-get-qualification-type-request))
@@ -1335,8 +1386,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-assignments-for-hitrequest (:copier common-lisp:nil))
-   (hitid (common-lisp:error ":hitid is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (hitid
+    (common-lisp:error #A((18) common-lisp:base-char . ":hitid is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1476,8 +1528,9 @@
  (common-lisp:defstruct
      (list-hits-for-qualification-type-request (:copier common-lisp:nil))
    (qualification-type-id
-    (common-lisp:error ":qualification-type-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":qualification-type-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1652,7 +1705,9 @@
  (common-lisp:defstruct
      (list-qualification-types-request (:copier common-lisp:nil))
    (query common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (must-be-requestable (common-lisp:error ":must-be-requestable is required")
+   (must-be-requestable
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":must-be-requestable is required"))
     :type (common-lisp:or boolean common-lisp:null))
    (must-be-owned-by-caller common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
@@ -1728,8 +1783,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-review-policy-results-for-hitrequest (:copier common-lisp:nil))
-   (hitid (common-lisp:error ":hitid is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (hitid
+    (common-lisp:error #A((18) common-lisp:base-char . ":hitid is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (policy-levels common-lisp:nil :type
     (common-lisp:or review-policy-level-list common-lisp:null))
    (retrieve-actions common-lisp:nil :type
@@ -1959,8 +2015,9 @@
  (common-lisp:defstruct
      (list-workers-with-qualification-type-request (:copier common-lisp:nil))
    (qualification-type-id
-    (common-lisp:error ":qualification-type-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":qualification-type-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (status common-lisp:nil :type
     (common-lisp:or qualification-status common-lisp:null))
    (next-token common-lisp:nil :type
@@ -2029,8 +2086,9 @@
                                                 'qualifications))))))
 (common-lisp:progn
  (common-lisp:defstruct (locale (:copier common-lisp:nil))
-   (country (common-lisp:error ":country is required") :type
-    (common-lisp:or country-parameters common-lisp:null))
+   (country
+    (common-lisp:error #A((20) common-lisp:base-char . ":country is required"))
+    :type (common-lisp:or country-parameters common-lisp:null))
    (subdivision common-lisp:nil :type
     (common-lisp:or country-parameters common-lisp:null)))
  (common-lisp:export (common-lisp:list 'locale 'make-locale))
@@ -2057,10 +2115,14 @@
 (common-lisp:deftype long () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (notification-specification (:copier common-lisp:nil))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or string common-lisp:null))
-   (transport (common-lisp:error ":transport is required") :type
-    (common-lisp:or notification-transport common-lisp:null))
+   (destination
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":destination is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (transport
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":transport is required"))
+    :type (common-lisp:or notification-transport common-lisp:null))
    (version common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (event-types common-lisp:nil :type
     (common-lisp:or event-type-list common-lisp:null)))
@@ -2137,12 +2199,17 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (notify-workers-request (:copier common-lisp:nil))
-   (subject (common-lisp:error ":subject is required") :type
-    (common-lisp:or string common-lisp:null))
-   (message-text (common-lisp:error ":message-text is required") :type
-    (common-lisp:or string common-lisp:null))
-   (worker-ids (common-lisp:error ":worker-ids is required") :type
-    (common-lisp:or customer-id-list common-lisp:null)))
+   (subject
+    (common-lisp:error #A((20) common-lisp:base-char . ":subject is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (message-text
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":message-text is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (worker-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":worker-ids is required"))
+    :type (common-lisp:or customer-id-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'notify-workers-request 'make-notify-workers-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2361,10 +2428,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (qualification-requirement (:copier common-lisp:nil))
    (qualification-type-id
-    (common-lisp:error ":qualification-type-id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (comparator (common-lisp:error ":comparator is required") :type
-    (common-lisp:or comparator common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":qualification-type-id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (comparator
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":comparator is required"))
+    :type (common-lisp:or comparator common-lisp:null))
    (integer-values common-lisp:nil :type
     (common-lisp:or integer-list common-lisp:null))
    (locale-values common-lisp:nil :type
@@ -2518,8 +2588,10 @@
 (common-lisp:deftype qualification-type-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (reject-assignment-request (:copier common-lisp:nil))
-   (assignment-id (common-lisp:error ":assignment-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (assignment-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":assignment-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (requester-feedback common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -2554,8 +2626,9 @@
  (common-lisp:defstruct
      (reject-qualification-request-request (:copier common-lisp:nil))
    (qualification-request-id
-    (common-lisp:error ":qualification-request-id is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":qualification-request-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (reason common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reject-qualification-request-request
@@ -2781,12 +2854,18 @@
 (common-lisp:deftype reviewable-hitstatus () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (send-bonus-request (:copier common-lisp:nil))
-   (worker-id (common-lisp:error ":worker-id is required") :type
-    (common-lisp:or customer-id common-lisp:null))
-   (bonus-amount (common-lisp:error ":bonus-amount is required") :type
-    (common-lisp:or numeric-value common-lisp:null))
-   (assignment-id (common-lisp:error ":assignment-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (worker-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":worker-id is required"))
+    :type (common-lisp:or customer-id common-lisp:null))
+   (bonus-amount
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":bonus-amount is required"))
+    :type (common-lisp:or numeric-value common-lisp:null))
+   (assignment-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":assignment-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (reason common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (unique-request-token common-lisp:nil :type
     (common-lisp:or idempotency-token common-lisp:null)))
@@ -2830,10 +2909,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (send-test-event-notification-request (:copier common-lisp:nil))
-   (notification (common-lisp:error ":notification is required") :type
-    (common-lisp:or notification-specification common-lisp:null))
-   (test-event-type (common-lisp:error ":test-event-type is required") :type
-    (common-lisp:or event-type common-lisp:null)))
+   (notification
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":notification is required"))
+    :type (common-lisp:or notification-specification common-lisp:null))
+   (test-event-type
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":test-event-type is required"))
+    :type (common-lisp:or event-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'send-test-event-notification-request
                     'make-send-test-event-notification-request))
@@ -2896,8 +2979,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-expiration-for-hitrequest (:copier common-lisp:nil))
-   (hitid (common-lisp:error ":hitid is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (hitid
+    (common-lisp:error #A((18) common-lisp:base-char . ":hitid is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (expire-at common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
@@ -2932,8 +3016,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-hitreview-status-request (:copier common-lisp:nil))
-   (hitid (common-lisp:error ":hitid is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (hitid
+    (common-lisp:error #A((18) common-lisp:base-char . ":hitid is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (revert common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-hitreview-status-request
@@ -2967,10 +3052,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-hittype-of-hitrequest (:copier common-lisp:nil))
-   (hitid (common-lisp:error ":hitid is required") :type
-    (common-lisp:or entity-id common-lisp:null))
-   (hittype-id (common-lisp:error ":hittype-id is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+   (hitid
+    (common-lisp:error #A((18) common-lisp:base-char . ":hitid is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
+   (hittype-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":hittype-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-hittype-of-hitrequest
                     'make-update-hittype-of-hitrequest))
@@ -3003,8 +3091,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-notification-settings-request (:copier common-lisp:nil))
-   (hittype-id (common-lisp:error ":hittype-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (hittype-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":hittype-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (notification common-lisp:nil :type
     (common-lisp:or notification-specification common-lisp:null))
    (active common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
@@ -3046,8 +3136,9 @@
  (common-lisp:defstruct
      (update-qualification-type-request (:copier common-lisp:nil))
    (qualification-type-id
-    (common-lisp:error ":qualification-type-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":qualification-type-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (qualification-type-status common-lisp:nil :type
     (common-lisp:or qualification-type-status common-lisp:null))
@@ -3171,7 +3262,10 @@
                        'make-accept-qualification-request-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AcceptQualificationRequest")
                                   ("Version" ,@"2017-01-17"))
@@ -3192,7 +3286,10 @@
                       (common-lisp:apply 'make-approve-assignment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ApproveAssignment")
                                   ("Version" ,@"2017-01-17"))
@@ -3214,7 +3311,10 @@
                        'make-associate-qualification-with-worker-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"AssociateQualificationWithWorker")
@@ -3237,7 +3337,10 @@
                        'make-create-additional-assignments-for-hitrequest
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"CreateAdditionalAssignmentsForHIT")
@@ -3267,7 +3370,10 @@
                       (common-lisp:apply 'make-create-hitrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateHIT")
                                   ("Version" ,@"2017-01-17"))
@@ -3290,7 +3396,10 @@
                       (common-lisp:apply 'make-create-hittype-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateHITType")
                                   ("Version" ,@"2017-01-17"))
@@ -3315,7 +3424,10 @@
                       (common-lisp:apply 'make-create-hitwith-hittype-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateHITWithHITType")
                                   ("Version" ,@"2017-01-17"))
@@ -3340,7 +3452,10 @@
                        'make-create-qualification-type-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateQualificationType")
                                   ("Version" ,@"2017-01-17"))
@@ -3358,7 +3473,10 @@
                       (common-lisp:apply 'make-create-worker-block-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateWorkerBlock")
                                   ("Version" ,@"2017-01-17"))
@@ -3376,7 +3494,10 @@
                       (common-lisp:apply 'make-delete-hitrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteHIT")
                                   ("Version" ,@"2017-01-17"))
@@ -3395,7 +3516,10 @@
                        'make-delete-qualification-type-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteQualificationType")
                                   ("Version" ,@"2017-01-17"))
@@ -3413,7 +3537,10 @@
                       (common-lisp:apply 'make-delete-worker-block-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteWorkerBlock")
                                   ("Version" ,@"2017-01-17"))
@@ -3433,7 +3560,10 @@
                        'make-disassociate-qualification-from-worker-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DisassociateQualificationFromWorker")
@@ -3445,7 +3575,9 @@
 (common-lisp:progn
  (common-lisp:defun get-account-balance ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((15) common-lisp:base-char . "mturk-requester")
+                             :method :post :params
                              (common-lisp:cons "Action" "GetAccountBalance"))
     "GetAccountBalanceResponse" common-lisp:nil))
  (common-lisp:export 'get-account-balance))
@@ -3459,7 +3591,10 @@
                       (common-lisp:apply 'make-get-assignment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetAssignment")
                                   ("Version" ,@"2017-01-17"))
@@ -3478,7 +3613,10 @@
                       (common-lisp:apply 'make-get-file-upload-urlrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetFileUploadURL")
                                   ("Version" ,@"2017-01-17"))
@@ -3496,7 +3634,10 @@
                       (common-lisp:apply 'make-get-hitrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetHIT")
                                   ("Version" ,@"2017-01-17"))
@@ -3515,7 +3656,10 @@
                       (common-lisp:apply 'make-get-qualification-score-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetQualificationScore")
                                   ("Version" ,@"2017-01-17"))
@@ -3533,7 +3677,10 @@
                       (common-lisp:apply 'make-get-qualification-type-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetQualificationType")
                                   ("Version" ,@"2017-01-17"))
@@ -3553,7 +3700,10 @@
                       (common-lisp:apply 'make-list-assignments-for-hitrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAssignmentsForHIT")
                                   ("Version" ,@"2017-01-17"))
@@ -3573,7 +3723,10 @@
                       (common-lisp:apply 'make-list-bonus-payments-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListBonusPayments")
                                   ("Version" ,@"2017-01-17"))
@@ -3591,7 +3744,10 @@
                       (common-lisp:apply 'make-list-hits-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListHITs")
                                   ("Version" ,@"2017-01-17"))
@@ -3612,7 +3768,10 @@
                        'make-list-hits-for-qualification-type-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListHITsForQualificationType")
                                   ("Version" ,@"2017-01-17"))
@@ -3633,7 +3792,10 @@
                        'make-list-qualification-requests-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListQualificationRequests")
                                   ("Version" ,@"2017-01-17"))
@@ -3654,7 +3816,10 @@
                       (common-lisp:apply 'make-list-qualification-types-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListQualificationTypes")
                                   ("Version" ,@"2017-01-17"))
@@ -3676,7 +3841,10 @@
                        'make-list-review-policy-results-for-hitrequest
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListReviewPolicyResultsForHIT")
                                   ("Version" ,@"2017-01-17"))
@@ -3695,7 +3863,10 @@
                       (common-lisp:apply 'make-list-reviewable-hits-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListReviewableHITs")
                                   ("Version" ,@"2017-01-17"))
@@ -3713,7 +3884,10 @@
                       (common-lisp:apply 'make-list-worker-blocks-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListWorkerBlocks")
                                   ("Version" ,@"2017-01-17"))
@@ -3735,7 +3909,10 @@
                        'make-list-workers-with-qualification-type-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ListWorkersWithQualificationType")
@@ -3755,7 +3932,10 @@
                       (common-lisp:apply 'make-notify-workers-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"NotifyWorkers")
                                   ("Version" ,@"2017-01-17"))
@@ -3774,7 +3954,10 @@
                       (common-lisp:apply 'make-reject-assignment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RejectAssignment")
                                   ("Version" ,@"2017-01-17"))
@@ -3794,7 +3977,10 @@
                        'make-reject-qualification-request-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RejectQualificationRequest")
                                   ("Version" ,@"2017-01-17"))
@@ -3815,7 +4001,10 @@
                       (common-lisp:apply 'make-send-bonus-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SendBonus")
                                   ("Version" ,@"2017-01-17"))
@@ -3834,7 +4023,10 @@
                        'make-send-test-event-notification-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SendTestEventNotification")
                                   ("Version" ,@"2017-01-17"))
@@ -3852,7 +4044,10 @@
                       (common-lisp:apply 'make-update-expiration-for-hitrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateExpirationForHIT")
                                   ("Version" ,@"2017-01-17"))
@@ -3870,7 +4065,10 @@
                       (common-lisp:apply 'make-update-hitreview-status-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateHITReviewStatus")
                                   ("Version" ,@"2017-01-17"))
@@ -3888,7 +4086,10 @@
                       (common-lisp:apply 'make-update-hittype-of-hitrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateHITTypeOfHIT")
                                   ("Version" ,@"2017-01-17"))
@@ -3907,7 +4108,10 @@
                        'make-update-notification-settings-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateNotificationSettings")
                                   ("Version" ,@"2017-01-17"))
@@ -3932,7 +4136,10 @@
                        'make-update-qualification-type-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "mturk-requester")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateQualificationType")
                                   ("Version" ,@"2017-01-17"))

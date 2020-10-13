@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/sms)
+
 (common-lisp:deftype ami-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (connector (:copier common-lisp:nil))
@@ -106,13 +107,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-replication-job-request (:copier common-lisp:nil))
-   (server-id (common-lisp:error ":serverid is required") :type
-    (common-lisp:or server-id common-lisp:null))
+   (server-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":serverid is required"))
+    :type (common-lisp:or server-id common-lisp:null))
    (seed-replication-time
-    (common-lisp:error ":seedreplicationtime is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (frequency (common-lisp:error ":frequency is required") :type
-    (common-lisp:or frequency common-lisp:null))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":seedreplicationtime is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (frequency
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":frequency is required"))
+    :type (common-lisp:or frequency common-lisp:null))
    (license-type common-lisp:nil :type
     (common-lisp:or license-type common-lisp:null))
    (role-name common-lisp:nil :type
@@ -178,7 +184,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-replication-job-request (:copier common-lisp:nil))
-   (replication-job-id (common-lisp:error ":replicationjobid is required")
+   (replication-job-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":replicationjobid is required"))
     :type (common-lisp:or replication-job-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-replication-job-request
@@ -230,8 +238,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disassociate-connector-request (:copier common-lisp:nil))
-   (connector-id (common-lisp:error ":connectorid is required") :type
-    (common-lisp:or connector-id common-lisp:null)))
+   (connector-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":connectorid is required"))
+    :type (common-lisp:or connector-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disassociate-connector-request
                     'make-disassociate-connector-request))
@@ -364,7 +374,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-replication-runs-request (:copier common-lisp:nil))
-   (replication-job-id (common-lisp:error ":replicationjobid is required")
+   (replication-job-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":replicationjobid is required"))
     :type (common-lisp:or replication-job-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
@@ -908,7 +920,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-on-demand-replication-run-request (:copier common-lisp:nil))
-   (replication-job-id (common-lisp:error ":replicationjobid is required")
+   (replication-job-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":replicationjobid is required"))
     :type (common-lisp:or replication-job-id common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null)))
@@ -970,7 +984,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-replication-job-request (:copier common-lisp:nil))
-   (replication-job-id (common-lisp:error ":replicationjobid is required")
+   (replication-job-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":replicationjobid is required"))
     :type (common-lisp:or replication-job-id common-lisp:null))
    (frequency common-lisp:nil :type
     (common-lisp:or frequency common-lisp:null))
@@ -1109,7 +1125,8 @@
                       (common-lisp:apply 'make-create-replication-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateReplicationJob")
                                   ("Version" ,@"2016-10-24"))
@@ -1127,7 +1144,8 @@
                       (common-lisp:apply 'make-delete-replication-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteReplicationJob")
                                   ("Version" ,@"2016-10-24"))
@@ -1138,7 +1156,8 @@
 (common-lisp:progn
  (common-lisp:defun delete-server-catalog ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "sms" :method :post :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sms")
+                             :method :post :params
                              (common-lisp:cons "Action" "DeleteServerCatalog"))
     "DeleteServerCatalogResponse" common-lisp:nil))
  (common-lisp:export 'delete-server-catalog))
@@ -1152,7 +1171,8 @@
                       (common-lisp:apply 'make-disassociate-connector-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisassociateConnector")
                                   ("Version" ,@"2016-10-24"))
@@ -1170,7 +1190,8 @@
                       (common-lisp:apply 'make-get-connectors-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetConnectors")
                                   ("Version" ,@"2016-10-24"))
@@ -1190,7 +1211,8 @@
                       (common-lisp:apply 'make-get-replication-jobs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetReplicationJobs")
                                   ("Version" ,@"2016-10-24"))
@@ -1210,7 +1232,8 @@
                       (common-lisp:apply 'make-get-replication-runs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetReplicationRuns")
                                   ("Version" ,@"2016-10-24"))
@@ -1228,7 +1251,8 @@
                       (common-lisp:apply 'make-get-servers-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetServers")
                                   ("Version" ,@"2016-10-24"))
@@ -1239,7 +1263,8 @@
 (common-lisp:progn
  (common-lisp:defun import-server-catalog ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "sms" :method :post :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sms")
+                             :method :post :params
                              (common-lisp:cons "Action" "ImportServerCatalog"))
     "ImportServerCatalogResponse" common-lisp:nil))
  (common-lisp:export 'import-server-catalog))
@@ -1254,7 +1279,8 @@
                        'make-start-on-demand-replication-run-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartOnDemandReplicationRun")
                                   ("Version" ,@"2016-10-24"))
@@ -1276,7 +1302,8 @@
                       (common-lisp:apply 'make-update-replication-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sms" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sms")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateReplicationJob")
                                   ("Version" ,@"2016-10-24"))

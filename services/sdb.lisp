@@ -7,14 +7,17 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/sdb)
+
 (common-lisp:progn
  (common-lisp:defstruct (attribute (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (alternate-name-encoding common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or string common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or string common-lisp:null))
    (alternate-value-encoding common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'attribute 'make-attribute))
@@ -74,10 +77,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-delete-attributes-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (items (common-lisp:error ":items is required") :type
-    (common-lisp:or deletable-item-list common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (items
+    (common-lisp:error #A((18) common-lisp:base-char . ":items is required"))
+    :type (common-lisp:or deletable-item-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-delete-attributes-request
                     'make-batch-delete-attributes-request))
@@ -99,10 +105,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-put-attributes-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (items (common-lisp:error ":items is required") :type
-    (common-lisp:or replaceable-item-list common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (items
+    (common-lisp:error #A((18) common-lisp:base-char . ":items is required"))
+    :type (common-lisp:or replaceable-item-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-put-attributes-request
                     'make-batch-put-attributes-request))
@@ -124,8 +133,10 @@
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (create-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-domain-request 'make-create-domain-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -140,8 +151,9 @@
                                                 'domain-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (deletable-attribute (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deletable-attribute 'make-deletable-attribute))
@@ -168,8 +180,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (deletable-item (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (attributes common-lisp:nil :type
     (common-lisp:or deletable-attribute-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'deletable-item 'make-deletable-item))
@@ -196,10 +209,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (delete-attributes-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (item-name (common-lisp:error ":item-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (item-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":item-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (attributes common-lisp:nil :type
     (common-lisp:or deletable-attribute-list common-lisp:null))
    (expected common-lisp:nil :type
@@ -234,8 +251,10 @@
                                                 'expected))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-domain-request 'make-delete-domain-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -250,8 +269,10 @@
                                                 'domain-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (domain-metadata-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'domain-metadata-request 'make-domain-metadata-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -343,10 +364,14 @@
 (common-lisp:deftype float () 'common-lisp:single-float)
 (common-lisp:progn
  (common-lisp:defstruct (get-attributes-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (item-name (common-lisp:error ":item-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (item-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":item-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (attribute-names common-lisp:nil :type
     (common-lisp:or attribute-name-list common-lisp:null))
    (consistent-read common-lisp:nil :type
@@ -472,12 +497,15 @@
                                                 'box-usage))))))
 (common-lisp:progn
  (common-lisp:defstruct (item (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (alternate-name-encoding common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or attribute-list common-lisp:null)))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or attribute-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'item 'make-item))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape item))
@@ -672,12 +700,18 @@
                                                 'box-usage))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-attributes-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (item-name (common-lisp:error ":item-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or replaceable-attribute-list common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (item-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":item-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or replaceable-attribute-list common-lisp:null))
    (expected common-lisp:nil :type
     (common-lisp:or update-condition common-lisp:null)))
  (common-lisp:export
@@ -709,10 +743,12 @@
                                                 'expected))))))
 (common-lisp:progn
  (common-lisp:defstruct (replaceable-attribute (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or string common-lisp:null))
    (replace common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'replaceable-attribute 'make-replaceable-attribute))
@@ -746,10 +782,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (replaceable-item (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or replaceable-attribute-list common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or replaceable-attribute-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'replaceable-item 'make-replaceable-item))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -787,7 +826,9 @@
                                                 'box-usage))))))
 (common-lisp:progn
  (common-lisp:defstruct (select-request (:copier common-lisp:nil))
-   (select-expression (common-lisp:error ":select-expression is required")
+   (select-expression
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":select-expression is required"))
     :type (common-lisp:or string common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (consistent-read common-lisp:nil :type
@@ -882,7 +923,8 @@
                       (common-lisp:apply 'make-batch-delete-attributes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sdb" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sdb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchDeleteAttributes")
                                   ("Version" ,@"2009-04-15"))
@@ -900,7 +942,8 @@
                       (common-lisp:apply 'make-batch-put-attributes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sdb" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sdb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchPutAttributes")
                                   ("Version" ,@"2009-04-15"))
@@ -918,7 +961,8 @@
                       (common-lisp:apply 'make-create-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sdb" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sdb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDomain")
                                   ("Version" ,@"2009-04-15"))
@@ -938,7 +982,8 @@
                       (common-lisp:apply 'make-delete-attributes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sdb" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sdb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAttributes")
                                   ("Version" ,@"2009-04-15"))
@@ -956,7 +1001,8 @@
                       (common-lisp:apply 'make-delete-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sdb" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sdb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDomain")
                                   ("Version" ,@"2009-04-15"))
@@ -974,7 +1020,8 @@
                       (common-lisp:apply 'make-domain-metadata-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sdb" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sdb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DomainMetadata")
                                   ("Version" ,@"2009-04-15"))
@@ -995,7 +1042,8 @@
                       (common-lisp:apply 'make-get-attributes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sdb" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sdb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetAttributes")
                                   ("Version" ,@"2009-04-15"))
@@ -1014,7 +1062,8 @@
                       (common-lisp:apply 'make-list-domains-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sdb" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sdb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDomains")
                                   ("Version" ,@"2009-04-15"))
@@ -1034,7 +1083,8 @@
                       (common-lisp:apply 'make-put-attributes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sdb" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sdb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutAttributes")
                                   ("Version" ,@"2009-04-15"))
@@ -1054,7 +1104,8 @@
                       (common-lisp:apply 'make-select-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "sdb" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "sdb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"Select")
                                   ("Version" ,@"2009-04-15"))

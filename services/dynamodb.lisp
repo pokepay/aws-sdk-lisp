@@ -7,13 +7,18 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/dynamodb)
+
 (common-lisp:deftype attribute-action () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (attribute-definition (:copier common-lisp:nil))
-   (attribute-name (common-lisp:error ":attribute-name is required") :type
-    (common-lisp:or key-schema-attribute-name common-lisp:null))
-   (attribute-type (common-lisp:error ":attribute-type is required") :type
-    (common-lisp:or scalar-attribute-type common-lisp:null)))
+   (attribute-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":attribute-name is required"))
+    :type (common-lisp:or key-schema-attribute-name common-lisp:null))
+   (attribute-type
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":attribute-type is required"))
+    :type (common-lisp:or scalar-attribute-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attribute-definition 'make-attribute-definition))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -168,8 +173,10 @@
 (common-lisp:deftype backfilling () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (batch-get-item-input (:copier common-lisp:nil))
-   (request-items (common-lisp:error ":request-items is required") :type
-    (common-lisp:or batch-get-request-map common-lisp:null))
+   (request-items
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":request-items is required"))
+    :type (common-lisp:or batch-get-request-map common-lisp:null))
    (return-consumed-capacity common-lisp:nil :type
     (common-lisp:or return-consumed-capacity common-lisp:null)))
  (common-lisp:export
@@ -231,8 +238,10 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (batch-write-item-input (:copier common-lisp:nil))
-   (request-items (common-lisp:error ":request-items is required") :type
-    (common-lisp:or batch-write-item-request-map common-lisp:null))
+   (request-items
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":request-items is required"))
+    :type (common-lisp:or batch-write-item-request-map common-lisp:null))
    (return-consumed-capacity common-lisp:nil :type
     (common-lisp:or return-consumed-capacity common-lisp:null))
    (return-item-collection-metrics common-lisp:nil :type
@@ -325,7 +334,9 @@
  (common-lisp:defstruct (condition (:copier common-lisp:nil))
    (attribute-value-list common-lisp:nil :type
     (common-lisp:or attribute-value-list common-lisp:null))
-   (comparison-operator (common-lisp:error ":comparison-operator is required")
+   (comparison-operator
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":comparison-operator is required"))
     :type (common-lisp:or comparison-operator common-lisp:null)))
  (common-lisp:export (common-lisp:list 'condition 'make-condition))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -415,15 +426,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-global-secondary-index-action (:copier common-lisp:nil))
-   (index-name (common-lisp:error ":index-name is required") :type
-    (common-lisp:or index-name common-lisp:null))
-   (key-schema (common-lisp:error ":key-schema is required") :type
-    (common-lisp:or key-schema common-lisp:null))
-   (projection (common-lisp:error ":projection is required") :type
-    (common-lisp:or projection common-lisp:null))
+   (index-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":index-name is required"))
+    :type (common-lisp:or index-name common-lisp:null))
+   (key-schema
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":key-schema is required"))
+    :type (common-lisp:or key-schema common-lisp:null))
+   (projection
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":projection is required"))
+    :type (common-lisp:or projection common-lisp:null))
    (provisioned-throughput
-    (common-lisp:error ":provisioned-throughput is required") :type
-    (common-lisp:or provisioned-throughput common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":provisioned-throughput is required"))
+    :type (common-lisp:or provisioned-throughput common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-global-secondary-index-action
                     'make-create-global-secondary-index-action))
@@ -455,19 +473,25 @@
 (common-lisp:progn
  (common-lisp:defstruct (create-table-input (:copier common-lisp:nil))
    (attribute-definitions
-    (common-lisp:error ":attribute-definitions is required") :type
-    (common-lisp:or attribute-definitions common-lisp:null))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or table-name common-lisp:null))
-   (key-schema (common-lisp:error ":key-schema is required") :type
-    (common-lisp:or key-schema common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":attribute-definitions is required"))
+    :type (common-lisp:or attribute-definitions common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or table-name common-lisp:null))
+   (key-schema
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":key-schema is required"))
+    :type (common-lisp:or key-schema common-lisp:null))
    (local-secondary-indexes common-lisp:nil :type
     (common-lisp:or local-secondary-index-list common-lisp:null))
    (global-secondary-indexes common-lisp:nil :type
     (common-lisp:or global-secondary-index-list common-lisp:null))
    (provisioned-throughput
-    (common-lisp:error ":provisioned-throughput is required") :type
-    (common-lisp:or provisioned-throughput common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":provisioned-throughput is required"))
+    :type (common-lisp:or provisioned-throughput common-lisp:null))
    (stream-specification common-lisp:nil :type
     (common-lisp:or stream-specification common-lisp:null)))
  (common-lisp:export
@@ -528,8 +552,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-global-secondary-index-action (:copier common-lisp:nil))
-   (index-name (common-lisp:error ":index-name is required") :type
-    (common-lisp:or index-name common-lisp:null)))
+   (index-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":index-name is required"))
+    :type (common-lisp:or index-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-global-secondary-index-action
                     'make-delete-global-secondary-index-action))
@@ -545,10 +571,12 @@
                                                 'index-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-item-input (:copier common-lisp:nil))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or table-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or key common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or table-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or key common-lisp:null))
    (expected common-lisp:nil :type
     (common-lisp:or expected-attribute-map common-lisp:null))
    (conditional-operator common-lisp:nil :type
@@ -650,8 +678,8 @@
                                                 'item-collection-metrics))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-request (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or key common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or key common-lisp:null)))
  (common-lisp:export (common-lisp:list 'delete-request 'make-delete-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape delete-request))
@@ -663,8 +691,10 @@
                                                 'key))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-table-input (:copier common-lisp:nil))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or table-name common-lisp:null)))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or table-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-table-input 'make-delete-table-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -737,8 +767,10 @@
                                                 'table-max-write-capacity-units))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-table-input (:copier common-lisp:nil))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or table-name common-lisp:null)))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or table-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-table-input 'make-describe-table-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -767,8 +799,10 @@
                                                 'table))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-time-to-live-input (:copier common-lisp:nil))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or table-name common-lisp:null)))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or table-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-time-to-live-input
                     'make-describe-time-to-live-input))
@@ -866,10 +900,12 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (get-item-input (:copier common-lisp:nil))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or table-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or key common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or table-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or key common-lisp:null))
    (attributes-to-get common-lisp:nil :type
     (common-lisp:or attribute-name-list common-lisp:null))
    (consistent-read common-lisp:nil :type
@@ -940,15 +976,22 @@
                                                 'consumed-capacity))))))
 (common-lisp:progn
  (common-lisp:defstruct (global-secondary-index (:copier common-lisp:nil))
-   (index-name (common-lisp:error ":index-name is required") :type
-    (common-lisp:or index-name common-lisp:null))
-   (key-schema (common-lisp:error ":key-schema is required") :type
-    (common-lisp:or key-schema common-lisp:null))
-   (projection (common-lisp:error ":projection is required") :type
-    (common-lisp:or projection common-lisp:null))
+   (index-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":index-name is required"))
+    :type (common-lisp:or index-name common-lisp:null))
+   (key-schema
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":key-schema is required"))
+    :type (common-lisp:or key-schema common-lisp:null))
+   (projection
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":projection is required"))
+    :type (common-lisp:or projection common-lisp:null))
    (provisioned-throughput
-    (common-lisp:error ":provisioned-throughput is required") :type
-    (common-lisp:or provisioned-throughput common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":provisioned-throughput is required"))
+    :type (common-lisp:or provisioned-throughput common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'global-secondary-index 'make-global-secondary-index))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1235,10 +1278,14 @@
 (common-lisp:deftype key-schema-attribute-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (key-schema-element (:copier common-lisp:nil))
-   (attribute-name (common-lisp:error ":attribute-name is required") :type
-    (common-lisp:or key-schema-attribute-name common-lisp:null))
-   (key-type (common-lisp:error ":key-type is required") :type
-    (common-lisp:or key-type common-lisp:null)))
+   (attribute-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":attribute-name is required"))
+    :type (common-lisp:or key-schema-attribute-name common-lisp:null))
+   (key-type
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":key-type is required"))
+    :type (common-lisp:or key-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'key-schema-element 'make-key-schema-element))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1257,8 +1304,9 @@
 (common-lisp:deftype key-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (keys-and-attributes (:copier common-lisp:nil))
-   (keys (common-lisp:error ":keys is required") :type
-    (common-lisp:or key-list common-lisp:null))
+   (keys
+    (common-lisp:error #A((17) common-lisp:base-char . ":keys is required"))
+    :type (common-lisp:or key-list common-lisp:null))
    (attributes-to-get common-lisp:nil :type
     (common-lisp:or attribute-name-list common-lisp:null))
    (consistent-read common-lisp:nil :type
@@ -1366,8 +1414,10 @@
                                                 'last-evaluated-table-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-tags-of-resource-input (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn-string common-lisp:null))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn-string common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token-string common-lisp:null)))
  (common-lisp:export
@@ -1414,12 +1464,18 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (local-secondary-index (:copier common-lisp:nil))
-   (index-name (common-lisp:error ":index-name is required") :type
-    (common-lisp:or index-name common-lisp:null))
-   (key-schema (common-lisp:error ":key-schema is required") :type
-    (common-lisp:or key-schema common-lisp:null))
-   (projection (common-lisp:error ":projection is required") :type
-    (common-lisp:or projection common-lisp:null)))
+   (index-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":index-name is required"))
+    :type (common-lisp:or index-name common-lisp:null))
+   (key-schema
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":key-schema is required"))
+    :type (common-lisp:or key-schema common-lisp:null))
+   (projection
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":projection is required"))
+    :type (common-lisp:or projection common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'local-secondary-index 'make-local-secondary-index))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1563,11 +1619,14 @@
 (common-lisp:deftype projection-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (provisioned-throughput (:copier common-lisp:nil))
-   (read-capacity-units (common-lisp:error ":read-capacity-units is required")
+   (read-capacity-units
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":read-capacity-units is required"))
     :type (common-lisp:or positive-long-object common-lisp:null))
    (write-capacity-units
-    (common-lisp:error ":write-capacity-units is required") :type
-    (common-lisp:or positive-long-object common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":write-capacity-units is required"))
+    :type (common-lisp:or positive-long-object common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'provisioned-throughput 'make-provisioned-throughput))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1651,10 +1710,13 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-item-input (:copier common-lisp:nil))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or table-name common-lisp:null))
-   (item (common-lisp:error ":item is required") :type
-    (common-lisp:or put-item-input-attribute-map common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or table-name common-lisp:null))
+   (item
+    (common-lisp:error #A((17) common-lisp:base-char . ":item is required"))
+    :type (common-lisp:or put-item-input-attribute-map common-lisp:null))
    (expected common-lisp:nil :type
     (common-lisp:or expected-attribute-map common-lisp:null))
    (return-values common-lisp:nil :type
@@ -1760,8 +1822,9 @@
                                                 'item-collection-metrics))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-request (:copier common-lisp:nil))
-   (item (common-lisp:error ":item is required") :type
-    (common-lisp:or put-item-input-attribute-map common-lisp:null)))
+   (item
+    (common-lisp:error #A((17) common-lisp:base-char . ":item is required"))
+    :type (common-lisp:or put-item-input-attribute-map common-lisp:null)))
  (common-lisp:export (common-lisp:list 'put-request 'make-put-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape put-request))
@@ -1773,8 +1836,10 @@
                                                 'item))))))
 (common-lisp:progn
  (common-lisp:defstruct (query-input (:copier common-lisp:nil))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or table-name common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or table-name common-lisp:null))
    (index-name common-lisp:nil :type
     (common-lisp:or index-name common-lisp:null))
    (select common-lisp:nil :type (common-lisp:or select common-lisp:null))
@@ -1976,8 +2041,10 @@
 (common-lisp:deftype scalar-attribute-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (scan-input (:copier common-lisp:nil))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or table-name common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or table-name common-lisp:null))
    (index-name common-lisp:nil :type
     (common-lisp:or index-name common-lisp:null))
    (attributes-to-get common-lisp:nil :type
@@ -2288,10 +2355,11 @@
 (common-lisp:deftype table-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key-string common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value-string common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key-string common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or tag-value-string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -2324,10 +2392,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag-resource-input (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn-string common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn-string common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-resource-input 'make-tag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2371,10 +2442,13 @@
 (common-lisp:deftype time-to-live-enabled () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (time-to-live-specification (:copier common-lisp:nil))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or time-to-live-enabled common-lisp:null))
-   (attribute-name (common-lisp:error ":attribute-name is required") :type
-    (common-lisp:or time-to-live-attribute-name common-lisp:null)))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or time-to-live-enabled common-lisp:null))
+   (attribute-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":attribute-name is required"))
+    :type (common-lisp:or time-to-live-attribute-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'time-to-live-specification
                     'make-time-to-live-specification))
@@ -2396,10 +2470,14 @@
 (common-lisp:deftype time-to-live-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (untag-resource-input (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or resource-arn-string common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or resource-arn-string common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-resource-input 'make-untag-resource-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2419,11 +2497,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-global-secondary-index-action (:copier common-lisp:nil))
-   (index-name (common-lisp:error ":index-name is required") :type
-    (common-lisp:or index-name common-lisp:null))
+   (index-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":index-name is required"))
+    :type (common-lisp:or index-name common-lisp:null))
    (provisioned-throughput
-    (common-lisp:error ":provisioned-throughput is required") :type
-    (common-lisp:or provisioned-throughput common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":provisioned-throughput is required"))
+    :type (common-lisp:or provisioned-throughput common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-global-secondary-index-action
                     'make-update-global-secondary-index-action))
@@ -2444,10 +2525,12 @@
                                                 'provisioned-throughput))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-item-input (:copier common-lisp:nil))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or table-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or key common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or table-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or key common-lisp:null))
    (attribute-updates common-lisp:nil :type
     (common-lisp:or attribute-updates common-lisp:null))
    (expected common-lisp:nil :type
@@ -2565,8 +2648,10 @@
  (common-lisp:defstruct (update-table-input (:copier common-lisp:nil))
    (attribute-definitions common-lisp:nil :type
     (common-lisp:or attribute-definitions common-lisp:null))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or table-name common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or table-name common-lisp:null))
    (provisioned-throughput common-lisp:nil :type
     (common-lisp:or provisioned-throughput common-lisp:null))
    (global-secondary-index-updates common-lisp:nil :type
@@ -2619,11 +2704,15 @@
                                                 'table-description))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-time-to-live-input (:copier common-lisp:nil))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or table-name common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or table-name common-lisp:null))
    (time-to-live-specification
-    (common-lisp:error ":time-to-live-specification is required") :type
-    (common-lisp:or time-to-live-specification common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":time-to-live-specification is required"))
+    :type (common-lisp:or time-to-live-specification common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-time-to-live-input
                     'make-update-time-to-live-input))
@@ -2698,7 +2787,9 @@
                       (common-lisp:apply 'make-batch-get-item-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetItem")
                                   ("Version" ,@"2012-08-10"))
@@ -2719,7 +2810,9 @@
                       (common-lisp:apply 'make-batch-write-item-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchWriteItem")
                                   ("Version" ,@"2012-08-10"))
@@ -2743,7 +2836,9 @@
                       (common-lisp:apply 'make-create-table-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTable")
                                   ("Version" ,@"2012-08-10"))
@@ -2769,7 +2864,9 @@
                       (common-lisp:apply 'make-delete-item-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteItem")
                                   ("Version" ,@"2012-08-10"))
@@ -2787,7 +2884,9 @@
                       (common-lisp:apply 'make-delete-table-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTable")
                                   ("Version" ,@"2012-08-10"))
@@ -2798,7 +2897,9 @@
 (common-lisp:progn
  (common-lisp:defun describe-limits ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((8) common-lisp:base-char . "dynamodb") :method
+                             :post :params
                              (common-lisp:cons "Action" "DescribeLimits"))
     "DescribeLimitsOutput" common-lisp:nil))
  (common-lisp:export 'describe-limits))
@@ -2812,7 +2913,9 @@
                       (common-lisp:apply 'make-describe-table-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTable")
                                   ("Version" ,@"2012-08-10"))
@@ -2830,7 +2933,9 @@
                       (common-lisp:apply 'make-describe-time-to-live-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTimeToLive")
                                   ("Version" ,@"2012-08-10"))
@@ -2853,7 +2958,9 @@
                       (common-lisp:apply 'make-get-item-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetItem")
                                   ("Version" ,@"2012-08-10"))
@@ -2872,7 +2979,9 @@
                       (common-lisp:apply 'make-list-tables-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTables")
                                   ("Version" ,@"2012-08-10"))
@@ -2890,7 +2999,9 @@
                       (common-lisp:apply 'make-list-tags-of-resource-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsOfResource")
                                   ("Version" ,@"2012-08-10"))
@@ -2915,7 +3026,9 @@
                       (common-lisp:apply 'make-put-item-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutItem")
                                   ("Version" ,@"2012-08-10"))
@@ -2944,7 +3057,9 @@
                       (common-lisp:apply 'make-query-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"Query")
                                   ("Version" ,@"2012-08-10"))
@@ -2972,7 +3087,9 @@
                       (common-lisp:apply 'make-scan-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"Scan")
                                   ("Version" ,@"2012-08-10"))
@@ -2990,7 +3107,9 @@
                       (common-lisp:apply 'make-tag-resource-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TagResource")
                                   ("Version" ,@"2012-08-10"))
@@ -3008,7 +3127,9 @@
                       (common-lisp:apply 'make-untag-resource-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UntagResource")
                                   ("Version" ,@"2012-08-10"))
@@ -3034,7 +3155,9 @@
                       (common-lisp:apply 'make-update-item-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateItem")
                                   ("Version" ,@"2012-08-10"))
@@ -3057,7 +3180,9 @@
                       (common-lisp:apply 'make-update-table-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTable")
                                   ("Version" ,@"2012-08-10"))
@@ -3076,7 +3201,9 @@
                       (common-lisp:apply 'make-update-time-to-live-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "dynamodb" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTimeToLive")
                                   ("Version" ,@"2012-08-10"))

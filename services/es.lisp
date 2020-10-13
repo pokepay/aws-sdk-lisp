@@ -7,13 +7,16 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/es)
+
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (access-policies-status (:copier common-lisp:nil))
-   (options (common-lisp:error ":options is required") :type
-    (common-lisp:or policy-document common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or option-status common-lisp:null)))
+   (options
+    (common-lisp:error #A((20) common-lisp:base-char . ":options is required"))
+    :type (common-lisp:or policy-document common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or option-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'access-policies-status 'make-access-policies-status))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -33,10 +36,12 @@
                                                 'status))))))
 (common-lisp:progn
  (common-lisp:defstruct (add-tags-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tag-list (common-lisp:error ":tag-list is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (tag-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-list is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-tags-request 'make-add-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -89,10 +94,12 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (advanced-options-status (:copier common-lisp:nil))
-   (options (common-lisp:error ":options is required") :type
-    (common-lisp:or advanced-options common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or option-status common-lisp:null)))
+   (options
+    (common-lisp:error #A((20) common-lisp:base-char . ":options is required"))
+    :type (common-lisp:or advanced-options common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or option-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'advanced-options-status 'make-advanced-options-status))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -127,8 +134,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-elasticsearch-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (elasticsearch-version common-lisp:nil :type
     (common-lisp:or elasticsearch-version-string common-lisp:null))
    (elasticsearch-cluster-config common-lisp:nil :type
@@ -205,8 +214,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-elasticsearch-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-elasticsearch-domain-request
                     'make-delete-elasticsearch-domain-request))
@@ -241,8 +252,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-elasticsearch-domain-config-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-elasticsearch-domain-config-request
                     'make-describe-elasticsearch-domain-config-request))
@@ -259,8 +272,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-elasticsearch-domain-config-response (:copier common-lisp:nil))
-   (domain-config (common-lisp:error ":domain-config is required") :type
-    (common-lisp:or elasticsearch-domain-config common-lisp:null)))
+   (domain-config
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":domain-config is required"))
+    :type (common-lisp:or elasticsearch-domain-config common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-elasticsearch-domain-config-response
                     'make-describe-elasticsearch-domain-config-response))
@@ -277,8 +292,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-elasticsearch-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-elasticsearch-domain-request
                     'make-describe-elasticsearch-domain-request))
@@ -295,8 +312,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-elasticsearch-domain-response (:copier common-lisp:nil))
-   (domain-status (common-lisp:error ":domain-status is required") :type
-    (common-lisp:or elasticsearch-domain-status common-lisp:null)))
+   (domain-status
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":domain-status is required"))
+    :type (common-lisp:or elasticsearch-domain-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-elasticsearch-domain-response
                     'make-describe-elasticsearch-domain-response))
@@ -313,8 +332,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-elasticsearch-domains-request (:copier common-lisp:nil))
-   (domain-names (common-lisp:error ":domain-names is required") :type
-    (common-lisp:or domain-name-list common-lisp:null)))
+   (domain-names
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":domain-names is required"))
+    :type (common-lisp:or domain-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-elasticsearch-domains-request
                     'make-describe-elasticsearch-domains-request))
@@ -331,7 +352,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-elasticsearch-domains-response (:copier common-lisp:nil))
-   (domain-status-list (common-lisp:error ":domain-status-list is required")
+   (domain-status-list
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":domain-status-list is required"))
     :type (common-lisp:or elasticsearch-domain-status-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-elasticsearch-domains-response
@@ -352,11 +375,14 @@
       (:copier common-lisp:nil))
    (domain-name common-lisp:nil :type
     (common-lisp:or domain-name common-lisp:null))
-   (instance-type (common-lisp:error ":instance-type is required") :type
-    (common-lisp:or espartition-instance-type common-lisp:null))
+   (instance-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instance-type is required"))
+    :type (common-lisp:or espartition-instance-type common-lisp:null))
    (elasticsearch-version
-    (common-lisp:error ":elasticsearch-version is required") :type
-    (common-lisp:or elasticsearch-version-string common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":elasticsearch-version is required"))
+    :type (common-lisp:or elasticsearch-version-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-elasticsearch-instance-type-limits-request
                     'make-describe-elasticsearch-instance-type-limits-request))
@@ -476,10 +502,12 @@
                                                 'iops))))))
 (common-lisp:progn
  (common-lisp:defstruct (ebsoptions-status (:copier common-lisp:nil))
-   (options (common-lisp:error ":options is required") :type
-    (common-lisp:or ebsoptions common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or option-status common-lisp:null)))
+   (options
+    (common-lisp:error #A((20) common-lisp:base-char . ":options is required"))
+    :type (common-lisp:or ebsoptions common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or option-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'ebsoptions-status 'make-ebsoptions-status))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -552,10 +580,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (elasticsearch-cluster-config-status (:copier common-lisp:nil))
-   (options (common-lisp:error ":options is required") :type
-    (common-lisp:or elasticsearch-cluster-config common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or option-status common-lisp:null)))
+   (options
+    (common-lisp:error #A((20) common-lisp:base-char . ":options is required"))
+    :type (common-lisp:or elasticsearch-cluster-config common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or option-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'elasticsearch-cluster-config-status
                     'make-elasticsearch-cluster-config-status))
@@ -628,12 +658,16 @@
                                                 'advanced-options))))))
 (common-lisp:progn
  (common-lisp:defstruct (elasticsearch-domain-status (:copier common-lisp:nil))
-   (domain-id (common-lisp:error ":domain-id is required") :type
-    (common-lisp:or domain-id common-lisp:null))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (domain-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":domain-id is required"))
+    :type (common-lisp:or domain-id common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (created common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
    (deleted common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
    (endpoint common-lisp:nil :type
@@ -642,8 +676,10 @@
    (elasticsearch-version common-lisp:nil :type
     (common-lisp:or elasticsearch-version-string common-lisp:null))
    (elasticsearch-cluster-config
-    (common-lisp:error ":elasticsearch-cluster-config is required") :type
-    (common-lisp:or elasticsearch-cluster-config common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":elasticsearch-cluster-config is required"))
+    :type (common-lisp:or elasticsearch-cluster-config common-lisp:null))
    (ebsoptions common-lisp:nil :type
     (common-lisp:or ebsoptions common-lisp:null))
    (access-policies common-lisp:nil :type
@@ -755,10 +791,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (elasticsearch-version-status (:copier common-lisp:nil))
-   (options (common-lisp:error ":options is required") :type
-    (common-lisp:or elasticsearch-version-string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or option-status common-lisp:null)))
+   (options
+    (common-lisp:error #A((20) common-lisp:base-char . ":options is required"))
+    :type (common-lisp:or elasticsearch-version-string common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or option-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'elasticsearch-version-status
                     'make-elasticsearch-version-status))
@@ -906,8 +944,9 @@
  (common-lisp:defstruct
      (list-elasticsearch-instance-types-request (:copier common-lisp:nil))
    (elasticsearch-version
-    (common-lisp:error ":elasticsearch-version is required") :type
-    (common-lisp:or elasticsearch-version-string common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":elasticsearch-version is required"))
+    :type (common-lisp:or elasticsearch-version-string common-lisp:null))
    (domain-name common-lisp:nil :type
     (common-lisp:or domain-name common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1019,8 +1058,8 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-tags-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-request 'make-list-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1051,14 +1090,19 @@
 (common-lisp:deftype option-state () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (option-status (:copier common-lisp:nil))
-   (creation-date (common-lisp:error ":creation-date is required") :type
-    (common-lisp:or update-timestamp common-lisp:null))
-   (update-date (common-lisp:error ":update-date is required") :type
-    (common-lisp:or update-timestamp common-lisp:null))
+   (creation-date
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":creation-date is required"))
+    :type (common-lisp:or update-timestamp common-lisp:null))
+   (update-date
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":update-date is required"))
+    :type (common-lisp:or update-timestamp common-lisp:null))
    (update-version common-lisp:nil :type
     (common-lisp:or uint-value common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or option-state common-lisp:null))
+   (state
+    (common-lisp:error #A((18) common-lisp:base-char . ":state is required"))
+    :type (common-lisp:or option-state common-lisp:null))
    (pending-deletion common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export (common-lisp:list 'option-status 'make-option-status))
@@ -1093,10 +1137,12 @@
 (common-lisp:deftype policy-document () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (remove-tags-request (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or string-list common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-request 'make-remove-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1151,10 +1197,12 @@
                                                 'automated-snapshot-start-hour))))))
 (common-lisp:progn
  (common-lisp:defstruct (snapshot-options-status (:copier common-lisp:nil))
-   (options (common-lisp:error ":options is required") :type
-    (common-lisp:or snapshot-options common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or option-status common-lisp:null)))
+   (options
+    (common-lisp:error #A((20) common-lisp:base-char . ":options is required"))
+    :type (common-lisp:or snapshot-options common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or option-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'snapshot-options-status 'make-snapshot-options-status))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1248,10 +1296,11 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or tag-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -1279,8 +1328,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-elasticsearch-domain-config-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (elasticsearch-cluster-config common-lisp:nil :type
     (common-lisp:or elasticsearch-cluster-config common-lisp:null))
    (ebsoptions common-lisp:nil :type
@@ -1332,8 +1383,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-elasticsearch-domain-config-response (:copier common-lisp:nil))
-   (domain-config (common-lisp:error ":domain-config is required") :type
-    (common-lisp:or elasticsearch-domain-config common-lisp:null)))
+   (domain-config
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":domain-config is required"))
+    :type (common-lisp:or elasticsearch-domain-config common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-elasticsearch-domain-config-response
                     'make-update-elasticsearch-domain-config-response))
@@ -1366,7 +1419,8 @@
                       (common-lisp:apply 'make-add-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "es" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "es")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTags")
                                   ("Version" ,@"2015-01-01"))
@@ -1390,7 +1444,8 @@
                        'make-create-elasticsearch-domain-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "es" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "es")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateElasticsearchDomain")
                                   ("Version" ,@"2015-01-01"))
@@ -1409,7 +1464,12 @@
                        'make-delete-elasticsearch-domain-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "es" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "es")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-01-01/es/domain/~a"
+                                                   domainname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteElasticsearchDomain")
                                   ("Version" ,@"2015-01-01"))
@@ -1428,7 +1488,12 @@
                        'make-describe-elasticsearch-domain-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "es" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "es")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-01-01/es/domain/~a"
+                                                   domainname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeElasticsearchDomain")
                                   ("Version" ,@"2015-01-01"))
@@ -1447,7 +1512,12 @@
                        'make-describe-elasticsearch-domain-config-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "es" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "es")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-01-01/es/domain/~a/config"
+                                                   domainname)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeElasticsearchDomainConfig")
@@ -1467,7 +1537,8 @@
                        'make-describe-elasticsearch-domains-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "es" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "es")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeElasticsearchDomains")
                                   ("Version" ,@"2015-01-01"))
@@ -1488,7 +1559,13 @@
                        'make-describe-elasticsearch-instance-type-limits-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "es" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "es")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-01-01/es/instanceTypeLimits/~a/~a"
+                                                   elasticsearchversion
+                                                   instancetype)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeElasticsearchInstanceTypeLimits")
@@ -1500,7 +1577,8 @@
 (common-lisp:progn
  (common-lisp:defun list-domain-names ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "es" :method :get :params
+    (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "es")
+                             :method :get :params
                              (common-lisp:cons "Action" "ListDomainNames"))
     "ListDomainNamesResponse" common-lisp:nil))
  (common-lisp:export 'list-domain-names))
@@ -1518,7 +1596,12 @@
                        'make-list-elasticsearch-instance-types-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "es" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "es")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-01-01/es/instanceTypes/~a"
+                                                   elasticsearchversion)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListElasticsearchInstanceTypes")
                                   ("Version" ,@"2015-01-01"))
@@ -1537,7 +1620,8 @@
                        'make-list-elasticsearch-versions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "es" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "es")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListElasticsearchVersions")
                                   ("Version" ,@"2015-01-01"))
@@ -1555,7 +1639,8 @@
                       (common-lisp:apply 'make-list-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "es" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "es")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTags")
                                   ("Version" ,@"2015-01-01"))
@@ -1573,7 +1658,8 @@
                       (common-lisp:apply 'make-remove-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "es" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "es")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTags")
                                   ("Version" ,@"2015-01-01"))
@@ -1596,7 +1682,12 @@
                        'make-update-elasticsearch-domain-config-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "es" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "es")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2015-01-01/es/domain/~a/config"
+                                                   domainname)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"UpdateElasticsearchDomainConfig")

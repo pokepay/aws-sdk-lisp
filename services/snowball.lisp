@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/snowball)
+
 (common-lisp:progn
  (common-lisp:defstruct (address (:copier common-lisp:nil))
    (address-id common-lisp:nil :type
@@ -113,8 +114,10 @@
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (cancel-cluster-request (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null)))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-cluster-request 'make-cancel-cluster-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -138,8 +141,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (cancel-job-request (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":job-id is required") :type
-    (common-lisp:or job-id common-lisp:null)))
+   (job-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":job-id is required"))
+    :type (common-lisp:or job-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-job-request 'make-cancel-job-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -314,8 +318,9 @@
 (common-lisp:deftype cluster-state () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (create-address-request (:copier common-lisp:nil))
-   (address (common-lisp:error ":address is required") :type
-    (common-lisp:or address common-lisp:null)))
+   (address
+    (common-lisp:error #A((20) common-lisp:base-char . ":address is required"))
+    :type (common-lisp:or address common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-address-request 'make-create-address-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -345,21 +350,31 @@
                                                 'address-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-cluster-request (:copier common-lisp:nil))
-   (job-type (common-lisp:error ":job-type is required") :type
-    (common-lisp:or job-type common-lisp:null))
-   (resources (common-lisp:error ":resources is required") :type
-    (common-lisp:or job-resource common-lisp:null))
+   (job-type
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":job-type is required"))
+    :type (common-lisp:or job-type common-lisp:null))
+   (resources
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":resources is required"))
+    :type (common-lisp:or job-resource common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (address-id (common-lisp:error ":address-id is required") :type
-    (common-lisp:or address-id common-lisp:null))
+   (address-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":address-id is required"))
+    :type (common-lisp:or address-id common-lisp:null))
    (kms-key-arn common-lisp:nil :type
     (common-lisp:or kms-key-arn common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
    (snowball-type common-lisp:nil :type
     (common-lisp:or snowball-type common-lisp:null))
-   (shipping-option (common-lisp:error ":shipping-option is required") :type
-    (common-lisp:or shipping-option common-lisp:null))
+   (shipping-option
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":shipping-option is required"))
+    :type (common-lisp:or shipping-option common-lisp:null))
    (notification common-lisp:nil :type
     (common-lisp:or notification common-lisp:null))
    (forwarding-address-id common-lisp:nil :type
@@ -573,8 +588,10 @@
                                                 'total-objects))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-address-request (:copier common-lisp:nil))
-   (address-id (common-lisp:error ":address-id is required") :type
-    (common-lisp:or address-id common-lisp:null)))
+   (address-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":address-id is required"))
+    :type (common-lisp:or address-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-address-request 'make-describe-address-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -650,8 +667,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-cluster-request (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null)))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-cluster-request 'make-describe-cluster-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -682,8 +701,9 @@
                                                 'cluster-metadata))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-job-request (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":job-id is required") :type
-    (common-lisp:or job-id common-lisp:null)))
+   (job-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":job-id is required"))
+    :type (common-lisp:or job-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-job-request 'make-describe-job-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -742,8 +762,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (get-job-manifest-request (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":job-id is required") :type
-    (common-lisp:or job-id common-lisp:null)))
+   (job-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":job-id is required"))
+    :type (common-lisp:or job-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-job-manifest-request 'make-get-job-manifest-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -774,8 +795,9 @@
                                                 'manifest-uri))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-job-unlock-code-request (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":job-id is required") :type
-    (common-lisp:or job-id common-lisp:null)))
+   (job-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":job-id is required"))
+    :type (common-lisp:or job-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-job-unlock-code-request
                     'make-get-job-unlock-code-request))
@@ -1234,8 +1256,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (list-cluster-jobs-request (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or list-limit common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -1497,8 +1521,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-cluster-request (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
    (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (resources common-lisp:nil :type
@@ -1569,8 +1595,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (update-job-request (:copier common-lisp:nil))
-   (job-id (common-lisp:error ":job-id is required") :type
-    (common-lisp:or job-id common-lisp:null))
+   (job-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":job-id is required"))
+    :type (common-lisp:or job-id common-lisp:null))
    (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
    (notification common-lisp:nil :type
     (common-lisp:or notification common-lisp:null))
@@ -1652,7 +1679,9 @@
                       (common-lisp:apply 'make-cancel-cluster-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelCluster")
                                   ("Version" ,@"2016-06-30"))
@@ -1670,7 +1699,9 @@
                       (common-lisp:apply 'make-cancel-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelJob")
                                   ("Version" ,@"2016-06-30"))
@@ -1688,7 +1719,9 @@
                       (common-lisp:apply 'make-create-address-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAddress")
                                   ("Version" ,@"2016-06-30"))
@@ -1711,7 +1744,9 @@
                       (common-lisp:apply 'make-create-cluster-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCluster")
                                   ("Version" ,@"2016-06-30"))
@@ -1735,7 +1770,9 @@
                       (common-lisp:apply 'make-create-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateJob")
                                   ("Version" ,@"2016-06-30"))
@@ -1753,7 +1790,9 @@
                       (common-lisp:apply 'make-describe-address-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAddress")
                                   ("Version" ,@"2016-06-30"))
@@ -1771,7 +1810,9 @@
                       (common-lisp:apply 'make-describe-addresses-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAddresses")
                                   ("Version" ,@"2016-06-30"))
@@ -1789,7 +1830,9 @@
                       (common-lisp:apply 'make-describe-cluster-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCluster")
                                   ("Version" ,@"2016-06-30"))
@@ -1807,7 +1850,9 @@
                       (common-lisp:apply 'make-describe-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeJob")
                                   ("Version" ,@"2016-06-30"))
@@ -1825,7 +1870,9 @@
                       (common-lisp:apply 'make-get-job-manifest-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetJobManifest")
                                   ("Version" ,@"2016-06-30"))
@@ -1843,7 +1890,9 @@
                       (common-lisp:apply 'make-get-job-unlock-code-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetJobUnlockCode")
                                   ("Version" ,@"2016-06-30"))
@@ -1854,7 +1903,9 @@
 (common-lisp:progn
  (common-lisp:defun get-snowball-usage ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "snowball" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((8) common-lisp:base-char . "snowball") :method
+                             :post :params
                              (common-lisp:cons "Action" "GetSnowballUsage"))
     "GetSnowballUsageResult" common-lisp:nil))
  (common-lisp:export 'get-snowball-usage))
@@ -1869,7 +1920,9 @@
                       (common-lisp:apply 'make-list-cluster-jobs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListClusterJobs")
                                   ("Version" ,@"2016-06-30"))
@@ -1887,7 +1940,9 @@
                       (common-lisp:apply 'make-list-clusters-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListClusters")
                                   ("Version" ,@"2016-06-30"))
@@ -1905,7 +1960,9 @@
                       (common-lisp:apply 'make-list-jobs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListJobs")
                                   ("Version" ,@"2016-06-30"))
@@ -1927,7 +1984,9 @@
                       (common-lisp:apply 'make-update-cluster-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateCluster")
                                   ("Version" ,@"2016-06-30"))
@@ -1950,7 +2009,9 @@
                       (common-lisp:apply 'make-update-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "snowball" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "snowball")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateJob")
                                   ("Version" ,@"2016-06-30"))

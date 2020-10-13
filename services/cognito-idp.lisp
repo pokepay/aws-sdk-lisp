@@ -7,13 +7,18 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/cognito-idp)
+
 (common-lisp:deftype awsaccount-id-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (add-custom-attributes-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (custom-attributes (common-lisp:error ":custom-attributes is required")
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (custom-attributes
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":custom-attributes is required"))
     :type (common-lisp:or custom-attributes-list-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-custom-attributes-request
@@ -47,12 +52,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-add-user-to-group-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or group-name-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or group-name-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-add-user-to-group-request
                     'make-admin-add-user-to-group-request))
@@ -79,10 +90,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-confirm-sign-up-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-confirm-sign-up-request
                     'make-admin-confirm-sign-up-request))
@@ -147,10 +162,14 @@
                                                 'invite-message-template))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-create-user-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
    (user-attributes common-lisp:nil :type
     (common-lisp:or attribute-list-type common-lisp:null))
    (validation-data common-lisp:nil :type
@@ -232,13 +251,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-delete-user-attributes-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
    (user-attribute-names
-    (common-lisp:error ":user-attribute-names is required") :type
-    (common-lisp:or attribute-name-list-type common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":user-attribute-names is required"))
+    :type (common-lisp:or attribute-name-list-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-delete-user-attributes-request
                     'make-admin-delete-user-attributes-request))
@@ -275,10 +299,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (admin-delete-user-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-delete-user-request
                     'make-admin-delete-user-request))
@@ -300,10 +328,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-disable-provider-for-user-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or string-type common-lisp:null))
-   (user (common-lisp:error ":user is required") :type
-    (common-lisp:or provider-user-identifier-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or string-type common-lisp:null))
+   (user
+    (common-lisp:error #A((17) common-lisp:base-char . ":user is required"))
+    :type (common-lisp:or provider-user-identifier-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-disable-provider-for-user-request
                     'make-admin-disable-provider-for-user-request))
@@ -335,10 +366,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (admin-disable-user-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-disable-user-request
                     'make-admin-disable-user-request))
@@ -370,10 +405,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (admin-enable-user-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-enable-user-request
                     'make-admin-enable-user-request))
@@ -404,12 +443,18 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (admin-forget-device-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
-   (device-key (common-lisp:error ":device-key is required") :type
-    (common-lisp:or device-key-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
+   (device-key
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":device-key is required"))
+    :type (common-lisp:or device-key-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-forget-device-request
                     'make-admin-forget-device-request))
@@ -435,12 +480,18 @@
                                                 'device-key))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-get-device-request (:copier common-lisp:nil))
-   (device-key (common-lisp:error ":device-key is required") :type
-    (common-lisp:or device-key-type common-lisp:null))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null)))
+   (device-key
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":device-key is required"))
+    :type (common-lisp:or device-key-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-get-device-request 'make-admin-get-device-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -465,8 +516,9 @@
                                                 'username))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-get-device-response (:copier common-lisp:nil))
-   (device (common-lisp:error ":device is required") :type
-    (common-lisp:or device-type common-lisp:null)))
+   (device
+    (common-lisp:error #A((19) common-lisp:base-char . ":device is required"))
+    :type (common-lisp:or device-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-get-device-response
                     'make-admin-get-device-response))
@@ -482,10 +534,14 @@
                                                 'device))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-get-user-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-get-user-request 'make-admin-get-user-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -505,8 +561,10 @@
                                                 'username))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-get-user-response (:copier common-lisp:nil))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
    (user-attributes common-lisp:nil :type
     (common-lisp:or attribute-list-type common-lisp:null))
    (user-create-date common-lisp:nil :type
@@ -563,12 +621,18 @@
                                                 'mfaoptions))))))
 (common-lisp:progn
  (common-lisp:defstruct (admin-initiate-auth-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or client-id-type common-lisp:null))
-   (auth-flow (common-lisp:error ":auth-flow is required") :type
-    (common-lisp:or auth-flow-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or client-id-type common-lisp:null))
+   (auth-flow
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":auth-flow is required"))
+    :type (common-lisp:or auth-flow-type common-lisp:null))
    (auth-parameters common-lisp:nil :type
     (common-lisp:or auth-parameters-type common-lisp:null))
    (client-metadata common-lisp:nil :type
@@ -648,12 +712,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-link-provider-for-user-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or string-type common-lisp:null))
-   (destination-user (common-lisp:error ":destination-user is required") :type
-    (common-lisp:or provider-user-identifier-type common-lisp:null))
-   (source-user (common-lisp:error ":source-user is required") :type
-    (common-lisp:or provider-user-identifier-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or string-type common-lisp:null))
+   (destination-user
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":destination-user is required"))
+    :type (common-lisp:or provider-user-identifier-type common-lisp:null))
+   (source-user
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":source-user is required"))
+    :type (common-lisp:or provider-user-identifier-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-link-provider-for-user-request
                     'make-admin-link-provider-for-user-request))
@@ -690,10 +760,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (admin-list-devices-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or query-limit-type common-lisp:null))
    (pagination-token common-lisp:nil :type
@@ -753,10 +827,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-list-groups-for-user-request (:copier common-lisp:nil))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or query-limit-type common-lisp:null))
    (next-token common-lisp:nil :type
@@ -817,12 +895,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-remove-user-from-group-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or group-name-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or group-name-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-remove-user-from-group-request
                     'make-admin-remove-user-from-group-request))
@@ -849,10 +933,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-reset-user-password-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-reset-user-password-request
                     'make-admin-reset-user-password-request))
@@ -885,12 +973,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-respond-to-auth-challenge-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or client-id-type common-lisp:null))
-   (challenge-name (common-lisp:error ":challenge-name is required") :type
-    (common-lisp:or challenge-name-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or client-id-type common-lisp:null))
+   (challenge-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":challenge-name is required"))
+    :type (common-lisp:or challenge-name-type common-lisp:null))
    (challenge-responses common-lisp:nil :type
     (common-lisp:or challenge-responses-type common-lisp:null))
    (session common-lisp:nil :type
@@ -970,12 +1064,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-set-user-settings-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
-   (mfaoptions (common-lisp:error ":mfaoptions is required") :type
-    (common-lisp:or mfaoption-list-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
+   (mfaoptions
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":mfaoptions is required"))
+    :type (common-lisp:or mfaoption-list-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-set-user-settings-request
                     'make-admin-set-user-settings-request))
@@ -1013,12 +1113,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-update-device-status-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
-   (device-key (common-lisp:error ":device-key is required") :type
-    (common-lisp:or device-key-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
+   (device-key
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":device-key is required"))
+    :type (common-lisp:or device-key-type common-lisp:null))
    (device-remembered-status common-lisp:nil :type
     (common-lisp:or device-remembered-status-type common-lisp:null)))
  (common-lisp:export
@@ -1063,12 +1169,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-update-user-attributes-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
-   (user-attributes (common-lisp:error ":user-attributes is required") :type
-    (common-lisp:or attribute-list-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
+   (user-attributes
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":user-attributes is required"))
+    :type (common-lisp:or attribute-list-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-update-user-attributes-request
                     'make-admin-update-user-attributes-request))
@@ -1106,10 +1218,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (admin-user-global-sign-out-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'admin-user-global-sign-out-request
                     'make-admin-user-global-sign-out-request))
@@ -1192,8 +1308,9 @@
 (common-lisp:deftype attribute-name-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (attribute-type (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or attribute-name-type common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or attribute-name-type common-lisp:null))
    (value common-lisp:nil :type
     (common-lisp:or attribute-value-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'attribute-type 'make-attribute-type))
@@ -1296,12 +1413,18 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (change-password-request (:copier common-lisp:nil))
-   (previous-password (common-lisp:error ":previous-password is required")
+   (previous-password
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":previous-password is required"))
     :type (common-lisp:or password-type common-lisp:null))
-   (proposed-password (common-lisp:error ":proposed-password is required")
+   (proposed-password
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":proposed-password is required"))
     :type (common-lisp:or password-type common-lisp:null))
-   (access-token (common-lisp:error ":access-token is required") :type
-    (common-lisp:or token-model-type common-lisp:null)))
+   (access-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":access-token is required"))
+    :type (common-lisp:or token-model-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'change-password-request 'make-change-password-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1446,10 +1569,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (confirm-device-request (:copier common-lisp:nil))
-   (access-token (common-lisp:error ":access-token is required") :type
-    (common-lisp:or token-model-type common-lisp:null))
-   (device-key (common-lisp:error ":device-key is required") :type
-    (common-lisp:or device-key-type common-lisp:null))
+   (access-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":access-token is required"))
+    :type (common-lisp:or token-model-type common-lisp:null))
+   (device-key
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":device-key is required"))
+    :type (common-lisp:or device-key-type common-lisp:null))
    (device-secret-verifier-config common-lisp:nil :type
     (common-lisp:or device-secret-verifier-config-type common-lisp:null))
    (device-name common-lisp:nil :type
@@ -1500,16 +1627,24 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (confirm-forgot-password-request (:copier common-lisp:nil))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or client-id-type common-lisp:null))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or client-id-type common-lisp:null))
    (secret-hash common-lisp:nil :type
     (common-lisp:or secret-hash-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
-   (confirmation-code (common-lisp:error ":confirmation-code is required")
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
+   (confirmation-code
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":confirmation-code is required"))
     :type (common-lisp:or confirmation-code-type common-lisp:null))
-   (password (common-lisp:error ":password is required") :type
-    (common-lisp:or password-type common-lisp:null)))
+   (password
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":password is required"))
+    :type (common-lisp:or password-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'confirm-forgot-password-request
                     'make-confirm-forgot-password-request))
@@ -1556,13 +1691,19 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (confirm-sign-up-request (:copier common-lisp:nil))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or client-id-type common-lisp:null))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or client-id-type common-lisp:null))
    (secret-hash common-lisp:nil :type
     (common-lisp:or secret-hash-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
-   (confirmation-code (common-lisp:error ":confirmation-code is required")
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
+   (confirmation-code
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":confirmation-code is required"))
     :type (common-lisp:or confirmation-code-type common-lisp:null))
    (force-alias-creation common-lisp:nil :type
     (common-lisp:or force-alias-creation common-lisp:null)))
@@ -1610,10 +1751,14 @@
 (common-lisp:deftype confirmation-code-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (create-group-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or group-name-type common-lisp:null))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or group-name-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description-type common-lisp:null))
    (role-arn common-lisp:nil :type (common-lisp:or arn-type common-lisp:null))
@@ -1667,14 +1812,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-identity-provider-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (provider-name (common-lisp:error ":provider-name is required") :type
-    (common-lisp:or provider-name-type-v1 common-lisp:null))
-   (provider-type (common-lisp:error ":provider-type is required") :type
-    (common-lisp:or identity-provider-type-type common-lisp:null))
-   (provider-details (common-lisp:error ":provider-details is required") :type
-    (common-lisp:or provider-details-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (provider-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":provider-name is required"))
+    :type (common-lisp:or provider-name-type-v1 common-lisp:null))
+   (provider-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":provider-type is required"))
+    :type (common-lisp:or identity-provider-type-type common-lisp:null))
+   (provider-details
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":provider-details is required"))
+    :type (common-lisp:or provider-details-type common-lisp:null))
    (attribute-mapping common-lisp:nil :type
     (common-lisp:or attribute-mapping-type common-lisp:null))
    (idp-identifiers common-lisp:nil :type
@@ -1720,7 +1873,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-identity-provider-response (:copier common-lisp:nil))
-   (identity-provider (common-lisp:error ":identity-provider is required")
+   (identity-provider
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":identity-provider is required"))
     :type (common-lisp:or identity-provider-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-identity-provider-response
@@ -1738,12 +1893,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-resource-server-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (identifier (common-lisp:error ":identifier is required") :type
-    (common-lisp:or resource-server-identifier-type common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-server-name-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (identifier
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":identifier is required"))
+    :type (common-lisp:or resource-server-identifier-type common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-server-name-type common-lisp:null))
    (scopes common-lisp:nil :type
     (common-lisp:or resource-server-scope-list-type common-lisp:null)))
  (common-lisp:export
@@ -1777,8 +1937,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-resource-server-response (:copier common-lisp:nil))
-   (resource-server (common-lisp:error ":resource-server is required") :type
-    (common-lisp:or resource-server-type common-lisp:null)))
+   (resource-server
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":resource-server is required"))
+    :type (common-lisp:or resource-server-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-resource-server-response
                     'make-create-resource-server-response))
@@ -1795,13 +1957,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-user-import-job-request (:copier common-lisp:nil))
-   (job-name (common-lisp:error ":job-name is required") :type
-    (common-lisp:or user-import-job-name-type common-lisp:null))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
+   (job-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":job-name is required"))
+    :type (common-lisp:or user-import-job-name-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
    (cloud-watch-logs-role-arn
-    (common-lisp:error ":cloud-watch-logs-role-arn is required") :type
-    (common-lisp:or arn-type common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":cloud-watch-logs-role-arn is required"))
+    :type (common-lisp:or arn-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-user-import-job-request
                     'make-create-user-import-job-request))
@@ -1846,10 +2013,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-user-pool-client-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (client-name (common-lisp:error ":client-name is required") :type
-    (common-lisp:or client-name-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (client-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":client-name is required"))
+    :type (common-lisp:or client-name-type common-lisp:null))
    (generate-secret common-lisp:nil :type
     (common-lisp:or generate-secret common-lisp:null))
    (refresh-token-validity common-lisp:nil :type
@@ -1973,10 +2144,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-user-pool-domain-request (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-type common-lisp:null))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null)))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-user-pool-domain-request
                     'make-create-user-pool-domain-request))
@@ -2008,8 +2182,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-user-pool-request (:copier common-lisp:nil))
-   (pool-name (common-lisp:error ":pool-name is required") :type
-    (common-lisp:or user-pool-name-type common-lisp:null))
+   (pool-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":pool-name is required"))
+    :type (common-lisp:or user-pool-name-type common-lisp:null))
    (policies common-lisp:nil :type
     (common-lisp:or user-pool-policy-type common-lisp:null))
    (lambda-config common-lisp:nil :type
@@ -2171,10 +2347,14 @@
 (common-lisp:deftype default-email-option-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-group-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or group-name-type common-lisp:null))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null)))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or group-name-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-group-request 'make-delete-group-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2193,10 +2373,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-identity-provider-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (provider-name (common-lisp:error ":provider-name is required") :type
-    (common-lisp:or provider-name-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (provider-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":provider-name is required"))
+    :type (common-lisp:or provider-name-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-identity-provider-request
                     'make-delete-identity-provider-request))
@@ -2218,10 +2402,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-resource-server-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (identifier (common-lisp:error ":identifier is required") :type
-    (common-lisp:or resource-server-identifier-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (identifier
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":identifier is required"))
+    :type (common-lisp:or resource-server-identifier-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-resource-server-request
                     'make-delete-resource-server-request))
@@ -2244,10 +2432,13 @@
  (common-lisp:defstruct
      (delete-user-attributes-request (:copier common-lisp:nil))
    (user-attribute-names
-    (common-lisp:error ":user-attribute-names is required") :type
-    (common-lisp:or attribute-name-list-type common-lisp:null))
-   (access-token (common-lisp:error ":access-token is required") :type
-    (common-lisp:or token-model-type common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":user-attribute-names is required"))
+    :type (common-lisp:or attribute-name-list-type common-lisp:null))
+   (access-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":access-token is required"))
+    :type (common-lisp:or token-model-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-user-attributes-request
                     'make-delete-user-attributes-request))
@@ -2280,10 +2471,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-user-pool-client-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or client-id-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or client-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-user-pool-client-request
                     'make-delete-user-pool-client-request))
@@ -2305,10 +2500,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-user-pool-domain-request (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-type common-lisp:null))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null)))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-user-pool-domain-request
                     'make-delete-user-pool-domain-request))
@@ -2340,8 +2538,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-user-pool-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-user-pool-request 'make-delete-user-pool-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2356,8 +2556,10 @@
                                                 'user-pool-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-user-request (:copier common-lisp:nil))
-   (access-token (common-lisp:error ":access-token is required") :type
-    (common-lisp:or token-model-type common-lisp:null)))
+   (access-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":access-token is required"))
+    :type (common-lisp:or token-model-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-user-request 'make-delete-user-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2380,10 +2582,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-identity-provider-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (provider-name (common-lisp:error ":provider-name is required") :type
-    (common-lisp:or provider-name-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (provider-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":provider-name is required"))
+    :type (common-lisp:or provider-name-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-identity-provider-request
                     'make-describe-identity-provider-request))
@@ -2405,7 +2611,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-identity-provider-response (:copier common-lisp:nil))
-   (identity-provider (common-lisp:error ":identity-provider is required")
+   (identity-provider
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":identity-provider is required"))
     :type (common-lisp:or identity-provider-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-identity-provider-response
@@ -2423,10 +2631,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-resource-server-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (identifier (common-lisp:error ":identifier is required") :type
-    (common-lisp:or resource-server-identifier-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (identifier
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":identifier is required"))
+    :type (common-lisp:or resource-server-identifier-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-resource-server-request
                     'make-describe-resource-server-request))
@@ -2448,8 +2660,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-resource-server-response (:copier common-lisp:nil))
-   (resource-server (common-lisp:error ":resource-server is required") :type
-    (common-lisp:or resource-server-type common-lisp:null)))
+   (resource-server
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":resource-server is required"))
+    :type (common-lisp:or resource-server-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-resource-server-response
                     'make-describe-resource-server-response))
@@ -2466,10 +2680,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-user-import-job-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (job-id (common-lisp:error ":job-id is required") :type
-    (common-lisp:or user-import-job-id-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (job-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":job-id is required"))
+    :type (common-lisp:or user-import-job-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-user-import-job-request
                     'make-describe-user-import-job-request))
@@ -2509,10 +2726,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-user-pool-client-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or client-id-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or client-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-user-pool-client-request
                     'make-describe-user-pool-client-request))
@@ -2552,8 +2773,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-user-pool-domain-request (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-type common-lisp:null)))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-user-pool-domain-request
                     'make-describe-user-pool-domain-request))
@@ -2587,8 +2809,10 @@
                                                 'domain-description))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-user-pool-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-user-pool-request
                     'make-describe-user-pool-request))
@@ -2859,8 +3083,10 @@
  (common-lisp:defstruct (forget-device-request (:copier common-lisp:nil))
    (access-token common-lisp:nil :type
     (common-lisp:or token-model-type common-lisp:null))
-   (device-key (common-lisp:error ":device-key is required") :type
-    (common-lisp:or device-key-type common-lisp:null)))
+   (device-key
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":device-key is required"))
+    :type (common-lisp:or device-key-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'forget-device-request 'make-forget-device-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2880,12 +3106,16 @@
                                                 'device-key))))))
 (common-lisp:progn
  (common-lisp:defstruct (forgot-password-request (:copier common-lisp:nil))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or client-id-type common-lisp:null))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or client-id-type common-lisp:null))
    (secret-hash common-lisp:nil :type
     (common-lisp:or secret-hash-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null)))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'forgot-password-request 'make-forgot-password-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2927,8 +3157,10 @@
 (common-lisp:deftype generate-secret () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (get-csvheader-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-csvheader-request 'make-get-csvheader-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2966,8 +3198,10 @@
                                                 'csvheader))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-device-request (:copier common-lisp:nil))
-   (device-key (common-lisp:error ":device-key is required") :type
-    (common-lisp:or device-key-type common-lisp:null))
+   (device-key
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":device-key is required"))
+    :type (common-lisp:or device-key-type common-lisp:null))
    (access-token common-lisp:nil :type
     (common-lisp:or token-model-type common-lisp:null)))
  (common-lisp:export
@@ -2987,8 +3221,9 @@
                                                 'access-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-device-response (:copier common-lisp:nil))
-   (device (common-lisp:error ":device is required") :type
-    (common-lisp:or device-type common-lisp:null)))
+   (device
+    (common-lisp:error #A((19) common-lisp:base-char . ":device is required"))
+    :type (common-lisp:or device-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-device-response 'make-get-device-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3001,10 +3236,14 @@
                                                 'device))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-group-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or group-name-type common-lisp:null))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null)))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or group-name-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-group-request 'make-get-group-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3036,10 +3275,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-identity-provider-by-identifier-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (idp-identifier (common-lisp:error ":idp-identifier is required") :type
-    (common-lisp:or idp-identifier-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (idp-identifier
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":idp-identifier is required"))
+    :type (common-lisp:or idp-identifier-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-provider-by-identifier-request
                     'make-get-identity-provider-by-identifier-request))
@@ -3061,7 +3304,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-identity-provider-by-identifier-response (:copier common-lisp:nil))
-   (identity-provider (common-lisp:error ":identity-provider is required")
+   (identity-provider
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":identity-provider is required"))
     :type (common-lisp:or identity-provider-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-identity-provider-by-identifier-response
@@ -3078,8 +3323,10 @@
                                                 'identity-provider))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-uicustomization-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
    (client-id common-lisp:nil :type
     (common-lisp:or client-id-type common-lisp:null)))
  (common-lisp:export
@@ -3103,8 +3350,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-uicustomization-response (:copier common-lisp:nil))
-   (uicustomization (common-lisp:error ":uicustomization is required") :type
-    (common-lisp:or uicustomization-type common-lisp:null)))
+   (uicustomization
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":uicustomization is required"))
+    :type (common-lisp:or uicustomization-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-uicustomization-response
                     'make-get-uicustomization-response))
@@ -3121,10 +3370,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-user-attribute-verification-code-request (:copier common-lisp:nil))
-   (access-token (common-lisp:error ":access-token is required") :type
-    (common-lisp:or token-model-type common-lisp:null))
-   (attribute-name (common-lisp:error ":attribute-name is required") :type
-    (common-lisp:or attribute-name-type common-lisp:null)))
+   (access-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":access-token is required"))
+    :type (common-lisp:or token-model-type common-lisp:null))
+   (attribute-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":attribute-name is required"))
+    :type (common-lisp:or attribute-name-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-user-attribute-verification-code-request
                     'make-get-user-attribute-verification-code-request))
@@ -3163,8 +3416,10 @@
                                                 'code-delivery-details))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-user-request (:copier common-lisp:nil))
-   (access-token (common-lisp:error ":access-token is required") :type
-    (common-lisp:or token-model-type common-lisp:null)))
+   (access-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":access-token is required"))
+    :type (common-lisp:or token-model-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-user-request 'make-get-user-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3177,10 +3432,14 @@
                                                 'access-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-user-response (:copier common-lisp:nil))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
-   (user-attributes (common-lisp:error ":user-attributes is required") :type
-    (common-lisp:or attribute-list-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
+   (user-attributes
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":user-attributes is required"))
+    :type (common-lisp:or attribute-list-type common-lisp:null))
    (mfaoptions common-lisp:nil :type
     (common-lisp:or mfaoption-list-type common-lisp:null)))
  (common-lisp:export
@@ -3205,8 +3464,10 @@
                                                 'mfaoptions))))))
 (common-lisp:progn
  (common-lisp:defstruct (global-sign-out-request (:copier common-lisp:nil))
-   (access-token (common-lisp:error ":access-token is required") :type
-    (common-lisp:or token-model-type common-lisp:null)))
+   (access-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":access-token is required"))
+    :type (common-lisp:or token-model-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'global-sign-out-request 'make-global-sign-out-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3387,14 +3648,18 @@
 (common-lisp:deftype image-url-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (initiate-auth-request (:copier common-lisp:nil))
-   (auth-flow (common-lisp:error ":auth-flow is required") :type
-    (common-lisp:or auth-flow-type common-lisp:null))
+   (auth-flow
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":auth-flow is required"))
+    :type (common-lisp:or auth-flow-type common-lisp:null))
    (auth-parameters common-lisp:nil :type
     (common-lisp:or auth-parameters-type common-lisp:null))
    (client-metadata common-lisp:nil :type
     (common-lisp:or client-metadata-type common-lisp:null))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or client-id-type common-lisp:null)))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or client-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'initiate-auth-request 'make-initiate-auth-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3699,8 +3964,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-devices-request (:copier common-lisp:nil))
-   (access-token (common-lisp:error ":access-token is required") :type
-    (common-lisp:or token-model-type common-lisp:null))
+   (access-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":access-token is required"))
+    :type (common-lisp:or token-model-type common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or query-limit-type common-lisp:null))
    (pagination-token common-lisp:nil :type
@@ -3750,8 +4017,10 @@
                                                 'pagination-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-groups-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or query-limit-type common-lisp:null))
    (next-token common-lisp:nil :type
@@ -3800,8 +4069,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-identity-providers-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or list-providers-limit-type common-lisp:null))
    (next-token common-lisp:nil :type
@@ -3832,8 +4103,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-identity-providers-response (:copier common-lisp:nil))
-   (providers (common-lisp:error ":providers is required") :type
-    (common-lisp:or providers-list-type common-lisp:null))
+   (providers
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":providers is required"))
+    :type (common-lisp:or providers-list-type common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-key-type common-lisp:null)))
  (common-lisp:export
@@ -3867,8 +4140,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-resource-servers-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or list-resource-servers-limit-type common-lisp:null))
    (next-token common-lisp:nil :type
@@ -3899,8 +4174,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-resource-servers-response (:copier common-lisp:nil))
-   (resource-servers (common-lisp:error ":resource-servers is required") :type
-    (common-lisp:or resource-servers-list-type common-lisp:null))
+   (resource-servers
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":resource-servers is required"))
+    :type (common-lisp:or resource-servers-list-type common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-key-type common-lisp:null)))
  (common-lisp:export
@@ -3924,10 +4201,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-user-import-jobs-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (max-results (common-lisp:error ":max-results is required") :type
-    (common-lisp:or pool-query-limit-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (max-results
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":max-results is required"))
+    :type (common-lisp:or pool-query-limit-type common-lisp:null))
    (pagination-token common-lisp:nil :type
     (common-lisp:or pagination-key-type common-lisp:null)))
  (common-lisp:export
@@ -3981,8 +4262,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-user-pool-clients-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or query-limit common-lisp:null))
    (next-token common-lisp:nil :type
@@ -4039,8 +4322,10 @@
  (common-lisp:defstruct (list-user-pools-request (:copier common-lisp:nil))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-key-type common-lisp:null))
-   (max-results (common-lisp:error ":max-results is required") :type
-    (common-lisp:or pool-query-limit-type common-lisp:null)))
+   (max-results
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":max-results is required"))
+    :type (common-lisp:or pool-query-limit-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-user-pools-request 'make-list-user-pools-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4083,10 +4368,14 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-users-in-group-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or group-name-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or group-name-type common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or query-limit-type common-lisp:null))
    (next-token common-lisp:nil :type
@@ -4146,8 +4435,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-users-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
    (attributes-to-get common-lisp:nil :type
     (common-lisp:or searched-attribute-names-list-type common-lisp:null))
    (limit common-lisp:nil :type
@@ -4542,12 +4833,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (resend-confirmation-code-request (:copier common-lisp:nil))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or client-id-type common-lisp:null))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or client-id-type common-lisp:null))
    (secret-hash common-lisp:nil :type
     (common-lisp:or secret-hash-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null)))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'resend-confirmation-code-request
                     'make-resend-confirmation-code-request))
@@ -4623,9 +4918,13 @@
 (common-lisp:deftype resource-server-scope-name-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (resource-server-scope-type (:copier common-lisp:nil))
-   (scope-name (common-lisp:error ":scope-name is required") :type
-    (common-lisp:or resource-server-scope-name-type common-lisp:null))
-   (scope-description (common-lisp:error ":scope-description is required")
+   (scope-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":scope-name is required"))
+    :type (common-lisp:or resource-server-scope-name-type common-lisp:null))
+   (scope-description
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":scope-description is required"))
     :type
     (common-lisp:or resource-server-scope-description-type common-lisp:null)))
  (common-lisp:export
@@ -4692,10 +4991,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (respond-to-auth-challenge-request (:copier common-lisp:nil))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or client-id-type common-lisp:null))
-   (challenge-name (common-lisp:error ":challenge-name is required") :type
-    (common-lisp:or challenge-name-type common-lisp:null))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or client-id-type common-lisp:null))
+   (challenge-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":challenge-name is required"))
+    :type (common-lisp:or challenge-name-type common-lisp:null))
    (session common-lisp:nil :type
     (common-lisp:or session-type common-lisp:null))
    (challenge-responses common-lisp:nil :type
@@ -4874,8 +5177,10 @@
 (common-lisp:deftype session-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (set-uicustomization-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
    (client-id common-lisp:nil :type
     (common-lisp:or client-id-type common-lisp:null))
    (css common-lisp:nil :type (common-lisp:or csstype common-lisp:null))
@@ -4912,8 +5217,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-uicustomization-response (:copier common-lisp:nil))
-   (uicustomization (common-lisp:error ":uicustomization is required") :type
-    (common-lisp:or uicustomization-type common-lisp:null)))
+   (uicustomization
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":uicustomization is required"))
+    :type (common-lisp:or uicustomization-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-uicustomization-response
                     'make-set-uicustomization-response))
@@ -4929,10 +5236,14 @@
                                                 'uicustomization))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-user-settings-request (:copier common-lisp:nil))
-   (access-token (common-lisp:error ":access-token is required") :type
-    (common-lisp:or token-model-type common-lisp:null))
-   (mfaoptions (common-lisp:error ":mfaoptions is required") :type
-    (common-lisp:or mfaoption-list-type common-lisp:null)))
+   (access-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":access-token is required"))
+    :type (common-lisp:or token-model-type common-lisp:null))
+   (mfaoptions
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":mfaoptions is required"))
+    :type (common-lisp:or mfaoption-list-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-user-settings-request
                     'make-set-user-settings-request))
@@ -4963,14 +5274,20 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (sign-up-request (:copier common-lisp:nil))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or client-id-type common-lisp:null))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or client-id-type common-lisp:null))
    (secret-hash common-lisp:nil :type
     (common-lisp:or secret-hash-type common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username-type common-lisp:null))
-   (password (common-lisp:error ":password is required") :type
-    (common-lisp:or password-type common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username-type common-lisp:null))
+   (password
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":password is required"))
+    :type (common-lisp:or password-type common-lisp:null))
    (user-attributes common-lisp:nil :type
     (common-lisp:or attribute-list-type common-lisp:null))
    (validation-data common-lisp:nil :type
@@ -5011,12 +5328,16 @@
                                                 'validation-data))))))
 (common-lisp:progn
  (common-lisp:defstruct (sign-up-response (:copier common-lisp:nil))
-   (user-confirmed (common-lisp:error ":user-confirmed is required") :type
-    (common-lisp:or boolean-type common-lisp:null))
+   (user-confirmed
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":user-confirmed is required"))
+    :type (common-lisp:or boolean-type common-lisp:null))
    (code-delivery-details common-lisp:nil :type
     (common-lisp:or code-delivery-details-type common-lisp:null))
-   (user-sub (common-lisp:error ":user-sub is required") :type
-    (common-lisp:or string-type common-lisp:null)))
+   (user-sub
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":user-sub is required"))
+    :type (common-lisp:or string-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'sign-up-response 'make-sign-up-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5039,8 +5360,10 @@
                                                 'user-sub))))))
 (common-lisp:progn
  (common-lisp:defstruct (sms-configuration-type (:copier common-lisp:nil))
-   (sns-caller-arn (common-lisp:error ":sns-caller-arn is required") :type
-    (common-lisp:or arn-type common-lisp:null))
+   (sns-caller-arn
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":sns-caller-arn is required"))
+    :type (common-lisp:or arn-type common-lisp:null))
    (external-id common-lisp:nil :type
     (common-lisp:or string-type common-lisp:null)))
  (common-lisp:export
@@ -5064,10 +5387,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-user-import-job-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (job-id (common-lisp:error ":job-id is required") :type
-    (common-lisp:or user-import-job-id-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (job-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":job-id is required"))
+    :type (common-lisp:or user-import-job-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-user-import-job-request
                     'make-start-user-import-job-request))
@@ -5108,10 +5434,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (stop-user-import-job-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (job-id (common-lisp:error ":job-id is required") :type
-    (common-lisp:or user-import-job-id-type common-lisp:null)))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (job-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":job-id is required"))
+    :type (common-lisp:or user-import-job-id-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-user-import-job-request
                     'make-stop-user-import-job-request))
@@ -5329,10 +5658,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-device-status-request (:copier common-lisp:nil))
-   (access-token (common-lisp:error ":access-token is required") :type
-    (common-lisp:or token-model-type common-lisp:null))
-   (device-key (common-lisp:error ":device-key is required") :type
-    (common-lisp:or device-key-type common-lisp:null))
+   (access-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":access-token is required"))
+    :type (common-lisp:or token-model-type common-lisp:null))
+   (device-key
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":device-key is required"))
+    :type (common-lisp:or device-key-type common-lisp:null))
    (device-remembered-status common-lisp:nil :type
     (common-lisp:or device-remembered-status-type common-lisp:null)))
  (common-lisp:export
@@ -5371,10 +5704,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (update-group-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or group-name-type common-lisp:null))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or group-name-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description-type common-lisp:null))
    (role-arn common-lisp:nil :type (common-lisp:or arn-type common-lisp:null))
@@ -5428,10 +5765,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-identity-provider-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (provider-name (common-lisp:error ":provider-name is required") :type
-    (common-lisp:or provider-name-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (provider-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":provider-name is required"))
+    :type (common-lisp:or provider-name-type common-lisp:null))
    (provider-details common-lisp:nil :type
     (common-lisp:or provider-details-type common-lisp:null))
    (attribute-mapping common-lisp:nil :type
@@ -5474,7 +5815,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-identity-provider-response (:copier common-lisp:nil))
-   (identity-provider (common-lisp:error ":identity-provider is required")
+   (identity-provider
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":identity-provider is required"))
     :type (common-lisp:or identity-provider-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-identity-provider-response
@@ -5492,12 +5835,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-resource-server-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (identifier (common-lisp:error ":identifier is required") :type
-    (common-lisp:or resource-server-identifier-type common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-server-name-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (identifier
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":identifier is required"))
+    :type (common-lisp:or resource-server-identifier-type common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-server-name-type common-lisp:null))
    (scopes common-lisp:nil :type
     (common-lisp:or resource-server-scope-list-type common-lisp:null)))
  (common-lisp:export
@@ -5531,8 +5879,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-resource-server-response (:copier common-lisp:nil))
-   (resource-server (common-lisp:error ":resource-server is required") :type
-    (common-lisp:or resource-server-type common-lisp:null)))
+   (resource-server
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":resource-server is required"))
+    :type (common-lisp:or resource-server-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-resource-server-response
                     'make-update-resource-server-response))
@@ -5549,10 +5899,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-user-attributes-request (:copier common-lisp:nil))
-   (user-attributes (common-lisp:error ":user-attributes is required") :type
-    (common-lisp:or attribute-list-type common-lisp:null))
-   (access-token (common-lisp:error ":access-token is required") :type
-    (common-lisp:or token-model-type common-lisp:null)))
+   (user-attributes
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":user-attributes is required"))
+    :type (common-lisp:or attribute-list-type common-lisp:null))
+   (access-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":access-token is required"))
+    :type (common-lisp:or token-model-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-user-attributes-request
                     'make-update-user-attributes-request))
@@ -5592,10 +5946,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-user-pool-client-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or client-id-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or client-id-type common-lisp:null))
    (client-name common-lisp:nil :type
     (common-lisp:or client-name-type common-lisp:null))
    (refresh-token-validity common-lisp:nil :type
@@ -5718,8 +6076,10 @@
                                                 'user-pool-client))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-user-pool-request (:copier common-lisp:nil))
-   (user-pool-id (common-lisp:error ":user-pool-id is required") :type
-    (common-lisp:or user-pool-id-type common-lisp:null))
+   (user-pool-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":user-pool-id is required"))
+    :type (common-lisp:or user-pool-id-type common-lisp:null))
    (policies common-lisp:nil :type
     (common-lisp:or user-pool-policy-type common-lisp:null))
    (lambda-config common-lisp:nil :type
@@ -6627,12 +6987,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (verify-user-attribute-request (:copier common-lisp:nil))
-   (access-token (common-lisp:error ":access-token is required") :type
-    (common-lisp:or token-model-type common-lisp:null))
-   (attribute-name (common-lisp:error ":attribute-name is required") :type
-    (common-lisp:or attribute-name-type common-lisp:null))
-   (code (common-lisp:error ":code is required") :type
-    (common-lisp:or confirmation-code-type common-lisp:null)))
+   (access-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":access-token is required"))
+    :type (common-lisp:or token-model-type common-lisp:null))
+   (attribute-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":attribute-name is required"))
+    :type (common-lisp:or attribute-name-type common-lisp:null))
+   (code
+    (common-lisp:error #A((17) common-lisp:base-char . ":code is required"))
+    :type (common-lisp:or confirmation-code-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'verify-user-attribute-request
                     'make-verify-user-attribute-request))
@@ -6677,7 +7042,9 @@
                       (common-lisp:apply 'make-add-custom-attributes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddCustomAttributes")
                                   ("Version" ,@"2016-04-18"))
@@ -6696,7 +7063,9 @@
                       (common-lisp:apply 'make-admin-add-user-to-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminAddUserToGroup")
                                   ("Version" ,@"2016-04-18"))
@@ -6714,7 +7083,9 @@
                       (common-lisp:apply 'make-admin-confirm-sign-up-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminConfirmSignUp")
                                   ("Version" ,@"2016-04-18"))
@@ -6737,7 +7108,9 @@
                       (common-lisp:apply 'make-admin-create-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminCreateUser")
                                   ("Version" ,@"2016-04-18"))
@@ -6755,7 +7128,9 @@
                       (common-lisp:apply 'make-admin-delete-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminDeleteUser")
                                   ("Version" ,@"2016-04-18"))
@@ -6776,7 +7151,9 @@
                        'make-admin-delete-user-attributes-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminDeleteUserAttributes")
                                   ("Version" ,@"2016-04-18"))
@@ -6795,7 +7172,9 @@
                        'make-admin-disable-provider-for-user-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminDisableProviderForUser")
                                   ("Version" ,@"2016-04-18"))
@@ -6813,7 +7192,9 @@
                       (common-lisp:apply 'make-admin-disable-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminDisableUser")
                                   ("Version" ,@"2016-04-18"))
@@ -6831,7 +7212,9 @@
                       (common-lisp:apply 'make-admin-enable-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminEnableUser")
                                   ("Version" ,@"2016-04-18"))
@@ -6850,7 +7233,9 @@
                       (common-lisp:apply 'make-admin-forget-device-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminForgetDevice")
                                   ("Version" ,@"2016-04-18"))
@@ -6869,7 +7254,9 @@
                       (common-lisp:apply 'make-admin-get-device-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminGetDevice")
                                   ("Version" ,@"2016-04-18"))
@@ -6887,7 +7274,9 @@
                       (common-lisp:apply 'make-admin-get-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminGetUser")
                                   ("Version" ,@"2016-04-18"))
@@ -6908,7 +7297,9 @@
                       (common-lisp:apply 'make-admin-initiate-auth-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminInitiateAuth")
                                   ("Version" ,@"2016-04-18"))
@@ -6929,7 +7320,9 @@
                        'make-admin-link-provider-for-user-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminLinkProviderForUser")
                                   ("Version" ,@"2016-04-18"))
@@ -6949,7 +7342,9 @@
                       (common-lisp:apply 'make-admin-list-devices-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminListDevices")
                                   ("Version" ,@"2016-04-18"))
@@ -6969,7 +7364,9 @@
                        'make-admin-list-groups-for-user-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminListGroupsForUser")
                                   ("Version" ,@"2016-04-18"))
@@ -6989,7 +7386,9 @@
                        'make-admin-remove-user-from-group-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminRemoveUserFromGroup")
                                   ("Version" ,@"2016-04-18"))
@@ -7008,7 +7407,9 @@
                        'make-admin-reset-user-password-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminResetUserPassword")
                                   ("Version" ,@"2016-04-18"))
@@ -7030,7 +7431,9 @@
                        'make-admin-respond-to-auth-challenge-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminRespondToAuthChallenge")
                                   ("Version" ,@"2016-04-18"))
@@ -7049,7 +7452,9 @@
                       (common-lisp:apply 'make-admin-set-user-settings-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminSetUserSettings")
                                   ("Version" ,@"2016-04-18"))
@@ -7071,7 +7476,9 @@
                        'make-admin-update-device-status-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminUpdateDeviceStatus")
                                   ("Version" ,@"2016-04-18"))
@@ -7091,7 +7498,9 @@
                        'make-admin-update-user-attributes-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminUpdateUserAttributes")
                                   ("Version" ,@"2016-04-18"))
@@ -7110,7 +7519,9 @@
                        'make-admin-user-global-sign-out-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AdminUserGlobalSignOut")
                                   ("Version" ,@"2016-04-18"))
@@ -7130,7 +7541,9 @@
                       (common-lisp:apply 'make-change-password-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ChangePassword")
                                   ("Version" ,@"2016-04-18"))
@@ -7151,7 +7564,9 @@
                       (common-lisp:apply 'make-confirm-device-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ConfirmDevice")
                                   ("Version" ,@"2016-04-18"))
@@ -7172,7 +7587,9 @@
                       (common-lisp:apply 'make-confirm-forgot-password-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ConfirmForgotPassword")
                                   ("Version" ,@"2016-04-18"))
@@ -7193,7 +7610,9 @@
                       (common-lisp:apply 'make-confirm-sign-up-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ConfirmSignUp")
                                   ("Version" ,@"2016-04-18"))
@@ -7214,7 +7633,9 @@
                       (common-lisp:apply 'make-create-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateGroup")
                                   ("Version" ,@"2016-04-18"))
@@ -7235,7 +7656,9 @@
                       (common-lisp:apply 'make-create-identity-provider-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateIdentityProvider")
                                   ("Version" ,@"2016-04-18"))
@@ -7254,7 +7677,9 @@
                       (common-lisp:apply 'make-create-resource-server-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateResourceServer")
                                   ("Version" ,@"2016-04-18"))
@@ -7274,7 +7699,9 @@
                       (common-lisp:apply 'make-create-user-import-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateUserImportJob")
                                   ("Version" ,@"2016-04-18"))
@@ -7306,7 +7733,9 @@
                       (common-lisp:apply 'make-create-user-pool-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateUserPool")
                                   ("Version" ,@"2016-04-18"))
@@ -7334,7 +7763,9 @@
                       (common-lisp:apply 'make-create-user-pool-client-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateUserPoolClient")
                                   ("Version" ,@"2016-04-18"))
@@ -7352,7 +7783,9 @@
                       (common-lisp:apply 'make-create-user-pool-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateUserPoolDomain")
                                   ("Version" ,@"2016-04-18"))
@@ -7370,7 +7803,9 @@
                       (common-lisp:apply 'make-delete-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteGroup")
                                   ("Version" ,@"2016-04-18"))
@@ -7388,7 +7823,9 @@
                       (common-lisp:apply 'make-delete-identity-provider-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIdentityProvider")
                                   ("Version" ,@"2016-04-18"))
@@ -7406,7 +7843,9 @@
                       (common-lisp:apply 'make-delete-resource-server-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteResourceServer")
                                   ("Version" ,@"2016-04-18"))
@@ -7424,7 +7863,9 @@
                       (common-lisp:apply 'make-delete-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUser")
                                   ("Version" ,@"2016-04-18"))
@@ -7443,7 +7884,9 @@
                       (common-lisp:apply 'make-delete-user-attributes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUserAttributes")
                                   ("Version" ,@"2016-04-18"))
@@ -7461,7 +7904,9 @@
                       (common-lisp:apply 'make-delete-user-pool-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUserPool")
                                   ("Version" ,@"2016-04-18"))
@@ -7479,7 +7924,9 @@
                       (common-lisp:apply 'make-delete-user-pool-client-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUserPoolClient")
                                   ("Version" ,@"2016-04-18"))
@@ -7497,7 +7944,9 @@
                       (common-lisp:apply 'make-delete-user-pool-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUserPoolDomain")
                                   ("Version" ,@"2016-04-18"))
@@ -7516,7 +7965,9 @@
                        'make-describe-identity-provider-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeIdentityProvider")
                                   ("Version" ,@"2016-04-18"))
@@ -7534,7 +7985,9 @@
                       (common-lisp:apply 'make-describe-resource-server-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeResourceServer")
                                   ("Version" ,@"2016-04-18"))
@@ -7552,7 +8005,9 @@
                       (common-lisp:apply 'make-describe-user-import-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeUserImportJob")
                                   ("Version" ,@"2016-04-18"))
@@ -7570,7 +8025,9 @@
                       (common-lisp:apply 'make-describe-user-pool-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeUserPool")
                                   ("Version" ,@"2016-04-18"))
@@ -7589,7 +8046,9 @@
                        'make-describe-user-pool-client-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeUserPoolClient")
                                   ("Version" ,@"2016-04-18"))
@@ -7608,7 +8067,9 @@
                        'make-describe-user-pool-domain-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeUserPoolDomain")
                                   ("Version" ,@"2016-04-18"))
@@ -7626,7 +8087,9 @@
                       (common-lisp:apply 'make-forget-device-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ForgetDevice")
                                   ("Version" ,@"2016-04-18"))
@@ -7644,7 +8107,9 @@
                       (common-lisp:apply 'make-forgot-password-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ForgotPassword")
                                   ("Version" ,@"2016-04-18"))
@@ -7662,7 +8127,9 @@
                       (common-lisp:apply 'make-get-csvheader-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCSVHeader")
                                   ("Version" ,@"2016-04-18"))
@@ -7680,7 +8147,9 @@
                       (common-lisp:apply 'make-get-device-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDevice")
                                   ("Version" ,@"2016-04-18"))
@@ -7698,7 +8167,9 @@
                       (common-lisp:apply 'make-get-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetGroup")
                                   ("Version" ,@"2016-04-18"))
@@ -7717,7 +8188,9 @@
                        'make-get-identity-provider-by-identifier-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetIdentityProviderByIdentifier")
@@ -7736,7 +8209,9 @@
                       (common-lisp:apply 'make-get-uicustomization-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetUICustomization")
                                   ("Version" ,@"2016-04-18"))
@@ -7754,7 +8229,9 @@
                       (common-lisp:apply 'make-get-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetUser")
                                   ("Version" ,@"2016-04-18"))
@@ -7773,7 +8250,9 @@
                        'make-get-user-attribute-verification-code-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetUserAttributeVerificationCode")
@@ -7792,7 +8271,9 @@
                       (common-lisp:apply 'make-global-sign-out-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GlobalSignOut")
                                   ("Version" ,@"2016-04-18"))
@@ -7813,7 +8294,9 @@
                       (common-lisp:apply 'make-initiate-auth-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"InitiateAuth")
                                   ("Version" ,@"2016-04-18"))
@@ -7832,7 +8315,9 @@
                       (common-lisp:apply 'make-list-devices-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDevices")
                                   ("Version" ,@"2016-04-18"))
@@ -7850,7 +8335,9 @@
                       (common-lisp:apply 'make-list-groups-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListGroups")
                                   ("Version" ,@"2016-04-18"))
@@ -7869,7 +8356,9 @@
                       (common-lisp:apply 'make-list-identity-providers-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListIdentityProviders")
                                   ("Version" ,@"2016-04-18"))
@@ -7888,7 +8377,9 @@
                       (common-lisp:apply 'make-list-resource-servers-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListResourceServers")
                                   ("Version" ,@"2016-04-18"))
@@ -7908,7 +8399,9 @@
                       (common-lisp:apply 'make-list-user-import-jobs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListUserImportJobs")
                                   ("Version" ,@"2016-04-18"))
@@ -7927,7 +8420,9 @@
                       (common-lisp:apply 'make-list-user-pool-clients-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListUserPoolClients")
                                   ("Version" ,@"2016-04-18"))
@@ -7945,7 +8440,9 @@
                       (common-lisp:apply 'make-list-user-pools-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListUserPools")
                                   ("Version" ,@"2016-04-18"))
@@ -7966,7 +8463,9 @@
                       (common-lisp:apply 'make-list-users-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListUsers")
                                   ("Version" ,@"2016-04-18"))
@@ -7985,7 +8484,9 @@
                       (common-lisp:apply 'make-list-users-in-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListUsersInGroup")
                                   ("Version" ,@"2016-04-18"))
@@ -8003,7 +8504,9 @@
                       (common-lisp:apply 'make-resend-confirmation-code-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResendConfirmationCode")
                                   ("Version" ,@"2016-04-18"))
@@ -8025,7 +8528,9 @@
                        'make-respond-to-auth-challenge-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RespondToAuthChallenge")
                                   ("Version" ,@"2016-04-18"))
@@ -8044,7 +8549,9 @@
                       (common-lisp:apply 'make-set-uicustomization-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetUICustomization")
                                   ("Version" ,@"2016-04-18"))
@@ -8062,7 +8569,9 @@
                       (common-lisp:apply 'make-set-user-settings-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetUserSettings")
                                   ("Version" ,@"2016-04-18"))
@@ -8083,7 +8592,9 @@
                       (common-lisp:apply 'make-sign-up-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SignUp")
                                   ("Version" ,@"2016-04-18"))
@@ -8101,7 +8612,9 @@
                       (common-lisp:apply 'make-start-user-import-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartUserImportJob")
                                   ("Version" ,@"2016-04-18"))
@@ -8119,7 +8632,9 @@
                       (common-lisp:apply 'make-stop-user-import-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopUserImportJob")
                                   ("Version" ,@"2016-04-18"))
@@ -8139,7 +8654,9 @@
                       (common-lisp:apply 'make-update-device-status-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDeviceStatus")
                                   ("Version" ,@"2016-04-18"))
@@ -8160,7 +8677,9 @@
                       (common-lisp:apply 'make-update-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateGroup")
                                   ("Version" ,@"2016-04-18"))
@@ -8181,7 +8700,9 @@
                       (common-lisp:apply 'make-update-identity-provider-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateIdentityProvider")
                                   ("Version" ,@"2016-04-18"))
@@ -8200,7 +8721,9 @@
                       (common-lisp:apply 'make-update-resource-server-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateResourceServer")
                                   ("Version" ,@"2016-04-18"))
@@ -8218,7 +8741,9 @@
                       (common-lisp:apply 'make-update-user-attributes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateUserAttributes")
                                   ("Version" ,@"2016-04-18"))
@@ -8247,7 +8772,9 @@
                       (common-lisp:apply 'make-update-user-pool-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateUserPool")
                                   ("Version" ,@"2016-04-18"))
@@ -8275,7 +8802,9 @@
                       (common-lisp:apply 'make-update-user-pool-client-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateUserPoolClient")
                                   ("Version" ,@"2016-04-18"))
@@ -8294,7 +8823,9 @@
                       (common-lisp:apply 'make-verify-user-attribute-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cognito-idp" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cognito-idp")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"VerifyUserAttribute")
                                   ("Version" ,@"2016-04-18"))

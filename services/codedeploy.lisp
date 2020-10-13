@@ -7,13 +7,17 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/codedeploy)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (add-tags-to-on-premises-instances-input (:copier common-lisp:nil))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null))
-   (instance-names (common-lisp:error ":instancenames is required") :type
-    (common-lisp:or instance-name-list common-lisp:null)))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null))
+   (instance-names
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instancenames is required"))
+    :type (common-lisp:or instance-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-tags-to-on-premises-instances-input
                     'make-add-tags-to-on-premises-instances-input))
@@ -269,10 +273,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-get-application-revisions-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null))
-   (revisions (common-lisp:error ":revisions is required") :type
-    (common-lisp:or revision-location-list common-lisp:null)))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null))
+   (revisions
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":revisions is required"))
+    :type (common-lisp:or revision-location-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-get-application-revisions-input
                     'make-batch-get-application-revisions-input))
@@ -362,11 +370,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-get-deployment-groups-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (deployment-group-names
-    (common-lisp:error ":deploymentgroupnames is required") :type
-    (common-lisp:or deployment-groups-list common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":deploymentgroupnames is required"))
+    :type (common-lisp:or deployment-groups-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-get-deployment-groups-input
                     'make-batch-get-deployment-groups-input))
@@ -413,10 +424,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-get-deployment-instances-input (:copier common-lisp:nil))
-   (deployment-id (common-lisp:error ":deploymentid is required") :type
-    (common-lisp:or deployment-id common-lisp:null))
-   (instance-ids (common-lisp:error ":instanceids is required") :type
-    (common-lisp:or instances-list common-lisp:null)))
+   (deployment-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":deploymentid is required"))
+    :type (common-lisp:or deployment-id common-lisp:null))
+   (instance-ids
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":instanceids is required"))
+    :type (common-lisp:or instances-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-get-deployment-instances-input
                     'make-batch-get-deployment-instances-input))
@@ -632,8 +647,10 @@
                                                 'deployment-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-application-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null)))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-application-input 'make-create-application-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -667,11 +684,13 @@
  (common-lisp:defstruct
      (create-deployment-config-input (:copier common-lisp:nil))
    (deployment-config-name
-    (common-lisp:error ":deploymentconfigname is required") :type
-    (common-lisp:or deployment-config-name common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":deploymentconfigname is required"))
+    :type (common-lisp:or deployment-config-name common-lisp:null))
    (minimum-healthy-hosts
-    (common-lisp:error ":minimumhealthyhosts is required") :type
-    (common-lisp:or minimum-healthy-hosts common-lisp:null)))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":minimumhealthyhosts is required"))
+    :type (common-lisp:or minimum-healthy-hosts common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-deployment-config-input
                     'make-create-deployment-config-input))
@@ -711,11 +730,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-deployment-group-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (deployment-group-name
-    (common-lisp:error ":deploymentgroupname is required") :type
-    (common-lisp:or deployment-group-name common-lisp:null))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":deploymentgroupname is required"))
+    :type (common-lisp:or deployment-group-name common-lisp:null))
    (deployment-config-name common-lisp:nil :type
     (common-lisp:or deployment-config-name common-lisp:null))
    (ec2tag-filters common-lisp:nil :type
@@ -724,8 +746,10 @@
     (common-lisp:or tag-filter-list common-lisp:null))
    (auto-scaling-groups common-lisp:nil :type
     (common-lisp:or auto-scaling-group-name-list common-lisp:null))
-   (service-role-arn (common-lisp:error ":servicerolearn is required") :type
-    (common-lisp:or role common-lisp:null))
+   (service-role-arn
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":servicerolearn is required"))
+    :type (common-lisp:or role common-lisp:null))
    (trigger-configurations common-lisp:nil :type
     (common-lisp:or trigger-config-list common-lisp:null))
    (alarm-configuration common-lisp:nil :type
@@ -845,8 +869,10 @@
                                                 'deployment-group-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-deployment-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (deployment-group-name common-lisp:nil :type
     (common-lisp:or deployment-group-name common-lisp:null))
    (revision common-lisp:nil :type
@@ -940,8 +966,10 @@
                                                 'deployment-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-application-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null)))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-application-input 'make-delete-application-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -958,8 +986,9 @@
  (common-lisp:defstruct
      (delete-deployment-config-input (:copier common-lisp:nil))
    (deployment-config-name
-    (common-lisp:error ":deploymentconfigname is required") :type
-    (common-lisp:or deployment-config-name common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":deploymentconfigname is required"))
+    :type (common-lisp:or deployment-config-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-deployment-config-input
                     'make-delete-deployment-config-input))
@@ -976,11 +1005,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-deployment-group-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (deployment-group-name
-    (common-lisp:error ":deploymentgroupname is required") :type
-    (common-lisp:or deployment-group-name common-lisp:null)))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":deploymentgroupname is required"))
+    :type (common-lisp:or deployment-group-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-deployment-group-input
                     'make-delete-deployment-group-input))
@@ -1696,8 +1728,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (deregister-on-premises-instance-input (:copier common-lisp:nil))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or instance-name common-lisp:null)))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or instance-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-on-premises-instance-input
                     'make-deregister-on-premises-instance-input))
@@ -1902,8 +1936,10 @@
                                                 'register-time))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-application-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null)))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-application-input 'make-get-application-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1935,10 +1971,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-application-revision-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null))
-   (revision (common-lisp:error ":revision is required") :type
-    (common-lisp:or revision-location common-lisp:null)))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null))
+   (revision
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":revision is required"))
+    :type (common-lisp:or revision-location common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-application-revision-input
                     'make-get-application-revision-input))
@@ -1992,8 +2032,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (get-deployment-config-input (:copier common-lisp:nil))
    (deployment-config-name
-    (common-lisp:error ":deploymentconfigname is required") :type
-    (common-lisp:or deployment-config-name common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":deploymentconfigname is required"))
+    :type (common-lisp:or deployment-config-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-deployment-config-input
                     'make-get-deployment-config-input))
@@ -2027,11 +2068,14 @@
                                                 'deployment-config-info))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-deployment-group-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (deployment-group-name
-    (common-lisp:error ":deploymentgroupname is required") :type
-    (common-lisp:or deployment-group-name common-lisp:null)))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":deploymentgroupname is required"))
+    :type (common-lisp:or deployment-group-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-deployment-group-input
                     'make-get-deployment-group-input))
@@ -2069,8 +2113,10 @@
                                                 'deployment-group-info))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-deployment-input (:copier common-lisp:nil))
-   (deployment-id (common-lisp:error ":deploymentid is required") :type
-    (common-lisp:or deployment-id common-lisp:null)))
+   (deployment-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":deploymentid is required"))
+    :type (common-lisp:or deployment-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-deployment-input 'make-get-deployment-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2084,10 +2130,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-deployment-instance-input (:copier common-lisp:nil))
-   (deployment-id (common-lisp:error ":deploymentid is required") :type
-    (common-lisp:or deployment-id common-lisp:null))
-   (instance-id (common-lisp:error ":instanceid is required") :type
-    (common-lisp:or instance-id common-lisp:null)))
+   (deployment-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":deploymentid is required"))
+    :type (common-lisp:or deployment-id common-lisp:null))
+   (instance-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":instanceid is required"))
+    :type (common-lisp:or instance-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-deployment-instance-input
                     'make-get-deployment-instance-input))
@@ -2143,8 +2193,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-on-premises-instance-input (:copier common-lisp:nil))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or instance-name common-lisp:null)))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or instance-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-on-premises-instance-input
                     'make-get-on-premises-instance-input))
@@ -3008,8 +3060,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-application-revisions-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (sort-by common-lisp:nil :type
     (common-lisp:or application-revision-sort-by common-lisp:null))
    (sort-order common-lisp:nil :type
@@ -3173,8 +3227,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-deployment-groups-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null)))
  (common-lisp:export
@@ -3230,8 +3286,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-deployment-instances-input (:copier common-lisp:nil))
-   (deployment-id (common-lisp:error ":deploymentid is required") :type
-    (common-lisp:or deployment-id common-lisp:null))
+   (deployment-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":deploymentid is required"))
+    :type (common-lisp:or deployment-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (instance-status-filter common-lisp:nil :type
@@ -3545,12 +3603,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-application-revision-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
-   (revision (common-lisp:error ":revision is required") :type
-    (common-lisp:or revision-location common-lisp:null)))
+   (revision
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":revision is required"))
+    :type (common-lisp:or revision-location common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-application-revision-input
                     'make-register-application-revision-input))
@@ -3577,8 +3639,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-on-premises-instance-input (:copier common-lisp:nil))
-   (instance-name (common-lisp:error ":instancename is required") :type
-    (common-lisp:or instance-name common-lisp:null))
+   (instance-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":instancename is required"))
+    :type (common-lisp:or instance-name common-lisp:null))
    (iam-session-arn common-lisp:nil :type
     (common-lisp:or iam-session-arn common-lisp:null))
    (iam-user-arn common-lisp:nil :type
@@ -3610,10 +3674,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-tags-from-on-premises-instances-input (:copier common-lisp:nil))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null))
-   (instance-names (common-lisp:error ":instancenames is required") :type
-    (common-lisp:or instance-name-list common-lisp:null)))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null))
+   (instance-names
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instancenames is required"))
+    :type (common-lisp:or instance-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-from-on-premises-instances-input
                     'make-remove-tags-from-on-premises-instances-input))
@@ -3829,8 +3896,10 @@
 (common-lisp:deftype sort-order () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (stop-deployment-input (:copier common-lisp:nil))
-   (deployment-id (common-lisp:error ":deploymentid is required") :type
-    (common-lisp:or deployment-id common-lisp:null))
+   (deployment-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":deploymentid is required"))
+    :type (common-lisp:or deployment-id common-lisp:null))
    (auto-rollback-enabled common-lisp:nil :type
     (common-lisp:or nullable-boolean common-lisp:null)))
  (common-lisp:export
@@ -4128,11 +4197,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-deployment-group-input (:copier common-lisp:nil))
-   (application-name (common-lisp:error ":applicationname is required") :type
-    (common-lisp:or application-name common-lisp:null))
+   (application-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":applicationname is required"))
+    :type (common-lisp:or application-name common-lisp:null))
    (current-deployment-group-name
-    (common-lisp:error ":currentdeploymentgroupname is required") :type
-    (common-lisp:or deployment-group-name common-lisp:null))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":currentdeploymentgroupname is required"))
+    :type (common-lisp:or deployment-group-name common-lisp:null))
    (new-deployment-group-name common-lisp:nil :type
     (common-lisp:or deployment-group-name common-lisp:null))
    (deployment-config-name common-lisp:nil :type
@@ -4280,7 +4353,9 @@
                        'make-add-tags-to-on-premises-instances-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToOnPremisesInstances")
                                   ("Version" ,@"2014-10-06"))
@@ -4299,7 +4374,9 @@
                        'make-batch-get-application-revisions-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetApplicationRevisions")
                                   ("Version" ,@"2014-10-06"))
@@ -4317,7 +4394,9 @@
                       (common-lisp:apply 'make-batch-get-applications-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetApplications")
                                   ("Version" ,@"2014-10-06"))
@@ -4337,7 +4416,9 @@
                        'make-batch-get-deployment-groups-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetDeploymentGroups")
                                   ("Version" ,@"2014-10-06"))
@@ -4356,7 +4437,9 @@
                        'make-batch-get-deployment-instances-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetDeploymentInstances")
                                   ("Version" ,@"2014-10-06"))
@@ -4374,7 +4457,9 @@
                       (common-lisp:apply 'make-batch-get-deployments-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetDeployments")
                                   ("Version" ,@"2014-10-06"))
@@ -4393,7 +4478,9 @@
                        'make-batch-get-on-premises-instances-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetOnPremisesInstances")
                                   ("Version" ,@"2014-10-06"))
@@ -4411,7 +4498,9 @@
                       (common-lisp:apply 'make-continue-deployment-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ContinueDeployment")
                                   ("Version" ,@"2014-10-06"))
@@ -4429,7 +4518,9 @@
                       (common-lisp:apply 'make-create-application-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateApplication")
                                   ("Version" ,@"2014-10-06"))
@@ -4455,7 +4546,9 @@
                       (common-lisp:apply 'make-create-deployment-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDeployment")
                                   ("Version" ,@"2014-10-06"))
@@ -4475,7 +4568,9 @@
                       (common-lisp:apply 'make-create-deployment-config-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDeploymentConfig")
                                   ("Version" ,@"2014-10-06"))
@@ -4505,7 +4600,9 @@
                       (common-lisp:apply 'make-create-deployment-group-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDeploymentGroup")
                                   ("Version" ,@"2014-10-06"))
@@ -4523,7 +4620,9 @@
                       (common-lisp:apply 'make-delete-application-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApplication")
                                   ("Version" ,@"2014-10-06"))
@@ -4541,7 +4640,9 @@
                       (common-lisp:apply 'make-delete-deployment-config-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDeploymentConfig")
                                   ("Version" ,@"2014-10-06"))
@@ -4560,7 +4661,9 @@
                       (common-lisp:apply 'make-delete-deployment-group-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDeploymentGroup")
                                   ("Version" ,@"2014-10-06"))
@@ -4579,7 +4682,9 @@
                        'make-deregister-on-premises-instance-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterOnPremisesInstance")
                                   ("Version" ,@"2014-10-06"))
@@ -4597,7 +4702,9 @@
                       (common-lisp:apply 'make-get-application-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetApplication")
                                   ("Version" ,@"2014-10-06"))
@@ -4615,7 +4722,9 @@
                       (common-lisp:apply 'make-get-application-revision-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetApplicationRevision")
                                   ("Version" ,@"2014-10-06"))
@@ -4633,7 +4742,9 @@
                       (common-lisp:apply 'make-get-deployment-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDeployment")
                                   ("Version" ,@"2014-10-06"))
@@ -4651,7 +4762,9 @@
                       (common-lisp:apply 'make-get-deployment-config-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDeploymentConfig")
                                   ("Version" ,@"2014-10-06"))
@@ -4670,7 +4783,9 @@
                       (common-lisp:apply 'make-get-deployment-group-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDeploymentGroup")
                                   ("Version" ,@"2014-10-06"))
@@ -4688,7 +4803,9 @@
                       (common-lisp:apply 'make-get-deployment-instance-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDeploymentInstance")
                                   ("Version" ,@"2014-10-06"))
@@ -4706,7 +4823,9 @@
                       (common-lisp:apply 'make-get-on-premises-instance-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetOnPremisesInstance")
                                   ("Version" ,@"2014-10-06"))
@@ -4727,7 +4846,9 @@
                       (common-lisp:apply 'make-list-application-revisions-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListApplicationRevisions")
                                   ("Version" ,@"2014-10-06"))
@@ -4745,7 +4866,9 @@
                       (common-lisp:apply 'make-list-applications-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListApplications")
                                   ("Version" ,@"2014-10-06"))
@@ -4763,7 +4886,9 @@
                       (common-lisp:apply 'make-list-deployment-configs-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDeploymentConfigs")
                                   ("Version" ,@"2014-10-06"))
@@ -4781,7 +4906,9 @@
                       (common-lisp:apply 'make-list-deployment-groups-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDeploymentGroups")
                                   ("Version" ,@"2014-10-06"))
@@ -4802,7 +4929,9 @@
                       (common-lisp:apply 'make-list-deployment-instances-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDeploymentInstances")
                                   ("Version" ,@"2014-10-06"))
@@ -4823,7 +4952,9 @@
                       (common-lisp:apply 'make-list-deployments-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDeployments")
                                   ("Version" ,@"2014-10-06"))
@@ -4842,7 +4973,9 @@
                        'make-list-git-hub-account-token-names-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListGitHubAccountTokenNames")
                                   ("Version" ,@"2014-10-06"))
@@ -4862,7 +4995,9 @@
                       (common-lisp:apply 'make-list-on-premises-instances-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListOnPremisesInstances")
                                   ("Version" ,@"2014-10-06"))
@@ -4882,7 +5017,9 @@
                        'make-register-application-revision-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterApplicationRevision")
                                   ("Version" ,@"2014-10-06"))
@@ -4903,7 +5040,9 @@
                        'make-register-on-premises-instance-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterOnPremisesInstance")
                                   ("Version" ,@"2014-10-06"))
@@ -4922,7 +5061,9 @@
                        'make-remove-tags-from-on-premises-instances-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"RemoveTagsFromOnPremisesInstances")
@@ -4942,7 +5083,9 @@
                        'make-skip-wait-time-for-instance-termination-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"SkipWaitTimeForInstanceTermination")
@@ -4962,7 +5105,9 @@
                       (common-lisp:apply 'make-stop-deployment-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopDeployment")
                                   ("Version" ,@"2014-10-06"))
@@ -4981,7 +5126,9 @@
                       (common-lisp:apply 'make-update-application-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApplication")
                                   ("Version" ,@"2014-10-06"))
@@ -5012,7 +5159,9 @@
                       (common-lisp:apply 'make-update-deployment-group-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codedeploy" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codedeploy")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDeploymentGroup")
                                   ("Version" ,@"2014-10-06"))

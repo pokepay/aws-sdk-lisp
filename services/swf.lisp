@@ -7,19 +7,30 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/swf)
+
 (common-lisp:deftype activity-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (activity-task (:copier common-lisp:nil))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
+   (task-token
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":tasktoken is required"))
+    :type (common-lisp:or task-token common-lisp:null))
+   (activity-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":activityid is required"))
+    :type (common-lisp:or activity-id common-lisp:null))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
+   (workflow-execution
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":workflowexecution is required"))
     :type (common-lisp:or workflow-execution common-lisp:null))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null))
+   (activity-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":activitytype is required"))
+    :type (common-lisp:or activity-type common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export (common-lisp:list 'activity-task 'make-activity-task))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -60,10 +71,14 @@
      (activity-task-cancel-requested-event-attributes
       (:copier common-lisp:nil))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
+   (activity-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":activityid is required"))
+    :type (common-lisp:or activity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'activity-task-cancel-requested-event-attributes
                     'make-activity-task-cancel-requested-event-attributes))
@@ -86,10 +101,14 @@
  (common-lisp:defstruct
      (activity-task-canceled-event-attributes (:copier common-lisp:nil))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
+   (scheduled-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":scheduledeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (latest-cancel-requested-event-id common-lisp:nil :type
     (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
@@ -124,10 +143,14 @@
  (common-lisp:defstruct
      (activity-task-completed-event-attributes (:copier common-lisp:nil))
    (result common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
+   (scheduled-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":scheduledeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'activity-task-completed-event-attributes
                     'make-activity-task-completed-event-attributes))
@@ -157,10 +180,14 @@
    (reason common-lisp:nil :type
     (common-lisp:or failure-reason common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
+   (scheduled-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":scheduledeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'activity-task-failed-event-attributes
                     'make-activity-task-failed-event-attributes))
@@ -192,10 +219,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (activity-task-scheduled-event-attributes (:copier common-lisp:nil))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null))
+   (activity-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":activitytype is required"))
+    :type (common-lisp:or activity-type common-lisp:null))
+   (activity-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":activityid is required"))
+    :type (common-lisp:or activity-id common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (schedule-to-start-timeout common-lisp:nil :type
@@ -204,13 +235,17 @@
     (common-lisp:or duration-in-seconds-optional common-lisp:null))
    (start-to-close-timeout common-lisp:nil :type
     (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
+   (task-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tasklist is required"))
+    :type (common-lisp:or task-list common-lisp:null))
    (task-priority common-lisp:nil :type
     (common-lisp:or task-priority common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (heartbeat-timeout common-lisp:nil :type
     (common-lisp:or duration-in-seconds-optional common-lisp:null)))
  (common-lisp:export
@@ -280,7 +315,9 @@
  (common-lisp:defstruct
      (activity-task-started-event-attributes (:copier common-lisp:nil))
    (identity common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
+   (scheduled-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":scheduledeventid is required"))
     :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'activity-task-started-event-attributes
@@ -302,8 +339,10 @@
                                                 'scheduled-event-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (activity-task-status (:copier common-lisp:nil))
-   (cancel-requested (common-lisp:error ":cancelrequested is required") :type
-    (common-lisp:or canceled common-lisp:null)))
+   (cancel-requested
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":cancelrequested is required"))
+    :type (common-lisp:or canceled common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'activity-task-status 'make-activity-task-status))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -317,12 +356,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (activity-task-timed-out-event-attributes (:copier common-lisp:nil))
-   (timeout-type (common-lisp:error ":timeouttype is required") :type
-    (common-lisp:or activity-task-timeout-type common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
+   (timeout-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":timeouttype is required"))
+    :type (common-lisp:or activity-task-timeout-type common-lisp:null))
+   (scheduled-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":scheduledeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (details common-lisp:nil :type
     (common-lisp:or limited-data common-lisp:null)))
  (common-lisp:export
@@ -356,10 +401,12 @@
 (common-lisp:deftype activity-task-timeout-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (activity-type (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or version common-lisp:null)))
  (common-lisp:export (common-lisp:list 'activity-type 'make-activity-type))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape activity-type))
@@ -428,10 +475,14 @@
                               'default-task-schedule-to-close-timeout))))))
 (common-lisp:progn
  (common-lisp:defstruct (activity-type-detail (:copier common-lisp:nil))
-   (type-info (common-lisp:error ":typeinfo is required") :type
-    (common-lisp:or activity-type-info common-lisp:null))
-   (configuration (common-lisp:error ":configuration is required") :type
-    (common-lisp:or activity-type-configuration common-lisp:null)))
+   (type-info
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":typeinfo is required"))
+    :type (common-lisp:or activity-type-info common-lisp:null))
+   (configuration
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":configuration is required"))
+    :type (common-lisp:or activity-type-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'activity-type-detail 'make-activity-type-detail))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -449,14 +500,19 @@
                                                 'configuration))))))
 (common-lisp:progn
  (common-lisp:defstruct (activity-type-info (:copier common-lisp:nil))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or registration-status common-lisp:null))
+   (activity-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":activitytype is required"))
+    :type (common-lisp:or activity-type common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or registration-status common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
-   (creation-date (common-lisp:error ":creationdate is required") :type
-    (common-lisp:or timestamp common-lisp:null))
+   (creation-date
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":creationdate is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
    (deprecation-date common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
@@ -499,8 +555,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (activity-type-infos (:copier common-lisp:nil))
-   (type-infos (common-lisp:error ":typeinfos is required") :type
-    (common-lisp:or activity-type-info-list common-lisp:null))
+   (type-infos
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":typeinfos is required"))
+    :type (common-lisp:or activity-type-info-list common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export
@@ -522,8 +580,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (cancel-timer-decision-attributes (:copier common-lisp:nil))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null)))
+   (timer-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":timerid is required"))
+    :type (common-lisp:or timer-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-timer-decision-attributes
                     'make-cancel-timer-decision-attributes))
@@ -541,13 +600,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (cancel-timer-failed-event-attributes (:copier common-lisp:nil))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or cancel-timer-failed-cause common-lisp:null))
+   (timer-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":timerid is required"))
+    :type (common-lisp:or timer-id common-lisp:null))
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type (common-lisp:or cancel-timer-failed-cause common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-timer-failed-event-attributes
                     'make-cancel-timer-failed-event-attributes))
@@ -594,11 +657,15 @@
  (common-lisp:defstruct
      (cancel-workflow-execution-failed-event-attributes
       (:copier common-lisp:nil))
-   (cause (common-lisp:error ":cause is required") :type
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type
     (common-lisp:or cancel-workflow-execution-failed-cause common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-workflow-execution-failed-event-attributes
                     'make-cancel-workflow-execution-failed-event-attributes))
@@ -624,15 +691,23 @@
  (common-lisp:defstruct
      (child-workflow-execution-canceled-event-attributes
       (:copier common-lisp:nil))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
+   (workflow-execution
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":workflowexecution is required"))
     :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
+   (initiated-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":initiatedeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-canceled-event-attributes
                     'make-child-workflow-execution-canceled-event-attributes))
@@ -670,15 +745,23 @@
  (common-lisp:defstruct
      (child-workflow-execution-completed-event-attributes
       (:copier common-lisp:nil))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
+   (workflow-execution
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":workflowexecution is required"))
     :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
    (result common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
+   (initiated-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":initiatedeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-completed-event-attributes
                     'make-child-workflow-execution-completed-event-attributes))
@@ -716,17 +799,25 @@
  (common-lisp:defstruct
      (child-workflow-execution-failed-event-attributes
       (:copier common-lisp:nil))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
+   (workflow-execution
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":workflowexecution is required"))
     :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
    (reason common-lisp:nil :type
     (common-lisp:or failure-reason common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
+   (initiated-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":initiatedeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-failed-event-attributes
                     'make-child-workflow-execution-failed-event-attributes))
@@ -769,11 +860,17 @@
  (common-lisp:defstruct
      (child-workflow-execution-started-event-attributes
       (:copier common-lisp:nil))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
+   (workflow-execution
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":workflowexecution is required"))
     :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
+   (initiated-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":initiatedeventid is required"))
     :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-started-event-attributes
@@ -802,14 +899,22 @@
  (common-lisp:defstruct
      (child-workflow-execution-terminated-event-attributes
       (:copier common-lisp:nil))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
+   (workflow-execution
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":workflowexecution is required"))
     :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
+   (initiated-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":initiatedeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-terminated-event-attributes
                     'make-child-workflow-execution-terminated-event-attributes))
@@ -842,16 +947,26 @@
  (common-lisp:defstruct
      (child-workflow-execution-timed-out-event-attributes
       (:copier common-lisp:nil))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
+   (workflow-execution
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":workflowexecution is required"))
     :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (timeout-type (common-lisp:error ":timeouttype is required") :type
-    (common-lisp:or workflow-execution-timeout-type common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
+   (timeout-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":timeouttype is required"))
+    :type (common-lisp:or workflow-execution-timeout-type common-lisp:null))
+   (initiated-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":initiatedeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'child-workflow-execution-timed-out-event-attributes
                     'make-child-workflow-execution-timed-out-event-attributes))
@@ -888,8 +1003,9 @@
 (common-lisp:deftype close-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (close-status-filter (:copier common-lisp:nil))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or close-status common-lisp:null)))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or close-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'close-status-filter 'make-close-status-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -924,11 +1040,15 @@
  (common-lisp:defstruct
      (complete-workflow-execution-failed-event-attributes
       (:copier common-lisp:nil))
-   (cause (common-lisp:error ":cause is required") :type
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type
     (common-lisp:or complete-workflow-execution-failed-cause common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'complete-workflow-execution-failed-event-attributes
                     'make-complete-workflow-execution-failed-event-attributes))
@@ -1025,12 +1145,16 @@
  (common-lisp:defstruct
      (continue-as-new-workflow-execution-failed-event-attributes
       (:copier common-lisp:nil))
-   (cause (common-lisp:error ":cause is required") :type
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type
     (common-lisp:or continue-as-new-workflow-execution-failed-cause
                     common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'continue-as-new-workflow-execution-failed-event-attributes
                     'make-continue-as-new-workflow-execution-failed-event-attributes))
@@ -1053,8 +1177,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (count-closed-workflow-executions-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (start-time-filter common-lisp:nil :type
     (common-lisp:or execution-time-filter common-lisp:null))
    (close-time-filter common-lisp:nil :type
@@ -1113,10 +1238,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (count-open-workflow-executions-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (start-time-filter (common-lisp:error ":starttimefilter is required") :type
-    (common-lisp:or execution-time-filter common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (start-time-filter
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":starttimefilter is required"))
+    :type (common-lisp:or execution-time-filter common-lisp:null))
    (type-filter common-lisp:nil :type
     (common-lisp:or workflow-type-filter common-lisp:null))
    (tag-filter common-lisp:nil :type
@@ -1159,10 +1287,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (count-pending-activity-tasks-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null)))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (task-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tasklist is required"))
+    :type (common-lisp:or task-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'count-pending-activity-tasks-input
                     'make-count-pending-activity-tasks-input))
@@ -1184,10 +1315,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (count-pending-decision-tasks-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null)))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (task-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tasklist is required"))
+    :type (common-lisp:or task-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'count-pending-decision-tasks-input
                     'make-count-pending-decision-tasks-input))
@@ -1209,8 +1343,10 @@
 (common-lisp:deftype data () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (decision (:copier common-lisp:nil))
-   (decision-type (common-lisp:error ":decisiontype is required") :type
-    (common-lisp:or decision-type common-lisp:null))
+   (decision-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":decisiontype is required"))
+    :type (common-lisp:or decision-type common-lisp:null))
    (schedule-activity-task-decision-attributes common-lisp:nil :type
     (common-lisp:or schedule-activity-task-decision-attributes
                     common-lisp:null))
@@ -1334,16 +1470,25 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (decision-task (:copier common-lisp:nil))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
+   (task-token
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":tasktoken is required"))
+    :type (common-lisp:or task-token common-lisp:null))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
+   (workflow-execution
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":workflowexecution is required"))
     :type (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (events (common-lisp:error ":events is required") :type
-    (common-lisp:or history-event-list common-lisp:null))
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
+   (events
+    (common-lisp:error #A((19) common-lisp:base-char . ":events is required"))
+    :type (common-lisp:or history-event-list common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null))
    (previous-started-event-id common-lisp:nil :type
@@ -1392,10 +1537,14 @@
      (decision-task-completed-event-attributes (:copier common-lisp:nil))
    (execution-context common-lisp:nil :type
     (common-lisp:or data common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
+   (scheduled-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":scheduledeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'decision-task-completed-event-attributes
                     'make-decision-task-completed-event-attributes))
@@ -1422,8 +1571,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (decision-task-scheduled-event-attributes (:copier common-lisp:nil))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
+   (task-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tasklist is required"))
+    :type (common-lisp:or task-list common-lisp:null))
    (task-priority common-lisp:nil :type
     (common-lisp:or task-priority common-lisp:null))
    (start-to-close-timeout common-lisp:nil :type
@@ -1455,7 +1606,9 @@
  (common-lisp:defstruct
      (decision-task-started-event-attributes (:copier common-lisp:nil))
    (identity common-lisp:nil :type (common-lisp:or identity common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
+   (scheduled-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":scheduledeventid is required"))
     :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'decision-task-started-event-attributes
@@ -1478,12 +1631,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (decision-task-timed-out-event-attributes (:copier common-lisp:nil))
-   (timeout-type (common-lisp:error ":timeouttype is required") :type
-    (common-lisp:or decision-task-timeout-type common-lisp:null))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
+   (timeout-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":timeouttype is required"))
+    :type (common-lisp:or decision-task-timeout-type common-lisp:null))
+   (scheduled-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":scheduledeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'decision-task-timed-out-event-attributes
                     'make-decision-task-timed-out-event-attributes))
@@ -1528,10 +1687,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (deprecate-activity-type-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null)))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (activity-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":activitytype is required"))
+    :type (common-lisp:or activity-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deprecate-activity-type-input
                     'make-deprecate-activity-type-input))
@@ -1552,8 +1714,9 @@
                                                 'activity-type))))))
 (common-lisp:progn
  (common-lisp:defstruct (deprecate-domain-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deprecate-domain-input 'make-deprecate-domain-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1569,10 +1732,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (deprecate-workflow-type-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null)))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deprecate-workflow-type-input
                     'make-deprecate-workflow-type-input))
@@ -1594,10 +1760,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-activity-type-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null)))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (activity-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":activitytype is required"))
+    :type (common-lisp:or activity-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-activity-type-input
                     'make-describe-activity-type-input))
@@ -1618,8 +1787,9 @@
                                                 'activity-type))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-domain-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-domain-input 'make-describe-domain-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1635,10 +1805,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-workflow-execution-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (execution (common-lisp:error ":execution is required") :type
-    (common-lisp:or workflow-execution common-lisp:null)))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (execution
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":execution is required"))
+    :type (common-lisp:or workflow-execution common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-workflow-execution-input
                     'make-describe-workflow-execution-input))
@@ -1660,10 +1833,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-workflow-type-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null)))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-workflow-type-input
                     'make-describe-workflow-type-input))
@@ -1703,7 +1879,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (domain-configuration (:copier common-lisp:nil))
    (workflow-execution-retention-period-in-days
-    (common-lisp:error ":workflowexecutionretentionperiodindays is required")
+    (common-lisp:error
+     #A((51) common-lisp:base-char
+        . ":workflowexecutionretentionperiodindays is required"))
     :type (common-lisp:or duration-in-days common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'domain-configuration 'make-domain-configuration))
@@ -1733,10 +1911,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (domain-detail (:copier common-lisp:nil))
-   (domain-info (common-lisp:error ":domaininfo is required") :type
-    (common-lisp:or domain-info common-lisp:null))
-   (configuration (common-lisp:error ":configuration is required") :type
-    (common-lisp:or domain-configuration common-lisp:null)))
+   (domain-info
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domaininfo is required"))
+    :type (common-lisp:or domain-info common-lisp:null))
+   (configuration
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":configuration is required"))
+    :type (common-lisp:or domain-configuration common-lisp:null)))
  (common-lisp:export (common-lisp:list 'domain-detail 'make-domain-detail))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape domain-detail))
@@ -1753,10 +1935,12 @@
                                                 'configuration))))))
 (common-lisp:progn
  (common-lisp:defstruct (domain-info (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or registration-status common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or registration-status common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null)))
  (common-lisp:export (common-lisp:list 'domain-info 'make-domain-info))
@@ -1788,8 +1972,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (domain-infos (:copier common-lisp:nil))
-   (domain-infos (common-lisp:error ":domaininfos is required") :type
-    (common-lisp:or domain-info-list common-lisp:null))
+   (domain-infos
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domaininfos is required"))
+    :type (common-lisp:or domain-info-list common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export (common-lisp:list 'domain-infos 'make-domain-infos))
@@ -1816,8 +2002,10 @@
 (common-lisp:deftype execution-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (execution-time-filter (:copier common-lisp:nil))
-   (oldest-date (common-lisp:error ":oldestdate is required") :type
-    (common-lisp:or timestamp common-lisp:null))
+   (oldest-date
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":oldestdate is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
    (latest-date common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
@@ -1841,9 +2029,13 @@
  (common-lisp:defstruct
      (external-workflow-execution-cancel-requested-event-attributes
       (:copier common-lisp:nil))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
+   (workflow-execution
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":workflowexecution is required"))
     :type (common-lisp:or workflow-execution common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
+   (initiated-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":initiatedeventid is required"))
     :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list
@@ -1868,9 +2060,13 @@
  (common-lisp:defstruct
      (external-workflow-execution-signaled-event-attributes
       (:copier common-lisp:nil))
-   (workflow-execution (common-lisp:error ":workflowexecution is required")
+   (workflow-execution
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":workflowexecution is required"))
     :type (common-lisp:or workflow-execution common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
+   (initiated-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":initiatedeventid is required"))
     :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'external-workflow-execution-signaled-event-attributes
@@ -1920,11 +2116,15 @@
  (common-lisp:defstruct
      (fail-workflow-execution-failed-event-attributes
       (:copier common-lisp:nil))
-   (cause (common-lisp:error ":cause is required") :type
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type
     (common-lisp:or fail-workflow-execution-failed-cause common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'fail-workflow-execution-failed-event-attributes
                     'make-fail-workflow-execution-failed-event-attributes))
@@ -1950,10 +2150,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-workflow-execution-history-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (execution (common-lisp:error ":execution is required") :type
-    (common-lisp:or workflow-execution common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (execution
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":execution is required"))
+    :type (common-lisp:or workflow-execution common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null))
    (maximum-page-size common-lisp:nil :type
@@ -1995,8 +2198,9 @@
                                                 'reverse-order))))))
 (common-lisp:progn
  (common-lisp:defstruct (history (:copier common-lisp:nil))
-   (events (common-lisp:error ":events is required") :type
-    (common-lisp:or history-event-list common-lisp:null))
+   (events
+    (common-lisp:error #A((19) common-lisp:base-char . ":events is required"))
+    :type (common-lisp:or history-event-list common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export (common-lisp:list 'history 'make-history))
@@ -2015,12 +2219,17 @@
                                                 'next-page-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (history-event (:copier common-lisp:nil))
-   (event-timestamp (common-lisp:error ":eventtimestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (event-type (common-lisp:error ":eventtype is required") :type
-    (common-lisp:or event-type common-lisp:null))
-   (event-id (common-lisp:error ":eventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
+   (event-timestamp
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":eventtimestamp is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (event-type
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":eventtype is required"))
+    :type (common-lisp:or event-type common-lisp:null))
+   (event-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":eventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (workflow-execution-started-event-attributes common-lisp:nil :type
     (common-lisp:or workflow-execution-started-event-attributes
                     common-lisp:null))
@@ -2477,10 +2686,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (lambda-function-completed-event-attributes (:copier common-lisp:nil))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
+   (scheduled-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":scheduledeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (result common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'lambda-function-completed-event-attributes
@@ -2508,10 +2721,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (lambda-function-failed-event-attributes (:copier common-lisp:nil))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
+   (scheduled-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":scheduledeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (reason common-lisp:nil :type
     (common-lisp:or failure-reason common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
@@ -2546,18 +2763,21 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (lambda-function-scheduled-event-attributes (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or function-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or function-name common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or function-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (input common-lisp:nil :type
     (common-lisp:or function-input common-lisp:null))
    (start-to-close-timeout common-lisp:nil :type
     (common-lisp:or duration-in-seconds-optional common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'lambda-function-scheduled-event-attributes
                     'make-lambda-function-scheduled-event-attributes))
@@ -2599,7 +2819,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (lambda-function-started-event-attributes (:copier common-lisp:nil))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
+   (scheduled-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":scheduledeventid is required"))
     :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'lambda-function-started-event-attributes
@@ -2617,10 +2839,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (lambda-function-timed-out-event-attributes (:copier common-lisp:nil))
-   (scheduled-event-id (common-lisp:error ":scheduledeventid is required")
+   (scheduled-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":scheduledeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (timeout-type common-lisp:nil :type
     (common-lisp:or lambda-function-timeout-type common-lisp:null)))
  (common-lisp:export
@@ -2664,10 +2890,13 @@
 (common-lisp:deftype limited-data () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (list-activity-types-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (registration-status (common-lisp:error ":registrationstatus is required")
+   (registration-status
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":registrationstatus is required"))
     :type (common-lisp:or registration-status common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null))
@@ -2716,8 +2945,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-closed-workflow-executions-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (start-time-filter common-lisp:nil :type
     (common-lisp:or execution-time-filter common-lisp:null))
    (close-time-filter common-lisp:nil :type
@@ -2798,7 +3028,9 @@
  (common-lisp:defstruct (list-domains-input (:copier common-lisp:nil))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null))
-   (registration-status (common-lisp:error ":registrationstatus is required")
+   (registration-status
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":registrationstatus is required"))
     :type (common-lisp:or registration-status common-lisp:null))
    (maximum-page-size common-lisp:nil :type
     (common-lisp:or page-size common-lisp:null))
@@ -2832,10 +3064,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-open-workflow-executions-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (start-time-filter (common-lisp:error ":starttimefilter is required") :type
-    (common-lisp:or execution-time-filter common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (start-time-filter
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":starttimefilter is required"))
+    :type (common-lisp:or execution-time-filter common-lisp:null))
    (type-filter common-lisp:nil :type
     (common-lisp:or workflow-type-filter common-lisp:null))
    (tag-filter common-lisp:nil :type
@@ -2898,10 +3133,13 @@
                                                 'execution-filter))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-workflow-types-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or name common-lisp:null))
-   (registration-status (common-lisp:error ":registrationstatus is required")
+   (registration-status
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":registrationstatus is required"))
     :type (common-lisp:or registration-status common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null))
@@ -2951,12 +3189,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (marker-recorded-event-attributes (:copier common-lisp:nil))
-   (marker-name (common-lisp:error ":markername is required") :type
-    (common-lisp:or marker-name common-lisp:null))
+   (marker-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":markername is required"))
+    :type (common-lisp:or marker-name common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'marker-recorded-event-attributes
                     'make-marker-recorded-event-attributes))
@@ -3004,8 +3246,9 @@
 (common-lisp:deftype page-token () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (pending-task-count (:copier common-lisp:nil))
-   (count (common-lisp:error ":count is required") :type
-    (common-lisp:or count common-lisp:null))
+   (count
+    (common-lisp:error #A((18) common-lisp:base-char . ":count is required"))
+    :type (common-lisp:or count common-lisp:null))
    (truncated common-lisp:nil :type
     (common-lisp:or truncated common-lisp:null)))
  (common-lisp:export
@@ -3026,10 +3269,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (poll-for-activity-task-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (task-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tasklist is required"))
+    :type (common-lisp:or task-list common-lisp:null))
    (identity common-lisp:nil :type (common-lisp:or identity common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'poll-for-activity-task-input
@@ -3057,10 +3303,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (poll-for-decision-task-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (task-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tasklist is required"))
+    :type (common-lisp:or task-list common-lisp:null))
    (identity common-lisp:nil :type (common-lisp:or identity common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null))
@@ -3109,8 +3358,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (record-activity-task-heartbeat-input (:copier common-lisp:nil))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
+   (task-token
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":tasktoken is required"))
+    :type (common-lisp:or task-token common-lisp:null))
    (details common-lisp:nil :type
     (common-lisp:or limited-data common-lisp:null)))
  (common-lisp:export
@@ -3134,8 +3385,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (record-marker-decision-attributes (:copier common-lisp:nil))
-   (marker-name (common-lisp:error ":markername is required") :type
-    (common-lisp:or marker-name common-lisp:null))
+   (marker-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":markername is required"))
+    :type (common-lisp:or marker-name common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'record-marker-decision-attributes
@@ -3159,13 +3412,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (record-marker-failed-event-attributes (:copier common-lisp:nil))
-   (marker-name (common-lisp:error ":markername is required") :type
-    (common-lisp:or marker-name common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or record-marker-failed-cause common-lisp:null))
+   (marker-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":markername is required"))
+    :type (common-lisp:or marker-name common-lisp:null))
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type (common-lisp:or record-marker-failed-cause common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'record-marker-failed-event-attributes
                     'make-record-marker-failed-event-attributes))
@@ -3192,12 +3450,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-activity-type-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or version common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (default-task-start-to-close-timeout common-lisp:nil :type
@@ -3272,12 +3533,15 @@
                               'default-task-schedule-to-close-timeout))))))
 (common-lisp:progn
  (common-lisp:defstruct (register-domain-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (workflow-execution-retention-period-in-days
-    (common-lisp:error ":workflowexecutionretentionperiodindays is required")
+    (common-lisp:error
+     #A((51) common-lisp:base-char
+        . ":workflowexecutionretentionperiodindays is required"))
     :type (common-lisp:or duration-in-days common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-domain-input 'make-register-domain-input))
@@ -3304,12 +3568,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-workflow-type-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or version common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (default-task-start-to-close-timeout common-lisp:nil :type
@@ -3387,8 +3654,10 @@
  (common-lisp:defstruct
      (request-cancel-activity-task-decision-attributes
       (:copier common-lisp:nil))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null)))
+   (activity-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":activityid is required"))
+    :type (common-lisp:or activity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'request-cancel-activity-task-decision-attributes
                     'make-request-cancel-activity-task-decision-attributes))
@@ -3408,14 +3677,20 @@
  (common-lisp:defstruct
      (request-cancel-activity-task-failed-event-attributes
       (:copier common-lisp:nil))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
+   (activity-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":activityid is required"))
+    :type (common-lisp:or activity-id common-lisp:null))
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type
     (common-lisp:or request-cancel-activity-task-failed-cause
                     common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'request-cancel-activity-task-failed-event-attributes
                     'make-request-cancel-activity-task-failed-event-attributes))
@@ -3443,8 +3718,10 @@
  (common-lisp:defstruct
      (request-cancel-external-workflow-execution-decision-attributes
       (:copier common-lisp:nil))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
     (common-lisp:or workflow-run-id-optional common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
@@ -3478,18 +3755,26 @@
  (common-lisp:defstruct
      (request-cancel-external-workflow-execution-failed-event-attributes
       (:copier common-lisp:nil))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
     (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type
     (common-lisp:or request-cancel-external-workflow-execution-failed-cause
                     common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
+   (initiated-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":initiatedeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list
@@ -3534,13 +3819,17 @@
  (common-lisp:defstruct
      (request-cancel-external-workflow-execution-initiated-event-attributes
       (:copier common-lisp:nil))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
     (common-lisp:or workflow-run-id-optional common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list
@@ -3574,10 +3863,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (request-cancel-workflow-execution-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
     (common-lisp:or workflow-run-id-optional common-lisp:null)))
  (common-lisp:export
@@ -3606,8 +3898,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (respond-activity-task-canceled-input (:copier common-lisp:nil))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
+   (task-token
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":tasktoken is required"))
+    :type (common-lisp:or task-token common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'respond-activity-task-canceled-input
@@ -3630,8 +3924,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (respond-activity-task-completed-input (:copier common-lisp:nil))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
+   (task-token
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":tasktoken is required"))
+    :type (common-lisp:or task-token common-lisp:null))
    (result common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'respond-activity-task-completed-input
@@ -3654,8 +3950,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (respond-activity-task-failed-input (:copier common-lisp:nil))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
+   (task-token
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":tasktoken is required"))
+    :type (common-lisp:or task-token common-lisp:null))
    (reason common-lisp:nil :type
     (common-lisp:or failure-reason common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null)))
@@ -3685,8 +3983,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (respond-decision-task-completed-input (:copier common-lisp:nil))
-   (task-token (common-lisp:error ":tasktoken is required") :type
-    (common-lisp:or task-token common-lisp:null))
+   (task-token
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":tasktoken is required"))
+    :type (common-lisp:or task-token common-lisp:null))
    (decisions common-lisp:nil :type
     (common-lisp:or decision-list common-lisp:null))
    (execution-context common-lisp:nil :type
@@ -3731,10 +4031,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (schedule-activity-task-decision-attributes (:copier common-lisp:nil))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null))
+   (activity-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":activitytype is required"))
+    :type (common-lisp:or activity-type common-lisp:null))
+   (activity-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":activityid is required"))
+    :type (common-lisp:or activity-id common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (schedule-to-close-timeout common-lisp:nil :type
@@ -3811,15 +4115,23 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (schedule-activity-task-failed-event-attributes (:copier common-lisp:nil))
-   (activity-type (common-lisp:error ":activitytype is required") :type
-    (common-lisp:or activity-type common-lisp:null))
-   (activity-id (common-lisp:error ":activityid is required") :type
-    (common-lisp:or activity-id common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
+   (activity-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":activitytype is required"))
+    :type (common-lisp:or activity-type common-lisp:null))
+   (activity-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":activityid is required"))
+    :type (common-lisp:or activity-id common-lisp:null))
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type
     (common-lisp:or schedule-activity-task-failed-cause common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'schedule-activity-task-failed-event-attributes
                     'make-schedule-activity-task-failed-event-attributes))
@@ -3851,10 +4163,11 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (schedule-lambda-function-decision-attributes (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or function-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or function-name common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or function-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (input common-lisp:nil :type
     (common-lisp:or function-input common-lisp:null))
@@ -3899,15 +4212,20 @@
  (common-lisp:defstruct
      (schedule-lambda-function-failed-event-attributes
       (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or function-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or function-name common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or function-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or function-name common-lisp:null))
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type
     (common-lisp:or schedule-lambda-function-failed-cause common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'schedule-lambda-function-failed-event-attributes
                     'make-schedule-lambda-function-failed-event-attributes))
@@ -3940,12 +4258,16 @@
  (common-lisp:defstruct
      (signal-external-workflow-execution-decision-attributes
       (:copier common-lisp:nil))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
     (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (signal-name (common-lisp:error ":signalname is required") :type
-    (common-lisp:or signal-name common-lisp:null))
+   (signal-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":signalname is required"))
+    :type (common-lisp:or signal-name common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
@@ -3987,18 +4309,26 @@
  (common-lisp:defstruct
      (signal-external-workflow-execution-failed-event-attributes
       (:copier common-lisp:nil))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
     (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type
     (common-lisp:or signal-external-workflow-execution-failed-cause
                     common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
+   (initiated-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":initiatedeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'signal-external-workflow-execution-failed-event-attributes
@@ -4042,16 +4372,22 @@
  (common-lisp:defstruct
      (signal-external-workflow-execution-initiated-event-attributes
       (:copier common-lisp:nil))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
     (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (signal-name (common-lisp:error ":signalname is required") :type
-    (common-lisp:or signal-name common-lisp:null))
+   (signal-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":signalname is required"))
+    :type (common-lisp:or signal-name common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list
@@ -4096,14 +4432,19 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (signal-workflow-execution-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
     (common-lisp:or workflow-run-id-optional common-lisp:null))
-   (signal-name (common-lisp:error ":signalname is required") :type
-    (common-lisp:or signal-name common-lisp:null))
+   (signal-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":signalname is required"))
+    :type (common-lisp:or signal-name common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'signal-workflow-execution-input
@@ -4142,10 +4483,14 @@
  (common-lisp:defstruct
      (start-child-workflow-execution-decision-attributes
       (:copier common-lisp:nil))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (execution-start-to-close-timeout common-lisp:nil :type
@@ -4229,18 +4574,28 @@
  (common-lisp:defstruct
      (start-child-workflow-execution-failed-event-attributes
       (:copier common-lisp:nil))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type
     (common-lisp:or start-child-workflow-execution-failed-cause
                     common-lisp:null))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (initiated-event-id (common-lisp:error ":initiatedeventid is required")
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
+   (initiated-event-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":initiatedeventid is required"))
     :type (common-lisp:or event-id common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-child-workflow-execution-failed-event-attributes
@@ -4284,23 +4639,33 @@
  (common-lisp:defstruct
      (start-child-workflow-execution-initiated-event-attributes
       (:copier common-lisp:nil))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (execution-start-to-close-timeout common-lisp:nil :type
     (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
+   (task-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tasklist is required"))
+    :type (common-lisp:or task-list common-lisp:null))
    (task-priority common-lisp:nil :type
     (common-lisp:or task-priority common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (child-policy (common-lisp:error ":childpolicy is required") :type
-    (common-lisp:or child-policy common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
+   (child-policy
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":childpolicy is required"))
+    :type (common-lisp:or child-policy common-lisp:null))
    (task-start-to-close-timeout common-lisp:nil :type
     (common-lisp:or duration-in-seconds-optional common-lisp:null))
    (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
@@ -4409,10 +4774,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-timer-decision-attributes (:copier common-lisp:nil))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null))
+   (timer-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":timerid is required"))
+    :type (common-lisp:or timer-id common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (start-to-fire-timeout (common-lisp:error ":starttofiretimeout is required")
+   (start-to-fire-timeout
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":starttofiretimeout is required"))
     :type (common-lisp:or duration-in-seconds common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-timer-decision-attributes
@@ -4441,13 +4809,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-timer-failed-event-attributes (:copier common-lisp:nil))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null))
-   (cause (common-lisp:error ":cause is required") :type
-    (common-lisp:or start-timer-failed-cause common-lisp:null))
+   (timer-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":timerid is required"))
+    :type (common-lisp:or timer-id common-lisp:null))
+   (cause
+    (common-lisp:error #A((18) common-lisp:base-char . ":cause is required"))
+    :type (common-lisp:or start-timer-failed-cause common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-timer-failed-event-attributes
                     'make-start-timer-failed-event-attributes))
@@ -4474,12 +4846,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-workflow-execution-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
    (task-list common-lisp:nil :type
     (common-lisp:or task-list common-lisp:null))
    (task-priority common-lisp:nil :type
@@ -4559,8 +4936,8 @@
 (common-lisp:deftype tag () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (tag-filter (:copier common-lisp:nil))
-   (tag (common-lisp:error ":tag is required") :type
-    (common-lisp:or tag common-lisp:null)))
+   (tag (common-lisp:error #A((16) common-lisp:base-char . ":tag is required"))
+    :type (common-lisp:or tag common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag-filter 'make-tag-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag-filter))
@@ -4579,8 +4956,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (task-list (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'task-list 'make-task-list))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape task-list))
@@ -4596,10 +4974,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (terminate-workflow-execution-input (:copier common-lisp:nil))
-   (domain (common-lisp:error ":domain is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
+   (domain
+    (common-lisp:error #A((19) common-lisp:base-char . ":domain is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
    (run-id common-lisp:nil :type
     (common-lisp:or workflow-run-id-optional common-lisp:null))
    (reason common-lisp:nil :type
@@ -4648,13 +5029,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (timer-canceled-event-attributes (:copier common-lisp:nil))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
+   (timer-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":timerid is required"))
+    :type (common-lisp:or timer-id common-lisp:null))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'timer-canceled-event-attributes
                     'make-timer-canceled-event-attributes))
@@ -4681,10 +5067,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (timer-fired-event-attributes (:copier common-lisp:nil))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null))
-   (started-event-id (common-lisp:error ":startedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+   (timer-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":timerid is required"))
+    :type (common-lisp:or timer-id common-lisp:null))
+   (started-event-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":startedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'timer-fired-event-attributes
                     'make-timer-fired-event-attributes))
@@ -4707,14 +5096,19 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (timer-started-event-attributes (:copier common-lisp:nil))
-   (timer-id (common-lisp:error ":timerid is required") :type
-    (common-lisp:or timer-id common-lisp:null))
+   (timer-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":timerid is required"))
+    :type (common-lisp:or timer-id common-lisp:null))
    (control common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (start-to-fire-timeout (common-lisp:error ":starttofiretimeout is required")
+   (start-to-fire-timeout
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":starttofiretimeout is required"))
     :type (common-lisp:or duration-in-seconds common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'timer-started-event-attributes
                     'make-timer-started-event-attributes))
@@ -4798,10 +5192,13 @@
 (common-lisp:deftype version-optional () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (workflow-execution (:copier common-lisp:nil))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null))
-   (run-id (common-lisp:error ":runid is required") :type
-    (common-lisp:or workflow-run-id common-lisp:null)))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null))
+   (run-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":runid is required"))
+    :type (common-lisp:or workflow-run-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution 'make-workflow-execution))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4876,8 +5273,10 @@
      (workflow-execution-canceled-event-attributes (:copier common-lisp:nil))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-canceled-event-attributes
                     'make-workflow-execution-canceled-event-attributes))
@@ -4901,8 +5300,10 @@
      (workflow-execution-completed-event-attributes (:copier common-lisp:nil))
    (result common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-completed-event-attributes
                     'make-workflow-execution-completed-event-attributes))
@@ -4925,17 +5326,24 @@
  (common-lisp:defstruct
      (workflow-execution-configuration (:copier common-lisp:nil))
    (task-start-to-close-timeout
-    (common-lisp:error ":taskstarttoclosetimeout is required") :type
-    (common-lisp:or duration-in-seconds common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":taskstarttoclosetimeout is required"))
+    :type (common-lisp:or duration-in-seconds common-lisp:null))
    (execution-start-to-close-timeout
-    (common-lisp:error ":executionstarttoclosetimeout is required") :type
-    (common-lisp:or duration-in-seconds common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":executionstarttoclosetimeout is required"))
+    :type (common-lisp:or duration-in-seconds common-lisp:null))
+   (task-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tasklist is required"))
+    :type (common-lisp:or task-list common-lisp:null))
    (task-priority common-lisp:nil :type
     (common-lisp:or task-priority common-lisp:null))
-   (child-policy (common-lisp:error ":childpolicy is required") :type
-    (common-lisp:or child-policy common-lisp:null))
+   (child-policy
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":childpolicy is required"))
+    :type (common-lisp:or child-policy common-lisp:null))
    (lambda-role common-lisp:nil :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-configuration
@@ -4981,23 +5389,33 @@
       (:copier common-lisp:nil))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null))
-   (new-execution-run-id (common-lisp:error ":newexecutionrunid is required")
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null))
+   (new-execution-run-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":newexecutionrunid is required"))
     :type (common-lisp:or workflow-run-id common-lisp:null))
    (execution-start-to-close-timeout common-lisp:nil :type
     (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
+   (task-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tasklist is required"))
+    :type (common-lisp:or task-list common-lisp:null))
    (task-priority common-lisp:nil :type
     (common-lisp:or task-priority common-lisp:null))
    (task-start-to-close-timeout common-lisp:nil :type
     (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (child-policy (common-lisp:error ":childpolicy is required") :type
-    (common-lisp:or child-policy common-lisp:null))
+   (child-policy
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":childpolicy is required"))
+    :type (common-lisp:or child-policy common-lisp:null))
    (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
    (lambda-role common-lisp:nil :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-continued-as-new-event-attributes
@@ -5064,8 +5482,9 @@
                                                 'lambda-role))))))
 (common-lisp:progn
  (common-lisp:defstruct (workflow-execution-count (:copier common-lisp:nil))
-   (count (common-lisp:error ":count is required") :type
-    (common-lisp:or count common-lisp:null))
+   (count
+    (common-lisp:error #A((18) common-lisp:base-char . ":count is required"))
+    :type (common-lisp:or count common-lisp:null))
    (truncated common-lisp:nil :type
     (common-lisp:or truncated common-lisp:null)))
  (common-lisp:export
@@ -5087,13 +5506,18 @@
                                                 'truncated))))))
 (common-lisp:progn
  (common-lisp:defstruct (workflow-execution-detail (:copier common-lisp:nil))
-   (execution-info (common-lisp:error ":executioninfo is required") :type
-    (common-lisp:or workflow-execution-info common-lisp:null))
+   (execution-info
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":executioninfo is required"))
+    :type (common-lisp:or workflow-execution-info common-lisp:null))
    (execution-configuration
-    (common-lisp:error ":executionconfiguration is required") :type
-    (common-lisp:or workflow-execution-configuration common-lisp:null))
-   (open-counts (common-lisp:error ":opencounts is required") :type
-    (common-lisp:or workflow-execution-open-counts common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":executionconfiguration is required"))
+    :type (common-lisp:or workflow-execution-configuration common-lisp:null))
+   (open-counts
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":opencounts is required"))
+    :type (common-lisp:or workflow-execution-open-counts common-lisp:null))
    (latest-activity-task-timestamp common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
    (latest-execution-context common-lisp:nil :type
@@ -5138,8 +5562,10 @@
     (common-lisp:or failure-reason common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (decision-task-completed-event-id
-    (common-lisp:error ":decisiontaskcompletedeventid is required") :type
-    (common-lisp:or event-id common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":decisiontaskcompletedeventid is required"))
+    :type (common-lisp:or event-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-failed-event-attributes
                     'make-workflow-execution-failed-event-attributes))
@@ -5165,8 +5591,10 @@
                                                 'decision-task-completed-event-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (workflow-execution-filter (:copier common-lisp:nil))
-   (workflow-id (common-lisp:error ":workflowid is required") :type
-    (common-lisp:or workflow-id common-lisp:null)))
+   (workflow-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workflowid is required"))
+    :type (common-lisp:or workflow-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-filter
                     'make-workflow-execution-filter))
@@ -5182,16 +5610,24 @@
                                                 'workflow-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (workflow-execution-info (:copier common-lisp:nil))
-   (execution (common-lisp:error ":execution is required") :type
-    (common-lisp:or workflow-execution common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (start-timestamp (common-lisp:error ":starttimestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
+   (execution
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":execution is required"))
+    :type (common-lisp:or workflow-execution common-lisp:null))
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
+   (start-timestamp
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":starttimestamp is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
    (close-timestamp common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
-   (execution-status (common-lisp:error ":executionstatus is required") :type
-    (common-lisp:or execution-status common-lisp:null))
+   (execution-status
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":executionstatus is required"))
+    :type (common-lisp:or execution-status common-lisp:null))
    (close-status common-lisp:nil :type
     (common-lisp:or close-status common-lisp:null))
    (parent common-lisp:nil :type
@@ -5261,8 +5697,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (workflow-execution-infos (:copier common-lisp:nil))
-   (execution-infos (common-lisp:error ":executioninfos is required") :type
-    (common-lisp:or workflow-execution-info-list common-lisp:null))
+   (execution-infos
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":executioninfos is required"))
+    :type (common-lisp:or workflow-execution-info-list common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export
@@ -5285,15 +5723,23 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (workflow-execution-open-counts (:copier common-lisp:nil))
-   (open-activity-tasks (common-lisp:error ":openactivitytasks is required")
+   (open-activity-tasks
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":openactivitytasks is required"))
     :type (common-lisp:or count common-lisp:null))
-   (open-decision-tasks (common-lisp:error ":opendecisiontasks is required")
+   (open-decision-tasks
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":opendecisiontasks is required"))
     :type (common-lisp:or open-decision-tasks-count common-lisp:null))
-   (open-timers (common-lisp:error ":opentimers is required") :type
-    (common-lisp:or count common-lisp:null))
+   (open-timers
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":opentimers is required"))
+    :type (common-lisp:or count common-lisp:null))
    (open-child-workflow-executions
-    (common-lisp:error ":openchildworkflowexecutions is required") :type
-    (common-lisp:or count common-lisp:null))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":openchildworkflowexecutions is required"))
+    :type (common-lisp:or count common-lisp:null))
    (open-lambda-functions common-lisp:nil :type
     (common-lisp:or count common-lisp:null)))
  (common-lisp:export
@@ -5332,8 +5778,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (workflow-execution-signaled-event-attributes (:copier common-lisp:nil))
-   (signal-name (common-lisp:error ":signalname is required") :type
-    (common-lisp:or signal-name common-lisp:null))
+   (signal-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":signalname is required"))
+    :type (common-lisp:or signal-name common-lisp:null))
    (input common-lisp:nil :type (common-lisp:or data common-lisp:null))
    (external-workflow-execution common-lisp:nil :type
     (common-lisp:or workflow-execution common-lisp:null))
@@ -5375,14 +5823,20 @@
     (common-lisp:or duration-in-seconds-optional common-lisp:null))
    (task-start-to-close-timeout common-lisp:nil :type
     (common-lisp:or duration-in-seconds-optional common-lisp:null))
-   (child-policy (common-lisp:error ":childpolicy is required") :type
-    (common-lisp:or child-policy common-lisp:null))
-   (task-list (common-lisp:error ":tasklist is required") :type
-    (common-lisp:or task-list common-lisp:null))
+   (child-policy
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":childpolicy is required"))
+    :type (common-lisp:or child-policy common-lisp:null))
+   (task-list
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tasklist is required"))
+    :type (common-lisp:or task-list common-lisp:null))
    (task-priority common-lisp:nil :type
     (common-lisp:or task-priority common-lisp:null))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
    (tag-list common-lisp:nil :type (common-lisp:or tag-list common-lisp:null))
    (continued-execution-run-id common-lisp:nil :type
     (common-lisp:or workflow-run-id-optional common-lisp:null))
@@ -5466,8 +5920,10 @@
    (reason common-lisp:nil :type
     (common-lisp:or terminate-reason common-lisp:null))
    (details common-lisp:nil :type (common-lisp:or data common-lisp:null))
-   (child-policy (common-lisp:error ":childpolicy is required") :type
-    (common-lisp:or child-policy common-lisp:null))
+   (child-policy
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":childpolicy is required"))
+    :type (common-lisp:or child-policy common-lisp:null))
    (cause common-lisp:nil :type
     (common-lisp:or workflow-execution-terminated-cause common-lisp:null)))
  (common-lisp:export
@@ -5501,10 +5957,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (workflow-execution-timed-out-event-attributes (:copier common-lisp:nil))
-   (timeout-type (common-lisp:error ":timeouttype is required") :type
-    (common-lisp:or workflow-execution-timeout-type common-lisp:null))
-   (child-policy (common-lisp:error ":childpolicy is required") :type
-    (common-lisp:or child-policy common-lisp:null)))
+   (timeout-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":timeouttype is required"))
+    :type (common-lisp:or workflow-execution-timeout-type common-lisp:null))
+   (child-policy
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":childpolicy is required"))
+    :type (common-lisp:or child-policy common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-execution-timed-out-event-attributes
                     'make-workflow-execution-timed-out-event-attributes))
@@ -5529,10 +5989,12 @@
 (common-lisp:deftype workflow-run-id-optional () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (workflow-type (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or version common-lisp:null)))
  (common-lisp:export (common-lisp:list 'workflow-type 'make-workflow-type))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape workflow-type))
@@ -5601,10 +6063,14 @@
                                                 'default-lambda-role))))))
 (common-lisp:progn
  (common-lisp:defstruct (workflow-type-detail (:copier common-lisp:nil))
-   (type-info (common-lisp:error ":typeinfo is required") :type
-    (common-lisp:or workflow-type-info common-lisp:null))
-   (configuration (common-lisp:error ":configuration is required") :type
-    (common-lisp:or workflow-type-configuration common-lisp:null)))
+   (type-info
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":typeinfo is required"))
+    :type (common-lisp:or workflow-type-info common-lisp:null))
+   (configuration
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":configuration is required"))
+    :type (common-lisp:or workflow-type-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'workflow-type-detail 'make-workflow-type-detail))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5622,8 +6088,9 @@
                                                 'configuration))))))
 (common-lisp:progn
  (common-lisp:defstruct (workflow-type-filter (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
    (version common-lisp:nil :type
     (common-lisp:or version-optional common-lisp:null)))
  (common-lisp:export
@@ -5643,14 +6110,19 @@
                                                 'version))))))
 (common-lisp:progn
  (common-lisp:defstruct (workflow-type-info (:copier common-lisp:nil))
-   (workflow-type (common-lisp:error ":workflowtype is required") :type
-    (common-lisp:or workflow-type common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or registration-status common-lisp:null))
+   (workflow-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workflowtype is required"))
+    :type (common-lisp:or workflow-type common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or registration-status common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
-   (creation-date (common-lisp:error ":creationdate is required") :type
-    (common-lisp:or timestamp common-lisp:null))
+   (creation-date
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":creationdate is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
    (deprecation-date common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
@@ -5693,8 +6165,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (workflow-type-infos (:copier common-lisp:nil))
-   (type-infos (common-lisp:error ":typeinfos is required") :type
-    (common-lisp:or workflow-type-info-list common-lisp:null))
+   (type-infos
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":typeinfos is required"))
+    :type (common-lisp:or workflow-type-info-list common-lisp:null))
    (next-page-token common-lisp:nil :type
     (common-lisp:or page-token common-lisp:null)))
  (common-lisp:export
@@ -5727,7 +6201,8 @@
                        'make-count-closed-workflow-executions-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CountClosedWorkflowExecutions")
                                   ("Version" ,@"2012-01-25"))
@@ -5749,7 +6224,8 @@
                        'make-count-open-workflow-executions-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CountOpenWorkflowExecutions")
                                   ("Version" ,@"2012-01-25"))
@@ -5768,7 +6244,8 @@
                        'make-count-pending-activity-tasks-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CountPendingActivityTasks")
                                   ("Version" ,@"2012-01-25"))
@@ -5787,7 +6264,8 @@
                        'make-count-pending-decision-tasks-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CountPendingDecisionTasks")
                                   ("Version" ,@"2012-01-25"))
@@ -5805,7 +6283,8 @@
                       (common-lisp:apply 'make-deprecate-activity-type-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeprecateActivityType")
                                   ("Version" ,@"2012-01-25"))
@@ -5823,7 +6302,8 @@
                       (common-lisp:apply 'make-deprecate-domain-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeprecateDomain")
                                   ("Version" ,@"2012-01-25"))
@@ -5841,7 +6321,8 @@
                       (common-lisp:apply 'make-deprecate-workflow-type-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeprecateWorkflowType")
                                   ("Version" ,@"2012-01-25"))
@@ -5859,7 +6340,8 @@
                       (common-lisp:apply 'make-describe-activity-type-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeActivityType")
                                   ("Version" ,@"2012-01-25"))
@@ -5877,7 +6359,8 @@
                       (common-lisp:apply 'make-describe-domain-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDomain")
                                   ("Version" ,@"2012-01-25"))
@@ -5896,7 +6379,8 @@
                        'make-describe-workflow-execution-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeWorkflowExecution")
                                   ("Version" ,@"2012-01-25"))
@@ -5914,7 +6398,8 @@
                       (common-lisp:apply 'make-describe-workflow-type-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeWorkflowType")
                                   ("Version" ,@"2012-01-25"))
@@ -5936,7 +6421,8 @@
                        'make-get-workflow-execution-history-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetWorkflowExecutionHistory")
                                   ("Version" ,@"2012-01-25"))
@@ -5957,7 +6443,8 @@
                       (common-lisp:apply 'make-list-activity-types-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListActivityTypes")
                                   ("Version" ,@"2012-01-25"))
@@ -5982,7 +6469,8 @@
                        'make-list-closed-workflow-executions-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListClosedWorkflowExecutions")
                                   ("Version" ,@"2012-01-25"))
@@ -6003,7 +6491,8 @@
                       (common-lisp:apply 'make-list-domains-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDomains")
                                   ("Version" ,@"2012-01-25"))
@@ -6026,7 +6515,8 @@
                        'make-list-open-workflow-executions-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListOpenWorkflowExecutions")
                                   ("Version" ,@"2012-01-25"))
@@ -6047,7 +6537,8 @@
                       (common-lisp:apply 'make-list-workflow-types-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListWorkflowTypes")
                                   ("Version" ,@"2012-01-25"))
@@ -6065,7 +6556,8 @@
                       (common-lisp:apply 'make-poll-for-activity-task-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PollForActivityTask")
                                   ("Version" ,@"2012-01-25"))
@@ -6086,7 +6578,8 @@
                       (common-lisp:apply 'make-poll-for-decision-task-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PollForDecisionTask")
                                   ("Version" ,@"2012-01-25"))
@@ -6105,7 +6598,8 @@
                        'make-record-activity-task-heartbeat-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RecordActivityTaskHeartbeat")
                                   ("Version" ,@"2012-01-25"))
@@ -6133,7 +6627,8 @@
                       (common-lisp:apply 'make-register-activity-type-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterActivityType")
                                   ("Version" ,@"2012-01-25"))
@@ -6154,7 +6649,8 @@
                       (common-lisp:apply 'make-register-domain-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterDomain")
                                   ("Version" ,@"2012-01-25"))
@@ -6180,7 +6676,8 @@
                       (common-lisp:apply 'make-register-workflow-type-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterWorkflowType")
                                   ("Version" ,@"2012-01-25"))
@@ -6199,7 +6696,8 @@
                        'make-request-cancel-workflow-execution-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RequestCancelWorkflowExecution")
                                   ("Version" ,@"2012-01-25"))
@@ -6218,7 +6716,8 @@
                        'make-respond-activity-task-canceled-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RespondActivityTaskCanceled")
                                   ("Version" ,@"2012-01-25"))
@@ -6237,7 +6736,8 @@
                        'make-respond-activity-task-completed-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RespondActivityTaskCompleted")
                                   ("Version" ,@"2012-01-25"))
@@ -6256,7 +6756,8 @@
                        'make-respond-activity-task-failed-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RespondActivityTaskFailed")
                                   ("Version" ,@"2012-01-25"))
@@ -6276,7 +6777,8 @@
                        'make-respond-decision-task-completed-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RespondDecisionTaskCompleted")
                                   ("Version" ,@"2012-01-25"))
@@ -6296,7 +6798,8 @@
                       (common-lisp:apply 'make-signal-workflow-execution-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SignalWorkflowExecution")
                                   ("Version" ,@"2012-01-25"))
@@ -6320,7 +6823,8 @@
                       (common-lisp:apply 'make-start-workflow-execution-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartWorkflowExecution")
                                   ("Version" ,@"2012-01-25"))
@@ -6342,7 +6846,8 @@
                        'make-terminate-workflow-execution-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "swf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "swf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TerminateWorkflowExecution")
                                   ("Version" ,@"2012-01-25"))

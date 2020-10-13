@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/organizations)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (awsorganizations-not-in-use-exception (:copier common-lisp:nil))
@@ -27,8 +28,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (accept-handshake-request (:copier common-lisp:nil))
-   (handshake-id (common-lisp:error ":handshake-id is required") :type
-    (common-lisp:or handshake-id common-lisp:null)))
+   (handshake-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":handshake-id is required"))
+    :type (common-lisp:or handshake-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'accept-handshake-request 'make-accept-handshake-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -175,10 +178,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (attach-policy-request (:copier common-lisp:nil))
-   (policy-id (common-lisp:error ":policy-id is required") :type
-    (common-lisp:or policy-id common-lisp:null))
-   (target-id (common-lisp:error ":target-id is required") :type
-    (common-lisp:or policy-target-id common-lisp:null)))
+   (policy-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":policy-id is required"))
+    :type (common-lisp:or policy-id common-lisp:null))
+   (target-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":target-id is required"))
+    :type (common-lisp:or policy-target-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-policy-request 'make-attach-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -199,8 +206,10 @@
 (common-lisp:deftype aws-managed-policy () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (cancel-handshake-request (:copier common-lisp:nil))
-   (handshake-id (common-lisp:error ":handshake-id is required") :type
-    (common-lisp:or handshake-id common-lisp:null)))
+   (handshake-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":handshake-id is required"))
+    :type (common-lisp:or handshake-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-handshake-request 'make-cancel-handshake-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -322,10 +331,13 @@
 (common-lisp:deftype create-account-failure-reason () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (create-account-request (:copier common-lisp:nil))
-   (email (common-lisp:error ":email is required") :type
-    (common-lisp:or email common-lisp:null))
-   (account-name (common-lisp:error ":account-name is required") :type
-    (common-lisp:or account-name common-lisp:null))
+   (email
+    (common-lisp:error #A((18) common-lisp:base-char . ":email is required"))
+    :type (common-lisp:or email common-lisp:null))
+   (account-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":account-name is required"))
+    :type (common-lisp:or account-name common-lisp:null))
    (role-name common-lisp:nil :type
     (common-lisp:or role-name common-lisp:null))
    (iam-user-access-to-billing common-lisp:nil :type
@@ -505,10 +517,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-organizational-unit-request (:copier common-lisp:nil))
-   (parent-id (common-lisp:error ":parent-id is required") :type
-    (common-lisp:or parent-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or organizational-unit-name common-lisp:null)))
+   (parent-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":parent-id is required"))
+    :type (common-lisp:or parent-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or organizational-unit-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-organizational-unit-request
                     'make-create-organizational-unit-request))
@@ -547,14 +562,19 @@
                                                 'organizational-unit))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-policy-request (:copier common-lisp:nil))
-   (content (common-lisp:error ":content is required") :type
-    (common-lisp:or policy-content common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or policy-description common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or policy-name common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or policy-type common-lisp:null)))
+   (content
+    (common-lisp:error #A((20) common-lisp:base-char . ":content is required"))
+    :type (common-lisp:or policy-content common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or policy-description common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or policy-name common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or policy-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-policy-request 'make-create-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -599,8 +619,10 @@
                                                 'policy))))))
 (common-lisp:progn
  (common-lisp:defstruct (decline-handshake-request (:copier common-lisp:nil))
-   (handshake-id (common-lisp:error ":handshake-id is required") :type
-    (common-lisp:or handshake-id common-lisp:null)))
+   (handshake-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":handshake-id is required"))
+    :type (common-lisp:or handshake-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'decline-handshake-request
                     'make-decline-handshake-request))
@@ -635,8 +657,9 @@
  (common-lisp:defstruct
      (delete-organizational-unit-request (:copier common-lisp:nil))
    (organizational-unit-id
-    (common-lisp:error ":organizational-unit-id is required") :type
-    (common-lisp:or organizational-unit-id common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":organizational-unit-id is required"))
+    :type (common-lisp:or organizational-unit-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-organizational-unit-request
                     'make-delete-organizational-unit-request))
@@ -652,8 +675,10 @@
                                                 'organizational-unit-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-policy-request (:copier common-lisp:nil))
-   (policy-id (common-lisp:error ":policy-id is required") :type
-    (common-lisp:or policy-id common-lisp:null)))
+   (policy-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":policy-id is required"))
+    :type (common-lisp:or policy-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-policy-request 'make-delete-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -668,8 +693,10 @@
                                                 'policy-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-account-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-account-request 'make-describe-account-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -702,8 +729,9 @@
  (common-lisp:defstruct
      (describe-create-account-status-request (:copier common-lisp:nil))
    (create-account-request-id
-    (common-lisp:error ":create-account-request-id is required") :type
-    (common-lisp:or create-account-request-id common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":create-account-request-id is required"))
+    :type (common-lisp:or create-account-request-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-create-account-status-request
                     'make-describe-create-account-status-request))
@@ -737,8 +765,10 @@
                                                 'create-account-status))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-handshake-request (:copier common-lisp:nil))
-   (handshake-id (common-lisp:error ":handshake-id is required") :type
-    (common-lisp:or handshake-id common-lisp:null)))
+   (handshake-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":handshake-id is required"))
+    :type (common-lisp:or handshake-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-handshake-request
                     'make-describe-handshake-request))
@@ -791,8 +821,9 @@
  (common-lisp:defstruct
      (describe-organizational-unit-request (:copier common-lisp:nil))
    (organizational-unit-id
-    (common-lisp:error ":organizational-unit-id is required") :type
-    (common-lisp:or organizational-unit-id common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":organizational-unit-id is required"))
+    :type (common-lisp:or organizational-unit-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-organizational-unit-request
                     'make-describe-organizational-unit-request))
@@ -826,8 +857,10 @@
                                                 'organizational-unit))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-policy-request (:copier common-lisp:nil))
-   (policy-id (common-lisp:error ":policy-id is required") :type
-    (common-lisp:or policy-id common-lisp:null)))
+   (policy-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":policy-id is required"))
+    :type (common-lisp:or policy-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-policy-request 'make-describe-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -875,10 +908,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (detach-policy-request (:copier common-lisp:nil))
-   (policy-id (common-lisp:error ":policy-id is required") :type
-    (common-lisp:or policy-id common-lisp:null))
-   (target-id (common-lisp:error ":target-id is required") :type
-    (common-lisp:or policy-target-id common-lisp:null)))
+   (policy-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":policy-id is required"))
+    :type (common-lisp:or policy-id common-lisp:null))
+   (target-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":target-id is required"))
+    :type (common-lisp:or policy-target-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-policy-request 'make-detach-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -898,10 +935,13 @@
                                                 'target-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (disable-policy-type-request (:copier common-lisp:nil))
-   (root-id (common-lisp:error ":root-id is required") :type
-    (common-lisp:or root-id common-lisp:null))
-   (policy-type (common-lisp:error ":policy-type is required") :type
-    (common-lisp:or policy-type common-lisp:null)))
+   (root-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":root-id is required"))
+    :type (common-lisp:or root-id common-lisp:null))
+   (policy-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-type is required"))
+    :type (common-lisp:or policy-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-policy-type-request
                     'make-disable-policy-type-request))
@@ -1057,10 +1097,13 @@
                                                 'handshake))))))
 (common-lisp:progn
  (common-lisp:defstruct (enable-policy-type-request (:copier common-lisp:nil))
-   (root-id (common-lisp:error ":root-id is required") :type
-    (common-lisp:or root-id common-lisp:null))
-   (policy-type (common-lisp:error ":policy-type is required") :type
-    (common-lisp:or policy-type common-lisp:null)))
+   (root-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":root-id is required"))
+    :type (common-lisp:or root-id common-lisp:null))
+   (policy-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-type is required"))
+    :type (common-lisp:or policy-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-policy-type-request
                     'make-enable-policy-type-request))
@@ -1385,8 +1428,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (invite-account-to-organization-request (:copier common-lisp:nil))
-   (target (common-lisp:error ":target is required") :type
-    (common-lisp:or handshake-party common-lisp:null))
+   (target
+    (common-lisp:error #A((19) common-lisp:base-char . ":target is required"))
+    :type (common-lisp:or handshake-party common-lisp:null))
    (notes common-lisp:nil :type
     (common-lisp:or handshake-notes common-lisp:null)))
  (common-lisp:export
@@ -1428,8 +1472,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-accounts-for-parent-request (:copier common-lisp:nil))
-   (parent-id (common-lisp:error ":parent-id is required") :type
-    (common-lisp:or parent-id common-lisp:null))
+   (parent-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":parent-id is required"))
+    :type (common-lisp:or parent-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1528,10 +1574,14 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-children-request (:copier common-lisp:nil))
-   (parent-id (common-lisp:error ":parent-id is required") :type
-    (common-lisp:or parent-id common-lisp:null))
-   (child-type (common-lisp:error ":child-type is required") :type
-    (common-lisp:or child-type common-lisp:null))
+   (parent-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":parent-id is required"))
+    :type (common-lisp:or parent-id common-lisp:null))
+   (child-type
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":child-type is required"))
+    :type (common-lisp:or child-type common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1759,8 +1809,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-organizational-units-for-parent-request (:copier common-lisp:nil))
-   (parent-id (common-lisp:error ":parent-id is required") :type
-    (common-lisp:or parent-id common-lisp:null))
+   (parent-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":parent-id is required"))
+    :type (common-lisp:or parent-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1815,8 +1867,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-parents-request (:copier common-lisp:nil))
-   (child-id (common-lisp:error ":child-id is required") :type
-    (common-lisp:or child-id common-lisp:null))
+   (child-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":child-id is required"))
+    :type (common-lisp:or child-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1866,10 +1920,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-policies-for-target-request (:copier common-lisp:nil))
-   (target-id (common-lisp:error ":target-id is required") :type
-    (common-lisp:or policy-target-id common-lisp:null))
-   (filter (common-lisp:error ":filter is required") :type
-    (common-lisp:or policy-type common-lisp:null))
+   (target-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":target-id is required"))
+    :type (common-lisp:or policy-target-id common-lisp:null))
+   (filter
+    (common-lisp:error #A((19) common-lisp:base-char . ":filter is required"))
+    :type (common-lisp:or policy-type common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1928,8 +1985,9 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-policies-request (:copier common-lisp:nil))
-   (filter (common-lisp:error ":filter is required") :type
-    (common-lisp:or policy-type common-lisp:null))
+   (filter
+    (common-lisp:error #A((19) common-lisp:base-char . ":filter is required"))
+    :type (common-lisp:or policy-type common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -2022,8 +2080,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-targets-for-policy-request (:copier common-lisp:nil))
-   (policy-id (common-lisp:error ":policy-id is required") :type
-    (common-lisp:or policy-id common-lisp:null))
+   (policy-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":policy-id is required"))
+    :type (common-lisp:or policy-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -2115,13 +2175,18 @@
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (move-account-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null))
-   (source-parent-id (common-lisp:error ":source-parent-id is required") :type
-    (common-lisp:or parent-id common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null))
+   (source-parent-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":source-parent-id is required"))
+    :type (common-lisp:or parent-id common-lisp:null))
    (destination-parent-id
-    (common-lisp:error ":destination-parent-id is required") :type
-    (common-lisp:or parent-id common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":destination-parent-id is required"))
+    :type (common-lisp:or parent-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'move-account-request 'make-move-account-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2595,8 +2660,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-account-from-organization-request (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":account-id is required") :type
-    (common-lisp:or account-id common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":account-id is required"))
+    :type (common-lisp:or account-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-account-from-organization-request
                     'make-remove-account-from-organization-request))
@@ -2748,8 +2815,9 @@
  (common-lisp:defstruct
      (update-organizational-unit-request (:copier common-lisp:nil))
    (organizational-unit-id
-    (common-lisp:error ":organizational-unit-id is required") :type
-    (common-lisp:or organizational-unit-id common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":organizational-unit-id is required"))
+    :type (common-lisp:or organizational-unit-id common-lisp:null))
    (name common-lisp:nil :type
     (common-lisp:or organizational-unit-name common-lisp:null)))
  (common-lisp:export
@@ -2790,8 +2858,10 @@
                                                 'organizational-unit))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-policy-request (:copier common-lisp:nil))
-   (policy-id (common-lisp:error ":policy-id is required") :type
-    (common-lisp:or policy-id common-lisp:null))
+   (policy-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":policy-id is required"))
+    :type (common-lisp:or policy-id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or policy-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or policy-description common-lisp:null))
@@ -2849,7 +2919,9 @@
                       (common-lisp:apply 'make-accept-handshake-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AcceptHandshake")
                                   ("Version" ,@"2016-11-28"))
@@ -2867,7 +2939,9 @@
                       (common-lisp:apply 'make-attach-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachPolicy")
                                   ("Version" ,@"2016-11-28"))
@@ -2885,7 +2959,9 @@
                       (common-lisp:apply 'make-cancel-handshake-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelHandshake")
                                   ("Version" ,@"2016-11-28"))
@@ -2906,7 +2982,9 @@
                       (common-lisp:apply 'make-create-account-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAccount")
                                   ("Version" ,@"2016-11-28"))
@@ -2924,7 +3002,9 @@
                       (common-lisp:apply 'make-create-organization-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateOrganization")
                                   ("Version" ,@"2016-11-28"))
@@ -2943,7 +3023,9 @@
                        'make-create-organizational-unit-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateOrganizationalUnit")
                                   ("Version" ,@"2016-11-28"))
@@ -2961,7 +3043,9 @@
                       (common-lisp:apply 'make-create-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePolicy")
                                   ("Version" ,@"2016-11-28"))
@@ -2979,7 +3063,9 @@
                       (common-lisp:apply 'make-decline-handshake-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeclineHandshake")
                                   ("Version" ,@"2016-11-28"))
@@ -2990,7 +3076,9 @@
 (common-lisp:progn
  (common-lisp:defun delete-organization ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "organizations" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((13) common-lisp:base-char . "organizations")
+                             :method :post :params
                              (common-lisp:cons "Action" "DeleteOrganization"))
     common-lisp:nil common-lisp:nil))
  (common-lisp:export 'delete-organization))
@@ -3005,7 +3093,9 @@
                        'make-delete-organizational-unit-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteOrganizationalUnit")
                                   ("Version" ,@"2016-11-28"))
@@ -3023,7 +3113,9 @@
                       (common-lisp:apply 'make-delete-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePolicy")
                                   ("Version" ,@"2016-11-28"))
@@ -3041,7 +3133,9 @@
                       (common-lisp:apply 'make-describe-account-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAccount")
                                   ("Version" ,@"2016-11-28"))
@@ -3060,7 +3154,9 @@
                        'make-describe-create-account-status-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCreateAccountStatus")
                                   ("Version" ,@"2016-11-28"))
@@ -3078,7 +3174,9 @@
                       (common-lisp:apply 'make-describe-handshake-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeHandshake")
                                   ("Version" ,@"2016-11-28"))
@@ -3089,7 +3187,9 @@
 (common-lisp:progn
  (common-lisp:defun describe-organization ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "organizations" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((13) common-lisp:base-char . "organizations")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeOrganization"))
     "DescribeOrganizationResponse" common-lisp:nil))
@@ -3105,7 +3205,9 @@
                        'make-describe-organizational-unit-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeOrganizationalUnit")
                                   ("Version" ,@"2016-11-28"))
@@ -3123,7 +3225,9 @@
                       (common-lisp:apply 'make-describe-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribePolicy")
                                   ("Version" ,@"2016-11-28"))
@@ -3141,7 +3245,9 @@
                       (common-lisp:apply 'make-detach-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachPolicy")
                                   ("Version" ,@"2016-11-28"))
@@ -3159,7 +3265,9 @@
                       (common-lisp:apply 'make-disable-policy-type-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisablePolicyType")
                                   ("Version" ,@"2016-11-28"))
@@ -3170,7 +3278,9 @@
 (common-lisp:progn
  (common-lisp:defun enable-all-features ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "organizations" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((13) common-lisp:base-char . "organizations")
+                             :method :post :params
                              (common-lisp:cons "Action" "EnableAllFeatures"))
     "EnableAllFeaturesResponse" common-lisp:nil))
  (common-lisp:export 'enable-all-features))
@@ -3184,7 +3294,9 @@
                       (common-lisp:apply 'make-enable-policy-type-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnablePolicyType")
                                   ("Version" ,@"2016-11-28"))
@@ -3203,7 +3315,9 @@
                        'make-invite-account-to-organization-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"InviteAccountToOrganization")
                                   ("Version" ,@"2016-11-28"))
@@ -3214,7 +3328,9 @@
 (common-lisp:progn
  (common-lisp:defun leave-organization ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "organizations" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((13) common-lisp:base-char . "organizations")
+                             :method :post :params
                              (common-lisp:cons "Action" "LeaveOrganization"))
     common-lisp:nil common-lisp:nil))
  (common-lisp:export 'leave-organization))
@@ -3228,7 +3344,9 @@
                       (common-lisp:apply 'make-list-accounts-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAccounts")
                                   ("Version" ,@"2016-11-28"))
@@ -3247,7 +3365,9 @@
                       (common-lisp:apply 'make-list-accounts-for-parent-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAccountsForParent")
                                   ("Version" ,@"2016-11-28"))
@@ -3267,7 +3387,9 @@
                       (common-lisp:apply 'make-list-children-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListChildren")
                                   ("Version" ,@"2016-11-28"))
@@ -3286,7 +3408,9 @@
                        'make-list-create-account-status-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListCreateAccountStatus")
                                   ("Version" ,@"2016-11-28"))
@@ -3305,7 +3429,9 @@
                        'make-list-handshakes-for-account-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListHandshakesForAccount")
                                   ("Version" ,@"2016-11-28"))
@@ -3324,7 +3450,9 @@
                        'make-list-handshakes-for-organization-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListHandshakesForOrganization")
                                   ("Version" ,@"2016-11-28"))
@@ -3344,7 +3472,9 @@
                        'make-list-organizational-units-for-parent-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ListOrganizationalUnitsForParent")
@@ -3364,7 +3494,9 @@
                       (common-lisp:apply 'make-list-parents-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListParents")
                                   ("Version" ,@"2016-11-28"))
@@ -3382,7 +3514,9 @@
                       (common-lisp:apply 'make-list-policies-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPolicies")
                                   ("Version" ,@"2016-11-28"))
@@ -3401,7 +3535,9 @@
                       (common-lisp:apply 'make-list-policies-for-target-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPoliciesForTarget")
                                   ("Version" ,@"2016-11-28"))
@@ -3419,7 +3555,9 @@
                       (common-lisp:apply 'make-list-roots-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRoots")
                                   ("Version" ,@"2016-11-28"))
@@ -3438,7 +3576,9 @@
                       (common-lisp:apply 'make-list-targets-for-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTargetsForPolicy")
                                   ("Version" ,@"2016-11-28"))
@@ -3458,7 +3598,9 @@
                       (common-lisp:apply 'make-move-account-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"MoveAccount")
                                   ("Version" ,@"2016-11-28"))
@@ -3477,7 +3619,9 @@
                        'make-remove-account-from-organization-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveAccountFromOrganization")
                                   ("Version" ,@"2016-11-28"))
@@ -3496,7 +3640,9 @@
                        'make-update-organizational-unit-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateOrganizationalUnit")
                                   ("Version" ,@"2016-11-28"))
@@ -3515,7 +3661,9 @@
                       (common-lisp:apply 'make-update-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "organizations" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((13) common-lisp:base-char . "organizations")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdatePolicy")
                                   ("Version" ,@"2016-11-28"))

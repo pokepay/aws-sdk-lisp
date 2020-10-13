@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/iot-data)
+
 (common-lisp:progn
  (common-lisp:defstruct (conflict-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -23,8 +24,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-thing-shadow-request (:copier common-lisp:nil))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null)))
+   (thing-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":thingname is required"))
+    :type (common-lisp:or thing-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-thing-shadow-request
                     'make-delete-thing-shadow-request))
@@ -41,8 +44,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-thing-shadow-response (:copier common-lisp:nil))
-   (payload (common-lisp:error ":payload is required") :type
-    (common-lisp:or json-document common-lisp:null)))
+   (payload
+    (common-lisp:error #A((20) common-lisp:base-char . ":payload is required"))
+    :type (common-lisp:or json-document common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-thing-shadow-response
                     'make-delete-thing-shadow-response))
@@ -59,8 +63,10 @@
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (get-thing-shadow-request (:copier common-lisp:nil))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null)))
+   (thing-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":thingname is required"))
+    :type (common-lisp:or thing-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-thing-shadow-request 'make-get-thing-shadow-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -148,8 +154,9 @@
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
  (common-lisp:defstruct (publish-request (:copier common-lisp:nil))
-   (topic (common-lisp:error ":topic is required") :type
-    (common-lisp:or topic common-lisp:null))
+   (topic
+    (common-lisp:error #A((18) common-lisp:base-char . ":topic is required"))
+    :type (common-lisp:or topic common-lisp:null))
    (qos common-lisp:nil :type (common-lisp:or qos common-lisp:null))
    (payload common-lisp:nil :type (common-lisp:or payload common-lisp:null)))
  (common-lisp:export (common-lisp:list 'publish-request 'make-publish-request))
@@ -278,10 +285,13 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-thing-shadow-request (:copier common-lisp:nil))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null))
-   (payload (common-lisp:error ":payload is required") :type
-    (common-lisp:or json-document common-lisp:null)))
+   (thing-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":thingname is required"))
+    :type (common-lisp:or thing-name common-lisp:null))
+   (payload
+    (common-lisp:error #A((20) common-lisp:base-char . ":payload is required"))
+    :type (common-lisp:or json-document common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-thing-shadow-request
                     'make-update-thing-shadow-request))
@@ -329,7 +339,13 @@
                       (common-lisp:apply 'make-delete-thing-shadow-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot-data" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "iot-data")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/things/~a/shadow"
+                                                   thingname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteThingShadow")
                                   ("Version" ,@"2015-05-28"))
@@ -347,7 +363,13 @@
                       (common-lisp:apply 'make-get-thing-shadow-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot-data" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "iot-data")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/things/~a/shadow"
+                                                   thingname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetThingShadow")
                                   ("Version" ,@"2015-05-28"))
@@ -365,7 +387,12 @@
                       (common-lisp:apply 'make-publish-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot-data" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "iot-data")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil "/topics/~a"
+                                                   topic)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"Publish")
                                   ("Version" ,@"2015-05-28"))
@@ -383,7 +410,13 @@
                       (common-lisp:apply 'make-update-thing-shadow-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot-data" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "iot-data")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/things/~a/shadow"
+                                                   thingname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateThingShadow")
                                   ("Version" ,@"2015-05-28"))

@@ -7,15 +7,20 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/waf)
+
 (common-lisp:deftype action () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (activated-rule (:copier common-lisp:nil))
-   (priority (common-lisp:error ":priority is required") :type
-    (common-lisp:or rule-priority common-lisp:null))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or waf-action common-lisp:null))
+   (priority
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":priority is required"))
+    :type (common-lisp:or rule-priority common-lisp:null))
+   (rule-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":rule-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or waf-action common-lisp:null))
    (type common-lisp:nil :type
     (common-lisp:or waf-rule-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'activated-rule 'make-activated-rule))
@@ -52,10 +57,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (byte-match-set (:copier common-lisp:nil))
-   (byte-match-set-id (common-lisp:error ":byte-match-set-id is required")
+   (byte-match-set-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":byte-match-set-id is required"))
     :type (common-lisp:or resource-id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or resource-name common-lisp:null))
-   (byte-match-tuples (common-lisp:error ":byte-match-tuples is required")
+   (byte-match-tuples
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":byte-match-tuples is required"))
     :type (common-lisp:or byte-match-tuples common-lisp:null)))
  (common-lisp:export (common-lisp:list 'byte-match-set 'make-byte-match-set))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -86,10 +95,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (byte-match-set-summary (:copier common-lisp:nil))
-   (byte-match-set-id (common-lisp:error ":byte-match-set-id is required")
+   (byte-match-set-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":byte-match-set-id is required"))
     :type (common-lisp:or resource-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'byte-match-set-summary 'make-byte-match-set-summary))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -109,10 +121,13 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (byte-match-set-update (:copier common-lisp:nil))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or change-action common-lisp:null))
-   (byte-match-tuple (common-lisp:error ":byte-match-tuple is required") :type
-    (common-lisp:or byte-match-tuple common-lisp:null)))
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or change-action common-lisp:null))
+   (byte-match-tuple
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":byte-match-tuple is required"))
+    :type (common-lisp:or byte-match-tuple common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'byte-match-set-update 'make-byte-match-set-update))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -142,15 +157,22 @@
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
  (common-lisp:defstruct (byte-match-tuple (:copier common-lisp:nil))
-   (field-to-match (common-lisp:error ":field-to-match is required") :type
-    (common-lisp:or field-to-match common-lisp:null))
-   (target-string (common-lisp:error ":target-string is required") :type
-    (common-lisp:or byte-match-target-string common-lisp:null))
-   (text-transformation (common-lisp:error ":text-transformation is required")
+   (field-to-match
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":field-to-match is required"))
+    :type (common-lisp:or field-to-match common-lisp:null))
+   (target-string
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":target-string is required"))
+    :type (common-lisp:or byte-match-target-string common-lisp:null))
+   (text-transformation
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":text-transformation is required"))
     :type (common-lisp:or text-transformation common-lisp:null))
    (positional-constraint
-    (common-lisp:error ":positional-constraint is required") :type
-    (common-lisp:or positional-constraint common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":positional-constraint is required"))
+    :type (common-lisp:or positional-constraint common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'byte-match-tuple 'make-byte-match-tuple))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -192,10 +214,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-byte-match-set-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-byte-match-set-request
                     'make-create-byte-match-set-request))
@@ -241,10 +266,13 @@
                                                 'change-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-ipset-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-ipset-request 'make-create-ipset-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -285,16 +313,25 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-rate-based-rule-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or metric-name common-lisp:null))
-   (rate-key (common-lisp:error ":rate-key is required") :type
-    (common-lisp:or rate-key common-lisp:null))
-   (rate-limit (common-lisp:error ":rate-limit is required") :type
-    (common-lisp:or rate-limit common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (metric-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metric-name is required"))
+    :type (common-lisp:or metric-name common-lisp:null))
+   (rate-key
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":rate-key is required"))
+    :type (common-lisp:or rate-key common-lisp:null))
+   (rate-limit
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":rate-limit is required"))
+    :type (common-lisp:or rate-limit common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-rate-based-rule-request
                     'make-create-rate-based-rule-request))
@@ -355,12 +392,17 @@
                                                 'change-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-rule-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or metric-name common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (metric-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metric-name is required"))
+    :type (common-lisp:or metric-name common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-rule-request 'make-create-rule-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -404,10 +446,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-size-constraint-set-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-size-constraint-set-request
                     'make-create-size-constraint-set-request))
@@ -454,10 +499,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-sql-injection-match-set-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-sql-injection-match-set-request
                     'make-create-sql-injection-match-set-request))
@@ -503,14 +551,21 @@
                                                 'change-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-web-aclrequest (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or metric-name common-lisp:null))
-   (default-action (common-lisp:error ":default-action is required") :type
-    (common-lisp:or waf-action common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (metric-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metric-name is required"))
+    :type (common-lisp:or metric-name common-lisp:null))
+   (default-action
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":default-action is required"))
+    :type (common-lisp:or waf-action common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-web-aclrequest 'make-create-web-aclrequest))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -563,10 +618,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-xss-match-set-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-xss-match-set-request
                     'make-create-xss-match-set-request))
@@ -613,10 +671,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-byte-match-set-request (:copier common-lisp:nil))
-   (byte-match-set-id (common-lisp:error ":byte-match-set-id is required")
+   (byte-match-set-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":byte-match-set-id is required"))
     :type (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-byte-match-set-request
                     'make-delete-byte-match-set-request))
@@ -655,10 +717,14 @@
                                                 'change-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-ipset-request (:copier common-lisp:nil))
-   (ipset-id (common-lisp:error ":ipset-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (ipset-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":ipset-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-ipset-request 'make-delete-ipset-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -693,10 +759,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-rate-based-rule-request (:copier common-lisp:nil))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (rule-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":rule-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-rate-based-rule-request
                     'make-delete-rate-based-rule-request))
@@ -735,10 +804,13 @@
                                                 'change-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-rule-request (:copier common-lisp:nil))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (rule-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":rule-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-rule-request 'make-delete-rule-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -772,10 +844,13 @@
  (common-lisp:defstruct
      (delete-size-constraint-set-request (:copier common-lisp:nil))
    (size-constraint-set-id
-    (common-lisp:error ":size-constraint-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":size-constraint-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-size-constraint-set-request
                     'make-delete-size-constraint-set-request))
@@ -816,10 +891,14 @@
  (common-lisp:defstruct
      (delete-sql-injection-match-set-request (:copier common-lisp:nil))
    (sql-injection-match-set-id
-    (common-lisp:error ":sql-injection-match-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":sql-injection-match-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-sql-injection-match-set-request
                     'make-delete-sql-injection-match-set-request))
@@ -858,10 +937,14 @@
                                                 'change-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-web-aclrequest (:copier common-lisp:nil))
-   (web-aclid (common-lisp:error ":web-aclid is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (web-aclid
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":web-aclid is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-web-aclrequest 'make-delete-web-aclrequest))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -898,10 +981,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-xss-match-set-request (:copier common-lisp:nil))
-   (xss-match-set-id (common-lisp:error ":xss-match-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (xss-match-set-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":xss-match-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-xss-match-set-request
                     'make-delete-xss-match-set-request))
@@ -940,8 +1027,9 @@
                                                 'change-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (field-to-match (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or match-field-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or match-field-type common-lisp:null))
    (data common-lisp:nil :type
     (common-lisp:or match-field-data common-lisp:null)))
  (common-lisp:export (common-lisp:list 'field-to-match 'make-field-to-match))
@@ -960,7 +1048,9 @@
                                                 'data))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-byte-match-set-request (:copier common-lisp:nil))
-   (byte-match-set-id (common-lisp:error ":byte-match-set-id is required")
+   (byte-match-set-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":byte-match-set-id is required"))
     :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-byte-match-set-request
@@ -1021,8 +1111,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-change-token-status-request (:copier common-lisp:nil))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null)))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-change-token-status-request
                     'make-get-change-token-status-request))
@@ -1056,8 +1148,10 @@
                                                 'change-token-status))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-ipset-request (:copier common-lisp:nil))
-   (ipset-id (common-lisp:error ":ipset-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+   (ipset-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":ipset-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-ipset-request 'make-get-ipset-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1084,8 +1178,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-rate-based-rule-managed-keys-request (:copier common-lisp:nil))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+   (rule-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":rule-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (next-marker common-lisp:nil :type
     (common-lisp:or next-marker common-lisp:null)))
  (common-lisp:export
@@ -1133,8 +1228,9 @@
                                                 'next-marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-rate-based-rule-request (:copier common-lisp:nil))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+   (rule-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":rule-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-rate-based-rule-request
                     'make-get-rate-based-rule-request))
@@ -1168,8 +1264,9 @@
                                                 'rule))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-rule-request (:copier common-lisp:nil))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+   (rule-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":rule-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-rule-request 'make-get-rule-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1197,14 +1294,21 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-sampled-requests-request (:copier common-lisp:nil))
-   (web-acl-id (common-lisp:error ":web-acl-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (time-window (common-lisp:error ":time-window is required") :type
-    (common-lisp:or time-window common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or get-sampled-requests-max-items common-lisp:null)))
+   (web-acl-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":web-acl-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (rule-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":rule-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (time-window
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":time-window is required"))
+    :type (common-lisp:or time-window common-lisp:null))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or get-sampled-requests-max-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-sampled-requests-request
                     'make-get-sampled-requests-request))
@@ -1269,8 +1373,9 @@
  (common-lisp:defstruct
      (get-size-constraint-set-request (:copier common-lisp:nil))
    (size-constraint-set-id
-    (common-lisp:error ":size-constraint-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":size-constraint-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-size-constraint-set-request
                     'make-get-size-constraint-set-request))
@@ -1306,8 +1411,10 @@
  (common-lisp:defstruct
      (get-sql-injection-match-set-request (:copier common-lisp:nil))
    (sql-injection-match-set-id
-    (common-lisp:error ":sql-injection-match-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":sql-injection-match-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-sql-injection-match-set-request
                     'make-get-sql-injection-match-set-request))
@@ -1341,8 +1448,10 @@
                                                 'sql-injection-match-set))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-web-aclrequest (:copier common-lisp:nil))
-   (web-aclid (common-lisp:error ":web-aclid is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+   (web-aclid
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":web-aclid is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-web-aclrequest 'make-get-web-aclrequest))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1368,8 +1477,10 @@
                                                 'web-acl))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-xss-match-set-request (:copier common-lisp:nil))
-   (xss-match-set-id (common-lisp:error ":xss-match-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+   (xss-match-set-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":xss-match-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-xss-match-set-request
                     'make-get-xss-match-set-request))
@@ -1476,10 +1587,14 @@
 (common-lisp:deftype header-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (ipset (:copier common-lisp:nil))
-   (ipset-id (common-lisp:error ":ipset-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+   (ipset-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":ipset-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or resource-name common-lisp:null))
-   (ipset-descriptors (common-lisp:error ":ipset-descriptors is required")
+   (ipset-descriptors
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":ipset-descriptors is required"))
     :type (common-lisp:or ipset-descriptors common-lisp:null)))
  (common-lisp:export (common-lisp:list 'ipset 'make-ipset))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1502,10 +1617,12 @@
                                                 'ipset-descriptors))))))
 (common-lisp:progn
  (common-lisp:defstruct (ipset-descriptor (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or ipset-descriptor-type common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or ipset-descriptor-value common-lisp:null)))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or ipset-descriptor-type common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or ipset-descriptor-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'ipset-descriptor 'make-ipset-descriptor))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1541,10 +1658,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (ipset-summary (:copier common-lisp:nil))
-   (ipset-id (common-lisp:error ":ipset-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (ipset-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":ipset-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'ipset-summary 'make-ipset-summary))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape ipset-summary))
@@ -1561,10 +1681,13 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (ipset-update (:copier common-lisp:nil))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or change-action common-lisp:null))
-   (ipset-descriptor (common-lisp:error ":ipset-descriptor is required") :type
-    (common-lisp:or ipset-descriptor common-lisp:null)))
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or change-action common-lisp:null))
+   (ipset-descriptor
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":ipset-descriptor is required"))
+    :type (common-lisp:or ipset-descriptor common-lisp:null)))
  (common-lisp:export (common-lisp:list 'ipset-update 'make-ipset-update))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape ipset-update))
@@ -1988,12 +2111,15 @@
 (common-lisp:deftype positional-constraint () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (predicate (:copier common-lisp:nil))
-   (negated (common-lisp:error ":negated is required") :type
-    (common-lisp:or negated common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or predicate-type common-lisp:null))
-   (data-id (common-lisp:error ":data-id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+   (negated
+    (common-lisp:error #A((20) common-lisp:base-char . ":negated is required"))
+    :type (common-lisp:or negated common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or predicate-type common-lisp:null))
+   (data-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":data-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'predicate 'make-predicate))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape predicate))
@@ -2023,17 +2149,24 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (rate-based-rule (:copier common-lisp:nil))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+   (rule-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":rule-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or resource-name common-lisp:null))
    (metric-name common-lisp:nil :type
     (common-lisp:or metric-name common-lisp:null))
-   (match-predicates (common-lisp:error ":match-predicates is required") :type
-    (common-lisp:or predicates common-lisp:null))
-   (rate-key (common-lisp:error ":rate-key is required") :type
-    (common-lisp:or rate-key common-lisp:null))
-   (rate-limit (common-lisp:error ":rate-limit is required") :type
-    (common-lisp:or rate-limit common-lisp:null)))
+   (match-predicates
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":match-predicates is required"))
+    :type (common-lisp:or predicates common-lisp:null))
+   (rate-key
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":rate-key is required"))
+    :type (common-lisp:or rate-key common-lisp:null))
+   (rate-limit
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":rate-limit is required"))
+    :type (common-lisp:or rate-limit common-lisp:null)))
  (common-lisp:export (common-lisp:list 'rate-based-rule 'make-rate-based-rule))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape rate-based-rule))
@@ -2074,13 +2207,16 @@
 (common-lisp:deftype resource-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (rule (:copier common-lisp:nil))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+   (rule-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":rule-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or resource-name common-lisp:null))
    (metric-name common-lisp:nil :type
     (common-lisp:or metric-name common-lisp:null))
-   (predicates (common-lisp:error ":predicates is required") :type
-    (common-lisp:or predicates common-lisp:null)))
+   (predicates
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":predicates is required"))
+    :type (common-lisp:or predicates common-lisp:null)))
  (common-lisp:export (common-lisp:list 'rule 'make-rule))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape rule))
@@ -2116,10 +2252,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (rule-summary (:copier common-lisp:nil))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (rule-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":rule-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'rule-summary 'make-rule-summary))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape rule-summary))
@@ -2136,10 +2274,13 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (rule-update (:copier common-lisp:nil))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or change-action common-lisp:null))
-   (predicate (common-lisp:error ":predicate is required") :type
-    (common-lisp:or predicate common-lisp:null)))
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or change-action common-lisp:null))
+   (predicate
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":predicate is required"))
+    :type (common-lisp:or predicate common-lisp:null)))
  (common-lisp:export (common-lisp:list 'rule-update 'make-rule-update))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape rule-update))
@@ -2164,10 +2305,12 @@
 (common-lisp:deftype sample-weight () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (sampled-httprequest (:copier common-lisp:nil))
-   (request (common-lisp:error ":request is required") :type
-    (common-lisp:or httprequest common-lisp:null))
-   (weight (common-lisp:error ":weight is required") :type
-    (common-lisp:or sample-weight common-lisp:null))
+   (request
+    (common-lisp:error #A((20) common-lisp:base-char . ":request is required"))
+    :type (common-lisp:or httprequest common-lisp:null))
+   (weight
+    (common-lisp:error #A((19) common-lisp:base-char . ":weight is required"))
+    :type (common-lisp:or sample-weight common-lisp:null))
    (timestamp common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
    (action common-lisp:nil :type (common-lisp:or action common-lisp:null)))
@@ -2207,14 +2350,21 @@
 (common-lisp:deftype size () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (size-constraint (:copier common-lisp:nil))
-   (field-to-match (common-lisp:error ":field-to-match is required") :type
-    (common-lisp:or field-to-match common-lisp:null))
-   (text-transformation (common-lisp:error ":text-transformation is required")
+   (field-to-match
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":field-to-match is required"))
+    :type (common-lisp:or field-to-match common-lisp:null))
+   (text-transformation
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":text-transformation is required"))
     :type (common-lisp:or text-transformation common-lisp:null))
-   (comparison-operator (common-lisp:error ":comparison-operator is required")
+   (comparison-operator
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":comparison-operator is required"))
     :type (common-lisp:or comparison-operator common-lisp:null))
-   (size (common-lisp:error ":size is required") :type
-    (common-lisp:or size common-lisp:null)))
+   (size
+    (common-lisp:error #A((17) common-lisp:base-char . ":size is required"))
+    :type (common-lisp:or size common-lisp:null)))
  (common-lisp:export (common-lisp:list 'size-constraint 'make-size-constraint))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape size-constraint))
@@ -2242,11 +2392,14 @@
 (common-lisp:progn
  (common-lisp:defstruct (size-constraint-set (:copier common-lisp:nil))
    (size-constraint-set-id
-    (common-lisp:error ":size-constraint-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":size-constraint-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or resource-name common-lisp:null))
-   (size-constraints (common-lisp:error ":size-constraints is required") :type
-    (common-lisp:or size-constraints common-lisp:null)))
+   (size-constraints
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":size-constraints is required"))
+    :type (common-lisp:or size-constraints common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'size-constraint-set 'make-size-constraint-set))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2279,10 +2432,12 @@
 (common-lisp:progn
  (common-lisp:defstruct (size-constraint-set-summary (:copier common-lisp:nil))
    (size-constraint-set-id
-    (common-lisp:error ":size-constraint-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":size-constraint-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'size-constraint-set-summary
                     'make-size-constraint-set-summary))
@@ -2303,10 +2458,13 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (size-constraint-set-update (:copier common-lisp:nil))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or change-action common-lisp:null))
-   (size-constraint (common-lisp:error ":size-constraint is required") :type
-    (common-lisp:or size-constraint common-lisp:null)))
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or change-action common-lisp:null))
+   (size-constraint
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":size-constraint is required"))
+    :type (common-lisp:or size-constraint common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'size-constraint-set-update
                     'make-size-constraint-set-update))
@@ -2345,12 +2503,16 @@
 (common-lisp:progn
  (common-lisp:defstruct (sql-injection-match-set (:copier common-lisp:nil))
    (sql-injection-match-set-id
-    (common-lisp:error ":sql-injection-match-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":sql-injection-match-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or resource-name common-lisp:null))
    (sql-injection-match-tuples
-    (common-lisp:error ":sql-injection-match-tuples is required") :type
-    (common-lisp:or sql-injection-match-tuples common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":sql-injection-match-tuples is required"))
+    :type (common-lisp:or sql-injection-match-tuples common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'sql-injection-match-set 'make-sql-injection-match-set))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2386,10 +2548,13 @@
  (common-lisp:defstruct
      (sql-injection-match-set-summary (:copier common-lisp:nil))
    (sql-injection-match-set-id
-    (common-lisp:error ":sql-injection-match-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":sql-injection-match-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'sql-injection-match-set-summary
                     'make-sql-injection-match-set-summary))
@@ -2411,11 +2576,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (sql-injection-match-set-update (:copier common-lisp:nil))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or change-action common-lisp:null))
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or change-action common-lisp:null))
    (sql-injection-match-tuple
-    (common-lisp:error ":sql-injection-match-tuple is required") :type
-    (common-lisp:or sql-injection-match-tuple common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":sql-injection-match-tuple is required"))
+    :type (common-lisp:or sql-injection-match-tuple common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'sql-injection-match-set-update
                     'make-sql-injection-match-set-update))
@@ -2445,9 +2612,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (sql-injection-match-tuple (:copier common-lisp:nil))
-   (field-to-match (common-lisp:error ":field-to-match is required") :type
-    (common-lisp:or field-to-match common-lisp:null))
-   (text-transformation (common-lisp:error ":text-transformation is required")
+   (field-to-match
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":field-to-match is required"))
+    :type (common-lisp:or field-to-match common-lisp:null))
+   (text-transformation
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":text-transformation is required"))
     :type (common-lisp:or text-transformation common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'sql-injection-match-tuple
@@ -2479,10 +2650,14 @@
 (common-lisp:deftype text-transformation () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (time-window (:copier common-lisp:nil))
-   (start-time (common-lisp:error ":start-time is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (end-time (common-lisp:error ":end-time is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (start-time
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":start-time is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (end-time
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":end-time is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export (common-lisp:list 'time-window 'make-time-window))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape time-window))
@@ -2502,12 +2677,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-byte-match-set-request (:copier common-lisp:nil))
-   (byte-match-set-id (common-lisp:error ":byte-match-set-id is required")
+   (byte-match-set-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":byte-match-set-id is required"))
     :type (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null))
-   (updates (common-lisp:error ":updates is required") :type
-    (common-lisp:or byte-match-set-updates common-lisp:null)))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null))
+   (updates
+    (common-lisp:error #A((20) common-lisp:base-char . ":updates is required"))
+    :type (common-lisp:or byte-match-set-updates common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-byte-match-set-request
                     'make-update-byte-match-set-request))
@@ -2551,12 +2731,17 @@
                                                 'change-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-ipset-request (:copier common-lisp:nil))
-   (ipset-id (common-lisp:error ":ipset-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null))
-   (updates (common-lisp:error ":updates is required") :type
-    (common-lisp:or ipset-updates common-lisp:null)))
+   (ipset-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":ipset-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null))
+   (updates
+    (common-lisp:error #A((20) common-lisp:base-char . ":updates is required"))
+    :type (common-lisp:or ipset-updates common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-ipset-request 'make-update-ipset-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2596,14 +2781,20 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-rate-based-rule-request (:copier common-lisp:nil))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null))
-   (updates (common-lisp:error ":updates is required") :type
-    (common-lisp:or rule-updates common-lisp:null))
-   (rate-limit (common-lisp:error ":rate-limit is required") :type
-    (common-lisp:or rate-limit common-lisp:null)))
+   (rule-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":rule-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null))
+   (updates
+    (common-lisp:error #A((20) common-lisp:base-char . ":updates is required"))
+    :type (common-lisp:or rule-updates common-lisp:null))
+   (rate-limit
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":rate-limit is required"))
+    :type (common-lisp:or rate-limit common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-rate-based-rule-request
                     'make-update-rate-based-rule-request))
@@ -2652,12 +2843,16 @@
                                                 'change-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-rule-request (:copier common-lisp:nil))
-   (rule-id (common-lisp:error ":rule-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null))
-   (updates (common-lisp:error ":updates is required") :type
-    (common-lisp:or rule-updates common-lisp:null)))
+   (rule-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":rule-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null))
+   (updates
+    (common-lisp:error #A((20) common-lisp:base-char . ":updates is required"))
+    :type (common-lisp:or rule-updates common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-rule-request 'make-update-rule-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2696,12 +2891,16 @@
  (common-lisp:defstruct
      (update-size-constraint-set-request (:copier common-lisp:nil))
    (size-constraint-set-id
-    (common-lisp:error ":size-constraint-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null))
-   (updates (common-lisp:error ":updates is required") :type
-    (common-lisp:or size-constraint-set-updates common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":size-constraint-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null))
+   (updates
+    (common-lisp:error #A((20) common-lisp:base-char . ":updates is required"))
+    :type (common-lisp:or size-constraint-set-updates common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-size-constraint-set-request
                     'make-update-size-constraint-set-request))
@@ -2747,12 +2946,17 @@
  (common-lisp:defstruct
      (update-sql-injection-match-set-request (:copier common-lisp:nil))
    (sql-injection-match-set-id
-    (common-lisp:error ":sql-injection-match-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null))
-   (updates (common-lisp:error ":updates is required") :type
-    (common-lisp:or sql-injection-match-set-updates common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":sql-injection-match-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null))
+   (updates
+    (common-lisp:error #A((20) common-lisp:base-char . ":updates is required"))
+    :type (common-lisp:or sql-injection-match-set-updates common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-sql-injection-match-set-request
                     'make-update-sql-injection-match-set-request))
@@ -2796,10 +3000,14 @@
                                                 'change-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-web-aclrequest (:copier common-lisp:nil))
-   (web-aclid (common-lisp:error ":web-aclid is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null))
+   (web-aclid
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":web-aclid is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null))
    (updates common-lisp:nil :type
     (common-lisp:or web-aclupdates common-lisp:null))
    (default-action common-lisp:nil :type
@@ -2850,12 +3058,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-xss-match-set-request (:copier common-lisp:nil))
-   (xss-match-set-id (common-lisp:error ":xss-match-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (change-token (common-lisp:error ":change-token is required") :type
-    (common-lisp:or change-token common-lisp:null))
-   (updates (common-lisp:error ":updates is required") :type
-    (common-lisp:or xss-match-set-updates common-lisp:null)))
+   (xss-match-set-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":xss-match-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (change-token
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":change-token is required"))
+    :type (common-lisp:or change-token common-lisp:null))
+   (updates
+    (common-lisp:error #A((20) common-lisp:base-char . ":updates is required"))
+    :type (common-lisp:or xss-match-set-updates common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-xss-match-set-request
                     'make-update-xss-match-set-request))
@@ -3101,8 +3314,9 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (waf-action (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or waf-action-type common-lisp:null)))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or waf-action-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'waf-action 'make-waf-action))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape waf-action))
@@ -3116,15 +3330,20 @@
 (common-lisp:deftype waf-rule-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (web-acl (:copier common-lisp:nil))
-   (web-aclid (common-lisp:error ":web-aclid is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+   (web-aclid
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":web-aclid is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or resource-name common-lisp:null))
    (metric-name common-lisp:nil :type
     (common-lisp:or metric-name common-lisp:null))
-   (default-action (common-lisp:error ":default-action is required") :type
-    (common-lisp:or waf-action common-lisp:null))
-   (rules (common-lisp:error ":rules is required") :type
-    (common-lisp:or activated-rules common-lisp:null)))
+   (default-action
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":default-action is required"))
+    :type (common-lisp:or waf-action common-lisp:null))
+   (rules
+    (common-lisp:error #A((18) common-lisp:base-char . ":rules is required"))
+    :type (common-lisp:or activated-rules common-lisp:null)))
  (common-lisp:export (common-lisp:list 'web-acl 'make-web-acl))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape web-acl))
@@ -3164,10 +3383,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (web-aclsummary (:copier common-lisp:nil))
-   (web-aclid (common-lisp:error ":web-aclid is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (web-aclid
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":web-aclid is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'web-aclsummary 'make-web-aclsummary))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape web-aclsummary))
@@ -3184,10 +3406,13 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (web-aclupdate (:copier common-lisp:nil))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or change-action common-lisp:null))
-   (activated-rule (common-lisp:error ":activated-rule is required") :type
-    (common-lisp:or activated-rule common-lisp:null)))
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or change-action common-lisp:null))
+   (activated-rule
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":activated-rule is required"))
+    :type (common-lisp:or activated-rule common-lisp:null)))
  (common-lisp:export (common-lisp:list 'web-aclupdate 'make-web-aclupdate))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape web-aclupdate))
@@ -3212,11 +3437,15 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (xss-match-set (:copier common-lisp:nil))
-   (xss-match-set-id (common-lisp:error ":xss-match-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
+   (xss-match-set-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":xss-match-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or resource-name common-lisp:null))
-   (xss-match-tuples (common-lisp:error ":xss-match-tuples is required") :type
-    (common-lisp:or xss-match-tuples common-lisp:null)))
+   (xss-match-tuples
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":xss-match-tuples is required"))
+    :type (common-lisp:or xss-match-tuples common-lisp:null)))
  (common-lisp:export (common-lisp:list 'xss-match-set 'make-xss-match-set))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape xss-match-set))
@@ -3246,10 +3475,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (xss-match-set-summary (:copier common-lisp:nil))
-   (xss-match-set-id (common-lisp:error ":xss-match-set-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or resource-name common-lisp:null)))
+   (xss-match-set-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":xss-match-set-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or resource-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'xss-match-set-summary 'make-xss-match-set-summary))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3269,10 +3501,13 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (xss-match-set-update (:copier common-lisp:nil))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or change-action common-lisp:null))
-   (xss-match-tuple (common-lisp:error ":xss-match-tuple is required") :type
-    (common-lisp:or xss-match-tuple common-lisp:null)))
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or change-action common-lisp:null))
+   (xss-match-tuple
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":xss-match-tuple is required"))
+    :type (common-lisp:or xss-match-tuple common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'xss-match-set-update 'make-xss-match-set-update))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3298,9 +3533,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (xss-match-tuple (:copier common-lisp:nil))
-   (field-to-match (common-lisp:error ":field-to-match is required") :type
-    (common-lisp:or field-to-match common-lisp:null))
-   (text-transformation (common-lisp:error ":text-transformation is required")
+   (field-to-match
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":field-to-match is required"))
+    :type (common-lisp:or field-to-match common-lisp:null))
+   (text-transformation
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":text-transformation is required"))
     :type (common-lisp:or text-transformation common-lisp:null)))
  (common-lisp:export (common-lisp:list 'xss-match-tuple 'make-xss-match-tuple))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3335,7 +3574,8 @@
                       (common-lisp:apply 'make-create-byte-match-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateByteMatchSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3353,7 +3593,8 @@
                       (common-lisp:apply 'make-create-ipset-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateIPSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3373,7 +3614,8 @@
                       (common-lisp:apply 'make-create-rate-based-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateRateBasedRule")
                                   ("Version" ,@"2015-08-24"))
@@ -3391,7 +3633,8 @@
                       (common-lisp:apply 'make-create-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateRule")
                                   ("Version" ,@"2015-08-24"))
@@ -3410,7 +3653,8 @@
                        'make-create-size-constraint-set-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSizeConstraintSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3429,7 +3673,8 @@
                        'make-create-sql-injection-match-set-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSqlInjectionMatchSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3449,7 +3694,8 @@
                       (common-lisp:apply 'make-create-web-aclrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateWebACL")
                                   ("Version" ,@"2015-08-24"))
@@ -3467,7 +3713,8 @@
                       (common-lisp:apply 'make-create-xss-match-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateXssMatchSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3485,7 +3732,8 @@
                       (common-lisp:apply 'make-delete-byte-match-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteByteMatchSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3503,7 +3751,8 @@
                       (common-lisp:apply 'make-delete-ipset-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIPSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3521,7 +3770,8 @@
                       (common-lisp:apply 'make-delete-rate-based-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRateBasedRule")
                                   ("Version" ,@"2015-08-24"))
@@ -3539,7 +3789,8 @@
                       (common-lisp:apply 'make-delete-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRule")
                                   ("Version" ,@"2015-08-24"))
@@ -3559,7 +3810,8 @@
                        'make-delete-size-constraint-set-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSizeConstraintSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3579,7 +3831,8 @@
                        'make-delete-sql-injection-match-set-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSqlInjectionMatchSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3597,7 +3850,8 @@
                       (common-lisp:apply 'make-delete-web-aclrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteWebACL")
                                   ("Version" ,@"2015-08-24"))
@@ -3615,7 +3869,8 @@
                       (common-lisp:apply 'make-delete-xss-match-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteXssMatchSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3633,7 +3888,8 @@
                       (common-lisp:apply 'make-get-byte-match-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetByteMatchSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3644,7 +3900,8 @@
 (common-lisp:progn
  (common-lisp:defun get-change-token ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "waf" :method :post :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                             :method :post :params
                              (common-lisp:cons "Action" "GetChangeToken"))
     "GetChangeTokenResponse" common-lisp:nil))
  (common-lisp:export 'get-change-token))
@@ -3658,7 +3915,8 @@
                       (common-lisp:apply 'make-get-change-token-status-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetChangeTokenStatus")
                                   ("Version" ,@"2015-08-24"))
@@ -3676,7 +3934,8 @@
                       (common-lisp:apply 'make-get-ipset-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetIPSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3694,7 +3953,8 @@
                       (common-lisp:apply 'make-get-rate-based-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRateBasedRule")
                                   ("Version" ,@"2015-08-24"))
@@ -3713,7 +3973,8 @@
                        'make-get-rate-based-rule-managed-keys-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRateBasedRuleManagedKeys")
                                   ("Version" ,@"2015-08-24"))
@@ -3731,7 +3992,8 @@
                       (common-lisp:apply 'make-get-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRule")
                                   ("Version" ,@"2015-08-24"))
@@ -3750,7 +4012,8 @@
                       (common-lisp:apply 'make-get-sampled-requests-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSampledRequests")
                                   ("Version" ,@"2015-08-24"))
@@ -3768,7 +4031,8 @@
                       (common-lisp:apply 'make-get-size-constraint-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSizeConstraintSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3787,7 +4051,8 @@
                        'make-get-sql-injection-match-set-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSqlInjectionMatchSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3805,7 +4070,8 @@
                       (common-lisp:apply 'make-get-web-aclrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetWebACL")
                                   ("Version" ,@"2015-08-24"))
@@ -3823,7 +4089,8 @@
                       (common-lisp:apply 'make-get-xss-match-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetXssMatchSet")
                                   ("Version" ,@"2015-08-24"))
@@ -3841,7 +4108,8 @@
                       (common-lisp:apply 'make-list-byte-match-sets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListByteMatchSets")
                                   ("Version" ,@"2015-08-24"))
@@ -3859,7 +4127,8 @@
                       (common-lisp:apply 'make-list-ipsets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListIPSets")
                                   ("Version" ,@"2015-08-24"))
@@ -3877,7 +4146,8 @@
                       (common-lisp:apply 'make-list-rate-based-rules-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRateBasedRules")
                                   ("Version" ,@"2015-08-24"))
@@ -3895,7 +4165,8 @@
                       (common-lisp:apply 'make-list-rules-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRules")
                                   ("Version" ,@"2015-08-24"))
@@ -3914,7 +4185,8 @@
                        'make-list-size-constraint-sets-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListSizeConstraintSets")
                                   ("Version" ,@"2015-08-24"))
@@ -3933,7 +4205,8 @@
                        'make-list-sql-injection-match-sets-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListSqlInjectionMatchSets")
                                   ("Version" ,@"2015-08-24"))
@@ -3951,7 +4224,8 @@
                       (common-lisp:apply 'make-list-web-acls-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListWebACLs")
                                   ("Version" ,@"2015-08-24"))
@@ -3969,7 +4243,8 @@
                       (common-lisp:apply 'make-list-xss-match-sets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListXssMatchSets")
                                   ("Version" ,@"2015-08-24"))
@@ -3988,7 +4263,8 @@
                       (common-lisp:apply 'make-update-byte-match-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateByteMatchSet")
                                   ("Version" ,@"2015-08-24"))
@@ -4006,7 +4282,8 @@
                       (common-lisp:apply 'make-update-ipset-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateIPSet")
                                   ("Version" ,@"2015-08-24"))
@@ -4025,7 +4302,8 @@
                       (common-lisp:apply 'make-update-rate-based-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRateBasedRule")
                                   ("Version" ,@"2015-08-24"))
@@ -4043,7 +4321,8 @@
                       (common-lisp:apply 'make-update-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRule")
                                   ("Version" ,@"2015-08-24"))
@@ -4064,7 +4343,8 @@
                        'make-update-size-constraint-set-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSizeConstraintSet")
                                   ("Version" ,@"2015-08-24"))
@@ -4085,7 +4365,8 @@
                        'make-update-sql-injection-match-set-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSqlInjectionMatchSet")
                                   ("Version" ,@"2015-08-24"))
@@ -4105,7 +4386,8 @@
                       (common-lisp:apply 'make-update-web-aclrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateWebACL")
                                   ("Version" ,@"2015-08-24"))
@@ -4124,7 +4406,8 @@
                       (common-lisp:apply 'make-update-xss-match-set-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "waf" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "waf")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateXssMatchSet")
                                   ("Version" ,@"2015-08-24"))

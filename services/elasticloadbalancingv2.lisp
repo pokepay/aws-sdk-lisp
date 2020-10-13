@@ -7,12 +7,16 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/elasticloadbalancingv2)
+
 (common-lisp:progn
  (common-lisp:defstruct (action (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or action-type-enum common-lisp:null))
-   (target-group-arn (common-lisp:error ":target-group-arn is required") :type
-    (common-lisp:or target-group-arn common-lisp:null)))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or action-type-enum common-lisp:null))
+   (target-group-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-group-arn is required"))
+    :type (common-lisp:or target-group-arn common-lisp:null)))
  (common-lisp:export (common-lisp:list 'action 'make-action))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape action))
@@ -37,10 +41,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (add-tags-input (:copier common-lisp:nil))
-   (resource-arns (common-lisp:error ":resource-arns is required") :type
-    (common-lisp:or resource-arns common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-arns
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-arns is required"))
+    :type (common-lisp:or resource-arns common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'add-tags-input 'make-add-tags-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape add-tags-input))
@@ -155,18 +162,25 @@
 (common-lisp:deftype condition-field-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (create-listener-input (:copier common-lisp:nil))
-   (load-balancer-arn (common-lisp:error ":load-balancer-arn is required")
+   (load-balancer-arn
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":load-balancer-arn is required"))
     :type (common-lisp:or load-balancer-arn common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or protocol-enum common-lisp:null))
-   (port (common-lisp:error ":port is required") :type
-    (common-lisp:or port common-lisp:null))
+   (protocol
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":protocol is required"))
+    :type (common-lisp:or protocol-enum common-lisp:null))
+   (port
+    (common-lisp:error #A((17) common-lisp:base-char . ":port is required"))
+    :type (common-lisp:or port common-lisp:null))
    (ssl-policy common-lisp:nil :type
     (common-lisp:or ssl-policy-name common-lisp:null))
    (certificates common-lisp:nil :type
     (common-lisp:or certificate-list common-lisp:null))
-   (default-actions (common-lisp:error ":default-actions is required") :type
-    (common-lisp:or actions common-lisp:null)))
+   (default-actions
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":default-actions is required"))
+    :type (common-lisp:or actions common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-listener-input 'make-create-listener-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -222,10 +236,12 @@
                                                 'listeners))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-load-balancer-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or load-balancer-name common-lisp:null))
-   (subnets (common-lisp:error ":subnets is required") :type
-    (common-lisp:or subnets common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or load-balancer-name common-lisp:null))
+   (subnets
+    (common-lisp:error #A((20) common-lisp:base-char . ":subnets is required"))
+    :type (common-lisp:or subnets common-lisp:null))
    (security-groups common-lisp:nil :type
     (common-lisp:or security-groups common-lisp:null))
    (scheme common-lisp:nil :type
@@ -290,14 +306,21 @@
                                                 'load-balancers))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-rule-input (:copier common-lisp:nil))
-   (listener-arn (common-lisp:error ":listener-arn is required") :type
-    (common-lisp:or listener-arn common-lisp:null))
-   (conditions (common-lisp:error ":conditions is required") :type
-    (common-lisp:or rule-condition-list common-lisp:null))
-   (priority (common-lisp:error ":priority is required") :type
-    (common-lisp:or rule-priority common-lisp:null))
-   (actions (common-lisp:error ":actions is required") :type
-    (common-lisp:or actions common-lisp:null)))
+   (listener-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":listener-arn is required"))
+    :type (common-lisp:or listener-arn common-lisp:null))
+   (conditions
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":conditions is required"))
+    :type (common-lisp:or rule-condition-list common-lisp:null))
+   (priority
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":priority is required"))
+    :type (common-lisp:or rule-priority common-lisp:null))
+   (actions
+    (common-lisp:error #A((20) common-lisp:base-char . ":actions is required"))
+    :type (common-lisp:or actions common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-rule-input 'make-create-rule-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -338,14 +361,19 @@
                                                 'rules))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-target-group-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or target-group-name common-lisp:null))
-   (protocol (common-lisp:error ":protocol is required") :type
-    (common-lisp:or protocol-enum common-lisp:null))
-   (port (common-lisp:error ":port is required") :type
-    (common-lisp:or port common-lisp:null))
-   (vpc-id (common-lisp:error ":vpc-id is required") :type
-    (common-lisp:or vpc-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or target-group-name common-lisp:null))
+   (protocol
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":protocol is required"))
+    :type (common-lisp:or protocol-enum common-lisp:null))
+   (port
+    (common-lisp:error #A((17) common-lisp:base-char . ":port is required"))
+    :type (common-lisp:or port common-lisp:null))
+   (vpc-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":vpc-id is required"))
+    :type (common-lisp:or vpc-id common-lisp:null))
    (health-check-protocol common-lisp:nil :type
     (common-lisp:or protocol-enum common-lisp:null))
    (health-check-port common-lisp:nil :type
@@ -450,8 +478,10 @@
 (common-lisp:deftype dnsname () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-listener-input (:copier common-lisp:nil))
-   (listener-arn (common-lisp:error ":listener-arn is required") :type
-    (common-lisp:or listener-arn common-lisp:null)))
+   (listener-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":listener-arn is required"))
+    :type (common-lisp:or listener-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-listener-input 'make-delete-listener-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -475,7 +505,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-load-balancer-input (:copier common-lisp:nil))
-   (load-balancer-arn (common-lisp:error ":load-balancer-arn is required")
+   (load-balancer-arn
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":load-balancer-arn is required"))
     :type (common-lisp:or load-balancer-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-load-balancer-input
@@ -503,8 +535,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-rule-input (:copier common-lisp:nil))
-   (rule-arn (common-lisp:error ":rule-arn is required") :type
-    (common-lisp:or rule-arn common-lisp:null)))
+   (rule-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":rule-arn is required"))
+    :type (common-lisp:or rule-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-rule-input 'make-delete-rule-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -524,8 +558,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-target-group-input (:copier common-lisp:nil))
-   (target-group-arn (common-lisp:error ":target-group-arn is required") :type
-    (common-lisp:or target-group-arn common-lisp:null)))
+   (target-group-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-group-arn is required"))
+    :type (common-lisp:or target-group-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-target-group-input
                     'make-delete-target-group-input))
@@ -551,10 +587,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (deregister-targets-input (:copier common-lisp:nil))
-   (target-group-arn (common-lisp:error ":target-group-arn is required") :type
-    (common-lisp:or target-group-arn common-lisp:null))
-   (targets (common-lisp:error ":targets is required") :type
-    (common-lisp:or target-descriptions common-lisp:null)))
+   (target-group-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-group-arn is required"))
+    :type (common-lisp:or target-group-arn common-lisp:null))
+   (targets
+    (common-lisp:error #A((20) common-lisp:base-char . ":targets is required"))
+    :type (common-lisp:or target-descriptions common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deregister-targets-input 'make-deregister-targets-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -693,7 +732,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-load-balancer-attributes-input (:copier common-lisp:nil))
-   (load-balancer-arn (common-lisp:error ":load-balancer-arn is required")
+   (load-balancer-arn
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":load-balancer-arn is required"))
     :type (common-lisp:or load-balancer-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-load-balancer-attributes-input
@@ -901,8 +942,10 @@
                                                 'next-marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-tags-input (:copier common-lisp:nil))
-   (resource-arns (common-lisp:error ":resource-arns is required") :type
-    (common-lisp:or resource-arns common-lisp:null)))
+   (resource-arns
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-arns is required"))
+    :type (common-lisp:or resource-arns common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-tags-input 'make-describe-tags-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -930,8 +973,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-target-group-attributes-input (:copier common-lisp:nil))
-   (target-group-arn (common-lisp:error ":target-group-arn is required") :type
-    (common-lisp:or target-group-arn common-lisp:null)))
+   (target-group-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-group-arn is required"))
+    :type (common-lisp:or target-group-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-target-group-attributes-input
                     'make-describe-target-group-attributes-input))
@@ -1036,8 +1081,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-target-health-input (:copier common-lisp:nil))
-   (target-group-arn (common-lisp:error ":target-group-arn is required") :type
-    (common-lisp:or target-group-arn common-lisp:null))
+   (target-group-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-group-arn is required"))
+    :type (common-lisp:or target-group-arn common-lisp:null))
    (targets common-lisp:nil :type
     (common-lisp:or target-descriptions common-lisp:null)))
  (common-lisp:export
@@ -1498,8 +1545,10 @@
 (common-lisp:deftype marker () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (matcher (:copier common-lisp:nil))
-   (http-code (common-lisp:error ":http-code is required") :type
-    (common-lisp:or http-code common-lisp:null)))
+   (http-code
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":http-code is required"))
+    :type (common-lisp:or http-code common-lisp:null)))
  (common-lisp:export (common-lisp:list 'matcher 'make-matcher))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape matcher))
@@ -1512,8 +1561,10 @@
 (common-lisp:deftype max () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (modify-listener-input (:copier common-lisp:nil))
-   (listener-arn (common-lisp:error ":listener-arn is required") :type
-    (common-lisp:or listener-arn common-lisp:null))
+   (listener-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":listener-arn is required"))
+    :type (common-lisp:or listener-arn common-lisp:null))
    (port common-lisp:nil :type (common-lisp:or port common-lisp:null))
    (protocol common-lisp:nil :type
     (common-lisp:or protocol-enum common-lisp:null))
@@ -1579,10 +1630,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (modify-load-balancer-attributes-input (:copier common-lisp:nil))
-   (load-balancer-arn (common-lisp:error ":load-balancer-arn is required")
+   (load-balancer-arn
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":load-balancer-arn is required"))
     :type (common-lisp:or load-balancer-arn common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or load-balancer-attributes common-lisp:null)))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or load-balancer-attributes common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-load-balancer-attributes-input
                     'make-modify-load-balancer-attributes-input))
@@ -1621,8 +1676,10 @@
                                                 'attributes))))))
 (common-lisp:progn
  (common-lisp:defstruct (modify-rule-input (:copier common-lisp:nil))
-   (rule-arn (common-lisp:error ":rule-arn is required") :type
-    (common-lisp:or rule-arn common-lisp:null))
+   (rule-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":rule-arn is required"))
+    :type (common-lisp:or rule-arn common-lisp:null))
    (conditions common-lisp:nil :type
     (common-lisp:or rule-condition-list common-lisp:null))
    (actions common-lisp:nil :type (common-lisp:or actions common-lisp:null)))
@@ -1662,10 +1719,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (modify-target-group-attributes-input (:copier common-lisp:nil))
-   (target-group-arn (common-lisp:error ":target-group-arn is required") :type
-    (common-lisp:or target-group-arn common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or target-group-attributes common-lisp:null)))
+   (target-group-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-group-arn is required"))
+    :type (common-lisp:or target-group-arn common-lisp:null))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or target-group-attributes common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-target-group-attributes-input
                     'make-modify-target-group-attributes-input))
@@ -1704,8 +1765,10 @@
                                                 'attributes))))))
 (common-lisp:progn
  (common-lisp:defstruct (modify-target-group-input (:copier common-lisp:nil))
-   (target-group-arn (common-lisp:error ":target-group-arn is required") :type
-    (common-lisp:or target-group-arn common-lisp:null))
+   (target-group-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-group-arn is required"))
+    :type (common-lisp:or target-group-arn common-lisp:null))
    (health-check-protocol common-lisp:nil :type
     (common-lisp:or protocol-enum common-lisp:null))
    (health-check-port common-lisp:nil :type
@@ -1819,10 +1882,13 @@
 (common-lisp:deftype protocol-enum () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (register-targets-input (:copier common-lisp:nil))
-   (target-group-arn (common-lisp:error ":target-group-arn is required") :type
-    (common-lisp:or target-group-arn common-lisp:null))
-   (targets (common-lisp:error ":targets is required") :type
-    (common-lisp:or target-descriptions common-lisp:null)))
+   (target-group-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-group-arn is required"))
+    :type (common-lisp:or target-group-arn common-lisp:null))
+   (targets
+    (common-lisp:error #A((20) common-lisp:base-char . ":targets is required"))
+    :type (common-lisp:or target-descriptions common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-targets-input 'make-register-targets-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1851,10 +1917,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (remove-tags-input (:copier common-lisp:nil))
-   (resource-arns (common-lisp:error ":resource-arns is required") :type
-    (common-lisp:or resource-arns common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-keys common-lisp:null)))
+   (resource-arns
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-arns is required"))
+    :type (common-lisp:or resource-arns common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-keys common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-input 'make-remove-tags-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2037,10 +2107,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (set-ip-address-type-input (:copier common-lisp:nil))
-   (load-balancer-arn (common-lisp:error ":load-balancer-arn is required")
+   (load-balancer-arn
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":load-balancer-arn is required"))
     :type (common-lisp:or load-balancer-arn common-lisp:null))
-   (ip-address-type (common-lisp:error ":ip-address-type is required") :type
-    (common-lisp:or ip-address-type common-lisp:null)))
+   (ip-address-type
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":ip-address-type is required"))
+    :type (common-lisp:or ip-address-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-ip-address-type-input
                     'make-set-ip-address-type-input))
@@ -2078,8 +2152,10 @@
                                                 'ip-address-type))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-rule-priorities-input (:copier common-lisp:nil))
-   (rule-priorities (common-lisp:error ":rule-priorities is required") :type
-    (common-lisp:or rule-priority-list common-lisp:null)))
+   (rule-priorities
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":rule-priorities is required"))
+    :type (common-lisp:or rule-priority-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-rule-priorities-input
                     'make-set-rule-priorities-input))
@@ -2111,10 +2187,14 @@
                                                 'rules))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-security-groups-input (:copier common-lisp:nil))
-   (load-balancer-arn (common-lisp:error ":load-balancer-arn is required")
+   (load-balancer-arn
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":load-balancer-arn is required"))
     :type (common-lisp:or load-balancer-arn common-lisp:null))
-   (security-groups (common-lisp:error ":security-groups is required") :type
-    (common-lisp:or security-groups common-lisp:null)))
+   (security-groups
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":security-groups is required"))
+    :type (common-lisp:or security-groups common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-security-groups-input
                     'make-set-security-groups-input))
@@ -2152,10 +2232,13 @@
                                                 'security-group-ids))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-subnets-input (:copier common-lisp:nil))
-   (load-balancer-arn (common-lisp:error ":load-balancer-arn is required")
+   (load-balancer-arn
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":load-balancer-arn is required"))
     :type (common-lisp:or load-balancer-arn common-lisp:null))
-   (subnets (common-lisp:error ":subnets is required") :type
-    (common-lisp:or subnets common-lisp:null)))
+   (subnets
+    (common-lisp:error #A((20) common-lisp:base-char . ":subnets is required"))
+    :type (common-lisp:or subnets common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-subnets-input 'make-set-subnets-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2259,8 +2342,8 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2321,8 +2404,8 @@
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (target-description (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or target-id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or target-id common-lisp:null))
    (port common-lisp:nil :type (common-lisp:or port common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'target-description 'make-target-description))
@@ -2706,8 +2789,10 @@
                       (common-lisp:apply 'make-add-tags-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTags")
                                   ("Version" ,@"2015-12-01"))
@@ -2728,8 +2813,10 @@
                       (common-lisp:apply 'make-create-listener-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateListener")
                                   ("Version" ,@"2015-12-01"))
@@ -2750,8 +2837,10 @@
                       (common-lisp:apply 'make-create-load-balancer-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLoadBalancer")
                                   ("Version" ,@"2015-12-01"))
@@ -2770,8 +2859,10 @@
                       (common-lisp:apply 'make-create-rule-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateRule")
                                   ("Version" ,@"2015-12-01"))
@@ -2796,8 +2887,10 @@
                       (common-lisp:apply 'make-create-target-group-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTargetGroup")
                                   ("Version" ,@"2015-12-01"))
@@ -2815,8 +2908,10 @@
                       (common-lisp:apply 'make-delete-listener-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteListener")
                                   ("Version" ,@"2015-12-01"))
@@ -2834,8 +2929,10 @@
                       (common-lisp:apply 'make-delete-load-balancer-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLoadBalancer")
                                   ("Version" ,@"2015-12-01"))
@@ -2853,8 +2950,10 @@
                       (common-lisp:apply 'make-delete-rule-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRule")
                                   ("Version" ,@"2015-12-01"))
@@ -2872,8 +2971,10 @@
                       (common-lisp:apply 'make-delete-target-group-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTargetGroup")
                                   ("Version" ,@"2015-12-01"))
@@ -2891,8 +2992,10 @@
                       (common-lisp:apply 'make-deregister-targets-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeregisterTargets")
                                   ("Version" ,@"2015-12-01"))
@@ -2910,8 +3013,10 @@
                       (common-lisp:apply 'make-describe-account-limits-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAccountLimits")
                                   ("Version" ,@"2015-12-01"))
@@ -2931,8 +3036,10 @@
                       (common-lisp:apply 'make-describe-listeners-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeListeners")
                                   ("Version" ,@"2015-12-01"))
@@ -2951,8 +3058,10 @@
                        'make-describe-load-balancer-attributes-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLoadBalancerAttributes")
                                   ("Version" ,@"2015-12-01"))
@@ -2973,8 +3082,10 @@
                       (common-lisp:apply 'make-describe-load-balancers-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLoadBalancers")
                                   ("Version" ,@"2015-12-01"))
@@ -2993,8 +3104,10 @@
                       (common-lisp:apply 'make-describe-rules-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRules")
                                   ("Version" ,@"2015-12-01"))
@@ -3012,8 +3125,10 @@
                       (common-lisp:apply 'make-describe-sslpolicies-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSSLPolicies")
                                   ("Version" ,@"2015-12-01"))
@@ -3031,8 +3146,10 @@
                       (common-lisp:apply 'make-describe-tags-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTags")
                                   ("Version" ,@"2015-12-01"))
@@ -3051,8 +3168,10 @@
                        'make-describe-target-group-attributes-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTargetGroupAttributes")
                                   ("Version" ,@"2015-12-01"))
@@ -3074,8 +3193,10 @@
                       (common-lisp:apply 'make-describe-target-groups-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTargetGroups")
                                   ("Version" ,@"2015-12-01"))
@@ -3093,8 +3214,10 @@
                       (common-lisp:apply 'make-describe-target-health-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTargetHealth")
                                   ("Version" ,@"2015-12-01"))
@@ -3115,8 +3238,10 @@
                       (common-lisp:apply 'make-modify-listener-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyListener")
                                   ("Version" ,@"2015-12-01"))
@@ -3135,8 +3260,10 @@
                        'make-modify-load-balancer-attributes-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyLoadBalancerAttributes")
                                   ("Version" ,@"2015-12-01"))
@@ -3155,8 +3282,10 @@
                       (common-lisp:apply 'make-modify-rule-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyRule")
                                   ("Version" ,@"2015-12-01"))
@@ -3181,8 +3310,10 @@
                       (common-lisp:apply 'make-modify-target-group-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyTargetGroup")
                                   ("Version" ,@"2015-12-01"))
@@ -3201,8 +3332,10 @@
                        'make-modify-target-group-attributes-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyTargetGroupAttributes")
                                   ("Version" ,@"2015-12-01"))
@@ -3221,8 +3354,10 @@
                       (common-lisp:apply 'make-register-targets-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterTargets")
                                   ("Version" ,@"2015-12-01"))
@@ -3240,8 +3375,10 @@
                       (common-lisp:apply 'make-remove-tags-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTags")
                                   ("Version" ,@"2015-12-01"))
@@ -3260,8 +3397,10 @@
                       (common-lisp:apply 'make-set-ip-address-type-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetIpAddressType")
                                   ("Version" ,@"2015-12-01"))
@@ -3279,8 +3418,10 @@
                       (common-lisp:apply 'make-set-rule-priorities-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetRulePriorities")
                                   ("Version" ,@"2015-12-01"))
@@ -3299,8 +3440,10 @@
                       (common-lisp:apply 'make-set-security-groups-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetSecurityGroups")
                                   ("Version" ,@"2015-12-01"))
@@ -3318,8 +3461,10 @@
                       (common-lisp:apply 'make-set-subnets-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticloadbalancingv2" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((22) common-lisp:base-char
+                                  . "elasticloadbalancingv2")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetSubnets")
                                   ("Version" ,@"2015-12-01"))

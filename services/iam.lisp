@@ -7,15 +7,23 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/iam)
+
 (common-lisp:progn
  (common-lisp:defstruct (access-key (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (access-key-id (common-lisp:error ":access-key-id is required") :type
-    (common-lisp:or |accessKeyIdType| common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or |statusType| common-lisp:null))
-   (secret-access-key (common-lisp:error ":secret-access-key is required")
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (access-key-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":access-key-id is required"))
+    :type (common-lisp:or |accessKeyIdType| common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or |statusType| common-lisp:null))
+   (secret-access-key
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":secret-access-key is required"))
     :type (common-lisp:or |accessKeySecretType| common-lisp:null))
    (create-date common-lisp:nil :type
     (common-lisp:or |dateType| common-lisp:null)))
@@ -50,12 +58,17 @@
                                                 'create-date))))))
 (common-lisp:progn
  (common-lisp:defstruct (access-key-last-used (:copier common-lisp:nil))
-   (last-used-date (common-lisp:error ":last-used-date is required") :type
-    (common-lisp:or |dateType| common-lisp:null))
-   (service-name (common-lisp:error ":service-name is required") :type
-    (common-lisp:or |stringType| common-lisp:null))
-   (region (common-lisp:error ":region is required") :type
-    (common-lisp:or |stringType| common-lisp:null)))
+   (last-used-date
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":last-used-date is required"))
+    :type (common-lisp:or |dateType| common-lisp:null))
+   (service-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":service-name is required"))
+    :type (common-lisp:or |stringType| common-lisp:null))
+   (region
+    (common-lisp:error #A((19) common-lisp:base-char . ":region is required"))
+    :type (common-lisp:or |stringType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'access-key-last-used 'make-access-key-last-used))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -125,10 +138,14 @@
      (add-client-idto-open-idconnect-provider-request
       (:copier common-lisp:nil))
    (open-idconnect-provider-arn
-    (common-lisp:error ":open-idconnect-provider-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or |clientIDType| common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":open-idconnect-provider-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or |clientIDType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-client-idto-open-idconnect-provider-request
                     'make-add-client-idto-open-idconnect-provider-request))
@@ -151,10 +168,13 @@
  (common-lisp:defstruct
      (add-role-to-instance-profile-request (:copier common-lisp:nil))
    (instance-profile-name
-    (common-lisp:error ":instance-profile-name is required") :type
-    (common-lisp:or |instanceProfileNameType| common-lisp:null))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":instance-profile-name is required"))
+    :type (common-lisp:or |instanceProfileNameType| common-lisp:null))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-role-to-instance-profile-request
                     'make-add-role-to-instance-profile-request))
@@ -175,10 +195,14 @@
                                                 'role-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (add-user-to-group-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |existingUserNameType| common-lisp:null)))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |existingUserNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-user-to-group-request
                     'make-add-user-to-group-request))
@@ -199,10 +223,14 @@
                                                 'user-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (attach-group-policy-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-group-policy-request
                     'make-attach-group-policy-request))
@@ -223,10 +251,14 @@
                                                 'policy-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (attach-role-policy-request (:copier common-lisp:nil))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-role-policy-request
                     'make-attach-role-policy-request))
@@ -247,10 +279,14 @@
                                                 'policy-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (attach-user-policy-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-user-policy-request
                     'make-attach-user-policy-request))
@@ -293,10 +329,14 @@
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:progn
  (common-lisp:defstruct (change-password-request (:copier common-lisp:nil))
-   (old-password (common-lisp:error ":old-password is required") :type
-    (common-lisp:or |passwordType| common-lisp:null))
-   (new-password (common-lisp:error ":new-password is required") :type
-    (common-lisp:or |passwordType| common-lisp:null)))
+   (old-password
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":old-password is required"))
+    :type (common-lisp:or |passwordType| common-lisp:null))
+   (new-password
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":new-password is required"))
+    :type (common-lisp:or |passwordType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'change-password-request 'make-change-password-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -388,8 +428,10 @@
                                                 'user-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-access-key-response (:copier common-lisp:nil))
-   (access-key (common-lisp:error ":access-key is required") :type
-    (common-lisp:or access-key common-lisp:null)))
+   (access-key
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":access-key is required"))
+    :type (common-lisp:or access-key common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-access-key-response
                     'make-create-access-key-response))
@@ -406,8 +448,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-account-alias-request (:copier common-lisp:nil))
-   (account-alias (common-lisp:error ":account-alias is required") :type
-    (common-lisp:or |accountAliasType| common-lisp:null)))
+   (account-alias
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":account-alias is required"))
+    :type (common-lisp:or |accountAliasType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-account-alias-request
                     'make-create-account-alias-request))
@@ -424,8 +468,10 @@
 (common-lisp:progn
  (common-lisp:defstruct (create-group-request (:copier common-lisp:nil))
    (path common-lisp:nil :type (common-lisp:or |pathType| common-lisp:null))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null)))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-group-request 'make-create-group-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -443,8 +489,9 @@
                                                 'group-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-group-response (:copier common-lisp:nil))
-   (group (common-lisp:error ":group is required") :type
-    (common-lisp:or group common-lisp:null)))
+   (group
+    (common-lisp:error #A((18) common-lisp:base-char . ":group is required"))
+    :type (common-lisp:or group common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-group-response 'make-create-group-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -461,8 +508,9 @@
  (common-lisp:defstruct
      (create-instance-profile-request (:copier common-lisp:nil))
    (instance-profile-name
-    (common-lisp:error ":instance-profile-name is required") :type
-    (common-lisp:or |instanceProfileNameType| common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":instance-profile-name is required"))
+    :type (common-lisp:or |instanceProfileNameType| common-lisp:null))
    (path common-lisp:nil :type (common-lisp:or |pathType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-instance-profile-request
@@ -485,8 +533,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-instance-profile-response (:copier common-lisp:nil))
-   (instance-profile (common-lisp:error ":instance-profile is required") :type
-    (common-lisp:or instance-profile common-lisp:null)))
+   (instance-profile
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":instance-profile is required"))
+    :type (common-lisp:or instance-profile common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-instance-profile-response
                     'make-create-instance-profile-response))
@@ -503,10 +553,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-login-profile-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (password (common-lisp:error ":password is required") :type
-    (common-lisp:or |passwordType| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (password
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":password is required"))
+    :type (common-lisp:or |passwordType| common-lisp:null))
    (password-reset-required common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null)))
  (common-lisp:export
@@ -535,8 +589,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-login-profile-response (:copier common-lisp:nil))
-   (login-profile (common-lisp:error ":login-profile is required") :type
-    (common-lisp:or login-profile common-lisp:null)))
+   (login-profile
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":login-profile is required"))
+    :type (common-lisp:or login-profile common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-login-profile-response
                     'make-create-login-profile-response))
@@ -553,12 +609,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-open-idconnect-provider-request (:copier common-lisp:nil))
-   (url (common-lisp:error ":url is required") :type
-    (common-lisp:or open-idconnect-provider-url-type common-lisp:null))
+   (url (common-lisp:error #A((16) common-lisp:base-char . ":url is required"))
+    :type (common-lisp:or open-idconnect-provider-url-type common-lisp:null))
    (client-idlist common-lisp:nil :type
     (common-lisp:or |clientIDListType| common-lisp:null))
-   (thumbprint-list (common-lisp:error ":thumbprint-list is required") :type
-    (common-lisp:or |thumbprintListType| common-lisp:null)))
+   (thumbprint-list
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":thumbprint-list is required"))
+    :type (common-lisp:or |thumbprintListType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-open-idconnect-provider-request
                     'make-create-open-idconnect-provider-request))
@@ -602,12 +660,16 @@
                                                 'open-idconnect-provider-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-policy-request (:copier common-lisp:nil))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or |policyNameType| common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or |policyNameType| common-lisp:null))
    (path common-lisp:nil :type
     (common-lisp:or |policyPathType| common-lisp:null))
-   (policy-document (common-lisp:error ":policy-document is required") :type
-    (common-lisp:or |policyDocumentType| common-lisp:null))
+   (policy-document
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":policy-document is required"))
+    :type (common-lisp:or |policyDocumentType| common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or |policyDescriptionType| common-lisp:null)))
  (common-lisp:export
@@ -655,10 +717,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-policy-version-request (:copier common-lisp:nil))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (policy-document (common-lisp:error ":policy-document is required") :type
-    (common-lisp:or |policyDocumentType| common-lisp:null))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (policy-document
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":policy-document is required"))
+    :type (common-lisp:or |policyDocumentType| common-lisp:null))
    (set-as-default common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null)))
  (common-lisp:export
@@ -705,11 +771,15 @@
 (common-lisp:progn
  (common-lisp:defstruct (create-role-request (:copier common-lisp:nil))
    (path common-lisp:nil :type (common-lisp:or |pathType| common-lisp:null))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null))
    (assume-role-policy-document
-    (common-lisp:error ":assume-role-policy-document is required") :type
-    (common-lisp:or |policyDocumentType| common-lisp:null))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":assume-role-policy-document is required"))
+    :type (common-lisp:or |policyDocumentType| common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or |roleDescriptionType| common-lisp:null)))
  (common-lisp:export
@@ -739,8 +809,9 @@
                                                 'description))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-role-response (:copier common-lisp:nil))
-   (role (common-lisp:error ":role is required") :type
-    (common-lisp:or role common-lisp:null)))
+   (role
+    (common-lisp:error #A((17) common-lisp:base-char . ":role is required"))
+    :type (common-lisp:or role common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-role-response 'make-create-role-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -754,10 +825,12 @@
 (common-lisp:progn
  (common-lisp:defstruct (create-samlprovider-request (:copier common-lisp:nil))
    (samlmetadata-document
-    (common-lisp:error ":samlmetadata-document is required") :type
-    (common-lisp:or samlmetadata-document-type common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or samlprovider-name-type common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":samlmetadata-document is required"))
+    :type (common-lisp:or samlmetadata-document-type common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or samlprovider-name-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-samlprovider-request
                     'make-create-samlprovider-request))
@@ -797,8 +870,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-service-linked-role-request (:copier common-lisp:nil))
-   (awsservice-name (common-lisp:error ":awsservice-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
+   (awsservice-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":awsservice-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or |roleDescriptionType| common-lisp:null))
    (custom-suffix common-lisp:nil :type
@@ -846,10 +921,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-service-specific-credential-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (service-name (common-lisp:error ":service-name is required") :type
-    (common-lisp:or |serviceName| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (service-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":service-name is required"))
+    :type (common-lisp:or |serviceName| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-service-specific-credential-request
                     'make-create-service-specific-credential-request))
@@ -889,8 +968,10 @@
 (common-lisp:progn
  (common-lisp:defstruct (create-user-request (:copier common-lisp:nil))
    (path common-lisp:nil :type (common-lisp:or |pathType| common-lisp:null))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-user-request 'make-create-user-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -924,8 +1005,9 @@
      (create-virtual-mfadevice-request (:copier common-lisp:nil))
    (path common-lisp:nil :type (common-lisp:or |pathType| common-lisp:null))
    (virtual-mfadevice-name
-    (common-lisp:error ":virtual-mfadevice-name is required") :type
-    (common-lisp:or |virtualMFADeviceName| common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":virtual-mfadevice-name is required"))
+    :type (common-lisp:or |virtualMFADeviceName| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-virtual-mfadevice-request
                     'make-create-virtual-mfadevice-request))
@@ -947,7 +1029,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-virtual-mfadevice-response (:copier common-lisp:nil))
-   (virtual-mfadevice (common-lisp:error ":virtual-mfadevice is required")
+   (virtual-mfadevice
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":virtual-mfadevice is required"))
     :type (common-lisp:or virtual-mfadevice common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-virtual-mfadevice-response
@@ -1022,10 +1106,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (deactivate-mfadevice-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |existingUserNameType| common-lisp:null))
-   (serial-number (common-lisp:error ":serial-number is required") :type
-    (common-lisp:or |serialNumberType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |existingUserNameType| common-lisp:null))
+   (serial-number
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":serial-number is required"))
+    :type (common-lisp:or |serialNumberType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'deactivate-mfadevice-request
                     'make-deactivate-mfadevice-request))
@@ -1048,8 +1136,10 @@
  (common-lisp:defstruct (delete-access-key-request (:copier common-lisp:nil))
    (user-name common-lisp:nil :type
     (common-lisp:or |existingUserNameType| common-lisp:null))
-   (access-key-id (common-lisp:error ":access-key-id is required") :type
-    (common-lisp:or |accessKeyIdType| common-lisp:null)))
+   (access-key-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":access-key-id is required"))
+    :type (common-lisp:or |accessKeyIdType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-access-key-request
                     'make-delete-access-key-request))
@@ -1071,8 +1161,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-account-alias-request (:copier common-lisp:nil))
-   (account-alias (common-lisp:error ":account-alias is required") :type
-    (common-lisp:or |accountAliasType| common-lisp:null)))
+   (account-alias
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":account-alias is required"))
+    :type (common-lisp:or |accountAliasType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-account-alias-request
                     'make-delete-account-alias-request))
@@ -1105,10 +1197,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-group-policy-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or |policyNameType| common-lisp:null)))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or |policyNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-group-policy-request
                     'make-delete-group-policy-request))
@@ -1129,8 +1225,10 @@
                                                 'policy-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-group-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null)))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-group-request 'make-delete-group-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1145,8 +1243,9 @@
  (common-lisp:defstruct
      (delete-instance-profile-request (:copier common-lisp:nil))
    (instance-profile-name
-    (common-lisp:error ":instance-profile-name is required") :type
-    (common-lisp:or |instanceProfileNameType| common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":instance-profile-name is required"))
+    :type (common-lisp:or |instanceProfileNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-instance-profile-request
                     'make-delete-instance-profile-request))
@@ -1163,8 +1262,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-login-profile-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-login-profile-request
                     'make-delete-login-profile-request))
@@ -1182,8 +1283,10 @@
  (common-lisp:defstruct
      (delete-open-idconnect-provider-request (:copier common-lisp:nil))
    (open-idconnect-provider-arn
-    (common-lisp:error ":open-idconnect-provider-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":open-idconnect-provider-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-open-idconnect-provider-request
                     'make-delete-open-idconnect-provider-request))
@@ -1199,8 +1302,10 @@
                                                 'open-idconnect-provider-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-policy-request (:copier common-lisp:nil))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-policy-request 'make-delete-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1216,10 +1321,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-policy-version-request (:copier common-lisp:nil))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (version-id (common-lisp:error ":version-id is required") :type
-    (common-lisp:or |policyVersionIdType| common-lisp:null)))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (version-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":version-id is required"))
+    :type (common-lisp:or |policyVersionIdType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-policy-version-request
                     'make-delete-policy-version-request))
@@ -1240,10 +1349,14 @@
                                                 'version-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-role-policy-request (:copier common-lisp:nil))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or |policyNameType| common-lisp:null)))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or |policyNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-role-policy-request
                     'make-delete-role-policy-request))
@@ -1264,8 +1377,10 @@
                                                 'policy-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-role-request (:copier common-lisp:nil))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null)))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-role-request 'make-delete-role-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1278,8 +1393,10 @@
                                                 'role-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-samlprovider-request (:copier common-lisp:nil))
-   (samlprovider-arn (common-lisp:error ":samlprovider-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+   (samlprovider-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":samlprovider-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-samlprovider-request
                     'make-delete-samlprovider-request))
@@ -1296,10 +1413,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-sshpublic-key-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (sshpublic-key-id (common-lisp:error ":sshpublic-key-id is required") :type
-    (common-lisp:or |publicKeyIdType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (sshpublic-key-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":sshpublic-key-id is required"))
+    :type (common-lisp:or |publicKeyIdType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-sshpublic-key-request
                     'make-delete-sshpublic-key-request))
@@ -1322,8 +1443,9 @@
  (common-lisp:defstruct
      (delete-server-certificate-request (:copier common-lisp:nil))
    (server-certificate-name
-    (common-lisp:error ":server-certificate-name is required") :type
-    (common-lisp:or |serverCertificateNameType| common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":server-certificate-name is required"))
+    :type (common-lisp:or |serverCertificateNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-server-certificate-request
                     'make-delete-server-certificate-request))
@@ -1343,8 +1465,10 @@
    (user-name common-lisp:nil :type
     (common-lisp:or |userNameType| common-lisp:null))
    (service-specific-credential-id
-    (common-lisp:error ":service-specific-credential-id is required") :type
-    (common-lisp:or |serviceSpecificCredentialId| common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":service-specific-credential-id is required"))
+    :type (common-lisp:or |serviceSpecificCredentialId| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-service-specific-credential-request
                     'make-delete-service-specific-credential-request))
@@ -1368,8 +1492,10 @@
      (delete-signing-certificate-request (:copier common-lisp:nil))
    (user-name common-lisp:nil :type
     (common-lisp:or |existingUserNameType| common-lisp:null))
-   (certificate-id (common-lisp:error ":certificate-id is required") :type
-    (common-lisp:or |certificateIdType| common-lisp:null)))
+   (certificate-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":certificate-id is required"))
+    :type (common-lisp:or |certificateIdType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-signing-certificate-request
                     'make-delete-signing-certificate-request))
@@ -1390,10 +1516,14 @@
                                                 'certificate-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-user-policy-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |existingUserNameType| common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or |policyNameType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |existingUserNameType| common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or |policyNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-user-policy-request
                     'make-delete-user-policy-request))
@@ -1414,8 +1544,10 @@
                                                 'policy-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-user-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |existingUserNameType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |existingUserNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-user-request 'make-delete-user-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1429,8 +1561,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-virtual-mfadevice-request (:copier common-lisp:nil))
-   (serial-number (common-lisp:error ":serial-number is required") :type
-    (common-lisp:or |serialNumberType| common-lisp:null)))
+   (serial-number
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":serial-number is required"))
+    :type (common-lisp:or |serialNumberType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-virtual-mfadevice-request
                     'make-delete-virtual-mfadevice-request))
@@ -1446,10 +1580,14 @@
                                                 'serial-number))))))
 (common-lisp:progn
  (common-lisp:defstruct (detach-group-policy-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-group-policy-request
                     'make-detach-group-policy-request))
@@ -1470,10 +1608,14 @@
                                                 'policy-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (detach-role-policy-request (:copier common-lisp:nil))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-role-policy-request
                     'make-detach-role-policy-request))
@@ -1494,10 +1636,14 @@
                                                 'policy-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (detach-user-policy-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-user-policy-request
                     'make-detach-user-policy-request))
@@ -1554,16 +1700,22 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (enable-mfadevice-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |existingUserNameType| common-lisp:null))
-   (serial-number (common-lisp:error ":serial-number is required") :type
-    (common-lisp:or |serialNumberType| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |existingUserNameType| common-lisp:null))
+   (serial-number
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":serial-number is required"))
+    :type (common-lisp:or |serialNumberType| common-lisp:null))
    (authentication-code1
-    (common-lisp:error ":authentication-code1 is required") :type
-    (common-lisp:or |authenticationCodeType| common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":authentication-code1 is required"))
+    :type (common-lisp:or |authenticationCodeType| common-lisp:null))
    (authentication-code2
-    (common-lisp:error ":authentication-code2 is required") :type
-    (common-lisp:or |authenticationCodeType| common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":authentication-code2 is required"))
+    :type (common-lisp:or |authenticationCodeType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-mfadevice-request 'make-enable-mfadevice-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1637,12 +1789,16 @@
 (common-lisp:deftype eval-decision-source-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (evaluation-result (:copier common-lisp:nil))
-   (eval-action-name (common-lisp:error ":eval-action-name is required") :type
-    (common-lisp:or action-name-type common-lisp:null))
+   (eval-action-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":eval-action-name is required"))
+    :type (common-lisp:or action-name-type common-lisp:null))
    (eval-resource-name common-lisp:nil :type
     (common-lisp:or resource-name-type common-lisp:null))
-   (eval-decision (common-lisp:error ":eval-decision is required") :type
-    (common-lisp:or policy-evaluation-decision-type common-lisp:null))
+   (eval-decision
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":eval-decision is required"))
+    :type (common-lisp:or policy-evaluation-decision-type common-lisp:null))
    (matched-statements common-lisp:nil :type
     (common-lisp:or statement-list-type common-lisp:null))
    (missing-context-values common-lisp:nil :type
@@ -1734,8 +1890,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-access-key-last-used-request (:copier common-lisp:nil))
-   (access-key-id (common-lisp:error ":access-key-id is required") :type
-    (common-lisp:or |accessKeyIdType| common-lisp:null)))
+   (access-key-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":access-key-id is required"))
+    :type (common-lisp:or |accessKeyIdType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-access-key-last-used-request
                     'make-get-access-key-last-used-request))
@@ -1862,8 +2020,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-account-password-policy-response (:copier common-lisp:nil))
-   (password-policy (common-lisp:error ":password-policy is required") :type
-    (common-lisp:or password-policy common-lisp:null)))
+   (password-policy
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":password-policy is required"))
+    :type (common-lisp:or password-policy common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-account-password-policy-response
                     'make-get-account-password-policy-response))
@@ -1898,7 +2058,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-context-keys-for-custom-policy-request (:copier common-lisp:nil))
-   (policy-input-list (common-lisp:error ":policy-input-list is required")
+   (policy-input-list
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":policy-input-list is required"))
     :type (common-lisp:or simulation-policy-list-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-context-keys-for-custom-policy-request
@@ -1934,7 +2096,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-context-keys-for-principal-policy-request (:copier common-lisp:nil))
-   (policy-source-arn (common-lisp:error ":policy-source-arn is required")
+   (policy-source-arn
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":policy-source-arn is required"))
     :type (common-lisp:or |arnType| common-lisp:null))
    (policy-input-list common-lisp:nil :type
     (common-lisp:or simulation-policy-list-type common-lisp:null)))
@@ -1990,10 +2154,14 @@
                                                 'generated-time))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-group-policy-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or |policyNameType| common-lisp:null)))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or |policyNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-group-policy-request 'make-get-group-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2013,12 +2181,18 @@
                                                 'policy-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-group-policy-response (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or |policyNameType| common-lisp:null))
-   (policy-document (common-lisp:error ":policy-document is required") :type
-    (common-lisp:or |policyDocumentType| common-lisp:null)))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or |policyNameType| common-lisp:null))
+   (policy-document
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":policy-document is required"))
+    :type (common-lisp:or |policyDocumentType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-group-policy-response
                     'make-get-group-policy-response))
@@ -2044,8 +2218,10 @@
                                                 'policy-document))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-group-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or |markerType| common-lisp:null))
    (max-items common-lisp:nil :type
@@ -2072,10 +2248,12 @@
                                                 'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-group-response (:copier common-lisp:nil))
-   (group (common-lisp:error ":group is required") :type
-    (common-lisp:or group common-lisp:null))
-   (users (common-lisp:error ":users is required") :type
-    (common-lisp:or |userListType| common-lisp:null))
+   (group
+    (common-lisp:error #A((18) common-lisp:base-char . ":group is required"))
+    :type (common-lisp:or group common-lisp:null))
+   (users
+    (common-lisp:error #A((18) common-lisp:base-char . ":users is required"))
+    :type (common-lisp:or |userListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -2109,8 +2287,9 @@
  (common-lisp:defstruct
      (get-instance-profile-request (:copier common-lisp:nil))
    (instance-profile-name
-    (common-lisp:error ":instance-profile-name is required") :type
-    (common-lisp:or |instanceProfileNameType| common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":instance-profile-name is required"))
+    :type (common-lisp:or |instanceProfileNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-instance-profile-request
                     'make-get-instance-profile-request))
@@ -2127,8 +2306,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-instance-profile-response (:copier common-lisp:nil))
-   (instance-profile (common-lisp:error ":instance-profile is required") :type
-    (common-lisp:or instance-profile common-lisp:null)))
+   (instance-profile
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":instance-profile is required"))
+    :type (common-lisp:or instance-profile common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-instance-profile-response
                     'make-get-instance-profile-response))
@@ -2144,8 +2325,10 @@
                                                 'instance-profile))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-login-profile-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-login-profile-request
                     'make-get-login-profile-request))
@@ -2161,8 +2344,10 @@
                                                 'user-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-login-profile-response (:copier common-lisp:nil))
-   (login-profile (common-lisp:error ":login-profile is required") :type
-    (common-lisp:or login-profile common-lisp:null)))
+   (login-profile
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":login-profile is required"))
+    :type (common-lisp:or login-profile common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-login-profile-response
                     'make-get-login-profile-response))
@@ -2180,8 +2365,10 @@
  (common-lisp:defstruct
      (get-open-idconnect-provider-request (:copier common-lisp:nil))
    (open-idconnect-provider-arn
-    (common-lisp:error ":open-idconnect-provider-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":open-idconnect-provider-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-open-idconnect-provider-request
                     'make-get-open-idconnect-provider-request))
@@ -2236,8 +2423,10 @@
                                                 'create-date))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-policy-request (:copier common-lisp:nil))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-policy-request 'make-get-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2263,10 +2452,14 @@
                                                 'policy))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-policy-version-request (:copier common-lisp:nil))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (version-id (common-lisp:error ":version-id is required") :type
-    (common-lisp:or |policyVersionIdType| common-lisp:null)))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (version-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":version-id is required"))
+    :type (common-lisp:or |policyVersionIdType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-policy-version-request
                     'make-get-policy-version-request))
@@ -2304,10 +2497,14 @@
                                                 'policy-version))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-role-policy-request (:copier common-lisp:nil))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or |policyNameType| common-lisp:null)))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or |policyNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-role-policy-request 'make-get-role-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2327,12 +2524,18 @@
                                                 'policy-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-role-policy-response (:copier common-lisp:nil))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or |policyNameType| common-lisp:null))
-   (policy-document (common-lisp:error ":policy-document is required") :type
-    (common-lisp:or |policyDocumentType| common-lisp:null)))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or |policyNameType| common-lisp:null))
+   (policy-document
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":policy-document is required"))
+    :type (common-lisp:or |policyDocumentType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-role-policy-response 'make-get-role-policy-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2357,8 +2560,10 @@
                                                 'policy-document))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-role-request (:copier common-lisp:nil))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null)))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-role-request 'make-get-role-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2371,8 +2576,9 @@
                                                 'role-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-role-response (:copier common-lisp:nil))
-   (role (common-lisp:error ":role is required") :type
-    (common-lisp:or role common-lisp:null)))
+   (role
+    (common-lisp:error #A((17) common-lisp:base-char . ":role is required"))
+    :type (common-lisp:or role common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-role-response 'make-get-role-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2385,8 +2591,10 @@
                                                 'role))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-samlprovider-request (:copier common-lisp:nil))
-   (samlprovider-arn (common-lisp:error ":samlprovider-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+   (samlprovider-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":samlprovider-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-samlprovider-request 'make-get-samlprovider-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2432,12 +2640,18 @@
                                                 'valid-until))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-sshpublic-key-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (sshpublic-key-id (common-lisp:error ":sshpublic-key-id is required") :type
-    (common-lisp:or |publicKeyIdType| common-lisp:null))
-   (encoding (common-lisp:error ":encoding is required") :type
-    (common-lisp:or |encodingType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (sshpublic-key-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":sshpublic-key-id is required"))
+    :type (common-lisp:or |publicKeyIdType| common-lisp:null))
+   (encoding
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":encoding is required"))
+    :type (common-lisp:or |encodingType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-sshpublic-key-request
                     'make-get-sshpublic-key-request))
@@ -2482,8 +2696,9 @@
  (common-lisp:defstruct
      (get-server-certificate-request (:copier common-lisp:nil))
    (server-certificate-name
-    (common-lisp:error ":server-certificate-name is required") :type
-    (common-lisp:or |serverCertificateNameType| common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":server-certificate-name is required"))
+    :type (common-lisp:or |serverCertificateNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-server-certificate-request
                     'make-get-server-certificate-request))
@@ -2500,7 +2715,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-server-certificate-response (:copier common-lisp:nil))
-   (server-certificate (common-lisp:error ":server-certificate is required")
+   (server-certificate
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":server-certificate is required"))
     :type (common-lisp:or server-certificate common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-server-certificate-response
@@ -2517,10 +2734,14 @@
                                                 'server-certificate))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-user-policy-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |existingUserNameType| common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or |policyNameType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |existingUserNameType| common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or |policyNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-user-policy-request 'make-get-user-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2540,12 +2761,18 @@
                                                 'policy-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-user-policy-response (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |existingUserNameType| common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or |policyNameType| common-lisp:null))
-   (policy-document (common-lisp:error ":policy-document is required") :type
-    (common-lisp:or |policyDocumentType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |existingUserNameType| common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or |policyNameType| common-lisp:null))
+   (policy-document
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":policy-document is required"))
+    :type (common-lisp:or |policyDocumentType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-user-policy-response 'make-get-user-policy-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2584,8 +2811,9 @@
                                                 'user-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-user-response (:copier common-lisp:nil))
-   (user (common-lisp:error ":user is required") :type
-    (common-lisp:or user common-lisp:null)))
+   (user
+    (common-lisp:error #A((17) common-lisp:base-char . ":user is required"))
+    :type (common-lisp:or user common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-user-response 'make-get-user-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2598,16 +2826,23 @@
                                                 'user))))))
 (common-lisp:progn
  (common-lisp:defstruct (group (:copier common-lisp:nil))
-   (path (common-lisp:error ":path is required") :type
-    (common-lisp:or |pathType| common-lisp:null))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
-   (group-id (common-lisp:error ":group-id is required") :type
-    (common-lisp:or |idType| common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (create-date (common-lisp:error ":create-date is required") :type
-    (common-lisp:or |dateType| common-lisp:null)))
+   (path
+    (common-lisp:error #A((17) common-lisp:base-char . ":path is required"))
+    :type (common-lisp:or |pathType| common-lisp:null))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
+   (group-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":group-id is required"))
+    :type (common-lisp:or |idType| common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (create-date
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":create-date is required"))
+    :type (common-lisp:or |dateType| common-lisp:null)))
  (common-lisp:export (common-lisp:list 'group 'make-group))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape group))
@@ -2691,19 +2926,26 @@
                                                 'attached-managed-policies))))))
 (common-lisp:progn
  (common-lisp:defstruct (instance-profile (:copier common-lisp:nil))
-   (path (common-lisp:error ":path is required") :type
-    (common-lisp:or |pathType| common-lisp:null))
+   (path
+    (common-lisp:error #A((17) common-lisp:base-char . ":path is required"))
+    :type (common-lisp:or |pathType| common-lisp:null))
    (instance-profile-name
-    (common-lisp:error ":instance-profile-name is required") :type
-    (common-lisp:or |instanceProfileNameType| common-lisp:null))
-   (instance-profile-id (common-lisp:error ":instance-profile-id is required")
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":instance-profile-name is required"))
+    :type (common-lisp:or |instanceProfileNameType| common-lisp:null))
+   (instance-profile-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":instance-profile-id is required"))
     :type (common-lisp:or |idType| common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (create-date (common-lisp:error ":create-date is required") :type
-    (common-lisp:or |dateType| common-lisp:null))
-   (roles (common-lisp:error ":roles is required") :type
-    (common-lisp:or |roleListType| common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (create-date
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":create-date is required"))
+    :type (common-lisp:or |dateType| common-lisp:null))
+   (roles
+    (common-lisp:error #A((18) common-lisp:base-char . ":roles is required"))
+    :type (common-lisp:or |roleListType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'instance-profile 'make-instance-profile))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2892,7 +3134,9 @@
                                                 'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-access-keys-response (:copier common-lisp:nil))
-   (access-key-metadata (common-lisp:error ":access-key-metadata is required")
+   (access-key-metadata
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":access-key-metadata is required"))
     :type (common-lisp:or |accessKeyMetadataListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
@@ -2949,8 +3193,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-account-aliases-response (:copier common-lisp:nil))
-   (account-aliases (common-lisp:error ":account-aliases is required") :type
-    (common-lisp:or |accountAliasListType| common-lisp:null))
+   (account-aliases
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":account-aliases is required"))
+    :type (common-lisp:or |accountAliasListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -2981,8 +3227,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-attached-group-policies-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
    (path-prefix common-lisp:nil :type
     (common-lisp:or |policyPathType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -3052,8 +3300,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-attached-role-policies-request (:copier common-lisp:nil))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null))
    (path-prefix common-lisp:nil :type
     (common-lisp:or |policyPathType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -3123,8 +3373,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-attached-user-policies-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
    (path-prefix common-lisp:nil :type
     (common-lisp:or |policyPathType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -3194,8 +3446,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-entities-for-policy-request (:copier common-lisp:nil))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
    (entity-filter common-lisp:nil :type
     (common-lisp:or entity-type common-lisp:null))
    (path-prefix common-lisp:nil :type
@@ -3285,8 +3539,10 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-group-policies-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or |markerType| common-lisp:null))
    (max-items common-lisp:nil :type
@@ -3317,8 +3573,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-group-policies-response (:copier common-lisp:nil))
-   (policy-names (common-lisp:error ":policy-names is required") :type
-    (common-lisp:or |policyNameListType| common-lisp:null))
+   (policy-names
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":policy-names is required"))
+    :type (common-lisp:or |policyNameListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -3349,8 +3607,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-groups-for-user-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |existingUserNameType| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |existingUserNameType| common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or |markerType| common-lisp:null))
    (max-items common-lisp:nil :type
@@ -3381,8 +3641,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-groups-for-user-response (:copier common-lisp:nil))
-   (groups (common-lisp:error ":groups is required") :type
-    (common-lisp:or |groupListType| common-lisp:null))
+   (groups
+    (common-lisp:error #A((19) common-lisp:base-char . ":groups is required"))
+    :type (common-lisp:or |groupListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -3440,8 +3701,9 @@
                                                 'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-groups-response (:copier common-lisp:nil))
-   (groups (common-lisp:error ":groups is required") :type
-    (common-lisp:or |groupListType| common-lisp:null))
+   (groups
+    (common-lisp:error #A((19) common-lisp:base-char . ":groups is required"))
+    :type (common-lisp:or |groupListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -3469,8 +3731,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-instance-profiles-for-role-request (:copier common-lisp:nil))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or |markerType| common-lisp:null))
    (max-items common-lisp:nil :type
@@ -3501,7 +3765,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-instance-profiles-for-role-response (:copier common-lisp:nil))
-   (instance-profiles (common-lisp:error ":instance-profiles is required")
+   (instance-profiles
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":instance-profiles is required"))
     :type (common-lisp:or |instanceProfileListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
@@ -3565,7 +3831,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-instance-profiles-response (:copier common-lisp:nil))
-   (instance-profiles (common-lisp:error ":instance-profiles is required")
+   (instance-profiles
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":instance-profiles is required"))
     :type (common-lisp:or |instanceProfileListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
@@ -3626,8 +3894,10 @@
                                                 'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-mfadevices-response (:copier common-lisp:nil))
-   (mfadevices (common-lisp:error ":mfadevices is required") :type
-    (common-lisp:or |mfaDeviceListType| common-lisp:null))
+   (mfadevices
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":mfadevices is required"))
+    :type (common-lisp:or |mfaDeviceListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -3760,8 +4030,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-policy-versions-request (:copier common-lisp:nil))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or |markerType| common-lisp:null))
    (max-items common-lisp:nil :type
@@ -3823,8 +4095,10 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-role-policies-request (:copier common-lisp:nil))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or |markerType| common-lisp:null))
    (max-items common-lisp:nil :type
@@ -3854,8 +4128,10 @@
                                                 'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-role-policies-response (:copier common-lisp:nil))
-   (policy-names (common-lisp:error ":policy-names is required") :type
-    (common-lisp:or |policyNameListType| common-lisp:null))
+   (policy-names
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":policy-names is required"))
+    :type (common-lisp:or |policyNameListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -3913,8 +4189,9 @@
                                                 'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-roles-response (:copier common-lisp:nil))
-   (roles (common-lisp:error ":roles is required") :type
-    (common-lisp:or |roleListType| common-lisp:null))
+   (roles
+    (common-lisp:error #A((18) common-lisp:base-char . ":roles is required"))
+    :type (common-lisp:or |roleListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -4065,7 +4342,10 @@
  (common-lisp:defstruct
      (list-server-certificates-response (:copier common-lisp:nil))
    (server-certificate-metadata-list
-    (common-lisp:error ":server-certificate-metadata-list is required") :type
+    (common-lisp:error
+     #A((45) common-lisp:base-char
+        . ":server-certificate-metadata-list is required"))
+    :type
     (common-lisp:or |serverCertificateMetadataListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
@@ -4172,8 +4452,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-signing-certificates-response (:copier common-lisp:nil))
-   (certificates (common-lisp:error ":certificates is required") :type
-    (common-lisp:or |certificateListType| common-lisp:null))
+   (certificates
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":certificates is required"))
+    :type (common-lisp:or |certificateListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -4203,8 +4485,10 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-user-policies-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |existingUserNameType| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |existingUserNameType| common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or |markerType| common-lisp:null))
    (max-items common-lisp:nil :type
@@ -4234,8 +4518,10 @@
                                                 'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-user-policies-response (:copier common-lisp:nil))
-   (policy-names (common-lisp:error ":policy-names is required") :type
-    (common-lisp:or |policyNameListType| common-lisp:null))
+   (policy-names
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":policy-names is required"))
+    :type (common-lisp:or |policyNameListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -4293,8 +4579,9 @@
                                                 'max-items))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-users-response (:copier common-lisp:nil))
-   (users (common-lisp:error ":users is required") :type
-    (common-lisp:or |userListType| common-lisp:null))
+   (users
+    (common-lisp:error #A((18) common-lisp:base-char . ":users is required"))
+    :type (common-lisp:or |userListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
    (marker common-lisp:nil :type
@@ -4354,7 +4641,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-virtual-mfadevices-response (:copier common-lisp:nil))
-   (virtual-mfadevices (common-lisp:error ":virtual-mfadevices is required")
+   (virtual-mfadevices
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":virtual-mfadevices is required"))
     :type (common-lisp:or |virtualMFADeviceListType| common-lisp:null))
    (is-truncated common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null))
@@ -4385,10 +4674,14 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (login-profile (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (create-date (common-lisp:error ":create-date is required") :type
-    (common-lisp:or |dateType| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (create-date
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":create-date is required"))
+    :type (common-lisp:or |dateType| common-lisp:null))
    (password-reset-required common-lisp:nil :type
     (common-lisp:or |booleanType| common-lisp:null)))
  (common-lisp:export (common-lisp:list 'login-profile 'make-login-profile))
@@ -4412,12 +4705,18 @@
                                                 'password-reset-required))))))
 (common-lisp:progn
  (common-lisp:defstruct (mfadevice (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (serial-number (common-lisp:error ":serial-number is required") :type
-    (common-lisp:or |serialNumberType| common-lisp:null))
-   (enable-date (common-lisp:error ":enable-date is required") :type
-    (common-lisp:or |dateType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (serial-number
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":serial-number is required"))
+    :type (common-lisp:or |serialNumberType| common-lisp:null))
+   (enable-date
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":enable-date is required"))
+    :type (common-lisp:or |dateType| common-lisp:null)))
  (common-lisp:export (common-lisp:list 'mfadevice 'make-mfadevice))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape mfadevice))
@@ -4970,12 +5269,18 @@
                                                 'column))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-group-policy-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or |policyNameType| common-lisp:null))
-   (policy-document (common-lisp:error ":policy-document is required") :type
-    (common-lisp:or |policyDocumentType| common-lisp:null)))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or |policyNameType| common-lisp:null))
+   (policy-document
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":policy-document is required"))
+    :type (common-lisp:or |policyDocumentType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-group-policy-request 'make-put-group-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5000,12 +5305,18 @@
                                                 'policy-document))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-role-policy-request (:copier common-lisp:nil))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or |policyNameType| common-lisp:null))
-   (policy-document (common-lisp:error ":policy-document is required") :type
-    (common-lisp:or |policyDocumentType| common-lisp:null)))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or |policyNameType| common-lisp:null))
+   (policy-document
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":policy-document is required"))
+    :type (common-lisp:or |policyDocumentType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-role-policy-request 'make-put-role-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5030,12 +5341,18 @@
                                                 'policy-document))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-user-policy-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |existingUserNameType| common-lisp:null))
-   (policy-name (common-lisp:error ":policy-name is required") :type
-    (common-lisp:or |policyNameType| common-lisp:null))
-   (policy-document (common-lisp:error ":policy-document is required") :type
-    (common-lisp:or |policyDocumentType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |existingUserNameType| common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":policy-name is required"))
+    :type (common-lisp:or |policyNameType| common-lisp:null))
+   (policy-document
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":policy-document is required"))
+    :type (common-lisp:or |policyDocumentType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-user-policy-request 'make-put-user-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5063,10 +5380,14 @@
      (remove-client-idfrom-open-idconnect-provider-request
       (:copier common-lisp:nil))
    (open-idconnect-provider-arn
-    (common-lisp:error ":open-idconnect-provider-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (client-id (common-lisp:error ":client-id is required") :type
-    (common-lisp:or |clientIDType| common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":open-idconnect-provider-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (client-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":client-id is required"))
+    :type (common-lisp:or |clientIDType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-client-idfrom-open-idconnect-provider-request
                     'make-remove-client-idfrom-open-idconnect-provider-request))
@@ -5089,10 +5410,13 @@
  (common-lisp:defstruct
      (remove-role-from-instance-profile-request (:copier common-lisp:nil))
    (instance-profile-name
-    (common-lisp:error ":instance-profile-name is required") :type
-    (common-lisp:or |instanceProfileNameType| common-lisp:null))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":instance-profile-name is required"))
+    :type (common-lisp:or |instanceProfileNameType| common-lisp:null))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-role-from-instance-profile-request
                     'make-remove-role-from-instance-profile-request))
@@ -5114,10 +5438,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-user-from-group-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |existingUserNameType| common-lisp:null)))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |existingUserNameType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-user-from-group-request
                     'make-remove-user-from-group-request))
@@ -5147,8 +5475,10 @@
    (user-name common-lisp:nil :type
     (common-lisp:or |userNameType| common-lisp:null))
    (service-specific-credential-id
-    (common-lisp:error ":service-specific-credential-id is required") :type
-    (common-lisp:or |serviceSpecificCredentialId| common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":service-specific-credential-id is required"))
+    :type (common-lisp:or |serviceSpecificCredentialId| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reset-service-specific-credential-request
                     'make-reset-service-specific-credential-request))
@@ -5197,11 +5527,14 @@
 (common-lisp:deftype resource-name-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (resource-specific-result (:copier common-lisp:nil))
-   (eval-resource-name (common-lisp:error ":eval-resource-name is required")
+   (eval-resource-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":eval-resource-name is required"))
     :type (common-lisp:or resource-name-type common-lisp:null))
    (eval-resource-decision
-    (common-lisp:error ":eval-resource-decision is required") :type
-    (common-lisp:or policy-evaluation-decision-type common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":eval-resource-decision is required"))
+    :type (common-lisp:or policy-evaluation-decision-type common-lisp:null))
    (matched-statements common-lisp:nil :type
     (common-lisp:or statement-list-type common-lisp:null))
    (missing-context-values common-lisp:nil :type
@@ -5251,16 +5584,22 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (resync-mfadevice-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |existingUserNameType| common-lisp:null))
-   (serial-number (common-lisp:error ":serial-number is required") :type
-    (common-lisp:or |serialNumberType| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |existingUserNameType| common-lisp:null))
+   (serial-number
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":serial-number is required"))
+    :type (common-lisp:or |serialNumberType| common-lisp:null))
    (authentication-code1
-    (common-lisp:error ":authentication-code1 is required") :type
-    (common-lisp:or |authenticationCodeType| common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":authentication-code1 is required"))
+    :type (common-lisp:or |authenticationCodeType| common-lisp:null))
    (authentication-code2
-    (common-lisp:error ":authentication-code2 is required") :type
-    (common-lisp:or |authenticationCodeType| common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":authentication-code2 is required"))
+    :type (common-lisp:or |authenticationCodeType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'resync-mfadevice-request 'make-resync-mfadevice-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5290,16 +5629,22 @@
                                                 'authentication-code2))))))
 (common-lisp:progn
  (common-lisp:defstruct (role (:copier common-lisp:nil))
-   (path (common-lisp:error ":path is required") :type
-    (common-lisp:or |pathType| common-lisp:null))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null))
-   (role-id (common-lisp:error ":role-id is required") :type
-    (common-lisp:or |idType| common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (create-date (common-lisp:error ":create-date is required") :type
-    (common-lisp:or |dateType| common-lisp:null))
+   (path
+    (common-lisp:error #A((17) common-lisp:base-char . ":path is required"))
+    :type (common-lisp:or |pathType| common-lisp:null))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null))
+   (role-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":role-id is required"))
+    :type (common-lisp:or |idType| common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (create-date
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":create-date is required"))
+    :type (common-lisp:or |dateType| common-lisp:null))
    (assume-role-policy-document common-lisp:nil :type
     (common-lisp:or |policyDocumentType| common-lisp:null))
    (description common-lisp:nil :type
@@ -5450,16 +5795,25 @@
 (common-lisp:deftype samlprovider-name-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (sshpublic-key (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (sshpublic-key-id (common-lisp:error ":sshpublic-key-id is required") :type
-    (common-lisp:or |publicKeyIdType| common-lisp:null))
-   (fingerprint (common-lisp:error ":fingerprint is required") :type
-    (common-lisp:or |publicKeyFingerprintType| common-lisp:null))
-   (sshpublic-key-body (common-lisp:error ":sshpublic-key-body is required")
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (sshpublic-key-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":sshpublic-key-id is required"))
+    :type (common-lisp:or |publicKeyIdType| common-lisp:null))
+   (fingerprint
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":fingerprint is required"))
+    :type (common-lisp:or |publicKeyFingerprintType| common-lisp:null))
+   (sshpublic-key-body
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":sshpublic-key-body is required"))
     :type (common-lisp:or |publicKeyMaterialType| common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or |statusType| common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or |statusType| common-lisp:null))
    (upload-date common-lisp:nil :type
     (common-lisp:or |dateType| common-lisp:null)))
  (common-lisp:export (common-lisp:list 'sshpublic-key 'make-sshpublic-key))
@@ -5506,14 +5860,21 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (sshpublic-key-metadata (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (sshpublic-key-id (common-lisp:error ":sshpublic-key-id is required") :type
-    (common-lisp:or |publicKeyIdType| common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or |statusType| common-lisp:null))
-   (upload-date (common-lisp:error ":upload-date is required") :type
-    (common-lisp:or |dateType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (sshpublic-key-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":sshpublic-key-id is required"))
+    :type (common-lisp:or |publicKeyIdType| common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or |statusType| common-lisp:null))
+   (upload-date
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":upload-date is required"))
+    :type (common-lisp:or |dateType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'sshpublic-key-metadata 'make-sshpublic-key-metadata))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5544,10 +5905,14 @@
 (common-lisp:progn
  (common-lisp:defstruct (server-certificate (:copier common-lisp:nil))
    (server-certificate-metadata
-    (common-lisp:error ":server-certificate-metadata is required") :type
-    (common-lisp:or server-certificate-metadata common-lisp:null))
-   (certificate-body (common-lisp:error ":certificate-body is required") :type
-    (common-lisp:or |certificateBodyType| common-lisp:null))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":server-certificate-metadata is required"))
+    :type (common-lisp:or server-certificate-metadata common-lisp:null))
+   (certificate-body
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":certificate-body is required"))
+    :type (common-lisp:or |certificateBodyType| common-lisp:null))
    (certificate-chain common-lisp:nil :type
     (common-lisp:or |certificateChainType| common-lisp:null)))
  (common-lisp:export
@@ -5572,16 +5937,19 @@
                                                 'certificate-chain))))))
 (common-lisp:progn
  (common-lisp:defstruct (server-certificate-metadata (:copier common-lisp:nil))
-   (path (common-lisp:error ":path is required") :type
-    (common-lisp:or |pathType| common-lisp:null))
+   (path
+    (common-lisp:error #A((17) common-lisp:base-char . ":path is required"))
+    :type (common-lisp:or |pathType| common-lisp:null))
    (server-certificate-name
-    (common-lisp:error ":server-certificate-name is required") :type
-    (common-lisp:or |serverCertificateNameType| common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":server-certificate-name is required"))
+    :type (common-lisp:or |serverCertificateNameType| common-lisp:null))
    (server-certificate-id
-    (common-lisp:error ":server-certificate-id is required") :type
-    (common-lisp:or |idType| common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":server-certificate-id is required"))
+    :type (common-lisp:or |idType| common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
    (upload-date common-lisp:nil :type
     (common-lisp:or |dateType| common-lisp:null))
    (expiration common-lisp:nil :type
@@ -5661,21 +6029,34 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (service-specific-credential (:copier common-lisp:nil))
-   (create-date (common-lisp:error ":create-date is required") :type
-    (common-lisp:or |dateType| common-lisp:null))
-   (service-name (common-lisp:error ":service-name is required") :type
-    (common-lisp:or |serviceName| common-lisp:null))
-   (service-user-name (common-lisp:error ":service-user-name is required")
+   (create-date
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":create-date is required"))
+    :type (common-lisp:or |dateType| common-lisp:null))
+   (service-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":service-name is required"))
+    :type (common-lisp:or |serviceName| common-lisp:null))
+   (service-user-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":service-user-name is required"))
     :type (common-lisp:or |serviceUserName| common-lisp:null))
-   (service-password (common-lisp:error ":service-password is required") :type
-    (common-lisp:or |servicePassword| common-lisp:null))
+   (service-password
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":service-password is required"))
+    :type (common-lisp:or |servicePassword| common-lisp:null))
    (service-specific-credential-id
-    (common-lisp:error ":service-specific-credential-id is required") :type
-    (common-lisp:or |serviceSpecificCredentialId| common-lisp:null))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or |statusType| common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":service-specific-credential-id is required"))
+    :type (common-lisp:or |serviceSpecificCredentialId| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or |statusType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'service-specific-credential
                     'make-service-specific-credential))
@@ -5722,19 +6103,30 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (service-specific-credential-metadata (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or |statusType| common-lisp:null))
-   (service-user-name (common-lisp:error ":service-user-name is required")
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or |statusType| common-lisp:null))
+   (service-user-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":service-user-name is required"))
     :type (common-lisp:or |serviceUserName| common-lisp:null))
-   (create-date (common-lisp:error ":create-date is required") :type
-    (common-lisp:or |dateType| common-lisp:null))
+   (create-date
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":create-date is required"))
+    :type (common-lisp:or |dateType| common-lisp:null))
    (service-specific-credential-id
-    (common-lisp:error ":service-specific-credential-id is required") :type
-    (common-lisp:or |serviceSpecificCredentialId| common-lisp:null))
-   (service-name (common-lisp:error ":service-name is required") :type
-    (common-lisp:or |serviceName| common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":service-specific-credential-id is required"))
+    :type (common-lisp:or |serviceSpecificCredentialId| common-lisp:null))
+   (service-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":service-name is required"))
+    :type (common-lisp:or |serviceName| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'service-specific-credential-metadata
                     'make-service-specific-credential-metadata))
@@ -5785,10 +6177,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-default-policy-version-request (:copier common-lisp:nil))
-   (policy-arn (common-lisp:error ":policy-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (version-id (common-lisp:error ":version-id is required") :type
-    (common-lisp:or |policyVersionIdType| common-lisp:null)))
+   (policy-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policy-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (version-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":version-id is required"))
+    :type (common-lisp:or |policyVersionIdType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-default-policy-version-request
                     'make-set-default-policy-version-request))
@@ -5809,14 +6205,21 @@
                                                 'version-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (signing-certificate (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (certificate-id (common-lisp:error ":certificate-id is required") :type
-    (common-lisp:or |certificateIdType| common-lisp:null))
-   (certificate-body (common-lisp:error ":certificate-body is required") :type
-    (common-lisp:or |certificateBodyType| common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or |statusType| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (certificate-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":certificate-id is required"))
+    :type (common-lisp:or |certificateIdType| common-lisp:null))
+   (certificate-body
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":certificate-body is required"))
+    :type (common-lisp:or |certificateBodyType| common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or |statusType| common-lisp:null))
    (upload-date common-lisp:nil :type
     (common-lisp:or |dateType| common-lisp:null)))
  (common-lisp:export
@@ -5852,10 +6255,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (simulate-custom-policy-request (:copier common-lisp:nil))
-   (policy-input-list (common-lisp:error ":policy-input-list is required")
+   (policy-input-list
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":policy-input-list is required"))
     :type (common-lisp:or simulation-policy-list-type common-lisp:null))
-   (action-names (common-lisp:error ":action-names is required") :type
-    (common-lisp:or action-name-list-type common-lisp:null))
+   (action-names
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":action-names is required"))
+    :type (common-lisp:or action-name-list-type common-lisp:null))
    (resource-arns common-lisp:nil :type
     (common-lisp:or resource-name-list-type common-lisp:null))
    (resource-policy common-lisp:nil :type
@@ -5963,12 +6370,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (simulate-principal-policy-request (:copier common-lisp:nil))
-   (policy-source-arn (common-lisp:error ":policy-source-arn is required")
+   (policy-source-arn
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":policy-source-arn is required"))
     :type (common-lisp:or |arnType| common-lisp:null))
    (policy-input-list common-lisp:nil :type
     (common-lisp:or simulation-policy-list-type common-lisp:null))
-   (action-names (common-lisp:error ":action-names is required") :type
-    (common-lisp:or action-name-list-type common-lisp:null))
+   (action-names
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":action-names is required"))
+    :type (common-lisp:or action-name-list-type common-lisp:null))
    (resource-arns common-lisp:nil :type
     (common-lisp:or resource-name-list-type common-lisp:null))
    (resource-policy common-lisp:nil :type
@@ -6138,10 +6549,13 @@
  (common-lisp:defstruct (update-access-key-request (:copier common-lisp:nil))
    (user-name common-lisp:nil :type
     (common-lisp:or |existingUserNameType| common-lisp:null))
-   (access-key-id (common-lisp:error ":access-key-id is required") :type
-    (common-lisp:or |accessKeyIdType| common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or |statusType| common-lisp:null)))
+   (access-key-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":access-key-id is required"))
+    :type (common-lisp:or |accessKeyIdType| common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or |statusType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-access-key-request
                     'make-update-access-key-request))
@@ -6242,10 +6656,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-assume-role-policy-request (:copier common-lisp:nil))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null))
-   (policy-document (common-lisp:error ":policy-document is required") :type
-    (common-lisp:or |policyDocumentType| common-lisp:null)))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null))
+   (policy-document
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":policy-document is required"))
+    :type (common-lisp:or |policyDocumentType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-assume-role-policy-request
                     'make-update-assume-role-policy-request))
@@ -6266,8 +6684,10 @@
                                                 'policy-document))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-group-request (:copier common-lisp:nil))
-   (group-name (common-lisp:error ":group-name is required") :type
-    (common-lisp:or |groupNameType| common-lisp:null))
+   (group-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":group-name is required"))
+    :type (common-lisp:or |groupNameType| common-lisp:null))
    (new-path common-lisp:nil :type
     (common-lisp:or |pathType| common-lisp:null))
    (new-group-name common-lisp:nil :type
@@ -6295,8 +6715,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-login-profile-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
    (password common-lisp:nil :type
     (common-lisp:or |passwordType| common-lisp:null))
    (password-reset-required common-lisp:nil :type
@@ -6329,10 +6751,14 @@
      (update-open-idconnect-provider-thumbprint-request
       (:copier common-lisp:nil))
    (open-idconnect-provider-arn
-    (common-lisp:error ":open-idconnect-provider-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (thumbprint-list (common-lisp:error ":thumbprint-list is required") :type
-    (common-lisp:or |thumbprintListType| common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":open-idconnect-provider-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (thumbprint-list
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":thumbprint-list is required"))
+    :type (common-lisp:or |thumbprintListType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-open-idconnect-provider-thumbprint-request
                     'make-update-open-idconnect-provider-thumbprint-request))
@@ -6354,10 +6780,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-role-description-request (:copier common-lisp:nil))
-   (role-name (common-lisp:error ":role-name is required") :type
-    (common-lisp:or |roleNameType| common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or |roleDescriptionType| common-lisp:null)))
+   (role-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":role-name is required"))
+    :type (common-lisp:or |roleNameType| common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or |roleDescriptionType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-role-description-request
                     'make-update-role-description-request))
@@ -6396,10 +6826,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (update-samlprovider-request (:copier common-lisp:nil))
    (samlmetadata-document
-    (common-lisp:error ":samlmetadata-document is required") :type
-    (common-lisp:or samlmetadata-document-type common-lisp:null))
-   (samlprovider-arn (common-lisp:error ":samlprovider-arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":samlmetadata-document is required"))
+    :type (common-lisp:or samlmetadata-document-type common-lisp:null))
+   (samlprovider-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":samlprovider-arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-samlprovider-request
                     'make-update-samlprovider-request))
@@ -6439,12 +6872,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-sshpublic-key-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (sshpublic-key-id (common-lisp:error ":sshpublic-key-id is required") :type
-    (common-lisp:or |publicKeyIdType| common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or |statusType| common-lisp:null)))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (sshpublic-key-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":sshpublic-key-id is required"))
+    :type (common-lisp:or |publicKeyIdType| common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or |statusType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-sshpublic-key-request
                     'make-update-sshpublic-key-request))
@@ -6472,8 +6910,9 @@
  (common-lisp:defstruct
      (update-server-certificate-request (:copier common-lisp:nil))
    (server-certificate-name
-    (common-lisp:error ":server-certificate-name is required") :type
-    (common-lisp:or |serverCertificateNameType| common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":server-certificate-name is required"))
+    :type (common-lisp:or |serverCertificateNameType| common-lisp:null))
    (new-path common-lisp:nil :type
     (common-lisp:or |pathType| common-lisp:null))
    (new-server-certificate-name common-lisp:nil :type
@@ -6507,10 +6946,13 @@
    (user-name common-lisp:nil :type
     (common-lisp:or |userNameType| common-lisp:null))
    (service-specific-credential-id
-    (common-lisp:error ":service-specific-credential-id is required") :type
-    (common-lisp:or |serviceSpecificCredentialId| common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or |statusType| common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":service-specific-credential-id is required"))
+    :type (common-lisp:or |serviceSpecificCredentialId| common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or |statusType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-service-specific-credential-request
                     'make-update-service-specific-credential-request))
@@ -6539,10 +6981,13 @@
      (update-signing-certificate-request (:copier common-lisp:nil))
    (user-name common-lisp:nil :type
     (common-lisp:or |existingUserNameType| common-lisp:null))
-   (certificate-id (common-lisp:error ":certificate-id is required") :type
-    (common-lisp:or |certificateIdType| common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or |statusType| common-lisp:null)))
+   (certificate-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":certificate-id is required"))
+    :type (common-lisp:or |certificateIdType| common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or |statusType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-signing-certificate-request
                     'make-update-signing-certificate-request))
@@ -6568,8 +7013,10 @@
                                                 'status))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-user-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |existingUserNameType| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |existingUserNameType| common-lisp:null))
    (new-path common-lisp:nil :type
     (common-lisp:or |pathType| common-lisp:null))
    (new-user-name common-lisp:nil :type
@@ -6597,9 +7044,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (upload-sshpublic-key-request (:copier common-lisp:nil))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (sshpublic-key-body (common-lisp:error ":sshpublic-key-body is required")
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (sshpublic-key-body
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":sshpublic-key-body is required"))
     :type (common-lisp:or |publicKeyMaterialType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'upload-sshpublic-key-request
@@ -6642,12 +7093,17 @@
      (upload-server-certificate-request (:copier common-lisp:nil))
    (path common-lisp:nil :type (common-lisp:or |pathType| common-lisp:null))
    (server-certificate-name
-    (common-lisp:error ":server-certificate-name is required") :type
-    (common-lisp:or |serverCertificateNameType| common-lisp:null))
-   (certificate-body (common-lisp:error ":certificate-body is required") :type
-    (common-lisp:or |certificateBodyType| common-lisp:null))
-   (private-key (common-lisp:error ":private-key is required") :type
-    (common-lisp:or |privateKeyType| common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":server-certificate-name is required"))
+    :type (common-lisp:or |serverCertificateNameType| common-lisp:null))
+   (certificate-body
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":certificate-body is required"))
+    :type (common-lisp:or |certificateBodyType| common-lisp:null))
+   (private-key
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":private-key is required"))
+    :type (common-lisp:or |privateKeyType| common-lisp:null))
    (certificate-chain common-lisp:nil :type
     (common-lisp:or |certificateChainType| common-lisp:null)))
  (common-lisp:export
@@ -6706,8 +7162,10 @@
      (upload-signing-certificate-request (:copier common-lisp:nil))
    (user-name common-lisp:nil :type
     (common-lisp:or |existingUserNameType| common-lisp:null))
-   (certificate-body (common-lisp:error ":certificate-body is required") :type
-    (common-lisp:or |certificateBodyType| common-lisp:null)))
+   (certificate-body
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":certificate-body is required"))
+    :type (common-lisp:or |certificateBodyType| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'upload-signing-certificate-request
                     'make-upload-signing-certificate-request))
@@ -6729,8 +7187,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (upload-signing-certificate-response (:copier common-lisp:nil))
-   (certificate (common-lisp:error ":certificate is required") :type
-    (common-lisp:or signing-certificate common-lisp:null)))
+   (certificate
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":certificate is required"))
+    :type (common-lisp:or signing-certificate common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'upload-signing-certificate-response
                     'make-upload-signing-certificate-response))
@@ -6746,16 +7206,22 @@
                                                 'certificate))))))
 (common-lisp:progn
  (common-lisp:defstruct (user (:copier common-lisp:nil))
-   (path (common-lisp:error ":path is required") :type
-    (common-lisp:or |pathType| common-lisp:null))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or |userNameType| common-lisp:null))
-   (user-id (common-lisp:error ":user-id is required") :type
-    (common-lisp:or |idType| common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or |arnType| common-lisp:null))
-   (create-date (common-lisp:error ":create-date is required") :type
-    (common-lisp:or |dateType| common-lisp:null))
+   (path
+    (common-lisp:error #A((17) common-lisp:base-char . ":path is required"))
+    :type (common-lisp:or |pathType| common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or |userNameType| common-lisp:null))
+   (user-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":user-id is required"))
+    :type (common-lisp:or |idType| common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or |arnType| common-lisp:null))
+   (create-date
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":create-date is required"))
+    :type (common-lisp:or |dateType| common-lisp:null))
    (password-last-used common-lisp:nil :type
     (common-lisp:or |dateType| common-lisp:null)))
  (common-lisp:export (common-lisp:list 'user 'make-user))
@@ -6853,8 +7319,10 @@
                                                 'attached-managed-policies))))))
 (common-lisp:progn
  (common-lisp:defstruct (virtual-mfadevice (:copier common-lisp:nil))
-   (serial-number (common-lisp:error ":serial-number is required") :type
-    (common-lisp:or |serialNumberType| common-lisp:null))
+   (serial-number
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":serial-number is required"))
+    :type (common-lisp:or |serialNumberType| common-lisp:null))
    (base32string-seed common-lisp:nil :type
     (common-lisp:or bootstrap-datum common-lisp:null))
    (qrcode-png common-lisp:nil :type
@@ -7165,7 +7633,8 @@
                        'make-add-client-idto-open-idconnect-provider-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"AddClientIDToOpenIDConnectProvider")
@@ -7186,7 +7655,8 @@
                        'make-add-role-to-instance-profile-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddRoleToInstanceProfile")
                                   ("Version" ,@"2010-05-08"))
@@ -7204,7 +7674,8 @@
                       (common-lisp:apply 'make-add-user-to-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddUserToGroup")
                                   ("Version" ,@"2010-05-08"))
@@ -7222,7 +7693,8 @@
                       (common-lisp:apply 'make-attach-group-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachGroupPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -7240,7 +7712,8 @@
                       (common-lisp:apply 'make-attach-role-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachRolePolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -7258,7 +7731,8 @@
                       (common-lisp:apply 'make-attach-user-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachUserPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -7276,7 +7750,8 @@
                       (common-lisp:apply 'make-change-password-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ChangePassword")
                                   ("Version" ,@"2010-05-08"))
@@ -7294,7 +7769,8 @@
                       (common-lisp:apply 'make-create-access-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAccessKey")
                                   ("Version" ,@"2010-05-08"))
@@ -7312,7 +7788,8 @@
                       (common-lisp:apply 'make-create-account-alias-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAccountAlias")
                                   ("Version" ,@"2010-05-08"))
@@ -7330,7 +7807,8 @@
                       (common-lisp:apply 'make-create-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateGroup")
                                   ("Version" ,@"2010-05-08"))
@@ -7348,7 +7826,8 @@
                       (common-lisp:apply 'make-create-instance-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateInstanceProfile")
                                   ("Version" ,@"2010-05-08"))
@@ -7368,7 +7847,8 @@
                       (common-lisp:apply 'make-create-login-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLoginProfile")
                                   ("Version" ,@"2010-05-08"))
@@ -7388,7 +7868,8 @@
                        'make-create-open-idconnect-provider-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateOpenIDConnectProvider")
                                   ("Version" ,@"2010-05-08"))
@@ -7409,7 +7890,8 @@
                       (common-lisp:apply 'make-create-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -7429,7 +7911,8 @@
                       (common-lisp:apply 'make-create-policy-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePolicyVersion")
                                   ("Version" ,@"2010-05-08"))
@@ -7450,7 +7933,8 @@
                       (common-lisp:apply 'make-create-role-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateRole")
                                   ("Version" ,@"2010-05-08"))
@@ -7468,7 +7952,8 @@
                       (common-lisp:apply 'make-create-samlprovider-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSAMLProvider")
                                   ("Version" ,@"2010-05-08"))
@@ -7489,7 +7974,8 @@
                        'make-create-service-linked-role-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateServiceLinkedRole")
                                   ("Version" ,@"2010-05-08"))
@@ -7508,7 +7994,8 @@
                        'make-create-service-specific-credential-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"CreateServiceSpecificCredential")
@@ -7528,7 +8015,8 @@
                       (common-lisp:apply 'make-create-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateUser")
                                   ("Version" ,@"2010-05-08"))
@@ -7546,7 +8034,8 @@
                       (common-lisp:apply 'make-create-virtual-mfadevice-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateVirtualMFADevice")
                                   ("Version" ,@"2010-05-08"))
@@ -7564,7 +8053,8 @@
                       (common-lisp:apply 'make-deactivate-mfadevice-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeactivateMFADevice")
                                   ("Version" ,@"2010-05-08"))
@@ -7582,7 +8072,8 @@
                       (common-lisp:apply 'make-delete-access-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAccessKey")
                                   ("Version" ,@"2010-05-08"))
@@ -7600,7 +8091,8 @@
                       (common-lisp:apply 'make-delete-account-alias-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAccountAlias")
                                   ("Version" ,@"2010-05-08"))
@@ -7611,7 +8103,8 @@
 (common-lisp:progn
  (common-lisp:defun delete-account-password-policy ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "iam" :method :post :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DeleteAccountPasswordPolicy"))
     common-lisp:nil common-lisp:nil))
@@ -7626,7 +8119,8 @@
                       (common-lisp:apply 'make-delete-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteGroup")
                                   ("Version" ,@"2010-05-08"))
@@ -7644,7 +8138,8 @@
                       (common-lisp:apply 'make-delete-group-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteGroupPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -7662,7 +8157,8 @@
                       (common-lisp:apply 'make-delete-instance-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteInstanceProfile")
                                   ("Version" ,@"2010-05-08"))
@@ -7680,7 +8176,8 @@
                       (common-lisp:apply 'make-delete-login-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLoginProfile")
                                   ("Version" ,@"2010-05-08"))
@@ -7699,7 +8196,8 @@
                        'make-delete-open-idconnect-provider-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteOpenIDConnectProvider")
                                   ("Version" ,@"2010-05-08"))
@@ -7717,7 +8215,8 @@
                       (common-lisp:apply 'make-delete-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -7735,7 +8234,8 @@
                       (common-lisp:apply 'make-delete-policy-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePolicyVersion")
                                   ("Version" ,@"2010-05-08"))
@@ -7753,7 +8253,8 @@
                       (common-lisp:apply 'make-delete-role-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRole")
                                   ("Version" ,@"2010-05-08"))
@@ -7771,7 +8272,8 @@
                       (common-lisp:apply 'make-delete-role-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRolePolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -7789,7 +8291,8 @@
                       (common-lisp:apply 'make-delete-samlprovider-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSAMLProvider")
                                   ("Version" ,@"2010-05-08"))
@@ -7807,7 +8310,8 @@
                       (common-lisp:apply 'make-delete-sshpublic-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSSHPublicKey")
                                   ("Version" ,@"2010-05-08"))
@@ -7826,7 +8330,8 @@
                        'make-delete-server-certificate-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteServerCertificate")
                                   ("Version" ,@"2010-05-08"))
@@ -7846,7 +8351,8 @@
                        'make-delete-service-specific-credential-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeleteServiceSpecificCredential")
@@ -7866,7 +8372,8 @@
                        'make-delete-signing-certificate-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSigningCertificate")
                                   ("Version" ,@"2010-05-08"))
@@ -7884,7 +8391,8 @@
                       (common-lisp:apply 'make-delete-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUser")
                                   ("Version" ,@"2010-05-08"))
@@ -7902,7 +8410,8 @@
                       (common-lisp:apply 'make-delete-user-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUserPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -7920,7 +8429,8 @@
                       (common-lisp:apply 'make-delete-virtual-mfadevice-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteVirtualMFADevice")
                                   ("Version" ,@"2010-05-08"))
@@ -7938,7 +8448,8 @@
                       (common-lisp:apply 'make-detach-group-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachGroupPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -7956,7 +8467,8 @@
                       (common-lisp:apply 'make-detach-role-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachRolePolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -7974,7 +8486,8 @@
                       (common-lisp:apply 'make-detach-user-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachUserPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -7995,7 +8508,8 @@
                       (common-lisp:apply 'make-enable-mfadevice-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableMFADevice")
                                   ("Version" ,@"2010-05-08"))
@@ -8006,7 +8520,8 @@
 (common-lisp:progn
  (common-lisp:defun generate-credential-report ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "iam" :method :post :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "GenerateCredentialReport"))
     "GenerateCredentialReportResponse" "GenerateCredentialReportResult"))
@@ -8021,7 +8536,8 @@
                       (common-lisp:apply 'make-get-access-key-last-used-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetAccessKeyLastUsed")
                                   ("Version" ,@"2010-05-08"))
@@ -8040,7 +8556,8 @@
                        'make-get-account-authorization-details-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetAccountAuthorizationDetails")
                                   ("Version" ,@"2010-05-08"))
@@ -8052,7 +8569,8 @@
 (common-lisp:progn
  (common-lisp:defun get-account-password-policy ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "iam" :method :post :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "GetAccountPasswordPolicy"))
     "GetAccountPasswordPolicyResponse" "GetAccountPasswordPolicyResult"))
@@ -8060,7 +8578,8 @@
 (common-lisp:progn
  (common-lisp:defun get-account-summary ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "iam" :method :post :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                             :method :post :params
                              (common-lisp:cons "Action" "GetAccountSummary"))
     "GetAccountSummaryResponse" "GetAccountSummaryResult"))
  (common-lisp:export 'get-account-summary))
@@ -8075,7 +8594,8 @@
                        'make-get-context-keys-for-custom-policy-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetContextKeysForCustomPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -8096,7 +8616,8 @@
                        'make-get-context-keys-for-principal-policy-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetContextKeysForPrincipalPolicy")
@@ -8109,7 +8630,8 @@
 (common-lisp:progn
  (common-lisp:defun get-credential-report ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "iam" :method :post :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                             :method :post :params
                              (common-lisp:cons "Action" "GetCredentialReport"))
     "GetCredentialReportResponse" "GetCredentialReportResult"))
  (common-lisp:export 'get-credential-report))
@@ -8123,7 +8645,8 @@
                       (common-lisp:apply 'make-get-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetGroup")
                                   ("Version" ,@"2010-05-08"))
@@ -8141,7 +8664,8 @@
                       (common-lisp:apply 'make-get-group-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetGroupPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -8159,7 +8683,8 @@
                       (common-lisp:apply 'make-get-instance-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetInstanceProfile")
                                   ("Version" ,@"2010-05-08"))
@@ -8177,7 +8702,8 @@
                       (common-lisp:apply 'make-get-login-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetLoginProfile")
                                   ("Version" ,@"2010-05-08"))
@@ -8196,7 +8722,8 @@
                        'make-get-open-idconnect-provider-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetOpenIDConnectProvider")
                                   ("Version" ,@"2010-05-08"))
@@ -8214,7 +8741,8 @@
                       (common-lisp:apply 'make-get-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -8232,7 +8760,8 @@
                       (common-lisp:apply 'make-get-policy-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPolicyVersion")
                                   ("Version" ,@"2010-05-08"))
@@ -8250,7 +8779,8 @@
                       (common-lisp:apply 'make-get-role-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRole")
                                   ("Version" ,@"2010-05-08"))
@@ -8268,7 +8798,8 @@
                       (common-lisp:apply 'make-get-role-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRolePolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -8286,7 +8817,8 @@
                       (common-lisp:apply 'make-get-samlprovider-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSAMLProvider")
                                   ("Version" ,@"2010-05-08"))
@@ -8305,7 +8837,8 @@
                       (common-lisp:apply 'make-get-sshpublic-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSSHPublicKey")
                                   ("Version" ,@"2010-05-08"))
@@ -8323,7 +8856,8 @@
                       (common-lisp:apply 'make-get-server-certificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetServerCertificate")
                                   ("Version" ,@"2010-05-08"))
@@ -8341,7 +8875,8 @@
                       (common-lisp:apply 'make-get-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetUser")
                                   ("Version" ,@"2010-05-08"))
@@ -8359,7 +8894,8 @@
                       (common-lisp:apply 'make-get-user-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetUserPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -8377,7 +8913,8 @@
                       (common-lisp:apply 'make-list-access-keys-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAccessKeys")
                                   ("Version" ,@"2010-05-08"))
@@ -8395,7 +8932,8 @@
                       (common-lisp:apply 'make-list-account-aliases-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAccountAliases")
                                   ("Version" ,@"2010-05-08"))
@@ -8415,7 +8953,8 @@
                        'make-list-attached-group-policies-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAttachedGroupPolicies")
                                   ("Version" ,@"2010-05-08"))
@@ -8435,7 +8974,8 @@
                        'make-list-attached-role-policies-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAttachedRolePolicies")
                                   ("Version" ,@"2010-05-08"))
@@ -8455,7 +8995,8 @@
                        'make-list-attached-user-policies-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAttachedUserPolicies")
                                   ("Version" ,@"2010-05-08"))
@@ -8476,7 +9017,8 @@
                       (common-lisp:apply 'make-list-entities-for-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListEntitiesForPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -8494,7 +9036,8 @@
                       (common-lisp:apply 'make-list-group-policies-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListGroupPolicies")
                                   ("Version" ,@"2010-05-08"))
@@ -8512,7 +9055,8 @@
                       (common-lisp:apply 'make-list-groups-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListGroups")
                                   ("Version" ,@"2010-05-08"))
@@ -8530,7 +9074,8 @@
                       (common-lisp:apply 'make-list-groups-for-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListGroupsForUser")
                                   ("Version" ,@"2010-05-08"))
@@ -8548,7 +9093,8 @@
                       (common-lisp:apply 'make-list-instance-profiles-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListInstanceProfiles")
                                   ("Version" ,@"2010-05-08"))
@@ -8567,7 +9113,8 @@
                        'make-list-instance-profiles-for-role-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListInstanceProfilesForRole")
                                   ("Version" ,@"2010-05-08"))
@@ -8586,7 +9133,8 @@
                       (common-lisp:apply 'make-list-mfadevices-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListMFADevices")
                                   ("Version" ,@"2010-05-08"))
@@ -8597,7 +9145,8 @@
 (common-lisp:progn
  (common-lisp:defun list-open-idconnect-providers ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "iam" :method :post :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "ListOpenIDConnectProviders"))
     "ListOpenIDConnectProvidersResponse" "ListOpenIDConnectProvidersResult"))
@@ -8614,7 +9163,8 @@
                       (common-lisp:apply 'make-list-policies-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPolicies")
                                   ("Version" ,@"2010-05-08"))
@@ -8632,7 +9182,8 @@
                       (common-lisp:apply 'make-list-policy-versions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPolicyVersions")
                                   ("Version" ,@"2010-05-08"))
@@ -8650,7 +9201,8 @@
                       (common-lisp:apply 'make-list-role-policies-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRolePolicies")
                                   ("Version" ,@"2010-05-08"))
@@ -8668,7 +9220,8 @@
                       (common-lisp:apply 'make-list-roles-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRoles")
                                   ("Version" ,@"2010-05-08"))
@@ -8679,7 +9232,8 @@
 (common-lisp:progn
  (common-lisp:defun list-samlproviders ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "iam" :method :post :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                             :method :post :params
                              (common-lisp:cons "Action" "ListSAMLProviders"))
     "ListSAMLProvidersResponse" "ListSAMLProvidersResult"))
  (common-lisp:export 'list-samlproviders))
@@ -8693,7 +9247,8 @@
                       (common-lisp:apply 'make-list-sshpublic-keys-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListSSHPublicKeys")
                                   ("Version" ,@"2010-05-08"))
@@ -8711,7 +9266,8 @@
                       (common-lisp:apply 'make-list-server-certificates-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListServerCertificates")
                                   ("Version" ,@"2010-05-08"))
@@ -8730,7 +9286,8 @@
                        'make-list-service-specific-credentials-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListServiceSpecificCredentials")
                                   ("Version" ,@"2010-05-08"))
@@ -8750,7 +9307,8 @@
                        'make-list-signing-certificates-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListSigningCertificates")
                                   ("Version" ,@"2010-05-08"))
@@ -8768,7 +9326,8 @@
                       (common-lisp:apply 'make-list-user-policies-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListUserPolicies")
                                   ("Version" ,@"2010-05-08"))
@@ -8786,7 +9345,8 @@
                       (common-lisp:apply 'make-list-users-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListUsers")
                                   ("Version" ,@"2010-05-08"))
@@ -8805,7 +9365,8 @@
                       (common-lisp:apply 'make-list-virtual-mfadevices-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListVirtualMFADevices")
                                   ("Version" ,@"2010-05-08"))
@@ -8824,7 +9385,8 @@
                       (common-lisp:apply 'make-put-group-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutGroupPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -8843,7 +9405,8 @@
                       (common-lisp:apply 'make-put-role-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutRolePolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -8862,7 +9425,8 @@
                       (common-lisp:apply 'make-put-user-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutUserPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -8882,7 +9446,8 @@
                        'make-remove-client-idfrom-open-idconnect-provider-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"RemoveClientIDFromOpenIDConnectProvider")
@@ -8903,7 +9468,8 @@
                        'make-remove-role-from-instance-profile-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveRoleFromInstanceProfile")
                                   ("Version" ,@"2010-05-08"))
@@ -8921,7 +9487,8 @@
                       (common-lisp:apply 'make-remove-user-from-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveUserFromGroup")
                                   ("Version" ,@"2010-05-08"))
@@ -8941,7 +9508,8 @@
                        'make-reset-service-specific-credential-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResetServiceSpecificCredential")
                                   ("Version" ,@"2010-05-08"))
@@ -8963,7 +9531,8 @@
                       (common-lisp:apply 'make-resync-mfadevice-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResyncMFADevice")
                                   ("Version" ,@"2010-05-08"))
@@ -8982,7 +9551,8 @@
                        'make-set-default-policy-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetDefaultPolicyVersion")
                                   ("Version" ,@"2010-05-08"))
@@ -9005,7 +9575,8 @@
                       (common-lisp:apply 'make-simulate-custom-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SimulateCustomPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -9030,7 +9601,8 @@
                        'make-simulate-principal-policy-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SimulatePrincipalPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -9048,7 +9620,8 @@
                       (common-lisp:apply 'make-update-access-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAccessKey")
                                   ("Version" ,@"2010-05-08"))
@@ -9075,7 +9648,8 @@
                        'make-update-account-password-policy-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAccountPasswordPolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -9094,7 +9668,8 @@
                        'make-update-assume-role-policy-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAssumeRolePolicy")
                                   ("Version" ,@"2010-05-08"))
@@ -9113,7 +9688,8 @@
                       (common-lisp:apply 'make-update-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateGroup")
                                   ("Version" ,@"2010-05-08"))
@@ -9133,7 +9709,8 @@
                       (common-lisp:apply 'make-update-login-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateLoginProfile")
                                   ("Version" ,@"2010-05-08"))
@@ -9154,7 +9731,8 @@
                        'make-update-open-idconnect-provider-thumbprint-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"UpdateOpenIDConnectProviderThumbprint")
@@ -9173,7 +9751,8 @@
                       (common-lisp:apply 'make-update-role-description-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRoleDescription")
                                   ("Version" ,@"2010-05-08"))
@@ -9192,7 +9771,8 @@
                       (common-lisp:apply 'make-update-samlprovider-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSAMLProvider")
                                   ("Version" ,@"2010-05-08"))
@@ -9211,7 +9791,8 @@
                       (common-lisp:apply 'make-update-sshpublic-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSSHPublicKey")
                                   ("Version" ,@"2010-05-08"))
@@ -9233,7 +9814,8 @@
                        'make-update-server-certificate-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateServerCertificate")
                                   ("Version" ,@"2010-05-08"))
@@ -9254,7 +9836,8 @@
                        'make-update-service-specific-credential-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"UpdateServiceSpecificCredential")
@@ -9275,7 +9858,8 @@
                        'make-update-signing-certificate-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSigningCertificate")
                                   ("Version" ,@"2010-05-08"))
@@ -9294,7 +9878,8 @@
                       (common-lisp:apply 'make-update-user-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateUser")
                                   ("Version" ,@"2010-05-08"))
@@ -9312,7 +9897,8 @@
                       (common-lisp:apply 'make-upload-sshpublic-key-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UploadSSHPublicKey")
                                   ("Version" ,@"2010-05-08"))
@@ -9334,7 +9920,8 @@
                        'make-upload-server-certificate-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UploadServerCertificate")
                                   ("Version" ,@"2010-05-08"))
@@ -9353,7 +9940,8 @@
                        'make-upload-signing-certificate-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iam" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iam")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UploadSigningCertificate")
                                   ("Version" ,@"2010-05-08"))

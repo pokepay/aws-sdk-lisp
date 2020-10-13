@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/clouddirectory)
+
 (common-lisp:progn
  (common-lisp:defstruct (access-denied-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -25,14 +26,20 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (add-facet-to-object-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (schema-facet (common-lisp:error ":schema-facet is required") :type
-    (common-lisp:or schema-facet common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (schema-facet
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":schema-facet is required"))
+    :type (common-lisp:or schema-facet common-lisp:null))
    (object-attribute-list common-lisp:nil :type
     (common-lisp:or attribute-key-and-value-list common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-facet-to-object-request
                     'make-add-facet-to-object-request))
@@ -75,10 +82,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (apply-schema-request (:copier common-lisp:nil))
    (published-schema-arn
-    (common-lisp:error ":published-schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":published-schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'apply-schema-request 'make-apply-schema-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -126,14 +136,22 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (attach-object-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (parent-reference (common-lisp:error ":parent-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (child-reference (common-lisp:error ":child-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (link-name (common-lisp:error ":link-name is required") :type
-    (common-lisp:or link-name common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (parent-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":parent-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (child-reference
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":child-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (link-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":link-name is required"))
+    :type (common-lisp:or link-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-object-request 'make-attach-object-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -180,10 +198,14 @@
 (common-lisp:progn
  (common-lisp:defstruct (attach-policy-request (:copier common-lisp:nil))
    (directory-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (policy-reference (common-lisp:error ":policy-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (policy-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":policy-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-policy-request 'make-attach-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -217,12 +239,18 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (attach-to-index-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (index-reference (common-lisp:error ":index-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (target-reference (common-lisp:error ":target-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (index-reference
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":index-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (target-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-to-index-request 'make-attach-to-index-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -263,18 +291,26 @@
                                                 'attached-object-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (attach-typed-link-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (source-object-reference
-    (common-lisp:error ":source-object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":source-object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (target-object-reference
-    (common-lisp:error ":target-object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (typed-link-facet (common-lisp:error ":typed-link-facet is required") :type
-    (common-lisp:or typed-link-schema-and-facet-name common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or attribute-name-and-value-list common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":target-object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (typed-link-facet
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":typed-link-facet is required"))
+    :type (common-lisp:or typed-link-schema-and-facet-name common-lisp:null))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or attribute-name-and-value-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-typed-link-request
                     'make-attach-typed-link-request))
@@ -327,12 +363,17 @@
                                                 'typed-link-specifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (attribute-key (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (facet-name (common-lisp:error ":facet-name is required") :type
-    (common-lisp:or facet-name common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or attribute-name common-lisp:null)))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (facet-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":facet-name is required"))
+    :type (common-lisp:or facet-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or attribute-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'attribute-key 'make-attribute-key))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape attribute-key))
@@ -354,10 +395,11 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (attribute-key-and-value (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or attribute-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or typed-attribute-value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or attribute-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or typed-attribute-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attribute-key-and-value 'make-attribute-key-and-value))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -394,10 +436,13 @@
 (common-lisp:deftype attribute-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (attribute-name-and-value (:copier common-lisp:nil))
-   (attribute-name (common-lisp:error ":attribute-name is required") :type
-    (common-lisp:or attribute-name common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or typed-attribute-value common-lisp:null)))
+   (attribute-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":attribute-name is required"))
+    :type (common-lisp:or attribute-name common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or typed-attribute-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attribute-name-and-value 'make-attribute-name-and-value))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -434,13 +479,18 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (batch-add-facet-to-object (:copier common-lisp:nil))
-   (schema-facet (common-lisp:error ":schema-facet is required") :type
-    (common-lisp:or schema-facet common-lisp:null))
+   (schema-facet
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":schema-facet is required"))
+    :type (common-lisp:or schema-facet common-lisp:null))
    (object-attribute-list
-    (common-lisp:error ":object-attribute-list is required") :type
-    (common-lisp:or attribute-key-and-value-list common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":object-attribute-list is required"))
+    :type (common-lisp:or attribute-key-and-value-list common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-add-facet-to-object
                     'make-batch-add-facet-to-object))
@@ -477,12 +527,18 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (batch-attach-object (:copier common-lisp:nil))
-   (parent-reference (common-lisp:error ":parent-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (child-reference (common-lisp:error ":child-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (link-name (common-lisp:error ":link-name is required") :type
-    (common-lisp:or link-name common-lisp:null)))
+   (parent-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":parent-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (child-reference
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":child-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (link-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":link-name is required"))
+    :type (common-lisp:or link-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-attach-object 'make-batch-attach-object))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -523,10 +579,14 @@
                                                 'attached-object-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (batch-attach-policy (:copier common-lisp:nil))
-   (policy-reference (common-lisp:error ":policy-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (policy-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":policy-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-attach-policy 'make-batch-attach-policy))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -555,10 +615,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (batch-attach-to-index (:copier common-lisp:nil))
-   (index-reference (common-lisp:error ":index-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (target-reference (common-lisp:error ":target-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (index-reference
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":index-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (target-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-attach-to-index 'make-batch-attach-to-index))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -597,15 +661,21 @@
 (common-lisp:progn
  (common-lisp:defstruct (batch-attach-typed-link (:copier common-lisp:nil))
    (source-object-reference
-    (common-lisp:error ":source-object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":source-object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (target-object-reference
-    (common-lisp:error ":target-object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (typed-link-facet (common-lisp:error ":typed-link-facet is required") :type
-    (common-lisp:or typed-link-schema-and-facet-name common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or attribute-name-and-value-list common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":target-object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (typed-link-facet
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":typed-link-facet is required"))
+    :type (common-lisp:or typed-link-schema-and-facet-name common-lisp:null))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or attribute-name-and-value-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-attach-typed-link 'make-batch-attach-typed-link))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -654,10 +724,14 @@
 (common-lisp:progn
  (common-lisp:defstruct (batch-create-index (:copier common-lisp:nil))
    (ordered-indexed-attribute-list
-    (common-lisp:error ":ordered-indexed-attribute-list is required") :type
-    (common-lisp:or attribute-key-list common-lisp:null))
-   (is-unique (common-lisp:error ":is-unique is required") :type
-    (common-lisp:or bool common-lisp:null))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":ordered-indexed-attribute-list is required"))
+    :type (common-lisp:or attribute-key-list common-lisp:null))
+   (is-unique
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":is-unique is required"))
+    :type (common-lisp:or bool common-lisp:null))
    (parent-reference common-lisp:nil :type
     (common-lisp:or object-reference common-lisp:null))
    (link-name common-lisp:nil :type
@@ -713,18 +787,26 @@
                                                 'object-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (batch-create-object (:copier common-lisp:nil))
-   (schema-facet (common-lisp:error ":schema-facet is required") :type
-    (common-lisp:or schema-facet-list common-lisp:null))
+   (schema-facet
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":schema-facet is required"))
+    :type (common-lisp:or schema-facet-list common-lisp:null))
    (object-attribute-list
-    (common-lisp:error ":object-attribute-list is required") :type
-    (common-lisp:or attribute-key-and-value-list common-lisp:null))
-   (parent-reference (common-lisp:error ":parent-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (link-name (common-lisp:error ":link-name is required") :type
-    (common-lisp:or link-name common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":object-attribute-list is required"))
+    :type (common-lisp:or attribute-key-and-value-list common-lisp:null))
+   (parent-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":parent-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (link-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":link-name is required"))
+    :type (common-lisp:or link-name common-lisp:null))
    (batch-reference-name
-    (common-lisp:error ":batch-reference-name is required") :type
-    (common-lisp:or batch-reference-name common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":batch-reference-name is required"))
+    :type (common-lisp:or batch-reference-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-create-object 'make-batch-create-object))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -775,8 +857,10 @@
                                                 'object-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (batch-delete-object (:copier common-lisp:nil))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-delete-object 'make-batch-delete-object))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -800,10 +884,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (batch-detach-from-index (:copier common-lisp:nil))
-   (index-reference (common-lisp:error ":index-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (target-reference (common-lisp:error ":target-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (index-reference
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":index-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (target-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-detach-from-index 'make-batch-detach-from-index))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -841,13 +929,18 @@
                                                 'detached-object-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (batch-detach-object (:copier common-lisp:nil))
-   (parent-reference (common-lisp:error ":parent-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (link-name (common-lisp:error ":link-name is required") :type
-    (common-lisp:or link-name common-lisp:null))
+   (parent-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":parent-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (link-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":link-name is required"))
+    :type (common-lisp:or link-name common-lisp:null))
    (batch-reference-name
-    (common-lisp:error ":batch-reference-name is required") :type
-    (common-lisp:or batch-reference-name common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":batch-reference-name is required"))
+    :type (common-lisp:or batch-reference-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-detach-object 'make-batch-detach-object))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -888,10 +981,14 @@
                                                 'detached-object-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (batch-detach-policy (:copier common-lisp:nil))
-   (policy-reference (common-lisp:error ":policy-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (policy-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":policy-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-detach-policy 'make-batch-detach-policy))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -921,8 +1018,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (batch-detach-typed-link (:copier common-lisp:nil))
    (typed-link-specifier
-    (common-lisp:error ":typed-link-specifier is required") :type
-    (common-lisp:or typed-link-specifier common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":typed-link-specifier is required"))
+    :type (common-lisp:or typed-link-specifier common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-detach-typed-link 'make-batch-detach-typed-link))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -949,8 +1047,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-get-object-information (:copier common-lisp:nil))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-get-object-information
                     'make-batch-get-object-information))
@@ -991,8 +1091,10 @@
                                                 'object-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (batch-list-attached-indices (:copier common-lisp:nil))
-   (target-reference (common-lisp:error ":target-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (target-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1048,8 +1150,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-list-incoming-typed-links (:copier common-lisp:nil))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (filter-attribute-ranges common-lisp:nil :type
     (common-lisp:or typed-link-attribute-range-list common-lisp:null))
    (filter-typed-link common-lisp:nil :type
@@ -1120,8 +1224,10 @@
  (common-lisp:defstruct (batch-list-index (:copier common-lisp:nil))
    (ranges-on-indexed-values common-lisp:nil :type
     (common-lisp:or object-attribute-range-list common-lisp:null))
-   (index-reference (common-lisp:error ":index-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (index-reference
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":index-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or number-results common-lisp:null))
    (next-token common-lisp:nil :type
@@ -1178,8 +1284,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-list-object-attributes (:copier common-lisp:nil))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1241,8 +1349,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (batch-list-object-children (:copier common-lisp:nil))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1298,8 +1408,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-list-object-parent-paths (:copier common-lisp:nil))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1354,8 +1466,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (batch-list-object-policies (:copier common-lisp:nil))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1411,8 +1525,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-list-outgoing-typed-links (:copier common-lisp:nil))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (filter-attribute-ranges common-lisp:nil :type
     (common-lisp:or typed-link-attribute-range-list common-lisp:null))
    (filter-typed-link common-lisp:nil :type
@@ -1482,8 +1598,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-list-policy-attachments (:copier common-lisp:nil))
-   (policy-reference (common-lisp:error ":policy-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (policy-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":policy-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1538,8 +1656,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (batch-lookup-policy (:copier common-lisp:nil))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1740,10 +1860,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (batch-read-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (operations (common-lisp:error ":operations is required") :type
-    (common-lisp:or batch-read-operation-list common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (operations
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":operations is required"))
+    :type (common-lisp:or batch-read-operation-list common-lisp:null))
    (consistency-level common-lisp:nil :type
     (common-lisp:or consistency-level common-lisp:null)))
  (common-lisp:export
@@ -1873,10 +1997,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-remove-facet-from-object (:copier common-lisp:nil))
-   (schema-facet (common-lisp:error ":schema-facet is required") :type
-    (common-lisp:or schema-facet common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (schema-facet
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":schema-facet is required"))
+    :type (common-lisp:or schema-facet common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-remove-facet-from-object
                     'make-batch-remove-facet-from-object))
@@ -1909,9 +2037,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-update-object-attributes (:copier common-lisp:nil))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (attribute-updates (common-lisp:error ":attribute-updates is required")
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (attribute-updates
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":attribute-updates is required"))
     :type (common-lisp:or object-attribute-update-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-update-object-attributes
@@ -2215,10 +2347,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (batch-write-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (operations (common-lisp:error ":operations is required") :type
-    (common-lisp:or batch-write-operation-list common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (operations
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":operations is required"))
+    :type (common-lisp:or batch-write-operation-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-write-request 'make-batch-write-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2273,10 +2409,13 @@
 (common-lisp:deftype consistency-level () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (create-directory-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or directory-name common-lisp:null))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or directory-name common-lisp:null))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-directory-request 'make-create-directory-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2296,13 +2435,20 @@
                                                 'schema-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-directory-response (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or directory-arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or directory-name common-lisp:null))
-   (object-identifier (common-lisp:error ":object-identifier is required")
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or directory-arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or directory-name common-lisp:null))
+   (object-identifier
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":object-identifier is required"))
     :type (common-lisp:or object-identifier common-lisp:null))
-   (applied-schema-arn (common-lisp:error ":applied-schema-arn is required")
+   (applied-schema-arn
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":applied-schema-arn is required"))
     :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-directory-response
@@ -2334,14 +2480,19 @@
                                                 'applied-schema-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-facet-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or facet-name common-lisp:null))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or facet-name common-lisp:null))
    (attributes common-lisp:nil :type
     (common-lisp:or facet-attribute-list common-lisp:null))
-   (object-type (common-lisp:error ":object-type is required") :type
-    (common-lisp:or object-type common-lisp:null)))
+   (object-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":object-type is required"))
+    :type (common-lisp:or object-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-facet-request 'make-create-facet-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2378,13 +2529,19 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-index-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (ordered-indexed-attribute-list
-    (common-lisp:error ":ordered-indexed-attribute-list is required") :type
-    (common-lisp:or attribute-key-list common-lisp:null))
-   (is-unique (common-lisp:error ":is-unique is required") :type
-    (common-lisp:or bool common-lisp:null))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":ordered-indexed-attribute-list is required"))
+    :type (common-lisp:or attribute-key-list common-lisp:null))
+   (is-unique
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":is-unique is required"))
+    :type (common-lisp:or bool common-lisp:null))
    (parent-reference common-lisp:nil :type
     (common-lisp:or object-reference common-lisp:null))
    (link-name common-lisp:nil :type
@@ -2437,10 +2594,14 @@
                                                 'object-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-object-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (schema-facets (common-lisp:error ":schema-facets is required") :type
-    (common-lisp:or schema-facet-list common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (schema-facets
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":schema-facets is required"))
+    :type (common-lisp:or schema-facet-list common-lisp:null))
    (object-attribute-list common-lisp:nil :type
     (common-lisp:or attribute-key-and-value-list common-lisp:null))
    (parent-reference common-lisp:nil :type
@@ -2497,8 +2658,9 @@
                                                 'object-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-schema-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or schema-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or schema-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-schema-request 'make-create-schema-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2529,10 +2691,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-typed-link-facet-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (facet (common-lisp:error ":facet is required") :type
-    (common-lisp:or typed-link-facet common-lisp:null)))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (facet
+    (common-lisp:error #A((18) common-lisp:base-char . ":facet is required"))
+    :type (common-lisp:or typed-link-facet common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-typed-link-facet-request
                     'make-create-typed-link-facet-request))
@@ -2566,8 +2731,10 @@
 (common-lisp:deftype datetime-attribute-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-directory-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-directory-request 'make-delete-directory-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2582,8 +2749,10 @@
                                                 'directory-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-directory-response (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-directory-response
                     'make-delete-directory-response))
@@ -2599,10 +2768,13 @@
                                                 'directory-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-facet-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or facet-name common-lisp:null)))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or facet-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-facet-request 'make-delete-facet-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2629,10 +2801,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-object-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-object-request 'make-delete-object-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2661,8 +2837,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-schema-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-schema-request 'make-delete-schema-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2693,10 +2871,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-typed-link-facet-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or typed-link-name common-lisp:null)))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or typed-link-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-typed-link-facet-request
                     'make-delete-typed-link-facet-request))
@@ -2728,12 +2909,18 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (detach-from-index-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (index-reference (common-lisp:error ":index-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (target-reference (common-lisp:error ":target-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (index-reference
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":index-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (target-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-from-index-request
                     'make-detach-from-index-request))
@@ -2776,12 +2963,18 @@
                                                 'detached-object-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (detach-object-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (parent-reference (common-lisp:error ":parent-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (link-name (common-lisp:error ":link-name is required") :type
-    (common-lisp:or link-name common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (parent-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":parent-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (link-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":link-name is required"))
+    :type (common-lisp:or link-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-object-request 'make-detach-object-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2822,12 +3015,18 @@
                                                 'detached-object-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (detach-policy-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (policy-reference (common-lisp:error ":policy-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (policy-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":policy-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-policy-request 'make-detach-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2861,11 +3060,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (detach-typed-link-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (typed-link-specifier
-    (common-lisp:error ":typed-link-specifier is required") :type
-    (common-lisp:or typed-link-specifier common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":typed-link-specifier is required"))
+    :type (common-lisp:or typed-link-specifier common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-typed-link-request
                     'make-detach-typed-link-request))
@@ -3001,8 +3203,10 @@
 (common-lisp:deftype directory-state () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (disable-directory-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-directory-request
                     'make-disable-directory-request))
@@ -3018,8 +3222,10 @@
                                                 'directory-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (disable-directory-response (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-directory-response
                     'make-disable-directory-response))
@@ -3035,8 +3241,10 @@
                                                 'directory-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (enable-directory-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-directory-request 'make-enable-directory-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3051,8 +3259,10 @@
                                                 'directory-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (enable-directory-response (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-directory-response
                     'make-enable-directory-response))
@@ -3106,8 +3316,9 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (facet-attribute (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or attribute-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or attribute-name common-lisp:null))
    (attribute-definition common-lisp:nil :type
     (common-lisp:or facet-attribute-definition common-lisp:null))
    (attribute-reference common-lisp:nil :type
@@ -3140,8 +3351,9 @@
                                                 'required-behavior))))))
 (common-lisp:progn
  (common-lisp:defstruct (facet-attribute-definition (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or facet-attribute-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or facet-attribute-type common-lisp:null))
    (default-value common-lisp:nil :type
     (common-lisp:or typed-attribute-value common-lisp:null))
    (is-immutable common-lisp:nil :type (common-lisp:or bool common-lisp:null))
@@ -3184,11 +3396,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (facet-attribute-reference (:copier common-lisp:nil))
-   (target-facet-name (common-lisp:error ":target-facet-name is required")
+   (target-facet-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":target-facet-name is required"))
     :type (common-lisp:or facet-name common-lisp:null))
    (target-attribute-name
-    (common-lisp:error ":target-attribute-name is required") :type
-    (common-lisp:or attribute-name common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":target-attribute-name is required"))
+    :type (common-lisp:or attribute-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'facet-attribute-reference
                     'make-facet-attribute-reference))
@@ -3300,8 +3515,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-directory-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or directory-arn common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or directory-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-directory-request 'make-get-directory-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3316,8 +3533,10 @@
                                                 'directory-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-directory-response (:copier common-lisp:nil))
-   (directory (common-lisp:error ":directory is required") :type
-    (common-lisp:or directory common-lisp:null)))
+   (directory
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":directory is required"))
+    :type (common-lisp:or directory common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-directory-response 'make-get-directory-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3332,10 +3551,13 @@
                                                 'directory))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-facet-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or facet-name common-lisp:null)))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or facet-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-facet-request 'make-get-facet-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3367,10 +3589,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-object-information-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (consistency-level common-lisp:nil :type
     (common-lisp:or consistency-level common-lisp:null)))
  (common-lisp:export
@@ -3423,8 +3649,10 @@
                                                 'object-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-schema-as-json-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-schema-as-json-request
                     'make-get-schema-as-json-request))
@@ -3464,10 +3692,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-typed-link-facet-information-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or typed-link-name common-lisp:null)))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or typed-link-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-typed-link-facet-information-request
                     'make-get-typed-link-facet-information-request))
@@ -3734,8 +3965,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-applied-schema-arns-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -3790,10 +4023,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-attached-indices-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (target-reference (common-lisp:error ":target-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (target-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -3939,8 +4176,10 @@
                                                 'state))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-directories-response (:copier common-lisp:nil))
-   (directories (common-lisp:error ":directories is required") :type
-    (common-lisp:or directory-list common-lisp:null))
+   (directories
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":directories is required"))
+    :type (common-lisp:or directory-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null)))
  (common-lisp:export
@@ -3964,10 +4203,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-facet-attributes-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or facet-name common-lisp:null))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or facet-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -4027,8 +4269,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-facet-names-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -4082,10 +4326,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-incoming-typed-links-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (filter-attribute-ranges common-lisp:nil :type
     (common-lisp:or typed-link-attribute-range-list common-lisp:null))
    (filter-typed-link common-lisp:nil :type
@@ -4166,12 +4414,16 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-index-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (ranges-on-indexed-values common-lisp:nil :type
     (common-lisp:or object-attribute-range-list common-lisp:null))
-   (index-reference (common-lisp:error ":index-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (index-reference
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":index-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or number-results common-lisp:null))
    (next-token common-lisp:nil :type
@@ -4237,10 +4489,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-object-attributes-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -4315,10 +4571,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-object-children-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -4386,10 +4646,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-object-parent-paths-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -4449,10 +4713,14 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-object-parents-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -4520,10 +4788,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-object-policies-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -4591,10 +4863,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-outgoing-typed-links-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (filter-attribute-ranges common-lisp:nil :type
     (common-lisp:or typed-link-attribute-range-list common-lisp:null))
    (filter-typed-link common-lisp:nil :type
@@ -4676,10 +4952,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-policy-attachments-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (policy-reference (common-lisp:error ":policy-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (policy-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":policy-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -4796,8 +5076,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -4852,10 +5134,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-typed-link-facet-attributes-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or typed-link-name common-lisp:null))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or typed-link-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -4916,8 +5201,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-typed-link-facet-names-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -4972,10 +5259,14 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (lookup-policy-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -5326,10 +5617,12 @@
 (common-lisp:progn
  (common-lisp:defstruct (publish-schema-request (:copier common-lisp:nil))
    (development-schema-arn
-    (common-lisp:error ":development-schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":development-schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or version common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or schema-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'publish-schema-request 'make-publish-schema-request))
@@ -5372,10 +5665,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-schema-from-json-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (document (common-lisp:error ":document is required") :type
-    (common-lisp:or schema-json-document common-lisp:null)))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (document
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":document is required"))
+    :type (common-lisp:or schema-json-document common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-schema-from-json-request
                     'make-put-schema-from-json-request))
@@ -5415,12 +5712,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-facet-from-object-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (schema-facet (common-lisp:error ":schema-facet is required") :type
-    (common-lisp:or schema-facet common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null)))
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (schema-facet
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":schema-facet is required"))
+    :type (common-lisp:or schema-facet common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-facet-from-object-request
                     'make-remove-facet-from-object-request))
@@ -5647,10 +5950,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag-resource-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5723,12 +6029,16 @@
                                                 'datetime-value))))))
 (common-lisp:progn
  (common-lisp:defstruct (typed-attribute-value-range (:copier common-lisp:nil))
-   (start-mode (common-lisp:error ":start-mode is required") :type
-    (common-lisp:or range-mode common-lisp:null))
+   (start-mode
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":start-mode is required"))
+    :type (common-lisp:or range-mode common-lisp:null))
    (start-value common-lisp:nil :type
     (common-lisp:or typed-attribute-value common-lisp:null))
-   (end-mode (common-lisp:error ":end-mode is required") :type
-    (common-lisp:or range-mode common-lisp:null))
+   (end-mode
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":end-mode is required"))
+    :type (common-lisp:or range-mode common-lisp:null))
    (end-value common-lisp:nil :type
     (common-lisp:or typed-attribute-value common-lisp:null)))
  (common-lisp:export
@@ -5762,15 +6072,19 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (typed-link-attribute-definition (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or attribute-name common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or facet-attribute-type common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or attribute-name common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or facet-attribute-type common-lisp:null))
    (default-value common-lisp:nil :type
     (common-lisp:or typed-attribute-value common-lisp:null))
    (is-immutable common-lisp:nil :type (common-lisp:or bool common-lisp:null))
    (rules common-lisp:nil :type (common-lisp:or rule-map common-lisp:null))
-   (required-behavior (common-lisp:error ":required-behavior is required")
+   (required-behavior
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":required-behavior is required"))
     :type (common-lisp:or required-attribute-behavior common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'typed-link-attribute-definition
@@ -5823,8 +6137,9 @@
  (common-lisp:defstruct (typed-link-attribute-range (:copier common-lisp:nil))
    (attribute-name common-lisp:nil :type
     (common-lisp:or attribute-name common-lisp:null))
-   (range (common-lisp:error ":range is required") :type
-    (common-lisp:or typed-attribute-value-range common-lisp:null)))
+   (range
+    (common-lisp:error #A((18) common-lisp:base-char . ":range is required"))
+    :type (common-lisp:or typed-attribute-value-range common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'typed-link-attribute-range
                     'make-typed-link-attribute-range))
@@ -5854,13 +6169,18 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (typed-link-facet (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or typed-link-name common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or typed-link-name common-lisp:null))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type
     (common-lisp:or typed-link-attribute-definition-list common-lisp:null))
    (identity-attribute-order
-    (common-lisp:error ":identity-attribute-order is required") :type
-    (common-lisp:or attribute-name-list common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":identity-attribute-order is required"))
+    :type (common-lisp:or attribute-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'typed-link-facet 'make-typed-link-facet))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5884,10 +6204,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (typed-link-facet-attribute-update (:copier common-lisp:nil))
-   (attribute (common-lisp:error ":attribute is required") :type
-    (common-lisp:or typed-link-attribute-definition common-lisp:null))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or update-action-type common-lisp:null)))
+   (attribute
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":attribute is required"))
+    :type (common-lisp:or typed-link-attribute-definition common-lisp:null))
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or update-action-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'typed-link-facet-attribute-update
                     'make-typed-link-facet-attribute-update))
@@ -5927,10 +6250,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (typed-link-schema-and-facet-name (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (typed-link-name (common-lisp:error ":typed-link-name is required") :type
-    (common-lisp:or typed-link-name common-lisp:null)))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (typed-link-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":typed-link-name is required"))
+    :type (common-lisp:or typed-link-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'typed-link-schema-and-facet-name
                     'make-typed-link-schema-and-facet-name))
@@ -5951,17 +6278,22 @@
                                                 'typed-link-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (typed-link-specifier (:copier common-lisp:nil))
-   (typed-link-facet (common-lisp:error ":typed-link-facet is required") :type
-    (common-lisp:or typed-link-schema-and-facet-name common-lisp:null))
+   (typed-link-facet
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":typed-link-facet is required"))
+    :type (common-lisp:or typed-link-schema-and-facet-name common-lisp:null))
    (source-object-reference
-    (common-lisp:error ":source-object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":source-object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (target-object-reference
-    (common-lisp:error ":target-object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":target-object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
    (identity-attribute-values
-    (common-lisp:error ":identity-attribute-values is required") :type
-    (common-lisp:or attribute-name-and-value-list common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":identity-attribute-values is required"))
+    :type (common-lisp:or attribute-name-and-value-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'typed-link-specifier 'make-typed-link-specifier))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -6015,10 +6347,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (untag-resource-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resource-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":resource-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -6048,10 +6384,13 @@
 (common-lisp:deftype update-action-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (update-facet-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or facet-name common-lisp:null))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or facet-name common-lisp:null))
    (attribute-updates common-lisp:nil :type
     (common-lisp:or facet-attribute-update-list common-lisp:null))
    (object-type common-lisp:nil :type
@@ -6093,11 +6432,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-object-attributes-request (:copier common-lisp:nil))
-   (directory-arn (common-lisp:error ":directory-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (object-reference (common-lisp:error ":object-reference is required") :type
-    (common-lisp:or object-reference common-lisp:null))
-   (attribute-updates (common-lisp:error ":attribute-updates is required")
+   (directory-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":directory-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (object-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":object-reference is required"))
+    :type (common-lisp:or object-reference common-lisp:null))
+   (attribute-updates
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":attribute-updates is required"))
     :type (common-lisp:or object-attribute-update-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-object-attributes-request
@@ -6142,10 +6487,13 @@
                                                 'object-identifier))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-schema-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or schema-name common-lisp:null)))
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or schema-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-schema-request 'make-update-schema-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -6181,16 +6529,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-typed-link-facet-request (:copier common-lisp:nil))
-   (schema-arn (common-lisp:error ":schema-arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or typed-link-name common-lisp:null))
-   (attribute-updates (common-lisp:error ":attribute-updates is required")
+   (schema-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":schema-arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or typed-link-name common-lisp:null))
+   (attribute-updates
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":attribute-updates is required"))
     :type
     (common-lisp:or typed-link-facet-attribute-update-list common-lisp:null))
    (identity-attribute-order
-    (common-lisp:error ":identity-attribute-order is required") :type
-    (common-lisp:or attribute-name-list common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":identity-attribute-order is required"))
+    :type (common-lisp:or attribute-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-typed-link-facet-request
                     'make-update-typed-link-facet-request))
@@ -6258,7 +6612,10 @@
                       (common-lisp:apply 'make-add-facet-to-object-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"AddFacetToObject")
                                   ("Version" ,@"2016-05-10"))
@@ -6277,7 +6634,10 @@
                       (common-lisp:apply 'make-apply-schema-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"ApplySchema")
                                   ("Version" ,@"2016-05-10"))
@@ -6298,7 +6658,10 @@
                       (common-lisp:apply 'make-attach-object-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachObject")
                                   ("Version" ,@"2016-05-10"))
@@ -6318,7 +6681,10 @@
                       (common-lisp:apply 'make-attach-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachPolicy")
                                   ("Version" ,@"2016-05-10"))
@@ -6338,7 +6704,10 @@
                       (common-lisp:apply 'make-attach-to-index-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachToIndex")
                                   ("Version" ,@"2016-05-10"))
@@ -6359,7 +6728,10 @@
                       (common-lisp:apply 'make-attach-typed-link-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachTypedLink")
                                   ("Version" ,@"2016-05-10"))
@@ -6379,7 +6751,10 @@
                       (common-lisp:apply 'make-batch-read-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchRead")
                                   ("Version" ,@"2016-05-10"))
@@ -6397,7 +6772,10 @@
                       (common-lisp:apply 'make-batch-write-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchWrite")
                                   ("Version" ,@"2016-05-10"))
@@ -6415,7 +6793,10 @@
                       (common-lisp:apply 'make-create-directory-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDirectory")
                                   ("Version" ,@"2016-05-10"))
@@ -6434,7 +6815,10 @@
                       (common-lisp:apply 'make-create-facet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateFacet")
                                   ("Version" ,@"2016-05-10"))
@@ -6456,7 +6840,10 @@
                       (common-lisp:apply 'make-create-index-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateIndex")
                                   ("Version" ,@"2016-05-10"))
@@ -6477,7 +6864,10 @@
                       (common-lisp:apply 'make-create-object-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateObject")
                                   ("Version" ,@"2016-05-10"))
@@ -6495,7 +6885,10 @@
                       (common-lisp:apply 'make-create-schema-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSchema")
                                   ("Version" ,@"2016-05-10"))
@@ -6513,7 +6906,10 @@
                       (common-lisp:apply 'make-create-typed-link-facet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTypedLinkFacet")
                                   ("Version" ,@"2016-05-10"))
@@ -6531,7 +6927,10 @@
                       (common-lisp:apply 'make-delete-directory-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDirectory")
                                   ("Version" ,@"2016-05-10"))
@@ -6549,7 +6948,10 @@
                       (common-lisp:apply 'make-delete-facet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFacet")
                                   ("Version" ,@"2016-05-10"))
@@ -6567,7 +6969,10 @@
                       (common-lisp:apply 'make-delete-object-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteObject")
                                   ("Version" ,@"2016-05-10"))
@@ -6585,7 +6990,10 @@
                       (common-lisp:apply 'make-delete-schema-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSchema")
                                   ("Version" ,@"2016-05-10"))
@@ -6603,7 +7011,10 @@
                       (common-lisp:apply 'make-delete-typed-link-facet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTypedLinkFacet")
                                   ("Version" ,@"2016-05-10"))
@@ -6623,7 +7034,10 @@
                       (common-lisp:apply 'make-detach-from-index-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachFromIndex")
                                   ("Version" ,@"2016-05-10"))
@@ -6642,7 +7056,10 @@
                       (common-lisp:apply 'make-detach-object-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachObject")
                                   ("Version" ,@"2016-05-10"))
@@ -6662,7 +7079,10 @@
                       (common-lisp:apply 'make-detach-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachPolicy")
                                   ("Version" ,@"2016-05-10"))
@@ -6681,7 +7101,10 @@
                       (common-lisp:apply 'make-detach-typed-link-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachTypedLink")
                                   ("Version" ,@"2016-05-10"))
@@ -6699,7 +7122,10 @@
                       (common-lisp:apply 'make-disable-directory-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableDirectory")
                                   ("Version" ,@"2016-05-10"))
@@ -6717,7 +7143,10 @@
                       (common-lisp:apply 'make-enable-directory-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableDirectory")
                                   ("Version" ,@"2016-05-10"))
@@ -6735,7 +7164,10 @@
                       (common-lisp:apply 'make-get-directory-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDirectory")
                                   ("Version" ,@"2016-05-10"))
@@ -6753,7 +7185,10 @@
                       (common-lisp:apply 'make-get-facet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetFacet")
                                   ("Version" ,@"2016-05-10"))
@@ -6773,7 +7208,10 @@
                       (common-lisp:apply 'make-get-object-information-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetObjectInformation")
                                   ("Version" ,@"2016-05-10"))
@@ -6791,7 +7229,10 @@
                       (common-lisp:apply 'make-get-schema-as-json-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSchemaAsJson")
                                   ("Version" ,@"2016-05-10"))
@@ -6810,7 +7251,10 @@
                        'make-get-typed-link-facet-information-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTypedLinkFacetInformation")
                                   ("Version" ,@"2016-05-10"))
@@ -6829,7 +7273,10 @@
                       (common-lisp:apply 'make-list-applied-schema-arns-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAppliedSchemaArns")
                                   ("Version" ,@"2016-05-10"))
@@ -6850,7 +7297,10 @@
                       (common-lisp:apply 'make-list-attached-indices-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAttachedIndices")
                                   ("Version" ,@"2016-05-10"))
@@ -6869,7 +7319,10 @@
                        'make-list-development-schema-arns-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDevelopmentSchemaArns")
                                   ("Version" ,@"2016-05-10"))
@@ -6887,7 +7340,10 @@
                       (common-lisp:apply 'make-list-directories-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDirectories")
                                   ("Version" ,@"2016-05-10"))
@@ -6906,7 +7362,10 @@
                       (common-lisp:apply 'make-list-facet-attributes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListFacetAttributes")
                                   ("Version" ,@"2016-05-10"))
@@ -6925,7 +7384,10 @@
                       (common-lisp:apply 'make-list-facet-names-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListFacetNames")
                                   ("Version" ,@"2016-05-10"))
@@ -6949,7 +7411,10 @@
                        'make-list-incoming-typed-links-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListIncomingTypedLinks")
                                   ("Version" ,@"2016-05-10"))
@@ -6970,7 +7435,10 @@
                       (common-lisp:apply 'make-list-index-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListIndex")
                                   ("Version" ,@"2016-05-10"))
@@ -6991,7 +7459,10 @@
                       (common-lisp:apply 'make-list-object-attributes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListObjectAttributes")
                                   ("Version" ,@"2016-05-10"))
@@ -7012,7 +7483,10 @@
                       (common-lisp:apply 'make-list-object-children-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListObjectChildren")
                                   ("Version" ,@"2016-05-10"))
@@ -7033,7 +7507,10 @@
                       (common-lisp:apply 'make-list-object-parent-paths-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListObjectParentPaths")
                                   ("Version" ,@"2016-05-10"))
@@ -7054,7 +7531,10 @@
                       (common-lisp:apply 'make-list-object-parents-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListObjectParents")
                                   ("Version" ,@"2016-05-10"))
@@ -7075,7 +7555,10 @@
                       (common-lisp:apply 'make-list-object-policies-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListObjectPolicies")
                                   ("Version" ,@"2016-05-10"))
@@ -7099,7 +7582,10 @@
                        'make-list-outgoing-typed-links-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListOutgoingTypedLinks")
                                   ("Version" ,@"2016-05-10"))
@@ -7120,7 +7606,10 @@
                       (common-lisp:apply 'make-list-policy-attachments-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPolicyAttachments")
                                   ("Version" ,@"2016-05-10"))
@@ -7139,7 +7628,10 @@
                        'make-list-published-schema-arns-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPublishedSchemaArns")
                                   ("Version" ,@"2016-05-10"))
@@ -7158,7 +7650,10 @@
                       (common-lisp:apply 'make-list-tags-for-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2016-05-10"))
@@ -7178,7 +7673,10 @@
                        'make-list-typed-link-facet-attributes-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTypedLinkFacetAttributes")
                                   ("Version" ,@"2016-05-10"))
@@ -7198,7 +7696,10 @@
                        'make-list-typed-link-facet-names-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTypedLinkFacetNames")
                                   ("Version" ,@"2016-05-10"))
@@ -7219,7 +7720,10 @@
                       (common-lisp:apply 'make-lookup-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"LookupPolicy")
                                   ("Version" ,@"2016-05-10"))
@@ -7238,7 +7742,10 @@
                       (common-lisp:apply 'make-publish-schema-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"PublishSchema")
                                   ("Version" ,@"2016-05-10"))
@@ -7256,7 +7763,10 @@
                       (common-lisp:apply 'make-put-schema-from-json-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"PutSchemaFromJson")
                                   ("Version" ,@"2016-05-10"))
@@ -7276,7 +7786,10 @@
                       (common-lisp:apply 'make-remove-facet-from-object-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveFacetFromObject")
                                   ("Version" ,@"2016-05-10"))
@@ -7294,7 +7807,10 @@
                       (common-lisp:apply 'make-tag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"TagResource")
                                   ("Version" ,@"2016-05-10"))
@@ -7312,7 +7828,10 @@
                       (common-lisp:apply 'make-untag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"UntagResource")
                                   ("Version" ,@"2016-05-10"))
@@ -7332,7 +7851,10 @@
                       (common-lisp:apply 'make-update-facet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateFacet")
                                   ("Version" ,@"2016-05-10"))
@@ -7352,7 +7874,10 @@
                       (common-lisp:apply 'make-update-object-attributes-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateObjectAttributes")
                                   ("Version" ,@"2016-05-10"))
@@ -7370,7 +7895,10 @@
                       (common-lisp:apply 'make-update-schema-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSchema")
                                   ("Version" ,@"2016-05-10"))
@@ -7391,7 +7919,10 @@
                       (common-lisp:apply 'make-update-typed-link-facet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "clouddirectory" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((14) common-lisp:base-char
+                                  . "clouddirectory")
+                               :method :put :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTypedLinkFacet")
                                   ("Version" ,@"2016-05-10"))

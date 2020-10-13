@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/s3)
+
 (common-lisp:deftype abort-date () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
@@ -47,12 +48,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (abort-multipart-upload-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
-   (upload-id (common-lisp:error ":upload-id is required") :type
-    (common-lisp:or multipart-upload-id common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
+   (upload-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":upload-id is required"))
+    :type (common-lisp:or multipart-upload-id common-lisp:null))
    (request-payer common-lisp:nil :type
     (common-lisp:or request-payer common-lisp:null)))
  (common-lisp:export
@@ -173,13 +177,14 @@
                                                 'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (analytics-configuration (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or analytics-id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or analytics-id common-lisp:null))
    (filter common-lisp:nil :type
     (common-lisp:or analytics-filter common-lisp:null))
    (storage-class-analysis
-    (common-lisp:error ":storage-class-analysis is required") :type
-    (common-lisp:or storage-class-analysis common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":storage-class-analysis is required"))
+    :type (common-lisp:or storage-class-analysis common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'analytics-configuration 'make-analytics-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -214,8 +219,9 @@
  (common-lisp:defstruct
      (analytics-export-destination (:copier common-lisp:nil))
    (s3bucket-destination
-    (common-lisp:error ":s3bucket-destination is required") :type
-    (common-lisp:or analytics-s3bucket-destination common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":s3bucket-destination is required"))
+    :type (common-lisp:or analytics-s3bucket-destination common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'analytics-export-destination
                     'make-analytics-export-destination))
@@ -259,12 +265,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (analytics-s3bucket-destination (:copier common-lisp:nil))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or analytics-s3export-file-format common-lisp:null))
+   (format
+    (common-lisp:error #A((19) common-lisp:base-char . ":format is required"))
+    :type (common-lisp:or analytics-s3export-file-format common-lisp:null))
    (bucket-account-id common-lisp:nil :type
     (common-lisp:or account-id common-lisp:null))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (prefix common-lisp:nil :type (common-lisp:or prefix common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'analytics-s3bucket-destination
@@ -341,8 +349,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (bucket-lifecycle-configuration (:copier common-lisp:nil))
-   (rules (common-lisp:error ":rules is required") :type
-    (common-lisp:or lifecycle-rules common-lisp:null)))
+   (rules
+    (common-lisp:error #A((18) common-lisp:base-char . ":rules is required"))
+    :type (common-lisp:or lifecycle-rules common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'bucket-lifecycle-configuration
                     'make-bucket-lifecycle-configuration))
@@ -385,8 +394,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (corsconfiguration (:copier common-lisp:nil))
-   (corsrules (common-lisp:error ":corsrules is required") :type
-    (common-lisp:or corsrules common-lisp:null)))
+   (corsrules
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":corsrules is required"))
+    :type (common-lisp:or corsrules common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'corsconfiguration 'make-corsconfiguration))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -401,10 +412,14 @@
  (common-lisp:defstruct (corsrule (:copier common-lisp:nil))
    (allowed-headers common-lisp:nil :type
     (common-lisp:or allowed-headers common-lisp:null))
-   (allowed-methods (common-lisp:error ":allowed-methods is required") :type
-    (common-lisp:or allowed-methods common-lisp:null))
-   (allowed-origins (common-lisp:error ":allowed-origins is required") :type
-    (common-lisp:or allowed-origins common-lisp:null))
+   (allowed-methods
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":allowed-methods is required"))
+    :type (common-lisp:or allowed-methods common-lisp:null))
+   (allowed-origins
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":allowed-origins is required"))
+    :type (common-lisp:or allowed-origins common-lisp:null))
    (expose-headers common-lisp:nil :type
     (common-lisp:or expose-headers common-lisp:null))
    (max-age-seconds common-lisp:nil :type
@@ -585,14 +600,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (complete-multipart-upload-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (multipart-upload common-lisp:nil :type
     (common-lisp:or completed-multipart-upload common-lisp:null))
-   (upload-id (common-lisp:error ":upload-id is required") :type
-    (common-lisp:or multipart-upload-id common-lisp:null))
+   (upload-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":upload-id is required"))
+    :type (common-lisp:or multipart-upload-id common-lisp:null))
    (request-payer common-lisp:nil :type
     (common-lisp:or request-payer common-lisp:null)))
  (common-lisp:export
@@ -773,8 +791,9 @@
  (common-lisp:defstruct (copy-object-request (:copier common-lisp:nil))
    (acl common-lisp:nil :type
     (common-lisp:or object-canned-acl common-lisp:null))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (cache-control common-lisp:nil :type
     (common-lisp:or cache-control common-lisp:null))
    (content-disposition common-lisp:nil :type
@@ -785,8 +804,10 @@
     (common-lisp:or content-language common-lisp:null))
    (content-type common-lisp:nil :type
     (common-lisp:or content-type common-lisp:null))
-   (copy-source (common-lisp:error ":copy-source is required") :type
-    (common-lisp:or copy-source common-lisp:null))
+   (copy-source
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":copy-source is required"))
+    :type (common-lisp:or copy-source common-lisp:null))
    (copy-source-if-match common-lisp:nil :type
     (common-lisp:or copy-source-if-match common-lisp:null))
    (copy-source-if-modified-since common-lisp:nil :type
@@ -804,8 +825,8 @@
     (common-lisp:or grant-read-acp common-lisp:null))
    (grant-write-acp common-lisp:nil :type
     (common-lisp:or grant-write-acp common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null))
    (metadata-directive common-lisp:nil :type
     (common-lisp:or metadata-directive common-lisp:null))
@@ -1089,8 +1110,9 @@
  (common-lisp:defstruct (create-bucket-request (:copier common-lisp:nil))
    (acl common-lisp:nil :type
     (common-lisp:or bucket-canned-acl common-lisp:null))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (create-bucket-configuration common-lisp:nil :type
     (common-lisp:or create-bucket-configuration common-lisp:null))
    (grant-full-control common-lisp:nil :type
@@ -1234,8 +1256,9 @@
      (create-multipart-upload-request (:copier common-lisp:nil))
    (acl common-lisp:nil :type
     (common-lisp:or object-canned-acl common-lisp:null))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (cache-control common-lisp:nil :type
     (common-lisp:or cache-control common-lisp:null))
    (content-disposition common-lisp:nil :type
@@ -1255,8 +1278,8 @@
     (common-lisp:or grant-read-acp common-lisp:null))
    (grant-write-acp common-lisp:nil :type
     (common-lisp:or grant-write-acp common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null))
    (server-side-encryption common-lisp:nil :type
     (common-lisp:or server-side-encryption common-lisp:null))
@@ -1405,8 +1428,9 @@
 (common-lisp:deftype days-after-initiation () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (delete (:copier common-lisp:nil))
-   (objects (common-lisp:error ":objects is required") :type
-    (common-lisp:or object-identifier-list common-lisp:null))
+   (objects
+    (common-lisp:error #A((20) common-lisp:base-char . ":objects is required"))
+    :type (common-lisp:or object-identifier-list common-lisp:null))
    (quiet common-lisp:nil :type (common-lisp:or quiet common-lisp:null)))
  (common-lisp:export (common-lisp:list 'delete 'make-delete))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1425,10 +1449,11 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-bucket-analytics-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or analytics-id common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or analytics-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bucket-analytics-configuration-request
                     'make-delete-bucket-analytics-configuration-request))
@@ -1449,8 +1474,9 @@
                                                 'id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-bucket-cors-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bucket-cors-request
                     'make-delete-bucket-cors-request))
@@ -1467,10 +1493,11 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-bucket-inventory-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or inventory-id common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or inventory-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bucket-inventory-configuration-request
                     'make-delete-bucket-inventory-configuration-request))
@@ -1492,8 +1519,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-bucket-lifecycle-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bucket-lifecycle-request
                     'make-delete-bucket-lifecycle-request))
@@ -1510,10 +1538,11 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-bucket-metrics-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or metrics-id common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or metrics-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bucket-metrics-configuration-request
                     'make-delete-bucket-metrics-configuration-request))
@@ -1535,8 +1564,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-bucket-policy-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bucket-policy-request
                     'make-delete-bucket-policy-request))
@@ -1553,8 +1583,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-bucket-replication-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bucket-replication-request
                     'make-delete-bucket-replication-request))
@@ -1570,8 +1601,9 @@
                                                 'bucket))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-bucket-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bucket-request 'make-delete-bucket-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1587,8 +1619,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-bucket-tagging-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bucket-tagging-request
                     'make-delete-bucket-tagging-request))
@@ -1605,8 +1638,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-bucket-website-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bucket-website-request
                     'make-delete-bucket-website-request))
@@ -1700,10 +1734,11 @@
                                                 'request-charged))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-object-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (mfa common-lisp:nil :type (common-lisp:or mfa common-lisp:null))
    (version-id common-lisp:nil :type
     (common-lisp:or object-version-id common-lisp:null))
@@ -1762,10 +1797,11 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-object-tagging-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (version-id common-lisp:nil :type
     (common-lisp:or object-version-id common-lisp:null)))
  (common-lisp:export
@@ -1822,10 +1858,12 @@
                                                 'errors))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-objects-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (delete (common-lisp:error ":delete is required") :type
-    (common-lisp:or delete common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (delete
+    (common-lisp:error #A((19) common-lisp:base-char . ":delete is required"))
+    :type (common-lisp:or delete common-lisp:null))
    (mfa common-lisp:nil :type (common-lisp:or mfa common-lisp:null))
    (request-payer common-lisp:nil :type
     (common-lisp:or request-payer common-lisp:null)))
@@ -1900,8 +1938,9 @@
 (common-lisp:deftype delimiter () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (destination (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (storage-class common-lisp:nil :type
     (common-lisp:or storage-class common-lisp:null)))
  (common-lisp:export (common-lisp:list 'destination 'make-destination))
@@ -1955,8 +1994,8 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (error-document (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null)))
  (common-lisp:export (common-lisp:list 'error-document 'make-error-document))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape error-document))
@@ -2046,8 +2085,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-bucket-accelerate-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-accelerate-configuration-request
                     'make-get-bucket-accelerate-configuration-request))
@@ -2084,8 +2124,9 @@
                                                 'grants))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-bucket-acl-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-acl-request 'make-get-bucket-acl-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2119,10 +2160,11 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-bucket-analytics-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or analytics-id common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or analytics-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-analytics-configuration-request
                     'make-get-bucket-analytics-configuration-request))
@@ -2159,8 +2201,9 @@
                                                 'corsrules))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-bucket-cors-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-cors-request 'make-get-bucket-cors-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2194,10 +2237,11 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-bucket-inventory-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or inventory-id common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or inventory-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-inventory-configuration-request
                     'make-get-bucket-inventory-configuration-request))
@@ -2237,8 +2281,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-bucket-lifecycle-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-lifecycle-configuration-request
                     'make-get-bucket-lifecycle-configuration-request))
@@ -2271,8 +2316,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-bucket-lifecycle-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-lifecycle-request
                     'make-get-bucket-lifecycle-request))
@@ -2305,8 +2351,9 @@
                                                 'location-constraint))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-bucket-location-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-location-request
                     'make-get-bucket-location-request))
@@ -2339,8 +2386,9 @@
                                                 'logging-enabled))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-bucket-logging-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-logging-request
                     'make-get-bucket-logging-request))
@@ -2375,10 +2423,11 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-bucket-metrics-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or metrics-id common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or metrics-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-metrics-configuration-request
                     'make-get-bucket-metrics-configuration-request))
@@ -2400,8 +2449,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-bucket-notification-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-notification-configuration-request
                     'make-get-bucket-notification-configuration-request))
@@ -2432,8 +2482,9 @@
                                                 'policy))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-bucket-policy-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-policy-request
                     'make-get-bucket-policy-request))
@@ -2468,8 +2519,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-bucket-replication-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-replication-request
                     'make-get-bucket-replication-request))
@@ -2503,8 +2555,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-bucket-request-payment-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-request-payment-request
                     'make-get-bucket-request-payment-request))
@@ -2520,8 +2573,9 @@
                                                 'bucket))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-bucket-tagging-output (:copier common-lisp:nil))
-   (tag-set (common-lisp:error ":tag-set is required") :type
-    (common-lisp:or tag-set common-lisp:null)))
+   (tag-set
+    (common-lisp:error #A((20) common-lisp:base-char . ":tag-set is required"))
+    :type (common-lisp:or tag-set common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-tagging-output
                     'make-get-bucket-tagging-output))
@@ -2537,8 +2591,9 @@
                                                 'tag-set))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-bucket-tagging-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-tagging-request
                     'make-get-bucket-tagging-request))
@@ -2580,8 +2635,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-bucket-versioning-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-versioning-request
                     'make-get-bucket-versioning-request))
@@ -2635,8 +2691,9 @@
                                                 'routing-rules))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-bucket-website-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bucket-website-request
                     'make-get-bucket-website-request))
@@ -2680,10 +2737,11 @@
                                                 'request-charged))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-object-acl-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (version-id common-lisp:nil :type
     (common-lisp:or object-version-id common-lisp:null))
    (request-payer common-lisp:nil :type
@@ -2915,8 +2973,9 @@
                                                 'tag-count))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-object-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (if-match common-lisp:nil :type (common-lisp:or if-match common-lisp:null))
    (if-modified-since common-lisp:nil :type
     (common-lisp:or if-modified-since common-lisp:null))
@@ -2924,8 +2983,8 @@
     (common-lisp:or if-none-match common-lisp:null))
    (if-unmodified-since common-lisp:nil :type
     (common-lisp:or if-unmodified-since common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (range common-lisp:nil :type (common-lisp:or range common-lisp:null))
    (response-cache-control common-lisp:nil :type
     (common-lisp:or response-cache-control common-lisp:null))
@@ -3055,8 +3114,9 @@
  (common-lisp:defstruct (get-object-tagging-output (:copier common-lisp:nil))
    (version-id common-lisp:nil :type
     (common-lisp:or object-version-id common-lisp:null))
-   (tag-set (common-lisp:error ":tag-set is required") :type
-    (common-lisp:or tag-set common-lisp:null)))
+   (tag-set
+    (common-lisp:error #A((20) common-lisp:base-char . ":tag-set is required"))
+    :type (common-lisp:or tag-set common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-object-tagging-output
                     'make-get-object-tagging-output))
@@ -3077,10 +3137,11 @@
                                                 'tag-set))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-object-tagging-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (version-id common-lisp:nil :type
     (common-lisp:or object-version-id common-lisp:null)))
  (common-lisp:export
@@ -3131,10 +3192,11 @@
                                                 'request-charged))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-object-torrent-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (request-payer common-lisp:nil :type
     (common-lisp:or request-payer common-lisp:null)))
  (common-lisp:export
@@ -3162,8 +3224,9 @@
                                                 'request-payer))))))
 (common-lisp:progn
  (common-lisp:defstruct (glacier-job-parameters (:copier common-lisp:nil))
-   (tier (common-lisp:error ":tier is required") :type
-    (common-lisp:or tier common-lisp:null)))
+   (tier
+    (common-lisp:error #A((17) common-lisp:base-char . ":tier is required"))
+    :type (common-lisp:or tier common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'glacier-job-parameters 'make-glacier-job-parameters))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3207,8 +3270,9 @@
    (email-address common-lisp:nil :type
     (common-lisp:or email-address common-lisp:null))
    (id common-lisp:nil :type (common-lisp:or id common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or type common-lisp:null))
    (uri common-lisp:nil :type (common-lisp:or uri common-lisp:null)))
  (common-lisp:export (common-lisp:list 'grantee 'make-grantee))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3248,8 +3312,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (head-bucket-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null)))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'head-bucket-request 'make-head-bucket-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3440,8 +3505,9 @@
                                                 'parts-count))))))
 (common-lisp:progn
  (common-lisp:defstruct (head-object-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (if-match common-lisp:nil :type (common-lisp:or if-match common-lisp:null))
    (if-modified-since common-lisp:nil :type
     (common-lisp:or if-modified-since common-lisp:null))
@@ -3449,8 +3515,8 @@
     (common-lisp:or if-none-match common-lisp:null))
    (if-unmodified-since common-lisp:nil :type
     (common-lisp:or if-unmodified-since common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (range common-lisp:nil :type (common-lisp:or range common-lisp:null))
    (version-id common-lisp:nil :type
     (common-lisp:or object-version-id common-lisp:null))
@@ -3544,8 +3610,9 @@
 (common-lisp:deftype if-unmodified-since () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (index-document (:copier common-lisp:nil))
-   (suffix (common-lisp:error ":suffix is required") :type
-    (common-lisp:or suffix common-lisp:null)))
+   (suffix
+    (common-lisp:error #A((19) common-lisp:base-char . ":suffix is required"))
+    :type (common-lisp:or suffix common-lisp:null)))
  (common-lisp:export (common-lisp:list 'index-document 'make-index-document))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape index-document))
@@ -3577,21 +3644,28 @@
                                                 'display-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (inventory-configuration (:copier common-lisp:nil))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or inventory-destination common-lisp:null))
-   (is-enabled (common-lisp:error ":is-enabled is required") :type
-    (common-lisp:or is-enabled common-lisp:null))
+   (destination
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":destination is required"))
+    :type (common-lisp:or inventory-destination common-lisp:null))
+   (is-enabled
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":is-enabled is required"))
+    :type (common-lisp:or is-enabled common-lisp:null))
    (filter common-lisp:nil :type
     (common-lisp:or inventory-filter common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or inventory-id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or inventory-id common-lisp:null))
    (included-object-versions
-    (common-lisp:error ":included-object-versions is required") :type
-    (common-lisp:or inventory-included-object-versions common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":included-object-versions is required"))
+    :type (common-lisp:or inventory-included-object-versions common-lisp:null))
    (optional-fields common-lisp:nil :type
     (common-lisp:or inventory-optional-fields common-lisp:null))
-   (schedule (common-lisp:error ":schedule is required") :type
-    (common-lisp:or inventory-schedule common-lisp:null)))
+   (schedule
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":schedule is required"))
+    :type (common-lisp:or inventory-schedule common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'inventory-configuration 'make-inventory-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3645,8 +3719,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (inventory-destination (:copier common-lisp:nil))
    (s3bucket-destination
-    (common-lisp:error ":s3bucket-destination is required") :type
-    (common-lisp:or inventory-s3bucket-destination common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":s3bucket-destination is required"))
+    :type (common-lisp:or inventory-s3bucket-destination common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'inventory-destination 'make-inventory-destination))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3661,8 +3736,9 @@
                                                 's3bucket-destination))))))
 (common-lisp:progn
  (common-lisp:defstruct (inventory-filter (:copier common-lisp:nil))
-   (prefix (common-lisp:error ":prefix is required") :type
-    (common-lisp:or prefix common-lisp:null)))
+   (prefix
+    (common-lisp:error #A((19) common-lisp:base-char . ":prefix is required"))
+    :type (common-lisp:or prefix common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'inventory-filter 'make-inventory-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3692,10 +3768,12 @@
      (inventory-s3bucket-destination (:copier common-lisp:nil))
    (account-id common-lisp:nil :type
     (common-lisp:or account-id common-lisp:null))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (format (common-lisp:error ":format is required") :type
-    (common-lisp:or inventory-format common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (format
+    (common-lisp:error #A((19) common-lisp:base-char . ":format is required"))
+    :type (common-lisp:or inventory-format common-lisp:null))
    (prefix common-lisp:nil :type (common-lisp:or prefix common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'inventory-s3bucket-destination
@@ -3727,8 +3805,10 @@
                                                 'prefix))))))
 (common-lisp:progn
  (common-lisp:defstruct (inventory-schedule (:copier common-lisp:nil))
-   (frequency (common-lisp:error ":frequency is required") :type
-    (common-lisp:or inventory-frequency common-lisp:null)))
+   (frequency
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":frequency is required"))
+    :type (common-lisp:or inventory-frequency common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'inventory-schedule 'make-inventory-schedule))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3750,10 +3830,13 @@
  (common-lisp:defstruct
      (lambda-function-configuration (:copier common-lisp:nil))
    (id common-lisp:nil :type (common-lisp:or notification-id common-lisp:null))
-   (lambda-function-arn (common-lisp:error ":lambda-function-arn is required")
+   (lambda-function-arn
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":lambda-function-arn is required"))
     :type (common-lisp:or lambda-function-arn common-lisp:null))
-   (events (common-lisp:error ":events is required") :type
-    (common-lisp:or event-list common-lisp:null))
+   (events
+    (common-lisp:error #A((19) common-lisp:base-char . ":events is required"))
+    :type (common-lisp:or event-list common-lisp:null))
    (filter common-lisp:nil :type
     (common-lisp:or notification-configuration-filter common-lisp:null)))
  (common-lisp:export
@@ -3796,8 +3879,9 @@
 (common-lisp:deftype last-modified () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (lifecycle-configuration (:copier common-lisp:nil))
-   (rules (common-lisp:error ":rules is required") :type
-    (common-lisp:or rules common-lisp:null)))
+   (rules
+    (common-lisp:error #A((18) common-lisp:base-char . ":rules is required"))
+    :type (common-lisp:or rules common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'lifecycle-configuration 'make-lifecycle-configuration))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3844,8 +3928,9 @@
    (prefix common-lisp:nil :type (common-lisp:or prefix common-lisp:null))
    (filter common-lisp:nil :type
     (common-lisp:or lifecycle-rule-filter common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or expiration-status common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or expiration-status common-lisp:null))
    (transitions common-lisp:nil :type
     (common-lisp:or transition-list common-lisp:null))
    (noncurrent-version-transitions common-lisp:nil :type
@@ -4003,8 +4088,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-bucket-analytics-configurations-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (continuation-token common-lisp:nil :type
     (common-lisp:or token common-lisp:null)))
  (common-lisp:export
@@ -4067,8 +4153,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-bucket-inventory-configurations-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (continuation-token common-lisp:nil :type
     (common-lisp:or token common-lisp:null)))
  (common-lisp:export
@@ -4131,8 +4218,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-bucket-metrics-configurations-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (continuation-token common-lisp:nil :type
     (common-lisp:or token common-lisp:null)))
  (common-lisp:export
@@ -4268,8 +4356,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-multipart-uploads-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (delimiter common-lisp:nil :type
     (common-lisp:or delimiter common-lisp:null))
    (encoding-type common-lisp:nil :type
@@ -4425,8 +4514,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-object-versions-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (delimiter common-lisp:nil :type
     (common-lisp:or delimiter common-lisp:null))
    (encoding-type common-lisp:nil :type
@@ -4555,8 +4645,9 @@
                                                 'encoding-type))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-objects-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (delimiter common-lisp:nil :type
     (common-lisp:or delimiter common-lisp:null))
    (encoding-type common-lisp:nil :type
@@ -4698,8 +4789,9 @@
                                                 'start-after))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-objects-v2request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (delimiter common-lisp:nil :type
     (common-lisp:or delimiter common-lisp:null))
    (encoding-type common-lisp:nil :type
@@ -4869,16 +4961,19 @@
                                                 'request-charged))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-parts-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (max-parts common-lisp:nil :type
     (common-lisp:or max-parts common-lisp:null))
    (part-number-marker common-lisp:nil :type
     (common-lisp:or part-number-marker common-lisp:null))
-   (upload-id (common-lisp:error ":upload-id is required") :type
-    (common-lisp:or multipart-upload-id common-lisp:null))
+   (upload-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":upload-id is required"))
+    :type (common-lisp:or multipart-upload-id common-lisp:null))
    (request-payer common-lisp:nil :type
     (common-lisp:or request-payer common-lisp:null)))
  (common-lisp:export
@@ -4983,8 +5078,8 @@
                                                 'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (metrics-configuration (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or metrics-id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or metrics-id common-lisp:null))
    (filter common-lisp:nil :type
     (common-lisp:or metrics-filter common-lisp:null)))
  (common-lisp:export
@@ -5310,8 +5405,8 @@
 (common-lisp:deftype object-canned-acl () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (object-identifier (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (version-id common-lisp:nil :type
     (common-lisp:or object-version-id common-lisp:null)))
  (common-lisp:export
@@ -5494,11 +5589,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-bucket-accelerate-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (accelerate-configuration
-    (common-lisp:error ":accelerate-configuration is required") :type
-    (common-lisp:or accelerate-configuration common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":accelerate-configuration is required"))
+    :type (common-lisp:or accelerate-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-bucket-accelerate-configuration-request
                     'make-put-bucket-accelerate-configuration-request))
@@ -5523,8 +5620,9 @@
     (common-lisp:or bucket-canned-acl common-lisp:null))
    (access-control-policy common-lisp:nil :type
     (common-lisp:or access-control-policy common-lisp:null))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null))
    (grant-full-control common-lisp:nil :type
@@ -5592,13 +5690,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-bucket-analytics-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or analytics-id common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or analytics-id common-lisp:null))
    (analytics-configuration
-    (common-lisp:error ":analytics-configuration is required") :type
-    (common-lisp:or analytics-configuration common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":analytics-configuration is required"))
+    :type (common-lisp:or analytics-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-bucket-analytics-configuration-request
                     'make-put-bucket-analytics-configuration-request))
@@ -5624,9 +5724,12 @@
                                                 'analytics-configuration))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-bucket-cors-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (corsconfiguration (common-lisp:error ":corsconfiguration is required")
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (corsconfiguration
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":corsconfiguration is required"))
     :type (common-lisp:or corsconfiguration common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null)))
@@ -5655,13 +5758,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-bucket-inventory-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or inventory-id common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or inventory-id common-lisp:null))
    (inventory-configuration
-    (common-lisp:error ":inventory-configuration is required") :type
-    (common-lisp:or inventory-configuration common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":inventory-configuration is required"))
+    :type (common-lisp:or inventory-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-bucket-inventory-configuration-request
                     'make-put-bucket-inventory-configuration-request))
@@ -5688,8 +5793,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-bucket-lifecycle-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (lifecycle-configuration common-lisp:nil :type
     (common-lisp:or bucket-lifecycle-configuration common-lisp:null)))
  (common-lisp:export
@@ -5713,8 +5819,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-bucket-lifecycle-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null))
    (lifecycle-configuration common-lisp:nil :type
@@ -5744,11 +5851,13 @@
                                                 'lifecycle-configuration))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-bucket-logging-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (bucket-logging-status
-    (common-lisp:error ":bucket-logging-status is required") :type
-    (common-lisp:or bucket-logging-status common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":bucket-logging-status is required"))
+    :type (common-lisp:or bucket-logging-status common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null)))
  (common-lisp:export
@@ -5777,13 +5886,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-bucket-metrics-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or metrics-id common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or metrics-id common-lisp:null))
    (metrics-configuration
-    (common-lisp:error ":metrics-configuration is required") :type
-    (common-lisp:or metrics-configuration common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":metrics-configuration is required"))
+    :type (common-lisp:or metrics-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-bucket-metrics-configuration-request
                     'make-put-bucket-metrics-configuration-request))
@@ -5810,11 +5921,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-bucket-notification-configuration-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (notification-configuration
-    (common-lisp:error ":notification-configuration is required") :type
-    (common-lisp:or notification-configuration common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":notification-configuration is required"))
+    :type (common-lisp:or notification-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-bucket-notification-configuration-request
                     'make-put-bucket-notification-configuration-request))
@@ -5836,12 +5950,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-bucket-notification-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null))
    (notification-configuration
-    (common-lisp:error ":notification-configuration is required") :type
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":notification-configuration is required"))
+    :type
     (common-lisp:or notification-configuration-deprecated common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-bucket-notification-request
@@ -5868,12 +5986,14 @@
                                                 'notification-configuration))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-bucket-policy-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null))
-   (policy (common-lisp:error ":policy is required") :type
-    (common-lisp:or policy common-lisp:null)))
+   (policy
+    (common-lisp:error #A((19) common-lisp:base-char . ":policy is required"))
+    :type (common-lisp:or policy common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-bucket-policy-request
                     'make-put-bucket-policy-request))
@@ -5900,13 +6020,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-bucket-replication-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null))
    (replication-configuration
-    (common-lisp:error ":replication-configuration is required") :type
-    (common-lisp:or replication-configuration common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":replication-configuration is required"))
+    :type (common-lisp:or replication-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-bucket-replication-request
                     'make-put-bucket-replication-request))
@@ -5933,13 +6055,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-bucket-request-payment-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null))
    (request-payment-configuration
-    (common-lisp:error ":request-payment-configuration is required") :type
-    (common-lisp:or request-payment-configuration common-lisp:null)))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":request-payment-configuration is required"))
+    :type (common-lisp:or request-payment-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-bucket-request-payment-request
                     'make-put-bucket-request-payment-request))
@@ -5965,12 +6090,14 @@
                                                 'request-payment-configuration))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-bucket-tagging-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null))
-   (tagging (common-lisp:error ":tagging is required") :type
-    (common-lisp:or tagging common-lisp:null)))
+   (tagging
+    (common-lisp:error #A((20) common-lisp:base-char . ":tagging is required"))
+    :type (common-lisp:or tagging common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-bucket-tagging-request
                     'make-put-bucket-tagging-request))
@@ -5997,14 +6124,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-bucket-versioning-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null))
    (mfa common-lisp:nil :type (common-lisp:or mfa common-lisp:null))
    (versioning-configuration
-    (common-lisp:error ":versioning-configuration is required") :type
-    (common-lisp:or versioning-configuration common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":versioning-configuration is required"))
+    :type (common-lisp:or versioning-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-bucket-versioning-request
                     'make-put-bucket-versioning-request))
@@ -6035,13 +6164,15 @@
                                                 'versioning-configuration))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-bucket-website-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null))
    (website-configuration
-    (common-lisp:error ":website-configuration is required") :type
-    (common-lisp:or website-configuration common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":website-configuration is required"))
+    :type (common-lisp:or website-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-bucket-website-request
                     'make-put-bucket-website-request))
@@ -6087,8 +6218,9 @@
     (common-lisp:or object-canned-acl common-lisp:null))
    (access-control-policy common-lisp:nil :type
     (common-lisp:or access-control-policy common-lisp:null))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null))
    (grant-full-control common-lisp:nil :type
@@ -6101,8 +6233,8 @@
     (common-lisp:or grant-write common-lisp:null))
    (grant-write-acp common-lisp:nil :type
     (common-lisp:or grant-write-acp common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (request-payer common-lisp:nil :type
     (common-lisp:or request-payer common-lisp:null))
    (version-id common-lisp:nil :type
@@ -6241,8 +6373,9 @@
    (acl common-lisp:nil :type
     (common-lisp:or object-canned-acl common-lisp:null))
    (body common-lisp:nil :type (common-lisp:or body common-lisp:null))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (cache-control common-lisp:nil :type
     (common-lisp:or cache-control common-lisp:null))
    (content-disposition common-lisp:nil :type
@@ -6266,8 +6399,8 @@
     (common-lisp:or grant-read-acp common-lisp:null))
    (grant-write-acp common-lisp:nil :type
     (common-lisp:or grant-write-acp common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (metadata common-lisp:nil :type (common-lisp:or metadata common-lisp:null))
    (server-side-encryption common-lisp:nil :type
     (common-lisp:or server-side-encryption common-lisp:null))
@@ -6441,16 +6574,18 @@
                                                 'version-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-object-tagging-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (version-id common-lisp:nil :type
     (common-lisp:or object-version-id common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null))
-   (tagging (common-lisp:error ":tagging is required") :type
-    (common-lisp:or tagging common-lisp:null)))
+   (tagging
+    (common-lisp:error #A((20) common-lisp:base-char . ":tagging is required"))
+    :type (common-lisp:or tagging common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-object-tagging-request
                     'make-put-object-tagging-request))
@@ -6488,10 +6623,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (queue-configuration (:copier common-lisp:nil))
    (id common-lisp:nil :type (common-lisp:or notification-id common-lisp:null))
-   (queue-arn (common-lisp:error ":queue-arn is required") :type
-    (common-lisp:or queue-arn common-lisp:null))
-   (events (common-lisp:error ":events is required") :type
-    (common-lisp:or event-list common-lisp:null))
+   (queue-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-arn is required"))
+    :type (common-lisp:or queue-arn common-lisp:null))
+   (events
+    (common-lisp:error #A((19) common-lisp:base-char . ":events is required"))
+    :type (common-lisp:or event-list common-lisp:null))
    (filter common-lisp:nil :type
     (common-lisp:or notification-configuration-filter common-lisp:null)))
  (common-lisp:export
@@ -6606,8 +6744,10 @@
                                                 'replace-key-with))))))
 (common-lisp:progn
  (common-lisp:defstruct (redirect-all-requests-to (:copier common-lisp:nil))
-   (host-name (common-lisp:error ":host-name is required") :type
-    (common-lisp:or host-name common-lisp:null))
+   (host-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":host-name is required"))
+    :type (common-lisp:or host-name common-lisp:null))
    (protocol common-lisp:nil :type (common-lisp:or protocol common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'redirect-all-requests-to 'make-redirect-all-requests-to))
@@ -6630,10 +6770,12 @@
 (common-lisp:deftype replace-key-with () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (replication-configuration (:copier common-lisp:nil))
-   (role (common-lisp:error ":role is required") :type
-    (common-lisp:or role common-lisp:null))
-   (rules (common-lisp:error ":rules is required") :type
-    (common-lisp:or replication-rules common-lisp:null)))
+   (role
+    (common-lisp:error #A((17) common-lisp:base-char . ":role is required"))
+    :type (common-lisp:or role common-lisp:null))
+   (rules
+    (common-lisp:error #A((18) common-lisp:base-char . ":rules is required"))
+    :type (common-lisp:or replication-rules common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'replication-configuration
                     'make-replication-configuration))
@@ -6655,12 +6797,16 @@
 (common-lisp:progn
  (common-lisp:defstruct (replication-rule (:copier common-lisp:nil))
    (id common-lisp:nil :type (common-lisp:or id common-lisp:null))
-   (prefix (common-lisp:error ":prefix is required") :type
-    (common-lisp:or prefix common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or replication-rule-status common-lisp:null))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or destination common-lisp:null)))
+   (prefix
+    (common-lisp:error #A((19) common-lisp:base-char . ":prefix is required"))
+    :type (common-lisp:or prefix common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or replication-rule-status common-lisp:null))
+   (destination
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":destination is required"))
+    :type (common-lisp:or destination common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'replication-rule 'make-replication-rule))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -6701,8 +6847,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (request-payment-configuration (:copier common-lisp:nil))
-   (payer (common-lisp:error ":payer is required") :type
-    (common-lisp:or payer common-lisp:null)))
+   (payer
+    (common-lisp:error #A((18) common-lisp:base-char . ":payer is required"))
+    :type (common-lisp:or payer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'request-payment-configuration
                     'make-request-payment-configuration))
@@ -6741,10 +6888,11 @@
                                                 'request-charged))))))
 (common-lisp:progn
  (common-lisp:defstruct (restore-object-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
    (version-id common-lisp:nil :type
     (common-lisp:or object-version-id common-lisp:null))
    (restore-request common-lisp:nil :type
@@ -6785,8 +6933,9 @@
                                                 'request-payer))))))
 (common-lisp:progn
  (common-lisp:defstruct (restore-request (:copier common-lisp:nil))
-   (days (common-lisp:error ":days is required") :type
-    (common-lisp:or days common-lisp:null))
+   (days
+    (common-lisp:error #A((17) common-lisp:base-char . ":days is required"))
+    :type (common-lisp:or days common-lisp:null))
    (glacier-job-parameters common-lisp:nil :type
     (common-lisp:or glacier-job-parameters common-lisp:null)))
  (common-lisp:export (common-lisp:list 'restore-request 'make-restore-request))
@@ -6808,8 +6957,10 @@
  (common-lisp:defstruct (routing-rule (:copier common-lisp:nil))
    (condition common-lisp:nil :type
     (common-lisp:or condition common-lisp:null))
-   (redirect (common-lisp:error ":redirect is required") :type
-    (common-lisp:or redirect common-lisp:null)))
+   (redirect
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":redirect is required"))
+    :type (common-lisp:or redirect common-lisp:null)))
  (common-lisp:export (common-lisp:list 'routing-rule 'make-routing-rule))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape routing-rule))
@@ -6837,10 +6988,12 @@
    (expiration common-lisp:nil :type
     (common-lisp:or lifecycle-expiration common-lisp:null))
    (id common-lisp:nil :type (common-lisp:or id common-lisp:null))
-   (prefix (common-lisp:error ":prefix is required") :type
-    (common-lisp:or prefix common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or expiration-status common-lisp:null))
+   (prefix
+    (common-lisp:error #A((19) common-lisp:base-char . ":prefix is required"))
+    :type (common-lisp:or prefix common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or expiration-status common-lisp:null))
    (transition common-lisp:nil :type
     (common-lisp:or transition common-lisp:null))
    (noncurrent-version-transition common-lisp:nil :type
@@ -6941,10 +7094,14 @@
  (common-lisp:defstruct
      (storage-class-analysis-data-export (:copier common-lisp:nil))
    (output-schema-version
-    (common-lisp:error ":output-schema-version is required") :type
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":output-schema-version is required"))
+    :type
     (common-lisp:or storage-class-analysis-schema-version common-lisp:null))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or analytics-export-destination common-lisp:null)))
+   (destination
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":destination is required"))
+    :type (common-lisp:or analytics-export-destination common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'storage-class-analysis-data-export
                     'make-storage-class-analysis-data-export))
@@ -6968,10 +7125,11 @@
 (common-lisp:deftype suffix () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or value common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -6996,8 +7154,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tagging (:copier common-lisp:nil))
-   (tag-set (common-lisp:error ":tag-set is required") :type
-    (common-lisp:or tag-set common-lisp:null)))
+   (tag-set
+    (common-lisp:error #A((20) common-lisp:base-char . ":tag-set is required"))
+    :type (common-lisp:or tag-set common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tagging 'make-tagging))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tagging))
@@ -7044,10 +7203,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (topic-configuration (:copier common-lisp:nil))
    (id common-lisp:nil :type (common-lisp:or notification-id common-lisp:null))
-   (topic-arn (common-lisp:error ":topic-arn is required") :type
-    (common-lisp:or topic-arn common-lisp:null))
-   (events (common-lisp:error ":events is required") :type
-    (common-lisp:or event-list common-lisp:null))
+   (topic-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":topic-arn is required"))
+    :type (common-lisp:or topic-arn common-lisp:null))
+   (events
+    (common-lisp:error #A((19) common-lisp:base-char . ":events is required"))
+    :type (common-lisp:or event-list common-lisp:null))
    (filter common-lisp:nil :type
     (common-lisp:or notification-configuration-filter common-lisp:null)))
  (common-lisp:export
@@ -7215,10 +7377,13 @@
                                                 'request-charged))))))
 (common-lisp:progn
  (common-lisp:defstruct (upload-part-copy-request (:copier common-lisp:nil))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (copy-source (common-lisp:error ":copy-source is required") :type
-    (common-lisp:or copy-source common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (copy-source
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":copy-source is required"))
+    :type (common-lisp:or copy-source common-lisp:null))
    (copy-source-if-match common-lisp:nil :type
     (common-lisp:or copy-source-if-match common-lisp:null))
    (copy-source-if-modified-since common-lisp:nil :type
@@ -7229,12 +7394,16 @@
     (common-lisp:or copy-source-if-unmodified-since common-lisp:null))
    (copy-source-range common-lisp:nil :type
     (common-lisp:or copy-source-range common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
-   (part-number (common-lisp:error ":part-number is required") :type
-    (common-lisp:or part-number common-lisp:null))
-   (upload-id (common-lisp:error ":upload-id is required") :type
-    (common-lisp:or multipart-upload-id common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
+   (part-number
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":part-number is required"))
+    :type (common-lisp:or part-number common-lisp:null))
+   (upload-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":upload-id is required"))
+    :type (common-lisp:or multipart-upload-id common-lisp:null))
    (ssecustomer-algorithm common-lisp:nil :type
     (common-lisp:or ssecustomer-algorithm common-lisp:null))
    (ssecustomer-key common-lisp:nil :type
@@ -7392,18 +7561,23 @@
 (common-lisp:progn
  (common-lisp:defstruct (upload-part-request (:copier common-lisp:nil))
    (body common-lisp:nil :type (common-lisp:or body common-lisp:null))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
    (content-length common-lisp:nil :type
     (common-lisp:or content-length common-lisp:null))
    (content-md5 common-lisp:nil :type
     (common-lisp:or content-md5 common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or object-key common-lisp:null))
-   (part-number (common-lisp:error ":part-number is required") :type
-    (common-lisp:or part-number common-lisp:null))
-   (upload-id (common-lisp:error ":upload-id is required") :type
-    (common-lisp:or multipart-upload-id common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or object-key common-lisp:null))
+   (part-number
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":part-number is required"))
+    :type (common-lisp:or part-number common-lisp:null))
+   (upload-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":upload-id is required"))
+    :type (common-lisp:or multipart-upload-id common-lisp:null))
    (ssecustomer-algorithm common-lisp:nil :type
     (common-lisp:or ssecustomer-algorithm common-lisp:null))
    (ssecustomer-key common-lisp:nil :type
@@ -7546,7 +7720,11 @@
                       (common-lisp:apply 'make-abort-multipart-upload-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil "/~a/~a"
+                                                   bucket key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"AbortMultipartUpload")
                                   ("Version" ,@"2006-03-01"))
@@ -7568,7 +7746,11 @@
                        'make-complete-multipart-upload-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil "/~a/~a"
+                                                   bucket key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CompleteMultipartUpload")
                                   ("Version" ,@"2006-03-01"))
@@ -7608,7 +7790,11 @@
                       (common-lisp:apply 'make-copy-object-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil "/~a/~a"
+                                                   bucket key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CopyObject")
                                   ("Version" ,@"2006-03-01"))
@@ -7630,7 +7816,11 @@
                       (common-lisp:apply 'make-create-bucket-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil "/~a"
+                                                   bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateBucket")
                                   ("Version" ,@"2006-03-01"))
@@ -7661,7 +7851,12 @@
                       (common-lisp:apply 'make-create-multipart-upload-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/~a?uploads" bucket
+                                                   key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateMultipartUpload")
                                   ("Version" ,@"2006-03-01"))
@@ -7679,7 +7874,11 @@
                       (common-lisp:apply 'make-delete-bucket-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil "/~a"
+                                                   bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBucket")
                                   ("Version" ,@"2006-03-01"))
@@ -7698,7 +7897,11 @@
                        'make-delete-bucket-analytics-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?analytics" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeleteBucketAnalyticsConfiguration")
@@ -7717,7 +7920,11 @@
                       (common-lisp:apply 'make-delete-bucket-cors-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil "/~a?cors"
+                                                   bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBucketCors")
                                   ("Version" ,@"2006-03-01"))
@@ -7736,7 +7943,11 @@
                        'make-delete-bucket-inventory-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?inventory" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeleteBucketInventoryConfiguration")
@@ -7755,7 +7966,11 @@
                       (common-lisp:apply 'make-delete-bucket-lifecycle-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?lifecycle" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBucketLifecycle")
                                   ("Version" ,@"2006-03-01"))
@@ -7774,7 +7989,11 @@
                        'make-delete-bucket-metrics-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?metrics" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeleteBucketMetricsConfiguration")
@@ -7793,7 +8012,11 @@
                       (common-lisp:apply 'make-delete-bucket-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil "/~a?policy"
+                                                   bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBucketPolicy")
                                   ("Version" ,@"2006-03-01"))
@@ -7812,7 +8035,11 @@
                        'make-delete-bucket-replication-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?replication" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBucketReplication")
                                   ("Version" ,@"2006-03-01"))
@@ -7830,7 +8057,11 @@
                       (common-lisp:apply 'make-delete-bucket-tagging-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?tagging" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBucketTagging")
                                   ("Version" ,@"2006-03-01"))
@@ -7848,7 +8079,11 @@
                       (common-lisp:apply 'make-delete-bucket-website-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?website" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBucketWebsite")
                                   ("Version" ,@"2006-03-01"))
@@ -7867,7 +8102,11 @@
                       (common-lisp:apply 'make-delete-object-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil "/~a/~a"
+                                                   bucket key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteObject")
                                   ("Version" ,@"2006-03-01"))
@@ -7885,7 +8124,12 @@
                       (common-lisp:apply 'make-delete-object-tagging-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/~a?tagging" bucket
+                                                   key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteObjectTagging")
                                   ("Version" ,@"2006-03-01"))
@@ -7904,7 +8148,11 @@
                       (common-lisp:apply 'make-delete-objects-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil "/~a?delete"
+                                                   bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteObjects")
                                   ("Version" ,@"2006-03-01"))
@@ -7923,7 +8171,11 @@
                        'make-get-bucket-accelerate-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?accelerate" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetBucketAccelerateConfiguration")
@@ -7942,7 +8194,11 @@
                       (common-lisp:apply 'make-get-bucket-acl-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil "/~a?acl"
+                                                   bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBucketAcl")
                                   ("Version" ,@"2006-03-01"))
@@ -7961,7 +8217,11 @@
                        'make-get-bucket-analytics-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?analytics" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetBucketAnalyticsConfiguration")
@@ -7980,7 +8240,11 @@
                       (common-lisp:apply 'make-get-bucket-cors-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil "/~a?cors"
+                                                   bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBucketCors")
                                   ("Version" ,@"2006-03-01"))
@@ -7999,7 +8263,11 @@
                        'make-get-bucket-inventory-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?inventory" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetBucketInventoryConfiguration")
@@ -8018,7 +8286,11 @@
                       (common-lisp:apply 'make-get-bucket-lifecycle-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?lifecycle" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBucketLifecycle")
                                   ("Version" ,@"2006-03-01"))
@@ -8037,7 +8309,11 @@
                        'make-get-bucket-lifecycle-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?lifecycle" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetBucketLifecycleConfiguration")
@@ -8056,7 +8332,11 @@
                       (common-lisp:apply 'make-get-bucket-location-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?location" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBucketLocation")
                                   ("Version" ,@"2006-03-01"))
@@ -8074,7 +8354,11 @@
                       (common-lisp:apply 'make-get-bucket-logging-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?logging" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBucketLogging")
                                   ("Version" ,@"2006-03-01"))
@@ -8093,7 +8377,11 @@
                        'make-get-bucket-metrics-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?metrics" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBucketMetricsConfiguration")
                                   ("Version" ,@"2006-03-01"))
@@ -8112,7 +8400,11 @@
                        'make-get-bucket-notification-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?notification" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBucketNotification")
                                   ("Version" ,@"2006-03-01"))
@@ -8131,7 +8423,11 @@
                        'make-get-bucket-notification-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?notification" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetBucketNotificationConfiguration")
@@ -8150,7 +8446,11 @@
                       (common-lisp:apply 'make-get-bucket-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil "/~a?policy"
+                                                   bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBucketPolicy")
                                   ("Version" ,@"2006-03-01"))
@@ -8168,7 +8468,11 @@
                       (common-lisp:apply 'make-get-bucket-replication-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?replication" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBucketReplication")
                                   ("Version" ,@"2006-03-01"))
@@ -8187,7 +8491,11 @@
                        'make-get-bucket-request-payment-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?requestPayment" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBucketRequestPayment")
                                   ("Version" ,@"2006-03-01"))
@@ -8205,7 +8513,11 @@
                       (common-lisp:apply 'make-get-bucket-tagging-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?tagging" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBucketTagging")
                                   ("Version" ,@"2006-03-01"))
@@ -8223,7 +8535,11 @@
                       (common-lisp:apply 'make-get-bucket-versioning-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?versioning" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBucketVersioning")
                                   ("Version" ,@"2006-03-01"))
@@ -8241,7 +8557,11 @@
                       (common-lisp:apply 'make-get-bucket-website-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?website" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBucketWebsite")
                                   ("Version" ,@"2006-03-01"))
@@ -8271,7 +8591,11 @@
                       (common-lisp:apply 'make-get-object-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil "/~a/~a"
+                                                   bucket key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetObject")
                                   ("Version" ,@"2006-03-01"))
@@ -8290,7 +8614,11 @@
                       (common-lisp:apply 'make-get-object-acl-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil "/~a/~a?acl"
+                                                   bucket key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetObjectAcl")
                                   ("Version" ,@"2006-03-01"))
@@ -8308,7 +8636,12 @@
                       (common-lisp:apply 'make-get-object-tagging-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/~a?tagging" bucket
+                                                   key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetObjectTagging")
                                   ("Version" ,@"2006-03-01"))
@@ -8326,7 +8659,12 @@
                       (common-lisp:apply 'make-get-object-torrent-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/~a?torrent" bucket
+                                                   key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetObjectTorrent")
                                   ("Version" ,@"2006-03-01"))
@@ -8344,7 +8682,11 @@
                       (common-lisp:apply 'make-head-bucket-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :head :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :head :path
+                               (common-lisp:format common-lisp:nil "/~a"
+                                                   bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"HeadBucket")
                                   ("Version" ,@"2006-03-01"))
@@ -8368,7 +8710,11 @@
                       (common-lisp:apply 'make-head-object-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :head :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :head :path
+                               (common-lisp:format common-lisp:nil "/~a/~a"
+                                                   bucket key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"HeadObject")
                                   ("Version" ,@"2006-03-01"))
@@ -8387,7 +8733,11 @@
                        'make-list-bucket-analytics-configurations-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?analytics" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ListBucketAnalyticsConfigurations")
@@ -8407,7 +8757,11 @@
                        'make-list-bucket-inventory-configurations-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?inventory" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ListBucketInventoryConfigurations")
@@ -8427,7 +8781,11 @@
                        'make-list-bucket-metrics-configurations-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?metrics" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ListBucketMetricsConfigurations")
@@ -8439,7 +8797,8 @@
 (common-lisp:progn
  (common-lisp:defun list-buckets ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "s3" :method :get :params
+    (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                             :method :get :params
                              (common-lisp:cons "Action" "ListBuckets"))
     "ListBucketsOutput" common-lisp:nil))
  (common-lisp:export 'list-buckets))
@@ -8456,7 +8815,11 @@
                       (common-lisp:apply 'make-list-multipart-uploads-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?uploads" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListMultipartUploads")
                                   ("Version" ,@"2006-03-01"))
@@ -8477,7 +8840,11 @@
                       (common-lisp:apply 'make-list-object-versions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?versions" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListObjectVersions")
                                   ("Version" ,@"2006-03-01"))
@@ -8498,7 +8865,11 @@
                       (common-lisp:apply 'make-list-objects-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil "/~a"
+                                                   bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListObjects")
                                   ("Version" ,@"2006-03-01"))
@@ -8520,7 +8891,11 @@
                       (common-lisp:apply 'make-list-objects-v2request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?list-type=2" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListObjectsV2")
                                   ("Version" ,@"2006-03-01"))
@@ -8541,7 +8916,11 @@
                       (common-lisp:apply 'make-list-parts-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :get :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil "/~a/~a"
+                                                   bucket key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListParts")
                                   ("Version" ,@"2006-03-01"))
@@ -8561,7 +8940,11 @@
                        'make-put-bucket-accelerate-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?accelerate" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"PutBucketAccelerateConfiguration")
@@ -8584,7 +8967,11 @@
                       (common-lisp:apply 'make-put-bucket-acl-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil "/~a?acl"
+                                                   bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBucketAcl")
                                   ("Version" ,@"2006-03-01"))
@@ -8604,7 +8991,11 @@
                        'make-put-bucket-analytics-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?analytics" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"PutBucketAnalyticsConfiguration")
@@ -8624,7 +9015,11 @@
                       (common-lisp:apply 'make-put-bucket-cors-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil "/~a?cors"
+                                                   bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBucketCors")
                                   ("Version" ,@"2006-03-01"))
@@ -8644,7 +9039,11 @@
                        'make-put-bucket-inventory-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?inventory" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"PutBucketInventoryConfiguration")
@@ -8665,7 +9064,11 @@
                       (common-lisp:apply 'make-put-bucket-lifecycle-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?lifecycle" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBucketLifecycle")
                                   ("Version" ,@"2006-03-01"))
@@ -8684,7 +9087,11 @@
                        'make-put-bucket-lifecycle-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?lifecycle" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"PutBucketLifecycleConfiguration")
@@ -8704,7 +9111,11 @@
                       (common-lisp:apply 'make-put-bucket-logging-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?logging" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBucketLogging")
                                   ("Version" ,@"2006-03-01"))
@@ -8724,7 +9135,11 @@
                        'make-put-bucket-metrics-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?metrics" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBucketMetricsConfiguration")
                                   ("Version" ,@"2006-03-01"))
@@ -8744,7 +9159,11 @@
                       (common-lisp:apply 'make-put-bucket-notification-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?notification" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBucketNotification")
                                   ("Version" ,@"2006-03-01"))
@@ -8764,7 +9183,11 @@
                        'make-put-bucket-notification-configuration-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?notification" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"PutBucketNotificationConfiguration")
@@ -8783,7 +9206,11 @@
                       (common-lisp:apply 'make-put-bucket-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil "/~a?policy"
+                                                   bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBucketPolicy")
                                   ("Version" ,@"2006-03-01"))
@@ -8803,7 +9230,11 @@
                       (common-lisp:apply 'make-put-bucket-replication-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?replication" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBucketReplication")
                                   ("Version" ,@"2006-03-01"))
@@ -8824,7 +9255,11 @@
                        'make-put-bucket-request-payment-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?requestPayment" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBucketRequestPayment")
                                   ("Version" ,@"2006-03-01"))
@@ -8842,7 +9277,11 @@
                       (common-lisp:apply 'make-put-bucket-tagging-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?tagging" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBucketTagging")
                                   ("Version" ,@"2006-03-01"))
@@ -8862,7 +9301,11 @@
                       (common-lisp:apply 'make-put-bucket-versioning-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?versioning" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBucketVersioning")
                                   ("Version" ,@"2006-03-01"))
@@ -8881,7 +9324,11 @@
                       (common-lisp:apply 'make-put-bucket-website-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a?website" bucket)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBucketWebsite")
                                   ("Version" ,@"2006-03-01"))
@@ -8912,7 +9359,11 @@
                       (common-lisp:apply 'make-put-object-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil "/~a/~a"
+                                                   bucket key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutObject")
                                   ("Version" ,@"2006-03-01"))
@@ -8935,7 +9386,11 @@
                       (common-lisp:apply 'make-put-object-acl-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil "/~a/~a?acl"
+                                                   bucket key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutObjectAcl")
                                   ("Version" ,@"2006-03-01"))
@@ -8955,7 +9410,12 @@
                       (common-lisp:apply 'make-put-object-tagging-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/~a?tagging" bucket
+                                                   key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutObjectTagging")
                                   ("Version" ,@"2006-03-01"))
@@ -8976,7 +9436,12 @@
                       (common-lisp:apply 'make-restore-object-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :post :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/~a?restore" bucket
+                                                   key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"RestoreObject")
                                   ("Version" ,@"2006-03-01"))
@@ -8999,7 +9464,11 @@
                       (common-lisp:apply 'make-upload-part-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil "/~a/~a"
+                                                   bucket key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UploadPart")
                                   ("Version" ,@"2006-03-01"))
@@ -9030,7 +9499,11 @@
                       (common-lisp:apply 'make-upload-part-copy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "s3" :method :put :params
+      (aws-sdk/api:aws-request :service #A((2) common-lisp:base-char . "s3")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil "/~a/~a"
+                                                   bucket key+)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UploadPartCopy")
                                   ("Version" ,@"2006-03-01"))

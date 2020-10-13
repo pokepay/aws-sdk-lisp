@@ -7,14 +7,17 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/codecommit)
+
 (common-lisp:deftype account-id () 'common-lisp:string)
 (common-lisp:deftype additional-data () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-get-repositories-input (:copier common-lisp:nil))
-   (repository-names (common-lisp:error ":repositorynames is required") :type
-    (common-lisp:or repository-name-list common-lisp:null)))
+   (repository-names
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":repositorynames is required"))
+    :type (common-lisp:or repository-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-get-repositories-input
                     'make-batch-get-repositories-input))
@@ -255,12 +258,18 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-branch-input (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (branch-name (common-lisp:error ":branchname is required") :type
-    (common-lisp:or branch-name common-lisp:null))
-   (commit-id (common-lisp:error ":commitid is required") :type
-    (common-lisp:or commit-id common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (branch-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":branchname is required"))
+    :type (common-lisp:or branch-name common-lisp:null))
+   (commit-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":commitid is required"))
+    :type (common-lisp:or commit-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-branch-input 'make-create-branch-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -283,8 +292,10 @@
                                                 'commit-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-repository-input (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
    (repository-description common-lisp:nil :type
     (common-lisp:or repository-description common-lisp:null)))
  (common-lisp:export
@@ -324,8 +335,10 @@
 (common-lisp:deftype date () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-repository-input (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-repository-input 'make-delete-repository-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -456,10 +469,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (get-blob-input (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (blob-id (common-lisp:error ":blobid is required") :type
-    (common-lisp:or object-id common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (blob-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":blobid is required"))
+    :type (common-lisp:or object-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'get-blob-input 'make-get-blob-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape get-blob-input))
@@ -476,7 +492,9 @@
                                                 'blob-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-blob-output (:copier common-lisp:nil))
-   (content (common-lisp:error ":content is required") :type
+   (content
+    (common-lisp:error #A((20) common-lisp:base-char . ":content is required"))
+    :type
     (common-lisp:or
      (common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*))
      common-lisp:null)))
@@ -526,10 +544,14 @@
                                                 'branch))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-commit-input (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (commit-id (common-lisp:error ":commitid is required") :type
-    (common-lisp:or object-id common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (commit-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":commitid is required"))
+    :type (common-lisp:or object-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-commit-input 'make-get-commit-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -547,8 +569,9 @@
                                                 'commit-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-commit-output (:copier common-lisp:nil))
-   (commit (common-lisp:error ":commit is required") :type
-    (common-lisp:or commit common-lisp:null)))
+   (commit
+    (common-lisp:error #A((19) common-lisp:base-char . ":commit is required"))
+    :type (common-lisp:or commit common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-commit-output 'make-get-commit-output))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -561,13 +584,16 @@
                                                 'commit))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-differences-input (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
    (before-commit-specifier common-lisp:nil :type
     (common-lisp:or commit-name common-lisp:null))
    (after-commit-specifier
-    (common-lisp:error ":aftercommitspecifier is required") :type
-    (common-lisp:or commit-name common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":aftercommitspecifier is required"))
+    :type (common-lisp:or commit-name common-lisp:null))
    (before-path common-lisp:nil :type (common-lisp:or path common-lisp:null))
    (after-path common-lisp:nil :type (common-lisp:or path common-lisp:null))
    (max-results common-lisp:nil :type (common-lisp:or limit common-lisp:null))
@@ -640,8 +666,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-repository-input (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-repository-input 'make-get-repository-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -671,8 +699,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-repository-triggers-input (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-repository-triggers-input
                     'make-get-repository-triggers-input))
@@ -897,8 +927,10 @@
 (common-lisp:deftype limit () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (list-branches-input (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null)))
  (common-lisp:export
@@ -1051,10 +1083,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-repository-triggers-input (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (triggers (common-lisp:error ":triggers is required") :type
-    (common-lisp:or repository-triggers-list common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (triggers
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":triggers is required"))
+    :type (common-lisp:or repository-triggers-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-repository-triggers-input
                     'make-put-repository-triggers-input))
@@ -1282,16 +1318,20 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (repository-trigger (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or repository-trigger-name common-lisp:null))
-   (destination-arn (common-lisp:error ":destinationarn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or repository-trigger-name common-lisp:null))
+   (destination-arn
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":destinationarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (custom-data common-lisp:nil :type
     (common-lisp:or repository-trigger-custom-data common-lisp:null))
    (branches common-lisp:nil :type
     (common-lisp:or branch-name-list common-lisp:null))
-   (events (common-lisp:error ":events is required") :type
-    (common-lisp:or repository-trigger-event-list common-lisp:null)))
+   (events
+    (common-lisp:error #A((19) common-lisp:base-char . ":events is required"))
+    :type (common-lisp:or repository-trigger-event-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'repository-trigger 'make-repository-trigger))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1451,10 +1491,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (test-repository-triggers-input (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (triggers (common-lisp:error ":triggers is required") :type
-    (common-lisp:or repository-triggers-list common-lisp:null)))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (triggers
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":triggers is required"))
+    :type (common-lisp:or repository-triggers-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'test-repository-triggers-input
                     'make-test-repository-triggers-input))
@@ -1501,9 +1545,13 @@
                                                 'failed-executions))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-default-branch-input (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (default-branch-name (common-lisp:error ":defaultbranchname is required")
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (default-branch-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":defaultbranchname is required"))
     :type (common-lisp:or branch-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-default-branch-input
@@ -1526,8 +1574,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-repository-description-input (:copier common-lisp:nil))
-   (repository-name (common-lisp:error ":repositoryname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
+   (repository-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":repositoryname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
    (repository-description common-lisp:nil :type
     (common-lisp:or repository-description common-lisp:null)))
  (common-lisp:export
@@ -1551,10 +1601,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-repository-name-input (:copier common-lisp:nil))
-   (old-name (common-lisp:error ":oldname is required") :type
-    (common-lisp:or repository-name common-lisp:null))
-   (new-name (common-lisp:error ":newname is required") :type
-    (common-lisp:or repository-name common-lisp:null)))
+   (old-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":oldname is required"))
+    :type (common-lisp:or repository-name common-lisp:null))
+   (new-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":newname is required"))
+    :type (common-lisp:or repository-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-repository-name-input
                     'make-update-repository-name-input))
@@ -1608,7 +1660,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-batch-get-repositories-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetRepositories")
                                   ("Version" ,@"2015-04-13"))
@@ -1627,7 +1681,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-branch-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateBranch")
                                   ("Version" ,@"2015-04-13"))
@@ -1646,7 +1702,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-repository-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateRepository")
                                   ("Version" ,@"2015-04-13"))
@@ -1664,7 +1722,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-repository-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRepository")
                                   ("Version" ,@"2015-04-13"))
@@ -1682,7 +1742,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-blob-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBlob")
                                   ("Version" ,@"2015-04-13"))
@@ -1700,7 +1762,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-branch-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBranch")
                                   ("Version" ,@"2015-04-13"))
@@ -1718,7 +1782,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-commit-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCommit")
                                   ("Version" ,@"2015-04-13"))
@@ -1740,7 +1806,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-differences-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDifferences")
                                   ("Version" ,@"2015-04-13"))
@@ -1758,7 +1826,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-repository-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRepository")
                                   ("Version" ,@"2015-04-13"))
@@ -1776,7 +1846,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-repository-triggers-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRepositoryTriggers")
                                   ("Version" ,@"2015-04-13"))
@@ -1794,7 +1866,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-branches-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListBranches")
                                   ("Version" ,@"2015-04-13"))
@@ -1812,7 +1886,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-repositories-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRepositories")
                                   ("Version" ,@"2015-04-13"))
@@ -1830,7 +1906,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-put-repository-triggers-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutRepositoryTriggers")
                                   ("Version" ,@"2015-04-13"))
@@ -1848,7 +1926,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-test-repository-triggers-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TestRepositoryTriggers")
                                   ("Version" ,@"2015-04-13"))
@@ -1867,7 +1947,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-update-default-branch-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDefaultBranch")
                                   ("Version" ,@"2015-04-13"))
@@ -1887,7 +1969,9 @@ common-lisp:nil
                        'make-update-repository-description-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRepositoryDescription")
                                   ("Version" ,@"2015-04-13"))
@@ -1905,7 +1989,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-update-repository-name-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codecommit" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "codecommit")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateRepositoryName")
                                   ("Version" ,@"2015-04-13"))

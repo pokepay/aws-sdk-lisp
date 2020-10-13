@@ -7,15 +7,22 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/glacier)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (abort-multipart-upload-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (upload-id (common-lisp:error ":uploadid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (upload-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":uploadid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'abort-multipart-upload-input
                     'make-abort-multipart-upload-input))
@@ -41,10 +48,14 @@
                                                 'upload-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (abort-vault-lock-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'abort-vault-lock-input 'make-abort-vault-lock-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -65,10 +76,14 @@
 (common-lisp:deftype action-code () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (add-tags-to-vault-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-map common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-tags-to-vault-input 'make-add-tags-to-vault-input))
@@ -125,12 +140,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (complete-multipart-upload-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (upload-id (common-lisp:error ":uploadid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (upload-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":uploadid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (archive-size common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (checksum common-lisp:nil :type
@@ -170,12 +191,17 @@
                                                 'checksum))))))
 (common-lisp:progn
  (common-lisp:defstruct (complete-vault-lock-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (lock-id (common-lisp:error ":lockid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (lock-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":lockid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'complete-vault-lock-input
                     'make-complete-vault-lock-input))
@@ -201,10 +227,14 @@
                                                 'lock-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-vault-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-vault-input 'make-create-vault-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -282,12 +312,18 @@
 (common-lisp:deftype date-time () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-archive-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (archive-id (common-lisp:error ":archiveid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (archive-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":archiveid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-archive-input 'make-delete-archive-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -311,10 +347,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-vault-access-policy-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-vault-access-policy-input
                     'make-delete-vault-access-policy-input))
@@ -335,10 +375,14 @@
                                                 'vault-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-vault-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-vault-input 'make-delete-vault-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -357,10 +401,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-vault-notifications-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-vault-notifications-input
                     'make-delete-vault-notifications-input))
@@ -381,12 +429,17 @@
                                                 'vault-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-job-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-job-input 'make-describe-job-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -409,10 +462,14 @@
                                                 'job-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-vault-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-vault-input 'make-describe-vault-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -482,8 +539,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-data-retrieval-policy-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-data-retrieval-policy-input
                     'make-get-data-retrieval-policy-input))
@@ -517,12 +576,17 @@
                                                 'policy))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-job-output-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (job-id (common-lisp:error ":jobid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (job-id
+    (common-lisp:error #A((18) common-lisp:base-char . ":jobid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (range common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
@@ -610,10 +674,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-vault-access-policy-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-vault-access-policy-input
                     'make-get-vault-access-policy-input))
@@ -652,10 +720,14 @@
                                                 'policy))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-vault-lock-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-vault-lock-input 'make-get-vault-lock-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -711,10 +783,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-vault-notifications-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-vault-notifications-input
                     'make-get-vault-notifications-input))
@@ -887,10 +963,14 @@
                                                 'inventory-retrieval-parameters))))))
 (common-lisp:progn
  (common-lisp:defstruct (initiate-job-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (job-parameters common-lisp:nil :type
     (common-lisp:or job-parameters common-lisp:null)))
  (common-lisp:export
@@ -937,10 +1017,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (initiate-multipart-upload-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (archive-description common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (part-size common-lisp:nil :type
@@ -1000,10 +1084,14 @@
                                                 'upload-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (initiate-vault-lock-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (policy common-lisp:nil :type
     (common-lisp:or vault-lock-policy common-lisp:null)))
  (common-lisp:export
@@ -1296,10 +1384,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-jobs-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (marker common-lisp:nil :type
@@ -1365,10 +1457,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-multipart-uploads-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (limit common-lisp:nil :type
@@ -1428,12 +1524,18 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-parts-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (upload-id (common-lisp:error ":uploadid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (upload-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":uploadid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (limit common-lisp:nil :type
@@ -1526,8 +1628,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-provisioned-capacity-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-provisioned-capacity-input
                     'make-list-provisioned-capacity-input))
@@ -1561,10 +1665,14 @@
                                                 'provisioned-capacity-list))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-tags-for-vault-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-vault-input
                     'make-list-tags-for-vault-input))
@@ -1601,8 +1709,10 @@
                                                 'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-vaults-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (limit common-lisp:nil :type
@@ -1793,8 +1903,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (purchase-provisioned-capacity-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'purchase-provisioned-capacity-input
                     'make-purchase-provisioned-capacity-input))
@@ -1829,10 +1941,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-tags-from-vault-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (tag-keys common-lisp:nil :type
     (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
@@ -1956,8 +2072,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-data-retrieval-policy-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (policy common-lisp:nil :type
     (common-lisp:or data-retrieval-policy common-lisp:null)))
  (common-lisp:export
@@ -1981,10 +2099,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-vault-access-policy-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (policy common-lisp:nil :type
     (common-lisp:or vault-access-policy common-lisp:null)))
  (common-lisp:export
@@ -2013,10 +2135,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-vault-notifications-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (vault-notification-config common-lisp:nil :type
     (common-lisp:or vault-notification-config common-lisp:null)))
  (common-lisp:export
@@ -2064,10 +2190,14 @@
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (upload-archive-input (:copier common-lisp:nil))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (archive-description common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (checksum common-lisp:nil :type
@@ -2147,12 +2277,18 @@
                                                 'creation-date))))))
 (common-lisp:progn
  (common-lisp:defstruct (upload-multipart-part-input (:copier common-lisp:nil))
-   (account-id (common-lisp:error ":accountid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (vault-name (common-lisp:error ":vaultname is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (upload-id (common-lisp:error ":uploadid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (account-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":accountid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (vault-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":vaultname is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (upload-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":uploadid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (checksum common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (range common-lisp:nil :type
@@ -2297,7 +2433,14 @@ common-lisp:nil
                       (common-lisp:apply 'make-abort-multipart-upload-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/multipart-uploads/~a"
+                                                   accountid vaultname
+                                                   uploadid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"AbortMultipartUpload")
                                   ("Version" ,@"2012-06-01"))
@@ -2315,7 +2458,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-abort-vault-lock-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/lock-policy"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"AbortVaultLock")
                                   ("Version" ,@"2012-06-01"))
@@ -2333,7 +2482,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-add-tags-to-vault-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/tags?operation=add"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToVault")
                                   ("Version" ,@"2012-06-01"))
@@ -2354,7 +2509,14 @@ common-lisp:nil
                       (common-lisp:apply 'make-complete-multipart-upload-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/multipart-uploads/~a"
+                                                   accountid vaultname
+                                                   uploadid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CompleteMultipartUpload")
                                   ("Version" ,@"2012-06-01"))
@@ -2372,7 +2534,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-complete-vault-lock-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/lock-policy/~a"
+                                                   accountid vaultname lockid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CompleteVaultLock")
                                   ("Version" ,@"2012-06-01"))
@@ -2390,7 +2558,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-vault-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a" accountid
+                                                   vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateVault")
                                   ("Version" ,@"2012-06-01"))
@@ -2409,7 +2583,14 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-archive-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/archives/~a"
+                                                   accountid vaultname
+                                                   archiveid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteArchive")
                                   ("Version" ,@"2012-06-01"))
@@ -2427,7 +2608,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-vault-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a" accountid
+                                                   vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteVault")
                                   ("Version" ,@"2012-06-01"))
@@ -2445,7 +2632,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-vault-access-policy-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/access-policy"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteVaultAccessPolicy")
                                   ("Version" ,@"2012-06-01"))
@@ -2463,7 +2656,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-vault-notifications-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/notification-configuration"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteVaultNotifications")
                                   ("Version" ,@"2012-06-01"))
@@ -2481,7 +2680,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-job-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/jobs/~a"
+                                                   accountid vaultname jobid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeJob")
                                   ("Version" ,@"2012-06-01"))
@@ -2499,7 +2704,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-vault-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a" accountid
+                                                   vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeVault")
                                   ("Version" ,@"2012-06-01"))
@@ -2517,7 +2728,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-data-retrieval-policy-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/policies/data-retrieval"
+                                                   accountid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDataRetrievalPolicy")
                                   ("Version" ,@"2012-06-01"))
@@ -2536,7 +2753,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-job-output-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/jobs/~a/output"
+                                                   accountid vaultname jobid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetJobOutput")
                                   ("Version" ,@"2012-06-01"))
@@ -2554,7 +2777,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-vault-access-policy-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/access-policy"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetVaultAccessPolicy")
                                   ("Version" ,@"2012-06-01"))
@@ -2572,7 +2801,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-vault-lock-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/lock-policy"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetVaultLock")
                                   ("Version" ,@"2012-06-01"))
@@ -2590,7 +2825,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-vault-notifications-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/notification-configuration"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetVaultNotifications")
                                   ("Version" ,@"2012-06-01"))
@@ -2609,7 +2850,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-initiate-job-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/jobs"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"InitiateJob")
                                   ("Version" ,@"2012-06-01"))
@@ -2630,7 +2877,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-initiate-multipart-upload-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/multipart-uploads"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"InitiateMultipartUpload")
                                   ("Version" ,@"2012-06-01"))
@@ -2648,7 +2901,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-initiate-vault-lock-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/lock-policy"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"InitiateVaultLock")
                                   ("Version" ,@"2012-06-01"))
@@ -2669,7 +2928,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-jobs-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/jobs"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListJobs")
                                   ("Version" ,@"2012-06-01"))
@@ -2688,7 +2953,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-multipart-uploads-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/multipart-uploads"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListMultipartUploads")
                                   ("Version" ,@"2012-06-01"))
@@ -2708,7 +2979,14 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-parts-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/multipart-uploads/~a"
+                                                   accountid vaultname
+                                                   uploadid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListParts")
                                   ("Version" ,@"2012-06-01"))
@@ -2726,7 +3004,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-provisioned-capacity-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/provisioned-capacity"
+                                                   accountid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListProvisionedCapacity")
                                   ("Version" ,@"2012-06-01"))
@@ -2744,7 +3028,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-tags-for-vault-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/tags"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForVault")
                                   ("Version" ,@"2012-06-01"))
@@ -2762,7 +3052,12 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-vaults-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil "/~a/vaults"
+                                                   accountid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListVaults")
                                   ("Version" ,@"2012-06-01"))
@@ -2781,7 +3076,13 @@ common-lisp:nil
                        'make-purchase-provisioned-capacity-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/provisioned-capacity"
+                                                   accountid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PurchaseProvisionedCapacity")
                                   ("Version" ,@"2012-06-01"))
@@ -2799,7 +3100,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-remove-tags-from-vault-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/tags?operation=remove"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromVault")
                                   ("Version" ,@"2012-06-01"))
@@ -2817,7 +3124,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-set-data-retrieval-policy-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/policies/data-retrieval"
+                                                   accountid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"SetDataRetrievalPolicy")
                                   ("Version" ,@"2012-06-01"))
@@ -2835,7 +3148,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-set-vault-access-policy-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/access-policy"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"SetVaultAccessPolicy")
                                   ("Version" ,@"2012-06-01"))
@@ -2855,7 +3174,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-set-vault-notifications-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/notification-configuration"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"SetVaultNotifications")
                                   ("Version" ,@"2012-06-01"))
@@ -2876,7 +3201,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-upload-archive-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/archives"
+                                                   accountid vaultname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UploadArchive")
                                   ("Version" ,@"2012-06-01"))
@@ -2897,7 +3228,14 @@ common-lisp:nil
                       (common-lisp:apply 'make-upload-multipart-part-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glacier" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "glacier")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/~a/vaults/~a/multipart-uploads/~a"
+                                                   accountid vaultname
+                                                   uploadid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UploadMultipartPart")
                                   ("Version" ,@"2012-06-01"))

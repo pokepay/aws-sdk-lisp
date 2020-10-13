@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/appstream)
+
 (common-lisp:deftype account-name () 'common-lisp:string)
 (common-lisp:deftype account-password () 'common-lisp:string)
 (common-lisp:progn
@@ -69,10 +70,14 @@
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (associate-fleet-request (:copier common-lisp:nil))
-   (fleet-name (common-lisp:error ":fleet-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (fleet-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":fleet-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'associate-fleet-request 'make-associate-fleet-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -104,7 +109,9 @@
 (common-lisp:deftype boolean-object () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (compute-capacity (:copier common-lisp:nil))
-   (desired-instances (common-lisp:error ":desired-instances is required")
+   (desired-instances
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":desired-instances is required"))
     :type (common-lisp:or integer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'compute-capacity 'make-compute-capacity))
@@ -118,8 +125,9 @@
                                                 'desired-instances))))))
 (common-lisp:progn
  (common-lisp:defstruct (compute-capacity-status (:copier common-lisp:nil))
-   (desired (common-lisp:error ":desired is required") :type
-    (common-lisp:or integer common-lisp:null))
+   (desired
+    (common-lisp:error #A((20) common-lisp:base-char . ":desired is required"))
+    :type (common-lisp:or integer common-lisp:null))
    (running common-lisp:nil :type (common-lisp:or integer common-lisp:null))
    (in-use common-lisp:nil :type (common-lisp:or integer common-lisp:null))
    (available common-lisp:nil :type (common-lisp:or integer common-lisp:null)))
@@ -171,16 +179,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-directory-config-request (:copier common-lisp:nil))
-   (directory-name (common-lisp:error ":directory-name is required") :type
-    (common-lisp:or directory-name common-lisp:null))
+   (directory-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":directory-name is required"))
+    :type (common-lisp:or directory-name common-lisp:null))
    (organizational-unit-distinguished-names
-    (common-lisp:error ":organizational-unit-distinguished-names is required")
+    (common-lisp:error
+     #A((52) common-lisp:base-char
+        . ":organizational-unit-distinguished-names is required"))
     :type
     (common-lisp:or organizational-unit-distinguished-names-list
                     common-lisp:null))
    (service-account-credentials
-    (common-lisp:error ":service-account-credentials is required") :type
-    (common-lisp:or service-account-credentials common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":service-account-credentials is required"))
+    :type (common-lisp:or service-account-credentials common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-directory-config-request
                     'make-create-directory-config-request))
@@ -224,14 +238,21 @@
                                                 'directory-config))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-fleet-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name common-lisp:null))
-   (image-name (common-lisp:error ":image-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (instance-type (common-lisp:error ":instance-type is required") :type
-    (common-lisp:or string common-lisp:null))
-   (compute-capacity (common-lisp:error ":compute-capacity is required") :type
-    (common-lisp:or compute-capacity common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name common-lisp:null))
+   (image-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":image-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (instance-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instance-type is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (compute-capacity
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":compute-capacity is required"))
+    :type (common-lisp:or compute-capacity common-lisp:null))
    (vpc-config common-lisp:nil :type
     (common-lisp:or vpc-config common-lisp:null))
    (max-user-duration-in-seconds common-lisp:nil :type
@@ -321,8 +342,9 @@
                                                 'fleet))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-stack-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (display-name common-lisp:nil :type
@@ -369,12 +391,17 @@
                                                 'stack))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-streaming-urlrequest (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (fleet-name (common-lisp:error ":fleet-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (user-id (common-lisp:error ":user-id is required") :type
-    (common-lisp:or streaming-url-user-id common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (fleet-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":fleet-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (user-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":user-id is required"))
+    :type (common-lisp:or streaming-url-user-id common-lisp:null))
    (application-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (validity common-lisp:nil :type (common-lisp:or long common-lisp:null))
@@ -444,8 +471,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-directory-config-request (:copier common-lisp:nil))
-   (directory-name (common-lisp:error ":directory-name is required") :type
-    (common-lisp:or directory-name common-lisp:null)))
+   (directory-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":directory-name is required"))
+    :type (common-lisp:or directory-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-directory-config-request
                     'make-delete-directory-config-request))
@@ -472,8 +501,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-fleet-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-fleet-request 'make-delete-fleet-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -493,8 +523,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-stack-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-stack-request 'make-delete-stack-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -641,10 +672,14 @@
                                                 'images))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-sessions-request (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (fleet-name (common-lisp:error ":fleet-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (fleet-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":fleet-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (user-id common-lisp:nil :type (common-lisp:or user-id common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or integer common-lisp:null))
@@ -755,8 +790,10 @@
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (directory-config (:copier common-lisp:nil))
-   (directory-name (common-lisp:error ":directory-name is required") :type
-    (common-lisp:or directory-name common-lisp:null))
+   (directory-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":directory-name is required"))
+    :type (common-lisp:or directory-name common-lisp:null))
    (organizational-unit-distinguished-names common-lisp:nil :type
     (common-lisp:or organizational-unit-distinguished-names-list
                     common-lisp:null))
@@ -808,10 +845,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (disassociate-fleet-request (:copier common-lisp:nil))
-   (fleet-name (common-lisp:error ":fleet-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (fleet-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":fleet-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disassociate-fleet-request
                     'make-disassociate-fleet-request))
@@ -865,8 +906,10 @@
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (expire-session-request (:copier common-lisp:nil))
-   (session-id (common-lisp:error ":session-id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (session-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":session-id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'expire-session-request 'make-expire-session-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -890,26 +933,33 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (fleet (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (display-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (image-name (common-lisp:error ":image-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (instance-type (common-lisp:error ":instance-type is required") :type
-    (common-lisp:or string common-lisp:null))
+   (image-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":image-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (instance-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instance-type is required"))
+    :type (common-lisp:or string common-lisp:null))
    (compute-capacity-status
-    (common-lisp:error ":compute-capacity-status is required") :type
-    (common-lisp:or compute-capacity-status common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":compute-capacity-status is required"))
+    :type (common-lisp:or compute-capacity-status common-lisp:null))
    (max-user-duration-in-seconds common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
    (disconnect-timeout-in-seconds common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or fleet-state common-lisp:null))
+   (state
+    (common-lisp:error #A((18) common-lisp:base-char . ":state is required"))
+    :type (common-lisp:or fleet-state common-lisp:null))
    (vpc-config common-lisp:nil :type
     (common-lisp:or vpc-config common-lisp:null))
    (created-time common-lisp:nil :type
@@ -1046,8 +1096,9 @@
 (common-lisp:deftype fleet-state () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (image (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
    (base-image-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
    (display-name common-lisp:nil :type
@@ -1241,8 +1292,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-associated-fleets-request (:copier common-lisp:nil))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-associated-fleets-request
@@ -1288,8 +1341,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-associated-stacks-request (:copier common-lisp:nil))
-   (fleet-name (common-lisp:error ":fleet-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (fleet-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":fleet-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-associated-stacks-request
@@ -1452,10 +1507,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (service-account-credentials (:copier common-lisp:nil))
-   (account-name (common-lisp:error ":account-name is required") :type
-    (common-lisp:or account-name common-lisp:null))
-   (account-password (common-lisp:error ":account-password is required") :type
-    (common-lisp:or account-password common-lisp:null)))
+   (account-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":account-name is required"))
+    :type (common-lisp:or account-name common-lisp:null))
+   (account-password
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":account-password is required"))
+    :type (common-lisp:or account-password common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'service-account-credentials
                     'make-service-account-credentials))
@@ -1476,16 +1535,22 @@
                                                 'account-password))))))
 (common-lisp:progn
  (common-lisp:defstruct (session (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (user-id (common-lisp:error ":user-id is required") :type
-    (common-lisp:or user-id common-lisp:null))
-   (stack-name (common-lisp:error ":stack-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (fleet-name (common-lisp:error ":fleet-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or session-state common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (user-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":user-id is required"))
+    :type (common-lisp:or user-id common-lisp:null))
+   (stack-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stack-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (fleet-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":fleet-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (state
+    (common-lisp:error #A((18) common-lisp:base-char . ":state is required"))
+    :type (common-lisp:or session-state common-lisp:null))
    (authentication-type common-lisp:nil :type
     (common-lisp:or authentication-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'session 'make-session))
@@ -1533,8 +1598,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (stack (:copier common-lisp:nil))
    (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (display-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -1620,8 +1686,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (start-fleet-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-fleet-request 'make-start-fleet-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1641,8 +1708,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (stop-fleet-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-fleet-request 'make-stop-fleet-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1662,8 +1730,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (storage-connector (:copier common-lisp:nil))
-   (connector-type (common-lisp:error ":connector-type is required") :type
-    (common-lisp:or storage-connector-type common-lisp:null))
+   (connector-type
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":connector-type is required"))
+    :type (common-lisp:or storage-connector-type common-lisp:null))
    (resource-identifier common-lisp:nil :type
     (common-lisp:or resource-identifier common-lisp:null)))
  (common-lisp:export
@@ -1710,8 +1780,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-directory-config-request (:copier common-lisp:nil))
-   (directory-name (common-lisp:error ":directory-name is required") :type
-    (common-lisp:or directory-name common-lisp:null))
+   (directory-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":directory-name is required"))
+    :type (common-lisp:or directory-name common-lisp:null))
    (organizational-unit-distinguished-names common-lisp:nil :type
     (common-lisp:or organizational-unit-distinguished-names-list
                     common-lisp:null))
@@ -1761,8 +1833,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (update-fleet-request (:copier common-lisp:nil))
    (image-name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (instance-type common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (compute-capacity common-lisp:nil :type
@@ -1874,8 +1947,9 @@
     (common-lisp:or display-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (storage-connectors common-lisp:nil :type
     (common-lisp:or storage-connector-list common-lisp:null))
    (delete-storage-connectors common-lisp:nil :type
@@ -1955,7 +2029,9 @@
                       (common-lisp:apply 'make-associate-fleet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AssociateFleet")
                                   ("Version" ,@"2016-12-01"))
@@ -1977,7 +2053,9 @@
                       (common-lisp:apply 'make-create-directory-config-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDirectoryConfig")
                                   ("Version" ,@"2016-12-01"))
@@ -2001,7 +2079,9 @@
                       (common-lisp:apply 'make-create-fleet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateFleet")
                                   ("Version" ,@"2016-12-01"))
@@ -2021,7 +2101,9 @@
                       (common-lisp:apply 'make-create-stack-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateStack")
                                   ("Version" ,@"2016-12-01"))
@@ -2042,7 +2124,9 @@
                       (common-lisp:apply 'make-create-streaming-urlrequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateStreamingURL")
                                   ("Version" ,@"2016-12-01"))
@@ -2060,7 +2144,9 @@
                       (common-lisp:apply 'make-delete-directory-config-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDirectoryConfig")
                                   ("Version" ,@"2016-12-01"))
@@ -2078,7 +2164,9 @@
                       (common-lisp:apply 'make-delete-fleet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFleet")
                                   ("Version" ,@"2016-12-01"))
@@ -2096,7 +2184,9 @@
                       (common-lisp:apply 'make-delete-stack-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteStack")
                                   ("Version" ,@"2016-12-01"))
@@ -2116,7 +2206,9 @@
                        'make-describe-directory-configs-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDirectoryConfigs")
                                   ("Version" ,@"2016-12-01"))
@@ -2134,7 +2226,9 @@
                       (common-lisp:apply 'make-describe-fleets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeFleets")
                                   ("Version" ,@"2016-12-01"))
@@ -2152,7 +2246,9 @@
                       (common-lisp:apply 'make-describe-images-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeImages")
                                   ("Version" ,@"2016-12-01"))
@@ -2173,7 +2269,9 @@
                       (common-lisp:apply 'make-describe-sessions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSessions")
                                   ("Version" ,@"2016-12-01"))
@@ -2191,7 +2289,9 @@
                       (common-lisp:apply 'make-describe-stacks-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStacks")
                                   ("Version" ,@"2016-12-01"))
@@ -2209,7 +2309,9 @@
                       (common-lisp:apply 'make-disassociate-fleet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisassociateFleet")
                                   ("Version" ,@"2016-12-01"))
@@ -2227,7 +2329,9 @@
                       (common-lisp:apply 'make-expire-session-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ExpireSession")
                                   ("Version" ,@"2016-12-01"))
@@ -2245,7 +2349,9 @@
                       (common-lisp:apply 'make-list-associated-fleets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAssociatedFleets")
                                   ("Version" ,@"2016-12-01"))
@@ -2263,7 +2369,9 @@
                       (common-lisp:apply 'make-list-associated-stacks-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAssociatedStacks")
                                   ("Version" ,@"2016-12-01"))
@@ -2281,7 +2389,9 @@
                       (common-lisp:apply 'make-start-fleet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartFleet")
                                   ("Version" ,@"2016-12-01"))
@@ -2299,7 +2409,9 @@
                       (common-lisp:apply 'make-stop-fleet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopFleet")
                                   ("Version" ,@"2016-12-01"))
@@ -2321,7 +2433,9 @@
                       (common-lisp:apply 'make-update-directory-config-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDirectoryConfig")
                                   ("Version" ,@"2016-12-01"))
@@ -2347,7 +2461,9 @@
                       (common-lisp:apply 'make-update-fleet-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateFleet")
                                   ("Version" ,@"2016-12-01"))
@@ -2368,7 +2484,9 @@
                       (common-lisp:apply 'make-update-stack-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "appstream" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "appstream")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateStack")
                                   ("Version" ,@"2016-12-01"))

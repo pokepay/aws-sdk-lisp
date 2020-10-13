@@ -7,13 +7,16 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/support)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (add-attachments-to-set-request (:copier common-lisp:nil))
    (attachment-set-id common-lisp:nil :type
     (common-lisp:or attachment-set-id common-lisp:null))
-   (attachments (common-lisp:error ":attachments is required") :type
-    (common-lisp:or attachments common-lisp:null)))
+   (attachments
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":attachments is required"))
+    :type (common-lisp:or attachments common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-attachments-to-set-request
                     'make-add-attachments-to-set-request))
@@ -61,7 +64,9 @@
  (common-lisp:defstruct
      (add-communication-to-case-request (:copier common-lisp:nil))
    (case-id common-lisp:nil :type (common-lisp:or case-id common-lisp:null))
-   (communication-body (common-lisp:error ":communicationbody is required")
+   (communication-body
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":communicationbody is required"))
     :type (common-lisp:or communication-body common-lisp:null))
    (cc-email-addresses common-lisp:nil :type
     (common-lisp:or cc-email-address-list common-lisp:null))
@@ -478,15 +483,18 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (create-case-request (:copier common-lisp:nil))
-   (subject (common-lisp:error ":subject is required") :type
-    (common-lisp:or subject common-lisp:null))
+   (subject
+    (common-lisp:error #A((20) common-lisp:base-char . ":subject is required"))
+    :type (common-lisp:or subject common-lisp:null))
    (service-code common-lisp:nil :type
     (common-lisp:or service-code common-lisp:null))
    (severity-code common-lisp:nil :type
     (common-lisp:or severity-code common-lisp:null))
    (category-code common-lisp:nil :type
     (common-lisp:or category-code common-lisp:null))
-   (communication-body (common-lisp:error ":communicationbody is required")
+   (communication-body
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":communicationbody is required"))
     :type (common-lisp:or communication-body common-lisp:null))
    (cc-email-addresses common-lisp:nil :type
     (common-lisp:or cc-email-address-list common-lisp:null))
@@ -580,8 +588,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-attachment-request (:copier common-lisp:nil))
-   (attachment-id (common-lisp:error ":attachmentid is required") :type
-    (common-lisp:or attachment-id common-lisp:null)))
+   (attachment-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":attachmentid is required"))
+    :type (common-lisp:or attachment-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-attachment-request
                     'make-describe-attachment-request))
@@ -709,8 +719,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-communications-request (:copier common-lisp:nil))
-   (case-id (common-lisp:error ":caseid is required") :type
-    (common-lisp:or case-id common-lisp:null))
+   (case-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":caseid is required"))
+    :type (common-lisp:or case-id common-lisp:null))
    (before-time common-lisp:nil :type
     (common-lisp:or before-time common-lisp:null))
    (after-time common-lisp:nil :type
@@ -856,8 +867,10 @@
  (common-lisp:defstruct
      (describe-trusted-advisor-check-refresh-statuses-request
       (:copier common-lisp:nil))
-   (check-ids (common-lisp:error ":checkids is required") :type
-    (common-lisp:or string-list common-lisp:null)))
+   (check-ids
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":checkids is required"))
+    :type (common-lisp:or string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-trusted-advisor-check-refresh-statuses-request
                     'make-describe-trusted-advisor-check-refresh-statuses-request))
@@ -875,7 +888,10 @@
  (common-lisp:defstruct
      (describe-trusted-advisor-check-refresh-statuses-response
       (:copier common-lisp:nil))
-   (statuses (common-lisp:error ":statuses is required") :type
+   (statuses
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":statuses is required"))
+    :type
     (common-lisp:or trusted-advisor-check-refresh-status-list
                     common-lisp:null)))
  (common-lisp:export
@@ -894,8 +910,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-trusted-advisor-check-result-request (:copier common-lisp:nil))
-   (check-id (common-lisp:error ":checkid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (check-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":checkid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (language common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-trusted-advisor-check-result-request
@@ -937,8 +954,10 @@
  (common-lisp:defstruct
      (describe-trusted-advisor-check-summaries-request
       (:copier common-lisp:nil))
-   (check-ids (common-lisp:error ":checkids is required") :type
-    (common-lisp:or string-list common-lisp:null)))
+   (check-ids
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":checkids is required"))
+    :type (common-lisp:or string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-trusted-advisor-check-summaries-request
                     'make-describe-trusted-advisor-check-summaries-request))
@@ -956,7 +975,10 @@
  (common-lisp:defstruct
      (describe-trusted-advisor-check-summaries-response
       (:copier common-lisp:nil))
-   (summaries (common-lisp:error ":summaries is required") :type
+   (summaries
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":summaries is required"))
+    :type
     (common-lisp:or trusted-advisor-check-summary-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-trusted-advisor-check-summaries-response
@@ -974,8 +996,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-trusted-advisor-checks-request (:copier common-lisp:nil))
-   (language (common-lisp:error ":language is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (language
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":language is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-trusted-advisor-checks-request
                     'make-describe-trusted-advisor-checks-request))
@@ -992,8 +1016,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-trusted-advisor-checks-response (:copier common-lisp:nil))
-   (checks (common-lisp:error ":checks is required") :type
-    (common-lisp:or trusted-advisor-check-list common-lisp:null)))
+   (checks
+    (common-lisp:error #A((19) common-lisp:base-char . ":checks is required"))
+    :type (common-lisp:or trusted-advisor-check-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-trusted-advisor-checks-response
                     'make-describe-trusted-advisor-checks-response))
@@ -1062,8 +1087,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (refresh-trusted-advisor-check-request (:copier common-lisp:nil))
-   (check-id (common-lisp:error ":checkid is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (check-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":checkid is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'refresh-trusted-advisor-check-request
                     'make-refresh-trusted-advisor-check-request))
@@ -1080,7 +1106,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (refresh-trusted-advisor-check-response (:copier common-lisp:nil))
-   (status (common-lisp:error ":status is required") :type
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type
     (common-lisp:or trusted-advisor-check-refresh-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'refresh-trusted-advisor-check-response
@@ -1238,16 +1266,23 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (trusted-advisor-check-description (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null))
-   (category (common-lisp:error ":category is required") :type
-    (common-lisp:or string common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or string-list common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (category
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":category is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (metadata
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":metadata is required"))
+    :type (common-lisp:or string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'trusted-advisor-check-description
                     'make-trusted-advisor-check-description))
@@ -1293,13 +1328,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (trusted-advisor-check-refresh-status (:copier common-lisp:nil))
-   (check-id (common-lisp:error ":checkid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or string common-lisp:null))
+   (check-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":checkid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or string common-lisp:null))
    (millis-until-next-refreshable
-    (common-lisp:error ":millisuntilnextrefreshable is required") :type
-    (common-lisp:or long common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":millisuntilnextrefreshable is required"))
+    :type (common-lisp:or long common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'trusted-advisor-check-refresh-status
                     'make-trusted-advisor-check-refresh-status))
@@ -1335,19 +1374,29 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (trusted-advisor-check-result (:copier common-lisp:nil))
-   (check-id (common-lisp:error ":checkid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (timestamp (common-lisp:error ":string is required") :type
-    (common-lisp:or string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or string common-lisp:null))
-   (resources-summary (common-lisp:error ":resourcessummary is required") :type
-    (common-lisp:or trusted-advisor-resources-summary common-lisp:null))
+   (check-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":checkid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (timestamp
+    (common-lisp:error #A((19) common-lisp:base-char . ":string is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (resources-summary
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":resourcessummary is required"))
+    :type (common-lisp:or trusted-advisor-resources-summary common-lisp:null))
    (category-specific-summary
-    (common-lisp:error ":categoryspecificsummary is required") :type
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":categoryspecificsummary is required"))
+    :type
     (common-lisp:or trusted-advisor-category-specific-summary
                     common-lisp:null))
-   (flagged-resources (common-lisp:error ":flaggedresources is required") :type
+   (flagged-resources
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":flaggedresources is required"))
+    :type
     (common-lisp:or trusted-advisor-resource-detail-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'trusted-advisor-check-result
@@ -1390,18 +1439,25 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (trusted-advisor-check-summary (:copier common-lisp:nil))
-   (check-id (common-lisp:error ":checkid is required") :type
-    (common-lisp:or string common-lisp:null))
-   (timestamp (common-lisp:error ":string is required") :type
-    (common-lisp:or string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or string common-lisp:null))
+   (check-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":checkid is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (timestamp
+    (common-lisp:error #A((19) common-lisp:base-char . ":string is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or string common-lisp:null))
    (has-flagged-resources common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
-   (resources-summary (common-lisp:error ":resourcessummary is required") :type
-    (common-lisp:or trusted-advisor-resources-summary common-lisp:null))
+   (resources-summary
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":resourcessummary is required"))
+    :type (common-lisp:or trusted-advisor-resources-summary common-lisp:null))
    (category-specific-summary
-    (common-lisp:error ":categoryspecificsummary is required") :type
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":categoryspecificsummary is required"))
+    :type
     (common-lisp:or trusted-advisor-category-specific-summary
                     common-lisp:null)))
  (common-lisp:export
@@ -1455,11 +1511,14 @@
  (common-lisp:defstruct
      (trusted-advisor-cost-optimizing-summary (:copier common-lisp:nil))
    (estimated-monthly-savings
-    (common-lisp:error ":estimatedmonthlysavings is required") :type
-    (common-lisp:or double common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":estimatedmonthlysavings is required"))
+    :type (common-lisp:or double common-lisp:null))
    (estimated-percent-monthly-savings
-    (common-lisp:error ":estimatedpercentmonthlysavings is required") :type
-    (common-lisp:or double common-lisp:null)))
+    (common-lisp:error
+     #A((43) common-lisp:base-char
+        . ":estimatedpercentmonthlysavings is required"))
+    :type (common-lisp:or double common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'trusted-advisor-cost-optimizing-summary
                     'make-trusted-advisor-cost-optimizing-summary))
@@ -1481,15 +1540,20 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (trusted-advisor-resource-detail (:copier common-lisp:nil))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or string common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or string common-lisp:null))
    (region common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (resource-id (common-lisp:error ":resourceid is required") :type
-    (common-lisp:or string common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":resourceid is required"))
+    :type (common-lisp:or string common-lisp:null))
    (is-suppressed common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
-   (metadata (common-lisp:error ":metadata is required") :type
-    (common-lisp:or string-list common-lisp:null)))
+   (metadata
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":metadata is required"))
+    :type (common-lisp:or string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'trusted-advisor-resource-detail
                     'make-trusted-advisor-resource-detail))
@@ -1535,13 +1599,21 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (trusted-advisor-resources-summary (:copier common-lisp:nil))
-   (resources-processed (common-lisp:error ":resourcesprocessed is required")
+   (resources-processed
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":resourcesprocessed is required"))
     :type (common-lisp:or long common-lisp:null))
-   (resources-flagged (common-lisp:error ":resourcesflagged is required") :type
-    (common-lisp:or long common-lisp:null))
-   (resources-ignored (common-lisp:error ":resourcesignored is required") :type
-    (common-lisp:or long common-lisp:null))
-   (resources-suppressed (common-lisp:error ":resourcessuppressed is required")
+   (resources-flagged
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":resourcesflagged is required"))
+    :type (common-lisp:or long common-lisp:null))
+   (resources-ignored
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":resourcesignored is required"))
+    :type (common-lisp:or long common-lisp:null))
+   (resources-suppressed
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":resourcessuppressed is required"))
     :type (common-lisp:or long common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'trusted-advisor-resources-summary

@@ -7,10 +7,13 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/datapipeline)
+
 (common-lisp:progn
  (common-lisp:defstruct (activate-pipeline-input (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
    (parameter-values common-lisp:nil :type
     (common-lisp:or parameter-value-list common-lisp:null))
    (start-timestamp common-lisp:nil :type
@@ -48,10 +51,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (add-tags-input (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or |tagList| common-lisp:null)))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or |tagList| common-lisp:null)))
  (common-lisp:export (common-lisp:list 'add-tags-input 'make-add-tags-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape add-tags-input))
@@ -74,10 +80,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-pipeline-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or |id| common-lisp:null))
-   (unique-id (common-lisp:error ":uniqueid is required") :type
-    (common-lisp:or |id| common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or |id| common-lisp:null))
+   (unique-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":uniqueid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or |tagList| common-lisp:null)))
@@ -110,8 +119,10 @@
                                                 'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-pipeline-output (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null)))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-pipeline-output 'make-create-pipeline-output))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -126,8 +137,10 @@
                                                 'pipeline-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (deactivate-pipeline-input (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
    (cancel-active common-lisp:nil :type
     (common-lisp:or |cancelActive| common-lisp:null)))
  (common-lisp:export
@@ -160,8 +173,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-pipeline-input (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null)))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-pipeline-input 'make-delete-pipeline-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -176,10 +191,14 @@
                                                 'pipeline-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-objects-input (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null))
-   (object-ids (common-lisp:error ":objectids is required") :type
-    (common-lisp:or |idList| common-lisp:null))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
+   (object-ids
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":objectids is required"))
+    :type (common-lisp:or |idList| common-lisp:null))
    (evaluate-expressions common-lisp:nil :type
     (common-lisp:or common-lisp:boolean common-lisp:null))
    (marker common-lisp:nil :type
@@ -213,8 +232,10 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-objects-output (:copier common-lisp:nil))
-   (pipeline-objects (common-lisp:error ":pipelineobjects is required") :type
-    (common-lisp:or pipeline-object-list common-lisp:null))
+   (pipeline-objects
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":pipelineobjects is required"))
+    :type (common-lisp:or pipeline-object-list common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (has-more-results common-lisp:nil :type
@@ -243,8 +264,10 @@
                                                 'has-more-results))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-pipelines-input (:copier common-lisp:nil))
-   (pipeline-ids (common-lisp:error ":pipelineids is required") :type
-    (common-lisp:or |idList| common-lisp:null)))
+   (pipeline-ids
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":pipelineids is required"))
+    :type (common-lisp:or |idList| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-pipelines-input 'make-describe-pipelines-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -260,8 +283,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (describe-pipelines-output (:copier common-lisp:nil))
    (pipeline-description-list
-    (common-lisp:error ":pipelinedescriptionlist is required") :type
-    (common-lisp:or pipeline-description-list common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":pipelinedescriptionlist is required"))
+    :type (common-lisp:or pipeline-description-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-pipelines-output
                     'make-describe-pipelines-output))
@@ -277,12 +301,18 @@
                                                 'pipeline-description-list))))))
 (common-lisp:progn
  (common-lisp:defstruct (evaluate-expression-input (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null))
-   (object-id (common-lisp:error ":objectid is required") :type
-    (common-lisp:or |id| common-lisp:null))
-   (expression (common-lisp:error ":expression is required") :type
-    (common-lisp:or |longString| common-lisp:null)))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
+   (object-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":objectid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
+   (expression
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":expression is required"))
+    :type (common-lisp:or |longString| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'evaluate-expression-input
                     'make-evaluate-expression-input))
@@ -308,7 +338,9 @@
                                                 'expression))))))
 (common-lisp:progn
  (common-lisp:defstruct (evaluate-expression-output (:copier common-lisp:nil))
-   (evaluated-expression (common-lisp:error ":evaluatedexpression is required")
+   (evaluated-expression
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":evaluatedexpression is required"))
     :type (common-lisp:or |longString| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'evaluate-expression-output
@@ -325,8 +357,8 @@
                                                 'evaluated-expression))))))
 (common-lisp:progn
  (common-lisp:defstruct (field (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or |fieldNameString| common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or |fieldNameString| common-lisp:null))
    (string-value common-lisp:nil :type
     (common-lisp:or |fieldStringValue| common-lisp:null))
    (ref-value common-lisp:nil :type
@@ -353,8 +385,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-pipeline-definition-input (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
    (version common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
@@ -477,8 +511,10 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-pipelines-output (:copier common-lisp:nil))
-   (pipeline-id-list (common-lisp:error ":pipelineidlist is required") :type
-    (common-lisp:or |pipelineList| common-lisp:null))
+   (pipeline-id-list
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":pipelineidlist is required"))
+    :type (common-lisp:or |pipelineList| common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (has-more-results common-lisp:nil :type
@@ -527,10 +563,12 @@
 (common-lisp:deftype operator-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (parameter-attribute (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or |attributeNameString| common-lisp:null))
-   (string-value (common-lisp:error ":stringvalue is required") :type
-    (common-lisp:or |attributeValueString| common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or |attributeNameString| common-lisp:null))
+   (string-value
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stringvalue is required"))
+    :type (common-lisp:or |attributeValueString| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'parameter-attribute 'make-parameter-attribute))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -556,10 +594,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (parameter-object (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |fieldNameString| common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or parameter-attribute-list common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or |fieldNameString| common-lisp:null))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or parameter-attribute-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'parameter-object 'make-parameter-object))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -585,10 +625,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (parameter-value (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |fieldNameString| common-lisp:null))
-   (string-value (common-lisp:error ":stringvalue is required") :type
-    (common-lisp:or |fieldStringValue| common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or |fieldNameString| common-lisp:null))
+   (string-value
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stringvalue is required"))
+    :type (common-lisp:or |fieldStringValue| common-lisp:null)))
  (common-lisp:export (common-lisp:list 'parameter-value 'make-parameter-value))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape parameter-value))
@@ -630,12 +672,16 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (pipeline-description (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or |id| common-lisp:null))
-   (fields (common-lisp:error ":fields is required") :type
-    (common-lisp:or |fieldList| common-lisp:null))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or |id| common-lisp:null))
+   (fields
+    (common-lisp:error #A((19) common-lisp:base-char . ":fields is required"))
+    :type (common-lisp:or |fieldList| common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or |tagList| common-lisp:null)))
@@ -716,12 +762,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (pipeline-object (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or |id| common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or |id| common-lisp:null))
-   (fields (common-lisp:error ":fields is required") :type
-    (common-lisp:or |fieldList| common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or |id| common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or |id| common-lisp:null))
+   (fields
+    (common-lisp:error #A((19) common-lisp:base-char . ":fields is required"))
+    :type (common-lisp:or |fieldList| common-lisp:null)))
  (common-lisp:export (common-lisp:list 'pipeline-object 'make-pipeline-object))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape pipeline-object))
@@ -757,8 +805,10 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (poll-for-task-input (:copier common-lisp:nil))
-   (worker-group (common-lisp:error ":workergroup is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (worker-group
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":workergroup is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (hostname common-lisp:nil :type (common-lisp:or |id| common-lisp:null))
    (instance-identity common-lisp:nil :type
     (common-lisp:or instance-identity common-lisp:null)))
@@ -799,10 +849,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-pipeline-definition-input (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null))
-   (pipeline-objects (common-lisp:error ":pipelineobjects is required") :type
-    (common-lisp:or pipeline-object-list common-lisp:null))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
+   (pipeline-objects
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":pipelineobjects is required"))
+    :type (common-lisp:or pipeline-object-list common-lisp:null))
    (parameter-objects common-lisp:nil :type
     (common-lisp:or parameter-object-list common-lisp:null))
    (parameter-values common-lisp:nil :type
@@ -842,8 +896,9 @@
     (common-lisp:or validation-errors common-lisp:null))
    (validation-warnings common-lisp:nil :type
     (common-lisp:or validation-warnings common-lisp:null))
-   (errored (common-lisp:error ":errored is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null)))
+   (errored
+    (common-lisp:error #A((20) common-lisp:base-char . ":errored is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-pipeline-definition-output
                     'make-put-pipeline-definition-output))
@@ -882,11 +937,14 @@
                                                 'selectors))))))
 (common-lisp:progn
  (common-lisp:defstruct (query-objects-input (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
    (query common-lisp:nil :type (common-lisp:or query common-lisp:null))
-   (sphere (common-lisp:error ":sphere is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (sphere
+    (common-lisp:error #A((19) common-lisp:base-char . ":sphere is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (limit common-lisp:nil :type (common-lisp:or |int| common-lisp:null)))
@@ -949,10 +1007,13 @@
                                                 'has-more-results))))))
 (common-lisp:progn
  (common-lisp:defstruct (remove-tags-input (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null))
-   (tag-keys (common-lisp:error ":tagkeys is required") :type
-    (common-lisp:or |stringList| common-lisp:null)))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
+   (tag-keys
+    (common-lisp:error #A((20) common-lisp:base-char . ":tagkeys is required"))
+    :type (common-lisp:or |stringList| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-input 'make-remove-tags-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -977,8 +1038,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (report-task-progress-input (:copier common-lisp:nil))
-   (task-id (common-lisp:error ":taskid is required") :type
-    (common-lisp:or |taskId| common-lisp:null))
+   (task-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":taskid is required"))
+    :type (common-lisp:or |taskId| common-lisp:null))
    (fields common-lisp:nil :type
     (common-lisp:or |fieldList| common-lisp:null)))
  (common-lisp:export
@@ -1001,8 +1063,10 @@
                                                 'fields))))))
 (common-lisp:progn
  (common-lisp:defstruct (report-task-progress-output (:copier common-lisp:nil))
-   (canceled (common-lisp:error ":canceled is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null)))
+   (canceled
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":canceled is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'report-task-progress-output
                     'make-report-task-progress-output))
@@ -1019,8 +1083,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (report-task-runner-heartbeat-input (:copier common-lisp:nil))
-   (taskrunner-id (common-lisp:error ":taskrunnerid is required") :type
-    (common-lisp:or |id| common-lisp:null))
+   (taskrunner-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":taskrunnerid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
    (worker-group common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (hostname common-lisp:nil :type (common-lisp:or |id| common-lisp:null)))
@@ -1050,8 +1116,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (report-task-runner-heartbeat-output (:copier common-lisp:nil))
-   (terminate (common-lisp:error ":terminate is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null)))
+   (terminate
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":terminate is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'report-task-runner-heartbeat-output
                     'make-report-task-runner-heartbeat-output))
@@ -1093,12 +1161,17 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (set-status-input (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null))
-   (object-ids (common-lisp:error ":objectids is required") :type
-    (common-lisp:or |idList| common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
+   (object-ids
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":objectids is required"))
+    :type (common-lisp:or |idList| common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-status-input 'make-set-status-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1121,10 +1194,13 @@
                                                 'status))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-task-status-input (:copier common-lisp:nil))
-   (task-id (common-lisp:error ":taskid is required") :type
-    (common-lisp:or |taskId| common-lisp:null))
-   (task-status (common-lisp:error ":taskstatus is required") :type
-    (common-lisp:or task-status common-lisp:null))
+   (task-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":taskid is required"))
+    :type (common-lisp:or |taskId| common-lisp:null))
+   (task-status
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":taskstatus is required"))
+    :type (common-lisp:or task-status common-lisp:null))
    (error-id common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (error-message common-lisp:nil :type
@@ -1174,10 +1250,11 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or |tagKey| common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or |tagValue| common-lisp:null)))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or |tagKey| common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or |tagValue| common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape tag))
@@ -1243,10 +1320,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (validate-pipeline-definition-input (:copier common-lisp:nil))
-   (pipeline-id (common-lisp:error ":pipelineid is required") :type
-    (common-lisp:or |id| common-lisp:null))
-   (pipeline-objects (common-lisp:error ":pipelineobjects is required") :type
-    (common-lisp:or pipeline-object-list common-lisp:null))
+   (pipeline-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":pipelineid is required"))
+    :type (common-lisp:or |id| common-lisp:null))
+   (pipeline-objects
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":pipelineobjects is required"))
+    :type (common-lisp:or pipeline-object-list common-lisp:null))
    (parameter-objects common-lisp:nil :type
     (common-lisp:or parameter-object-list common-lisp:null))
    (parameter-values common-lisp:nil :type
@@ -1286,8 +1367,9 @@
     (common-lisp:or validation-errors common-lisp:null))
    (validation-warnings common-lisp:nil :type
     (common-lisp:or validation-warnings common-lisp:null))
-   (errored (common-lisp:error ":errored is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null)))
+   (errored
+    (common-lisp:error #A((20) common-lisp:base-char . ":errored is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'validate-pipeline-definition-output
                     'make-validate-pipeline-definition-output))
@@ -1440,7 +1522,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-activate-pipeline-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ActivatePipeline")
                                   ("Version" ,@"2012-10-29"))
@@ -1458,7 +1542,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-add-tags-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTags")
                                   ("Version" ,@"2012-10-29"))
@@ -1477,7 +1563,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-pipeline-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePipeline")
                                   ("Version" ,@"2012-10-29"))
@@ -1495,7 +1583,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-deactivate-pipeline-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeactivatePipeline")
                                   ("Version" ,@"2012-10-29"))
@@ -1513,7 +1603,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-pipeline-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePipeline")
                                   ("Version" ,@"2012-10-29"))
@@ -1533,7 +1625,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-objects-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeObjects")
                                   ("Version" ,@"2012-10-29"))
@@ -1551,7 +1645,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-describe-pipelines-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribePipelines")
                                   ("Version" ,@"2012-10-29"))
@@ -1570,7 +1666,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-evaluate-expression-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EvaluateExpression")
                                   ("Version" ,@"2012-10-29"))
@@ -1588,7 +1686,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-pipeline-definition-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPipelineDefinition")
                                   ("Version" ,@"2012-10-29"))
@@ -1606,7 +1706,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-pipelines-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPipelines")
                                   ("Version" ,@"2012-10-29"))
@@ -1625,7 +1727,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-poll-for-task-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PollForTask")
                                   ("Version" ,@"2012-10-29"))
@@ -1646,7 +1750,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-put-pipeline-definition-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutPipelineDefinition")
                                   ("Version" ,@"2012-10-29"))
@@ -1665,7 +1771,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-query-objects-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"QueryObjects")
                                   ("Version" ,@"2012-10-29"))
@@ -1683,7 +1791,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-remove-tags-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTags")
                                   ("Version" ,@"2012-10-29"))
@@ -1701,7 +1811,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-report-task-progress-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ReportTaskProgress")
                                   ("Version" ,@"2012-10-29"))
@@ -1721,7 +1833,9 @@ common-lisp:nil
                        'make-report-task-runner-heartbeat-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ReportTaskRunnerHeartbeat")
                                   ("Version" ,@"2012-10-29"))
@@ -1739,7 +1853,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-set-status-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetStatus")
                                   ("Version" ,@"2012-10-29"))
@@ -1760,7 +1876,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-set-task-status-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetTaskStatus")
                                   ("Version" ,@"2012-10-29"))
@@ -1782,7 +1900,9 @@ common-lisp:nil
                        'make-validate-pipeline-definition-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "datapipeline" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((12) common-lisp:base-char . "datapipeline")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ValidatePipelineDefinition")
                                   ("Version" ,@"2012-10-29"))

@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/xray)
+
 (common-lisp:progn
  (common-lisp:defstruct (alias (:copier common-lisp:nil))
    (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -134,8 +135,10 @@
                                                 'other-count))))))
 (common-lisp:progn
  (common-lisp:defstruct (batch-get-traces-request (:copier common-lisp:nil))
-   (trace-ids (common-lisp:error ":trace-ids is required") :type
-    (common-lisp:or trace-id-list common-lisp:null))
+   (trace-ids
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":trace-ids is required"))
+    :type (common-lisp:or trace-id-list common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-get-traces-request 'make-batch-get-traces-request))
@@ -330,10 +333,14 @@
 (common-lisp:deftype filter-expression () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (get-service-graph-request (:copier common-lisp:nil))
-   (start-time (common-lisp:error ":start-time is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (end-time (common-lisp:error ":end-time is required") :type
-    (common-lisp:or timestamp common-lisp:null))
+   (start-time
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":start-time is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (end-time
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":end-time is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-service-graph-request
@@ -395,8 +402,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-trace-graph-request (:copier common-lisp:nil))
-   (trace-ids (common-lisp:error ":trace-ids is required") :type
-    (common-lisp:or trace-id-list common-lisp:null))
+   (trace-ids
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":trace-ids is required"))
+    :type (common-lisp:or trace-id-list common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-trace-graph-request 'make-get-trace-graph-request))
@@ -439,10 +448,14 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-trace-summaries-request (:copier common-lisp:nil))
-   (start-time (common-lisp:error ":start-time is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (end-time (common-lisp:error ":end-time is required") :type
-    (common-lisp:or timestamp common-lisp:null))
+   (start-time
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":start-time is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (end-time
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":end-time is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
    (sampling common-lisp:nil :type
     (common-lisp:or nullable-boolean common-lisp:null))
    (filter-expression common-lisp:nil :type
@@ -599,7 +612,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-telemetry-records-request (:copier common-lisp:nil))
-   (telemetry-records (common-lisp:error ":telemetry-records is required")
+   (telemetry-records
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":telemetry-records is required"))
     :type (common-lisp:or telemetry-record-list common-lisp:null))
    (ec2instance-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -648,8 +663,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (put-trace-segments-request (:copier common-lisp:nil))
    (trace-segment-documents
-    (common-lisp:error ":trace-segment-documents is required") :type
-    (common-lisp:or trace-segment-document-list common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":trace-segment-documents is required"))
+    :type (common-lisp:or trace-segment-document-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-trace-segments-request
                     'make-put-trace-segments-request))
@@ -1209,7 +1225,8 @@
                       (common-lisp:apply 'make-batch-get-traces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "xray" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "xray")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetTraces")
                                   ("Version" ,@"2016-04-12"))
@@ -1227,7 +1244,8 @@
                       (common-lisp:apply 'make-get-service-graph-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "xray" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "xray")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetServiceGraph")
                                   ("Version" ,@"2016-04-12"))
@@ -1245,7 +1263,8 @@
                       (common-lisp:apply 'make-get-trace-graph-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "xray" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "xray")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTraceGraph")
                                   ("Version" ,@"2016-04-12"))
@@ -1266,7 +1285,8 @@
                       (common-lisp:apply 'make-get-trace-summaries-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "xray" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "xray")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTraceSummaries")
                                   ("Version" ,@"2016-04-12"))
@@ -1287,7 +1307,8 @@
                       (common-lisp:apply 'make-put-telemetry-records-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "xray" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "xray")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutTelemetryRecords")
                                   ("Version" ,@"2016-04-12"))
@@ -1305,7 +1326,8 @@
                       (common-lisp:apply 'make-put-trace-segments-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "xray" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "xray")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutTraceSegments")
                                   ("Version" ,@"2016-04-12"))

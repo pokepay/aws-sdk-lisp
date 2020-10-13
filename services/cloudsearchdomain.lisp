@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/cloudsearchdomain)
+
 (common-lisp:deftype adds () 'common-lisp:integer)
 (common-lisp:deftype blob ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
@@ -285,8 +286,9 @@
    (highlight common-lisp:nil :type
     (common-lisp:or highlight common-lisp:null))
    (partial common-lisp:nil :type (common-lisp:or partial common-lisp:null))
-   (query (common-lisp:error ":query is required") :type
-    (common-lisp:or query common-lisp:null))
+   (query
+    (common-lisp:error #A((18) common-lisp:base-char . ":query is required"))
+    :type (common-lisp:or query common-lisp:null))
    (query-options common-lisp:nil :type
     (common-lisp:or query-options common-lisp:null))
    (query-parser common-lisp:nil :type
@@ -457,10 +459,13 @@
                                                 'suggestions))))))
 (common-lisp:progn
  (common-lisp:defstruct (suggest-request (:copier common-lisp:nil))
-   (query (common-lisp:error ":query is required") :type
-    (common-lisp:or query common-lisp:null))
-   (suggester (common-lisp:error ":suggester is required") :type
-    (common-lisp:or suggester common-lisp:null))
+   (query
+    (common-lisp:error #A((18) common-lisp:base-char . ":query is required"))
+    :type (common-lisp:or query common-lisp:null))
+   (suggester
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":suggester is required"))
+    :type (common-lisp:or suggester common-lisp:null))
    (size common-lisp:nil :type
     (common-lisp:or suggestions-size common-lisp:null)))
  (common-lisp:export (common-lisp:list 'suggest-request 'make-suggest-request))
@@ -558,10 +563,14 @@
 (common-lisp:deftype suggestions-size () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (upload-documents-request (:copier common-lisp:nil))
-   (documents (common-lisp:error ":documents is required") :type
-    (common-lisp:or blob common-lisp:null))
-   (content-type (common-lisp:error ":contenttype is required") :type
-    (common-lisp:or content-type common-lisp:null)))
+   (documents
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":documents is required"))
+    :type (common-lisp:or blob common-lisp:null))
+   (content-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":contenttype is required"))
+    :type (common-lisp:or content-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'upload-documents-request 'make-upload-documents-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -628,8 +637,10 @@
                       (common-lisp:apply 'make-search-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearchdomain" :method :get
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "cloudsearchdomain")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"Search")
                                   ("Version" ,@"2013-01-01"))
@@ -647,8 +658,10 @@
                       (common-lisp:apply 'make-suggest-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearchdomain" :method :get
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "cloudsearchdomain")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"Suggest")
                                   ("Version" ,@"2013-01-01"))
@@ -666,8 +679,10 @@
                       (common-lisp:apply 'make-upload-documents-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearchdomain" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((17) common-lisp:base-char
+                                  . "cloudsearchdomain")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UploadDocuments")
                                   ("Version" ,@"2013-01-01"))

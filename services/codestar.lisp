@@ -7,17 +7,23 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/codestar)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (associate-team-member-request (:copier common-lisp:nil))
-   (project-id (common-lisp:error ":projectid is required") :type
-    (common-lisp:or project-id common-lisp:null))
+   (project-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":projectid is required"))
+    :type (common-lisp:or project-id common-lisp:null))
    (client-request-token common-lisp:nil :type
     (common-lisp:or client-request-token common-lisp:null))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null))
-   (project-role (common-lisp:error ":projectrole is required") :type
-    (common-lisp:or role common-lisp:null))
+   (user-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":userarn is required"))
+    :type (common-lisp:or user-arn common-lisp:null))
+   (project-role
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":projectrole is required"))
+    :type (common-lisp:or role common-lisp:null))
    (remote-access-allowed common-lisp:nil :type
     (common-lisp:or remote-access-allowed common-lisp:null)))
  (common-lisp:export
@@ -85,10 +91,11 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-project-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or project-name common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or project-id common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or project-name common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or project-id common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or project-description common-lisp:null))
    (client-request-token common-lisp:nil :type
@@ -122,10 +129,10 @@
                                                 'client-request-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-project-result (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or project-id common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or project-arn common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or project-id common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or project-arn common-lisp:null))
    (client-request-token common-lisp:nil :type
     (common-lisp:or client-request-token common-lisp:null))
    (project-template-id common-lisp:nil :type
@@ -159,12 +166,17 @@
                                                 'project-template-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-user-profile-request (:copier common-lisp:nil))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null))
-   (display-name (common-lisp:error ":displayname is required") :type
-    (common-lisp:or user-profile-display-name common-lisp:null))
-   (email-address (common-lisp:error ":emailaddress is required") :type
-    (common-lisp:or email common-lisp:null))
+   (user-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":userarn is required"))
+    :type (common-lisp:or user-arn common-lisp:null))
+   (display-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":displayname is required"))
+    :type (common-lisp:or user-profile-display-name common-lisp:null))
+   (email-address
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":emailaddress is required"))
+    :type (common-lisp:or email common-lisp:null))
    (ssh-public-key common-lisp:nil :type
     (common-lisp:or ssh-public-key common-lisp:null)))
  (common-lisp:export
@@ -197,8 +209,9 @@
                                                 'ssh-public-key))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-user-profile-result (:copier common-lisp:nil))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null))
+   (user-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":userarn is required"))
+    :type (common-lisp:or user-arn common-lisp:null))
    (display-name common-lisp:nil :type
     (common-lisp:or user-profile-display-name common-lisp:null))
    (email-address common-lisp:nil :type
@@ -250,8 +263,8 @@
 (common-lisp:deftype created-timestamp () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-project-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or project-id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or project-id common-lisp:null))
    (client-request-token common-lisp:nil :type
     (common-lisp:or client-request-token common-lisp:null))
    (delete-stack common-lisp:nil :type
@@ -303,8 +316,9 @@
 (common-lisp:deftype delete-stack () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (delete-user-profile-request (:copier common-lisp:nil))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null)))
+   (user-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":userarn is required"))
+    :type (common-lisp:or user-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-user-profile-request
                     'make-delete-user-profile-request))
@@ -320,8 +334,9 @@
                                                 'user-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-user-profile-result (:copier common-lisp:nil))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null)))
+   (user-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":userarn is required"))
+    :type (common-lisp:or user-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-user-profile-result
                     'make-delete-user-profile-result))
@@ -337,8 +352,8 @@
                                                 'user-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-project-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or project-id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or project-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-project-request 'make-describe-project-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -415,8 +430,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-user-profile-request (:copier common-lisp:nil))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null)))
+   (user-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":userarn is required"))
+    :type (common-lisp:or user-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-user-profile-request
                     'make-describe-user-profile-request))
@@ -433,19 +449,23 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-user-profile-result (:copier common-lisp:nil))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null))
+   (user-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":userarn is required"))
+    :type (common-lisp:or user-arn common-lisp:null))
    (display-name common-lisp:nil :type
     (common-lisp:or user-profile-display-name common-lisp:null))
    (email-address common-lisp:nil :type
     (common-lisp:or email common-lisp:null))
    (ssh-public-key common-lisp:nil :type
     (common-lisp:or ssh-public-key common-lisp:null))
-   (created-timestamp (common-lisp:error ":createdtimestamp is required") :type
-    (common-lisp:or created-timestamp common-lisp:null))
+   (created-timestamp
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":createdtimestamp is required"))
+    :type (common-lisp:or created-timestamp common-lisp:null))
    (last-modified-timestamp
-    (common-lisp:error ":lastmodifiedtimestamp is required") :type
-    (common-lisp:or last-modified-timestamp common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":lastmodifiedtimestamp is required"))
+    :type (common-lisp:or last-modified-timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-user-profile-result
                     'make-describe-user-profile-result))
@@ -487,10 +507,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disassociate-team-member-request (:copier common-lisp:nil))
-   (project-id (common-lisp:error ":projectid is required") :type
-    (common-lisp:or project-id common-lisp:null))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null)))
+   (project-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":projectid is required"))
+    :type (common-lisp:or project-id common-lisp:null))
+   (user-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":userarn is required"))
+    :type (common-lisp:or user-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disassociate-team-member-request
                     'make-disassociate-team-member-request))
@@ -578,8 +601,10 @@
                                                 'max-results))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-projects-result (:copier common-lisp:nil))
-   (projects (common-lisp:error ":projects is required") :type
-    (common-lisp:or projects-list common-lisp:null))
+   (projects
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":projects is required"))
+    :type (common-lisp:or projects-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -599,8 +624,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-resources-request (:copier common-lisp:nil))
-   (project-id (common-lisp:error ":projectid is required") :type
-    (common-lisp:or project-id common-lisp:null))
+   (project-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":projectid is required"))
+    :type (common-lisp:or project-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -652,8 +679,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-team-members-request (:copier common-lisp:nil))
-   (project-id (common-lisp:error ":projectid is required") :type
-    (common-lisp:or project-id common-lisp:null))
+   (project-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":projectid is required"))
+    :type (common-lisp:or project-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -683,8 +712,10 @@
                                                 'max-results))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-team-members-result (:copier common-lisp:nil))
-   (team-members (common-lisp:error ":teammembers is required") :type
-    (common-lisp:or team-member-result common-lisp:null))
+   (team-members
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":teammembers is required"))
+    :type (common-lisp:or team-member-result common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -730,8 +761,10 @@
                                                 'max-results))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-user-profiles-result (:copier common-lisp:nil))
-   (user-profiles (common-lisp:error ":userprofiles is required") :type
-    (common-lisp:or user-profiles-list common-lisp:null))
+   (user-profiles
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":userprofiles is required"))
+    :type (common-lisp:or user-profiles-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -834,8 +867,8 @@
 (common-lisp:deftype remote-access-allowed () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (resource (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or resource-id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or resource-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'resource 'make-resource))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape resource))
@@ -859,10 +892,13 @@
 (common-lisp:deftype stack-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (team-member (:copier common-lisp:nil))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null))
-   (project-role (common-lisp:error ":projectrole is required") :type
-    (common-lisp:or role common-lisp:null))
+   (user-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":userarn is required"))
+    :type (common-lisp:or user-arn common-lisp:null))
+   (project-role
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":projectrole is required"))
+    :type (common-lisp:or role common-lisp:null))
    (remote-access-allowed common-lisp:nil :type
     (common-lisp:or remote-access-allowed common-lisp:null)))
  (common-lisp:export (common-lisp:list 'team-member 'make-team-member))
@@ -916,8 +952,8 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (update-project-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or project-id common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or project-id common-lisp:null))
    (name common-lisp:nil :type (common-lisp:or project-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or project-description common-lisp:null)))
@@ -954,10 +990,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (update-team-member-request (:copier common-lisp:nil))
-   (project-id (common-lisp:error ":projectid is required") :type
-    (common-lisp:or project-id common-lisp:null))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null))
+   (project-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":projectid is required"))
+    :type (common-lisp:or project-id common-lisp:null))
+   (user-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":userarn is required"))
+    :type (common-lisp:or user-arn common-lisp:null))
    (project-role common-lisp:nil :type (common-lisp:or role common-lisp:null))
    (remote-access-allowed common-lisp:nil :type
     (common-lisp:or remote-access-allowed common-lisp:null)))
@@ -1020,8 +1059,9 @@
                                                 'remote-access-allowed))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-user-profile-request (:copier common-lisp:nil))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null))
+   (user-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":userarn is required"))
+    :type (common-lisp:or user-arn common-lisp:null))
    (display-name common-lisp:nil :type
     (common-lisp:or user-profile-display-name common-lisp:null))
    (email-address common-lisp:nil :type
@@ -1058,8 +1098,9 @@
                                                 'ssh-public-key))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-user-profile-result (:copier common-lisp:nil))
-   (user-arn (common-lisp:error ":userarn is required") :type
-    (common-lisp:or user-arn common-lisp:null))
+   (user-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":userarn is required"))
+    :type (common-lisp:or user-arn common-lisp:null))
    (display-name common-lisp:nil :type
     (common-lisp:or user-profile-display-name common-lisp:null))
    (email-address common-lisp:nil :type
@@ -1194,7 +1235,9 @@
                       (common-lisp:apply 'make-associate-team-member-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AssociateTeamMember")
                                   ("Version" ,@"2017-04-19"))
@@ -1213,7 +1256,9 @@
                       (common-lisp:apply 'make-create-project-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateProject")
                                   ("Version" ,@"2017-04-19"))
@@ -1233,7 +1278,9 @@
                       (common-lisp:apply 'make-create-user-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateUserProfile")
                                   ("Version" ,@"2017-04-19"))
@@ -1252,7 +1299,9 @@
                       (common-lisp:apply 'make-delete-project-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteProject")
                                   ("Version" ,@"2017-04-19"))
@@ -1270,7 +1319,9 @@
                       (common-lisp:apply 'make-delete-user-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUserProfile")
                                   ("Version" ,@"2017-04-19"))
@@ -1288,7 +1339,9 @@
                       (common-lisp:apply 'make-describe-project-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeProject")
                                   ("Version" ,@"2017-04-19"))
@@ -1306,7 +1359,9 @@
                       (common-lisp:apply 'make-describe-user-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeUserProfile")
                                   ("Version" ,@"2017-04-19"))
@@ -1324,7 +1379,9 @@
                       (common-lisp:apply 'make-disassociate-team-member-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisassociateTeamMember")
                                   ("Version" ,@"2017-04-19"))
@@ -1342,7 +1399,9 @@
                       (common-lisp:apply 'make-list-projects-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListProjects")
                                   ("Version" ,@"2017-04-19"))
@@ -1361,7 +1420,9 @@
                       (common-lisp:apply 'make-list-resources-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListResources")
                                   ("Version" ,@"2017-04-19"))
@@ -1380,7 +1441,9 @@
                       (common-lisp:apply 'make-list-team-members-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTeamMembers")
                                   ("Version" ,@"2017-04-19"))
@@ -1398,7 +1461,9 @@
                       (common-lisp:apply 'make-list-user-profiles-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListUserProfiles")
                                   ("Version" ,@"2017-04-19"))
@@ -1416,7 +1481,9 @@
                       (common-lisp:apply 'make-update-project-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateProject")
                                   ("Version" ,@"2017-04-19"))
@@ -1437,7 +1504,9 @@
                       (common-lisp:apply 'make-update-team-member-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTeamMember")
                                   ("Version" ,@"2017-04-19"))
@@ -1457,7 +1526,9 @@
                       (common-lisp:apply 'make-update-user-profile-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "codestar" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "codestar")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateUserProfile")
                                   ("Version" ,@"2017-04-19"))

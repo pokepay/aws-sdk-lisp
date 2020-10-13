@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/workspaces)
+
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (access-denied-exception (:copier common-lisp:nil))
@@ -60,10 +61,13 @@
 (common-lisp:deftype connection-state () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (create-tags-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or non-empty-string common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-tags-request 'make-create-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -88,8 +92,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-workspaces-request (:copier common-lisp:nil))
-   (workspaces (common-lisp:error ":workspaces is required") :type
-    (common-lisp:or workspace-request-list common-lisp:null)))
+   (workspaces
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":workspaces is required"))
+    :type (common-lisp:or workspace-request-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-workspaces-request
                     'make-create-workspaces-request))
@@ -175,10 +181,14 @@
                                                 'user-enabled-as-local-administrator))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-tags-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or non-empty-string common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-tags-request 'make-delete-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -203,8 +213,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (describe-tags-request (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or non-empty-string common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or non-empty-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-tags-request 'make-describe-tags-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -649,11 +661,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (modify-workspace-properties-request (:copier common-lisp:nil))
-   (workspace-id (common-lisp:error ":workspace-id is required") :type
-    (common-lisp:or workspace-id common-lisp:null))
+   (workspace-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workspace-id is required"))
+    :type (common-lisp:or workspace-id common-lisp:null))
    (workspace-properties
-    (common-lisp:error ":workspace-properties is required") :type
-    (common-lisp:or workspace-properties common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":workspace-properties is required"))
+    :type (common-lisp:or workspace-properties common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-workspace-properties-request
                     'make-modify-workspace-properties-request))
@@ -705,8 +720,10 @@
 (common-lisp:deftype pagination-token () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (reboot-request (:copier common-lisp:nil))
-   (workspace-id (common-lisp:error ":workspace-id is required") :type
-    (common-lisp:or workspace-id common-lisp:null)))
+   (workspace-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workspace-id is required"))
+    :type (common-lisp:or workspace-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'reboot-request 'make-reboot-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape reboot-request))
@@ -727,8 +744,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (reboot-workspaces-request (:copier common-lisp:nil))
    (reboot-workspace-requests
-    (common-lisp:error ":reboot-workspace-requests is required") :type
-    (common-lisp:or reboot-workspace-requests common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":reboot-workspace-requests is required"))
+    :type (common-lisp:or reboot-workspace-requests common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reboot-workspaces-request
                     'make-reboot-workspaces-request))
@@ -760,8 +778,10 @@
                                                 'failed-requests))))))
 (common-lisp:progn
  (common-lisp:defstruct (rebuild-request (:copier common-lisp:nil))
-   (workspace-id (common-lisp:error ":workspace-id is required") :type
-    (common-lisp:or workspace-id common-lisp:null)))
+   (workspace-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workspace-id is required"))
+    :type (common-lisp:or workspace-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'rebuild-request 'make-rebuild-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape rebuild-request))
@@ -782,8 +802,10 @@
 (common-lisp:progn
  (common-lisp:defstruct (rebuild-workspaces-request (:copier common-lisp:nil))
    (rebuild-workspace-requests
-    (common-lisp:error ":rebuild-workspace-requests is required") :type
-    (common-lisp:or rebuild-workspace-requests common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":rebuild-workspace-requests is required"))
+    :type (common-lisp:or rebuild-workspace-requests common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'rebuild-workspaces-request
                     'make-rebuild-workspaces-request))
@@ -911,8 +933,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (start-workspaces-request (:copier common-lisp:nil))
    (start-workspace-requests
-    (common-lisp:error ":start-workspace-requests is required") :type
-    (common-lisp:or start-workspace-requests common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":start-workspace-requests is required"))
+    :type (common-lisp:or start-workspace-requests common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-workspaces-request 'make-start-workspaces-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -965,8 +988,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (stop-workspaces-request (:copier common-lisp:nil))
    (stop-workspace-requests
-    (common-lisp:error ":stop-workspace-requests is required") :type
-    (common-lisp:or stop-workspace-requests common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":stop-workspace-requests is required"))
+    :type (common-lisp:or stop-workspace-requests common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-workspaces-request 'make-stop-workspaces-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1005,8 +1029,8 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1041,8 +1065,10 @@
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (terminate-request (:copier common-lisp:nil))
-   (workspace-id (common-lisp:error ":workspace-id is required") :type
-    (common-lisp:or workspace-id common-lisp:null)))
+   (workspace-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":workspace-id is required"))
+    :type (common-lisp:or workspace-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'terminate-request 'make-terminate-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1065,8 +1091,10 @@
  (common-lisp:defstruct
      (terminate-workspaces-request (:copier common-lisp:nil))
    (terminate-workspace-requests
-    (common-lisp:error ":terminate-workspace-requests is required") :type
-    (common-lisp:or terminate-workspace-requests common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":terminate-workspace-requests is required"))
+    :type (common-lisp:or terminate-workspace-requests common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'terminate-workspaces-request
                     'make-terminate-workspaces-request))
@@ -1462,12 +1490,18 @@
                               'running-mode-auto-stop-timeout-in-minutes))))))
 (common-lisp:progn
  (common-lisp:defstruct (workspace-request (:copier common-lisp:nil))
-   (directory-id (common-lisp:error ":directory-id is required") :type
-    (common-lisp:or directory-id common-lisp:null))
-   (user-name (common-lisp:error ":user-name is required") :type
-    (common-lisp:or user-name common-lisp:null))
-   (bundle-id (common-lisp:error ":bundle-id is required") :type
-    (common-lisp:or bundle-id common-lisp:null))
+   (directory-id
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":directory-id is required"))
+    :type (common-lisp:or directory-id common-lisp:null))
+   (user-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":user-name is required"))
+    :type (common-lisp:or user-name common-lisp:null))
+   (bundle-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":bundle-id is required"))
+    :type (common-lisp:or bundle-id common-lisp:null))
    (volume-encryption-key common-lisp:nil :type
     (common-lisp:or volume-encryption-key common-lisp:null))
    (user-volume-encryption-enabled common-lisp:nil :type
@@ -1541,7 +1575,9 @@
                       (common-lisp:apply 'make-create-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTags")
                                   ("Version" ,@"2015-04-08"))
@@ -1559,7 +1595,9 @@
                       (common-lisp:apply 'make-create-workspaces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateWorkspaces")
                                   ("Version" ,@"2015-04-08"))
@@ -1577,7 +1615,9 @@
                       (common-lisp:apply 'make-delete-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTags")
                                   ("Version" ,@"2015-04-08"))
@@ -1595,7 +1635,9 @@
                       (common-lisp:apply 'make-describe-tags-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTags")
                                   ("Version" ,@"2015-04-08"))
@@ -1614,7 +1656,9 @@
                        'make-describe-workspace-bundles-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeWorkspaceBundles")
                                   ("Version" ,@"2015-04-08"))
@@ -1633,7 +1677,9 @@
                        'make-describe-workspace-directories-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeWorkspaceDirectories")
                                   ("Version" ,@"2015-04-08"))
@@ -1654,7 +1700,9 @@
                       (common-lisp:apply 'make-describe-workspaces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeWorkspaces")
                                   ("Version" ,@"2015-04-08"))
@@ -1673,7 +1721,9 @@
                        'make-describe-workspaces-connection-status-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeWorkspacesConnectionStatus")
@@ -1694,7 +1744,9 @@
                        'make-modify-workspace-properties-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyWorkspaceProperties")
                                   ("Version" ,@"2015-04-08"))
@@ -1712,7 +1764,9 @@
                       (common-lisp:apply 'make-reboot-workspaces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RebootWorkspaces")
                                   ("Version" ,@"2015-04-08"))
@@ -1730,7 +1784,9 @@
                       (common-lisp:apply 'make-rebuild-workspaces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RebuildWorkspaces")
                                   ("Version" ,@"2015-04-08"))
@@ -1748,7 +1804,9 @@
                       (common-lisp:apply 'make-start-workspaces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartWorkspaces")
                                   ("Version" ,@"2015-04-08"))
@@ -1766,7 +1824,9 @@
                       (common-lisp:apply 'make-stop-workspaces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopWorkspaces")
                                   ("Version" ,@"2015-04-08"))
@@ -1784,7 +1844,9 @@
                       (common-lisp:apply 'make-terminate-workspaces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "workspaces" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "workspaces")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TerminateWorkspaces")
                                   ("Version" ,@"2015-04-08"))

@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/cloudfront)
+
 (common-lisp:progn
  (common-lisp:defstruct (access-denied (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -22,10 +23,13 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (active-trusted-signers (:copier common-lisp:nil))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type (common-lisp:or signer-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'active-trusted-signers 'make-active-trusted-signers))
@@ -59,8 +63,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (aliases (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type (common-lisp:or alias-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'aliases 'make-aliases))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -78,10 +84,13 @@
                                                 'items))))))
 (common-lisp:progn
  (common-lisp:defstruct (allowed-methods (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
-   (items (common-lisp:error ":items is required") :type
-    (common-lisp:or methods-list common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
+   (items
+    (common-lisp:error #A((18) common-lisp:base-char . ":items is required"))
+    :type (common-lisp:or methods-list common-lisp:null))
    (cached-methods common-lisp:nil :type
     (common-lisp:or cached-methods common-lisp:null)))
  (common-lisp:export (common-lisp:list 'allowed-methods 'make-allowed-methods))
@@ -140,19 +149,29 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (cache-behavior (:copier common-lisp:nil))
-   (path-pattern (common-lisp:error ":path-pattern is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (target-origin-id (common-lisp:error ":target-origin-id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (forwarded-values (common-lisp:error ":forwarded-values is required") :type
-    (common-lisp:or forwarded-values common-lisp:null))
-   (trusted-signers (common-lisp:error ":trusted-signers is required") :type
-    (common-lisp:or trusted-signers common-lisp:null))
+   (path-pattern
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":path-pattern is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (target-origin-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-origin-id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (forwarded-values
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":forwarded-values is required"))
+    :type (common-lisp:or forwarded-values common-lisp:null))
+   (trusted-signers
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":trusted-signers is required"))
+    :type (common-lisp:or trusted-signers common-lisp:null))
    (viewer-protocol-policy
-    (common-lisp:error ":viewer-protocol-policy is required") :type
-    (common-lisp:or viewer-protocol-policy common-lisp:null))
-   (min-ttl (common-lisp:error ":min-ttl is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":viewer-protocol-policy is required"))
+    :type (common-lisp:or viewer-protocol-policy common-lisp:null))
+   (min-ttl
+    (common-lisp:error #A((20) common-lisp:base-char . ":min-ttl is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (allowed-methods common-lisp:nil :type
     (common-lisp:or allowed-methods common-lisp:null))
    (smooth-streaming common-lisp:nil :type
@@ -239,8 +258,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (cache-behaviors (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type
     (common-lisp:or cache-behavior-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'cache-behaviors 'make-cache-behaviors))
@@ -259,10 +280,13 @@
                                                 'items))))))
 (common-lisp:progn
  (common-lisp:defstruct (cached-methods (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
-   (items (common-lisp:error ":items is required") :type
-    (common-lisp:or methods-list common-lisp:null)))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
+   (items
+    (common-lisp:error #A((18) common-lisp:base-char . ":items is required"))
+    :type (common-lisp:or methods-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'cached-methods 'make-cached-methods))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape cached-methods))
@@ -281,9 +305,11 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (cloud-front-origin-access-identity (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (s3canonical-user-id (common-lisp:error ":s3canonical-user-id is required")
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (s3canonical-user-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":s3canonical-user-id is required"))
     :type (common-lisp:or common-lisp:string common-lisp:null))
    (cloud-front-origin-access-identity-config common-lisp:nil :type
     (common-lisp:or cloud-front-origin-access-identity-config
@@ -333,10 +359,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (cloud-front-origin-access-identity-config (:copier common-lisp:nil))
-   (caller-reference (common-lisp:error ":caller-reference is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (comment (common-lisp:error ":comment is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (caller-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":caller-reference is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (comment
+    (common-lisp:error #A((20) common-lisp:base-char . ":comment is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cloud-front-origin-access-identity-config
                     'make-cloud-front-origin-access-identity-config))
@@ -376,16 +405,23 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (cloud-front-origin-access-identity-list (:copier common-lisp:nil))
-   (marker (common-lisp:error ":marker is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (marker
+    (common-lisp:error #A((19) common-lisp:base-char . ":marker is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (next-marker common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type
     (common-lisp:or cloud-front-origin-access-identity-summary-list
                     common-lisp:null)))
@@ -430,12 +466,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (cloud-front-origin-access-identity-summary (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (s3canonical-user-id (common-lisp:error ":s3canonical-user-id is required")
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
     :type (common-lisp:or common-lisp:string common-lisp:null))
-   (comment (common-lisp:error ":comment is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (s3canonical-user-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":s3canonical-user-id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (comment
+    (common-lisp:error #A((20) common-lisp:base-char . ":comment is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cloud-front-origin-access-identity-summary
                     'make-cloud-front-origin-access-identity-summary))
@@ -478,8 +517,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (cookie-names (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type
     (common-lisp:or cookie-name-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'cookie-names 'make-cookie-names))
@@ -498,8 +539,9 @@
                                                 'items))))))
 (common-lisp:progn
  (common-lisp:defstruct (cookie-preference (:copier common-lisp:nil))
-   (forward (common-lisp:error ":forward is required") :type
-    (common-lisp:or item-selection common-lisp:null))
+   (forward
+    (common-lisp:error #A((20) common-lisp:base-char . ":forward is required"))
+    :type (common-lisp:or item-selection common-lisp:null))
    (whitelisted-names common-lisp:nil :type
     (common-lisp:or cookie-names common-lisp:null)))
  (common-lisp:export
@@ -523,7 +565,8 @@
       (:copier common-lisp:nil))
    (cloud-front-origin-access-identity-config
     (common-lisp:error
-     ":cloud-front-origin-access-identity-config is required")
+     #A((54) common-lisp:base-char
+        . ":cloud-front-origin-access-identity-config is required"))
     :type
     (common-lisp:or cloud-front-origin-access-identity-config
                     common-lisp:null)))
@@ -575,7 +618,9 @@
                                                 'etag))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-distribution-request (:copier common-lisp:nil))
-   (distribution-config (common-lisp:error ":distribution-config is required")
+   (distribution-config
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":distribution-config is required"))
     :type (common-lisp:or distribution-config common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-distribution-request
@@ -625,8 +670,10 @@
  (common-lisp:defstruct
      (create-distribution-with-tags-request (:copier common-lisp:nil))
    (distribution-config-with-tags
-    (common-lisp:error ":distribution-config-with-tags is required") :type
-    (common-lisp:or distribution-config-with-tags common-lisp:null)))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":distribution-config-with-tags is required"))
+    :type (common-lisp:or distribution-config-with-tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-distribution-with-tags-request
                     'make-create-distribution-with-tags-request))
@@ -674,9 +721,13 @@
                                                 'etag))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-invalidation-request (:copier common-lisp:nil))
-   (distribution-id (common-lisp:error ":distribution-id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (invalidation-batch (common-lisp:error ":invalidation-batch is required")
+   (distribution-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":distribution-id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (invalidation-batch
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":invalidation-batch is required"))
     :type (common-lisp:or invalidation-batch common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-invalidation-request
@@ -724,8 +775,10 @@
  (common-lisp:defstruct
      (create-streaming-distribution-request (:copier common-lisp:nil))
    (streaming-distribution-config
-    (common-lisp:error ":streaming-distribution-config is required") :type
-    (common-lisp:or streaming-distribution-config common-lisp:null)))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":streaming-distribution-config is required"))
+    :type (common-lisp:or streaming-distribution-config common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-streaming-distribution-request
                     'make-create-streaming-distribution-request))
@@ -776,7 +829,9 @@
      (create-streaming-distribution-with-tags-request
       (:copier common-lisp:nil))
    (streaming-distribution-config-with-tags
-    (common-lisp:error ":streaming-distribution-config-with-tags is required")
+    (common-lisp:error
+     #A((52) common-lisp:base-char
+        . ":streaming-distribution-config-with-tags is required"))
     :type
     (common-lisp:or streaming-distribution-config-with-tags common-lisp:null)))
  (common-lisp:export
@@ -826,8 +881,10 @@
                                                 'etag))))))
 (common-lisp:progn
  (common-lisp:defstruct (custom-error-response (:copier common-lisp:nil))
-   (error-code (common-lisp:error ":error-code is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":error-code is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (response-page-path common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (response-code common-lisp:nil :type
@@ -871,8 +928,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (custom-error-responses (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type
     (common-lisp:or custom-error-response-list common-lisp:null)))
  (common-lisp:export
@@ -894,8 +953,10 @@
                                                 'items))))))
 (common-lisp:progn
  (common-lisp:defstruct (custom-headers (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type
     (common-lisp:or origin-custom-headers-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'custom-headers 'make-custom-headers))
@@ -914,13 +975,18 @@
                                                 'items))))))
 (common-lisp:progn
  (common-lisp:defstruct (custom-origin-config (:copier common-lisp:nil))
-   (httpport (common-lisp:error ":httpport is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
-   (httpsport (common-lisp:error ":httpsport is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (httpport
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":httpport is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
+   (httpsport
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":httpsport is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (origin-protocol-policy
-    (common-lisp:error ":origin-protocol-policy is required") :type
-    (common-lisp:or origin-protocol-policy common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":origin-protocol-policy is required"))
+    :type (common-lisp:or origin-protocol-policy common-lisp:null))
    (origin-ssl-protocols common-lisp:nil :type
     (common-lisp:or origin-ssl-protocols common-lisp:null))
    (origin-read-timeout common-lisp:nil :type
@@ -964,17 +1030,25 @@
                                                 'origin-keepalive-timeout))))))
 (common-lisp:progn
  (common-lisp:defstruct (default-cache-behavior (:copier common-lisp:nil))
-   (target-origin-id (common-lisp:error ":target-origin-id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (forwarded-values (common-lisp:error ":forwarded-values is required") :type
-    (common-lisp:or forwarded-values common-lisp:null))
-   (trusted-signers (common-lisp:error ":trusted-signers is required") :type
-    (common-lisp:or trusted-signers common-lisp:null))
+   (target-origin-id
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":target-origin-id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (forwarded-values
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":forwarded-values is required"))
+    :type (common-lisp:or forwarded-values common-lisp:null))
+   (trusted-signers
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":trusted-signers is required"))
+    :type (common-lisp:or trusted-signers common-lisp:null))
    (viewer-protocol-policy
-    (common-lisp:error ":viewer-protocol-policy is required") :type
-    (common-lisp:or viewer-protocol-policy common-lisp:null))
-   (min-ttl (common-lisp:error ":min-ttl is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":viewer-protocol-policy is required"))
+    :type (common-lisp:or viewer-protocol-policy common-lisp:null))
+   (min-ttl
+    (common-lisp:error #A((20) common-lisp:base-char . ":min-ttl is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (allowed-methods common-lisp:nil :type
     (common-lisp:or allowed-methods common-lisp:null))
    (smooth-streaming common-lisp:nil :type
@@ -1053,8 +1127,8 @@
  (common-lisp:defstruct
      (delete-cloud-front-origin-access-identity-request
       (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (if-match common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
@@ -1077,8 +1151,8 @@
                                                 'if-match))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-distribution-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (if-match common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
@@ -1102,8 +1176,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-streaming-distribution-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (if-match common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
@@ -1126,23 +1200,33 @@
                                                 'if-match))))))
 (common-lisp:progn
  (common-lisp:defstruct (distribution (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (last-modified-time (common-lisp:error ":last-modified-time is required")
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (last-modified-time
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":last-modified-time is required"))
     :type (common-lisp:or common-lisp:string common-lisp:null))
    (in-progress-invalidation-batches
-    (common-lisp:error ":in-progress-invalidation-batches is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+    (common-lisp:error
+     #A((45) common-lisp:base-char
+        . ":in-progress-invalidation-batches is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (active-trusted-signers
-    (common-lisp:error ":active-trusted-signers is required") :type
-    (common-lisp:or active-trusted-signers common-lisp:null))
-   (distribution-config (common-lisp:error ":distribution-config is required")
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":active-trusted-signers is required"))
+    :type (common-lisp:or active-trusted-signers common-lisp:null))
+   (distribution-config
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":distribution-config is required"))
     :type (common-lisp:or distribution-config common-lisp:null)))
  (common-lisp:export (common-lisp:list 'distribution 'make-distribution))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1207,28 +1291,34 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (distribution-config (:copier common-lisp:nil))
-   (caller-reference (common-lisp:error ":caller-reference is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (caller-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":caller-reference is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (aliases common-lisp:nil :type (common-lisp:or aliases common-lisp:null))
    (default-root-object common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
-   (origins (common-lisp:error ":origins is required") :type
-    (common-lisp:or origins common-lisp:null))
+   (origins
+    (common-lisp:error #A((20) common-lisp:base-char . ":origins is required"))
+    :type (common-lisp:or origins common-lisp:null))
    (default-cache-behavior
-    (common-lisp:error ":default-cache-behavior is required") :type
-    (common-lisp:or default-cache-behavior common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":default-cache-behavior is required"))
+    :type (common-lisp:or default-cache-behavior common-lisp:null))
    (cache-behaviors common-lisp:nil :type
     (common-lisp:or cache-behaviors common-lisp:null))
    (custom-error-responses common-lisp:nil :type
     (common-lisp:or custom-error-responses common-lisp:null))
-   (comment (common-lisp:error ":comment is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (comment
+    (common-lisp:error #A((20) common-lisp:base-char . ":comment is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (logging common-lisp:nil :type
     (common-lisp:or logging-config common-lisp:null))
    (price-class common-lisp:nil :type
     (common-lisp:or price-class common-lisp:null))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null))
    (viewer-certificate common-lisp:nil :type
     (common-lisp:or viewer-certificate common-lisp:null))
    (restrictions common-lisp:nil :type
@@ -1327,10 +1417,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (distribution-config-with-tags (:copier common-lisp:nil))
-   (distribution-config (common-lisp:error ":distribution-config is required")
+   (distribution-config
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":distribution-config is required"))
     :type (common-lisp:or distribution-config common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'distribution-config-with-tags
                     'make-distribution-config-with-tags))
@@ -1351,16 +1444,23 @@
                                                 'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (distribution-list (:copier common-lisp:nil))
-   (marker (common-lisp:error ":marker is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (marker
+    (common-lisp:error #A((19) common-lisp:base-char . ":marker is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (next-marker common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type
     (common-lisp:or distribution-summary-list common-lisp:null)))
  (common-lisp:export
@@ -1417,44 +1517,69 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (distribution-summary (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (last-modified-time (common-lisp:error ":last-modified-time is required")
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
     :type (common-lisp:or common-lisp:string common-lisp:null))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (aliases (common-lisp:error ":aliases is required") :type
-    (common-lisp:or aliases common-lisp:null))
-   (origins (common-lisp:error ":origins is required") :type
-    (common-lisp:or origins common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (last-modified-time
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":last-modified-time is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (aliases
+    (common-lisp:error #A((20) common-lisp:base-char . ":aliases is required"))
+    :type (common-lisp:or aliases common-lisp:null))
+   (origins
+    (common-lisp:error #A((20) common-lisp:base-char . ":origins is required"))
+    :type (common-lisp:or origins common-lisp:null))
    (default-cache-behavior
-    (common-lisp:error ":default-cache-behavior is required") :type
-    (common-lisp:or default-cache-behavior common-lisp:null))
-   (cache-behaviors (common-lisp:error ":cache-behaviors is required") :type
-    (common-lisp:or cache-behaviors common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":default-cache-behavior is required"))
+    :type (common-lisp:or default-cache-behavior common-lisp:null))
+   (cache-behaviors
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":cache-behaviors is required"))
+    :type (common-lisp:or cache-behaviors common-lisp:null))
    (custom-error-responses
-    (common-lisp:error ":custom-error-responses is required") :type
-    (common-lisp:or custom-error-responses common-lisp:null))
-   (comment (common-lisp:error ":comment is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (price-class (common-lisp:error ":price-class is required") :type
-    (common-lisp:or price-class common-lisp:null))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null))
-   (viewer-certificate (common-lisp:error ":viewer-certificate is required")
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":custom-error-responses is required"))
+    :type (common-lisp:or custom-error-responses common-lisp:null))
+   (comment
+    (common-lisp:error #A((20) common-lisp:base-char . ":comment is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (price-class
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":price-class is required"))
+    :type (common-lisp:or price-class common-lisp:null))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null))
+   (viewer-certificate
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":viewer-certificate is required"))
     :type (common-lisp:or viewer-certificate common-lisp:null))
-   (restrictions (common-lisp:error ":restrictions is required") :type
-    (common-lisp:or restrictions common-lisp:null))
-   (web-aclid (common-lisp:error ":web-aclid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (http-version (common-lisp:error ":http-version is required") :type
-    (common-lisp:or http-version common-lisp:null))
-   (is-ipv6enabled (common-lisp:error ":is-ipv6enabled is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null)))
+   (restrictions
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":restrictions is required"))
+    :type (common-lisp:or restrictions common-lisp:null))
+   (web-aclid
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":web-aclid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (http-version
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":http-version is required"))
+    :type (common-lisp:or http-version common-lisp:null))
+   (is-ipv6enabled
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":is-ipv6enabled is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'distribution-summary 'make-distribution-summary))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1561,10 +1686,13 @@
 (common-lisp:deftype event-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (forwarded-values (:copier common-lisp:nil))
-   (query-string (common-lisp:error ":query-string is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null))
-   (cookies (common-lisp:error ":cookies is required") :type
-    (common-lisp:or cookie-preference common-lisp:null))
+   (query-string
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":query-string is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null))
+   (cookies
+    (common-lisp:error #A((20) common-lisp:base-char . ":cookies is required"))
+    :type (common-lisp:or cookie-preference common-lisp:null))
    (headers common-lisp:nil :type (common-lisp:or headers common-lisp:null))
    (query-string-cache-keys common-lisp:nil :type
     (common-lisp:or query-string-cache-keys common-lisp:null)))
@@ -1595,10 +1723,14 @@
                                                 'query-string-cache-keys))))))
 (common-lisp:progn
  (common-lisp:defstruct (geo-restriction (:copier common-lisp:nil))
-   (restriction-type (common-lisp:error ":restriction-type is required") :type
-    (common-lisp:or geo-restriction-type common-lisp:null))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (restriction-type
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":restriction-type is required"))
+    :type (common-lisp:or geo-restriction-type common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type
     (common-lisp:or location-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'geo-restriction 'make-geo-restriction))
@@ -1625,8 +1757,8 @@
  (common-lisp:defstruct
      (get-cloud-front-origin-access-identity-config-request
       (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-cloud-front-origin-access-identity-config-request
                     'make-get-cloud-front-origin-access-identity-config-request))
@@ -1670,8 +1802,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-cloud-front-origin-access-identity-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-cloud-front-origin-access-identity-request
                     'make-get-cloud-front-origin-access-identity-request))
@@ -1713,8 +1845,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-distribution-config-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-distribution-config-request
                     'make-get-distribution-config-request))
@@ -1755,8 +1887,8 @@
                                                 'etag))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-distribution-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-distribution-request 'make-get-distribution-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1794,10 +1926,12 @@
                                                 'etag))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-invalidation-request (:copier common-lisp:nil))
-   (distribution-id (common-lisp:error ":distribution-id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (distribution-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":distribution-id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-invalidation-request 'make-get-invalidation-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1834,8 +1968,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-streaming-distribution-config-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-streaming-distribution-config-request
                     'make-get-streaming-distribution-config-request))
@@ -1877,8 +2011,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-streaming-distribution-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-streaming-distribution-request
                     'make-get-streaming-distribution-request))
@@ -1927,8 +2061,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (headers (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type (common-lisp:or header-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'headers 'make-headers))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2349,13 +2485,18 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalidation (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (create-time (common-lisp:error ":create-time is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (invalidation-batch (common-lisp:error ":invalidation-batch is required")
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (create-time
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":create-time is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (invalidation-batch
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":invalidation-batch is required"))
     :type (common-lisp:or invalidation-batch common-lisp:null)))
  (common-lisp:export (common-lisp:list 'invalidation 'make-invalidation))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2383,10 +2524,13 @@
                                                 'invalidation-batch))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalidation-batch (:copier common-lisp:nil))
-   (paths (common-lisp:error ":paths is required") :type
-    (common-lisp:or paths common-lisp:null))
-   (caller-reference (common-lisp:error ":caller-reference is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (paths
+    (common-lisp:error #A((18) common-lisp:base-char . ":paths is required"))
+    :type (common-lisp:or paths common-lisp:null))
+   (caller-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":caller-reference is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'invalidation-batch 'make-invalidation-batch))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2404,16 +2548,23 @@
                                                 'caller-reference))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalidation-list (:copier common-lisp:nil))
-   (marker (common-lisp:error ":marker is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (marker
+    (common-lisp:error #A((19) common-lisp:base-char . ":marker is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (next-marker common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type
     (common-lisp:or invalidation-summary-list common-lisp:null)))
  (common-lisp:export
@@ -2453,12 +2604,15 @@
                                                 'items))))))
 (common-lisp:progn
  (common-lisp:defstruct (invalidation-summary (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (create-time (common-lisp:error ":create-time is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (create-time
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":create-time is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'invalidation-summary 'make-invalidation-summary))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2498,8 +2652,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (key-pair-ids (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type
     (common-lisp:or key-pair-id-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'key-pair-ids 'make-key-pair-ids))
@@ -2552,8 +2708,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (lambda-function-associations (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type
     (common-lisp:or lambda-function-association-list common-lisp:null)))
  (common-lisp:export
@@ -2626,8 +2784,10 @@
     (common-lisp:or common-lisp:string common-lisp:null))
    (max-items common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
-   (web-aclid (common-lisp:error ":web-aclid is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (web-aclid
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":web-aclid is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-distributions-by-web-aclid-request
                     'make-list-distributions-by-web-aclid-request))
@@ -2712,8 +2872,10 @@
                                                 'distribution-list))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-invalidations-request (:copier common-lisp:nil))
-   (distribution-id (common-lisp:error ":distribution-id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (distribution-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":distribution-id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (marker common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (max-items common-lisp:nil :type
@@ -2804,8 +2966,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-request (:copier common-lisp:nil))
-   (resource (common-lisp:error ":resource is required") :type
-    (common-lisp:or resource-arn common-lisp:null)))
+   (resource
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":resource is required"))
+    :type (common-lisp:or resource-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -2822,8 +2986,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-result (:copier common-lisp:nil))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-result
                     'make-list-tags-for-resource-result))
@@ -2847,14 +3012,19 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (logging-config (:copier common-lisp:nil))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null))
-   (include-cookies (common-lisp:error ":include-cookies is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (prefix (common-lisp:error ":prefix is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null))
+   (include-cookies
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":include-cookies is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (prefix
+    (common-lisp:error #A((19) common-lisp:base-char . ":prefix is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'logging-config 'make-logging-config))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape logging-config))
@@ -2994,10 +3164,12 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (origin (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (origin-path common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
    (custom-headers common-lisp:nil :type
@@ -3042,10 +3214,14 @@
                                                 'custom-origin-config))))))
 (common-lisp:progn
  (common-lisp:defstruct (origin-custom-header (:copier common-lisp:nil))
-   (header-name (common-lisp:error ":header-name is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (header-value (common-lisp:error ":header-value is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (header-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":header-name is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (header-value
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":header-value is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'origin-custom-header 'make-origin-custom-header))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3079,10 +3255,13 @@
 (common-lisp:deftype origin-protocol-policy () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (origin-ssl-protocols (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
-   (items (common-lisp:error ":items is required") :type
-    (common-lisp:or ssl-protocols-list common-lisp:null)))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
+   (items
+    (common-lisp:error #A((18) common-lisp:base-char . ":items is required"))
+    :type (common-lisp:or ssl-protocols-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'origin-ssl-protocols 'make-origin-ssl-protocols))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3100,8 +3279,10 @@
                                                 'items))))))
 (common-lisp:progn
  (common-lisp:defstruct (origins (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type (common-lisp:or origin-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'origins 'make-origins))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3127,8 +3308,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (paths (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type (common-lisp:or path-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'paths 'make-paths))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3161,8 +3344,10 @@
 (common-lisp:deftype price-class () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (query-string-cache-keys (:copier common-lisp:nil))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type
     (common-lisp:or query-string-cache-keys-list common-lisp:null)))
  (common-lisp:export
@@ -3193,8 +3378,10 @@
 (common-lisp:deftype resource-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (restrictions (:copier common-lisp:nil))
-   (geo-restriction (common-lisp:error ":geo-restriction is required") :type
-    (common-lisp:or geo-restriction common-lisp:null)))
+   (geo-restriction
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":geo-restriction is required"))
+    :type (common-lisp:or geo-restriction common-lisp:null)))
  (common-lisp:export (common-lisp:list 'restrictions 'make-restrictions))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape restrictions))
@@ -3206,11 +3393,14 @@
                                                 'geo-restriction))))))
 (common-lisp:progn
  (common-lisp:defstruct (s3origin (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (origin-access-identity
-    (common-lisp:error ":origin-access-identity is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":origin-access-identity is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export (common-lisp:list 's3origin 'make-s3origin))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape s3origin))
@@ -3228,8 +3418,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (s3origin-config (:copier common-lisp:nil))
    (origin-access-identity
-    (common-lisp:error ":origin-access-identity is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":origin-access-identity is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export (common-lisp:list 's3origin-config 'make-s3origin-config))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape s3origin-config))
@@ -3278,22 +3469,28 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (streaming-distribution (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (last-modified-time common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (active-trusted-signers
-    (common-lisp:error ":active-trusted-signers is required") :type
-    (common-lisp:or active-trusted-signers common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":active-trusted-signers is required"))
+    :type (common-lisp:or active-trusted-signers common-lisp:null))
    (streaming-distribution-config
-    (common-lisp:error ":streaming-distribution-config is required") :type
-    (common-lisp:or streaming-distribution-config common-lisp:null)))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":streaming-distribution-config is required"))
+    :type (common-lisp:or streaming-distribution-config common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'streaming-distribution 'make-streaming-distribution))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3357,21 +3554,29 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (streaming-distribution-config (:copier common-lisp:nil))
-   (caller-reference (common-lisp:error ":caller-reference is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (s3origin (common-lisp:error ":s3origin is required") :type
-    (common-lisp:or s3origin common-lisp:null))
+   (caller-reference
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":caller-reference is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (s3origin
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":s3origin is required"))
+    :type (common-lisp:or s3origin common-lisp:null))
    (aliases common-lisp:nil :type (common-lisp:or aliases common-lisp:null))
-   (comment (common-lisp:error ":comment is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (comment
+    (common-lisp:error #A((20) common-lisp:base-char . ":comment is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (logging common-lisp:nil :type
     (common-lisp:or streaming-logging-config common-lisp:null))
-   (trusted-signers (common-lisp:error ":trusted-signers is required") :type
-    (common-lisp:or trusted-signers common-lisp:null))
+   (trusted-signers
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":trusted-signers is required"))
+    :type (common-lisp:or trusted-signers common-lisp:null))
    (price-class common-lisp:nil :type
     (common-lisp:or price-class common-lisp:null))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null)))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'streaming-distribution-config
                     'make-streaming-distribution-config))
@@ -3424,10 +3629,13 @@
  (common-lisp:defstruct
      (streaming-distribution-config-with-tags (:copier common-lisp:nil))
    (streaming-distribution-config
-    (common-lisp:error ":streaming-distribution-config is required") :type
-    (common-lisp:or streaming-distribution-config common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":streaming-distribution-config is required"))
+    :type (common-lisp:or streaming-distribution-config common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'streaming-distribution-config-with-tags
                     'make-streaming-distribution-config-with-tags))
@@ -3448,16 +3656,23 @@
                                                 'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (streaming-distribution-list (:copier common-lisp:nil))
-   (marker (common-lisp:error ":marker is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (marker
+    (common-lisp:error #A((19) common-lisp:base-char . ":marker is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (next-marker common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null))
-   (max-items (common-lisp:error ":max-items is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
-   (is-truncated (common-lisp:error ":is-truncated is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (max-items
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":max-items is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
+   (is-truncated
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":is-truncated is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type
     (common-lisp:or streaming-distribution-summary-list common-lisp:null)))
  (common-lisp:export
@@ -3519,28 +3734,42 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (streaming-distribution-summary (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (last-modified-time (common-lisp:error ":last-modified-time is required")
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
     :type (common-lisp:or common-lisp:string common-lisp:null))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (s3origin (common-lisp:error ":s3origin is required") :type
-    (common-lisp:or s3origin common-lisp:null))
-   (aliases (common-lisp:error ":aliases is required") :type
-    (common-lisp:or aliases common-lisp:null))
-   (trusted-signers (common-lisp:error ":trusted-signers is required") :type
-    (common-lisp:or trusted-signers common-lisp:null))
-   (comment (common-lisp:error ":comment is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (price-class (common-lisp:error ":price-class is required") :type
-    (common-lisp:or price-class common-lisp:null))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (last-modified-time
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":last-modified-time is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (s3origin
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":s3origin is required"))
+    :type (common-lisp:or s3origin common-lisp:null))
+   (aliases
+    (common-lisp:error #A((20) common-lisp:base-char . ":aliases is required"))
+    :type (common-lisp:or aliases common-lisp:null))
+   (trusted-signers
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":trusted-signers is required"))
+    :type (common-lisp:or trusted-signers common-lisp:null))
+   (comment
+    (common-lisp:error #A((20) common-lisp:base-char . ":comment is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (price-class
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":price-class is required"))
+    :type (common-lisp:or price-class common-lisp:null))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'streaming-distribution-summary
                     'make-streaming-distribution-summary))
@@ -3615,12 +3844,15 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (streaming-logging-config (:copier common-lisp:nil))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null))
-   (bucket (common-lisp:error ":bucket is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
-   (prefix (common-lisp:error ":prefix is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null)))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null))
+   (bucket
+    (common-lisp:error #A((19) common-lisp:base-char . ":bucket is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
+   (prefix
+    (common-lisp:error #A((19) common-lisp:base-char . ":prefix is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'streaming-logging-config 'make-streaming-logging-config))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3645,8 +3877,8 @@
                                                 'prefix))))))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3692,10 +3924,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag-resource-request (:copier common-lisp:nil))
-   (resource (common-lisp:error ":resource is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+   (resource
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":resource is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-resource-request 'make-tag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4021,10 +4256,13 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (trusted-signers (:copier common-lisp:nil))
-   (enabled (common-lisp:error ":enabled is required") :type
-    (common-lisp:or common-lisp:boolean common-lisp:null))
-   (quantity (common-lisp:error ":quantity is required") :type
-    (common-lisp:or common-lisp:integer common-lisp:null))
+   (enabled
+    (common-lisp:error #A((20) common-lisp:base-char . ":enabled is required"))
+    :type (common-lisp:or common-lisp:boolean common-lisp:null))
+   (quantity
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":quantity is required"))
+    :type (common-lisp:or common-lisp:integer common-lisp:null))
    (items common-lisp:nil :type
     (common-lisp:or aws-account-number-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'trusted-signers 'make-trusted-signers))
@@ -4048,10 +4286,14 @@
                                                 'items))))))
 (common-lisp:progn
  (common-lisp:defstruct (untag-resource-request (:copier common-lisp:nil))
-   (resource (common-lisp:error ":resource is required") :type
-    (common-lisp:or resource-arn common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-keys common-lisp:null)))
+   (resource
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":resource is required"))
+    :type (common-lisp:or resource-arn common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-keys common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-resource-request 'make-untag-resource-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4075,12 +4317,13 @@
       (:copier common-lisp:nil))
    (cloud-front-origin-access-identity-config
     (common-lisp:error
-     ":cloud-front-origin-access-identity-config is required")
+     #A((54) common-lisp:base-char
+        . ":cloud-front-origin-access-identity-config is required"))
     :type
     (common-lisp:or cloud-front-origin-access-identity-config
                     common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (if-match common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
@@ -4134,10 +4377,12 @@
                                                 'etag))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-distribution-request (:copier common-lisp:nil))
-   (distribution-config (common-lisp:error ":distribution-config is required")
+   (distribution-config
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":distribution-config is required"))
     :type (common-lisp:or distribution-config common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (if-match common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
@@ -4191,10 +4436,12 @@
  (common-lisp:defstruct
      (update-streaming-distribution-request (:copier common-lisp:nil))
    (streaming-distribution-config
-    (common-lisp:error ":streaming-distribution-config is required") :type
-    (common-lisp:or streaming-distribution-config common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or common-lisp:string common-lisp:null))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":streaming-distribution-config is required"))
+    :type (common-lisp:or streaming-distribution-config common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or common-lisp:string common-lisp:null))
    (if-match common-lisp:nil :type
     (common-lisp:or common-lisp:string common-lisp:null)))
  (common-lisp:export
@@ -4320,7 +4567,9 @@ common-lisp:nil
                        'make-create-cloud-front-origin-access-identity-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"CreateCloudFrontOriginAccessIdentity")
@@ -4339,7 +4588,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-distribution-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDistribution")
                                   ("Version" ,@"2017-03-25"))
@@ -4358,7 +4609,9 @@ common-lisp:nil
                        'make-create-distribution-with-tags-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDistributionWithTags")
                                   ("Version" ,@"2017-03-25"))
@@ -4377,7 +4630,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-create-invalidation-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/distribution/~a/invalidation"
+                                                   distributionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateInvalidation")
                                   ("Version" ,@"2017-03-25"))
@@ -4396,7 +4655,9 @@ common-lisp:nil
                        'make-create-streaming-distribution-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateStreamingDistribution")
                                   ("Version" ,@"2017-03-25"))
@@ -4416,7 +4677,9 @@ common-lisp:nil
                        'make-create-streaming-distribution-with-tags-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"CreateStreamingDistributionWithTags")
@@ -4436,7 +4699,13 @@ common-lisp:nil
                        'make-delete-cloud-front-origin-access-identity-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/origin-access-identity/cloudfront/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DeleteCloudFrontOriginAccessIdentity")
@@ -4455,7 +4724,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-delete-distribution-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/distribution/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDistribution")
                                   ("Version" ,@"2017-03-25"))
@@ -4474,7 +4749,13 @@ common-lisp:nil
                        'make-delete-streaming-distribution-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/streaming-distribution/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteStreamingDistribution")
                                   ("Version" ,@"2017-03-25"))
@@ -4493,7 +4774,13 @@ common-lisp:nil
                        'make-get-cloud-front-origin-access-identity-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/origin-access-identity/cloudfront/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetCloudFrontOriginAccessIdentity")
@@ -4513,7 +4800,13 @@ common-lisp:nil
                        'make-get-cloud-front-origin-access-identity-config-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/origin-access-identity/cloudfront/~a/config"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"GetCloudFrontOriginAccessIdentityConfig")
@@ -4532,7 +4825,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-distribution-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/distribution/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDistribution")
                                   ("Version" ,@"2017-03-25"))
@@ -4550,7 +4849,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-distribution-config-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/distribution/~a/config"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDistributionConfig")
                                   ("Version" ,@"2017-03-25"))
@@ -4568,7 +4873,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-get-invalidation-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/distribution/~a/invalidation/~a"
+                                                   distributionid id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetInvalidation")
                                   ("Version" ,@"2017-03-25"))
@@ -4587,7 +4898,13 @@ common-lisp:nil
                        'make-get-streaming-distribution-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/streaming-distribution/~a"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetStreamingDistribution")
                                   ("Version" ,@"2017-03-25"))
@@ -4606,7 +4923,13 @@ common-lisp:nil
                        'make-get-streaming-distribution-config-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/streaming-distribution/~a/config"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetStreamingDistributionConfig")
                                   ("Version" ,@"2017-03-25"))
@@ -4625,7 +4948,9 @@ common-lisp:nil
                        'make-list-cloud-front-origin-access-identities-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ListCloudFrontOriginAccessIdentities")
@@ -4644,7 +4969,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-distributions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDistributions")
                                   ("Version" ,@"2017-03-25"))
@@ -4663,7 +4990,13 @@ common-lisp:nil
                        'make-list-distributions-by-web-aclid-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/distributionsByWebACLId/~a"
+                                                   webaclid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDistributionsByWebACLId")
                                   ("Version" ,@"2017-03-25"))
@@ -4682,7 +5015,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-invalidations-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/distribution/~a/invalidation"
+                                                   distributionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListInvalidations")
                                   ("Version" ,@"2017-03-25"))
@@ -4701,7 +5040,9 @@ common-lisp:nil
                        'make-list-streaming-distributions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListStreamingDistributions")
                                   ("Version" ,@"2017-03-25"))
@@ -4719,7 +5060,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-list-tags-for-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2017-03-25"))
@@ -4737,7 +5080,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-tag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TagResource")
                                   ("Version" ,@"2017-03-25"))
@@ -4755,7 +5100,9 @@ common-lisp:nil
                       (common-lisp:apply 'make-untag-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UntagResource")
                                   ("Version" ,@"2017-03-25"))
@@ -4777,7 +5124,13 @@ common-lisp:nil
                        'make-update-cloud-front-origin-access-identity-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/origin-access-identity/cloudfront/~a/config"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"UpdateCloudFrontOriginAccessIdentity")
@@ -4797,7 +5150,13 @@ common-lisp:nil
                       (common-lisp:apply 'make-update-distribution-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/distribution/~a/config"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDistribution")
                                   ("Version" ,@"2017-03-25"))
@@ -4818,7 +5177,13 @@ common-lisp:nil
                        'make-update-streaming-distribution-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudfront" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "cloudfront")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/2017-03-25/streaming-distribution/~a/config"
+                                                   id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateStreamingDistribution")
                                   ("Version" ,@"2017-03-25"))

@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/monitoring)
+
 (common-lisp:deftype action-prefix () 'common-lisp:string)
 (common-lisp:deftype actions-enabled () 'common-lisp:boolean)
 (common-lisp:deftype alarm-arn () 'common-lisp:string)
@@ -279,8 +280,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (delete-alarms-input (:copier common-lisp:nil))
-   (alarm-names (common-lisp:error ":alarm-names is required") :type
-    (common-lisp:or alarm-names common-lisp:null)))
+   (alarm-names
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":alarm-names is required"))
+    :type (common-lisp:or alarm-names common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-alarms-input 'make-delete-alarms-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -396,10 +399,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-alarms-for-metric-input (:copier common-lisp:nil))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or metric-name common-lisp:null))
-   (namespace (common-lisp:error ":namespace is required") :type
-    (common-lisp:or namespace common-lisp:null))
+   (metric-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metric-name is required"))
+    :type (common-lisp:or metric-name common-lisp:null))
+   (namespace
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":namespace is required"))
+    :type (common-lisp:or namespace common-lisp:null))
    (statistic common-lisp:nil :type
     (common-lisp:or statistic common-lisp:null))
    (extended-statistic common-lisp:nil :type
@@ -546,10 +553,12 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (dimension (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or dimension-name common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or dimension-value common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or dimension-name common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or dimension-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'dimension 'make-dimension))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape dimension))
@@ -566,8 +575,9 @@
                                                 'value))))))
 (common-lisp:progn
  (common-lisp:defstruct (dimension-filter (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or dimension-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or dimension-name common-lisp:null))
    (value common-lisp:nil :type
     (common-lisp:or dimension-value common-lisp:null)))
  (common-lisp:export
@@ -604,8 +614,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (disable-alarm-actions-input (:copier common-lisp:nil))
-   (alarm-names (common-lisp:error ":alarm-names is required") :type
-    (common-lisp:or alarm-names common-lisp:null)))
+   (alarm-names
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":alarm-names is required"))
+    :type (common-lisp:or alarm-names common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-alarm-actions-input
                     'make-disable-alarm-actions-input))
@@ -621,8 +633,10 @@
                                                 'alarm-names))))))
 (common-lisp:progn
  (common-lisp:defstruct (enable-alarm-actions-input (:copier common-lisp:nil))
-   (alarm-names (common-lisp:error ":alarm-names is required") :type
-    (common-lisp:or alarm-names common-lisp:null)))
+   (alarm-names
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":alarm-names is required"))
+    :type (common-lisp:or alarm-names common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-alarm-actions-input
                     'make-enable-alarm-actions-input))
@@ -694,18 +708,27 @@
                                                 'dashboard-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-metric-statistics-input (:copier common-lisp:nil))
-   (namespace (common-lisp:error ":namespace is required") :type
-    (common-lisp:or namespace common-lisp:null))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or metric-name common-lisp:null))
+   (namespace
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":namespace is required"))
+    :type (common-lisp:or namespace common-lisp:null))
+   (metric-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metric-name is required"))
+    :type (common-lisp:or metric-name common-lisp:null))
    (dimensions common-lisp:nil :type
     (common-lisp:or dimensions common-lisp:null))
-   (start-time (common-lisp:error ":start-time is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (end-time (common-lisp:error ":end-time is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (period (common-lisp:error ":period is required") :type
-    (common-lisp:or period common-lisp:null))
+   (start-time
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":start-time is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (end-time
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":end-time is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (period
+    (common-lisp:error #A((19) common-lisp:base-char . ":period is required"))
+    :type (common-lisp:or period common-lisp:null))
    (statistics common-lisp:nil :type
     (common-lisp:or statistics common-lisp:null))
    (extended-statistics common-lisp:nil :type
@@ -1206,8 +1229,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (metric-datum (:copier common-lisp:nil))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or metric-name common-lisp:null))
+   (metric-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metric-name is required"))
+    :type (common-lisp:or metric-name common-lisp:null))
    (dimensions common-lisp:nil :type
     (common-lisp:or dimensions common-lisp:null))
    (timestamp common-lisp:nil :type
@@ -1325,8 +1350,10 @@
                                                 'dashboard-validation-messages))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-metric-alarm-input (:copier common-lisp:nil))
-   (alarm-name (common-lisp:error ":alarm-name is required") :type
-    (common-lisp:or alarm-name common-lisp:null))
+   (alarm-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":alarm-name is required"))
+    :type (common-lisp:or alarm-name common-lisp:null))
    (alarm-description common-lisp:nil :type
     (common-lisp:or alarm-description common-lisp:null))
    (actions-enabled common-lisp:nil :type
@@ -1337,24 +1364,35 @@
     (common-lisp:or resource-list common-lisp:null))
    (insufficient-data-actions common-lisp:nil :type
     (common-lisp:or resource-list common-lisp:null))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or metric-name common-lisp:null))
-   (namespace (common-lisp:error ":namespace is required") :type
-    (common-lisp:or namespace common-lisp:null))
+   (metric-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metric-name is required"))
+    :type (common-lisp:or metric-name common-lisp:null))
+   (namespace
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":namespace is required"))
+    :type (common-lisp:or namespace common-lisp:null))
    (statistic common-lisp:nil :type
     (common-lisp:or statistic common-lisp:null))
    (extended-statistic common-lisp:nil :type
     (common-lisp:or extended-statistic common-lisp:null))
    (dimensions common-lisp:nil :type
     (common-lisp:or dimensions common-lisp:null))
-   (period (common-lisp:error ":period is required") :type
-    (common-lisp:or period common-lisp:null))
+   (period
+    (common-lisp:error #A((19) common-lisp:base-char . ":period is required"))
+    :type (common-lisp:or period common-lisp:null))
    (unit common-lisp:nil :type (common-lisp:or standard-unit common-lisp:null))
-   (evaluation-periods (common-lisp:error ":evaluation-periods is required")
+   (evaluation-periods
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":evaluation-periods is required"))
     :type (common-lisp:or evaluation-periods common-lisp:null))
-   (threshold (common-lisp:error ":threshold is required") :type
-    (common-lisp:or threshold common-lisp:null))
-   (comparison-operator (common-lisp:error ":comparison-operator is required")
+   (threshold
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":threshold is required"))
+    :type (common-lisp:or threshold common-lisp:null))
+   (comparison-operator
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":comparison-operator is required"))
     :type (common-lisp:or comparison-operator common-lisp:null))
    (treat-missing-data common-lisp:nil :type
     (common-lisp:or treat-missing-data common-lisp:null))
@@ -1459,10 +1497,14 @@
                               'evaluate-low-sample-count-percentile))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-metric-data-input (:copier common-lisp:nil))
-   (namespace (common-lisp:error ":namespace is required") :type
-    (common-lisp:or namespace common-lisp:null))
-   (metric-data (common-lisp:error ":metric-data is required") :type
-    (common-lisp:or metric-data common-lisp:null)))
+   (namespace
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":namespace is required"))
+    :type (common-lisp:or namespace common-lisp:null))
+   (metric-data
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metric-data is required"))
+    :type (common-lisp:or metric-data common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-metric-data-input 'make-put-metric-data-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1505,12 +1547,18 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (set-alarm-state-input (:copier common-lisp:nil))
-   (alarm-name (common-lisp:error ":alarm-name is required") :type
-    (common-lisp:or alarm-name common-lisp:null))
-   (state-value (common-lisp:error ":state-value is required") :type
-    (common-lisp:or state-value common-lisp:null))
-   (state-reason (common-lisp:error ":state-reason is required") :type
-    (common-lisp:or state-reason common-lisp:null))
+   (alarm-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":alarm-name is required"))
+    :type (common-lisp:or alarm-name common-lisp:null))
+   (state-value
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":state-value is required"))
+    :type (common-lisp:or state-value common-lisp:null))
+   (state-reason
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":state-reason is required"))
+    :type (common-lisp:or state-reason common-lisp:null))
    (state-reason-data common-lisp:nil :type
     (common-lisp:or state-reason-data common-lisp:null)))
  (common-lisp:export
@@ -1548,14 +1596,18 @@
 (common-lisp:deftype statistic () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (statistic-set (:copier common-lisp:nil))
-   (sample-count (common-lisp:error ":sample-count is required") :type
-    (common-lisp:or datapoint-value common-lisp:null))
-   (sum (common-lisp:error ":sum is required") :type
-    (common-lisp:or datapoint-value common-lisp:null))
-   (minimum (common-lisp:error ":minimum is required") :type
-    (common-lisp:or datapoint-value common-lisp:null))
-   (maximum (common-lisp:error ":maximum is required") :type
-    (common-lisp:or datapoint-value common-lisp:null)))
+   (sample-count
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":sample-count is required"))
+    :type (common-lisp:or datapoint-value common-lisp:null))
+   (sum (common-lisp:error #A((16) common-lisp:base-char . ":sum is required"))
+    :type (common-lisp:or datapoint-value common-lisp:null))
+   (minimum
+    (common-lisp:error #A((20) common-lisp:base-char . ":minimum is required"))
+    :type (common-lisp:or datapoint-value common-lisp:null))
+   (maximum
+    (common-lisp:error #A((20) common-lisp:base-char . ":maximum is required"))
+    :type (common-lisp:or datapoint-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'statistic-set 'make-statistic-set))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape statistic-set))
@@ -1601,7 +1653,9 @@
                       (common-lisp:apply 'make-delete-alarms-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAlarms")
                                   ("Version" ,@"2010-08-01"))
@@ -1619,7 +1673,9 @@
                       (common-lisp:apply 'make-delete-dashboards-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDashboards")
                                   ("Version" ,@"2010-08-01"))
@@ -1640,7 +1696,9 @@
                       (common-lisp:apply 'make-describe-alarm-history-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAlarmHistory")
                                   ("Version" ,@"2010-08-01"))
@@ -1661,7 +1719,9 @@
                       (common-lisp:apply 'make-describe-alarms-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAlarms")
                                   ("Version" ,@"2010-08-01"))
@@ -1682,7 +1742,9 @@
                       (common-lisp:apply 'make-describe-alarms-for-metric-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAlarmsForMetric")
                                   ("Version" ,@"2010-08-01"))
@@ -1700,7 +1762,9 @@
                       (common-lisp:apply 'make-disable-alarm-actions-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableAlarmActions")
                                   ("Version" ,@"2010-08-01"))
@@ -1718,7 +1782,9 @@
                       (common-lisp:apply 'make-enable-alarm-actions-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableAlarmActions")
                                   ("Version" ,@"2010-08-01"))
@@ -1736,7 +1802,9 @@
                       (common-lisp:apply 'make-get-dashboard-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDashboard")
                                   ("Version" ,@"2010-08-01"))
@@ -1758,7 +1826,9 @@
                       (common-lisp:apply 'make-get-metric-statistics-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetMetricStatistics")
                                   ("Version" ,@"2010-08-01"))
@@ -1777,7 +1847,9 @@
                       (common-lisp:apply 'make-list-dashboards-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDashboards")
                                   ("Version" ,@"2010-08-01"))
@@ -1797,7 +1869,9 @@
                       (common-lisp:apply 'make-list-metrics-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListMetrics")
                                   ("Version" ,@"2010-08-01"))
@@ -1815,7 +1889,9 @@
                       (common-lisp:apply 'make-put-dashboard-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutDashboard")
                                   ("Version" ,@"2010-08-01"))
@@ -1843,7 +1919,9 @@
                       (common-lisp:apply 'make-put-metric-alarm-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutMetricAlarm")
                                   ("Version" ,@"2010-08-01"))
@@ -1861,7 +1939,9 @@
                       (common-lisp:apply 'make-put-metric-data-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutMetricData")
                                   ("Version" ,@"2010-08-01"))
@@ -1882,7 +1962,9 @@
                       (common-lisp:apply 'make-set-alarm-state-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "monitoring" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "monitoring")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetAlarmState")
                                   ("Version" ,@"2010-08-01"))

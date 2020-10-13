@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/glue)
+
 (common-lisp:progn
  (common-lisp:defstruct (access-denied-exception (:copier common-lisp:nil))
    (message common-lisp:nil :type
@@ -72,13 +73,18 @@
      (batch-create-partition-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (partition-input-list
-    (common-lisp:error ":partition-input-list is required") :type
-    (common-lisp:or partition-input-list common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":partition-input-list is required"))
+    :type (common-lisp:or partition-input-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-create-partition-request
                     'make-batch-create-partition-request))
@@ -131,8 +137,9 @@
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
    (connection-name-list
-    (common-lisp:error ":connection-name-list is required") :type
-    (common-lisp:or delete-connection-name-list common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":connection-name-list is required"))
+    :type (common-lisp:or delete-connection-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-delete-connection-request
                     'make-batch-delete-connection-request))
@@ -181,13 +188,18 @@
      (batch-delete-partition-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (partitions-to-delete
-    (common-lisp:error ":partitions-to-delete is required") :type
-    (common-lisp:or batch-delete-partition-value-list common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":partitions-to-delete is required"))
+    :type (common-lisp:or batch-delete-partition-value-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-delete-partition-request
                     'make-batch-delete-partition-request))
@@ -254,10 +266,14 @@
  (common-lisp:defstruct (batch-delete-table-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (tables-to-delete (common-lisp:error ":tables-to-delete is required") :type
-    (common-lisp:or batch-delete-table-name-list common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (tables-to-delete
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":tables-to-delete is required"))
+    :type (common-lisp:or batch-delete-table-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-delete-table-request
                     'make-batch-delete-table-request))
@@ -302,11 +318,17 @@
  (common-lisp:defstruct (batch-get-partition-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (partitions-to-get (common-lisp:error ":partitions-to-get is required")
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (partitions-to-get
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":partitions-to-get is required"))
     :type (common-lisp:or batch-get-partition-value-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-get-partition-request
@@ -389,10 +411,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (catalog-entry (:copier common-lisp:nil))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'catalog-entry 'make-catalog-entry))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape catalog-entry))
@@ -472,10 +498,12 @@
 (common-lisp:deftype code-gen-arg-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (code-gen-edge (:copier common-lisp:nil))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or code-gen-identifier common-lisp:null))
-   (target (common-lisp:error ":target is required") :type
-    (common-lisp:or code-gen-identifier common-lisp:null))
+   (source
+    (common-lisp:error #A((19) common-lisp:base-char . ":source is required"))
+    :type (common-lisp:or code-gen-identifier common-lisp:null))
+   (target
+    (common-lisp:error #A((19) common-lisp:base-char . ":target is required"))
+    :type (common-lisp:or code-gen-identifier common-lisp:null))
    (target-parameter common-lisp:nil :type
     (common-lisp:or code-gen-arg-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'code-gen-edge 'make-code-gen-edge))
@@ -500,12 +528,15 @@
 (common-lisp:deftype code-gen-identifier () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (code-gen-node (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or code-gen-identifier common-lisp:null))
-   (node-type (common-lisp:error ":node-type is required") :type
-    (common-lisp:or code-gen-node-type common-lisp:null))
-   (args (common-lisp:error ":args is required") :type
-    (common-lisp:or code-gen-node-args common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or code-gen-identifier common-lisp:null))
+   (node-type
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":node-type is required"))
+    :type (common-lisp:or code-gen-node-type common-lisp:null))
+   (args
+    (common-lisp:error #A((17) common-lisp:base-char . ":args is required"))
+    :type (common-lisp:or code-gen-node-args common-lisp:null))
    (line-number common-lisp:nil :type
     (common-lisp:or integer common-lisp:null)))
  (common-lisp:export (common-lisp:list 'code-gen-node 'make-code-gen-node))
@@ -534,10 +565,12 @@
                                                 'line-number))))))
 (common-lisp:progn
  (common-lisp:defstruct (code-gen-node-arg (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or code-gen-arg-name common-lisp:null))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or code-gen-arg-value common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or code-gen-arg-name common-lisp:null))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or code-gen-arg-value common-lisp:null))
    (param common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'code-gen-node-arg 'make-code-gen-node-arg))
@@ -570,8 +603,9 @@
 (common-lisp:deftype code-gen-node-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (column (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (type common-lisp:nil :type
     (common-lisp:or column-type-string common-lisp:null))
    (comment common-lisp:nil :type
@@ -1127,8 +1161,10 @@
  (common-lisp:defstruct (create-connection-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (connection-input (common-lisp:error ":connection-input is required") :type
-    (common-lisp:or connection-input common-lisp:null)))
+   (connection-input
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":connection-input is required"))
+    :type (common-lisp:or connection-input common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-connection-request
                     'make-create-connection-request))
@@ -1159,16 +1195,21 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-crawler-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (role (common-lisp:error ":role is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or database-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (role
+    (common-lisp:error #A((17) common-lisp:base-char . ":role is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or database-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description-string common-lisp:null))
-   (targets (common-lisp:error ":targets is required") :type
-    (common-lisp:or crawler-targets common-lisp:null))
+   (targets
+    (common-lisp:error #A((20) common-lisp:base-char . ":targets is required"))
+    :type (common-lisp:or crawler-targets common-lisp:null))
    (schedule common-lisp:nil :type
     (common-lisp:or cron-expression common-lisp:null))
    (classifiers common-lisp:nil :type
@@ -1242,8 +1283,10 @@
  (common-lisp:defstruct (create-database-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-input (common-lisp:error ":database-input is required") :type
-    (common-lisp:or database-input common-lisp:null)))
+   (database-input
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":database-input is required"))
+    :type (common-lisp:or database-input common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-database-request 'make-create-database-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1272,14 +1315,22 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-dev-endpoint-request (:copier common-lisp:nil))
-   (endpoint-name (common-lisp:error ":endpoint-name is required") :type
-    (common-lisp:or generic-string common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (security-group-ids (common-lisp:error ":security-group-ids is required")
+   (endpoint-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":endpoint-name is required"))
+    :type (common-lisp:or generic-string common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
+   (security-group-ids
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":security-group-ids is required"))
     :type (common-lisp:or string-list common-lisp:null))
-   (subnet-id (common-lisp:error ":subnet-id is required") :type
-    (common-lisp:or generic-string common-lisp:null))
+   (subnet-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":subnet-id is required"))
+    :type (common-lisp:or generic-string common-lisp:null))
    (public-key common-lisp:nil :type
     (common-lisp:or generic-string common-lisp:null))
    (number-of-nodes common-lisp:nil :type
@@ -1440,12 +1491,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-grok-classifier-request (:copier common-lisp:nil))
-   (classification (common-lisp:error ":classification is required") :type
-    (common-lisp:or classification common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (grok-pattern (common-lisp:error ":grok-pattern is required") :type
-    (common-lisp:or grok-pattern common-lisp:null))
+   (classification
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":classification is required"))
+    :type (common-lisp:or classification common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (grok-pattern
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":grok-pattern is required"))
+    :type (common-lisp:or grok-pattern common-lisp:null))
    (custom-patterns common-lisp:nil :type
     (common-lisp:or custom-patterns common-lisp:null)))
  (common-lisp:export
@@ -1478,17 +1534,20 @@
                                                 'custom-patterns))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-job-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description-string common-lisp:null))
    (log-uri common-lisp:nil :type (common-lisp:or uri-string common-lisp:null))
-   (role (common-lisp:error ":role is required") :type
-    (common-lisp:or role-string common-lisp:null))
+   (role
+    (common-lisp:error #A((17) common-lisp:base-char . ":role is required"))
+    :type (common-lisp:or role-string common-lisp:null))
    (execution-property common-lisp:nil :type
     (common-lisp:or execution-property common-lisp:null))
-   (command (common-lisp:error ":command is required") :type
-    (common-lisp:or job-command common-lisp:null))
+   (command
+    (common-lisp:error #A((20) common-lisp:base-char . ":command is required"))
+    :type (common-lisp:or job-command common-lisp:null))
    (default-arguments common-lisp:nil :type
     (common-lisp:or generic-map common-lisp:null))
    (connections common-lisp:nil :type
@@ -1569,12 +1628,18 @@
  (common-lisp:defstruct (create-partition-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (partition-input (common-lisp:error ":partition-input is required") :type
-    (common-lisp:or partition-input common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (partition-input
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":partition-input is required"))
+    :type (common-lisp:or partition-input common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-partition-request 'make-create-partition-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1655,10 +1720,14 @@
  (common-lisp:defstruct (create-table-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (table-input (common-lisp:error ":table-input is required") :type
-    (common-lisp:or table-input common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (table-input
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":table-input is required"))
+    :type (common-lisp:or table-input common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-table-request 'make-create-table-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1690,16 +1759,19 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (create-trigger-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or trigger-type common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or trigger-type common-lisp:null))
    (schedule common-lisp:nil :type
     (common-lisp:or generic-string common-lisp:null))
    (predicate common-lisp:nil :type
     (common-lisp:or predicate common-lisp:null))
-   (actions (common-lisp:error ":actions is required") :type
-    (common-lisp:or action-list common-lisp:null))
+   (actions
+    (common-lisp:error #A((20) common-lisp:base-char . ":actions is required"))
+    :type (common-lisp:or action-list common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description-string common-lisp:null)))
  (common-lisp:export
@@ -1759,10 +1831,14 @@
      (create-user-defined-function-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (function-input (common-lisp:error ":function-input is required") :type
-    (common-lisp:or user-defined-function-input common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (function-input
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":function-input is required"))
+    :type (common-lisp:or user-defined-function-input common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-user-defined-function-request
                     'make-create-user-defined-function-request))
@@ -1815,8 +1891,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (database (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description-string common-lisp:null))
    (location-uri common-lisp:nil :type (common-lisp:or uri common-lisp:null))
@@ -1855,8 +1932,9 @@
                                                 'create-time))))))
 (common-lisp:progn
  (common-lisp:defstruct (database-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description-string common-lisp:null))
    (location-uri common-lisp:nil :type (common-lisp:or uri common-lisp:null))
@@ -1897,8 +1975,9 @@
 (common-lisp:deftype delete-behavior () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-classifier-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-classifier-request
                     'make-delete-classifier-request))
@@ -1934,8 +2013,10 @@
  (common-lisp:defstruct (delete-connection-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (connection-name (common-lisp:error ":connection-name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (connection-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":connection-name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-connection-request
                     'make-delete-connection-request))
@@ -1966,8 +2047,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-crawler-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-crawler-request 'make-delete-crawler-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1993,8 +2075,9 @@
  (common-lisp:defstruct (delete-database-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-database-request 'make-delete-database-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2023,8 +2106,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-dev-endpoint-request (:copier common-lisp:nil))
-   (endpoint-name (common-lisp:error ":endpoint-name is required") :type
-    (common-lisp:or generic-string common-lisp:null)))
+   (endpoint-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":endpoint-name is required"))
+    :type (common-lisp:or generic-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-dev-endpoint-request
                     'make-delete-dev-endpoint-request))
@@ -2051,8 +2136,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-job-request (:copier common-lisp:nil))
-   (job-name (common-lisp:error ":job-name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (job-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":job-name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-job-request 'make-delete-job-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2081,12 +2168,18 @@
  (common-lisp:defstruct (delete-partition-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (partition-values (common-lisp:error ":partition-values is required") :type
-    (common-lisp:or value-string-list common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (partition-values
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":partition-values is required"))
+    :type (common-lisp:or value-string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-partition-request 'make-delete-partition-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2128,10 +2221,13 @@
  (common-lisp:defstruct (delete-table-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-table-request 'make-delete-table-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2163,8 +2259,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-trigger-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-trigger-request 'make-delete-trigger-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2197,10 +2294,14 @@
      (delete-user-defined-function-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-user-defined-function-request
                     'make-delete-user-defined-function-request))
@@ -2500,8 +2601,9 @@
                                                 'import-status))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-classifier-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-classifier-request 'make-get-classifier-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2578,8 +2680,9 @@
  (common-lisp:defstruct (get-connection-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-connection-request 'make-get-connection-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2750,8 +2853,9 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-crawler-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-crawler-request 'make-get-crawler-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2821,8 +2925,9 @@
  (common-lisp:defstruct (get-database-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-database-request 'make-get-database-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2884,8 +2989,10 @@
                                                 'max-results))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-databases-response (:copier common-lisp:nil))
-   (database-list (common-lisp:error ":database-list is required") :type
-    (common-lisp:or database-list common-lisp:null))
+   (database-list
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-list is required"))
+    :type (common-lisp:or database-list common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-databases-response 'make-get-databases-response))
@@ -2947,8 +3054,10 @@
                                                 'dag-edges))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-dev-endpoint-request (:copier common-lisp:nil))
-   (endpoint-name (common-lisp:error ":endpoint-name is required") :type
-    (common-lisp:or generic-string common-lisp:null)))
+   (endpoint-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":endpoint-name is required"))
+    :type (common-lisp:or generic-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-dev-endpoint-request 'make-get-dev-endpoint-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3028,8 +3137,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-job-request (:copier common-lisp:nil))
-   (job-name (common-lisp:error ":job-name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (job-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":job-name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'get-job-request 'make-get-job-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape get-job-request))
@@ -3054,10 +3165,13 @@
                                                 'job))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-job-run-request (:copier common-lisp:nil))
-   (job-name (common-lisp:error ":job-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (run-id (common-lisp:error ":run-id is required") :type
-    (common-lisp:or id-string common-lisp:null))
+   (job-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":job-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (run-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":run-id is required"))
+    :type (common-lisp:or id-string common-lisp:null))
    (predecessors-included common-lisp:nil :type
     (common-lisp:or boolean-value common-lisp:null)))
  (common-lisp:export
@@ -3095,8 +3209,10 @@
                                                 'job-run))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-job-runs-request (:copier common-lisp:nil))
-   (job-name (common-lisp:error ":job-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (job-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":job-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or generic-string common-lisp:null))
    (max-results common-lisp:nil :type
@@ -3187,8 +3303,9 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-mapping-request (:copier common-lisp:nil))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or catalog-entry common-lisp:null))
+   (source
+    (common-lisp:error #A((19) common-lisp:base-char . ":source is required"))
+    :type (common-lisp:or catalog-entry common-lisp:null))
    (sinks common-lisp:nil :type
     (common-lisp:or catalog-entries common-lisp:null))
    (location common-lisp:nil :type (common-lisp:or location common-lisp:null)))
@@ -3214,8 +3331,9 @@
                                                 'location))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-mapping-response (:copier common-lisp:nil))
-   (mapping (common-lisp:error ":mapping is required") :type
-    (common-lisp:or mapping-list common-lisp:null)))
+   (mapping
+    (common-lisp:error #A((20) common-lisp:base-char . ":mapping is required"))
+    :type (common-lisp:or mapping-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-mapping-response 'make-get-mapping-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3230,12 +3348,18 @@
  (common-lisp:defstruct (get-partition-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (partition-values (common-lisp:error ":partition-values is required") :type
-    (common-lisp:or value-string-list common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (partition-values
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":partition-values is required"))
+    :type (common-lisp:or value-string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-partition-request 'make-get-partition-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3283,10 +3407,14 @@
  (common-lisp:defstruct (get-partitions-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (expression common-lisp:nil :type
     (common-lisp:or predicate-string common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
@@ -3359,10 +3487,12 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-plan-request (:copier common-lisp:nil))
-   (mapping (common-lisp:error ":mapping is required") :type
-    (common-lisp:or mapping-list common-lisp:null))
-   (source (common-lisp:error ":source is required") :type
-    (common-lisp:or catalog-entry common-lisp:null))
+   (mapping
+    (common-lisp:error #A((20) common-lisp:base-char . ":mapping is required"))
+    :type (common-lisp:or mapping-list common-lisp:null))
+   (source
+    (common-lisp:error #A((19) common-lisp:base-char . ":source is required"))
+    :type (common-lisp:or catalog-entry common-lisp:null))
    (sinks common-lisp:nil :type
     (common-lisp:or catalog-entries common-lisp:null))
    (location common-lisp:nil :type (common-lisp:or location common-lisp:null)))
@@ -3409,10 +3539,13 @@
  (common-lisp:defstruct (get-table-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-table-request 'make-get-table-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3458,10 +3591,14 @@
  (common-lisp:defstruct (get-table-versions-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or page-size common-lisp:null)))
@@ -3525,8 +3662,10 @@
  (common-lisp:defstruct (get-tables-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (expression common-lisp:nil :type
     (common-lisp:or filter-string common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
@@ -3584,8 +3723,9 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-trigger-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-trigger-request 'make-get-trigger-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3665,10 +3805,14 @@
      (get-user-defined-function-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-user-defined-function-request
                     'make-get-user-defined-function-request))
@@ -3715,10 +3859,13 @@
      (get-user-defined-functions-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (pattern (common-lisp:error ":pattern is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (pattern
+    (common-lisp:error #A((20) common-lisp:base-char . ":pattern is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or page-size common-lisp:null)))
@@ -3781,17 +3928,22 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (grok-classifier (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (classification (common-lisp:error ":classification is required") :type
-    (common-lisp:or classification common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (classification
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":classification is required"))
+    :type (common-lisp:or classification common-lisp:null))
    (creation-time common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
    (last-updated common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
    (version common-lisp:nil :type (common-lisp:or version-id common-lisp:null))
-   (grok-pattern (common-lisp:error ":grok-pattern is required") :type
-    (common-lisp:or grok-pattern common-lisp:null))
+   (grok-pattern
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":grok-pattern is required"))
+    :type (common-lisp:or grok-pattern common-lisp:null))
    (custom-patterns common-lisp:nil :type
     (common-lisp:or custom-patterns common-lisp:null)))
  (common-lisp:export (common-lisp:list 'grok-classifier 'make-grok-classifier))
@@ -4475,10 +4627,13 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (order (:copier common-lisp:nil))
-   (column (common-lisp:error ":column is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (sort-order (common-lisp:error ":sort-order is required") :type
-    (common-lisp:or integer-flag common-lisp:null)))
+   (column
+    (common-lisp:error #A((19) common-lisp:base-char . ":column is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (sort-order
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":sort-order is required"))
+    :type (common-lisp:or integer-flag common-lisp:null)))
  (common-lisp:export (common-lisp:list 'order 'make-order))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape order))
@@ -4656,8 +4811,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (partition-value-list (:copier common-lisp:nil))
-   (values (common-lisp:error ":values is required") :type
-    (common-lisp:or value-string-list common-lisp:null)))
+   (values
+    (common-lisp:error #A((19) common-lisp:base-char . ":values is required"))
+    :type (common-lisp:or value-string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'partition-value-list 'make-partition-value-list))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4759,8 +4915,10 @@
 (common-lisp:deftype python-script () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (reset-job-bookmark-request (:copier common-lisp:nil))
-   (job-name (common-lisp:error ":job-name is required") :type
-    (common-lisp:or job-name common-lisp:null)))
+   (job-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":job-name is required"))
+    :type (common-lisp:or job-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reset-job-bookmark-request
                     'make-reset-job-bookmark-request))
@@ -4972,10 +5130,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (segment (:copier common-lisp:nil))
-   (segment-number (common-lisp:error ":segment-number is required") :type
-    (common-lisp:or non-negative-integer common-lisp:null))
-   (total-segments (common-lisp:error ":total-segments is required") :type
-    (common-lisp:or total-segments-integer common-lisp:null)))
+   (segment-number
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":segment-number is required"))
+    :type (common-lisp:or non-negative-integer common-lisp:null))
+   (total-segments
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":total-segments is required"))
+    :type (common-lisp:or total-segments-integer common-lisp:null)))
  (common-lisp:export (common-lisp:list 'segment 'make-segment))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape segment))
@@ -5045,8 +5207,9 @@
                                                 'skewed-column-value-location-maps))))))
 (common-lisp:progn
  (common-lisp:defstruct (start-crawler-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-crawler-request 'make-start-crawler-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5071,8 +5234,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-crawler-schedule-request (:copier common-lisp:nil))
-   (crawler-name (common-lisp:error ":crawler-name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (crawler-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":crawler-name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-crawler-schedule-request
                     'make-start-crawler-schedule-request))
@@ -5099,8 +5264,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (start-job-run-request (:copier common-lisp:nil))
-   (job-name (common-lisp:error ":job-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (job-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":job-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (job-run-id common-lisp:nil :type
     (common-lisp:or id-string common-lisp:null))
    (arguments common-lisp:nil :type
@@ -5152,8 +5319,9 @@
                                                 'job-run-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (start-trigger-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-trigger-request 'make-start-trigger-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5183,8 +5351,9 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (stop-crawler-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-crawler-request 'make-stop-crawler-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5207,8 +5376,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (stop-crawler-schedule-request (:copier common-lisp:nil))
-   (crawler-name (common-lisp:error ":crawler-name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (crawler-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":crawler-name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-crawler-schedule-request
                     'make-stop-crawler-schedule-request))
@@ -5235,8 +5406,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (stop-trigger-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-trigger-request 'make-stop-trigger-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5362,8 +5534,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (table (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (database-name common-lisp:nil :type
     (common-lisp:or name-string common-lisp:null))
    (description common-lisp:nil :type
@@ -5506,8 +5679,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (table-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description-string common-lisp:null))
    (owner common-lisp:nil :type (common-lisp:or name-string common-lisp:null))
@@ -5767,10 +5941,13 @@
  (common-lisp:defstruct (update-connection-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (connection-input (common-lisp:error ":connection-input is required") :type
-    (common-lisp:or connection-input common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (connection-input
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":connection-input is required"))
+    :type (common-lisp:or connection-input common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-connection-request
                     'make-update-connection-request))
@@ -5806,8 +5983,9 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (update-crawler-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (role common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
    (database-name common-lisp:nil :type
     (common-lisp:or database-name common-lisp:null))
@@ -5887,8 +6065,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-crawler-schedule-request (:copier common-lisp:nil))
-   (crawler-name (common-lisp:error ":crawler-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (crawler-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":crawler-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (schedule common-lisp:nil :type
     (common-lisp:or cron-expression common-lisp:null)))
  (common-lisp:export
@@ -5924,10 +6104,13 @@
  (common-lisp:defstruct (update-database-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (database-input (common-lisp:error ":database-input is required") :type
-    (common-lisp:or database-input common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (database-input
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":database-input is required"))
+    :type (common-lisp:or database-input common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-database-request 'make-update-database-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -5961,8 +6144,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (update-dev-endpoint-request (:copier common-lisp:nil))
-   (endpoint-name (common-lisp:error ":endpoint-name is required") :type
-    (common-lisp:or generic-string common-lisp:null))
+   (endpoint-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":endpoint-name is required"))
+    :type (common-lisp:or generic-string common-lisp:null))
    (public-key common-lisp:nil :type
     (common-lisp:or generic-string common-lisp:null))
    (custom-libraries common-lisp:nil :type
@@ -6004,8 +6189,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-grok-classifier-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (classification common-lisp:nil :type
     (common-lisp:or classification common-lisp:null))
    (grok-pattern common-lisp:nil :type
@@ -6042,10 +6228,14 @@
                                                 'custom-patterns))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-job-request (:copier common-lisp:nil))
-   (job-name (common-lisp:error ":job-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (job-update (common-lisp:error ":job-update is required") :type
-    (common-lisp:or job-update common-lisp:null)))
+   (job-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":job-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (job-update
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":job-update is required"))
+    :type (common-lisp:or job-update common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-job-request 'make-update-job-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -6079,15 +6269,22 @@
  (common-lisp:defstruct (update-partition-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (table-name (common-lisp:error ":table-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":table-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (partition-value-list
-    (common-lisp:error ":partition-value-list is required") :type
-    (common-lisp:or bounded-partition-value-list common-lisp:null))
-   (partition-input (common-lisp:error ":partition-input is required") :type
-    (common-lisp:or partition-input common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":partition-value-list is required"))
+    :type (common-lisp:or bounded-partition-value-list common-lisp:null))
+   (partition-input
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":partition-input is required"))
+    :type (common-lisp:or partition-input common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-partition-request 'make-update-partition-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -6134,10 +6331,14 @@
  (common-lisp:defstruct (update-table-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (table-input (common-lisp:error ":table-input is required") :type
-    (common-lisp:or table-input common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (table-input
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":table-input is required"))
+    :type (common-lisp:or table-input common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-table-request 'make-update-table-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -6169,10 +6370,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (update-trigger-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (trigger-update (common-lisp:error ":trigger-update is required") :type
-    (common-lisp:or trigger-update common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (trigger-update
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":trigger-update is required"))
+    :type (common-lisp:or trigger-update common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-trigger-request 'make-update-trigger-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -6210,12 +6414,18 @@
      (update-user-defined-function-request (:copier common-lisp:nil))
    (catalog-id common-lisp:nil :type
     (common-lisp:or catalog-id-string common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (function-name (common-lisp:error ":function-name is required") :type
-    (common-lisp:or name-string common-lisp:null))
-   (function-input (common-lisp:error ":function-input is required") :type
-    (common-lisp:or user-defined-function-input common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (function-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":function-name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
+   (function-input
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":function-input is required"))
+    :type (common-lisp:or user-defined-function-input common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-user-defined-function-request
                     'make-update-user-defined-function-request))
@@ -6416,7 +6626,8 @@
                       (common-lisp:apply 'make-batch-create-partition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchCreatePartition")
                                   ("Version" ,@"2017-03-31"))
@@ -6435,7 +6646,8 @@
                       (common-lisp:apply 'make-batch-delete-connection-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchDeleteConnection")
                                   ("Version" ,@"2017-03-31"))
@@ -6456,7 +6668,8 @@
                       (common-lisp:apply 'make-batch-delete-partition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchDeletePartition")
                                   ("Version" ,@"2017-03-31"))
@@ -6476,7 +6689,8 @@
                       (common-lisp:apply 'make-batch-delete-table-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchDeleteTable")
                                   ("Version" ,@"2017-03-31"))
@@ -6497,7 +6711,8 @@
                       (common-lisp:apply 'make-batch-get-partition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetPartition")
                                   ("Version" ,@"2017-03-31"))
@@ -6515,7 +6730,8 @@
                       (common-lisp:apply 'make-create-classifier-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateClassifier")
                                   ("Version" ,@"2017-03-31"))
@@ -6533,7 +6749,8 @@
                       (common-lisp:apply 'make-create-connection-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateConnection")
                                   ("Version" ,@"2017-03-31"))
@@ -6555,7 +6772,8 @@
                       (common-lisp:apply 'make-create-crawler-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCrawler")
                                   ("Version" ,@"2017-03-31"))
@@ -6573,7 +6791,8 @@
                       (common-lisp:apply 'make-create-database-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDatabase")
                                   ("Version" ,@"2017-03-31"))
@@ -6595,7 +6814,8 @@
                       (common-lisp:apply 'make-create-dev-endpoint-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDevEndpoint")
                                   ("Version" ,@"2017-03-31"))
@@ -6617,7 +6837,8 @@
                       (common-lisp:apply 'make-create-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateJob")
                                   ("Version" ,@"2017-03-31"))
@@ -6638,7 +6859,8 @@
                       (common-lisp:apply 'make-create-partition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePartition")
                                   ("Version" ,@"2017-03-31"))
@@ -6656,7 +6878,8 @@
                       (common-lisp:apply 'make-create-script-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateScript")
                                   ("Version" ,@"2017-03-31"))
@@ -6675,7 +6898,8 @@
                       (common-lisp:apply 'make-create-table-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTable")
                                   ("Version" ,@"2017-03-31"))
@@ -6695,7 +6919,8 @@
                       (common-lisp:apply 'make-create-trigger-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTrigger")
                                   ("Version" ,@"2017-03-31"))
@@ -6715,7 +6940,8 @@
                        'make-create-user-defined-function-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateUserDefinedFunction")
                                   ("Version" ,@"2017-03-31"))
@@ -6733,7 +6959,8 @@
                       (common-lisp:apply 'make-delete-classifier-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteClassifier")
                                   ("Version" ,@"2017-03-31"))
@@ -6751,7 +6978,8 @@
                       (common-lisp:apply 'make-delete-connection-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteConnection")
                                   ("Version" ,@"2017-03-31"))
@@ -6769,7 +6997,8 @@
                       (common-lisp:apply 'make-delete-crawler-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCrawler")
                                   ("Version" ,@"2017-03-31"))
@@ -6787,7 +7016,8 @@
                       (common-lisp:apply 'make-delete-database-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDatabase")
                                   ("Version" ,@"2017-03-31"))
@@ -6805,7 +7035,8 @@
                       (common-lisp:apply 'make-delete-dev-endpoint-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDevEndpoint")
                                   ("Version" ,@"2017-03-31"))
@@ -6823,7 +7054,8 @@
                       (common-lisp:apply 'make-delete-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteJob")
                                   ("Version" ,@"2017-03-31"))
@@ -6844,7 +7076,8 @@
                       (common-lisp:apply 'make-delete-partition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePartition")
                                   ("Version" ,@"2017-03-31"))
@@ -6862,7 +7095,8 @@
                       (common-lisp:apply 'make-delete-table-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTable")
                                   ("Version" ,@"2017-03-31"))
@@ -6880,7 +7114,8 @@
                       (common-lisp:apply 'make-delete-trigger-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTrigger")
                                   ("Version" ,@"2017-03-31"))
@@ -6900,7 +7135,8 @@
                        'make-delete-user-defined-function-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUserDefinedFunction")
                                   ("Version" ,@"2017-03-31"))
@@ -6919,7 +7155,8 @@
                        'make-get-catalog-import-status-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCatalogImportStatus")
                                   ("Version" ,@"2017-03-31"))
@@ -6937,7 +7174,8 @@
                       (common-lisp:apply 'make-get-classifier-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetClassifier")
                                   ("Version" ,@"2017-03-31"))
@@ -6955,7 +7193,8 @@
                       (common-lisp:apply 'make-get-classifiers-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetClassifiers")
                                   ("Version" ,@"2017-03-31"))
@@ -6973,7 +7212,8 @@
                       (common-lisp:apply 'make-get-connection-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetConnection")
                                   ("Version" ,@"2017-03-31"))
@@ -6992,7 +7232,8 @@
                       (common-lisp:apply 'make-get-connections-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetConnections")
                                   ("Version" ,@"2017-03-31"))
@@ -7010,7 +7251,8 @@
                       (common-lisp:apply 'make-get-crawler-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCrawler")
                                   ("Version" ,@"2017-03-31"))
@@ -7029,7 +7271,8 @@
                       (common-lisp:apply 'make-get-crawler-metrics-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCrawlerMetrics")
                                   ("Version" ,@"2017-03-31"))
@@ -7047,7 +7290,8 @@
                       (common-lisp:apply 'make-get-crawlers-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCrawlers")
                                   ("Version" ,@"2017-03-31"))
@@ -7065,7 +7309,8 @@
                       (common-lisp:apply 'make-get-database-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDatabase")
                                   ("Version" ,@"2017-03-31"))
@@ -7084,7 +7329,8 @@
                       (common-lisp:apply 'make-get-databases-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDatabases")
                                   ("Version" ,@"2017-03-31"))
@@ -7102,7 +7348,8 @@
                       (common-lisp:apply 'make-get-dataflow-graph-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDataflowGraph")
                                   ("Version" ,@"2017-03-31"))
@@ -7120,7 +7367,8 @@
                       (common-lisp:apply 'make-get-dev-endpoint-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDevEndpoint")
                                   ("Version" ,@"2017-03-31"))
@@ -7138,7 +7386,8 @@
                       (common-lisp:apply 'make-get-dev-endpoints-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDevEndpoints")
                                   ("Version" ,@"2017-03-31"))
@@ -7156,7 +7405,8 @@
                       (common-lisp:apply 'make-get-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetJob")
                                   ("Version" ,@"2017-03-31"))
@@ -7175,7 +7425,8 @@
                       (common-lisp:apply 'make-get-job-run-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetJobRun")
                                   ("Version" ,@"2017-03-31"))
@@ -7194,7 +7445,8 @@
                       (common-lisp:apply 'make-get-job-runs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetJobRuns")
                                   ("Version" ,@"2017-03-31"))
@@ -7212,7 +7464,8 @@
                       (common-lisp:apply 'make-get-jobs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetJobs")
                                   ("Version" ,@"2017-03-31"))
@@ -7230,7 +7483,8 @@
                       (common-lisp:apply 'make-get-mapping-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetMapping")
                                   ("Version" ,@"2017-03-31"))
@@ -7251,7 +7505,8 @@
                       (common-lisp:apply 'make-get-partition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPartition")
                                   ("Version" ,@"2017-03-31"))
@@ -7272,7 +7527,8 @@
                       (common-lisp:apply 'make-get-partitions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPartitions")
                                   ("Version" ,@"2017-03-31"))
@@ -7290,7 +7546,8 @@
                       (common-lisp:apply 'make-get-plan-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPlan")
                                   ("Version" ,@"2017-03-31"))
@@ -7308,7 +7565,8 @@
                       (common-lisp:apply 'make-get-table-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTable")
                                   ("Version" ,@"2017-03-31"))
@@ -7329,7 +7587,8 @@
                       (common-lisp:apply 'make-get-table-versions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTableVersions")
                                   ("Version" ,@"2017-03-31"))
@@ -7350,7 +7609,8 @@
                       (common-lisp:apply 'make-get-tables-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTables")
                                   ("Version" ,@"2017-03-31"))
@@ -7368,7 +7628,8 @@
                       (common-lisp:apply 'make-get-trigger-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTrigger")
                                   ("Version" ,@"2017-03-31"))
@@ -7388,7 +7649,8 @@
                       (common-lisp:apply 'make-get-triggers-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTriggers")
                                   ("Version" ,@"2017-03-31"))
@@ -7408,7 +7670,8 @@
                        'make-get-user-defined-function-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetUserDefinedFunction")
                                   ("Version" ,@"2017-03-31"))
@@ -7430,7 +7693,8 @@
                        'make-get-user-defined-functions-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetUserDefinedFunctions")
                                   ("Version" ,@"2017-03-31"))
@@ -7448,7 +7712,8 @@
                       (common-lisp:apply 'make-import-catalog-to-glue-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ImportCatalogToGlue")
                                   ("Version" ,@"2017-03-31"))
@@ -7466,7 +7731,8 @@
                       (common-lisp:apply 'make-reset-job-bookmark-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResetJobBookmark")
                                   ("Version" ,@"2017-03-31"))
@@ -7484,7 +7750,8 @@
                       (common-lisp:apply 'make-start-crawler-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartCrawler")
                                   ("Version" ,@"2017-03-31"))
@@ -7502,7 +7769,8 @@
                       (common-lisp:apply 'make-start-crawler-schedule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartCrawlerSchedule")
                                   ("Version" ,@"2017-03-31"))
@@ -7522,7 +7790,8 @@
                       (common-lisp:apply 'make-start-job-run-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartJobRun")
                                   ("Version" ,@"2017-03-31"))
@@ -7540,7 +7809,8 @@
                       (common-lisp:apply 'make-start-trigger-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartTrigger")
                                   ("Version" ,@"2017-03-31"))
@@ -7558,7 +7828,8 @@
                       (common-lisp:apply 'make-stop-crawler-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopCrawler")
                                   ("Version" ,@"2017-03-31"))
@@ -7576,7 +7847,8 @@
                       (common-lisp:apply 'make-stop-crawler-schedule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopCrawlerSchedule")
                                   ("Version" ,@"2017-03-31"))
@@ -7594,7 +7866,8 @@
                       (common-lisp:apply 'make-stop-trigger-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopTrigger")
                                   ("Version" ,@"2017-03-31"))
@@ -7612,7 +7885,8 @@
                       (common-lisp:apply 'make-update-classifier-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateClassifier")
                                   ("Version" ,@"2017-03-31"))
@@ -7631,7 +7905,8 @@
                       (common-lisp:apply 'make-update-connection-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateConnection")
                                   ("Version" ,@"2017-03-31"))
@@ -7653,7 +7928,8 @@
                       (common-lisp:apply 'make-update-crawler-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateCrawler")
                                   ("Version" ,@"2017-03-31"))
@@ -7671,7 +7947,8 @@
                       (common-lisp:apply 'make-update-crawler-schedule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateCrawlerSchedule")
                                   ("Version" ,@"2017-03-31"))
@@ -7689,7 +7966,8 @@
                       (common-lisp:apply 'make-update-database-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDatabase")
                                   ("Version" ,@"2017-03-31"))
@@ -7709,7 +7987,8 @@
                       (common-lisp:apply 'make-update-dev-endpoint-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDevEndpoint")
                                   ("Version" ,@"2017-03-31"))
@@ -7727,7 +8006,8 @@
                       (common-lisp:apply 'make-update-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateJob")
                                   ("Version" ,@"2017-03-31"))
@@ -7748,7 +8028,8 @@
                       (common-lisp:apply 'make-update-partition-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdatePartition")
                                   ("Version" ,@"2017-03-31"))
@@ -7767,7 +8048,8 @@
                       (common-lisp:apply 'make-update-table-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTable")
                                   ("Version" ,@"2017-03-31"))
@@ -7785,7 +8067,8 @@
                       (common-lisp:apply 'make-update-trigger-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateTrigger")
                                   ("Version" ,@"2017-03-31"))
@@ -7807,7 +8090,8 @@
                        'make-update-user-defined-function-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "glue" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "glue")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateUserDefinedFunction")
                                   ("Version" ,@"2017-03-31"))

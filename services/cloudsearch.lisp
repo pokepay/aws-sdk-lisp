@@ -7,14 +7,17 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/cloudsearch)
+
 (common-lisp:deftype apiversion () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (access-policies-status (:copier common-lisp:nil))
-   (options (common-lisp:error ":options is required") :type
-    (common-lisp:or policy-document common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or option-status common-lisp:null)))
+   (options
+    (common-lisp:error #A((20) common-lisp:base-char . ":options is required"))
+    :type (common-lisp:or policy-document common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or option-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'access-policies-status 'make-access-policies-status))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -76,11 +79,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (analysis-scheme (:copier common-lisp:nil))
    (analysis-scheme-name
-    (common-lisp:error ":analysis-scheme-name is required") :type
-    (common-lisp:or standard-name common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":analysis-scheme-name is required"))
+    :type (common-lisp:or standard-name common-lisp:null))
    (analysis-scheme-language
-    (common-lisp:error ":analysis-scheme-language is required") :type
-    (common-lisp:or analysis-scheme-language common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":analysis-scheme-language is required"))
+    :type (common-lisp:or analysis-scheme-language common-lisp:null))
    (analysis-options common-lisp:nil :type
     (common-lisp:or analysis-options common-lisp:null)))
  (common-lisp:export (common-lisp:list 'analysis-scheme 'make-analysis-scheme))
@@ -105,10 +110,12 @@
 (common-lisp:deftype analysis-scheme-language () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (analysis-scheme-status (:copier common-lisp:nil))
-   (options (common-lisp:error ":options is required") :type
-    (common-lisp:or analysis-scheme common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or option-status common-lisp:null)))
+   (options
+    (common-lisp:error #A((20) common-lisp:base-char . ":options is required"))
+    :type (common-lisp:or analysis-scheme common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or option-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'analysis-scheme-status 'make-analysis-scheme-status))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -136,10 +143,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (availability-options-status (:copier common-lisp:nil))
-   (options (common-lisp:error ":options is required") :type
-    (common-lisp:or multi-az common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or option-status common-lisp:null)))
+   (options
+    (common-lisp:error #A((20) common-lisp:base-char . ":options is required"))
+    :type (common-lisp:or multi-az common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or option-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'availability-options-status
                     'make-availability-options-status))
@@ -180,8 +189,10 @@
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (build-suggesters-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'build-suggesters-request 'make-build-suggesters-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -213,8 +224,10 @@
                                                 'field-names))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-domain-request 'make-create-domain-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -336,10 +349,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (define-analysis-scheme-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (analysis-scheme (common-lisp:error ":analysis-scheme is required") :type
-    (common-lisp:or analysis-scheme common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (analysis-scheme
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":analysis-scheme is required"))
+    :type (common-lisp:or analysis-scheme common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'define-analysis-scheme-request
                     'make-define-analysis-scheme-request))
@@ -361,8 +378,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (define-analysis-scheme-response (:copier common-lisp:nil))
-   (analysis-scheme (common-lisp:error ":analysis-scheme is required") :type
-    (common-lisp:or analysis-scheme-status common-lisp:null)))
+   (analysis-scheme
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":analysis-scheme is required"))
+    :type (common-lisp:or analysis-scheme-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'define-analysis-scheme-response
                     'make-define-analysis-scheme-response))
@@ -378,10 +397,14 @@
                                                 'analysis-scheme))))))
 (common-lisp:progn
  (common-lisp:defstruct (define-expression-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (expression (common-lisp:error ":expression is required") :type
-    (common-lisp:or expression common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (expression
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":expression is required"))
+    :type (common-lisp:or expression common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'define-expression-request
                     'make-define-expression-request))
@@ -402,8 +425,10 @@
                                                 'expression))))))
 (common-lisp:progn
  (common-lisp:defstruct (define-expression-response (:copier common-lisp:nil))
-   (expression (common-lisp:error ":expression is required") :type
-    (common-lisp:or expression-status common-lisp:null)))
+   (expression
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":expression is required"))
+    :type (common-lisp:or expression-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'define-expression-response
                     'make-define-expression-response))
@@ -419,10 +444,14 @@
                                                 'expression))))))
 (common-lisp:progn
  (common-lisp:defstruct (define-index-field-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (index-field (common-lisp:error ":index-field is required") :type
-    (common-lisp:or index-field common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (index-field
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":index-field is required"))
+    :type (common-lisp:or index-field common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'define-index-field-request
                     'make-define-index-field-request))
@@ -443,8 +472,10 @@
                                                 'index-field))))))
 (common-lisp:progn
  (common-lisp:defstruct (define-index-field-response (:copier common-lisp:nil))
-   (index-field (common-lisp:error ":index-field is required") :type
-    (common-lisp:or index-field-status common-lisp:null)))
+   (index-field
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":index-field is required"))
+    :type (common-lisp:or index-field-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'define-index-field-response
                     'make-define-index-field-response))
@@ -460,10 +491,14 @@
                                                 'index-field))))))
 (common-lisp:progn
  (common-lisp:defstruct (define-suggester-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (suggester (common-lisp:error ":suggester is required") :type
-    (common-lisp:or suggester common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (suggester
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":suggester is required"))
+    :type (common-lisp:or suggester common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'define-suggester-request 'make-define-suggester-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -483,8 +518,10 @@
                                                 'suggester))))))
 (common-lisp:progn
  (common-lisp:defstruct (define-suggester-response (:copier common-lisp:nil))
-   (suggester (common-lisp:error ":suggester is required") :type
-    (common-lisp:or suggester-status common-lisp:null)))
+   (suggester
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":suggester is required"))
+    :type (common-lisp:or suggester-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'define-suggester-response
                     'make-define-suggester-response))
@@ -501,11 +538,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-analysis-scheme-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (analysis-scheme-name
-    (common-lisp:error ":analysis-scheme-name is required") :type
-    (common-lisp:or standard-name common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":analysis-scheme-name is required"))
+    :type (common-lisp:or standard-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-analysis-scheme-request
                     'make-delete-analysis-scheme-request))
@@ -527,8 +567,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-analysis-scheme-response (:copier common-lisp:nil))
-   (analysis-scheme (common-lisp:error ":analysis-scheme is required") :type
-    (common-lisp:or analysis-scheme-status common-lisp:null)))
+   (analysis-scheme
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":analysis-scheme is required"))
+    :type (common-lisp:or analysis-scheme-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-analysis-scheme-response
                     'make-delete-analysis-scheme-response))
@@ -544,8 +586,10 @@
                                                 'analysis-scheme))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-domain-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-domain-request 'make-delete-domain-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -576,10 +620,14 @@
                                                 'domain-status))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-expression-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (expression-name (common-lisp:error ":expression-name is required") :type
-    (common-lisp:or standard-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (expression-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":expression-name is required"))
+    :type (common-lisp:or standard-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-expression-request
                     'make-delete-expression-request))
@@ -600,8 +648,10 @@
                                                 'expression-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-expression-response (:copier common-lisp:nil))
-   (expression (common-lisp:error ":expression is required") :type
-    (common-lisp:or expression-status common-lisp:null)))
+   (expression
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":expression is required"))
+    :type (common-lisp:or expression-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-expression-response
                     'make-delete-expression-response))
@@ -617,10 +667,14 @@
                                                 'expression))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-index-field-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (index-field-name (common-lisp:error ":index-field-name is required") :type
-    (common-lisp:or dynamic-field-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (index-field-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":index-field-name is required"))
+    :type (common-lisp:or dynamic-field-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-index-field-request
                     'make-delete-index-field-request))
@@ -641,8 +695,10 @@
                                                 'index-field-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-index-field-response (:copier common-lisp:nil))
-   (index-field (common-lisp:error ":index-field is required") :type
-    (common-lisp:or index-field-status common-lisp:null)))
+   (index-field
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":index-field is required"))
+    :type (common-lisp:or index-field-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-index-field-response
                     'make-delete-index-field-response))
@@ -658,10 +714,14 @@
                                                 'index-field))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-suggester-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (suggester-name (common-lisp:error ":suggester-name is required") :type
-    (common-lisp:or standard-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (suggester-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":suggester-name is required"))
+    :type (common-lisp:or standard-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-suggester-request 'make-delete-suggester-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -681,8 +741,10 @@
                                                 'suggester-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-suggester-response (:copier common-lisp:nil))
-   (suggester (common-lisp:error ":suggester is required") :type
-    (common-lisp:or suggester-status common-lisp:null)))
+   (suggester
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":suggester is required"))
+    :type (common-lisp:or suggester-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-suggester-response
                     'make-delete-suggester-response))
@@ -699,8 +761,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-analysis-schemes-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (analysis-scheme-names common-lisp:nil :type
     (common-lisp:or standard-name-list common-lisp:null))
    (deployed common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
@@ -730,8 +794,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-analysis-schemes-response (:copier common-lisp:nil))
-   (analysis-schemes (common-lisp:error ":analysis-schemes is required") :type
-    (common-lisp:or analysis-scheme-status-list common-lisp:null)))
+   (analysis-schemes
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":analysis-schemes is required"))
+    :type (common-lisp:or analysis-scheme-status-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-analysis-schemes-response
                     'make-describe-analysis-schemes-response))
@@ -748,8 +814,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-availability-options-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (deployed common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-availability-options-request
@@ -805,7 +873,9 @@
                                                 'domain-names))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-domains-response (:copier common-lisp:nil))
-   (domain-status-list (common-lisp:error ":domain-status-list is required")
+   (domain-status-list
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":domain-status-list is required"))
     :type (common-lisp:or domain-status-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-domains-response
@@ -823,8 +893,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-expressions-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (expression-names common-lisp:nil :type
     (common-lisp:or standard-name-list common-lisp:null))
    (deployed common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
@@ -854,8 +926,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-expressions-response (:copier common-lisp:nil))
-   (expressions (common-lisp:error ":expressions is required") :type
-    (common-lisp:or expression-status-list common-lisp:null)))
+   (expressions
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":expressions is required"))
+    :type (common-lisp:or expression-status-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-expressions-response
                     'make-describe-expressions-response))
@@ -872,8 +946,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-index-fields-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (field-names common-lisp:nil :type
     (common-lisp:or dynamic-field-name-list common-lisp:null))
    (deployed common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
@@ -903,8 +979,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-index-fields-response (:copier common-lisp:nil))
-   (index-fields (common-lisp:error ":index-fields is required") :type
-    (common-lisp:or index-field-status-list common-lisp:null)))
+   (index-fields
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":index-fields is required"))
+    :type (common-lisp:or index-field-status-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-index-fields-response
                     'make-describe-index-fields-response))
@@ -921,8 +999,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-scaling-parameters-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-scaling-parameters-request
                     'make-describe-scaling-parameters-request))
@@ -939,7 +1019,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-scaling-parameters-response (:copier common-lisp:nil))
-   (scaling-parameters (common-lisp:error ":scaling-parameters is required")
+   (scaling-parameters
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":scaling-parameters is required"))
     :type (common-lisp:or scaling-parameters-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-scaling-parameters-response
@@ -957,8 +1039,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-service-access-policies-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (deployed common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-service-access-policies-request
@@ -981,8 +1065,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-service-access-policies-response (:copier common-lisp:nil))
-   (access-policies (common-lisp:error ":access-policies is required") :type
-    (common-lisp:or access-policies-status common-lisp:null)))
+   (access-policies
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":access-policies is required"))
+    :type (common-lisp:or access-policies-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-service-access-policies-response
                     'make-describe-service-access-policies-response))
@@ -998,8 +1084,10 @@
                                                 'access-policies))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-suggesters-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (suggester-names common-lisp:nil :type
     (common-lisp:or standard-name-list common-lisp:null))
    (deployed common-lisp:nil :type (common-lisp:or boolean common-lisp:null)))
@@ -1029,8 +1117,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-suggesters-response (:copier common-lisp:nil))
-   (suggesters (common-lisp:error ":suggesters is required") :type
-    (common-lisp:or suggester-status-list common-lisp:null)))
+   (suggesters
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":suggesters is required"))
+    :type (common-lisp:or suggester-status-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-suggesters-response
                     'make-describe-suggesters-response))
@@ -1057,8 +1147,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (document-suggester-options (:copier common-lisp:nil))
-   (source-field (common-lisp:error ":source-field is required") :type
-    (common-lisp:or field-name common-lisp:null))
+   (source-field
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":source-field is required"))
+    :type (common-lisp:or field-name common-lisp:null))
    (fuzzy-matching common-lisp:nil :type
     (common-lisp:or suggester-fuzzy-matching common-lisp:null))
    (sort-expression common-lisp:nil :type
@@ -1104,10 +1196,14 @@
   aws-sdk/generator/shape::value)
 (common-lisp:progn
  (common-lisp:defstruct (domain-status (:copier common-lisp:nil))
-   (domain-id (common-lisp:error ":domain-id is required") :type
-    (common-lisp:or domain-id common-lisp:null))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
+   (domain-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":domain-id is required"))
+    :type (common-lisp:or domain-id common-lisp:null))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
    (arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
    (created common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
    (deleted common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
@@ -1116,8 +1212,9 @@
    (search-service common-lisp:nil :type
     (common-lisp:or service-endpoint common-lisp:null))
    (requires-index-documents
-    (common-lisp:error ":requires-index-documents is required") :type
-    (common-lisp:or boolean common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":requires-index-documents is required"))
+    :type (common-lisp:or boolean common-lisp:null))
    (processing common-lisp:nil :type (common-lisp:or boolean common-lisp:null))
    (search-instance-type common-lisp:nil :type
     (common-lisp:or search-instance-type common-lisp:null))
@@ -1307,10 +1404,14 @@
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (expression (:copier common-lisp:nil))
-   (expression-name (common-lisp:error ":expression-name is required") :type
-    (common-lisp:or standard-name common-lisp:null))
-   (expression-value (common-lisp:error ":expression-value is required") :type
-    (common-lisp:or expression-value common-lisp:null)))
+   (expression-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":expression-name is required"))
+    :type (common-lisp:or standard-name common-lisp:null))
+   (expression-value
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":expression-value is required"))
+    :type (common-lisp:or expression-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'expression 'make-expression))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape expression))
@@ -1327,10 +1428,12 @@
                                                 'expression-value))))))
 (common-lisp:progn
  (common-lisp:defstruct (expression-status (:copier common-lisp:nil))
-   (options (common-lisp:error ":options is required") :type
-    (common-lisp:or expression common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or option-status common-lisp:null)))
+   (options
+    (common-lisp:error #A((20) common-lisp:base-char . ":options is required"))
+    :type (common-lisp:or expression common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or option-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'expression-status 'make-expression-status))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1368,8 +1471,10 @@
 (common-lisp:deftype field-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (index-documents-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'index-documents-request 'make-index-documents-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1400,10 +1505,14 @@
                                                 'field-names))))))
 (common-lisp:progn
  (common-lisp:defstruct (index-field (:copier common-lisp:nil))
-   (index-field-name (common-lisp:error ":index-field-name is required") :type
-    (common-lisp:or dynamic-field-name common-lisp:null))
-   (index-field-type (common-lisp:error ":index-field-type is required") :type
-    (common-lisp:or index-field-type common-lisp:null))
+   (index-field-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":index-field-name is required"))
+    :type (common-lisp:or dynamic-field-name common-lisp:null))
+   (index-field-type
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":index-field-type is required"))
+    :type (common-lisp:or index-field-type common-lisp:null))
    (int-options common-lisp:nil :type
     (common-lisp:or int-options common-lisp:null))
    (double-options common-lisp:nil :type
@@ -1497,10 +1606,12 @@
                                                 'date-array-options))))))
 (common-lisp:progn
  (common-lisp:defstruct (index-field-status (:copier common-lisp:nil))
-   (options (common-lisp:error ":options is required") :type
-    (common-lisp:or index-field common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or option-status common-lisp:null)))
+   (options
+    (common-lisp:error #A((20) common-lisp:base-char . ":options is required"))
+    :type (common-lisp:or index-field common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or option-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'index-field-status 'make-index-field-status))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1690,11 +1801,13 @@
 (common-lisp:progn
  (common-lisp:defstruct (limits (:copier common-lisp:nil))
    (maximum-replication-count
-    (common-lisp:error ":maximum-replication-count is required") :type
-    (common-lisp:or maximum-replication-count common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":maximum-replication-count is required"))
+    :type (common-lisp:or maximum-replication-count common-lisp:null))
    (maximum-partition-count
-    (common-lisp:error ":maximum-partition-count is required") :type
-    (common-lisp:or maximum-partition-count common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":maximum-partition-count is required"))
+    :type (common-lisp:or maximum-partition-count common-lisp:null)))
  (common-lisp:export (common-lisp:list 'limits 'make-limits))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape limits))
@@ -1825,14 +1938,19 @@
 (common-lisp:deftype option-state () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (option-status (:copier common-lisp:nil))
-   (creation-date (common-lisp:error ":creation-date is required") :type
-    (common-lisp:or update-timestamp common-lisp:null))
-   (update-date (common-lisp:error ":update-date is required") :type
-    (common-lisp:or update-timestamp common-lisp:null))
+   (creation-date
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":creation-date is required"))
+    :type (common-lisp:or update-timestamp common-lisp:null))
+   (update-date
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":update-date is required"))
+    :type (common-lisp:or update-timestamp common-lisp:null))
    (update-version common-lisp:nil :type
     (common-lisp:or uint-value common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or option-state common-lisp:null))
+   (state
+    (common-lisp:error #A((18) common-lisp:base-char . ":state is required"))
+    :type (common-lisp:or option-state common-lisp:null))
    (pending-deletion common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export (common-lisp:list 'option-status 'make-option-status))
@@ -1908,10 +2026,12 @@
                                                 'desired-partition-count))))))
 (common-lisp:progn
  (common-lisp:defstruct (scaling-parameters-status (:copier common-lisp:nil))
-   (options (common-lisp:error ":options is required") :type
-    (common-lisp:or scaling-parameters common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or option-status common-lisp:null)))
+   (options
+    (common-lisp:error #A((20) common-lisp:base-char . ":options is required"))
+    :type (common-lisp:or scaling-parameters common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or option-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'scaling-parameters-status
                     'make-scaling-parameters-status))
@@ -1958,11 +2078,15 @@
 (common-lisp:deftype string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (suggester (:copier common-lisp:nil))
-   (suggester-name (common-lisp:error ":suggester-name is required") :type
-    (common-lisp:or standard-name common-lisp:null))
+   (suggester-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":suggester-name is required"))
+    :type (common-lisp:or standard-name common-lisp:null))
    (document-suggester-options
-    (common-lisp:error ":document-suggester-options is required") :type
-    (common-lisp:or document-suggester-options common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":document-suggester-options is required"))
+    :type (common-lisp:or document-suggester-options common-lisp:null)))
  (common-lisp:export (common-lisp:list 'suggester 'make-suggester))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape suggester))
@@ -1980,10 +2104,12 @@
 (common-lisp:deftype suggester-fuzzy-matching () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (suggester-status (:copier common-lisp:nil))
-   (options (common-lisp:error ":options is required") :type
-    (common-lisp:or suggester common-lisp:null))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or option-status common-lisp:null)))
+   (options
+    (common-lisp:error #A((20) common-lisp:base-char . ":options is required"))
+    :type (common-lisp:or suggester common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or option-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'suggester-status 'make-suggester-status))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2101,10 +2227,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-availability-options-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (multi-az (common-lisp:error ":multi-az is required") :type
-    (common-lisp:or boolean common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (multi-az
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":multi-az is required"))
+    :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-availability-options-request
                     'make-update-availability-options-request))
@@ -2144,9 +2274,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-scaling-parameters-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (scaling-parameters (common-lisp:error ":scaling-parameters is required")
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (scaling-parameters
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":scaling-parameters is required"))
     :type (common-lisp:or scaling-parameters common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-scaling-parameters-request
@@ -2169,7 +2303,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-scaling-parameters-response (:copier common-lisp:nil))
-   (scaling-parameters (common-lisp:error ":scaling-parameters is required")
+   (scaling-parameters
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":scaling-parameters is required"))
     :type (common-lisp:or scaling-parameters-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-scaling-parameters-response
@@ -2187,10 +2323,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-service-access-policies-request (:copier common-lisp:nil))
-   (domain-name (common-lisp:error ":domain-name is required") :type
-    (common-lisp:or domain-name common-lisp:null))
-   (access-policies (common-lisp:error ":access-policies is required") :type
-    (common-lisp:or policy-document common-lisp:null)))
+   (domain-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":domain-name is required"))
+    :type (common-lisp:or domain-name common-lisp:null))
+   (access-policies
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":access-policies is required"))
+    :type (common-lisp:or policy-document common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-service-access-policies-request
                     'make-update-service-access-policies-request))
@@ -2212,8 +2352,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-service-access-policies-response (:copier common-lisp:nil))
-   (access-policies (common-lisp:error ":access-policies is required") :type
-    (common-lisp:or access-policies-status common-lisp:null)))
+   (access-policies
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":access-policies is required"))
+    :type (common-lisp:or access-policies-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-service-access-policies-response
                     'make-update-service-access-policies-response))
@@ -2239,7 +2381,9 @@
                       (common-lisp:apply 'make-build-suggesters-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BuildSuggesters")
                                   ("Version" ,@"2013-01-01"))
@@ -2257,7 +2401,9 @@
                       (common-lisp:apply 'make-create-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDomain")
                                   ("Version" ,@"2013-01-01"))
@@ -2275,7 +2421,9 @@
                       (common-lisp:apply 'make-define-analysis-scheme-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DefineAnalysisScheme")
                                   ("Version" ,@"2013-01-01"))
@@ -2293,7 +2441,9 @@
                       (common-lisp:apply 'make-define-expression-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DefineExpression")
                                   ("Version" ,@"2013-01-01"))
@@ -2311,7 +2461,9 @@
                       (common-lisp:apply 'make-define-index-field-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DefineIndexField")
                                   ("Version" ,@"2013-01-01"))
@@ -2329,7 +2481,9 @@
                       (common-lisp:apply 'make-define-suggester-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DefineSuggester")
                                   ("Version" ,@"2013-01-01"))
@@ -2348,7 +2502,9 @@
                       (common-lisp:apply 'make-delete-analysis-scheme-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAnalysisScheme")
                                   ("Version" ,@"2013-01-01"))
@@ -2366,7 +2522,9 @@
                       (common-lisp:apply 'make-delete-domain-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDomain")
                                   ("Version" ,@"2013-01-01"))
@@ -2384,7 +2542,9 @@
                       (common-lisp:apply 'make-delete-expression-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteExpression")
                                   ("Version" ,@"2013-01-01"))
@@ -2402,7 +2562,9 @@
                       (common-lisp:apply 'make-delete-index-field-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIndexField")
                                   ("Version" ,@"2013-01-01"))
@@ -2420,7 +2582,9 @@
                       (common-lisp:apply 'make-delete-suggester-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSuggester")
                                   ("Version" ,@"2013-01-01"))
@@ -2441,7 +2605,9 @@
                        'make-describe-analysis-schemes-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAnalysisSchemes")
                                   ("Version" ,@"2013-01-01"))
@@ -2460,7 +2626,9 @@
                        'make-describe-availability-options-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAvailabilityOptions")
                                   ("Version" ,@"2013-01-01"))
@@ -2479,7 +2647,9 @@
                       (common-lisp:apply 'make-describe-domains-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDomains")
                                   ("Version" ,@"2013-01-01"))
@@ -2498,7 +2668,9 @@
                       (common-lisp:apply 'make-describe-expressions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeExpressions")
                                   ("Version" ,@"2013-01-01"))
@@ -2517,7 +2689,9 @@
                       (common-lisp:apply 'make-describe-index-fields-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeIndexFields")
                                   ("Version" ,@"2013-01-01"))
@@ -2536,7 +2710,9 @@
                        'make-describe-scaling-parameters-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeScalingParameters")
                                   ("Version" ,@"2013-01-01"))
@@ -2555,7 +2731,9 @@
                        'make-describe-service-access-policies-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeServiceAccessPolicies")
                                   ("Version" ,@"2013-01-01"))
@@ -2575,7 +2753,9 @@
                       (common-lisp:apply 'make-describe-suggesters-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSuggesters")
                                   ("Version" ,@"2013-01-01"))
@@ -2593,7 +2773,9 @@
                       (common-lisp:apply 'make-index-documents-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"IndexDocuments")
                                   ("Version" ,@"2013-01-01"))
@@ -2604,7 +2786,9 @@
 (common-lisp:progn
  (common-lisp:defun list-domain-names ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((11) common-lisp:base-char . "cloudsearch")
+                             :method :post :params
                              (common-lisp:cons "Action" "ListDomainNames"))
     "ListDomainNamesResponse" "ListDomainNamesResult"))
  (common-lisp:export 'list-domain-names))
@@ -2619,7 +2803,9 @@
                        'make-update-availability-options-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAvailabilityOptions")
                                   ("Version" ,@"2013-01-01"))
@@ -2638,7 +2824,9 @@
                        'make-update-scaling-parameters-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateScalingParameters")
                                   ("Version" ,@"2013-01-01"))
@@ -2657,7 +2845,9 @@
                        'make-update-service-access-policies-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "cloudsearch")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateServiceAccessPolicies")
                                   ("Version" ,@"2013-01-01"))

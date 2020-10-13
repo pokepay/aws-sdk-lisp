@@ -7,13 +7,18 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/elasticmapreduce)
+
 (common-lisp:deftype action-on-failure () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (add-instance-fleet-input (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or xml-string-max-len256 common-lisp:null))
-   (instance-fleet (common-lisp:error ":instance-fleet is required") :type
-    (common-lisp:or instance-fleet-config common-lisp:null)))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or xml-string-max-len256 common-lisp:null))
+   (instance-fleet
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":instance-fleet is required"))
+    :type (common-lisp:or instance-fleet-config common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-instance-fleet-input 'make-add-instance-fleet-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -57,10 +62,14 @@
                                                 'instance-fleet-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (add-instance-groups-input (:copier common-lisp:nil))
-   (instance-groups (common-lisp:error ":instance-groups is required") :type
-    (common-lisp:or instance-group-config-list common-lisp:null))
-   (job-flow-id (common-lisp:error ":job-flow-id is required") :type
-    (common-lisp:or xml-string-max-len256 common-lisp:null)))
+   (instance-groups
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":instance-groups is required"))
+    :type (common-lisp:or instance-group-config-list common-lisp:null))
+   (job-flow-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":job-flow-id is required"))
+    :type (common-lisp:or xml-string-max-len256 common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-instance-groups-input
                     'make-add-instance-groups-input))
@@ -105,10 +114,13 @@
                                                 'instance-group-ids))))))
 (common-lisp:progn
  (common-lisp:defstruct (add-job-flow-steps-input (:copier common-lisp:nil))
-   (job-flow-id (common-lisp:error ":job-flow-id is required") :type
-    (common-lisp:or xml-string-max-len256 common-lisp:null))
-   (steps (common-lisp:error ":steps is required") :type
-    (common-lisp:or step-config-list common-lisp:null)))
+   (job-flow-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":job-flow-id is required"))
+    :type (common-lisp:or xml-string-max-len256 common-lisp:null))
+   (steps
+    (common-lisp:error #A((18) common-lisp:base-char . ":steps is required"))
+    :type (common-lisp:or step-config-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-job-flow-steps-input 'make-add-job-flow-steps-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -145,10 +157,13 @@
                                                 'step-ids))))))
 (common-lisp:progn
  (common-lisp:defstruct (add-tags-input (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'add-tags-input 'make-add-tags-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape add-tags-input))
@@ -211,10 +226,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (auto-scaling-policy (:copier common-lisp:nil))
-   (constraints (common-lisp:error ":constraints is required") :type
-    (common-lisp:or scaling-constraints common-lisp:null))
-   (rules (common-lisp:error ":rules is required") :type
-    (common-lisp:or scaling-rule-list common-lisp:null)))
+   (constraints
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":constraints is required"))
+    :type (common-lisp:or scaling-constraints common-lisp:null))
+   (rules
+    (common-lisp:error #A((18) common-lisp:base-char . ":rules is required"))
+    :type (common-lisp:or scaling-rule-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'auto-scaling-policy 'make-auto-scaling-policy))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -318,11 +336,13 @@
 (common-lisp:deftype boolean-object () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (bootstrap-action-config (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or xml-string-max-len256 common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or xml-string-max-len256 common-lisp:null))
    (script-bootstrap-action
-    (common-lisp:error ":script-bootstrap-action is required") :type
-    (common-lisp:or script-bootstrap-action-config common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":script-bootstrap-action is required"))
+    :type (common-lisp:or script-bootstrap-action-config common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'bootstrap-action-config 'make-bootstrap-action-config))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -445,19 +465,26 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (cloud-watch-alarm-definition (:copier common-lisp:nil))
-   (comparison-operator (common-lisp:error ":comparison-operator is required")
+   (comparison-operator
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":comparison-operator is required"))
     :type (common-lisp:or comparison-operator common-lisp:null))
    (evaluation-periods common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
-   (metric-name (common-lisp:error ":metric-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (metric-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metric-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (namespace common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (period (common-lisp:error ":period is required") :type
-    (common-lisp:or integer common-lisp:null))
+   (period
+    (common-lisp:error #A((19) common-lisp:base-char . ":period is required"))
+    :type (common-lisp:or integer common-lisp:null))
    (statistic common-lisp:nil :type
     (common-lisp:or statistic common-lisp:null))
-   (threshold (common-lisp:error ":threshold is required") :type
-    (common-lisp:or non-negative-double common-lisp:null))
+   (threshold
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":threshold is required"))
+    :type (common-lisp:or non-negative-double common-lisp:null))
    (unit common-lisp:nil :type (common-lisp:or unit common-lisp:null))
    (dimensions common-lisp:nil :type
     (common-lisp:or metric-dimension-list common-lisp:null)))
@@ -883,11 +910,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-security-configuration-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or xml-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or xml-string common-lisp:null))
    (security-configuration
-    (common-lisp:error ":security-configuration is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":security-configuration is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-security-configuration-input
                     'make-create-security-configuration-input))
@@ -909,9 +938,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-security-configuration-output (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or xml-string common-lisp:null))
-   (creation-date-time (common-lisp:error ":creation-date-time is required")
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or xml-string common-lisp:null))
+   (creation-date-time
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":creation-date-time is required"))
     :type (common-lisp:or date common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-security-configuration-output
@@ -935,8 +967,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-security-configuration-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or xml-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or xml-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-security-configuration-input
                     'make-delete-security-configuration-input))
@@ -963,8 +996,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (describe-cluster-input (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null)))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-cluster-input 'make-describe-cluster-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1048,8 +1083,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-security-configuration-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or xml-string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or xml-string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-security-configuration-input
                     'make-describe-security-configuration-input))
@@ -1096,10 +1132,13 @@
                                                 'creation-date-time))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-step-input (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
-   (step-id (common-lisp:error ":step-id is required") :type
-    (common-lisp:or step-id common-lisp:null)))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
+   (step-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":step-id is required"))
+    :type (common-lisp:or step-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-step-input 'make-describe-step-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1167,8 +1206,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (ebs-block-device-config (:copier common-lisp:nil))
    (volume-specification
-    (common-lisp:error ":volume-specification is required") :type
-    (common-lisp:or volume-specification common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":volume-specification is required"))
+    :type (common-lisp:or volume-specification common-lisp:null))
    (volumes-per-instance common-lisp:nil :type
     (common-lisp:or integer common-lisp:null)))
  (common-lisp:export
@@ -1366,8 +1406,8 @@
  (common-lisp:defstruct (hadoop-jar-step-config (:copier common-lisp:nil))
    (properties common-lisp:nil :type
     (common-lisp:or key-value-list common-lisp:null))
-   (jar (common-lisp:error ":jar is required") :type
-    (common-lisp:or xml-string common-lisp:null))
+   (jar (common-lisp:error #A((16) common-lisp:base-char . ":jar is required"))
+    :type (common-lisp:or xml-string common-lisp:null))
    (main-class common-lisp:nil :type
     (common-lisp:or xml-string common-lisp:null))
    (args common-lisp:nil :type
@@ -1601,7 +1641,9 @@
  (common-lisp:defstruct (instance-fleet-config (:copier common-lisp:nil))
    (name common-lisp:nil :type
     (common-lisp:or xml-string-max-len256 common-lisp:null))
-   (instance-fleet-type (common-lisp:error ":instance-fleet-type is required")
+   (instance-fleet-type
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":instance-fleet-type is required"))
     :type (common-lisp:or instance-fleet-type common-lisp:null))
    (target-on-demand-capacity common-lisp:nil :type
     (common-lisp:or whole-number common-lisp:null))
@@ -1669,7 +1711,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (instance-fleet-modify-config (:copier common-lisp:nil))
-   (instance-fleet-id (common-lisp:error ":instance-fleet-id is required")
+   (instance-fleet-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":instance-fleet-id is required"))
     :type (common-lisp:or instance-fleet-id common-lisp:null))
    (target-on-demand-capacity common-lisp:nil :type
     (common-lisp:or whole-number common-lisp:null))
@@ -1701,7 +1745,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (instance-fleet-provisioning-specifications (:copier common-lisp:nil))
-   (spot-specification (common-lisp:error ":spot-specification is required")
+   (spot-specification
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":spot-specification is required"))
     :type (common-lisp:or spot-provisioning-specification common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'instance-fleet-provisioning-specifications
@@ -1910,14 +1956,20 @@
    (name common-lisp:nil :type
     (common-lisp:or xml-string-max-len256 common-lisp:null))
    (market common-lisp:nil :type (common-lisp:or market-type common-lisp:null))
-   (instance-role (common-lisp:error ":instance-role is required") :type
-    (common-lisp:or instance-role-type common-lisp:null))
+   (instance-role
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instance-role is required"))
+    :type (common-lisp:or instance-role-type common-lisp:null))
    (bid-price common-lisp:nil :type
     (common-lisp:or xml-string-max-len256 common-lisp:null))
-   (instance-type (common-lisp:error ":instance-type is required") :type
-    (common-lisp:or instance-type common-lisp:null))
-   (instance-count (common-lisp:error ":instance-count is required") :type
-    (common-lisp:or integer common-lisp:null))
+   (instance-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instance-type is required"))
+    :type (common-lisp:or instance-type common-lisp:null))
+   (instance-count
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":instance-count is required"))
+    :type (common-lisp:or integer common-lisp:null))
    (configurations common-lisp:nil :type
     (common-lisp:or configuration-list common-lisp:null))
    (ebs-configuration common-lisp:nil :type
@@ -1990,25 +2042,35 @@
     (common-lisp:or xml-string-max-len256 common-lisp:null))
    (name common-lisp:nil :type
     (common-lisp:or xml-string-max-len256 common-lisp:null))
-   (market (common-lisp:error ":market is required") :type
-    (common-lisp:or market-type common-lisp:null))
-   (instance-role (common-lisp:error ":instance-role is required") :type
-    (common-lisp:or instance-role-type common-lisp:null))
+   (market
+    (common-lisp:error #A((19) common-lisp:base-char . ":market is required"))
+    :type (common-lisp:or market-type common-lisp:null))
+   (instance-role
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instance-role is required"))
+    :type (common-lisp:or instance-role-type common-lisp:null))
    (bid-price common-lisp:nil :type
     (common-lisp:or xml-string-max-len256 common-lisp:null))
-   (instance-type (common-lisp:error ":instance-type is required") :type
-    (common-lisp:or instance-type common-lisp:null))
+   (instance-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instance-type is required"))
+    :type (common-lisp:or instance-type common-lisp:null))
    (instance-request-count
-    (common-lisp:error ":instance-request-count is required") :type
-    (common-lisp:or integer common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":instance-request-count is required"))
+    :type (common-lisp:or integer common-lisp:null))
    (instance-running-count
-    (common-lisp:error ":instance-running-count is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or instance-group-state common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":instance-running-count is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (state
+    (common-lisp:error #A((18) common-lisp:base-char . ":state is required"))
+    :type (common-lisp:or instance-group-state common-lisp:null))
    (last-state-change-reason common-lisp:nil :type
     (common-lisp:or xml-string common-lisp:null))
-   (creation-date-time (common-lisp:error ":creation-date-time is required")
+   (creation-date-time
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":creation-date-time is required"))
     :type (common-lisp:or date common-lisp:null))
    (start-date-time common-lisp:nil :type
     (common-lisp:or date common-lisp:null))
@@ -2121,7 +2183,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (instance-group-modify-config (:copier common-lisp:nil))
-   (instance-group-id (common-lisp:error ":instance-group-id is required")
+   (instance-group-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":instance-group-id is required"))
     :type (common-lisp:or xml-string-max-len256 common-lisp:null))
    (instance-count common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
@@ -2393,8 +2457,10 @@
 (common-lisp:deftype instance-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (instance-type-config (:copier common-lisp:nil))
-   (instance-type (common-lisp:error ":instance-type is required") :type
-    (common-lisp:or instance-type common-lisp:null))
+   (instance-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instance-type is required"))
+    :type (common-lisp:or instance-type common-lisp:null))
    (weighted-capacity common-lisp:nil :type
     (common-lisp:or whole-number common-lisp:null))
    (bid-price common-lisp:nil :type
@@ -2569,18 +2635,24 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (job-flow-detail (:copier common-lisp:nil))
-   (job-flow-id (common-lisp:error ":job-flow-id is required") :type
-    (common-lisp:or xml-string-max-len256 common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or xml-string-max-len256 common-lisp:null))
+   (job-flow-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":job-flow-id is required"))
+    :type (common-lisp:or xml-string-max-len256 common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or xml-string-max-len256 common-lisp:null))
    (log-uri common-lisp:nil :type (common-lisp:or xml-string common-lisp:null))
    (ami-version common-lisp:nil :type
     (common-lisp:or xml-string-max-len256 common-lisp:null))
    (execution-status-detail
-    (common-lisp:error ":execution-status-detail is required") :type
-    (common-lisp:or job-flow-execution-status-detail common-lisp:null))
-   (instances (common-lisp:error ":instances is required") :type
-    (common-lisp:or job-flow-instances-detail common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":execution-status-detail is required"))
+    :type (common-lisp:or job-flow-execution-status-detail common-lisp:null))
+   (instances
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":instances is required"))
+    :type (common-lisp:or job-flow-instances-detail common-lisp:null))
    (steps common-lisp:nil :type
     (common-lisp:or step-detail-list common-lisp:null))
    (bootstrap-actions common-lisp:nil :type
@@ -2692,9 +2764,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (job-flow-execution-status-detail (:copier common-lisp:nil))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or job-flow-execution-state common-lisp:null))
-   (creation-date-time (common-lisp:error ":creation-date-time is required")
+   (state
+    (common-lisp:error #A((18) common-lisp:base-char . ":state is required"))
+    :type (common-lisp:or job-flow-execution-state common-lisp:null))
+   (creation-date-time
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":creation-date-time is required"))
     :type (common-lisp:or date common-lisp:null))
    (start-date-time common-lisp:nil :type
     (common-lisp:or date common-lisp:null))
@@ -2873,16 +2948,21 @@
 (common-lisp:progn
  (common-lisp:defstruct (job-flow-instances-detail (:copier common-lisp:nil))
    (master-instance-type
-    (common-lisp:error ":master-instance-type is required") :type
-    (common-lisp:or instance-type common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":master-instance-type is required"))
+    :type (common-lisp:or instance-type common-lisp:null))
    (master-public-dns-name common-lisp:nil :type
     (common-lisp:or xml-string common-lisp:null))
    (master-instance-id common-lisp:nil :type
     (common-lisp:or xml-string common-lisp:null))
-   (slave-instance-type (common-lisp:error ":slave-instance-type is required")
+   (slave-instance-type
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":slave-instance-type is required"))
     :type (common-lisp:or instance-type common-lisp:null))
-   (instance-count (common-lisp:error ":instance-count is required") :type
-    (common-lisp:or integer common-lisp:null))
+   (instance-count
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":instance-count is required"))
+    :type (common-lisp:or integer common-lisp:null))
    (instance-groups common-lisp:nil :type
     (common-lisp:or instance-group-detail-list common-lisp:null))
    (normalized-instance-hours common-lisp:nil :type
@@ -3000,8 +3080,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-bootstrap-actions-input (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-bootstrap-actions-input
@@ -3100,8 +3182,10 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-instance-fleets-input (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-instance-fleets-input
@@ -3146,8 +3230,10 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-instance-groups-input (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-instance-groups-input
@@ -3192,8 +3278,10 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-instances-input (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
    (instance-group-id common-lisp:nil :type
     (common-lisp:or instance-group-id common-lisp:null))
    (instance-group-types common-lisp:nil :type
@@ -3310,8 +3398,10 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-steps-input (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
    (step-states common-lisp:nil :type
     (common-lisp:or step-state-list common-lisp:null))
    (step-ids common-lisp:nil :type
@@ -3393,10 +3483,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (modify-instance-fleet-input (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
-   (instance-fleet (common-lisp:error ":instance-fleet is required") :type
-    (common-lisp:or instance-fleet-modify-config common-lisp:null)))
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
+   (instance-fleet
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":instance-fleet is required"))
+    :type (common-lisp:or instance-fleet-modify-config common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-instance-fleet-input
                     'make-modify-instance-fleet-input))
@@ -3473,11 +3567,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-auto-scaling-policy-input (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
-   (instance-group-id (common-lisp:error ":instance-group-id is required")
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
+   (instance-group-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":instance-group-id is required"))
     :type (common-lisp:or instance-group-id common-lisp:null))
-   (auto-scaling-policy (common-lisp:error ":auto-scaling-policy is required")
+   (auto-scaling-policy
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":auto-scaling-policy is required"))
     :type (common-lisp:or auto-scaling-policy common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-auto-scaling-policy-input
@@ -3537,9 +3637,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-auto-scaling-policy-input (:copier common-lisp:nil))
-   (cluster-id (common-lisp:error ":cluster-id is required") :type
-    (common-lisp:or cluster-id common-lisp:null))
-   (instance-group-id (common-lisp:error ":instance-group-id is required")
+   (cluster-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":cluster-id is required"))
+    :type (common-lisp:or cluster-id common-lisp:null))
+   (instance-group-id
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":instance-group-id is required"))
     :type (common-lisp:or instance-group-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-auto-scaling-policy-input
@@ -3572,10 +3676,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (remove-tags-input (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or resource-id common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or string-list common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or resource-id common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-input 'make-remove-tags-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3602,8 +3710,9 @@
 (common-lisp:deftype resource-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (run-job-flow-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or xml-string-max-len256 common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or xml-string-max-len256 common-lisp:null))
    (log-uri common-lisp:nil :type (common-lisp:or xml-string common-lisp:null))
    (additional-info common-lisp:nil :type
     (common-lisp:or xml-string common-lisp:null))
@@ -3611,8 +3720,10 @@
     (common-lisp:or xml-string-max-len256 common-lisp:null))
    (release-label common-lisp:nil :type
     (common-lisp:or xml-string-max-len256 common-lisp:null))
-   (instances (common-lisp:error ":instances is required") :type
-    (common-lisp:or job-flow-instances-config common-lisp:null))
+   (instances
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":instances is required"))
+    :type (common-lisp:or job-flow-instances-config common-lisp:null))
    (steps common-lisp:nil :type
     (common-lisp:or step-config-list common-lisp:null))
    (bootstrap-actions common-lisp:nil :type
@@ -3778,7 +3889,9 @@
  (common-lisp:defstruct (scaling-action (:copier common-lisp:nil))
    (market common-lisp:nil :type (common-lisp:or market-type common-lisp:null))
    (simple-scaling-policy-configuration
-    (common-lisp:error ":simple-scaling-policy-configuration is required")
+    (common-lisp:error
+     #A((48) common-lisp:base-char
+        . ":simple-scaling-policy-configuration is required"))
     :type
     (common-lisp:or simple-scaling-policy-configuration common-lisp:null)))
  (common-lisp:export (common-lisp:list 'scaling-action 'make-scaling-action))
@@ -3797,10 +3910,14 @@
                               'simple-scaling-policy-configuration))))))
 (common-lisp:progn
  (common-lisp:defstruct (scaling-constraints (:copier common-lisp:nil))
-   (min-capacity (common-lisp:error ":min-capacity is required") :type
-    (common-lisp:or integer common-lisp:null))
-   (max-capacity (common-lisp:error ":max-capacity is required") :type
-    (common-lisp:or integer common-lisp:null)))
+   (min-capacity
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":min-capacity is required"))
+    :type (common-lisp:or integer common-lisp:null))
+   (max-capacity
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":max-capacity is required"))
+    :type (common-lisp:or integer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'scaling-constraints 'make-scaling-constraints))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3818,13 +3935,16 @@
                                                 'max-capacity))))))
 (common-lisp:progn
  (common-lisp:defstruct (scaling-rule (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (action (common-lisp:error ":action is required") :type
-    (common-lisp:or scaling-action common-lisp:null))
-   (trigger (common-lisp:error ":trigger is required") :type
-    (common-lisp:or scaling-trigger common-lisp:null)))
+   (action
+    (common-lisp:error #A((19) common-lisp:base-char . ":action is required"))
+    :type (common-lisp:or scaling-action common-lisp:null))
+   (trigger
+    (common-lisp:error #A((20) common-lisp:base-char . ":trigger is required"))
+    :type (common-lisp:or scaling-trigger common-lisp:null)))
  (common-lisp:export (common-lisp:list 'scaling-rule 'make-scaling-rule))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape scaling-rule))
@@ -3860,8 +3980,10 @@
 (common-lisp:progn
  (common-lisp:defstruct (scaling-trigger (:copier common-lisp:nil))
    (cloud-watch-alarm-definition
-    (common-lisp:error ":cloud-watch-alarm-definition is required") :type
-    (common-lisp:or cloud-watch-alarm-definition common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":cloud-watch-alarm-definition is required"))
+    :type (common-lisp:or cloud-watch-alarm-definition common-lisp:null)))
  (common-lisp:export (common-lisp:list 'scaling-trigger 'make-scaling-trigger))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape scaling-trigger))
@@ -3874,8 +3996,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (script-bootstrap-action-config (:copier common-lisp:nil))
-   (path (common-lisp:error ":path is required") :type
-    (common-lisp:or xml-string common-lisp:null))
+   (path
+    (common-lisp:error #A((17) common-lisp:base-char . ":path is required"))
+    :type (common-lisp:or xml-string common-lisp:null))
    (args common-lisp:nil :type
     (common-lisp:or xml-string-list common-lisp:null)))
  (common-lisp:export
@@ -3940,11 +4063,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-termination-protection-input (:copier common-lisp:nil))
-   (job-flow-ids (common-lisp:error ":job-flow-ids is required") :type
-    (common-lisp:or xml-string-list common-lisp:null))
+   (job-flow-ids
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":job-flow-ids is required"))
+    :type (common-lisp:or xml-string-list common-lisp:null))
    (termination-protected
-    (common-lisp:error ":termination-protected is required") :type
-    (common-lisp:or boolean common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":termination-protected is required"))
+    :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-termination-protection-input
                     'make-set-termination-protection-input))
@@ -3966,11 +4092,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-visible-to-all-users-input (:copier common-lisp:nil))
-   (job-flow-ids (common-lisp:error ":job-flow-ids is required") :type
-    (common-lisp:or xml-string-list common-lisp:null))
+   (job-flow-ids
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":job-flow-ids is required"))
+    :type (common-lisp:or xml-string-list common-lisp:null))
    (visible-to-all-users
-    (common-lisp:error ":visible-to-all-users is required") :type
-    (common-lisp:or boolean common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":visible-to-all-users is required"))
+    :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-visible-to-all-users-input
                     'make-set-visible-to-all-users-input))
@@ -4014,7 +4143,9 @@
      (simple-scaling-policy-configuration (:copier common-lisp:nil))
    (adjustment-type common-lisp:nil :type
     (common-lisp:or adjustment-type common-lisp:null))
-   (scaling-adjustment (common-lisp:error ":scaling-adjustment is required")
+   (scaling-adjustment
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":scaling-adjustment is required"))
     :type (common-lisp:or integer common-lisp:null))
    (cool-down common-lisp:nil :type (common-lisp:or integer common-lisp:null)))
  (common-lisp:export
@@ -4044,10 +4175,13 @@
  (common-lisp:defstruct
      (spot-provisioning-specification (:copier common-lisp:nil))
    (timeout-duration-minutes
-    (common-lisp:error ":timeout-duration-minutes is required") :type
-    (common-lisp:or whole-number common-lisp:null))
-   (timeout-action (common-lisp:error ":timeout-action is required") :type
-    (common-lisp:or spot-provisioning-timeout-action common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":timeout-duration-minutes is required"))
+    :type (common-lisp:or whole-number common-lisp:null))
+   (timeout-action
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":timeout-action is required"))
+    :type (common-lisp:or spot-provisioning-timeout-action common-lisp:null))
    (block-duration-minutes common-lisp:nil :type
     (common-lisp:or whole-number common-lisp:null)))
  (common-lisp:export
@@ -4116,12 +4250,15 @@
                                                 'status))))))
 (common-lisp:progn
  (common-lisp:defstruct (step-config (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or xml-string-max-len256 common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or xml-string-max-len256 common-lisp:null))
    (action-on-failure common-lisp:nil :type
     (common-lisp:or action-on-failure common-lisp:null))
-   (hadoop-jar-step (common-lisp:error ":hadoop-jar-step is required") :type
-    (common-lisp:or hadoop-jar-step-config common-lisp:null)))
+   (hadoop-jar-step
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":hadoop-jar-step is required"))
+    :type (common-lisp:or hadoop-jar-step-config common-lisp:null)))
  (common-lisp:export (common-lisp:list 'step-config 'make-step-config))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape step-config))
@@ -4151,11 +4288,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (step-detail (:copier common-lisp:nil))
-   (step-config (common-lisp:error ":step-config is required") :type
-    (common-lisp:or step-config common-lisp:null))
+   (step-config
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":step-config is required"))
+    :type (common-lisp:or step-config common-lisp:null))
    (execution-status-detail
-    (common-lisp:error ":execution-status-detail is required") :type
-    (common-lisp:or step-execution-status-detail common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":execution-status-detail is required"))
+    :type (common-lisp:or step-execution-status-detail common-lisp:null)))
  (common-lisp:export (common-lisp:list 'step-detail 'make-step-detail))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape step-detail))
@@ -4182,9 +4322,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (step-execution-status-detail (:copier common-lisp:nil))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or step-execution-state common-lisp:null))
-   (creation-date-time (common-lisp:error ":creation-date-time is required")
+   (state
+    (common-lisp:error #A((18) common-lisp:base-char . ":state is required"))
+    :type (common-lisp:or step-execution-state common-lisp:null))
+   (creation-date-time
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":creation-date-time is required"))
     :type (common-lisp:or date common-lisp:null))
    (start-date-time common-lisp:nil :type
     (common-lisp:or date common-lisp:null))
@@ -4444,8 +4587,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (terminate-job-flows-input (:copier common-lisp:nil))
-   (job-flow-ids (common-lisp:error ":job-flow-ids is required") :type
-    (common-lisp:or xml-string-list common-lisp:null)))
+   (job-flow-ids
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":job-flow-ids is required"))
+    :type (common-lisp:or xml-string-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'terminate-job-flows-input
                     'make-terminate-job-flows-input))
@@ -4462,11 +4607,15 @@
 (common-lisp:deftype unit () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (volume-specification (:copier common-lisp:nil))
-   (volume-type (common-lisp:error ":volume-type is required") :type
-    (common-lisp:or string common-lisp:null))
+   (volume-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":volume-type is required"))
+    :type (common-lisp:or string common-lisp:null))
    (iops common-lisp:nil :type (common-lisp:or integer common-lisp:null))
-   (size-in-gb (common-lisp:error ":size-in-gb is required") :type
-    (common-lisp:or integer common-lisp:null)))
+   (size-in-gb
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":size-in-gb is required"))
+    :type (common-lisp:or integer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'volume-specification 'make-volume-specification))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4516,8 +4665,10 @@
                       (common-lisp:apply 'make-add-instance-fleet-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddInstanceFleet")
                                   ("Version" ,@"2009-03-31"))
@@ -4535,8 +4686,10 @@
                       (common-lisp:apply 'make-add-instance-groups-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddInstanceGroups")
                                   ("Version" ,@"2009-03-31"))
@@ -4554,8 +4707,10 @@
                       (common-lisp:apply 'make-add-job-flow-steps-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddJobFlowSteps")
                                   ("Version" ,@"2009-03-31"))
@@ -4573,8 +4728,10 @@
                       (common-lisp:apply 'make-add-tags-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTags")
                                   ("Version" ,@"2009-03-31"))
@@ -4592,8 +4749,10 @@
                       (common-lisp:apply 'make-cancel-steps-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelSteps")
                                   ("Version" ,@"2009-03-31"))
@@ -4612,8 +4771,10 @@
                        'make-create-security-configuration-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSecurityConfiguration")
                                   ("Version" ,@"2009-03-31"))
@@ -4632,8 +4793,10 @@
                        'make-delete-security-configuration-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSecurityConfiguration")
                                   ("Version" ,@"2009-03-31"))
@@ -4651,8 +4814,10 @@
                       (common-lisp:apply 'make-describe-cluster-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCluster")
                                   ("Version" ,@"2009-03-31"))
@@ -4673,8 +4838,10 @@
                       (common-lisp:apply 'make-describe-job-flows-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeJobFlows")
                                   ("Version" ,@"2009-03-31"))
@@ -4693,8 +4860,10 @@
                        'make-describe-security-configuration-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSecurityConfiguration")
                                   ("Version" ,@"2009-03-31"))
@@ -4712,8 +4881,10 @@
                       (common-lisp:apply 'make-describe-step-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStep")
                                   ("Version" ,@"2009-03-31"))
@@ -4731,8 +4902,10 @@
                       (common-lisp:apply 'make-list-bootstrap-actions-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListBootstrapActions")
                                   ("Version" ,@"2009-03-31"))
@@ -4752,8 +4925,10 @@
                       (common-lisp:apply 'make-list-clusters-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListClusters")
                                   ("Version" ,@"2009-03-31"))
@@ -4771,8 +4946,10 @@
                       (common-lisp:apply 'make-list-instance-fleets-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListInstanceFleets")
                                   ("Version" ,@"2009-03-31"))
@@ -4790,8 +4967,10 @@
                       (common-lisp:apply 'make-list-instance-groups-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListInstanceGroups")
                                   ("Version" ,@"2009-03-31"))
@@ -4813,8 +4992,10 @@
                       (common-lisp:apply 'make-list-instances-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListInstances")
                                   ("Version" ,@"2009-03-31"))
@@ -4833,8 +5014,10 @@
                        'make-list-security-configurations-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListSecurityConfigurations")
                                   ("Version" ,@"2009-03-31"))
@@ -4853,8 +5036,10 @@
                       (common-lisp:apply 'make-list-steps-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListSteps")
                                   ("Version" ,@"2009-03-31"))
@@ -4872,8 +5057,10 @@
                       (common-lisp:apply 'make-modify-instance-fleet-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyInstanceFleet")
                                   ("Version" ,@"2009-03-31"))
@@ -4891,8 +5078,10 @@
                       (common-lisp:apply 'make-modify-instance-groups-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyInstanceGroups")
                                   ("Version" ,@"2009-03-31"))
@@ -4912,8 +5101,10 @@
                       (common-lisp:apply 'make-put-auto-scaling-policy-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutAutoScalingPolicy")
                                   ("Version" ,@"2009-03-31"))
@@ -4931,8 +5122,10 @@
                       (common-lisp:apply 'make-remove-auto-scaling-policy-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveAutoScalingPolicy")
                                   ("Version" ,@"2009-03-31"))
@@ -4950,8 +5143,10 @@
                       (common-lisp:apply 'make-remove-tags-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTags")
                                   ("Version" ,@"2009-03-31"))
@@ -4981,8 +5176,10 @@
                       (common-lisp:apply 'make-run-job-flow-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RunJobFlow")
                                   ("Version" ,@"2009-03-31"))
@@ -5001,8 +5198,10 @@
                       (common-lisp:apply 'make-set-termination-protection-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetTerminationProtection")
                                   ("Version" ,@"2009-03-31"))
@@ -5021,8 +5220,10 @@
                       (common-lisp:apply 'make-set-visible-to-all-users-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetVisibleToAllUsers")
                                   ("Version" ,@"2009-03-31"))
@@ -5040,8 +5241,10 @@
                       (common-lisp:apply 'make-terminate-job-flows-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "elasticmapreduce" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "elasticmapreduce")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TerminateJobFlows")
                                   ("Version" ,@"2009-03-31"))

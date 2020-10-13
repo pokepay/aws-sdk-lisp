@@ -7,14 +7,16 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/polly)
+
 (common-lisp:deftype alphabet () 'common-lisp:string)
 (common-lisp:deftype audio-stream ()
   '(common-lisp:simple-array (common-lisp:unsigned-byte 8) (common-lisp:*)))
 (common-lisp:deftype content-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-lexicon-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or lexicon-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or lexicon-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-lexicon-input 'make-delete-lexicon-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -83,8 +85,9 @@
 (common-lisp:deftype gender () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (get-lexicon-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or lexicon-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or lexicon-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-lexicon-input 'make-get-lexicon-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -421,10 +424,12 @@
 (common-lisp:deftype output-format () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (put-lexicon-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or lexicon-name common-lisp:null))
-   (content (common-lisp:error ":content is required") :type
-    (common-lisp:or lexicon-content common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or lexicon-name common-lisp:null))
+   (content
+    (common-lisp:error #A((20) common-lisp:base-char . ":content is required"))
+    :type (common-lisp:or lexicon-content common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-lexicon-input 'make-put-lexicon-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -499,18 +504,23 @@
  (common-lisp:defstruct (synthesize-speech-input (:copier common-lisp:nil))
    (lexicon-names common-lisp:nil :type
     (common-lisp:or lexicon-name-list common-lisp:null))
-   (output-format (common-lisp:error ":output-format is required") :type
-    (common-lisp:or output-format common-lisp:null))
+   (output-format
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":output-format is required"))
+    :type (common-lisp:or output-format common-lisp:null))
    (sample-rate common-lisp:nil :type
     (common-lisp:or sample-rate common-lisp:null))
    (speech-mark-types common-lisp:nil :type
     (common-lisp:or speech-mark-type-list common-lisp:null))
-   (text (common-lisp:error ":text is required") :type
-    (common-lisp:or text common-lisp:null))
+   (text
+    (common-lisp:error #A((17) common-lisp:base-char . ":text is required"))
+    :type (common-lisp:or text common-lisp:null))
    (text-type common-lisp:nil :type
     (common-lisp:or text-type common-lisp:null))
-   (voice-id (common-lisp:error ":voice-id is required") :type
-    (common-lisp:or voice-id common-lisp:null)))
+   (voice-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":voice-id is required"))
+    :type (common-lisp:or voice-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'synthesize-speech-input 'make-synthesize-speech-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -696,7 +706,12 @@
                       (common-lisp:apply 'make-delete-lexicon-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "polly" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "polly")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/lexicons/~a"
+                                                   lexiconname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLexicon")
                                   ("Version" ,@"2016-06-10"))
@@ -714,7 +729,8 @@
                       (common-lisp:apply 'make-describe-voices-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "polly" :method :get :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "polly")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeVoices")
                                   ("Version" ,@"2016-06-10"))
@@ -732,7 +748,12 @@
                       (common-lisp:apply 'make-get-lexicon-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "polly" :method :get :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "polly")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/lexicons/~a"
+                                                   lexiconname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetLexicon")
                                   ("Version" ,@"2016-06-10"))
@@ -750,7 +771,8 @@
                       (common-lisp:apply 'make-list-lexicons-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "polly" :method :get :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "polly")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListLexicons")
                                   ("Version" ,@"2016-06-10"))
@@ -768,7 +790,12 @@
                       (common-lisp:apply 'make-put-lexicon-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "polly" :method :put :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "polly")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/lexicons/~a"
+                                                   lexiconname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutLexicon")
                                   ("Version" ,@"2016-06-10"))
@@ -789,7 +816,8 @@
                       (common-lisp:apply 'make-synthesize-speech-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "polly" :method :post :params
+      (aws-sdk/api:aws-request :service #A((5) common-lisp:base-char . "polly")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SynthesizeSpeech")
                                   ("Version" ,@"2016-06-10"))

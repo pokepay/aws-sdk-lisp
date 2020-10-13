@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/firehose)
+
 (common-lisp:deftype awskmskey-arn () 'common-lisp:string)
 (common-lisp:deftype access-key-id () 'common-lisp:string)
 (common-lisp:deftype boolean-object () 'common-lisp:boolean)
@@ -84,8 +85,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (copy-command (:copier common-lisp:nil))
-   (data-table-name (common-lisp:error ":data-table-name is required") :type
-    (common-lisp:or data-table-name common-lisp:null))
+   (data-table-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":data-table-name is required"))
+    :type (common-lisp:or data-table-name common-lisp:null))
    (data-table-columns common-lisp:nil :type
     (common-lisp:or data-table-columns common-lisp:null))
    (copy-options common-lisp:nil :type
@@ -114,8 +117,9 @@
  (common-lisp:defstruct
      (create-delivery-stream-input (:copier common-lisp:nil))
    (delivery-stream-name
-    (common-lisp:error ":delivery-stream-name is required") :type
-    (common-lisp:or delivery-stream-name common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":delivery-stream-name is required"))
+    :type (common-lisp:or delivery-stream-name common-lisp:null))
    (delivery-stream-type common-lisp:nil :type
     (common-lisp:or delivery-stream-type common-lisp:null))
    (kinesis-stream-source-configuration common-lisp:nil :type
@@ -197,8 +201,9 @@
  (common-lisp:defstruct
      (delete-delivery-stream-input (:copier common-lisp:nil))
    (delivery-stream-name
-    (common-lisp:error ":delivery-stream-name is required") :type
-    (common-lisp:or delivery-stream-name common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":delivery-stream-name is required"))
+    :type (common-lisp:or delivery-stream-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-delivery-stream-input
                     'make-delete-delivery-stream-input))
@@ -228,29 +233,39 @@
 (common-lisp:progn
  (common-lisp:defstruct (delivery-stream-description (:copier common-lisp:nil))
    (delivery-stream-name
-    (common-lisp:error ":delivery-stream-name is required") :type
-    (common-lisp:or delivery-stream-name common-lisp:null))
-   (delivery-stream-arn (common-lisp:error ":delivery-stream-arn is required")
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":delivery-stream-name is required"))
+    :type (common-lisp:or delivery-stream-name common-lisp:null))
+   (delivery-stream-arn
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":delivery-stream-arn is required"))
     :type (common-lisp:or delivery-stream-arn common-lisp:null))
    (delivery-stream-status
-    (common-lisp:error ":delivery-stream-status is required") :type
-    (common-lisp:or delivery-stream-status common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":delivery-stream-status is required"))
+    :type (common-lisp:or delivery-stream-status common-lisp:null))
    (delivery-stream-type
-    (common-lisp:error ":delivery-stream-type is required") :type
-    (common-lisp:or delivery-stream-type common-lisp:null))
-   (version-id (common-lisp:error ":version-id is required") :type
-    (common-lisp:or delivery-stream-version-id common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":delivery-stream-type is required"))
+    :type (common-lisp:or delivery-stream-type common-lisp:null))
+   (version-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":version-id is required"))
+    :type (common-lisp:or delivery-stream-version-id common-lisp:null))
    (create-timestamp common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
    (last-update-timestamp common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
    (source common-lisp:nil :type
     (common-lisp:or source-description common-lisp:null))
-   (destinations (common-lisp:error ":destinations is required") :type
-    (common-lisp:or destination-description-list common-lisp:null))
+   (destinations
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":destinations is required"))
+    :type (common-lisp:or destination-description-list common-lisp:null))
    (has-more-destinations
-    (common-lisp:error ":has-more-destinations is required") :type
-    (common-lisp:or boolean-object common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":has-more-destinations is required"))
+    :type (common-lisp:or boolean-object common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delivery-stream-description
                     'make-delivery-stream-description))
@@ -325,8 +340,9 @@
  (common-lisp:defstruct
      (describe-delivery-stream-input (:copier common-lisp:nil))
    (delivery-stream-name
-    (common-lisp:error ":delivery-stream-name is required") :type
-    (common-lisp:or delivery-stream-name common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":delivery-stream-name is required"))
+    :type (common-lisp:or delivery-stream-name common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or describe-delivery-stream-input-limit common-lisp:null))
    (exclusive-start-destination-id common-lisp:nil :type
@@ -360,8 +376,10 @@
  (common-lisp:defstruct
      (describe-delivery-stream-output (:copier common-lisp:nil))
    (delivery-stream-description
-    (common-lisp:error ":delivery-stream-description is required") :type
-    (common-lisp:or delivery-stream-description common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":delivery-stream-description is required"))
+    :type (common-lisp:or delivery-stream-description common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-delivery-stream-output
                     'make-describe-delivery-stream-output))
@@ -377,8 +395,10 @@
                                                 'delivery-stream-description))))))
 (common-lisp:progn
  (common-lisp:defstruct (destination-description (:copier common-lisp:nil))
-   (destination-id (common-lisp:error ":destination-id is required") :type
-    (common-lisp:or destination-id common-lisp:null))
+   (destination-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":destination-id is required"))
+    :type (common-lisp:or destination-id common-lisp:null))
    (s3destination-description common-lisp:nil :type
     (common-lisp:or s3destination-description common-lisp:null))
    (extended-s3destination-description common-lisp:nil :type
@@ -461,14 +481,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (elasticsearch-destination-configuration (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (domain-arn (common-lisp:error ":domain-arn is required") :type
-    (common-lisp:or elasticsearch-domain-arn common-lisp:null))
-   (index-name (common-lisp:error ":index-name is required") :type
-    (common-lisp:or elasticsearch-index-name common-lisp:null))
-   (type-name (common-lisp:error ":type-name is required") :type
-    (common-lisp:or elasticsearch-type-name common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
+   (domain-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":domain-arn is required"))
+    :type (common-lisp:or elasticsearch-domain-arn common-lisp:null))
+   (index-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":index-name is required"))
+    :type (common-lisp:or elasticsearch-index-name common-lisp:null))
+   (type-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":type-name is required"))
+    :type (common-lisp:or elasticsearch-type-name common-lisp:null))
    (index-rotation-period common-lisp:nil :type
     (common-lisp:or elasticsearch-index-rotation-period common-lisp:null))
    (buffering-hints common-lisp:nil :type
@@ -477,8 +505,10 @@
     (common-lisp:or elasticsearch-retry-options common-lisp:null))
    (s3backup-mode common-lisp:nil :type
     (common-lisp:or elasticsearch-s3backup-mode common-lisp:null))
-   (s3configuration (common-lisp:error ":s3configuration is required") :type
-    (common-lisp:or s3destination-configuration common-lisp:null))
+   (s3configuration
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":s3configuration is required"))
+    :type (common-lisp:or s3destination-configuration common-lisp:null))
    (processing-configuration common-lisp:nil :type
     (common-lisp:or processing-configuration common-lisp:null))
    (cloud-watch-logging-options common-lisp:nil :type
@@ -765,10 +795,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (extended-s3destination-configuration (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (bucket-arn (common-lisp:error ":bucket-arn is required") :type
-    (common-lisp:or bucket-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
+   (bucket-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":bucket-arn is required"))
+    :type (common-lisp:or bucket-arn common-lisp:null))
    (prefix common-lisp:nil :type (common-lisp:or prefix common-lisp:null))
    (buffering-hints common-lisp:nil :type
     (common-lisp:or buffering-hints common-lisp:null))
@@ -845,18 +879,27 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (extended-s3destination-description (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (bucket-arn (common-lisp:error ":bucket-arn is required") :type
-    (common-lisp:or bucket-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
+   (bucket-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":bucket-arn is required"))
+    :type (common-lisp:or bucket-arn common-lisp:null))
    (prefix common-lisp:nil :type (common-lisp:or prefix common-lisp:null))
-   (buffering-hints (common-lisp:error ":buffering-hints is required") :type
-    (common-lisp:or buffering-hints common-lisp:null))
-   (compression-format (common-lisp:error ":compression-format is required")
+   (buffering-hints
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":buffering-hints is required"))
+    :type (common-lisp:or buffering-hints common-lisp:null))
+   (compression-format
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":compression-format is required"))
     :type (common-lisp:or compression-format common-lisp:null))
    (encryption-configuration
-    (common-lisp:error ":encryption-configuration is required") :type
-    (common-lisp:or encryption-configuration common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":encryption-configuration is required"))
+    :type (common-lisp:or encryption-configuration common-lisp:null))
    (cloud-watch-logging-options common-lisp:nil :type
     (common-lisp:or cloud-watch-logging-options common-lisp:null))
    (processing-configuration common-lisp:nil :type
@@ -1005,7 +1048,9 @@
 (common-lisp:deftype firehose-source () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (get-kinesis-stream-input (:copier common-lisp:nil))
-   (delivery-stream-arn (common-lisp:error ":delivery-stream-arn is required")
+   (delivery-stream-arn
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":delivery-stream-arn is required"))
     :type (common-lisp:or delivery-stream-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-kinesis-stream-input 'make-get-kinesis-stream-input))
@@ -1088,8 +1133,10 @@
                                                 'source))))))
 (common-lisp:progn
  (common-lisp:defstruct (kmsencryption-config (:copier common-lisp:nil))
-   (awskmskey-arn (common-lisp:error ":awskmskey-arn is required") :type
-    (common-lisp:or awskmskey-arn common-lisp:null)))
+   (awskmskey-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":awskmskey-arn is required"))
+    :type (common-lisp:or awskmskey-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'kmsencryption-config 'make-kmsencryption-config))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1104,10 +1151,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (kinesis-stream-source-configuration (:copier common-lisp:nil))
-   (kinesis-stream-arn (common-lisp:error ":kinesis-stream-arn is required")
+   (kinesis-stream-arn
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":kinesis-stream-arn is required"))
     :type (common-lisp:or kinesis-stream-arn common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null)))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'kinesis-stream-source-configuration
                     'make-kinesis-stream-source-configuration))
@@ -1209,11 +1260,13 @@
  (common-lisp:defstruct
      (list-delivery-streams-output (:copier common-lisp:nil))
    (delivery-stream-names
-    (common-lisp:error ":delivery-stream-names is required") :type
-    (common-lisp:or delivery-stream-name-list common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":delivery-stream-names is required"))
+    :type (common-lisp:or delivery-stream-name-list common-lisp:null))
    (has-more-delivery-streams
-    (common-lisp:error ":has-more-delivery-streams is required") :type
-    (common-lisp:or boolean-object common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":has-more-delivery-streams is required"))
+    :type (common-lisp:or boolean-object common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-delivery-streams-output
                     'make-list-delivery-streams-output))
@@ -1263,8 +1316,9 @@
                                                 'processors))))))
 (common-lisp:progn
  (common-lisp:defstruct (processor (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or processor-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or processor-type common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or processor-parameter-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'processor 'make-processor))
@@ -1290,10 +1344,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (processor-parameter (:copier common-lisp:nil))
-   (parameter-name (common-lisp:error ":parameter-name is required") :type
-    (common-lisp:or processor-parameter-name common-lisp:null))
-   (parameter-value (common-lisp:error ":parameter-value is required") :type
-    (common-lisp:or processor-parameter-value common-lisp:null)))
+   (parameter-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":parameter-name is required"))
+    :type (common-lisp:or processor-parameter-name common-lisp:null))
+   (parameter-value
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":parameter-value is required"))
+    :type (common-lisp:or processor-parameter-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'processor-parameter 'make-processor-parameter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1323,9 +1381,12 @@
 (common-lisp:progn
  (common-lisp:defstruct (put-record-batch-input (:copier common-lisp:nil))
    (delivery-stream-name
-    (common-lisp:error ":delivery-stream-name is required") :type
-    (common-lisp:or delivery-stream-name common-lisp:null))
-   (records (common-lisp:error ":records is required") :type
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":delivery-stream-name is required"))
+    :type (common-lisp:or delivery-stream-name common-lisp:null))
+   (records
+    (common-lisp:error #A((20) common-lisp:base-char . ":records is required"))
+    :type
     (common-lisp:or put-record-batch-request-entry-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-record-batch-input 'make-put-record-batch-input))
@@ -1346,9 +1407,13 @@
                                                 'records))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-record-batch-output (:copier common-lisp:nil))
-   (failed-put-count (common-lisp:error ":failed-put-count is required") :type
-    (common-lisp:or non-negative-integer-object common-lisp:null))
-   (request-responses (common-lisp:error ":request-responses is required")
+   (failed-put-count
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":failed-put-count is required"))
+    :type (common-lisp:or non-negative-integer-object common-lisp:null))
+   (request-responses
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":request-responses is required"))
     :type
     (common-lisp:or put-record-batch-response-entry-list common-lisp:null)))
  (common-lisp:export
@@ -1420,10 +1485,12 @@
 (common-lisp:progn
  (common-lisp:defstruct (put-record-input (:copier common-lisp:nil))
    (delivery-stream-name
-    (common-lisp:error ":delivery-stream-name is required") :type
-    (common-lisp:or delivery-stream-name common-lisp:null))
-   (record (common-lisp:error ":record is required") :type
-    (common-lisp:or record common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":delivery-stream-name is required"))
+    :type (common-lisp:or delivery-stream-name common-lisp:null))
+   (record
+    (common-lisp:error #A((19) common-lisp:base-char . ":record is required"))
+    :type (common-lisp:or record common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-record-input 'make-put-record-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1441,8 +1508,10 @@
                                                 'record))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-record-output (:copier common-lisp:nil))
-   (record-id (common-lisp:error ":record-id is required") :type
-    (common-lisp:or put-response-record-id common-lisp:null)))
+   (record-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":record-id is required"))
+    :type (common-lisp:or put-response-record-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-record-output 'make-put-record-output))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1456,8 +1525,9 @@
 (common-lisp:deftype put-response-record-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (record (:copier common-lisp:nil))
-   (data (common-lisp:error ":data is required") :type
-    (common-lisp:or data common-lisp:null)))
+   (data
+    (common-lisp:error #A((17) common-lisp:base-char . ":data is required"))
+    :type (common-lisp:or data common-lisp:null)))
  (common-lisp:export (common-lisp:list 'record 'make-record))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape record))
@@ -1470,20 +1540,32 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (redshift-destination-configuration (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (cluster-jdbcurl (common-lisp:error ":cluster-jdbcurl is required") :type
-    (common-lisp:or cluster-jdbcurl common-lisp:null))
-   (copy-command (common-lisp:error ":copy-command is required") :type
-    (common-lisp:or copy-command common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username common-lisp:null))
-   (password (common-lisp:error ":password is required") :type
-    (common-lisp:or password common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
+   (cluster-jdbcurl
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":cluster-jdbcurl is required"))
+    :type (common-lisp:or cluster-jdbcurl common-lisp:null))
+   (copy-command
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":copy-command is required"))
+    :type (common-lisp:or copy-command common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username common-lisp:null))
+   (password
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":password is required"))
+    :type (common-lisp:or password common-lisp:null))
    (retry-options common-lisp:nil :type
     (common-lisp:or redshift-retry-options common-lisp:null))
-   (s3configuration (common-lisp:error ":s3configuration is required") :type
-    (common-lisp:or s3destination-configuration common-lisp:null))
+   (s3configuration
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":s3configuration is required"))
+    :type (common-lisp:or s3destination-configuration common-lisp:null))
    (processing-configuration common-lisp:nil :type
     (common-lisp:or processing-configuration common-lisp:null))
    (s3backup-mode common-lisp:nil :type
@@ -1558,19 +1640,28 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (redshift-destination-description (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (cluster-jdbcurl (common-lisp:error ":cluster-jdbcurl is required") :type
-    (common-lisp:or cluster-jdbcurl common-lisp:null))
-   (copy-command (common-lisp:error ":copy-command is required") :type
-    (common-lisp:or copy-command common-lisp:null))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or username common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
+   (cluster-jdbcurl
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":cluster-jdbcurl is required"))
+    :type (common-lisp:or cluster-jdbcurl common-lisp:null))
+   (copy-command
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":copy-command is required"))
+    :type (common-lisp:or copy-command common-lisp:null))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or username common-lisp:null))
    (retry-options common-lisp:nil :type
     (common-lisp:or redshift-retry-options common-lisp:null))
    (s3destination-description
-    (common-lisp:error ":s3destination-description is required") :type
-    (common-lisp:or s3destination-description common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":s3destination-description is required"))
+    :type (common-lisp:or s3destination-description common-lisp:null))
    (processing-configuration common-lisp:nil :type
     (common-lisp:or processing-configuration common-lisp:null))
    (s3backup-mode common-lisp:nil :type
@@ -1778,10 +1869,14 @@
 (common-lisp:deftype s3backup-mode () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (s3destination-configuration (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (bucket-arn (common-lisp:error ":bucket-arn is required") :type
-    (common-lisp:or bucket-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
+   (bucket-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":bucket-arn is required"))
+    :type (common-lisp:or bucket-arn common-lisp:null))
    (prefix common-lisp:nil :type (common-lisp:or prefix common-lisp:null))
    (buffering-hints common-lisp:nil :type
     (common-lisp:or buffering-hints common-lisp:null))
@@ -1836,18 +1931,27 @@
                                                 'cloud-watch-logging-options))))))
 (common-lisp:progn
  (common-lisp:defstruct (s3destination-description (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
-   (bucket-arn (common-lisp:error ":bucket-arn is required") :type
-    (common-lisp:or bucket-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
+   (bucket-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":bucket-arn is required"))
+    :type (common-lisp:or bucket-arn common-lisp:null))
    (prefix common-lisp:nil :type (common-lisp:or prefix common-lisp:null))
-   (buffering-hints (common-lisp:error ":buffering-hints is required") :type
-    (common-lisp:or buffering-hints common-lisp:null))
-   (compression-format (common-lisp:error ":compression-format is required")
+   (buffering-hints
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":buffering-hints is required"))
+    :type (common-lisp:or buffering-hints common-lisp:null))
+   (compression-format
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":compression-format is required"))
     :type (common-lisp:or compression-format common-lisp:null))
    (encryption-configuration
-    (common-lisp:error ":encryption-configuration is required") :type
-    (common-lisp:or encryption-configuration common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":encryption-configuration is required"))
+    :type (common-lisp:or encryption-configuration common-lisp:null))
    (cloud-watch-logging-options common-lisp:nil :type
     (common-lisp:or cloud-watch-logging-options common-lisp:null)))
  (common-lisp:export
@@ -1968,14 +2072,22 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (session-credentials (:copier common-lisp:nil))
-   (access-key-id (common-lisp:error ":access-key-id is required") :type
-    (common-lisp:or access-key-id common-lisp:null))
-   (secret-access-key (common-lisp:error ":secret-access-key is required")
+   (access-key-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":access-key-id is required"))
+    :type (common-lisp:or access-key-id common-lisp:null))
+   (secret-access-key
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":secret-access-key is required"))
     :type (common-lisp:or secret-access-key common-lisp:null))
-   (session-token (common-lisp:error ":session-token is required") :type
-    (common-lisp:or session-token common-lisp:null))
-   (expiration (common-lisp:error ":expiration is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (session-token
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":session-token is required"))
+    :type (common-lisp:or session-token common-lisp:null))
+   (expiration
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":expiration is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'session-credentials 'make-session-credentials))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2021,13 +2133,18 @@
 (common-lisp:progn
  (common-lisp:defstruct (update-destination-input (:copier common-lisp:nil))
    (delivery-stream-name
-    (common-lisp:error ":delivery-stream-name is required") :type
-    (common-lisp:or delivery-stream-name common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":delivery-stream-name is required"))
+    :type (common-lisp:or delivery-stream-name common-lisp:null))
    (current-delivery-stream-version-id
-    (common-lisp:error ":current-delivery-stream-version-id is required") :type
-    (common-lisp:or delivery-stream-version-id common-lisp:null))
-   (destination-id (common-lisp:error ":destination-id is required") :type
-    (common-lisp:or destination-id common-lisp:null))
+    (common-lisp:error
+     #A((47) common-lisp:base-char
+        . ":current-delivery-stream-version-id is required"))
+    :type (common-lisp:or delivery-stream-version-id common-lisp:null))
+   (destination-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":destination-id is required"))
+    :type (common-lisp:or destination-id common-lisp:null))
    (s3destination-update common-lisp:nil :type
     (common-lisp:or s3destination-update common-lisp:null))
    (extended-s3destination-update common-lisp:nil :type
@@ -2108,7 +2225,9 @@
                       (common-lisp:apply 'make-create-delivery-stream-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "firehose" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "firehose")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDeliveryStream")
                                   ("Version" ,@"2015-08-04"))
@@ -2126,7 +2245,9 @@
                       (common-lisp:apply 'make-delete-delivery-stream-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "firehose" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "firehose")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDeliveryStream")
                                   ("Version" ,@"2015-08-04"))
@@ -2147,7 +2268,9 @@
                       (common-lisp:apply 'make-describe-delivery-stream-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "firehose" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "firehose")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDeliveryStream")
                                   ("Version" ,@"2015-08-04"))
@@ -2165,7 +2288,9 @@
                       (common-lisp:apply 'make-get-kinesis-stream-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "firehose" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "firehose")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetKinesisStream")
                                   ("Version" ,@"2015-08-04"))
@@ -2186,7 +2311,9 @@
                       (common-lisp:apply 'make-list-delivery-streams-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "firehose" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "firehose")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListDeliveryStreams")
                                   ("Version" ,@"2015-08-04"))
@@ -2204,7 +2331,9 @@
                       (common-lisp:apply 'make-put-record-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "firehose" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "firehose")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutRecord")
                                   ("Version" ,@"2015-08-04"))
@@ -2222,7 +2351,9 @@
                       (common-lisp:apply 'make-put-record-batch-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "firehose" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "firehose")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutRecordBatch")
                                   ("Version" ,@"2015-08-04"))
@@ -2248,7 +2379,9 @@
                       (common-lisp:apply 'make-update-destination-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "firehose" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "firehose")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDestination")
                                   ("Version" ,@"2015-08-04"))

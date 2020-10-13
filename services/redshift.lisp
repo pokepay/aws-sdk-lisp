@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/redshift)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (access-to-snapshot-denied-fault (:copier common-lisp:nil)))
@@ -88,8 +89,10 @@
      (authorize-cluster-security-group-ingress-message
       (:copier common-lisp:nil))
    (cluster-security-group-name
-    (common-lisp:error ":cluster-security-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":cluster-security-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (cidrip common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (ec2security-group-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -145,13 +148,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (authorize-snapshot-access-message (:copier common-lisp:nil))
-   (snapshot-identifier (common-lisp:error ":snapshot-identifier is required")
+   (snapshot-identifier
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":snapshot-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (snapshot-cluster-identifier common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (account-with-restore-access
-    (common-lisp:error ":account-with-restore-access is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":account-with-restore-access is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'authorize-snapshot-access-message
                     'make-authorize-snapshot-access-message))
@@ -1218,13 +1225,17 @@
  (common-lisp:defstruct
      (copy-cluster-snapshot-message (:copier common-lisp:nil))
    (source-snapshot-identifier
-    (common-lisp:error ":source-snapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":source-snapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (source-snapshot-cluster-identifier common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (target-snapshot-identifier
-    (common-lisp:error ":target-snapshot-identifier is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":target-snapshot-identifier is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'copy-cluster-snapshot-message
                     'make-copy-cluster-snapshot-message))
@@ -1279,17 +1290,24 @@
 (common-lisp:progn
  (common-lisp:defstruct (create-cluster-message (:copier common-lisp:nil))
    (dbname common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (cluster-type common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (node-type (common-lisp:error ":node-type is required") :type
-    (common-lisp:or string common-lisp:null))
-   (master-username (common-lisp:error ":master-username is required") :type
-    (common-lisp:or string common-lisp:null))
+   (node-type
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":node-type is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (master-username
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":master-username is required"))
+    :type (common-lisp:or string common-lisp:null))
    (master-user-password
-    (common-lisp:error ":master-user-password is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":master-user-password is required"))
+    :type (common-lisp:or string common-lisp:null))
    (cluster-security-groups common-lisp:nil :type
     (common-lisp:or cluster-security-group-name-list common-lisp:null))
    (vpc-security-group-ids common-lisp:nil :type
@@ -1475,13 +1493,17 @@
  (common-lisp:defstruct
      (create-cluster-parameter-group-message (:copier common-lisp:nil))
    (parameter-group-name
-    (common-lisp:error ":parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (parameter-group-family
-    (common-lisp:error ":parameter-group-family is required") :type
-    (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":parameter-group-family is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-cluster-parameter-group-message
@@ -1548,10 +1570,14 @@
  (common-lisp:defstruct
      (create-cluster-security-group-message (:copier common-lisp:nil))
    (cluster-security-group-name
-    (common-lisp:error ":cluster-security-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":cluster-security-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-cluster-security-group-message
@@ -1597,9 +1623,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-cluster-snapshot-message (:copier common-lisp:nil))
-   (snapshot-identifier (common-lisp:error ":snapshot-identifier is required")
+   (snapshot-identifier
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":snapshot-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
@@ -1646,12 +1676,17 @@
  (common-lisp:defstruct
      (create-cluster-subnet-group-message (:copier common-lisp:nil))
    (cluster-subnet-group-name
-    (common-lisp:error ":cluster-subnet-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null))
-   (subnet-ids (common-lisp:error ":subnet-ids is required") :type
-    (common-lisp:or subnet-identifier-list common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":cluster-subnet-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (subnet-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":subnet-ids is required"))
+    :type (common-lisp:or subnet-identifier-list common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-cluster-subnet-group-message
@@ -1702,10 +1737,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-event-subscription-message (:copier common-lisp:nil))
-   (subscription-name (common-lisp:error ":subscription-name is required")
+   (subscription-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-name is required"))
     :type (common-lisp:or string common-lisp:null))
-   (sns-topic-arn (common-lisp:error ":sns-topic-arn is required") :type
-    (common-lisp:or string common-lisp:null))
+   (sns-topic-arn
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":sns-topic-arn is required"))
+    :type (common-lisp:or string common-lisp:null))
    (source-type common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (source-ids common-lisp:nil :type
     (common-lisp:or source-ids-list common-lisp:null))
@@ -1785,8 +1824,10 @@
  (common-lisp:defstruct
      (create-hsm-client-certificate-message (:copier common-lisp:nil))
    (hsm-client-certificate-identifier
-    (common-lisp:error ":hsm-client-certificate-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((46) common-lisp:base-char
+        . ":hsm-client-certificate-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-hsm-client-certificate-message
@@ -1828,20 +1869,31 @@
  (common-lisp:defstruct
      (create-hsm-configuration-message (:copier common-lisp:nil))
    (hsm-configuration-identifier
-    (common-lisp:error ":hsm-configuration-identifier is required") :type
-    (common-lisp:or string common-lisp:null))
-   (description (common-lisp:error ":description is required") :type
-    (common-lisp:or string common-lisp:null))
-   (hsm-ip-address (common-lisp:error ":hsm-ip-address is required") :type
-    (common-lisp:or string common-lisp:null))
-   (hsm-partition-name (common-lisp:error ":hsm-partition-name is required")
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":hsm-configuration-identifier is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (description
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":description is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (hsm-ip-address
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hsm-ip-address is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (hsm-partition-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":hsm-partition-name is required"))
     :type (common-lisp:or string common-lisp:null))
    (hsm-partition-password
-    (common-lisp:error ":hsm-partition-password is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":hsm-partition-password is required"))
+    :type (common-lisp:or string common-lisp:null))
    (hsm-server-public-certificate
-    (common-lisp:error ":hsm-server-public-certificate is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":hsm-server-public-certificate is required"))
+    :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-hsm-configuration-message
@@ -1908,8 +1960,9 @@
  (common-lisp:defstruct
      (create-snapshot-copy-grant-message (:copier common-lisp:nil))
    (snapshot-copy-grant-name
-    (common-lisp:error ":snapshot-copy-grant-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":snapshot-copy-grant-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (kms-key-id common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
@@ -1955,10 +2008,13 @@
                                                 'snapshot-copy-grant))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-tags-message (:copier common-lisp:nil))
-   (resource-name (common-lisp:error ":resource-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (resource-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-tags-message 'make-create-tags-message))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2013,7 +2069,9 @@
                                                 'parameters))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-cluster-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (skip-final-cluster-snapshot common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
@@ -2045,8 +2103,9 @@
  (common-lisp:defstruct
      (delete-cluster-parameter-group-message (:copier common-lisp:nil))
    (parameter-group-name
-    (common-lisp:error ":parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-cluster-parameter-group-message
                     'make-delete-cluster-parameter-group-message))
@@ -2079,8 +2138,10 @@
  (common-lisp:defstruct
      (delete-cluster-security-group-message (:copier common-lisp:nil))
    (cluster-security-group-name
-    (common-lisp:error ":cluster-security-group-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":cluster-security-group-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-cluster-security-group-message
                     'make-delete-cluster-security-group-message))
@@ -2097,7 +2158,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-cluster-snapshot-message (:copier common-lisp:nil))
-   (snapshot-identifier (common-lisp:error ":snapshot-identifier is required")
+   (snapshot-identifier
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":snapshot-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (snapshot-cluster-identifier common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
@@ -2140,8 +2203,9 @@
  (common-lisp:defstruct
      (delete-cluster-subnet-group-message (:copier common-lisp:nil))
    (cluster-subnet-group-name
-    (common-lisp:error ":cluster-subnet-group-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":cluster-subnet-group-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-cluster-subnet-group-message
                     'make-delete-cluster-subnet-group-message))
@@ -2158,7 +2222,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-event-subscription-message (:copier common-lisp:nil))
-   (subscription-name (common-lisp:error ":subscription-name is required")
+   (subscription-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-name is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-event-subscription-message
@@ -2177,8 +2243,10 @@
  (common-lisp:defstruct
      (delete-hsm-client-certificate-message (:copier common-lisp:nil))
    (hsm-client-certificate-identifier
-    (common-lisp:error ":hsm-client-certificate-identifier is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((46) common-lisp:base-char
+        . ":hsm-client-certificate-identifier is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-hsm-client-certificate-message
                     'make-delete-hsm-client-certificate-message))
@@ -2196,8 +2264,10 @@
  (common-lisp:defstruct
      (delete-hsm-configuration-message (:copier common-lisp:nil))
    (hsm-configuration-identifier
-    (common-lisp:error ":hsm-configuration-identifier is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":hsm-configuration-identifier is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-hsm-configuration-message
                     'make-delete-hsm-configuration-message))
@@ -2215,8 +2285,9 @@
  (common-lisp:defstruct
      (delete-snapshot-copy-grant-message (:copier common-lisp:nil))
    (snapshot-copy-grant-name
-    (common-lisp:error ":snapshot-copy-grant-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":snapshot-copy-grant-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-snapshot-copy-grant-message
                     'make-delete-snapshot-copy-grant-message))
@@ -2232,10 +2303,14 @@
                                                 'snapshot-copy-grant-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-tags-message (:copier common-lisp:nil))
-   (resource-name (common-lisp:error ":resource-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+   (resource-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-tags-message 'make-delete-tags-message))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2322,8 +2397,9 @@
  (common-lisp:defstruct
      (describe-cluster-parameters-message (:copier common-lisp:nil))
    (parameter-group-name
-    (common-lisp:error ":parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (source common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (max-records common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
@@ -2610,8 +2686,9 @@
  (common-lisp:defstruct
      (describe-default-cluster-parameters-message (:copier common-lisp:nil))
    (parameter-group-family
-    (common-lisp:error ":parameter-group-family is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":parameter-group-family is required"))
+    :type (common-lisp:or string common-lisp:null))
    (max-records common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or string common-lisp:null)))
@@ -2853,7 +2930,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-logging-status-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-logging-status-message
@@ -2969,7 +3048,9 @@
                                                 'marker))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-resize-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-resize-message 'make-describe-resize-message))
@@ -3118,7 +3199,9 @@
                                                 'tag-values))))))
 (common-lisp:progn
  (common-lisp:defstruct (disable-logging-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-logging-message 'make-disable-logging-message))
@@ -3135,7 +3218,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disable-snapshot-copy-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-snapshot-copy-message
@@ -3231,10 +3316,14 @@
                                                 'status))))))
 (common-lisp:progn
  (common-lisp:defstruct (enable-logging-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
-   (bucket-name (common-lisp:error ":bucket-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (bucket-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":bucket-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (s3key-prefix common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -3262,9 +3351,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (enable-snapshot-copy-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
-   (destination-region (common-lisp:error ":destination-region is required")
+   (destination-region
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":destination-region is required"))
     :type (common-lisp:or string common-lisp:null))
    (retention-period common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
@@ -3624,10 +3717,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-cluster-credentials-message (:copier common-lisp:nil))
-   (db-user (common-lisp:error ":db-user is required") :type
-    (common-lisp:or string common-lisp:null))
+   (db-user
+    (common-lisp:error #A((20) common-lisp:base-char . ":db-user is required"))
+    :type (common-lisp:or string common-lisp:null))
    (db-name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (duration-seconds common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null))
@@ -4249,7 +4345,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (modify-cluster-iam-roles-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (add-iam-roles common-lisp:nil :type
     (common-lisp:or iam-role-arn-list common-lisp:null))
@@ -4297,7 +4395,9 @@
                                                 'cluster))))))
 (common-lisp:progn
  (common-lisp:defstruct (modify-cluster-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (cluster-type common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -4432,10 +4532,13 @@
  (common-lisp:defstruct
      (modify-cluster-parameter-group-message (:copier common-lisp:nil))
    (parameter-group-name
-    (common-lisp:error ":parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
-   (parameters (common-lisp:error ":parameters is required") :type
-    (common-lisp:or parameters-list common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (parameters
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":parameters is required"))
+    :type (common-lisp:or parameters-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-cluster-parameter-group-message
                     'make-modify-cluster-parameter-group-message))
@@ -4473,11 +4576,14 @@
  (common-lisp:defstruct
      (modify-cluster-subnet-group-message (:copier common-lisp:nil))
    (cluster-subnet-group-name
-    (common-lisp:error ":cluster-subnet-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":cluster-subnet-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (subnet-ids (common-lisp:error ":subnet-ids is required") :type
-    (common-lisp:or subnet-identifier-list common-lisp:null)))
+   (subnet-ids
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":subnet-ids is required"))
+    :type (common-lisp:or subnet-identifier-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-cluster-subnet-group-message
                     'make-modify-cluster-subnet-group-message))
@@ -4522,7 +4628,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (modify-event-subscription-message (:copier common-lisp:nil))
-   (subscription-name (common-lisp:error ":subscription-name is required")
+   (subscription-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":subscription-name is required"))
     :type (common-lisp:or string common-lisp:null))
    (sns-topic-arn common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -4598,10 +4706,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (modify-snapshot-copy-retention-period-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
-   (retention-period (common-lisp:error ":retention-period is required") :type
-    (common-lisp:or integer common-lisp:null)))
+   (retention-period
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":retention-period is required"))
+    :type (common-lisp:or integer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'modify-snapshot-copy-retention-period-message
                     'make-modify-snapshot-copy-retention-period-message))
@@ -4887,8 +4999,9 @@
  (common-lisp:defstruct
      (purchase-reserved-node-offering-message (:copier common-lisp:nil))
    (reserved-node-offering-id
-    (common-lisp:error ":reserved-node-offering-id is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":reserved-node-offering-id is required"))
+    :type (common-lisp:or string common-lisp:null))
    (node-count common-lisp:nil :type
     (common-lisp:or integer-optional common-lisp:null)))
  (common-lisp:export
@@ -4929,7 +5042,9 @@
                                                 'reserved-node))))))
 (common-lisp:progn
  (common-lisp:defstruct (reboot-cluster-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'reboot-cluster-message 'make-reboot-cluster-message))
@@ -5241,8 +5356,9 @@
  (common-lisp:defstruct
      (reset-cluster-parameter-group-message (:copier common-lisp:nil))
    (parameter-group-name
-    (common-lisp:error ":parameter-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":parameter-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (reset-all-parameters common-lisp:nil :type
     (common-lisp:or boolean common-lisp:null))
    (parameters common-lisp:nil :type
@@ -5391,9 +5507,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (restore-from-cluster-snapshot-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
-   (snapshot-identifier (common-lisp:error ":snapshot-identifier is required")
+   (snapshot-identifier
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":snapshot-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (snapshot-cluster-identifier common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -5617,23 +5737,32 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (restore-table-from-cluster-snapshot-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
-   (snapshot-identifier (common-lisp:error ":snapshot-identifier is required")
+   (snapshot-identifier
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":snapshot-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (source-database-name
-    (common-lisp:error ":source-database-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":source-database-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (source-schema-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (source-table-name (common-lisp:error ":source-table-name is required")
+   (source-table-name
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":source-table-name is required"))
     :type (common-lisp:or string common-lisp:null))
    (target-database-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (target-schema-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
-   (new-table-name (common-lisp:error ":new-table-name is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (new-table-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":new-table-name is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'restore-table-from-cluster-snapshot-message
                     'make-restore-table-from-cluster-snapshot-message))
@@ -5704,8 +5833,10 @@
  (common-lisp:defstruct
      (revoke-cluster-security-group-ingress-message (:copier common-lisp:nil))
    (cluster-security-group-name
-    (common-lisp:error ":cluster-security-group-name is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":cluster-security-group-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (cidrip common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (ec2security-group-name common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -5760,13 +5891,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (revoke-snapshot-access-message (:copier common-lisp:nil))
-   (snapshot-identifier (common-lisp:error ":snapshot-identifier is required")
+   (snapshot-identifier
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":snapshot-identifier is required"))
     :type (common-lisp:or string common-lisp:null))
    (snapshot-cluster-identifier common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (account-with-restore-access
-    (common-lisp:error ":account-with-restore-access is required") :type
-    (common-lisp:or string common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":account-with-restore-access is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'revoke-snapshot-access-message
                     'make-revoke-snapshot-access-message))
@@ -5810,7 +5945,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (rotate-encryption-key-message (:copier common-lisp:nil))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'rotate-encryption-key-message
@@ -6698,7 +6835,9 @@
                        'make-authorize-cluster-security-group-ingress-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"AuthorizeClusterSecurityGroupIngress")
@@ -6722,7 +6861,9 @@
                        'make-authorize-snapshot-access-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AuthorizeSnapshotAccess")
                                   ("Version" ,@"2012-12-01"))
@@ -6744,7 +6885,9 @@
                       (common-lisp:apply 'make-copy-cluster-snapshot-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CopyClusterSnapshot")
                                   ("Version" ,@"2012-12-01"))
@@ -6779,7 +6922,9 @@
                       (common-lisp:apply 'make-create-cluster-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCluster")
                                   ("Version" ,@"2012-12-01"))
@@ -6801,7 +6946,9 @@
                        'make-create-cluster-parameter-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateClusterParameterGroup")
                                   ("Version" ,@"2012-12-01"))
@@ -6823,7 +6970,9 @@
                        'make-create-cluster-security-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateClusterSecurityGroup")
                                   ("Version" ,@"2012-12-01"))
@@ -6843,7 +6992,9 @@
                       (common-lisp:apply 'make-create-cluster-snapshot-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateClusterSnapshot")
                                   ("Version" ,@"2012-12-01"))
@@ -6865,7 +7016,9 @@
                        'make-create-cluster-subnet-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateClusterSubnetGroup")
                                   ("Version" ,@"2012-12-01"))
@@ -6888,7 +7041,9 @@
                        'make-create-event-subscription-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateEventSubscription")
                                   ("Version" ,@"2012-12-01"))
@@ -6908,7 +7063,9 @@
                        'make-create-hsm-client-certificate-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateHsmClientCertificate")
                                   ("Version" ,@"2012-12-01"))
@@ -6931,7 +7088,9 @@
                       (common-lisp:apply 'make-create-hsm-configuration-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateHsmConfiguration")
                                   ("Version" ,@"2012-12-01"))
@@ -6951,7 +7110,9 @@
                        'make-create-snapshot-copy-grant-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSnapshotCopyGrant")
                                   ("Version" ,@"2012-12-01"))
@@ -6969,7 +7130,9 @@
                       (common-lisp:apply 'make-create-tags-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTags")
                                   ("Version" ,@"2012-12-01"))
@@ -6991,7 +7154,9 @@
                       (common-lisp:apply 'make-delete-cluster-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCluster")
                                   ("Version" ,@"2012-12-01"))
@@ -7010,7 +7175,9 @@
                        'make-delete-cluster-parameter-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteClusterParameterGroup")
                                   ("Version" ,@"2012-12-01"))
@@ -7029,7 +7196,9 @@
                        'make-delete-cluster-security-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteClusterSecurityGroup")
                                   ("Version" ,@"2012-12-01"))
@@ -7049,7 +7218,9 @@
                       (common-lisp:apply 'make-delete-cluster-snapshot-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteClusterSnapshot")
                                   ("Version" ,@"2012-12-01"))
@@ -7068,7 +7239,9 @@
                        'make-delete-cluster-subnet-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteClusterSubnetGroup")
                                   ("Version" ,@"2012-12-01"))
@@ -7087,7 +7260,9 @@
                        'make-delete-event-subscription-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEventSubscription")
                                   ("Version" ,@"2012-12-01"))
@@ -7107,7 +7282,9 @@
                        'make-delete-hsm-client-certificate-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteHsmClientCertificate")
                                   ("Version" ,@"2012-12-01"))
@@ -7125,7 +7302,9 @@
                       (common-lisp:apply 'make-delete-hsm-configuration-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteHsmConfiguration")
                                   ("Version" ,@"2012-12-01"))
@@ -7144,7 +7323,9 @@
                        'make-delete-snapshot-copy-grant-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSnapshotCopyGrant")
                                   ("Version" ,@"2012-12-01"))
@@ -7162,7 +7343,9 @@
                       (common-lisp:apply 'make-delete-tags-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTags")
                                   ("Version" ,@"2012-12-01"))
@@ -7184,7 +7367,9 @@
                        'make-describe-cluster-parameter-groups-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeClusterParameterGroups")
                                   ("Version" ,@"2012-12-01"))
@@ -7205,7 +7390,9 @@
                        'make-describe-cluster-parameters-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeClusterParameters")
                                   ("Version" ,@"2012-12-01"))
@@ -7227,7 +7414,9 @@
                        'make-describe-cluster-security-groups-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeClusterSecurityGroups")
                                   ("Version" ,@"2012-12-01"))
@@ -7250,7 +7439,9 @@
                        'make-describe-cluster-snapshots-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeClusterSnapshots")
                                   ("Version" ,@"2012-12-01"))
@@ -7272,7 +7463,9 @@
                        'make-describe-cluster-subnet-groups-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeClusterSubnetGroups")
                                   ("Version" ,@"2012-12-01"))
@@ -7294,7 +7487,9 @@
                        'make-describe-cluster-versions-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeClusterVersions")
                                   ("Version" ,@"2012-12-01"))
@@ -7315,7 +7510,9 @@
                       (common-lisp:apply 'make-describe-clusters-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeClusters")
                                   ("Version" ,@"2012-12-01"))
@@ -7336,7 +7533,9 @@
                        'make-describe-default-cluster-parameters-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeDefaultClusterParameters")
@@ -7357,7 +7556,9 @@
                        'make-describe-event-categories-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEventCategories")
                                   ("Version" ,@"2012-12-01"))
@@ -7377,7 +7578,9 @@
                        'make-describe-event-subscriptions-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEventSubscriptions")
                                   ("Version" ,@"2012-12-01"))
@@ -7398,7 +7601,9 @@
                       (common-lisp:apply 'make-describe-events-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEvents")
                                   ("Version" ,@"2012-12-01"))
@@ -7420,7 +7625,9 @@
                        'make-describe-hsm-client-certificates-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeHsmClientCertificates")
                                   ("Version" ,@"2012-12-01"))
@@ -7442,7 +7649,9 @@
                        'make-describe-hsm-configurations-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeHsmConfigurations")
                                   ("Version" ,@"2012-12-01"))
@@ -7460,7 +7669,9 @@
                       (common-lisp:apply 'make-describe-logging-status-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLoggingStatus")
                                   ("Version" ,@"2012-12-01"))
@@ -7481,7 +7692,9 @@
                        'make-describe-orderable-cluster-options-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"DescribeOrderableClusterOptions")
@@ -7504,7 +7717,9 @@
                        'make-describe-reserved-node-offerings-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReservedNodeOfferings")
                                   ("Version" ,@"2012-12-01"))
@@ -7523,7 +7738,9 @@
                       (common-lisp:apply 'make-describe-reserved-nodes-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeReservedNodes")
                                   ("Version" ,@"2012-12-01"))
@@ -7541,7 +7758,9 @@
                       (common-lisp:apply 'make-describe-resize-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeResize")
                                   ("Version" ,@"2012-12-01"))
@@ -7563,7 +7782,9 @@
                        'make-describe-snapshot-copy-grants-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSnapshotCopyGrants")
                                   ("Version" ,@"2012-12-01"))
@@ -7585,7 +7806,9 @@
                        'make-describe-table-restore-status-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTableRestoreStatus")
                                   ("Version" ,@"2012-12-01"))
@@ -7606,7 +7829,9 @@
                       (common-lisp:apply 'make-describe-tags-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTags")
                                   ("Version" ,@"2012-12-01"))
@@ -7624,7 +7849,9 @@
                       (common-lisp:apply 'make-disable-logging-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableLogging")
                                   ("Version" ,@"2012-12-01"))
@@ -7642,7 +7869,9 @@
                       (common-lisp:apply 'make-disable-snapshot-copy-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableSnapshotCopy")
                                   ("Version" ,@"2012-12-01"))
@@ -7662,7 +7891,9 @@
                       (common-lisp:apply 'make-enable-logging-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableLogging")
                                   ("Version" ,@"2012-12-01"))
@@ -7683,7 +7914,9 @@
                       (common-lisp:apply 'make-enable-snapshot-copy-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableSnapshotCopy")
                                   ("Version" ,@"2012-12-01"))
@@ -7704,7 +7937,9 @@
                       (common-lisp:apply 'make-get-cluster-credentials-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetClusterCredentials")
                                   ("Version" ,@"2012-12-01"))
@@ -7737,7 +7972,9 @@
                       (common-lisp:apply 'make-modify-cluster-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyCluster")
                                   ("Version" ,@"2012-12-01"))
@@ -7757,7 +7994,9 @@
                       (common-lisp:apply 'make-modify-cluster-iam-roles-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyClusterIamRoles")
                                   ("Version" ,@"2012-12-01"))
@@ -7777,7 +8016,9 @@
                        'make-modify-cluster-parameter-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyClusterParameterGroup")
                                   ("Version" ,@"2012-12-01"))
@@ -7798,7 +8039,9 @@
                        'make-modify-cluster-subnet-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyClusterSubnetGroup")
                                   ("Version" ,@"2012-12-01"))
@@ -7820,7 +8063,9 @@
                        'make-modify-event-subscription-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ModifyEventSubscription")
                                   ("Version" ,@"2012-12-01"))
@@ -7840,7 +8085,9 @@
                        'make-modify-snapshot-copy-retention-period-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"ModifySnapshotCopyRetentionPeriod")
@@ -7862,7 +8109,9 @@
                        'make-purchase-reserved-node-offering-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PurchaseReservedNodeOffering")
                                   ("Version" ,@"2012-12-01"))
@@ -7881,7 +8130,9 @@
                       (common-lisp:apply 'make-reboot-cluster-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RebootCluster")
                                   ("Version" ,@"2012-12-01"))
@@ -7903,7 +8154,9 @@
                        'make-reset-cluster-parameter-group-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ResetClusterParameterGroup")
                                   ("Version" ,@"2012-12-01"))
@@ -7939,7 +8192,9 @@
                        'make-restore-from-cluster-snapshot-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RestoreFromClusterSnapshot")
                                   ("Version" ,@"2012-12-01"))
@@ -7963,7 +8218,9 @@
                        'make-restore-table-from-cluster-snapshot-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"RestoreTableFromClusterSnapshot")
@@ -7987,7 +8244,9 @@
                        'make-revoke-cluster-security-group-ingress-message
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action"
                                    ,@"RevokeClusterSecurityGroupIngress")
@@ -8010,7 +8269,9 @@
                       (common-lisp:apply 'make-revoke-snapshot-access-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RevokeSnapshotAccess")
                                   ("Version" ,@"2012-12-01"))
@@ -8028,7 +8289,9 @@
                       (common-lisp:apply 'make-rotate-encryption-key-message
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "redshift" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "redshift")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RotateEncryptionKey")
                                   ("Version" ,@"2012-12-01"))

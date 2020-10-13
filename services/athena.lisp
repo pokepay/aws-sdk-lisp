@@ -7,10 +7,13 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/athena)
+
 (common-lisp:progn
  (common-lisp:defstruct (batch-get-named-query-input (:copier common-lisp:nil))
-   (named-query-ids (common-lisp:error ":named-query-ids is required") :type
-    (common-lisp:or named-query-id-list common-lisp:null)))
+   (named-query-ids
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":named-query-ids is required"))
+    :type (common-lisp:or named-query-id-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-get-named-query-input
                     'make-batch-get-named-query-input))
@@ -52,7 +55,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (batch-get-query-execution-input (:copier common-lisp:nil))
-   (query-execution-ids (common-lisp:error ":query-execution-ids is required")
+   (query-execution-ids
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":query-execution-ids is required"))
     :type (common-lisp:or query-execution-id-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-get-query-execution-input
@@ -99,11 +104,13 @@
     (common-lisp:or string common-lisp:null))
    (schema-name common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (table-name common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (label common-lisp:nil :type (common-lisp:or string common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or string common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or string common-lisp:null))
    (precision common-lisp:nil :type (common-lisp:or integer common-lisp:null))
    (scale common-lisp:nil :type (common-lisp:or integer common-lisp:null))
    (nullable common-lisp:nil :type
@@ -175,14 +182,19 @@
 (common-lisp:deftype column-nullable () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (create-named-query-input (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description-string common-lisp:null))
-   (database (common-lisp:error ":database is required") :type
-    (common-lisp:or database-string common-lisp:null))
-   (query-string (common-lisp:error ":query-string is required") :type
-    (common-lisp:or query-string common-lisp:null))
+   (database
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":database is required"))
+    :type (common-lisp:or database-string common-lisp:null))
+   (query-string
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":query-string is required"))
+    :type (common-lisp:or query-string common-lisp:null))
    (client-request-token common-lisp:nil :type
     (common-lisp:or idempotency-token common-lisp:null)))
  (common-lisp:export
@@ -251,8 +263,10 @@
                                                 'var-char-value))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-named-query-input (:copier common-lisp:nil))
-   (named-query-id (common-lisp:error ":named-query-id is required") :type
-    (common-lisp:or named-query-id common-lisp:null)))
+   (named-query-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":named-query-id is required"))
+    :type (common-lisp:or named-query-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-named-query-input 'make-delete-named-query-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -278,7 +292,9 @@
 (common-lisp:deftype description-string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (encryption-configuration (:copier common-lisp:nil))
-   (encryption-option (common-lisp:error ":encryption-option is required")
+   (encryption-option
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":encryption-option is required"))
     :type (common-lisp:or encryption-option common-lisp:null))
    (kms-key common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -303,8 +319,10 @@
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (get-named-query-input (:copier common-lisp:nil))
-   (named-query-id (common-lisp:error ":named-query-id is required") :type
-    (common-lisp:or named-query-id common-lisp:null)))
+   (named-query-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":named-query-id is required"))
+    :type (common-lisp:or named-query-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-named-query-input 'make-get-named-query-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -335,7 +353,9 @@
                                                 'named-query))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-query-execution-input (:copier common-lisp:nil))
-   (query-execution-id (common-lisp:error ":query-execution-id is required")
+   (query-execution-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":query-execution-id is required"))
     :type (common-lisp:or query-execution-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-query-execution-input
@@ -369,7 +389,9 @@
                                                 'query-execution))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-query-results-input (:copier common-lisp:nil))
-   (query-execution-id (common-lisp:error ":query-execution-id is required")
+   (query-execution-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":query-execution-id is required"))
     :type (common-lisp:or query-execution-id common-lisp:null))
    (next-token common-lisp:nil :type (common-lisp:or token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -560,14 +582,19 @@
 (common-lisp:deftype name-string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (named-query (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or name-string common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or name-string common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description-string common-lisp:null))
-   (database (common-lisp:error ":database is required") :type
-    (common-lisp:or database-string common-lisp:null))
-   (query-string (common-lisp:error ":query-string is required") :type
-    (common-lisp:or query-string common-lisp:null))
+   (database
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":database is required"))
+    :type (common-lisp:or database-string common-lisp:null))
+   (query-string
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":query-string is required"))
+    :type (common-lisp:or query-string common-lisp:null))
    (named-query-id common-lisp:nil :type
     (common-lisp:or named-query-id common-lisp:null)))
  (common-lisp:export (common-lisp:list 'named-query 'make-named-query))
@@ -761,8 +788,10 @@
 (common-lisp:deftype query-string () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (result-configuration (:copier common-lisp:nil))
-   (output-location (common-lisp:error ":output-location is required") :type
-    (common-lisp:or string common-lisp:null))
+   (output-location
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":output-location is required"))
+    :type (common-lisp:or string common-lisp:null))
    (encryption-configuration common-lisp:nil :type
     (common-lisp:or encryption-configuration common-lisp:null)))
  (common-lisp:export
@@ -834,15 +863,18 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (start-query-execution-input (:copier common-lisp:nil))
-   (query-string (common-lisp:error ":query-string is required") :type
-    (common-lisp:or query-string common-lisp:null))
+   (query-string
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":query-string is required"))
+    :type (common-lisp:or query-string common-lisp:null))
    (client-request-token common-lisp:nil :type
     (common-lisp:or idempotency-token common-lisp:null))
    (query-execution-context common-lisp:nil :type
     (common-lisp:or query-execution-context common-lisp:null))
    (result-configuration
-    (common-lisp:error ":result-configuration is required") :type
-    (common-lisp:or result-configuration common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":result-configuration is required"))
+    :type (common-lisp:or result-configuration common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-query-execution-input
                     'make-start-query-execution-input))
@@ -891,7 +923,9 @@
                                                 'query-execution-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (stop-query-execution-input (:copier common-lisp:nil))
-   (query-execution-id (common-lisp:error ":query-execution-id is required")
+   (query-execution-id
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":query-execution-id is required"))
     :type (common-lisp:or query-execution-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-query-execution-input
@@ -1043,7 +1077,9 @@
                       (common-lisp:apply 'make-batch-get-named-query-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "athena" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "athena") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetNamedQuery")
                                   ("Version" ,@"2017-05-18"))
@@ -1061,7 +1097,9 @@
                       (common-lisp:apply 'make-batch-get-query-execution-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "athena" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "athena") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"BatchGetQueryExecution")
                                   ("Version" ,@"2017-05-18"))
@@ -1082,7 +1120,9 @@
                       (common-lisp:apply 'make-create-named-query-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "athena" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "athena") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateNamedQuery")
                                   ("Version" ,@"2017-05-18"))
@@ -1100,7 +1140,9 @@
                       (common-lisp:apply 'make-delete-named-query-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "athena" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "athena") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteNamedQuery")
                                   ("Version" ,@"2017-05-18"))
@@ -1118,7 +1160,9 @@
                       (common-lisp:apply 'make-get-named-query-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "athena" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "athena") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetNamedQuery")
                                   ("Version" ,@"2017-05-18"))
@@ -1136,7 +1180,9 @@
                       (common-lisp:apply 'make-get-query-execution-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "athena" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "athena") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetQueryExecution")
                                   ("Version" ,@"2017-05-18"))
@@ -1156,7 +1202,9 @@
                       (common-lisp:apply 'make-get-query-results-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "athena" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "athena") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetQueryResults")
                                   ("Version" ,@"2017-05-18"))
@@ -1174,7 +1222,9 @@
                       (common-lisp:apply 'make-list-named-queries-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "athena" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "athena") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListNamedQueries")
                                   ("Version" ,@"2017-05-18"))
@@ -1192,7 +1242,9 @@
                       (common-lisp:apply 'make-list-query-executions-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "athena" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "athena") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListQueryExecutions")
                                   ("Version" ,@"2017-05-18"))
@@ -1213,7 +1265,9 @@
                       (common-lisp:apply 'make-start-query-execution-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "athena" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "athena") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartQueryExecution")
                                   ("Version" ,@"2017-05-18"))
@@ -1231,7 +1285,9 @@
                       (common-lisp:apply 'make-stop-query-execution-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "athena" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((6) common-lisp:base-char . "athena") :method
+                               :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopQueryExecution")
                                   ("Version" ,@"2017-05-18"))

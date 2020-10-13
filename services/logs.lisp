@@ -7,12 +7,14 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/logs)
+
 (common-lisp:deftype access-policy () 'common-lisp:string)
 (common-lisp:deftype arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (cancel-export-task-request (:copier common-lisp:nil))
-   (task-id (common-lisp:error ":taskid is required") :type
-    (common-lisp:or export-task-id common-lisp:null)))
+   (task-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":taskid is required"))
+    :type (common-lisp:or export-task-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-export-task-request
                     'make-cancel-export-task-request))
@@ -30,16 +32,21 @@
  (common-lisp:defstruct (create-export-task-request (:copier common-lisp:nil))
    (task-name common-lisp:nil :type
     (common-lisp:or export-task-name common-lisp:null))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
    (log-stream-name-prefix common-lisp:nil :type
     (common-lisp:or log-stream-name common-lisp:null))
-   (from (common-lisp:error ":from is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (to (common-lisp:error ":to is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (destination (common-lisp:error ":destination is required") :type
-    (common-lisp:or export-destination-bucket common-lisp:null))
+   (from
+    (common-lisp:error #A((17) common-lisp:base-char . ":from is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (to (common-lisp:error #A((15) common-lisp:base-char . ":to is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (destination
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":destination is required"))
+    :type (common-lisp:or export-destination-bucket common-lisp:null))
    (destination-prefix common-lisp:nil :type
     (common-lisp:or export-destination-prefix common-lisp:null)))
  (common-lisp:export
@@ -104,8 +111,10 @@
                                                 'task-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-log-group-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-log-group-request 'make-create-log-group-request))
@@ -126,10 +135,14 @@
                                                 'tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-log-stream-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
-   (log-stream-name (common-lisp:error ":logstreamname is required") :type
-    (common-lisp:or log-stream-name common-lisp:null)))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
+   (log-stream-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":logstreamname is required"))
+    :type (common-lisp:or log-stream-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-log-stream-request
                     'make-create-log-stream-request))
@@ -170,8 +183,10 @@
 (common-lisp:deftype default-value () 'common-lisp:double-float)
 (common-lisp:progn
  (common-lisp:defstruct (delete-destination-request (:copier common-lisp:nil))
-   (destination-name (common-lisp:error ":destinationname is required") :type
-    (common-lisp:or destination-name common-lisp:null)))
+   (destination-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":destinationname is required"))
+    :type (common-lisp:or destination-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-destination-request
                     'make-delete-destination-request))
@@ -187,8 +202,10 @@
                                                 'destination-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-log-group-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null)))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-log-group-request 'make-delete-log-group-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -203,10 +220,14 @@
                                                 'log-group-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-log-stream-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
-   (log-stream-name (common-lisp:error ":logstreamname is required") :type
-    (common-lisp:or log-stream-name common-lisp:null)))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
+   (log-stream-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":logstreamname is required"))
+    :type (common-lisp:or log-stream-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-log-stream-request
                     'make-delete-log-stream-request))
@@ -228,10 +249,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-metric-filter-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
-   (filter-name (common-lisp:error ":filtername is required") :type
-    (common-lisp:or filter-name common-lisp:null)))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
+   (filter-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":filtername is required"))
+    :type (common-lisp:or filter-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-metric-filter-request
                     'make-delete-metric-filter-request))
@@ -253,8 +278,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-retention-policy-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null)))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-retention-policy-request
                     'make-delete-retention-policy-request))
@@ -271,10 +298,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-subscription-filter-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
-   (filter-name (common-lisp:error ":filtername is required") :type
-    (common-lisp:or filter-name common-lisp:null)))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
+   (filter-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":filtername is required"))
+    :type (common-lisp:or filter-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-subscription-filter-request
                     'make-delete-subscription-filter-request))
@@ -475,8 +506,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-log-streams-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
    (log-stream-name-prefix common-lisp:nil :type
     (common-lisp:or log-stream-name common-lisp:null))
    (order-by common-lisp:nil :type (common-lisp:or order-by common-lisp:null))
@@ -630,8 +663,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-subscription-filters-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
    (filter-name-prefix common-lisp:nil :type
     (common-lisp:or filter-name common-lisp:null))
    (next-token common-lisp:nil :type
@@ -885,8 +920,10 @@
 (common-lisp:deftype filter-count () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (filter-log-events-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
    (log-stream-names common-lisp:nil :type
     (common-lisp:or input-log-stream-names common-lisp:null))
    (start-time common-lisp:nil :type
@@ -1031,10 +1068,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (get-log-events-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
-   (log-stream-name (common-lisp:error ":logstreamname is required") :type
-    (common-lisp:or log-stream-name common-lisp:null))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
+   (log-stream-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":logstreamname is required"))
+    :type (common-lisp:or log-stream-name common-lisp:null))
    (start-time common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
    (end-time common-lisp:nil :type (common-lisp:or timestamp common-lisp:null))
@@ -1117,10 +1158,12 @@
                                                 'next-backward-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (input-log-event (:copier common-lisp:nil))
-   (timestamp (common-lisp:error ":string is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or event-message common-lisp:null)))
+   (timestamp
+    (common-lisp:error #A((19) common-lisp:base-char . ":string is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or event-message common-lisp:null)))
  (common-lisp:export (common-lisp:list 'input-log-event 'make-input-log-event))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape input-log-event))
@@ -1203,8 +1246,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (list-tags-log-group-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null)))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-log-group-request
                     'make-list-tags-log-group-request))
@@ -1454,12 +1499,18 @@
 (common-lisp:deftype metric-namespace () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (metric-transformation (:copier common-lisp:nil))
-   (metric-name (common-lisp:error ":metricname is required") :type
-    (common-lisp:or metric-name common-lisp:null))
-   (metric-namespace (common-lisp:error ":metricnamespace is required") :type
-    (common-lisp:or metric-namespace common-lisp:null))
-   (metric-value (common-lisp:error ":metricvalue is required") :type
-    (common-lisp:or metric-value common-lisp:null))
+   (metric-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":metricname is required"))
+    :type (common-lisp:or metric-name common-lisp:null))
+   (metric-namespace
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":metricnamespace is required"))
+    :type (common-lisp:or metric-namespace common-lisp:null))
+   (metric-value
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metricvalue is required"))
+    :type (common-lisp:or metric-value common-lisp:null))
    (default-value common-lisp:nil :type
     (common-lisp:or default-value common-lisp:null)))
  (common-lisp:export
@@ -1550,10 +1601,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-destination-policy-request (:copier common-lisp:nil))
-   (destination-name (common-lisp:error ":destinationname is required") :type
-    (common-lisp:or destination-name common-lisp:null))
-   (access-policy (common-lisp:error ":accesspolicy is required") :type
-    (common-lisp:or access-policy common-lisp:null)))
+   (destination-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":destinationname is required"))
+    :type (common-lisp:or destination-name common-lisp:null))
+   (access-policy
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":accesspolicy is required"))
+    :type (common-lisp:or access-policy common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-destination-policy-request
                     'make-put-destination-policy-request))
@@ -1574,12 +1629,17 @@
                                                 'access-policy))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-destination-request (:copier common-lisp:nil))
-   (destination-name (common-lisp:error ":destinationname is required") :type
-    (common-lisp:or destination-name common-lisp:null))
-   (target-arn (common-lisp:error ":targetarn is required") :type
-    (common-lisp:or target-arn common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or role-arn common-lisp:null)))
+   (destination-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":destinationname is required"))
+    :type (common-lisp:or destination-name common-lisp:null))
+   (target-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":targetarn is required"))
+    :type (common-lisp:or target-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or role-arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-destination-request 'make-put-destination-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1620,12 +1680,18 @@
                                                 'destination))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-log-events-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
-   (log-stream-name (common-lisp:error ":logstreamname is required") :type
-    (common-lisp:or log-stream-name common-lisp:null))
-   (log-events (common-lisp:error ":logevents is required") :type
-    (common-lisp:or input-log-events common-lisp:null))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
+   (log-stream-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":logstreamname is required"))
+    :type (common-lisp:or log-stream-name common-lisp:null))
+   (log-events
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":logevents is required"))
+    :type (common-lisp:or input-log-events common-lisp:null))
    (sequence-token common-lisp:nil :type
     (common-lisp:or sequence-token common-lisp:null)))
  (common-lisp:export
@@ -1680,15 +1746,22 @@
                                                 'rejected-log-events-info))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-metric-filter-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
-   (filter-name (common-lisp:error ":filtername is required") :type
-    (common-lisp:or filter-name common-lisp:null))
-   (filter-pattern (common-lisp:error ":filterpattern is required") :type
-    (common-lisp:or filter-pattern common-lisp:null))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
+   (filter-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":filtername is required"))
+    :type (common-lisp:or filter-name common-lisp:null))
+   (filter-pattern
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":filterpattern is required"))
+    :type (common-lisp:or filter-pattern common-lisp:null))
    (metric-transformations
-    (common-lisp:error ":metrictransformations is required") :type
-    (common-lisp:or metric-transformations common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":metrictransformations is required"))
+    :type (common-lisp:or metric-transformations common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-metric-filter-request
                     'make-put-metric-filter-request))
@@ -1720,10 +1793,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-retention-policy-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
-   (retention-in-days (common-lisp:error ":retentionindays is required") :type
-    (common-lisp:or days common-lisp:null)))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
+   (retention-in-days
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":retentionindays is required"))
+    :type (common-lisp:or days common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-retention-policy-request
                     'make-put-retention-policy-request))
@@ -1745,14 +1822,22 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (put-subscription-filter-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
-   (filter-name (common-lisp:error ":filtername is required") :type
-    (common-lisp:or filter-name common-lisp:null))
-   (filter-pattern (common-lisp:error ":filterpattern is required") :type
-    (common-lisp:or filter-pattern common-lisp:null))
-   (destination-arn (common-lisp:error ":destinationarn is required") :type
-    (common-lisp:or destination-arn common-lisp:null))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
+   (filter-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":filtername is required"))
+    :type (common-lisp:or filter-name common-lisp:null))
+   (filter-pattern
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":filterpattern is required"))
+    :type (common-lisp:or filter-pattern common-lisp:null))
+   (destination-arn
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":destinationarn is required"))
+    :type (common-lisp:or destination-arn common-lisp:null))
    (role-arn common-lisp:nil :type (common-lisp:or role-arn common-lisp:null))
    (distribution common-lisp:nil :type
     (common-lisp:or distribution common-lisp:null)))
@@ -1963,10 +2048,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag-log-group-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tags common-lisp:null)))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'tag-log-group-request 'make-tag-log-group-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2002,9 +2090,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (test-metric-filter-request (:copier common-lisp:nil))
-   (filter-pattern (common-lisp:error ":filterpattern is required") :type
-    (common-lisp:or filter-pattern common-lisp:null))
-   (log-event-messages (common-lisp:error ":logeventmessages is required")
+   (filter-pattern
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":filterpattern is required"))
+    :type (common-lisp:or filter-pattern common-lisp:null))
+   (log-event-messages
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":logeventmessages is required"))
     :type (common-lisp:or test-event-messages common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'test-metric-filter-request
@@ -2045,10 +2137,13 @@
 (common-lisp:deftype token () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (untag-log-group-request (:copier common-lisp:nil))
-   (log-group-name (common-lisp:error ":loggroupname is required") :type
-    (common-lisp:or log-group-name common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (log-group-name
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":loggroupname is required"))
+    :type (common-lisp:or log-group-name common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'untag-log-group-request 'make-untag-log-group-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2077,7 +2172,8 @@
                       (common-lisp:apply 'make-cancel-export-task-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelExportTask")
                                   ("Version" ,@"2014-03-28"))
@@ -2099,7 +2195,8 @@
                       (common-lisp:apply 'make-create-export-task-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateExportTask")
                                   ("Version" ,@"2014-03-28"))
@@ -2117,7 +2214,8 @@
                       (common-lisp:apply 'make-create-log-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLogGroup")
                                   ("Version" ,@"2014-03-28"))
@@ -2135,7 +2233,8 @@
                       (common-lisp:apply 'make-create-log-stream-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateLogStream")
                                   ("Version" ,@"2014-03-28"))
@@ -2153,7 +2252,8 @@
                       (common-lisp:apply 'make-delete-destination-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDestination")
                                   ("Version" ,@"2014-03-28"))
@@ -2171,7 +2271,8 @@
                       (common-lisp:apply 'make-delete-log-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLogGroup")
                                   ("Version" ,@"2014-03-28"))
@@ -2189,7 +2290,8 @@
                       (common-lisp:apply 'make-delete-log-stream-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteLogStream")
                                   ("Version" ,@"2014-03-28"))
@@ -2207,7 +2309,8 @@
                       (common-lisp:apply 'make-delete-metric-filter-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteMetricFilter")
                                   ("Version" ,@"2014-03-28"))
@@ -2225,7 +2328,8 @@
                       (common-lisp:apply 'make-delete-retention-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRetentionPolicy")
                                   ("Version" ,@"2014-03-28"))
@@ -2244,7 +2348,8 @@
                        'make-delete-subscription-filter-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSubscriptionFilter")
                                   ("Version" ,@"2014-03-28"))
@@ -2263,7 +2368,8 @@
                       (common-lisp:apply 'make-describe-destinations-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDestinations")
                                   ("Version" ,@"2014-03-28"))
@@ -2282,7 +2388,8 @@
                       (common-lisp:apply 'make-describe-export-tasks-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeExportTasks")
                                   ("Version" ,@"2014-03-28"))
@@ -2301,7 +2408,8 @@
                       (common-lisp:apply 'make-describe-log-groups-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLogGroups")
                                   ("Version" ,@"2014-03-28"))
@@ -2322,7 +2430,8 @@
                       (common-lisp:apply 'make-describe-log-streams-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeLogStreams")
                                   ("Version" ,@"2014-03-28"))
@@ -2343,7 +2452,8 @@
                       (common-lisp:apply 'make-describe-metric-filters-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeMetricFilters")
                                   ("Version" ,@"2014-03-28"))
@@ -2364,7 +2474,8 @@
                        'make-describe-subscription-filters-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeSubscriptionFilters")
                                   ("Version" ,@"2014-03-28"))
@@ -2386,7 +2497,8 @@
                       (common-lisp:apply 'make-filter-log-events-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"FilterLogEvents")
                                   ("Version" ,@"2014-03-28"))
@@ -2407,7 +2519,8 @@
                       (common-lisp:apply 'make-get-log-events-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetLogEvents")
                                   ("Version" ,@"2014-03-28"))
@@ -2425,7 +2538,8 @@
                       (common-lisp:apply 'make-list-tags-log-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsLogGroup")
                                   ("Version" ,@"2014-03-28"))
@@ -2444,7 +2558,8 @@
                       (common-lisp:apply 'make-put-destination-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutDestination")
                                   ("Version" ,@"2014-03-28"))
@@ -2462,7 +2577,8 @@
                       (common-lisp:apply 'make-put-destination-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutDestinationPolicy")
                                   ("Version" ,@"2014-03-28"))
@@ -2483,7 +2599,8 @@
                       (common-lisp:apply 'make-put-log-events-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutLogEvents")
                                   ("Version" ,@"2014-03-28"))
@@ -2504,7 +2621,8 @@
                       (common-lisp:apply 'make-put-metric-filter-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutMetricFilter")
                                   ("Version" ,@"2014-03-28"))
@@ -2523,7 +2641,8 @@
                       (common-lisp:apply 'make-put-retention-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutRetentionPolicy")
                                   ("Version" ,@"2014-03-28"))
@@ -2544,7 +2663,8 @@
                       (common-lisp:apply 'make-put-subscription-filter-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutSubscriptionFilter")
                                   ("Version" ,@"2014-03-28"))
@@ -2562,7 +2682,8 @@
                       (common-lisp:apply 'make-tag-log-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TagLogGroup")
                                   ("Version" ,@"2014-03-28"))
@@ -2581,7 +2702,8 @@
                       (common-lisp:apply 'make-test-metric-filter-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"TestMetricFilter")
                                   ("Version" ,@"2014-03-28"))
@@ -2599,7 +2721,8 @@
                       (common-lisp:apply 'make-untag-log-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "logs" :method :post :params
+      (aws-sdk/api:aws-request :service #A((4) common-lisp:base-char . "logs")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UntagLogGroup")
                                   ("Version" ,@"2014-03-28"))

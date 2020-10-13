@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/opsworkscm)
+
 (common-lisp:progn
  (common-lisp:defstruct (account-attribute (:copier common-lisp:nil))
    (name common-lisp:nil :type (common-lisp:or string common-lisp:null))
@@ -42,11 +43,17 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (associate-node-request (:copier common-lisp:nil))
-   (server-name (common-lisp:error ":server-name is required") :type
-    (common-lisp:or server-name common-lisp:null))
-   (node-name (common-lisp:error ":node-name is required") :type
-    (common-lisp:or node-name common-lisp:null))
-   (engine-attributes (common-lisp:error ":engine-attributes is required")
+   (server-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":server-name is required"))
+    :type (common-lisp:or server-name common-lisp:null))
+   (node-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":node-name is required"))
+    :type (common-lisp:or node-name common-lisp:null))
+   (engine-attributes
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":engine-attributes is required"))
     :type (common-lisp:or engine-attributes common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'associate-node-request 'make-associate-node-request))
@@ -268,8 +275,10 @@
 (common-lisp:deftype boolean () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (create-backup-request (:copier common-lisp:nil))
-   (server-name (common-lisp:error ":server-name is required") :type
-    (common-lisp:or server-name common-lisp:null))
+   (server-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":server-name is required"))
+    :type (common-lisp:or server-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -319,13 +328,18 @@
     (common-lisp:or engine-attributes common-lisp:null))
    (backup-retention-count common-lisp:nil :type
     (common-lisp:or backup-retention-count-definition common-lisp:null))
-   (server-name (common-lisp:error ":server-name is required") :type
-    (common-lisp:or server-name common-lisp:null))
+   (server-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":server-name is required"))
+    :type (common-lisp:or server-name common-lisp:null))
    (instance-profile-arn
-    (common-lisp:error ":instance-profile-arn is required") :type
-    (common-lisp:or instance-profile-arn common-lisp:null))
-   (instance-type (common-lisp:error ":instance-type is required") :type
-    (common-lisp:or string common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":instance-profile-arn is required"))
+    :type (common-lisp:or instance-profile-arn common-lisp:null))
+   (instance-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":instance-type is required"))
+    :type (common-lisp:or string common-lisp:null))
    (key-pair common-lisp:nil :type (common-lisp:or key-pair common-lisp:null))
    (preferred-maintenance-window common-lisp:nil :type
     (common-lisp:or time-window-definition common-lisp:null))
@@ -333,8 +347,10 @@
     (common-lisp:or time-window-definition common-lisp:null))
    (security-group-ids common-lisp:nil :type
     (common-lisp:or strings common-lisp:null))
-   (service-role-arn (common-lisp:error ":service-role-arn is required") :type
-    (common-lisp:or service-role-arn common-lisp:null))
+   (service-role-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":service-role-arn is required"))
+    :type (common-lisp:or service-role-arn common-lisp:null))
    (subnet-ids common-lisp:nil :type (common-lisp:or strings common-lisp:null))
    (backup-id common-lisp:nil :type
     (common-lisp:or backup-id common-lisp:null)))
@@ -447,8 +463,10 @@
                                                 'server))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-backup-request (:copier common-lisp:nil))
-   (backup-id (common-lisp:error ":backup-id is required") :type
-    (common-lisp:or backup-id common-lisp:null)))
+   (backup-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":backup-id is required"))
+    :type (common-lisp:or backup-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-backup-request 'make-delete-backup-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -472,8 +490,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-server-request (:copier common-lisp:nil))
-   (server-name (common-lisp:error ":server-name is required") :type
-    (common-lisp:or server-name common-lisp:null)))
+   (server-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":server-name is required"))
+    :type (common-lisp:or server-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-server-request 'make-delete-server-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -585,8 +605,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-events-request (:copier common-lisp:nil))
-   (server-name (common-lisp:error ":server-name is required") :type
-    (common-lisp:or server-name common-lisp:null))
+   (server-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":server-name is required"))
+    :type (common-lisp:or server-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -639,10 +661,14 @@
  (common-lisp:defstruct
      (describe-node-association-status-request (:copier common-lisp:nil))
    (node-association-status-token
-    (common-lisp:error ":node-association-status-token is required") :type
-    (common-lisp:or node-association-status-token common-lisp:null))
-   (server-name (common-lisp:error ":server-name is required") :type
-    (common-lisp:or server-name common-lisp:null)))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":node-association-status-token is required"))
+    :type (common-lisp:or node-association-status-token common-lisp:null))
+   (server-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":server-name is required"))
+    :type (common-lisp:or server-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-node-association-status-request
                     'make-describe-node-association-status-request))
@@ -733,10 +759,14 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (disassociate-node-request (:copier common-lisp:nil))
-   (server-name (common-lisp:error ":server-name is required") :type
-    (common-lisp:or server-name common-lisp:null))
-   (node-name (common-lisp:error ":node-name is required") :type
-    (common-lisp:or node-name common-lisp:null))
+   (server-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":server-name is required"))
+    :type (common-lisp:or server-name common-lisp:null))
+   (node-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":node-name is required"))
+    :type (common-lisp:or node-name common-lisp:null))
    (engine-attributes common-lisp:nil :type
     (common-lisp:or engine-attributes common-lisp:null)))
  (common-lisp:export
@@ -902,10 +932,14 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (restore-server-request (:copier common-lisp:nil))
-   (backup-id (common-lisp:error ":backup-id is required") :type
-    (common-lisp:or backup-id common-lisp:null))
-   (server-name (common-lisp:error ":server-name is required") :type
-    (common-lisp:or server-name common-lisp:null))
+   (backup-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":backup-id is required"))
+    :type (common-lisp:or backup-id common-lisp:null))
+   (server-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":server-name is required"))
+    :type (common-lisp:or server-name common-lisp:null))
    (instance-type common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
    (key-pair common-lisp:nil :type (common-lisp:or key-pair common-lisp:null)))
@@ -1157,8 +1191,10 @@
 (common-lisp:deftype service-role-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (start-maintenance-request (:copier common-lisp:nil))
-   (server-name (common-lisp:error ":server-name is required") :type
-    (common-lisp:or server-name common-lisp:null)))
+   (server-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":server-name is required"))
+    :type (common-lisp:or server-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-maintenance-request
                     'make-start-maintenance-request))
@@ -1201,10 +1237,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-server-engine-attributes-request (:copier common-lisp:nil))
-   (server-name (common-lisp:error ":server-name is required") :type
-    (common-lisp:or server-name common-lisp:null))
-   (attribute-name (common-lisp:error ":attribute-name is required") :type
-    (common-lisp:or attribute-name common-lisp:null))
+   (server-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":server-name is required"))
+    :type (common-lisp:or server-name common-lisp:null))
+   (attribute-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":attribute-name is required"))
+    :type (common-lisp:or attribute-name common-lisp:null))
    (attribute-value common-lisp:nil :type
     (common-lisp:or attribute-value common-lisp:null)))
  (common-lisp:export
@@ -1253,8 +1293,10 @@
     (common-lisp:or boolean common-lisp:null))
    (backup-retention-count common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
-   (server-name (common-lisp:error ":server-name is required") :type
-    (common-lisp:or server-name common-lisp:null))
+   (server-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":server-name is required"))
+    :type (common-lisp:or server-name common-lisp:null))
    (preferred-maintenance-window common-lisp:nil :type
     (common-lisp:or time-window-definition common-lisp:null))
    (preferred-backup-window common-lisp:nil :type

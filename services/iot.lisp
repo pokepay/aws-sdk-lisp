@@ -7,11 +7,14 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/iot)
+
 (common-lisp:progn
  (common-lisp:defstruct
      (accept-certificate-transfer-request (:copier common-lisp:nil))
-   (certificate-id (common-lisp:error ":certificateid is required") :type
-    (common-lisp:or certificate-id common-lisp:null))
+   (certificate-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":certificateid is required"))
+    :type (common-lisp:or certificate-id common-lisp:null))
    (set-as-active common-lisp:nil :type
     (common-lisp:or set-as-active common-lisp:null)))
  (common-lisp:export
@@ -139,10 +142,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (attach-principal-policy-request (:copier common-lisp:nil))
-   (policy-name (common-lisp:error ":policyname is required") :type
-    (common-lisp:or policy-name common-lisp:null))
-   (principal (common-lisp:error ":principal is required") :type
-    (common-lisp:or principal common-lisp:null)))
+   (policy-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policyname is required"))
+    :type (common-lisp:or policy-name common-lisp:null))
+   (principal
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":principal is required"))
+    :type (common-lisp:or principal common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-principal-policy-request
                     'make-attach-principal-policy-request))
@@ -164,10 +171,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (attach-thing-principal-request (:copier common-lisp:nil))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null))
-   (principal (common-lisp:error ":principal is required") :type
-    (common-lisp:or principal common-lisp:null)))
+   (thing-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":thingname is required"))
+    :type (common-lisp:or thing-name common-lisp:null))
+   (principal
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":principal is required"))
+    :type (common-lisp:or principal common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'attach-thing-principal-request
                     'make-attach-thing-principal-request))
@@ -336,8 +347,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (cancel-certificate-transfer-request (:copier common-lisp:nil))
-   (certificate-id (common-lisp:error ":certificateid is required") :type
-    (common-lisp:or certificate-id common-lisp:null)))
+   (certificate-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":certificateid is required"))
+    :type (common-lisp:or certificate-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cancel-certificate-transfer-request
                     'make-cancel-certificate-transfer-request))
@@ -533,14 +546,21 @@
 (common-lisp:deftype client-id () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (cloudwatch-alarm-action (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or aws-arn common-lisp:null))
-   (alarm-name (common-lisp:error ":alarmname is required") :type
-    (common-lisp:or alarm-name common-lisp:null))
-   (state-reason (common-lisp:error ":statereason is required") :type
-    (common-lisp:or state-reason common-lisp:null))
-   (state-value (common-lisp:error ":statevalue is required") :type
-    (common-lisp:or state-value common-lisp:null)))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or aws-arn common-lisp:null))
+   (alarm-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":alarmname is required"))
+    :type (common-lisp:or alarm-name common-lisp:null))
+   (state-reason
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":statereason is required"))
+    :type (common-lisp:or state-reason common-lisp:null))
+   (state-value
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":statevalue is required"))
+    :type (common-lisp:or state-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'cloudwatch-alarm-action 'make-cloudwatch-alarm-action))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -570,16 +590,25 @@
                                                 'state-value))))))
 (common-lisp:progn
  (common-lisp:defstruct (cloudwatch-metric-action (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or aws-arn common-lisp:null))
-   (metric-namespace (common-lisp:error ":metricnamespace is required") :type
-    (common-lisp:or metric-namespace common-lisp:null))
-   (metric-name (common-lisp:error ":metricname is required") :type
-    (common-lisp:or metric-name common-lisp:null))
-   (metric-value (common-lisp:error ":metricvalue is required") :type
-    (common-lisp:or metric-value common-lisp:null))
-   (metric-unit (common-lisp:error ":metricunit is required") :type
-    (common-lisp:or metric-unit common-lisp:null))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or aws-arn common-lisp:null))
+   (metric-namespace
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":metricnamespace is required"))
+    :type (common-lisp:or metric-namespace common-lisp:null))
+   (metric-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":metricname is required"))
+    :type (common-lisp:or metric-name common-lisp:null))
+   (metric-value
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":metricvalue is required"))
+    :type (common-lisp:or metric-value common-lisp:null))
+   (metric-unit
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":metricunit is required"))
+    :type (common-lisp:or metric-unit common-lisp:null))
    (metric-timestamp common-lisp:nil :type
     (common-lisp:or metric-timestamp common-lisp:null)))
  (common-lisp:export
@@ -623,8 +652,9 @@
  (common-lisp:defstruct
      (create-certificate-from-csr-request (:copier common-lisp:nil))
    (certificate-signing-request
-    (common-lisp:error ":certificatesigningrequest is required") :type
-    (common-lisp:or certificate-signing-request common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":certificatesigningrequest is required"))
+    :type (common-lisp:or certificate-signing-request common-lisp:null))
    (set-as-active common-lisp:nil :type
     (common-lisp:or set-as-active common-lisp:null)))
  (common-lisp:export
@@ -735,10 +765,14 @@
                                                 'key-pair))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-policy-request (:copier common-lisp:nil))
-   (policy-name (common-lisp:error ":policyname is required") :type
-    (common-lisp:or policy-name common-lisp:null))
-   (policy-document (common-lisp:error ":policydocument is required") :type
-    (common-lisp:or policy-document common-lisp:null)))
+   (policy-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policyname is required"))
+    :type (common-lisp:or policy-name common-lisp:null))
+   (policy-document
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":policydocument is required"))
+    :type (common-lisp:or policy-document common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-policy-request 'make-create-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -796,10 +830,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-policy-version-request (:copier common-lisp:nil))
-   (policy-name (common-lisp:error ":policyname is required") :type
-    (common-lisp:or policy-name common-lisp:null))
-   (policy-document (common-lisp:error ":policydocument is required") :type
-    (common-lisp:or policy-document common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policyname is required"))
+    :type (common-lisp:or policy-name common-lisp:null))
+   (policy-document
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":policydocument is required"))
+    :type (common-lisp:or policy-document common-lisp:null))
    (set-as-default common-lisp:nil :type
     (common-lisp:or set-as-default common-lisp:null)))
  (common-lisp:export
@@ -866,8 +904,10 @@
                                                 'is-default-version))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-thing-request (:copier common-lisp:nil))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null))
+   (thing-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":thingname is required"))
+    :type (common-lisp:or thing-name common-lisp:null))
    (thing-type-name common-lisp:nil :type
     (common-lisp:or thing-type-name common-lisp:null))
    (attribute-payload common-lisp:nil :type
@@ -917,8 +957,10 @@
                                                 'thing-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-thing-type-request (:copier common-lisp:nil))
-   (thing-type-name (common-lisp:error ":thingtypename is required") :type
-    (common-lisp:or thing-type-name common-lisp:null))
+   (thing-type-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":thingtypename is required"))
+    :type (common-lisp:or thing-type-name common-lisp:null))
    (thing-type-properties common-lisp:nil :type
     (common-lisp:or thing-type-properties common-lisp:null)))
  (common-lisp:export
@@ -965,9 +1007,13 @@
                                                 'thing-type-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-topic-rule-request (:copier common-lisp:nil))
-   (rule-name (common-lisp:error ":rulename is required") :type
-    (common-lisp:or rule-name common-lisp:null))
-   (topic-rule-payload (common-lisp:error ":topicrulepayload is required")
+   (rule-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":rulename is required"))
+    :type (common-lisp:or rule-name common-lisp:null))
+   (topic-rule-payload
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":topicrulepayload is required"))
     :type (common-lisp:or topic-rule-payload common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-topic-rule-request
@@ -993,8 +1039,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-cacertificate-request (:copier common-lisp:nil))
-   (certificate-id (common-lisp:error ":certificateid is required") :type
-    (common-lisp:or certificate-id common-lisp:null)))
+   (certificate-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":certificateid is required"))
+    :type (common-lisp:or certificate-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-cacertificate-request
                     'make-delete-cacertificate-request))
@@ -1021,8 +1069,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-certificate-request (:copier common-lisp:nil))
-   (certificate-id (common-lisp:error ":certificateid is required") :type
-    (common-lisp:or certificate-id common-lisp:null)))
+   (certificate-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":certificateid is required"))
+    :type (common-lisp:or certificate-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-certificate-request
                     'make-delete-certificate-request))
@@ -1055,8 +1105,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-policy-request (:copier common-lisp:nil))
-   (policy-name (common-lisp:error ":policyname is required") :type
-    (common-lisp:or policy-name common-lisp:null)))
+   (policy-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policyname is required"))
+    :type (common-lisp:or policy-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-policy-request 'make-delete-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1072,10 +1124,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-policy-version-request (:copier common-lisp:nil))
-   (policy-name (common-lisp:error ":policyname is required") :type
-    (common-lisp:or policy-name common-lisp:null))
-   (policy-version-id (common-lisp:error ":policyversionid is required") :type
-    (common-lisp:or policy-version-id common-lisp:null)))
+   (policy-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policyname is required"))
+    :type (common-lisp:or policy-name common-lisp:null))
+   (policy-version-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":policyversionid is required"))
+    :type (common-lisp:or policy-version-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-policy-version-request
                     'make-delete-policy-version-request))
@@ -1118,8 +1174,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-thing-request (:copier common-lisp:nil))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null))
+   (thing-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":thingname is required"))
+    :type (common-lisp:or thing-name common-lisp:null))
    (expected-version common-lisp:nil :type
     (common-lisp:or optional-version common-lisp:null)))
  (common-lisp:export
@@ -1148,8 +1206,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-thing-type-request (:copier common-lisp:nil))
-   (thing-type-name (common-lisp:error ":thingtypename is required") :type
-    (common-lisp:or thing-type-name common-lisp:null)))
+   (thing-type-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":thingtypename is required"))
+    :type (common-lisp:or thing-type-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-thing-type-request
                     'make-delete-thing-type-request))
@@ -1175,8 +1235,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (delete-topic-rule-request (:copier common-lisp:nil))
-   (rule-name (common-lisp:error ":rulename is required") :type
-    (common-lisp:or rule-name common-lisp:null)))
+   (rule-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":rulename is required"))
+    :type (common-lisp:or rule-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-topic-rule-request
                     'make-delete-topic-rule-request))
@@ -1194,8 +1256,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (deprecate-thing-type-request (:copier common-lisp:nil))
-   (thing-type-name (common-lisp:error ":thingtypename is required") :type
-    (common-lisp:or thing-type-name common-lisp:null))
+   (thing-type-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":thingtypename is required"))
+    :type (common-lisp:or thing-type-name common-lisp:null))
    (undo-deprecate common-lisp:nil :type
     (common-lisp:or undo-deprecate common-lisp:null)))
  (common-lisp:export
@@ -1231,8 +1295,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-cacertificate-request (:copier common-lisp:nil))
-   (certificate-id (common-lisp:error ":certificateid is required") :type
-    (common-lisp:or certificate-id common-lisp:null)))
+   (certificate-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":certificateid is required"))
+    :type (common-lisp:or certificate-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-cacertificate-request
                     'make-describe-cacertificate-request))
@@ -1267,8 +1333,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-certificate-request (:copier common-lisp:nil))
-   (certificate-id (common-lisp:error ":certificateid is required") :type
-    (common-lisp:or certificate-id common-lisp:null)))
+   (certificate-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":certificateid is required"))
+    :type (common-lisp:or certificate-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-certificate-request
                     'make-describe-certificate-request))
@@ -1329,8 +1397,10 @@
                                                 'endpoint-address))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-thing-request (:copier common-lisp:nil))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null)))
+   (thing-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":thingname is required"))
+    :type (common-lisp:or thing-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-thing-request 'make-describe-thing-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1388,8 +1458,10 @@
                                                 'version))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-thing-type-request (:copier common-lisp:nil))
-   (thing-type-name (common-lisp:error ":thingtypename is required") :type
-    (common-lisp:or thing-type-name common-lisp:null)))
+   (thing-type-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":thingtypename is required"))
+    :type (common-lisp:or thing-type-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-thing-type-request
                     'make-describe-thing-type-request))
@@ -1439,10 +1511,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (detach-principal-policy-request (:copier common-lisp:nil))
-   (policy-name (common-lisp:error ":policyname is required") :type
-    (common-lisp:or policy-name common-lisp:null))
-   (principal (common-lisp:error ":principal is required") :type
-    (common-lisp:or principal common-lisp:null)))
+   (policy-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policyname is required"))
+    :type (common-lisp:or policy-name common-lisp:null))
+   (principal
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":principal is required"))
+    :type (common-lisp:or principal common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-principal-policy-request
                     'make-detach-principal-policy-request))
@@ -1464,10 +1540,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (detach-thing-principal-request (:copier common-lisp:nil))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null))
-   (principal (common-lisp:error ":principal is required") :type
-    (common-lisp:or principal common-lisp:null)))
+   (thing-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":thingname is required"))
+    :type (common-lisp:or thing-name common-lisp:null))
+   (principal
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":principal is required"))
+    :type (common-lisp:or principal common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'detach-thing-principal-request
                     'make-detach-thing-principal-request))
@@ -1499,8 +1579,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (disable-topic-rule-request (:copier common-lisp:nil))
-   (rule-name (common-lisp:error ":rulename is required") :type
-    (common-lisp:or rule-name common-lisp:null)))
+   (rule-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":rulename is required"))
+    :type (common-lisp:or rule-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-topic-rule-request
                     'make-disable-topic-rule-request))
@@ -1516,16 +1598,23 @@
                                                 'rule-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (dynamo-dbaction (:copier common-lisp:nil))
-   (table-name (common-lisp:error ":tablename is required") :type
-    (common-lisp:or table-name common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or aws-arn common-lisp:null))
+   (table-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":tablename is required"))
+    :type (common-lisp:or table-name common-lisp:null))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or aws-arn common-lisp:null))
    (operation common-lisp:nil :type
     (common-lisp:or dynamo-operation common-lisp:null))
-   (hash-key-field (common-lisp:error ":hashkeyfield is required") :type
-    (common-lisp:or hash-key-field common-lisp:null))
-   (hash-key-value (common-lisp:error ":hashkeyvalue is required") :type
-    (common-lisp:or hash-key-value common-lisp:null))
+   (hash-key-field
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":hashkeyfield is required"))
+    :type (common-lisp:or hash-key-field common-lisp:null))
+   (hash-key-value
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":hashkeyvalue is required"))
+    :type (common-lisp:or hash-key-value common-lisp:null))
    (hash-key-type common-lisp:nil :type
     (common-lisp:or dynamo-key-type common-lisp:null))
    (range-key-field common-lisp:nil :type
@@ -1614,16 +1703,21 @@
 (common-lisp:deftype dynamo-operation () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (elasticsearch-action (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or aws-arn common-lisp:null))
-   (endpoint (common-lisp:error ":endpoint is required") :type
-    (common-lisp:or elasticsearch-endpoint common-lisp:null))
-   (index (common-lisp:error ":index is required") :type
-    (common-lisp:or elasticsearch-index common-lisp:null))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or elasticsearch-type common-lisp:null))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or elasticsearch-id common-lisp:null)))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or aws-arn common-lisp:null))
+   (endpoint
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":endpoint is required"))
+    :type (common-lisp:or elasticsearch-endpoint common-lisp:null))
+   (index
+    (common-lisp:error #A((18) common-lisp:base-char . ":index is required"))
+    :type (common-lisp:or elasticsearch-index common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or elasticsearch-type common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or elasticsearch-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'elasticsearch-action 'make-elasticsearch-action))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1660,8 +1754,10 @@
 (common-lisp:deftype elasticsearch-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (enable-topic-rule-request (:copier common-lisp:nil))
-   (rule-name (common-lisp:error ":rulename is required") :type
-    (common-lisp:or rule-name common-lisp:null)))
+   (rule-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":rulename is required"))
+    :type (common-lisp:or rule-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-topic-rule-request
                     'make-enable-topic-rule-request))
@@ -1678,9 +1774,12 @@
 (common-lisp:deftype endpoint-address () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (firehose-action (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or aws-arn common-lisp:null))
-   (delivery-stream-name (common-lisp:error ":deliverystreamname is required")
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or aws-arn common-lisp:null))
+   (delivery-stream-name
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":deliverystreamname is required"))
     :type (common-lisp:or delivery-stream-name common-lisp:null))
    (separator common-lisp:nil :type
     (common-lisp:or firehose-separator common-lisp:null)))
@@ -1743,8 +1842,10 @@
                                                 'log-level))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-policy-request (:copier common-lisp:nil))
-   (policy-name (common-lisp:error ":policyname is required") :type
-    (common-lisp:or policy-name common-lisp:null)))
+   (policy-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policyname is required"))
+    :type (common-lisp:or policy-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-policy-request 'make-get-policy-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1792,10 +1893,14 @@
                                                 'default-version-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-policy-version-request (:copier common-lisp:nil))
-   (policy-name (common-lisp:error ":policyname is required") :type
-    (common-lisp:or policy-name common-lisp:null))
-   (policy-version-id (common-lisp:error ":policyversionid is required") :type
-    (common-lisp:or policy-version-id common-lisp:null)))
+   (policy-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policyname is required"))
+    :type (common-lisp:or policy-name common-lisp:null))
+   (policy-version-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":policyversionid is required"))
+    :type (common-lisp:or policy-version-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-policy-version-request
                     'make-get-policy-version-request))
@@ -1890,8 +1995,10 @@
                                                 'registration-code))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-topic-rule-request (:copier common-lisp:nil))
-   (rule-name (common-lisp:error ":rulename is required") :type
-    (common-lisp:or rule-name common-lisp:null)))
+   (rule-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":rulename is required"))
+    :type (common-lisp:or rule-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-topic-rule-request 'make-get-topic-rule-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2000,10 +2107,13 @@
                                                 'private-key))))))
 (common-lisp:progn
  (common-lisp:defstruct (kinesis-action (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or aws-arn common-lisp:null))
-   (stream-name (common-lisp:error ":streamname is required") :type
-    (common-lisp:or stream-name common-lisp:null))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or aws-arn common-lisp:null))
+   (stream-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":streamname is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
    (partition-key common-lisp:nil :type
     (common-lisp:or partition-key common-lisp:null)))
  (common-lisp:export (common-lisp:list 'kinesis-action 'make-kinesis-action))
@@ -2027,8 +2137,10 @@
                                                 'partition-key))))))
 (common-lisp:progn
  (common-lisp:defstruct (lambda-action (:copier common-lisp:nil))
-   (function-arn (common-lisp:error ":functionarn is required") :type
-    (common-lisp:or function-arn common-lisp:null)))
+   (function-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":functionarn is required"))
+    :type (common-lisp:or function-arn common-lisp:null)))
  (common-lisp:export (common-lisp:list 'lambda-action 'make-lambda-action))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape lambda-action))
@@ -2112,8 +2224,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-certificates-by-carequest (:copier common-lisp:nil))
-   (ca-certificate-id (common-lisp:error ":cacertificateid is required") :type
-    (common-lisp:or certificate-id common-lisp:null))
+   (ca-certificate-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":cacertificateid is required"))
+    :type (common-lisp:or certificate-id common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or page-size common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null))
@@ -2336,8 +2450,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-policy-principals-request (:copier common-lisp:nil))
-   (policy-name (common-lisp:error ":policyname is required") :type
-    (common-lisp:or policy-name common-lisp:null))
+   (policy-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policyname is required"))
+    :type (common-lisp:or policy-name common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or page-size common-lisp:null))
@@ -2399,8 +2515,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-policy-versions-request (:copier common-lisp:nil))
-   (policy-name (common-lisp:error ":policyname is required") :type
-    (common-lisp:or policy-name common-lisp:null)))
+   (policy-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policyname is required"))
+    :type (common-lisp:or policy-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-policy-versions-request
                     'make-list-policy-versions-request))
@@ -2435,8 +2553,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-principal-policies-request (:copier common-lisp:nil))
-   (principal (common-lisp:error ":principal is required") :type
-    (common-lisp:or principal common-lisp:null))
+   (principal
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":principal is required"))
+    :type (common-lisp:or principal common-lisp:null))
    (marker common-lisp:nil :type (common-lisp:or marker common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or page-size common-lisp:null))
@@ -2501,8 +2621,10 @@
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
     (common-lisp:or registry-max-results common-lisp:null))
-   (principal (common-lisp:error ":principal is required") :type
-    (common-lisp:or principal common-lisp:null)))
+   (principal
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":principal is required"))
+    :type (common-lisp:or principal common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-principal-things-request
                     'make-list-principal-things-request))
@@ -2554,8 +2676,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-thing-principals-request (:copier common-lisp:nil))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null)))
+   (thing-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":thingname is required"))
+    :type (common-lisp:or thing-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-thing-principals-request
                     'make-list-thing-principals-request))
@@ -2767,8 +2891,9 @@
 (common-lisp:deftype log-level () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (logging-options-payload (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or aws-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or aws-arn common-lisp:null))
    (log-level common-lisp:nil :type
     (common-lisp:or log-level common-lisp:null)))
  (common-lisp:export
@@ -2955,8 +3080,10 @@
 (common-lisp:deftype public-key () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (put-item-input (:copier common-lisp:nil))
-   (table-name (common-lisp:error ":tablename is required") :type
-    (common-lisp:or table-name common-lisp:null)))
+   (table-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":tablename is required"))
+    :type (common-lisp:or table-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'put-item-input 'make-put-item-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape put-item-input))
@@ -2972,11 +3099,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-cacertificate-request (:copier common-lisp:nil))
-   (ca-certificate (common-lisp:error ":cacertificate is required") :type
-    (common-lisp:or certificate-pem common-lisp:null))
+   (ca-certificate
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":cacertificate is required"))
+    :type (common-lisp:or certificate-pem common-lisp:null))
    (verification-certificate
-    (common-lisp:error ":verificationcertificate is required") :type
-    (common-lisp:or certificate-pem common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":verificationcertificate is required"))
+    :type (common-lisp:or certificate-pem common-lisp:null))
    (set-as-active common-lisp:nil :type
     (common-lisp:or set-as-active common-lisp:null))
    (allow-auto-registration common-lisp:nil :type
@@ -3037,8 +3167,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-certificate-request (:copier common-lisp:nil))
-   (certificate-pem (common-lisp:error ":certificatepem is required") :type
-    (common-lisp:or certificate-pem common-lisp:null))
+   (certificate-pem
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":certificatepem is required"))
+    :type (common-lisp:or certificate-pem common-lisp:null))
    (ca-certificate-pem common-lisp:nil :type
     (common-lisp:or certificate-pem common-lisp:null))
    (set-as-active common-lisp:nil :type
@@ -3121,8 +3253,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (reject-certificate-transfer-request (:copier common-lisp:nil))
-   (certificate-id (common-lisp:error ":certificateid is required") :type
-    (common-lisp:or certificate-id common-lisp:null))
+   (certificate-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":certificateid is required"))
+    :type (common-lisp:or certificate-id common-lisp:null))
    (reject-reason common-lisp:nil :type
     (common-lisp:or message common-lisp:null)))
  (common-lisp:export
@@ -3146,9 +3280,13 @@
 (common-lisp:deftype remove-thing-type () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (replace-topic-rule-request (:copier common-lisp:nil))
-   (rule-name (common-lisp:error ":rulename is required") :type
-    (common-lisp:or rule-name common-lisp:null))
-   (topic-rule-payload (common-lisp:error ":topicrulepayload is required")
+   (rule-name
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":rulename is required"))
+    :type (common-lisp:or rule-name common-lisp:null))
+   (topic-rule-payload
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":topicrulepayload is required"))
     :type (common-lisp:or topic-rule-payload common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'replace-topic-rule-request
@@ -3170,10 +3308,12 @@
                                                 'topic-rule-payload))))))
 (common-lisp:progn
  (common-lisp:defstruct (republish-action (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or aws-arn common-lisp:null))
-   (topic (common-lisp:error ":topic is required") :type
-    (common-lisp:or topic-pattern common-lisp:null)))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or aws-arn common-lisp:null))
+   (topic
+    (common-lisp:error #A((18) common-lisp:base-char . ":topic is required"))
+    :type (common-lisp:or topic-pattern common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'republish-action 'make-republish-action))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3243,12 +3383,15 @@
 (common-lisp:deftype rule-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (s3action (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or aws-arn common-lisp:null))
-   (bucket-name (common-lisp:error ":bucketname is required") :type
-    (common-lisp:or bucket-name common-lisp:null))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or key common-lisp:null))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or aws-arn common-lisp:null))
+   (bucket-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":bucketname is required"))
+    :type (common-lisp:or bucket-name common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or key common-lisp:null))
    (canned-acl common-lisp:nil :type
     (common-lisp:or canned-access-control-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 's3action 'make-s3action))
@@ -3278,10 +3421,11 @@
 (common-lisp:deftype sql () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (salesforce-action (:copier common-lisp:nil))
-   (token (common-lisp:error ":token is required") :type
-    (common-lisp:or salesforce-token common-lisp:null))
-   (url (common-lisp:error ":url is required") :type
-    (common-lisp:or salesforce-endpoint common-lisp:null)))
+   (token
+    (common-lisp:error #A((18) common-lisp:base-char . ":token is required"))
+    :type (common-lisp:or salesforce-token common-lisp:null))
+   (url (common-lisp:error #A((16) common-lisp:base-char . ":url is required"))
+    :type (common-lisp:or salesforce-endpoint common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'salesforce-action 'make-salesforce-action))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3331,10 +3475,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-default-policy-version-request (:copier common-lisp:nil))
-   (policy-name (common-lisp:error ":policyname is required") :type
-    (common-lisp:or policy-name common-lisp:null))
-   (policy-version-id (common-lisp:error ":policyversionid is required") :type
-    (common-lisp:or policy-version-id common-lisp:null)))
+   (policy-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":policyname is required"))
+    :type (common-lisp:or policy-name common-lisp:null))
+   (policy-version-id
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":policyversionid is required"))
+    :type (common-lisp:or policy-version-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-default-policy-version-request
                     'make-set-default-policy-version-request))
@@ -3356,8 +3504,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (set-logging-options-request (:copier common-lisp:nil))
    (logging-options-payload
-    (common-lisp:error ":loggingoptionspayload is required") :type
-    (common-lisp:or logging-options-payload common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":loggingoptionspayload is required"))
+    :type (common-lisp:or logging-options-payload common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-logging-options-request
                     'make-set-logging-options-request))
@@ -3373,10 +3522,13 @@
                                                 'logging-options-payload))))))
 (common-lisp:progn
  (common-lisp:defstruct (sns-action (:copier common-lisp:nil))
-   (target-arn (common-lisp:error ":targetarn is required") :type
-    (common-lisp:or aws-arn common-lisp:null))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or aws-arn common-lisp:null))
+   (target-arn
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":targetarn is required"))
+    :type (common-lisp:or aws-arn common-lisp:null))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or aws-arn common-lisp:null))
    (message-format common-lisp:nil :type
     (common-lisp:or message-format common-lisp:null)))
  (common-lisp:export (common-lisp:list 'sns-action 'make-sns-action))
@@ -3414,10 +3566,13 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (sqs-action (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or aws-arn common-lisp:null))
-   (queue-url (common-lisp:error ":queueurl is required") :type
-    (common-lisp:or queue-url common-lisp:null))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or aws-arn common-lisp:null))
+   (queue-url
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":queueurl is required"))
+    :type (common-lisp:or queue-url common-lisp:null))
    (use-base64 common-lisp:nil :type
     (common-lisp:or use-base64 common-lisp:null)))
  (common-lisp:export (common-lisp:list 'sqs-action 'make-sqs-action))
@@ -3706,12 +3861,13 @@
                                                 'rule-disabled))))))
 (common-lisp:progn
  (common-lisp:defstruct (topic-rule-payload (:copier common-lisp:nil))
-   (sql (common-lisp:error ":sql is required") :type
-    (common-lisp:or sql common-lisp:null))
+   (sql (common-lisp:error #A((16) common-lisp:base-char . ":sql is required"))
+    :type (common-lisp:or sql common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
-   (actions (common-lisp:error ":actions is required") :type
-    (common-lisp:or action-list common-lisp:null))
+   (actions
+    (common-lisp:error #A((20) common-lisp:base-char . ":actions is required"))
+    :type (common-lisp:or action-list common-lisp:null))
    (rule-disabled common-lisp:nil :type
     (common-lisp:or is-disabled common-lisp:null))
    (aws-iot-sql-version common-lisp:nil :type
@@ -3767,9 +3923,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (transfer-certificate-request (:copier common-lisp:nil))
-   (certificate-id (common-lisp:error ":certificateid is required") :type
-    (common-lisp:or certificate-id common-lisp:null))
-   (target-aws-account (common-lisp:error ":targetawsaccount is required")
+   (certificate-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":certificateid is required"))
+    :type (common-lisp:or certificate-id common-lisp:null))
+   (target-aws-account
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":targetawsaccount is required"))
     :type (common-lisp:or aws-account-id common-lisp:null))
    (transfer-message common-lisp:nil :type
     (common-lisp:or message common-lisp:null)))
@@ -3892,8 +4052,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-cacertificate-request (:copier common-lisp:nil))
-   (certificate-id (common-lisp:error ":certificateid is required") :type
-    (common-lisp:or certificate-id common-lisp:null))
+   (certificate-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":certificateid is required"))
+    :type (common-lisp:or certificate-id common-lisp:null))
    (new-status common-lisp:nil :type
     (common-lisp:or cacertificate-status common-lisp:null))
    (new-auto-registration-status common-lisp:nil :type
@@ -3923,10 +4085,14 @@
                                                 'new-auto-registration-status))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-certificate-request (:copier common-lisp:nil))
-   (certificate-id (common-lisp:error ":certificateid is required") :type
-    (common-lisp:or certificate-id common-lisp:null))
-   (new-status (common-lisp:error ":newstatus is required") :type
-    (common-lisp:or certificate-status common-lisp:null)))
+   (certificate-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":certificateid is required"))
+    :type (common-lisp:or certificate-id common-lisp:null))
+   (new-status
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":newstatus is required"))
+    :type (common-lisp:or certificate-status common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-certificate-request
                     'make-update-certificate-request))
@@ -3947,8 +4113,10 @@
                                                 'new-status))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-thing-request (:copier common-lisp:nil))
-   (thing-name (common-lisp:error ":thingname is required") :type
-    (common-lisp:or thing-name common-lisp:null))
+   (thing-name
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":thingname is required"))
+    :type (common-lisp:or thing-name common-lisp:null))
    (thing-type-name common-lisp:nil :type
     (common-lisp:or thing-type-name common-lisp:null))
    (attribute-payload common-lisp:nil :type
@@ -4047,7 +4215,12 @@
                        'make-accept-certificate-transfer-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :patch :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/accept-certificate-transfer/~a"
+                                                   certificateid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"AcceptCertificateTransfer")
                                   ("Version" ,@"2015-05-28"))
@@ -4065,7 +4238,12 @@
                       (common-lisp:apply 'make-attach-principal-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :put :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/principal-policies/~a"
+                                                   policyname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachPrincipalPolicy")
                                   ("Version" ,@"2015-05-28"))
@@ -4083,7 +4261,12 @@
                       (common-lisp:apply 'make-attach-thing-principal-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :put :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/things/~a/principals"
+                                                   thingname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"AttachThingPrincipal")
                                   ("Version" ,@"2015-05-28"))
@@ -4102,7 +4285,12 @@
                        'make-cancel-certificate-transfer-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :patch :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/cancel-certificate-transfer/~a"
+                                                   certificateid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CancelCertificateTransfer")
                                   ("Version" ,@"2015-05-28"))
@@ -4123,7 +4311,8 @@
                        'make-create-certificate-from-csr-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCertificateFromCsr")
                                   ("Version" ,@"2015-05-28"))
@@ -4142,7 +4331,8 @@
                        'make-create-keys-and-certificate-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateKeysAndCertificate")
                                   ("Version" ,@"2015-05-28"))
@@ -4160,7 +4350,11 @@
                       (common-lisp:apply 'make-create-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/policies/~a" policyname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePolicy")
                                   ("Version" ,@"2015-05-28"))
@@ -4180,7 +4374,12 @@
                       (common-lisp:apply 'make-create-policy-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/policies/~a/version"
+                                                   policyname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreatePolicyVersion")
                                   ("Version" ,@"2015-05-28"))
@@ -4200,7 +4399,11 @@
                       (common-lisp:apply 'make-create-thing-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil "/things/~a"
+                                                   thingname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateThing")
                                   ("Version" ,@"2015-05-28"))
@@ -4219,7 +4422,12 @@
                       (common-lisp:apply 'make-create-thing-type-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/thing-types/~a"
+                                                   thingtypename)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateThingType")
                                   ("Version" ,@"2015-05-28"))
@@ -4237,7 +4445,11 @@
                       (common-lisp:apply 'make-create-topic-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil "/rules/~a"
+                                                   rulename)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateTopicRule")
                                   ("Version" ,@"2015-05-28"))
@@ -4255,7 +4467,12 @@
                       (common-lisp:apply 'make-delete-cacertificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/cacertificate/~a"
+                                                   cacertificateid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCACertificate")
                                   ("Version" ,@"2015-05-28"))
@@ -4273,7 +4490,12 @@
                       (common-lisp:apply 'make-delete-certificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/certificates/~a"
+                                                   certificateid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCertificate")
                                   ("Version" ,@"2015-05-28"))
@@ -4291,7 +4513,11 @@
                       (common-lisp:apply 'make-delete-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/policies/~a" policyname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePolicy")
                                   ("Version" ,@"2015-05-28"))
@@ -4309,7 +4535,12 @@
                       (common-lisp:apply 'make-delete-policy-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/policies/~a/version/~a"
+                                                   policyname policyversionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeletePolicyVersion")
                                   ("Version" ,@"2015-05-28"))
@@ -4320,7 +4551,8 @@
 (common-lisp:progn
  (common-lisp:defun delete-registration-code ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "iot" :method :delete :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                             :method :delete :params
                              (common-lisp:cons "Action"
                                                "DeleteRegistrationCode"))
     "DeleteRegistrationCodeResponse" common-lisp:nil))
@@ -4335,7 +4567,11 @@
                       (common-lisp:apply 'make-delete-thing-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil "/things/~a"
+                                                   thingname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteThing")
                                   ("Version" ,@"2015-05-28"))
@@ -4353,7 +4589,12 @@
                       (common-lisp:apply 'make-delete-thing-type-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/thing-types/~a"
+                                                   thingtypename)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteThingType")
                                   ("Version" ,@"2015-05-28"))
@@ -4371,7 +4612,11 @@
                       (common-lisp:apply 'make-delete-topic-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil "/rules/~a"
+                                                   rulename)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTopicRule")
                                   ("Version" ,@"2015-05-28"))
@@ -4389,7 +4634,12 @@
                       (common-lisp:apply 'make-deprecate-thing-type-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/thing-types/~a/deprecate"
+                                                   thingtypename)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeprecateThingType")
                                   ("Version" ,@"2015-05-28"))
@@ -4407,7 +4657,12 @@
                       (common-lisp:apply 'make-describe-cacertificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/cacertificate/~a"
+                                                   cacertificateid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCACertificate")
                                   ("Version" ,@"2015-05-28"))
@@ -4425,7 +4680,12 @@
                       (common-lisp:apply 'make-describe-certificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/certificates/~a"
+                                                   certificateid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeCertificate")
                                   ("Version" ,@"2015-05-28"))
@@ -4436,7 +4696,8 @@
 (common-lisp:progn
  (common-lisp:defun describe-endpoint ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "iot" :method :get :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                             :method :get :params
                              (common-lisp:cons "Action" "DescribeEndpoint"))
     "DescribeEndpointResponse" common-lisp:nil))
  (common-lisp:export 'describe-endpoint))
@@ -4450,7 +4711,11 @@
                       (common-lisp:apply 'make-describe-thing-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil "/things/~a"
+                                                   thingname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeThing")
                                   ("Version" ,@"2015-05-28"))
@@ -4468,7 +4733,12 @@
                       (common-lisp:apply 'make-describe-thing-type-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/thing-types/~a"
+                                                   thingtypename)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeThingType")
                                   ("Version" ,@"2015-05-28"))
@@ -4486,7 +4756,12 @@
                       (common-lisp:apply 'make-detach-principal-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/principal-policies/~a"
+                                                   policyname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachPrincipalPolicy")
                                   ("Version" ,@"2015-05-28"))
@@ -4504,7 +4779,12 @@
                       (common-lisp:apply 'make-detach-thing-principal-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :delete :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/things/~a/principals"
+                                                   thingname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DetachThingPrincipal")
                                   ("Version" ,@"2015-05-28"))
@@ -4522,7 +4802,12 @@
                       (common-lisp:apply 'make-disable-topic-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/rules/~a/disable"
+                                                   rulename)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableTopicRule")
                                   ("Version" ,@"2015-05-28"))
@@ -4540,7 +4825,11 @@
                       (common-lisp:apply 'make-enable-topic-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/rules/~a/enable" rulename)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableTopicRule")
                                   ("Version" ,@"2015-05-28"))
@@ -4551,7 +4840,8 @@
 (common-lisp:progn
  (common-lisp:defun get-logging-options ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "iot" :method :get :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                             :method :get :params
                              (common-lisp:cons "Action" "GetLoggingOptions"))
     "GetLoggingOptionsResponse" common-lisp:nil))
  (common-lisp:export 'get-logging-options))
@@ -4565,7 +4855,11 @@
                       (common-lisp:apply 'make-get-policy-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/policies/~a" policyname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPolicy")
                                   ("Version" ,@"2015-05-28"))
@@ -4583,7 +4877,12 @@
                       (common-lisp:apply 'make-get-policy-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/policies/~a/version/~a"
+                                                   policyname policyversionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetPolicyVersion")
                                   ("Version" ,@"2015-05-28"))
@@ -4594,7 +4893,8 @@
 (common-lisp:progn
  (common-lisp:defun get-registration-code ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "iot" :method :get :params
+    (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                             :method :get :params
                              (common-lisp:cons "Action" "GetRegistrationCode"))
     "GetRegistrationCodeResponse" common-lisp:nil))
  (common-lisp:export 'get-registration-code))
@@ -4608,7 +4908,11 @@
                       (common-lisp:apply 'make-get-topic-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil "/rules/~a"
+                                                   rulename)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTopicRule")
                                   ("Version" ,@"2015-05-28"))
@@ -4627,7 +4931,8 @@
                       (common-lisp:apply 'make-list-cacertificates-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListCACertificates")
                                   ("Version" ,@"2015-05-28"))
@@ -4646,7 +4951,8 @@
                       (common-lisp:apply 'make-list-certificates-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListCertificates")
                                   ("Version" ,@"2015-05-28"))
@@ -4666,7 +4972,12 @@
                       (common-lisp:apply 'make-list-certificates-by-carequest
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/certificates-by-ca/~a"
+                                                   cacertificateid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListCertificatesByCA")
                                   ("Version" ,@"2015-05-28"))
@@ -4686,7 +4997,8 @@
                        'make-list-outgoing-certificates-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListOutgoingCertificates")
                                   ("Version" ,@"2015-05-28"))
@@ -4705,7 +5017,8 @@
                       (common-lisp:apply 'make-list-policies-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPolicies")
                                   ("Version" ,@"2015-05-28"))
@@ -4725,7 +5038,8 @@
                       (common-lisp:apply 'make-list-policy-principals-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPolicyPrincipals")
                                   ("Version" ,@"2015-05-28"))
@@ -4743,7 +5057,12 @@
                       (common-lisp:apply 'make-list-policy-versions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/policies/~a/version"
+                                                   policyname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPolicyVersions")
                                   ("Version" ,@"2015-05-28"))
@@ -4763,7 +5082,8 @@
                       (common-lisp:apply 'make-list-principal-policies-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPrincipalPolicies")
                                   ("Version" ,@"2015-05-28"))
@@ -4782,7 +5102,8 @@
                       (common-lisp:apply 'make-list-principal-things-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListPrincipalThings")
                                   ("Version" ,@"2015-05-28"))
@@ -4800,7 +5121,12 @@
                       (common-lisp:apply 'make-list-thing-principals-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/things/~a/principals"
+                                                   thingname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ListThingPrincipals")
                                   ("Version" ,@"2015-05-28"))
@@ -4819,7 +5145,8 @@
                       (common-lisp:apply 'make-list-thing-types-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListThingTypes")
                                   ("Version" ,@"2015-05-28"))
@@ -4840,7 +5167,8 @@
                       (common-lisp:apply 'make-list-things-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListThings")
                                   ("Version" ,@"2015-05-28"))
@@ -4860,7 +5188,8 @@
                       (common-lisp:apply 'make-list-topic-rules-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :get :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTopicRules")
                                   ("Version" ,@"2015-05-28"))
@@ -4881,7 +5210,8 @@
                       (common-lisp:apply 'make-register-cacertificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterCACertificate")
                                   ("Version" ,@"2015-05-28"))
@@ -4902,7 +5232,8 @@
                       (common-lisp:apply 'make-register-certificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterCertificate")
                                   ("Version" ,@"2015-05-28"))
@@ -4921,7 +5252,12 @@
                        'make-reject-certificate-transfer-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :patch :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/reject-certificate-transfer/~a"
+                                                   certificateid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"RejectCertificateTransfer")
                                   ("Version" ,@"2015-05-28"))
@@ -4939,7 +5275,11 @@
                       (common-lisp:apply 'make-replace-topic-rule-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :patch :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil "/rules/~a"
+                                                   rulename)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"ReplaceTopicRule")
                                   ("Version" ,@"2015-05-28"))
@@ -4958,7 +5298,12 @@
                        'make-set-default-policy-version-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :patch :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/policies/~a/version/~a"
+                                                   policyname policyversionid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"SetDefaultPolicyVersion")
                                   ("Version" ,@"2015-05-28"))
@@ -4976,7 +5321,8 @@
                       (common-lisp:apply 'make-set-logging-options-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :post :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetLoggingOptions")
                                   ("Version" ,@"2015-05-28"))
@@ -4996,7 +5342,12 @@
                       (common-lisp:apply 'make-transfer-certificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :patch :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/transfer-certificate/~a"
+                                                   certificateid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"TransferCertificate")
                                   ("Version" ,@"2015-05-28"))
@@ -5017,7 +5368,12 @@
                       (common-lisp:apply 'make-update-cacertificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :put :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/cacertificate/~a"
+                                                   cacertificateid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateCACertificate")
                                   ("Version" ,@"2015-05-28"))
@@ -5035,7 +5391,12 @@
                       (common-lisp:apply 'make-update-certificate-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :put :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/certificates/~a"
+                                                   certificateid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateCertificate")
                                   ("Version" ,@"2015-05-28"))
@@ -5056,7 +5417,11 @@
                       (common-lisp:apply 'make-update-thing-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "iot" :method :patch :params
+      (aws-sdk/api:aws-request :service #A((3) common-lisp:base-char . "iot")
+                               :method :patch :path
+                               (common-lisp:format common-lisp:nil "/things/~a"
+                                                   thingname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateThing")
                                   ("Version" ,@"2015-05-28"))

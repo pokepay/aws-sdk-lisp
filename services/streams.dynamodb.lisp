@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/streams.dynamodb)
+
 (common-lisp:defstruct
     (attribute-map
      (:constructor |make-attribute-map|
@@ -104,8 +105,10 @@
 (common-lisp:deftype date () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (describe-stream-input (:copier common-lisp:nil))
-   (stream-arn (common-lisp:error ":stream-arn is required") :type
-    (common-lisp:or stream-arn common-lisp:null))
+   (stream-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stream-arn is required"))
+    :type (common-lisp:or stream-arn common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or positive-integer-object common-lisp:null))
    (exclusive-start-shard-id common-lisp:nil :type
@@ -168,8 +171,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-records-input (:copier common-lisp:nil))
-   (shard-iterator (common-lisp:error ":shard-iterator is required") :type
-    (common-lisp:or shard-iterator common-lisp:null))
+   (shard-iterator
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":shard-iterator is required"))
+    :type (common-lisp:or shard-iterator common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or positive-integer-object common-lisp:null)))
  (common-lisp:export
@@ -210,11 +215,17 @@
                                                 'next-shard-iterator))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-shard-iterator-input (:copier common-lisp:nil))
-   (stream-arn (common-lisp:error ":stream-arn is required") :type
-    (common-lisp:or stream-arn common-lisp:null))
-   (shard-id (common-lisp:error ":shard-id is required") :type
-    (common-lisp:or shard-id common-lisp:null))
-   (shard-iterator-type (common-lisp:error ":shard-iterator-type is required")
+   (stream-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stream-arn is required"))
+    :type (common-lisp:or stream-arn common-lisp:null))
+   (shard-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":shard-id is required"))
+    :type (common-lisp:or shard-id common-lisp:null))
+   (shard-iterator-type
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":shard-iterator-type is required"))
     :type (common-lisp:or shard-iterator-type common-lisp:null))
    (sequence-number common-lisp:nil :type
     (common-lisp:or sequence-number common-lisp:null)))
@@ -308,10 +319,14 @@
 (common-lisp:deftype key-schema-attribute-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (key-schema-element (:copier common-lisp:nil))
-   (attribute-name (common-lisp:error ":attribute-name is required") :type
-    (common-lisp:or key-schema-attribute-name common-lisp:null))
-   (key-type (common-lisp:error ":key-type is required") :type
-    (common-lisp:or key-type common-lisp:null)))
+   (attribute-name
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":attribute-name is required"))
+    :type (common-lisp:or key-schema-attribute-name common-lisp:null))
+   (key-type
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":key-type is required"))
+    :type (common-lisp:or key-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'key-schema-element 'make-key-schema-element))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -761,8 +776,10 @@
                       (common-lisp:apply 'make-describe-stream-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "streams.dynamodb" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "streams.dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStream")
                                   ("Version" ,@"2012-08-10"))
@@ -780,8 +797,10 @@
                       (common-lisp:apply 'make-get-records-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "streams.dynamodb" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "streams.dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRecords")
                                   ("Version" ,@"2012-08-10"))
@@ -802,8 +821,10 @@
                       (common-lisp:apply 'make-get-shard-iterator-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "streams.dynamodb" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "streams.dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetShardIterator")
                                   ("Version" ,@"2012-08-10"))
@@ -823,8 +844,10 @@
                       (common-lisp:apply 'make-list-streams-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "streams.dynamodb" :method :post
-                               :params
+      (aws-sdk/api:aws-request :service
+                               #A((16) common-lisp:base-char
+                                  . "streams.dynamodb")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListStreams")
                                   ("Version" ,@"2012-08-10"))

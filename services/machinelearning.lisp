@@ -7,14 +7,20 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/machinelearning)
+
 (common-lisp:progn
  (common-lisp:defstruct (add-tags-input (:copier common-lisp:nil))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or taggable-resource-type common-lisp:null)))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or taggable-resource-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'add-tags-input 'make-add-tags-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape add-tags-input))
@@ -186,17 +192,25 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-batch-prediction-input (:copier common-lisp:nil))
-   (batch-prediction-id (common-lisp:error ":batch-prediction-id is required")
+   (batch-prediction-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":batch-prediction-id is required"))
     :type (common-lisp:or entity-id common-lisp:null))
    (batch-prediction-name common-lisp:nil :type
     (common-lisp:or entity-name common-lisp:null))
-   (mlmodel-id (common-lisp:error ":mlmodel-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (mlmodel-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":mlmodel-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (batch-prediction-data-source-id
-    (common-lisp:error ":batch-prediction-data-source-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
-   (output-uri (common-lisp:error ":output-uri is required") :type
-    (common-lisp:or s3url common-lisp:null)))
+    (common-lisp:error
+     #A((44) common-lisp:base-char
+        . ":batch-prediction-data-source-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
+   (output-uri
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":output-uri is required"))
+    :type (common-lisp:or s3url common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-batch-prediction-input
                     'make-create-batch-prediction-input))
@@ -251,14 +265,19 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-data-source-from-rdsinput (:copier common-lisp:nil))
-   (data-source-id (common-lisp:error ":data-source-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (data-source-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":data-source-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (data-source-name common-lisp:nil :type
     (common-lisp:or entity-name common-lisp:null))
-   (rdsdata (common-lisp:error ":rdsdata is required") :type
-    (common-lisp:or rdsdata-spec common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
+   (rdsdata
+    (common-lisp:error #A((20) common-lisp:base-char . ":rdsdata is required"))
+    :type (common-lisp:or rdsdata-spec common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
    (compute-statistics common-lisp:nil :type
     (common-lisp:or compute-statistics common-lisp:null)))
  (common-lisp:export
@@ -315,14 +334,20 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-data-source-from-redshift-input (:copier common-lisp:nil))
-   (data-source-id (common-lisp:error ":data-source-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (data-source-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":data-source-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (data-source-name common-lisp:nil :type
     (common-lisp:or entity-name common-lisp:null))
-   (data-spec (common-lisp:error ":data-spec is required") :type
-    (common-lisp:or redshift-data-spec common-lisp:null))
-   (role-arn (common-lisp:error ":role-arn is required") :type
-    (common-lisp:or role-arn common-lisp:null))
+   (data-spec
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":data-spec is required"))
+    :type (common-lisp:or redshift-data-spec common-lisp:null))
+   (role-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":role-arn is required"))
+    :type (common-lisp:or role-arn common-lisp:null))
    (compute-statistics common-lisp:nil :type
     (common-lisp:or compute-statistics common-lisp:null)))
  (common-lisp:export
@@ -379,12 +404,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-data-source-from-s3input (:copier common-lisp:nil))
-   (data-source-id (common-lisp:error ":data-source-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (data-source-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":data-source-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (data-source-name common-lisp:nil :type
     (common-lisp:or entity-name common-lisp:null))
-   (data-spec (common-lisp:error ":data-spec is required") :type
-    (common-lisp:or s3data-spec common-lisp:null))
+   (data-spec
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":data-spec is required"))
+    :type (common-lisp:or s3data-spec common-lisp:null))
    (compute-statistics common-lisp:nil :type
     (common-lisp:or compute-statistics common-lisp:null)))
  (common-lisp:export
@@ -435,15 +464,20 @@
                                                 'data-source-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-evaluation-input (:copier common-lisp:nil))
-   (evaluation-id (common-lisp:error ":evaluation-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (evaluation-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":evaluation-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (evaluation-name common-lisp:nil :type
     (common-lisp:or entity-name common-lisp:null))
-   (mlmodel-id (common-lisp:error ":mlmodel-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (mlmodel-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":mlmodel-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (evaluation-data-source-id
-    (common-lisp:error ":evaluation-data-source-id is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":evaluation-data-source-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-evaluation-input 'make-create-evaluation-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -489,17 +523,22 @@
                                                 'evaluation-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-mlmodel-input (:copier common-lisp:nil))
-   (mlmodel-id (common-lisp:error ":mlmodel-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (mlmodel-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":mlmodel-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (mlmodel-name common-lisp:nil :type
     (common-lisp:or entity-name common-lisp:null))
-   (mlmodel-type (common-lisp:error ":mlmodel-type is required") :type
-    (common-lisp:or mlmodel-type common-lisp:null))
+   (mlmodel-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":mlmodel-type is required"))
+    :type (common-lisp:or mlmodel-type common-lisp:null))
    (parameters common-lisp:nil :type
     (common-lisp:or training-parameters common-lisp:null))
    (training-data-source-id
-    (common-lisp:error ":training-data-source-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":training-data-source-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (recipe common-lisp:nil :type (common-lisp:or recipe common-lisp:null))
    (recipe-uri common-lisp:nil :type (common-lisp:or s3url common-lisp:null)))
  (common-lisp:export
@@ -561,8 +600,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-realtime-endpoint-input (:copier common-lisp:nil))
-   (mlmodel-id (common-lisp:error ":mlmodel-id is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+   (mlmodel-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":mlmodel-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-realtime-endpoint-input
                     'make-create-realtime-endpoint-input))
@@ -743,7 +784,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-batch-prediction-input (:copier common-lisp:nil))
-   (batch-prediction-id (common-lisp:error ":batch-prediction-id is required")
+   (batch-prediction-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":batch-prediction-id is required"))
     :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-batch-prediction-input
@@ -778,8 +821,10 @@
                                                 'batch-prediction-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-data-source-input (:copier common-lisp:nil))
-   (data-source-id (common-lisp:error ":data-source-id is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+   (data-source-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":data-source-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-data-source-input 'make-delete-data-source-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -811,8 +856,10 @@
                                                 'data-source-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-evaluation-input (:copier common-lisp:nil))
-   (evaluation-id (common-lisp:error ":evaluation-id is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+   (evaluation-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":evaluation-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-evaluation-input 'make-delete-evaluation-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -843,8 +890,10 @@
                                                 'evaluation-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-mlmodel-input (:copier common-lisp:nil))
-   (mlmodel-id (common-lisp:error ":mlmodel-id is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+   (mlmodel-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":mlmodel-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-mlmodel-input 'make-delete-mlmodel-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -874,8 +923,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-realtime-endpoint-input (:copier common-lisp:nil))
-   (mlmodel-id (common-lisp:error ":mlmodel-id is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+   (mlmodel-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":mlmodel-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-realtime-endpoint-input
                     'make-delete-realtime-endpoint-input))
@@ -916,12 +967,18 @@
                                                 'realtime-endpoint-info))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-tags-input (:copier common-lisp:nil))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or taggable-resource-type common-lisp:null)))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-key-list common-lisp:null))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or taggable-resource-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-tags-input 'make-delete-tags-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1405,10 +1462,14 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-tags-input (:copier common-lisp:nil))
-   (resource-id (common-lisp:error ":resource-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
-   (resource-type (common-lisp:error ":resource-type is required") :type
-    (common-lisp:or taggable-resource-type common-lisp:null)))
+   (resource-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resource-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
+   (resource-type
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-type is required"))
+    :type (common-lisp:or taggable-resource-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-tags-input 'make-describe-tags-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1590,7 +1651,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (get-batch-prediction-input (:copier common-lisp:nil))
-   (batch-prediction-id (common-lisp:error ":batch-prediction-id is required")
+   (batch-prediction-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":batch-prediction-id is required"))
     :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-batch-prediction-input
@@ -1733,8 +1796,10 @@
                                                 'invalid-record-count))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-data-source-input (:copier common-lisp:nil))
-   (data-source-id (common-lisp:error ":data-source-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (data-source-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":data-source-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (verbose common-lisp:nil :type (common-lisp:or verbose common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-data-source-input 'make-get-data-source-input))
@@ -1901,8 +1966,10 @@
                                                 'data-source-schema))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-evaluation-input (:copier common-lisp:nil))
-   (evaluation-id (common-lisp:error ":evaluation-id is required") :type
-    (common-lisp:or entity-id common-lisp:null)))
+   (evaluation-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":evaluation-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-evaluation-input 'make-get-evaluation-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2027,8 +2094,10 @@
                                                 'started-at))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-mlmodel-input (:copier common-lisp:nil))
-   (mlmodel-id (common-lisp:error ":mlmodel-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (mlmodel-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":mlmodel-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (verbose common-lisp:nil :type (common-lisp:or verbose common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-mlmodel-input 'make-get-mlmodel-input))
@@ -2479,12 +2548,17 @@
 (common-lisp:deftype performance-metrics-property-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (predict-input (:copier common-lisp:nil))
-   (mlmodel-id (common-lisp:error ":mlmodel-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
-   (record (common-lisp:error ":record is required") :type
-    (common-lisp:or record common-lisp:null))
-   (predict-endpoint (common-lisp:error ":predict-endpoint is required") :type
-    (common-lisp:or vip-url common-lisp:null)))
+   (mlmodel-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":mlmodel-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
+   (record
+    (common-lisp:error #A((19) common-lisp:base-char . ":record is required"))
+    :type (common-lisp:or record common-lisp:null))
+   (predict-endpoint
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":predict-endpoint is required"))
+    :type (common-lisp:or vip-url common-lisp:null)))
  (common-lisp:export (common-lisp:list 'predict-input 'make-predict-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape predict-input))
@@ -2573,14 +2647,20 @@
 (common-lisp:progn
  (common-lisp:defstruct (rdsdata-spec (:copier common-lisp:nil))
    (database-information
-    (common-lisp:error ":database-information is required") :type
-    (common-lisp:or rdsdatabase common-lisp:null))
-   (select-sql-query (common-lisp:error ":select-sql-query is required") :type
-    (common-lisp:or rdsselect-sql-query common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":database-information is required"))
+    :type (common-lisp:or rdsdatabase common-lisp:null))
+   (select-sql-query
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":select-sql-query is required"))
+    :type (common-lisp:or rdsselect-sql-query common-lisp:null))
    (database-credentials
-    (common-lisp:error ":database-credentials is required") :type
-    (common-lisp:or rdsdatabase-credentials common-lisp:null))
-   (s3staging-location (common-lisp:error ":s3staging-location is required")
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":database-credentials is required"))
+    :type (common-lisp:or rdsdatabase-credentials common-lisp:null))
+   (s3staging-location
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":s3staging-location is required"))
     :type (common-lisp:or s3url common-lisp:null))
    (data-rearrangement common-lisp:nil :type
     (common-lisp:or data-rearrangement common-lisp:null))
@@ -2588,13 +2668,21 @@
     (common-lisp:or data-schema common-lisp:null))
    (data-schema-uri common-lisp:nil :type
     (common-lisp:or s3url common-lisp:null))
-   (resource-role (common-lisp:error ":resource-role is required") :type
-    (common-lisp:or edpresource-role common-lisp:null))
-   (service-role (common-lisp:error ":service-role is required") :type
-    (common-lisp:or edpservice-role common-lisp:null))
-   (subnet-id (common-lisp:error ":subnet-id is required") :type
-    (common-lisp:or edpsubnet-id common-lisp:null))
-   (security-group-ids (common-lisp:error ":security-group-ids is required")
+   (resource-role
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":resource-role is required"))
+    :type (common-lisp:or edpresource-role common-lisp:null))
+   (service-role
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":service-role is required"))
+    :type (common-lisp:or edpservice-role common-lisp:null))
+   (subnet-id
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":subnet-id is required"))
+    :type (common-lisp:or edpsubnet-id common-lisp:null))
+   (security-group-ids
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":security-group-ids is required"))
     :type (common-lisp:or edpsecurity-group-ids common-lisp:null)))
  (common-lisp:export (common-lisp:list 'rdsdata-spec 'make-rdsdata-spec))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2657,10 +2745,14 @@
                                                 'security-group-ids))))))
 (common-lisp:progn
  (common-lisp:defstruct (rdsdatabase (:copier common-lisp:nil))
-   (instance-identifier (common-lisp:error ":instance-identifier is required")
+   (instance-identifier
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":instance-identifier is required"))
     :type (common-lisp:or rdsinstance-identifier common-lisp:null))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or rdsdatabase-name common-lisp:null)))
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or rdsdatabase-name common-lisp:null)))
  (common-lisp:export (common-lisp:list 'rdsdatabase 'make-rdsdatabase))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape rdsdatabase))
@@ -2677,10 +2769,14 @@
                                                 'database-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (rdsdatabase-credentials (:copier common-lisp:nil))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or rdsdatabase-username common-lisp:null))
-   (password (common-lisp:error ":password is required") :type
-    (common-lisp:or rdsdatabase-password common-lisp:null)))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or rdsdatabase-username common-lisp:null))
+   (password
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":password is required"))
+    :type (common-lisp:or rdsdatabase-password common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'rdsdatabase-credentials 'make-rdsdatabase-credentials))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2800,14 +2896,20 @@
 (common-lisp:progn
  (common-lisp:defstruct (redshift-data-spec (:copier common-lisp:nil))
    (database-information
-    (common-lisp:error ":database-information is required") :type
-    (common-lisp:or redshift-database common-lisp:null))
-   (select-sql-query (common-lisp:error ":select-sql-query is required") :type
-    (common-lisp:or redshift-select-sql-query common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":database-information is required"))
+    :type (common-lisp:or redshift-database common-lisp:null))
+   (select-sql-query
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":select-sql-query is required"))
+    :type (common-lisp:or redshift-select-sql-query common-lisp:null))
    (database-credentials
-    (common-lisp:error ":database-credentials is required") :type
-    (common-lisp:or redshift-database-credentials common-lisp:null))
-   (s3staging-location (common-lisp:error ":s3staging-location is required")
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":database-credentials is required"))
+    :type (common-lisp:or redshift-database-credentials common-lisp:null))
+   (s3staging-location
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":s3staging-location is required"))
     :type (common-lisp:or s3url common-lisp:null))
    (data-rearrangement common-lisp:nil :type
     (common-lisp:or data-rearrangement common-lisp:null))
@@ -2857,9 +2959,13 @@
                                                 'data-schema-uri))))))
 (common-lisp:progn
  (common-lisp:defstruct (redshift-database (:copier common-lisp:nil))
-   (database-name (common-lisp:error ":database-name is required") :type
-    (common-lisp:or redshift-database-name common-lisp:null))
-   (cluster-identifier (common-lisp:error ":cluster-identifier is required")
+   (database-name
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":database-name is required"))
+    :type (common-lisp:or redshift-database-name common-lisp:null))
+   (cluster-identifier
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":cluster-identifier is required"))
     :type (common-lisp:or redshift-cluster-identifier common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'redshift-database 'make-redshift-database))
@@ -2879,10 +2985,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (redshift-database-credentials (:copier common-lisp:nil))
-   (username (common-lisp:error ":username is required") :type
-    (common-lisp:or redshift-database-username common-lisp:null))
-   (password (common-lisp:error ":password is required") :type
-    (common-lisp:or redshift-database-password common-lisp:null)))
+   (username
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":username is required"))
+    :type (common-lisp:or redshift-database-username common-lisp:null))
+   (password
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":password is required"))
+    :type (common-lisp:or redshift-database-password common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'redshift-database-credentials
                     'make-redshift-database-credentials))
@@ -2960,8 +3070,10 @@
 (common-lisp:deftype role-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (s3data-spec (:copier common-lisp:nil))
-   (data-location-s3 (common-lisp:error ":data-location-s3 is required") :type
-    (common-lisp:or s3url common-lisp:null))
+   (data-location-s3
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":data-location-s3 is required"))
+    :type (common-lisp:or s3url common-lisp:null))
    (data-rearrangement common-lisp:nil :type
     (common-lisp:or data-rearrangement common-lisp:null))
    (data-schema common-lisp:nil :type
@@ -3065,11 +3177,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-batch-prediction-input (:copier common-lisp:nil))
-   (batch-prediction-id (common-lisp:error ":batch-prediction-id is required")
+   (batch-prediction-id
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":batch-prediction-id is required"))
     :type (common-lisp:or entity-id common-lisp:null))
    (batch-prediction-name
-    (common-lisp:error ":batch-prediction-name is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":batch-prediction-name is required"))
+    :type (common-lisp:or entity-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-batch-prediction-input
                     'make-update-batch-prediction-input))
@@ -3108,10 +3223,14 @@
                                                 'batch-prediction-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-data-source-input (:copier common-lisp:nil))
-   (data-source-id (common-lisp:error ":data-source-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
-   (data-source-name (common-lisp:error ":data-source-name is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+   (data-source-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":data-source-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
+   (data-source-name
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":data-source-name is required"))
+    :type (common-lisp:or entity-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-data-source-input 'make-update-data-source-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3148,10 +3267,14 @@
                                                 'data-source-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-evaluation-input (:copier common-lisp:nil))
-   (evaluation-id (common-lisp:error ":evaluation-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
-   (evaluation-name (common-lisp:error ":evaluation-name is required") :type
-    (common-lisp:or entity-name common-lisp:null)))
+   (evaluation-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":evaluation-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
+   (evaluation-name
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":evaluation-name is required"))
+    :type (common-lisp:or entity-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-evaluation-input 'make-update-evaluation-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3187,8 +3310,10 @@
                                                 'evaluation-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-mlmodel-input (:copier common-lisp:nil))
-   (mlmodel-id (common-lisp:error ":mlmodel-id is required") :type
-    (common-lisp:or entity-id common-lisp:null))
+   (mlmodel-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":mlmodel-id is required"))
+    :type (common-lisp:or entity-id common-lisp:null))
    (mlmodel-name common-lisp:nil :type
     (common-lisp:or entity-name common-lisp:null))
    (score-threshold common-lisp:nil :type
@@ -3244,7 +3369,10 @@
                       (common-lisp:apply 'make-add-tags-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTags")
                                   ("Version" ,@"2014-12-12"))
@@ -3265,7 +3393,10 @@
                       (common-lisp:apply 'make-create-batch-prediction-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateBatchPrediction")
                                   ("Version" ,@"2014-12-12"))
@@ -3286,7 +3417,10 @@
                       (common-lisp:apply 'make-create-data-source-from-rdsinput
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDataSourceFromRDS")
                                   ("Version" ,@"2014-12-12"))
@@ -3308,7 +3442,10 @@
                        'make-create-data-source-from-redshift-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDataSourceFromRedshift")
                                   ("Version" ,@"2014-12-12"))
@@ -3329,7 +3466,10 @@
                       (common-lisp:apply 'make-create-data-source-from-s3input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateDataSourceFromS3")
                                   ("Version" ,@"2014-12-12"))
@@ -3350,7 +3490,10 @@
                       (common-lisp:apply 'make-create-evaluation-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateEvaluation")
                                   ("Version" ,@"2014-12-12"))
@@ -3371,7 +3514,10 @@
                       (common-lisp:apply 'make-create-mlmodel-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateMLModel")
                                   ("Version" ,@"2014-12-12"))
@@ -3389,7 +3535,10 @@
                       (common-lisp:apply 'make-create-realtime-endpoint-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateRealtimeEndpoint")
                                   ("Version" ,@"2014-12-12"))
@@ -3407,7 +3556,10 @@
                       (common-lisp:apply 'make-delete-batch-prediction-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBatchPrediction")
                                   ("Version" ,@"2014-12-12"))
@@ -3425,7 +3577,10 @@
                       (common-lisp:apply 'make-delete-data-source-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteDataSource")
                                   ("Version" ,@"2014-12-12"))
@@ -3443,7 +3598,10 @@
                       (common-lisp:apply 'make-delete-evaluation-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEvaluation")
                                   ("Version" ,@"2014-12-12"))
@@ -3461,7 +3619,10 @@
                       (common-lisp:apply 'make-delete-mlmodel-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteMLModel")
                                   ("Version" ,@"2014-12-12"))
@@ -3479,7 +3640,10 @@
                       (common-lisp:apply 'make-delete-realtime-endpoint-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteRealtimeEndpoint")
                                   ("Version" ,@"2014-12-12"))
@@ -3498,7 +3662,10 @@
                       (common-lisp:apply 'make-delete-tags-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteTags")
                                   ("Version" ,@"2014-12-12"))
@@ -3519,7 +3686,10 @@
                       (common-lisp:apply 'make-describe-batch-predictions-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeBatchPredictions")
                                   ("Version" ,@"2014-12-12"))
@@ -3540,7 +3710,10 @@
                       (common-lisp:apply 'make-describe-data-sources-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeDataSources")
                                   ("Version" ,@"2014-12-12"))
@@ -3561,7 +3734,10 @@
                       (common-lisp:apply 'make-describe-evaluations-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeEvaluations")
                                   ("Version" ,@"2014-12-12"))
@@ -3582,7 +3758,10 @@
                       (common-lisp:apply 'make-describe-mlmodels-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeMLModels")
                                   ("Version" ,@"2014-12-12"))
@@ -3600,7 +3779,10 @@
                       (common-lisp:apply 'make-describe-tags-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeTags")
                                   ("Version" ,@"2014-12-12"))
@@ -3618,7 +3800,10 @@
                       (common-lisp:apply 'make-get-batch-prediction-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBatchPrediction")
                                   ("Version" ,@"2014-12-12"))
@@ -3636,7 +3821,10 @@
                       (common-lisp:apply 'make-get-data-source-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetDataSource")
                                   ("Version" ,@"2014-12-12"))
@@ -3654,7 +3842,10 @@
                       (common-lisp:apply 'make-get-evaluation-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetEvaluation")
                                   ("Version" ,@"2014-12-12"))
@@ -3672,7 +3863,10 @@
                       (common-lisp:apply 'make-get-mlmodel-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetMLModel")
                                   ("Version" ,@"2014-12-12"))
@@ -3691,7 +3885,10 @@
                       (common-lisp:apply 'make-predict-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"Predict")
                                   ("Version" ,@"2014-12-12"))
@@ -3711,7 +3908,10 @@
                       (common-lisp:apply 'make-update-batch-prediction-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateBatchPrediction")
                                   ("Version" ,@"2014-12-12"))
@@ -3730,7 +3930,10 @@
                       (common-lisp:apply 'make-update-data-source-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateDataSource")
                                   ("Version" ,@"2014-12-12"))
@@ -3748,7 +3951,10 @@
                       (common-lisp:apply 'make-update-evaluation-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateEvaluation")
                                   ("Version" ,@"2014-12-12"))
@@ -3767,7 +3973,10 @@
                       (common-lisp:apply 'make-update-mlmodel-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "machinelearning" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((15) common-lisp:base-char
+                                  . "machinelearning")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateMLModel")
                                   ("Version" ,@"2014-12-12"))

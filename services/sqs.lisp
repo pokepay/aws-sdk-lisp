@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/sqs)
+
 (common-lisp:progn
  (common-lisp:deftype awsaccount-id-list ()
    '(trivial-types:proper-list string))
@@ -24,14 +25,20 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (add-permission-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null))
-   (label (common-lisp:error ":label is required") :type
-    (common-lisp:or string common-lisp:null))
-   (awsaccount-ids (common-lisp:error ":awsaccount-ids is required") :type
-    (common-lisp:or awsaccount-id-list common-lisp:null))
-   (actions (common-lisp:error ":actions is required") :type
-    (common-lisp:or action-name-list common-lisp:null)))
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (label
+    (common-lisp:error #A((18) common-lisp:base-char . ":label is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (awsaccount-ids
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":awsaccount-ids is required"))
+    :type (common-lisp:or awsaccount-id-list common-lisp:null))
+   (actions
+    (common-lisp:error #A((20) common-lisp:base-char . ":actions is required"))
+    :type (common-lisp:or action-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-permission-request 'make-add-permission-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -89,12 +96,15 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (batch-result-error-entry (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (sender-fault (common-lisp:error ":sender-fault is required") :type
-    (common-lisp:or boolean common-lisp:null))
-   (code (common-lisp:error ":code is required") :type
-    (common-lisp:or string common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (sender-fault
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":sender-fault is required"))
+    :type (common-lisp:or boolean common-lisp:null))
+   (code
+    (common-lisp:error #A((17) common-lisp:base-char . ":code is required"))
+    :type (common-lisp:or string common-lisp:null))
    (message common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'batch-result-error-entry 'make-batch-result-error-entry))
@@ -145,9 +155,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (change-message-visibility-batch-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null))
-   (entries (common-lisp:error ":entries is required") :type
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (entries
+    (common-lisp:error #A((20) common-lisp:base-char . ":entries is required"))
+    :type
     (common-lisp:or change-message-visibility-batch-request-entry-list
                     common-lisp:null)))
  (common-lisp:export
@@ -171,10 +185,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (change-message-visibility-batch-request-entry (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (receipt-handle (common-lisp:error ":receipt-handle is required") :type
-    (common-lisp:or string common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (receipt-handle
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":receipt-handle is required"))
+    :type (common-lisp:or string common-lisp:null))
    (visibility-timeout common-lisp:nil :type
     (common-lisp:or integer common-lisp:null)))
  (common-lisp:export
@@ -212,11 +228,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (change-message-visibility-batch-result (:copier common-lisp:nil))
-   (successful (common-lisp:error ":successful is required") :type
+   (successful
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":successful is required"))
+    :type
     (common-lisp:or change-message-visibility-batch-result-entry-list
                     common-lisp:null))
-   (failed (common-lisp:error ":failed is required") :type
-    (common-lisp:or batch-result-error-entry-list common-lisp:null)))
+   (failed
+    (common-lisp:error #A((19) common-lisp:base-char . ":failed is required"))
+    :type (common-lisp:or batch-result-error-entry-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'change-message-visibility-batch-result
                     'make-change-message-visibility-batch-result))
@@ -238,8 +258,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (change-message-visibility-batch-result-entry (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'change-message-visibility-batch-result-entry
                     'make-change-message-visibility-batch-result-entry))
@@ -265,11 +285,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (change-message-visibility-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null))
-   (receipt-handle (common-lisp:error ":receipt-handle is required") :type
-    (common-lisp:or string common-lisp:null))
-   (visibility-timeout (common-lisp:error ":visibility-timeout is required")
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (receipt-handle
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":receipt-handle is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (visibility-timeout
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":visibility-timeout is required"))
     :type (common-lisp:or integer common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'change-message-visibility-request
@@ -296,8 +322,10 @@
                                                 'visibility-timeout))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-queue-request (:copier common-lisp:nil))
-   (queue-name (common-lisp:error ":queue-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (queue-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":queue-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (attributes common-lisp:nil :type
     (common-lisp:or queue-attribute-map common-lisp:null)))
  (common-lisp:export
@@ -331,9 +359,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-message-batch-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null))
-   (entries (common-lisp:error ":entries is required") :type
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (entries
+    (common-lisp:error #A((20) common-lisp:base-char . ":entries is required"))
+    :type
     (common-lisp:or delete-message-batch-request-entry-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-message-batch-request
@@ -356,10 +388,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-message-batch-request-entry (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (receipt-handle (common-lisp:error ":receipt-handle is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (receipt-handle
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":receipt-handle is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-message-batch-request-entry
                     'make-delete-message-batch-request-entry))
@@ -389,10 +423,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (delete-message-batch-result (:copier common-lisp:nil))
-   (successful (common-lisp:error ":successful is required") :type
+   (successful
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":successful is required"))
+    :type
     (common-lisp:or delete-message-batch-result-entry-list common-lisp:null))
-   (failed (common-lisp:error ":failed is required") :type
-    (common-lisp:or batch-result-error-entry-list common-lisp:null)))
+   (failed
+    (common-lisp:error #A((19) common-lisp:base-char . ":failed is required"))
+    :type (common-lisp:or batch-result-error-entry-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-message-batch-result
                     'make-delete-message-batch-result))
@@ -414,8 +452,8 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-message-batch-result-entry (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-message-batch-result-entry
                     'make-delete-message-batch-result-entry))
@@ -440,10 +478,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (delete-message-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null))
-   (receipt-handle (common-lisp:error ":receipt-handle is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (receipt-handle
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":receipt-handle is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-message-request 'make-delete-message-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -463,8 +505,10 @@
                                                 'receipt-handle))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-queue-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-queue-request 'make-delete-queue-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -485,8 +529,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-queue-attributes-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null))
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null))
    (attribute-names common-lisp:nil :type
     (common-lisp:or attribute-name-list common-lisp:null)))
  (common-lisp:export
@@ -526,8 +572,10 @@
                                                 'attributes))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-queue-url-request (:copier common-lisp:nil))
-   (queue-name (common-lisp:error ":queue-name is required") :type
-    (common-lisp:or string common-lisp:null))
+   (queue-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":queue-name is required"))
+    :type (common-lisp:or string common-lisp:null))
    (queue-owner-awsaccount-id common-lisp:nil :type
     (common-lisp:or string common-lisp:null)))
  (common-lisp:export
@@ -598,8 +646,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-dead-letter-source-queues-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-dead-letter-source-queues-request
                     'make-list-dead-letter-source-queues-request))
@@ -616,8 +666,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-dead-letter-source-queues-result (:copier common-lisp:nil))
-   (queue-urls (common-lisp:error ":queueurls is required") :type
-    (common-lisp:or queue-url-list common-lisp:null)))
+   (queue-urls
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queueurls is required"))
+    :type (common-lisp:or queue-url-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-dead-letter-source-queues-result
                     'make-list-dead-letter-source-queues-result))
@@ -730,8 +782,10 @@
     (common-lisp:or string-list common-lisp:null))
    (binary-list-values common-lisp:nil :type
     (common-lisp:or binary-list common-lisp:null))
-   (data-type (common-lisp:error ":data-type is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (data-type
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":data-type is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'message-attribute-value 'make-message-attribute-value))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -808,8 +862,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (purge-queue-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'purge-queue-request 'make-purge-queue-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -869,8 +925,10 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (receive-message-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null))
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null))
    (attribute-names common-lisp:nil :type
     (common-lisp:or attribute-name-list common-lisp:null))
    (message-attribute-names common-lisp:nil :type
@@ -943,10 +1001,13 @@
                                                 'messages))))))
 (common-lisp:progn
  (common-lisp:defstruct (remove-permission-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null))
-   (label (common-lisp:error ":label is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (label
+    (common-lisp:error #A((18) common-lisp:base-char . ":label is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-permission-request
                     'make-remove-permission-request))
@@ -967,9 +1028,13 @@
                                                 'label))))))
 (common-lisp:progn
  (common-lisp:defstruct (send-message-batch-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null))
-   (entries (common-lisp:error ":entries is required") :type
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (entries
+    (common-lisp:error #A((20) common-lisp:base-char . ":entries is required"))
+    :type
     (common-lisp:or send-message-batch-request-entry-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'send-message-batch-request
@@ -992,10 +1057,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (send-message-batch-request-entry (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (message-body (common-lisp:error ":message-body is required") :type
-    (common-lisp:or string common-lisp:null))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (message-body
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":message-body is required"))
+    :type (common-lisp:or string common-lisp:null))
    (delay-seconds common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
    (message-attributes common-lisp:nil :type
@@ -1053,10 +1120,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (send-message-batch-result (:copier common-lisp:nil))
-   (successful (common-lisp:error ":successful is required") :type
+   (successful
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":successful is required"))
+    :type
     (common-lisp:or send-message-batch-result-entry-list common-lisp:null))
-   (failed (common-lisp:error ":failed is required") :type
-    (common-lisp:or batch-result-error-entry-list common-lisp:null)))
+   (failed
+    (common-lisp:error #A((19) common-lisp:base-char . ":failed is required"))
+    :type (common-lisp:or batch-result-error-entry-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'send-message-batch-result
                     'make-send-message-batch-result))
@@ -1078,11 +1149,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (send-message-batch-result-entry (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (message-id (common-lisp:error ":message-id is required") :type
-    (common-lisp:or string common-lisp:null))
-   (md5of-message-body (common-lisp:error ":md5of-message-body is required")
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (message-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":message-id is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (md5of-message-body
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":md5of-message-body is required"))
     :type (common-lisp:or string common-lisp:null))
    (md5of-message-attributes common-lisp:nil :type
     (common-lisp:or string common-lisp:null))
@@ -1132,10 +1207,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (send-message-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null))
-   (message-body (common-lisp:error ":message-body is required") :type
-    (common-lisp:or string common-lisp:null))
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (message-body
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":message-body is required"))
+    :type (common-lisp:or string common-lisp:null))
    (delay-seconds common-lisp:nil :type
     (common-lisp:or integer common-lisp:null))
    (message-attributes common-lisp:nil :type
@@ -1216,10 +1295,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-queue-attributes-request (:copier common-lisp:nil))
-   (queue-url (common-lisp:error ":queue-url is required") :type
-    (common-lisp:or string common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or queue-attribute-map common-lisp:null)))
+   (queue-url
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":queue-url is required"))
+    :type (common-lisp:or string common-lisp:null))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or queue-attribute-map common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-queue-attributes-request
                     'make-set-queue-attributes-request))

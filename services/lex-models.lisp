@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/lex-models)
+
 (common-lisp:deftype alias-name () 'common-lisp:string)
 (common-lisp:deftype alias-name-or-list-all () 'common-lisp:string)
 (common-lisp:progn
@@ -308,10 +309,12 @@
 (common-lisp:deftype channel-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (code-hook (:copier common-lisp:nil))
-   (uri (common-lisp:error ":uri is required") :type
-    (common-lisp:or lambda-arn common-lisp:null))
-   (message-version (common-lisp:error ":messageversion is required") :type
-    (common-lisp:or message-version common-lisp:null)))
+   (uri (common-lisp:error #A((16) common-lisp:base-char . ":uri is required"))
+    :type (common-lisp:or lambda-arn common-lisp:null))
+   (message-version
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":messageversion is required"))
+    :type (common-lisp:or message-version common-lisp:null)))
  (common-lisp:export (common-lisp:list 'code-hook 'make-code-hook))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape code-hook))
@@ -344,8 +347,9 @@
 (common-lisp:deftype count () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (create-bot-version-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or bot-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
    (checksum common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-bot-version-request
@@ -477,8 +481,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-intent-version-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or intent-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or intent-name common-lisp:null))
    (checksum common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-intent-version-request
@@ -613,8 +618,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-slot-type-version-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or slot-type-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or slot-type-name common-lisp:null))
    (checksum common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-slot-type-version-request
@@ -695,10 +701,12 @@
 (common-lisp:deftype custom-or-builtin-slot-type-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (delete-bot-alias-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or alias-name common-lisp:null))
-   (bot-name (common-lisp:error ":botname is required") :type
-    (common-lisp:or bot-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or alias-name common-lisp:null))
+   (bot-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":botname is required"))
+    :type (common-lisp:or bot-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bot-alias-request 'make-delete-bot-alias-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -719,12 +727,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-bot-channel-association-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or bot-channel-name common-lisp:null))
-   (bot-name (common-lisp:error ":botname is required") :type
-    (common-lisp:or bot-name common-lisp:null))
-   (bot-alias (common-lisp:error ":botalias is required") :type
-    (common-lisp:or alias-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or bot-channel-name common-lisp:null))
+   (bot-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":botname is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
+   (bot-alias
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":botalias is required"))
+    :type (common-lisp:or alias-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bot-channel-association-request
                     'make-delete-bot-channel-association-request))
@@ -750,8 +762,9 @@
                                                 'bot-alias))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-bot-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or bot-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or bot-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bot-request 'make-delete-bot-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -764,10 +777,12 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-bot-version-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or bot-name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or numerical-version common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or numerical-version common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-bot-version-request
                     'make-delete-bot-version-request))
@@ -788,8 +803,9 @@
                                                 'version))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-intent-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or intent-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or intent-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-intent-request 'make-delete-intent-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -805,10 +821,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-intent-version-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or intent-name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or numerical-version common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or intent-name common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or numerical-version common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-intent-version-request
                     'make-delete-intent-version-request))
@@ -829,8 +847,9 @@
                                                 'version))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-slot-type-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or slot-type-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or slot-type-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-slot-type-request 'make-delete-slot-type-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -846,10 +865,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-slot-type-version-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or slot-type-name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or numerical-version common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or slot-type-name common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or numerical-version common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-slot-type-version-request
                     'make-delete-slot-type-version-request))
@@ -870,10 +891,12 @@
                                                 'version))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-utterances-request (:copier common-lisp:nil))
-   (bot-name (common-lisp:error ":botname is required") :type
-    (common-lisp:or bot-name common-lisp:null))
-   (user-id (common-lisp:error ":userid is required") :type
-    (common-lisp:or user-id common-lisp:null)))
+   (bot-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":botname is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
+   (user-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":userid is required"))
+    :type (common-lisp:or user-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-utterances-request
                     'make-delete-utterances-request))
@@ -895,8 +918,9 @@
 (common-lisp:deftype description () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (enumeration-value (:copier common-lisp:nil))
-   (value (common-lisp:error ":value is required") :type
-    (common-lisp:or value common-lisp:null)))
+   (value
+    (common-lisp:error #A((18) common-lisp:base-char . ":value is required"))
+    :type (common-lisp:or value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enumeration-value 'make-enumeration-value))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -917,9 +941,12 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (follow-up-prompt (:copier common-lisp:nil))
-   (prompt (common-lisp:error ":prompt is required") :type
-    (common-lisp:or prompt common-lisp:null))
-   (rejection-statement (common-lisp:error ":rejectionstatement is required")
+   (prompt
+    (common-lisp:error #A((19) common-lisp:base-char . ":prompt is required"))
+    :type (common-lisp:or prompt common-lisp:null))
+   (rejection-statement
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":rejectionstatement is required"))
     :type (common-lisp:or statement common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'follow-up-prompt 'make-follow-up-prompt))
@@ -938,8 +965,9 @@
                                                 'rejection-statement))))))
 (common-lisp:progn
  (common-lisp:defstruct (fulfillment-activity (:copier common-lisp:nil))
-   (type (common-lisp:error ":type is required") :type
-    (common-lisp:or fulfillment-activity-type common-lisp:null))
+   (type
+    (common-lisp:error #A((17) common-lisp:base-char . ":type is required"))
+    :type (common-lisp:or fulfillment-activity-type common-lisp:null))
    (code-hook common-lisp:nil :type
     (common-lisp:or code-hook common-lisp:null)))
  (common-lisp:export
@@ -960,10 +988,12 @@
 (common-lisp:deftype fulfillment-activity-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (get-bot-alias-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or alias-name common-lisp:null))
-   (bot-name (common-lisp:error ":botname is required") :type
-    (common-lisp:or bot-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or alias-name common-lisp:null))
+   (bot-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":botname is required"))
+    :type (common-lisp:or bot-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bot-alias-request 'make-get-bot-alias-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1038,8 +1068,9 @@
                                                 'checksum))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-bot-aliases-request (:copier common-lisp:nil))
-   (bot-name (common-lisp:error ":botname is required") :type
-    (common-lisp:or bot-name common-lisp:null))
+   (bot-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":botname is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1099,12 +1130,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-bot-channel-association-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or bot-channel-name common-lisp:null))
-   (bot-name (common-lisp:error ":botname is required") :type
-    (common-lisp:or bot-name common-lisp:null))
-   (bot-alias (common-lisp:error ":botalias is required") :type
-    (common-lisp:or alias-name common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or bot-channel-name common-lisp:null))
+   (bot-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":botname is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
+   (bot-alias
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":botalias is required"))
+    :type (common-lisp:or alias-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-bot-channel-association-request
                     'make-get-bot-channel-association-request))
@@ -1189,10 +1224,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-bot-channel-associations-request (:copier common-lisp:nil))
-   (bot-name (common-lisp:error ":botname is required") :type
-    (common-lisp:or bot-name common-lisp:null))
-   (bot-alias (common-lisp:error ":botalias is required") :type
-    (common-lisp:or alias-name-or-list-all common-lisp:null))
+   (bot-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":botname is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
+   (bot-alias
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":botalias is required"))
+    :type (common-lisp:or alias-name-or-list-all common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1259,10 +1297,13 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-bot-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or bot-name common-lisp:null))
-   (version-or-alias (common-lisp:error ":versionoralias is required") :type
-    (common-lisp:or string common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
+   (version-or-alias
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":versionoralias is required"))
+    :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'get-bot-request 'make-get-bot-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape get-bot-request))
@@ -1385,8 +1426,9 @@
                                                 'child-directed))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-bot-versions-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or bot-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1488,8 +1530,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-builtin-intent-request (:copier common-lisp:nil))
-   (signature (common-lisp:error ":signature is required") :type
-    (common-lisp:or builtin-intent-signature common-lisp:null)))
+   (signature
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":signature is required"))
+    :type (common-lisp:or builtin-intent-signature common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-builtin-intent-request
                     'make-get-builtin-intent-request))
@@ -1661,10 +1705,12 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-intent-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or intent-name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or intent-name common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or version common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-intent-request 'make-get-intent-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1790,8 +1836,9 @@
                                                 'checksum))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-intent-versions-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or intent-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or intent-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1895,10 +1942,12 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-slot-type-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or slot-type-name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or slot-type-name common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or version common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-slot-type-request 'make-get-slot-type-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1975,8 +2024,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-slot-type-versions-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or slot-type-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or slot-type-name common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or next-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -2084,12 +2134,17 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-utterances-view-request (:copier common-lisp:nil))
-   (bot-name (common-lisp:error ":botname is required") :type
-    (common-lisp:or bot-name common-lisp:null))
-   (bot-versions (common-lisp:error ":botversions is required") :type
-    (common-lisp:or bot-versions common-lisp:null))
-   (status-type (common-lisp:error ":statustype is required") :type
-    (common-lisp:or status-type common-lisp:null)))
+   (bot-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":botname is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
+   (bot-versions
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":botversions is required"))
+    :type (common-lisp:or bot-versions common-lisp:null))
+   (status-type
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":statustype is required"))
+    :type (common-lisp:or status-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-utterances-view-request
                     'make-get-utterances-view-request))
@@ -2139,10 +2194,14 @@
                                                 'utterances))))))
 (common-lisp:progn
  (common-lisp:defstruct (intent (:copier common-lisp:nil))
-   (intent-name (common-lisp:error ":intentname is required") :type
-    (common-lisp:or intent-name common-lisp:null))
-   (intent-version (common-lisp:error ":intentversion is required") :type
-    (common-lisp:or version common-lisp:null)))
+   (intent-name
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":intentname is required"))
+    :type (common-lisp:or intent-name common-lisp:null))
+   (intent-version
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":intentversion is required"))
+    :type (common-lisp:or version common-lisp:null)))
  (common-lisp:export (common-lisp:list 'intent 'make-intent))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape intent))
@@ -2286,10 +2345,13 @@
 (common-lisp:deftype max-results () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (message (:copier common-lisp:nil))
-   (content-type (common-lisp:error ":contenttype is required") :type
-    (common-lisp:or content-type common-lisp:null))
-   (content (common-lisp:error ":content is required") :type
-    (common-lisp:or content-string common-lisp:null)))
+   (content-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":contenttype is required"))
+    :type (common-lisp:or content-type common-lisp:null))
+   (content
+    (common-lisp:error #A((20) common-lisp:base-char . ":content is required"))
+    :type (common-lisp:or content-string common-lisp:null)))
  (common-lisp:export (common-lisp:list 'message 'make-message))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape message))
@@ -2349,10 +2411,14 @@
 (common-lisp:deftype process-behavior () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (prompt (:copier common-lisp:nil))
-   (messages (common-lisp:error ":messages is required") :type
-    (common-lisp:or message-list common-lisp:null))
-   (max-attempts (common-lisp:error ":maxattempts is required") :type
-    (common-lisp:or prompt-max-attempts common-lisp:null))
+   (messages
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":messages is required"))
+    :type (common-lisp:or message-list common-lisp:null))
+   (max-attempts
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":maxattempts is required"))
+    :type (common-lisp:or prompt-max-attempts common-lisp:null))
    (response-card common-lisp:nil :type
     (common-lisp:or response-card common-lisp:null)))
  (common-lisp:export (common-lisp:list 'prompt 'make-prompt))
@@ -2377,14 +2443,18 @@
 (common-lisp:deftype prompt-max-attempts () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (put-bot-alias-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or alias-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or alias-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
-   (bot-version (common-lisp:error ":botversion is required") :type
-    (common-lisp:or version common-lisp:null))
-   (bot-name (common-lisp:error ":botname is required") :type
-    (common-lisp:or bot-name common-lisp:null))
+   (bot-version
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":botversion is required"))
+    :type (common-lisp:or version common-lisp:null))
+   (bot-name
+    (common-lisp:error #A((20) common-lisp:base-char . ":botname is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
    (checksum common-lisp:nil :type (common-lisp:or string common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-bot-alias-request 'make-put-bot-alias-request))
@@ -2475,8 +2545,9 @@
                                                 'checksum))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-bot-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or bot-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or bot-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (intents common-lisp:nil :type
@@ -2491,10 +2562,13 @@
    (checksum common-lisp:nil :type (common-lisp:or string common-lisp:null))
    (process-behavior common-lisp:nil :type
     (common-lisp:or process-behavior common-lisp:null))
-   (locale (common-lisp:error ":locale is required") :type
-    (common-lisp:or locale common-lisp:null))
-   (child-directed (common-lisp:error ":childdirected is required") :type
-    (common-lisp:or boolean common-lisp:null)))
+   (locale
+    (common-lisp:error #A((19) common-lisp:base-char . ":locale is required"))
+    :type (common-lisp:or locale common-lisp:null))
+   (child-directed
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":childdirected is required"))
+    :type (common-lisp:or boolean common-lisp:null)))
  (common-lisp:export (common-lisp:list 'put-bot-request 'make-put-bot-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape put-bot-request))
@@ -2662,8 +2736,9 @@
                                                 'child-directed))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-intent-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or intent-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or intent-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (slots common-lisp:nil :type (common-lisp:or slot-list common-lisp:null))
@@ -2859,8 +2934,9 @@
                                                 'checksum))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-slot-type-request (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or slot-type-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or slot-type-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
    (enumeration-values common-lisp:nil :type
@@ -2997,12 +3073,15 @@
 (common-lisp:deftype session-ttl () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (slot (:copier common-lisp:nil))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or slot-name common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or slot-name common-lisp:null))
    (description common-lisp:nil :type
     (common-lisp:or description common-lisp:null))
-   (slot-constraint (common-lisp:error ":slotconstraint is required") :type
-    (common-lisp:or slot-constraint common-lisp:null))
+   (slot-constraint
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":slotconstraint is required"))
+    :type (common-lisp:or slot-constraint common-lisp:null))
    (slot-type common-lisp:nil :type
     (common-lisp:or custom-or-builtin-slot-type-name common-lisp:null))
    (slot-type-version common-lisp:nil :type
@@ -3132,8 +3211,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (statement (:copier common-lisp:nil))
-   (messages (common-lisp:error ":messages is required") :type
-    (common-lisp:or message-list common-lisp:null))
+   (messages
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":messages is required"))
+    :type (common-lisp:or message-list common-lisp:null))
    (response-card common-lisp:nil :type
     (common-lisp:or response-card common-lisp:null)))
  (common-lisp:export (common-lisp:list 'statement 'make-statement))
@@ -3229,7 +3310,12 @@
                       (common-lisp:apply 'make-create-bot-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/versions" name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateBotVersion")
                                   ("Version" ,@"2017-04-19"))
@@ -3247,7 +3333,12 @@
                       (common-lisp:apply 'make-create-intent-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/intents/~a/versions" name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateIntentVersion")
                                   ("Version" ,@"2017-04-19"))
@@ -3265,7 +3356,13 @@
                       (common-lisp:apply 'make-create-slot-type-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/slottypes/~a/versions"
+                                                   name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSlotTypeVersion")
                                   ("Version" ,@"2017-04-19"))
@@ -3283,7 +3380,12 @@
                       (common-lisp:apply 'make-delete-bot-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil "/bots/~a"
+                                                   name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBot")
                                   ("Version" ,@"2017-04-19"))
@@ -3301,7 +3403,13 @@
                       (common-lisp:apply 'make-delete-bot-alias-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/aliases/~a"
+                                                   botname name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBotAlias")
                                   ("Version" ,@"2017-04-19"))
@@ -3320,7 +3428,13 @@
                        'make-delete-bot-channel-association-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/aliases/~a/channels/~a"
+                                                   botname aliasname name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBotChannelAssociation")
                                   ("Version" ,@"2017-04-19"))
@@ -3338,7 +3452,13 @@
                       (common-lisp:apply 'make-delete-bot-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/versions/~a" name
+                                                   version)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteBotVersion")
                                   ("Version" ,@"2017-04-19"))
@@ -3356,7 +3476,12 @@
                       (common-lisp:apply 'make-delete-intent-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/intents/~a" name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIntent")
                                   ("Version" ,@"2017-04-19"))
@@ -3374,7 +3499,13 @@
                       (common-lisp:apply 'make-delete-intent-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/intents/~a/versions/~a"
+                                                   name version)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteIntentVersion")
                                   ("Version" ,@"2017-04-19"))
@@ -3392,7 +3523,12 @@
                       (common-lisp:apply 'make-delete-slot-type-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/slottypes/~a" name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSlotType")
                                   ("Version" ,@"2017-04-19"))
@@ -3410,7 +3546,13 @@
                       (common-lisp:apply 'make-delete-slot-type-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/slottypes/~a/version/~a"
+                                                   name version)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSlotTypeVersion")
                                   ("Version" ,@"2017-04-19"))
@@ -3428,7 +3570,13 @@
                       (common-lisp:apply 'make-delete-utterances-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/utterances/~a"
+                                                   botname userid)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteUtterances")
                                   ("Version" ,@"2017-04-19"))
@@ -3446,7 +3594,13 @@
                       (common-lisp:apply 'make-get-bot-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/versions/~a" name
+                                                   versionoralias)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBot")
                                   ("Version" ,@"2017-04-19"))
@@ -3464,7 +3618,13 @@
                       (common-lisp:apply 'make-get-bot-alias-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/aliases/~a"
+                                                   botname name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBotAlias")
                                   ("Version" ,@"2017-04-19"))
@@ -3484,7 +3644,12 @@
                       (common-lisp:apply 'make-get-bot-aliases-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/aliases/" botname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBotAliases")
                                   ("Version" ,@"2017-04-19"))
@@ -3503,7 +3668,13 @@
                        'make-get-bot-channel-association-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/aliases/~a/channels/~a"
+                                                   botname aliasname name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBotChannelAssociation")
                                   ("Version" ,@"2017-04-19"))
@@ -3525,7 +3696,13 @@
                        'make-get-bot-channel-associations-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/aliases/~a/channels/"
+                                                   botname aliasname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBotChannelAssociations")
                                   ("Version" ,@"2017-04-19"))
@@ -3543,7 +3720,12 @@
                       (common-lisp:apply 'make-get-bot-versions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/versions/" name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBotVersions")
                                   ("Version" ,@"2017-04-19"))
@@ -3562,7 +3744,9 @@
                       (common-lisp:apply 'make-get-bots-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBots")
                                   ("Version" ,@"2017-04-19"))
@@ -3580,7 +3764,13 @@
                       (common-lisp:apply 'make-get-builtin-intent-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/builtins/intents/~a"
+                                                   signature)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBuiltinIntent")
                                   ("Version" ,@"2017-04-19"))
@@ -3600,7 +3790,9 @@
                       (common-lisp:apply 'make-get-builtin-intents-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBuiltinIntents")
                                   ("Version" ,@"2017-04-19"))
@@ -3620,7 +3812,9 @@
                       (common-lisp:apply 'make-get-builtin-slot-types-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetBuiltinSlotTypes")
                                   ("Version" ,@"2017-04-19"))
@@ -3638,7 +3832,13 @@
                       (common-lisp:apply 'make-get-intent-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/intents/~a/versions/~a"
+                                                   name version)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetIntent")
                                   ("Version" ,@"2017-04-19"))
@@ -3656,7 +3856,13 @@
                       (common-lisp:apply 'make-get-intent-versions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/intents/~a/versions/"
+                                                   name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetIntentVersions")
                                   ("Version" ,@"2017-04-19"))
@@ -3675,7 +3881,9 @@
                       (common-lisp:apply 'make-get-intents-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetIntents")
                                   ("Version" ,@"2017-04-19"))
@@ -3693,7 +3901,13 @@
                       (common-lisp:apply 'make-get-slot-type-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/slottypes/~a/versions/~a"
+                                                   name version)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSlotType")
                                   ("Version" ,@"2017-04-19"))
@@ -3711,7 +3925,13 @@
                       (common-lisp:apply 'make-get-slot-type-versions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/slottypes/~a/versions/"
+                                                   name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSlotTypeVersions")
                                   ("Version" ,@"2017-04-19"))
@@ -3730,7 +3950,9 @@
                       (common-lisp:apply 'make-get-slot-types-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSlotTypes")
                                   ("Version" ,@"2017-04-19"))
@@ -3749,7 +3971,13 @@
                       (common-lisp:apply 'make-get-utterances-view-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/utterances?view=aggregation"
+                                                   botname)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetUtterancesView")
                                   ("Version" ,@"2017-04-19"))
@@ -3773,7 +4001,13 @@
                       (common-lisp:apply 'make-put-bot-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/versions/$LATEST"
+                                                   name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBot")
                                   ("Version" ,@"2017-04-19"))
@@ -3793,7 +4027,13 @@
                       (common-lisp:apply 'make-put-bot-alias-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/bots/~a/aliases/~a"
+                                                   botname name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutBotAlias")
                                   ("Version" ,@"2017-04-19"))
@@ -3818,7 +4058,13 @@
                       (common-lisp:apply 'make-put-intent-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/intents/~a/versions/$LATEST"
+                                                   name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutIntent")
                                   ("Version" ,@"2017-04-19"))
@@ -3838,7 +4084,13 @@
                       (common-lisp:apply 'make-put-slot-type-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "lex-models" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((10) common-lisp:base-char . "lex-models")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/slottypes/~a/versions/$LATEST"
+                                                   name)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutSlotType")
                                   ("Version" ,@"2017-04-19"))

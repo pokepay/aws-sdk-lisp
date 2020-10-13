@@ -7,12 +7,16 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/kinesis)
+
 (common-lisp:progn
  (common-lisp:defstruct (add-tags-to-stream-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-map common-lisp:null)))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-map common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-tags-to-stream-input 'make-add-tags-to-stream-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -33,10 +37,14 @@
 (common-lisp:deftype boolean-object () 'common-lisp:boolean)
 (common-lisp:progn
  (common-lisp:defstruct (create-stream-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
-   (shard-count (common-lisp:error ":shard-count is required") :type
-    (common-lisp:or positive-integer-object common-lisp:null)))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
+   (shard-count
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":shard-count is required"))
+    :type (common-lisp:or positive-integer-object common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-stream-input 'make-create-stream-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -57,11 +65,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (decrease-stream-retention-period-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
    (retention-period-hours
-    (common-lisp:error ":retention-period-hours is required") :type
-    (common-lisp:or positive-integer-object common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":retention-period-hours is required"))
+    :type (common-lisp:or positive-integer-object common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'decrease-stream-retention-period-input
                     'make-decrease-stream-retention-period-input))
@@ -82,8 +93,10 @@
                                                 'retention-period-hours))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-stream-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null)))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-stream-input 'make-delete-stream-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -105,10 +118,14 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (describe-limits-output (:copier common-lisp:nil))
-   (shard-limit (common-lisp:error ":shard-limit is required") :type
-    (common-lisp:or shard-count-object common-lisp:null))
-   (open-shard-count (common-lisp:error ":open-shard-count is required") :type
-    (common-lisp:or shard-count-object common-lisp:null)))
+   (shard-limit
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":shard-limit is required"))
+    :type (common-lisp:or shard-count-object common-lisp:null))
+   (open-shard-count
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":open-shard-count is required"))
+    :type (common-lisp:or shard-count-object common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-limits-output 'make-describe-limits-output))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -128,8 +145,10 @@
                                                 'open-shard-count))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-stream-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or describe-stream-input-limit common-lisp:null))
    (exclusive-start-shard-id common-lisp:nil :type
@@ -159,7 +178,9 @@
 (common-lisp:deftype describe-stream-input-limit () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (describe-stream-output (:copier common-lisp:nil))
-   (stream-description (common-lisp:error ":stream-description is required")
+   (stream-description
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":stream-description is required"))
     :type (common-lisp:or stream-description common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-stream-output 'make-describe-stream-output))
@@ -176,9 +197,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (disable-enhanced-monitoring-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
-   (shard-level-metrics (common-lisp:error ":shard-level-metrics is required")
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
+   (shard-level-metrics
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":shard-level-metrics is required"))
     :type (common-lisp:or metrics-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'disable-enhanced-monitoring-input
@@ -201,9 +226,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (enable-enhanced-monitoring-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
-   (shard-level-metrics (common-lisp:error ":shard-level-metrics is required")
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
+   (shard-level-metrics
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":shard-level-metrics is required"))
     :type (common-lisp:or metrics-name-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'enable-enhanced-monitoring-input
@@ -298,8 +327,10 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-records-input (:copier common-lisp:nil))
-   (shard-iterator (common-lisp:error ":shard-iterator is required") :type
-    (common-lisp:or shard-iterator common-lisp:null))
+   (shard-iterator
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":shard-iterator is required"))
+    :type (common-lisp:or shard-iterator common-lisp:null))
    (limit common-lisp:nil :type
     (common-lisp:or get-records-input-limit common-lisp:null)))
  (common-lisp:export
@@ -320,8 +351,9 @@
 (common-lisp:deftype get-records-input-limit () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (get-records-output (:copier common-lisp:nil))
-   (records (common-lisp:error ":records is required") :type
-    (common-lisp:or record-list common-lisp:null))
+   (records
+    (common-lisp:error #A((20) common-lisp:base-char . ":records is required"))
+    :type (common-lisp:or record-list common-lisp:null))
    (next-shard-iterator common-lisp:nil :type
     (common-lisp:or shard-iterator common-lisp:null))
    (millis-behind-latest common-lisp:nil :type
@@ -348,11 +380,17 @@
                                                 'millis-behind-latest))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-shard-iterator-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
-   (shard-id (common-lisp:error ":shard-id is required") :type
-    (common-lisp:or shard-id common-lisp:null))
-   (shard-iterator-type (common-lisp:error ":shard-iterator-type is required")
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
+   (shard-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":shard-id is required"))
+    :type (common-lisp:or shard-id common-lisp:null))
+   (shard-iterator-type
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":shard-iterator-type is required"))
     :type (common-lisp:or shard-iterator-type common-lisp:null))
    (starting-sequence-number common-lisp:nil :type
     (common-lisp:or sequence-number common-lisp:null))
@@ -410,10 +448,14 @@
 (common-lisp:deftype hash-key () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (hash-key-range (:copier common-lisp:nil))
-   (starting-hash-key (common-lisp:error ":starting-hash-key is required")
+   (starting-hash-key
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":starting-hash-key is required"))
     :type (common-lisp:or hash-key common-lisp:null))
-   (ending-hash-key (common-lisp:error ":ending-hash-key is required") :type
-    (common-lisp:or hash-key common-lisp:null)))
+   (ending-hash-key
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":ending-hash-key is required"))
+    :type (common-lisp:or hash-key common-lisp:null)))
  (common-lisp:export (common-lisp:list 'hash-key-range 'make-hash-key-range))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape hash-key-range))
@@ -431,11 +473,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (increase-stream-retention-period-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
    (retention-period-hours
-    (common-lisp:error ":retention-period-hours is required") :type
-    (common-lisp:or positive-integer-object common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":retention-period-hours is required"))
+    :type (common-lisp:or positive-integer-object common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'increase-stream-retention-period-input
                     'make-increase-stream-retention-period-input))
@@ -608,10 +653,14 @@
 (common-lisp:deftype list-streams-input-limit () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (list-streams-output (:copier common-lisp:nil))
-   (stream-names (common-lisp:error ":stream-names is required") :type
-    (common-lisp:or stream-name-list common-lisp:null))
-   (has-more-streams (common-lisp:error ":has-more-streams is required") :type
-    (common-lisp:or boolean-object common-lisp:null)))
+   (stream-names
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":stream-names is required"))
+    :type (common-lisp:or stream-name-list common-lisp:null))
+   (has-more-streams
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":has-more-streams is required"))
+    :type (common-lisp:or boolean-object common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-streams-output 'make-list-streams-output))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -629,8 +678,10 @@
                                                 'has-more-streams))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-tags-for-stream-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
    (exclusive-start-tag-key common-lisp:nil :type
     (common-lisp:or tag-key common-lisp:null))
    (limit common-lisp:nil :type
@@ -661,10 +712,13 @@
 (common-lisp:deftype list-tags-for-stream-input-limit () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (list-tags-for-stream-output (:copier common-lisp:nil))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null))
-   (has-more-tags (common-lisp:error ":has-more-tags is required") :type
-    (common-lisp:or boolean-object common-lisp:null)))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null))
+   (has-more-tags
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":has-more-tags is required"))
+    :type (common-lisp:or boolean-object common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-stream-output
                     'make-list-tags-for-stream-output))
@@ -685,13 +739,18 @@
                                                 'has-more-tags))))))
 (common-lisp:progn
  (common-lisp:defstruct (merge-shards-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
-   (shard-to-merge (common-lisp:error ":shard-to-merge is required") :type
-    (common-lisp:or shard-id common-lisp:null))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
+   (shard-to-merge
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":shard-to-merge is required"))
+    :type (common-lisp:or shard-id common-lisp:null))
    (adjacent-shard-to-merge
-    (common-lisp:error ":adjacent-shard-to-merge is required") :type
-    (common-lisp:or shard-id common-lisp:null)))
+    (common-lisp:error
+     #A((36) common-lisp:base-char . ":adjacent-shard-to-merge is required"))
+    :type (common-lisp:or shard-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'merge-shards-input 'make-merge-shards-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -744,12 +803,17 @@
                                                 'message))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-record-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
-   (data (common-lisp:error ":data is required") :type
-    (common-lisp:or data common-lisp:null))
-   (partition-key (common-lisp:error ":partition-key is required") :type
-    (common-lisp:or partition-key common-lisp:null))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
+   (data
+    (common-lisp:error #A((17) common-lisp:base-char . ":data is required"))
+    :type (common-lisp:or data common-lisp:null))
+   (partition-key
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":partition-key is required"))
+    :type (common-lisp:or partition-key common-lisp:null))
    (explicit-hash-key common-lisp:nil :type
     (common-lisp:or hash-key common-lisp:null))
    (sequence-number-for-ordering common-lisp:nil :type
@@ -786,10 +850,14 @@
                                                 'sequence-number-for-ordering))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-record-output (:copier common-lisp:nil))
-   (shard-id (common-lisp:error ":shard-id is required") :type
-    (common-lisp:or shard-id common-lisp:null))
-   (sequence-number (common-lisp:error ":sequence-number is required") :type
-    (common-lisp:or sequence-number common-lisp:null))
+   (shard-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":shard-id is required"))
+    :type (common-lisp:or shard-id common-lisp:null))
+   (sequence-number
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":sequence-number is required"))
+    :type (common-lisp:or sequence-number common-lisp:null))
    (encryption-type common-lisp:nil :type
     (common-lisp:or encryption-type common-lisp:null)))
  (common-lisp:export
@@ -814,10 +882,13 @@
                                                 'encryption-type))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-records-input (:copier common-lisp:nil))
-   (records (common-lisp:error ":records is required") :type
-    (common-lisp:or put-records-request-entry-list common-lisp:null))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null)))
+   (records
+    (common-lisp:error #A((20) common-lisp:base-char . ":records is required"))
+    :type (common-lisp:or put-records-request-entry-list common-lisp:null))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-records-input 'make-put-records-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -837,8 +908,9 @@
  (common-lisp:defstruct (put-records-output (:copier common-lisp:nil))
    (failed-record-count common-lisp:nil :type
     (common-lisp:or positive-integer-object common-lisp:null))
-   (records (common-lisp:error ":records is required") :type
-    (common-lisp:or put-records-result-entry-list common-lisp:null))
+   (records
+    (common-lisp:error #A((20) common-lisp:base-char . ":records is required"))
+    :type (common-lisp:or put-records-result-entry-list common-lisp:null))
    (encryption-type common-lisp:nil :type
     (common-lisp:or encryption-type common-lisp:null)))
  (common-lisp:export
@@ -863,12 +935,15 @@
                                                 'encryption-type))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-records-request-entry (:copier common-lisp:nil))
-   (data (common-lisp:error ":data is required") :type
-    (common-lisp:or data common-lisp:null))
+   (data
+    (common-lisp:error #A((17) common-lisp:base-char . ":data is required"))
+    :type (common-lisp:or data common-lisp:null))
    (explicit-hash-key common-lisp:nil :type
     (common-lisp:or hash-key common-lisp:null))
-   (partition-key (common-lisp:error ":partition-key is required") :type
-    (common-lisp:or partition-key common-lisp:null)))
+   (partition-key
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":partition-key is required"))
+    :type (common-lisp:or partition-key common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-records-request-entry
                     'make-put-records-request-entry))
@@ -948,14 +1023,19 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (record (:copier common-lisp:nil))
-   (sequence-number (common-lisp:error ":sequence-number is required") :type
-    (common-lisp:or sequence-number common-lisp:null))
+   (sequence-number
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":sequence-number is required"))
+    :type (common-lisp:or sequence-number common-lisp:null))
    (approximate-arrival-timestamp common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
-   (data (common-lisp:error ":data is required") :type
-    (common-lisp:or data common-lisp:null))
-   (partition-key (common-lisp:error ":partition-key is required") :type
-    (common-lisp:or partition-key common-lisp:null))
+   (data
+    (common-lisp:error #A((17) common-lisp:base-char . ":data is required"))
+    :type (common-lisp:or data common-lisp:null))
+   (partition-key
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":partition-key is required"))
+    :type (common-lisp:or partition-key common-lisp:null))
    (encryption-type common-lisp:nil :type
     (common-lisp:or encryption-type common-lisp:null)))
  (common-lisp:export (common-lisp:list 'record 'make-record))
@@ -997,10 +1077,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-tags-from-stream-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
-   (tag-keys (common-lisp:error ":tag-keys is required") :type
-    (common-lisp:or tag-key-list common-lisp:null)))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
+   (tag-keys
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":tag-keys is required"))
+    :type (common-lisp:or tag-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-tags-from-stream-input
                     'make-remove-tags-from-stream-input))
@@ -1059,8 +1143,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (sequence-number-range (:copier common-lisp:nil))
    (starting-sequence-number
-    (common-lisp:error ":starting-sequence-number is required") :type
-    (common-lisp:or sequence-number common-lisp:null))
+    (common-lisp:error
+     #A((37) common-lisp:base-char . ":starting-sequence-number is required"))
+    :type (common-lisp:or sequence-number common-lisp:null))
    (ending-sequence-number common-lisp:nil :type
     (common-lisp:or sequence-number common-lisp:null)))
  (common-lisp:export
@@ -1082,17 +1167,22 @@
                                                 'ending-sequence-number))))))
 (common-lisp:progn
  (common-lisp:defstruct (shard (:copier common-lisp:nil))
-   (shard-id (common-lisp:error ":shard-id is required") :type
-    (common-lisp:or shard-id common-lisp:null))
+   (shard-id
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":shard-id is required"))
+    :type (common-lisp:or shard-id common-lisp:null))
    (parent-shard-id common-lisp:nil :type
     (common-lisp:or shard-id common-lisp:null))
    (adjacent-parent-shard-id common-lisp:nil :type
     (common-lisp:or shard-id common-lisp:null))
-   (hash-key-range (common-lisp:error ":hash-key-range is required") :type
-    (common-lisp:or hash-key-range common-lisp:null))
+   (hash-key-range
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":hash-key-range is required"))
+    :type (common-lisp:or hash-key-range common-lisp:null))
    (sequence-number-range
-    (common-lisp:error ":sequence-number-range is required") :type
-    (common-lisp:or sequence-number-range common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":sequence-number-range is required"))
+    :type (common-lisp:or sequence-number-range common-lisp:null)))
  (common-lisp:export (common-lisp:list 'shard 'make-shard))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape shard))
@@ -1135,13 +1225,18 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (split-shard-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
-   (shard-to-split (common-lisp:error ":shard-to-split is required") :type
-    (common-lisp:or shard-id common-lisp:null))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
+   (shard-to-split
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":shard-to-split is required"))
+    :type (common-lisp:or shard-id common-lisp:null))
    (new-starting-hash-key
-    (common-lisp:error ":new-starting-hash-key is required") :type
-    (common-lisp:or hash-key common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":new-starting-hash-key is required"))
+    :type (common-lisp:or hash-key common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'split-shard-input 'make-split-shard-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1165,12 +1260,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-stream-encryption-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
-   (encryption-type (common-lisp:error ":encryption-type is required") :type
-    (common-lisp:or encryption-type common-lisp:null))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id common-lisp:null)))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
+   (encryption-type
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":encryption-type is required"))
+    :type (common-lisp:or encryption-type common-lisp:null))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-stream-encryption-input
                     'make-start-stream-encryption-input))
@@ -1197,12 +1297,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (stop-stream-encryption-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
-   (encryption-type (common-lisp:error ":encryption-type is required") :type
-    (common-lisp:or encryption-type common-lisp:null))
-   (key-id (common-lisp:error ":key-id is required") :type
-    (common-lisp:or key-id common-lisp:null)))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
+   (encryption-type
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":encryption-type is required"))
+    :type (common-lisp:or encryption-type common-lisp:null))
+   (key-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":key-id is required"))
+    :type (common-lisp:or key-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'stop-stream-encryption-input
                     'make-stop-stream-encryption-input))
@@ -1229,23 +1334,36 @@
 (common-lisp:deftype stream-arn () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (stream-description (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
-   (stream-arn (common-lisp:error ":stream-arn is required") :type
-    (common-lisp:or stream-arn common-lisp:null))
-   (stream-status (common-lisp:error ":stream-status is required") :type
-    (common-lisp:or stream-status common-lisp:null))
-   (shards (common-lisp:error ":shards is required") :type
-    (common-lisp:or shard-list common-lisp:null))
-   (has-more-shards (common-lisp:error ":has-more-shards is required") :type
-    (common-lisp:or boolean-object common-lisp:null))
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
+   (stream-arn
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":stream-arn is required"))
+    :type (common-lisp:or stream-arn common-lisp:null))
+   (stream-status
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":stream-status is required"))
+    :type (common-lisp:or stream-status common-lisp:null))
+   (shards
+    (common-lisp:error #A((19) common-lisp:base-char . ":shards is required"))
+    :type (common-lisp:or shard-list common-lisp:null))
+   (has-more-shards
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":has-more-shards is required"))
+    :type (common-lisp:or boolean-object common-lisp:null))
    (retention-period-hours
-    (common-lisp:error ":retention-period-hours is required") :type
-    (common-lisp:or positive-integer-object common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":retention-period-hours is required"))
+    :type (common-lisp:or positive-integer-object common-lisp:null))
    (stream-creation-timestamp
-    (common-lisp:error ":stream-creation-timestamp is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (enhanced-monitoring (common-lisp:error ":enhanced-monitoring is required")
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":stream-creation-timestamp is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (enhanced-monitoring
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":enhanced-monitoring is required"))
     :type (common-lisp:or enhanced-monitoring-list common-lisp:null))
    (encryption-type common-lisp:nil :type
     (common-lisp:or encryption-type common-lisp:null))
@@ -1317,8 +1435,8 @@
 (common-lisp:deftype stream-status () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1359,12 +1477,18 @@
 (common-lisp:deftype timestamp () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (update-shard-count-input (:copier common-lisp:nil))
-   (stream-name (common-lisp:error ":stream-name is required") :type
-    (common-lisp:or stream-name common-lisp:null))
-   (target-shard-count (common-lisp:error ":target-shard-count is required")
+   (stream-name
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":stream-name is required"))
+    :type (common-lisp:or stream-name common-lisp:null))
+   (target-shard-count
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":target-shard-count is required"))
     :type (common-lisp:or positive-integer-object common-lisp:null))
-   (scaling-type (common-lisp:error ":scaling-type is required") :type
-    (common-lisp:or scaling-type common-lisp:null)))
+   (scaling-type
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":scaling-type is required"))
+    :type (common-lisp:or scaling-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-shard-count-input 'make-update-shard-count-input))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1428,7 +1552,9 @@
                       (common-lisp:apply 'make-add-tags-to-stream-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddTagsToStream")
                                   ("Version" ,@"2013-12-02"))
@@ -1446,7 +1572,9 @@
                       (common-lisp:apply 'make-create-stream-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateStream")
                                   ("Version" ,@"2013-12-02"))
@@ -1466,7 +1594,9 @@
                        'make-decrease-stream-retention-period-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DecreaseStreamRetentionPeriod")
                                   ("Version" ,@"2013-12-02"))
@@ -1484,7 +1614,9 @@
                       (common-lisp:apply 'make-delete-stream-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteStream")
                                   ("Version" ,@"2013-12-02"))
@@ -1495,7 +1627,8 @@
 (common-lisp:progn
  (common-lisp:defun describe-limits ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+    (aws-sdk/api:aws-request :service #A((7) common-lisp:base-char . "kinesis")
+                             :method :post :params
                              (common-lisp:cons "Action" "DescribeLimits"))
     "DescribeLimitsOutput" common-lisp:nil))
  (common-lisp:export 'describe-limits))
@@ -1511,7 +1644,9 @@
                       (common-lisp:apply 'make-describe-stream-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeStream")
                                   ("Version" ,@"2013-12-02"))
@@ -1531,7 +1666,9 @@
                        'make-disable-enhanced-monitoring-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DisableEnhancedMonitoring")
                                   ("Version" ,@"2013-12-02"))
@@ -1550,7 +1687,9 @@
                       (common-lisp:apply 'make-enable-enhanced-monitoring-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"EnableEnhancedMonitoring")
                                   ("Version" ,@"2013-12-02"))
@@ -1568,7 +1707,9 @@
                       (common-lisp:apply 'make-get-records-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetRecords")
                                   ("Version" ,@"2013-12-02"))
@@ -1589,7 +1730,9 @@
                       (common-lisp:apply 'make-get-shard-iterator-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetShardIterator")
                                   ("Version" ,@"2013-12-02"))
@@ -1609,7 +1752,9 @@
                        'make-increase-stream-retention-period-input
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"IncreaseStreamRetentionPeriod")
                                   ("Version" ,@"2013-12-02"))
@@ -1628,7 +1773,9 @@
                       (common-lisp:apply 'make-list-streams-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListStreams")
                                   ("Version" ,@"2013-12-02"))
@@ -1648,7 +1795,9 @@
                       (common-lisp:apply 'make-list-tags-for-stream-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForStream")
                                   ("Version" ,@"2013-12-02"))
@@ -1668,7 +1817,9 @@
                       (common-lisp:apply 'make-merge-shards-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"MergeShards")
                                   ("Version" ,@"2013-12-02"))
@@ -1689,7 +1840,9 @@
                       (common-lisp:apply 'make-put-record-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutRecord")
                                   ("Version" ,@"2013-12-02"))
@@ -1707,7 +1860,9 @@
                       (common-lisp:apply 'make-put-records-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PutRecords")
                                   ("Version" ,@"2013-12-02"))
@@ -1725,7 +1880,9 @@
                       (common-lisp:apply 'make-remove-tags-from-stream-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveTagsFromStream")
                                   ("Version" ,@"2013-12-02"))
@@ -1745,7 +1902,9 @@
                       (common-lisp:apply 'make-split-shard-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SplitShard")
                                   ("Version" ,@"2013-12-02"))
@@ -1764,7 +1923,9 @@
                       (common-lisp:apply 'make-start-stream-encryption-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartStreamEncryption")
                                   ("Version" ,@"2013-12-02"))
@@ -1783,7 +1944,9 @@
                       (common-lisp:apply 'make-stop-stream-encryption-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopStreamEncryption")
                                   ("Version" ,@"2013-12-02"))
@@ -1803,7 +1966,9 @@
                       (common-lisp:apply 'make-update-shard-count-input
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "kinesis" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((7) common-lisp:base-char . "kinesis")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateShardCount")
                                   ("Version" ,@"2013-12-02"))

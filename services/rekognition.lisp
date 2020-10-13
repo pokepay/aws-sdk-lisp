@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/rekognition)
+
 (common-lisp:progn
  (common-lisp:defstruct (access-denied-exception (:copier common-lisp:nil)))
  (common-lisp:export
@@ -176,10 +177,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (compare-faces-request (:copier common-lisp:nil))
-   (source-image (common-lisp:error ":source-image is required") :type
-    (common-lisp:or image common-lisp:null))
-   (target-image (common-lisp:error ":target-image is required") :type
-    (common-lisp:or image common-lisp:null))
+   (source-image
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":source-image is required"))
+    :type (common-lisp:or image common-lisp:null))
+   (target-image
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":target-image is required"))
+    :type (common-lisp:or image common-lisp:null))
    (similarity-threshold common-lisp:nil :type
     (common-lisp:or percent common-lisp:null)))
  (common-lisp:export
@@ -329,8 +334,10 @@
                                                 'confidence))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-collection-request (:copier common-lisp:nil))
-   (collection-id (common-lisp:error ":collection-id is required") :type
-    (common-lisp:or collection-id common-lisp:null)))
+   (collection-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":collection-id is required"))
+    :type (common-lisp:or collection-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-collection-request
                     'make-create-collection-request))
@@ -371,8 +378,10 @@
 (common-lisp:deftype degree () 'common-lisp:single-float)
 (common-lisp:progn
  (common-lisp:defstruct (delete-collection-request (:copier common-lisp:nil))
-   (collection-id (common-lisp:error ":collection-id is required") :type
-    (common-lisp:or collection-id common-lisp:null)))
+   (collection-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":collection-id is required"))
+    :type (common-lisp:or collection-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-collection-request
                     'make-delete-collection-request))
@@ -405,10 +414,14 @@
                                                 'status-code))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-faces-request (:copier common-lisp:nil))
-   (collection-id (common-lisp:error ":collection-id is required") :type
-    (common-lisp:or collection-id common-lisp:null))
-   (face-ids (common-lisp:error ":face-ids is required") :type
-    (common-lisp:or face-id-list common-lisp:null)))
+   (collection-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":collection-id is required"))
+    :type (common-lisp:or collection-id common-lisp:null))
+   (face-ids
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":face-ids is required"))
+    :type (common-lisp:or face-id-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-faces-request 'make-delete-faces-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -442,8 +455,9 @@
                                                 'deleted-faces))))))
 (common-lisp:progn
  (common-lisp:defstruct (detect-faces-request (:copier common-lisp:nil))
-   (image (common-lisp:error ":image is required") :type
-    (common-lisp:or image common-lisp:null))
+   (image
+    (common-lisp:error #A((18) common-lisp:base-char . ":image is required"))
+    :type (common-lisp:or image common-lisp:null))
    (attributes common-lisp:nil :type
     (common-lisp:or attributes common-lisp:null)))
  (common-lisp:export
@@ -486,8 +500,9 @@
                                                 'orientation-correction))))))
 (common-lisp:progn
  (common-lisp:defstruct (detect-labels-request (:copier common-lisp:nil))
-   (image (common-lisp:error ":image is required") :type
-    (common-lisp:or image common-lisp:null))
+   (image
+    (common-lisp:error #A((18) common-lisp:base-char . ":image is required"))
+    :type (common-lisp:or image common-lisp:null))
    (max-labels common-lisp:nil :type
     (common-lisp:or uinteger common-lisp:null))
    (min-confidence common-lisp:nil :type
@@ -539,8 +554,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (detect-moderation-labels-request (:copier common-lisp:nil))
-   (image (common-lisp:error ":image is required") :type
-    (common-lisp:or image common-lisp:null))
+   (image
+    (common-lisp:error #A((18) common-lisp:base-char . ":image is required"))
+    :type (common-lisp:or image common-lisp:null))
    (min-confidence common-lisp:nil :type
     (common-lisp:or percent common-lisp:null)))
  (common-lisp:export
@@ -887,8 +903,8 @@
 (common-lisp:deftype gender-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (get-celebrity-info-request (:copier common-lisp:nil))
-   (id (common-lisp:error ":id is required") :type
-    (common-lisp:or rekognition-unique-id common-lisp:null)))
+   (id (common-lisp:error #A((15) common-lisp:base-char . ":id is required"))
+    :type (common-lisp:or rekognition-unique-id common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-celebrity-info-request
                     'make-get-celebrity-info-request))
@@ -975,10 +991,13 @@
    (common-lisp:append)))
 (common-lisp:progn
  (common-lisp:defstruct (index-faces-request (:copier common-lisp:nil))
-   (collection-id (common-lisp:error ":collection-id is required") :type
-    (common-lisp:or collection-id common-lisp:null))
-   (image (common-lisp:error ":image is required") :type
-    (common-lisp:or image common-lisp:null))
+   (collection-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":collection-id is required"))
+    :type (common-lisp:or collection-id common-lisp:null))
+   (image
+    (common-lisp:error #A((18) common-lisp:base-char . ":image is required"))
+    :type (common-lisp:or image common-lisp:null))
    (external-image-id common-lisp:nil :type
     (common-lisp:or external-image-id common-lisp:null))
    (detection-attributes common-lisp:nil :type
@@ -1188,8 +1207,10 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-faces-request (:copier common-lisp:nil))
-   (collection-id (common-lisp:error ":collection-id is required") :type
-    (common-lisp:or collection-id common-lisp:null))
+   (collection-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":collection-id is required"))
+    :type (common-lisp:or collection-id common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
    (max-results common-lisp:nil :type
@@ -1348,8 +1369,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (recognize-celebrities-request (:copier common-lisp:nil))
-   (image (common-lisp:error ":image is required") :type
-    (common-lisp:or image common-lisp:null)))
+   (image
+    (common-lisp:error #A((18) common-lisp:base-char . ":image is required"))
+    :type (common-lisp:or image common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'recognize-celebrities-request
                     'make-recognize-celebrities-request))
@@ -1449,10 +1471,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (search-faces-by-image-request (:copier common-lisp:nil))
-   (collection-id (common-lisp:error ":collection-id is required") :type
-    (common-lisp:or collection-id common-lisp:null))
-   (image (common-lisp:error ":image is required") :type
-    (common-lisp:or image common-lisp:null))
+   (collection-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":collection-id is required"))
+    :type (common-lisp:or collection-id common-lisp:null))
+   (image
+    (common-lisp:error #A((18) common-lisp:base-char . ":image is required"))
+    :type (common-lisp:or image common-lisp:null))
    (max-faces common-lisp:nil :type
     (common-lisp:or max-faces common-lisp:null))
    (face-match-threshold common-lisp:nil :type
@@ -1519,10 +1544,13 @@
                                                 'face-matches))))))
 (common-lisp:progn
  (common-lisp:defstruct (search-faces-request (:copier common-lisp:nil))
-   (collection-id (common-lisp:error ":collection-id is required") :type
-    (common-lisp:or collection-id common-lisp:null))
-   (face-id (common-lisp:error ":face-id is required") :type
-    (common-lisp:or face-id common-lisp:null))
+   (collection-id
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":collection-id is required"))
+    :type (common-lisp:or collection-id common-lisp:null))
+   (face-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":face-id is required"))
+    :type (common-lisp:or face-id common-lisp:null))
    (max-faces common-lisp:nil :type
     (common-lisp:or max-faces common-lisp:null))
    (face-match-threshold common-lisp:nil :type
@@ -1642,7 +1670,9 @@
                       (common-lisp:apply 'make-compare-faces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CompareFaces")
                                   ("Version" ,@"2016-06-27"))
@@ -1660,7 +1690,9 @@
                       (common-lisp:apply 'make-create-collection-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCollection")
                                   ("Version" ,@"2016-06-27"))
@@ -1678,7 +1710,9 @@
                       (common-lisp:apply 'make-delete-collection-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCollection")
                                   ("Version" ,@"2016-06-27"))
@@ -1696,7 +1730,9 @@
                       (common-lisp:apply 'make-delete-faces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteFaces")
                                   ("Version" ,@"2016-06-27"))
@@ -1714,7 +1750,9 @@
                       (common-lisp:apply 'make-detect-faces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DetectFaces")
                                   ("Version" ,@"2016-06-27"))
@@ -1733,7 +1771,9 @@
                       (common-lisp:apply 'make-detect-labels-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DetectLabels")
                                   ("Version" ,@"2016-06-27"))
@@ -1751,7 +1791,9 @@
                       (common-lisp:apply 'make-detect-moderation-labels-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DetectModerationLabels")
                                   ("Version" ,@"2016-06-27"))
@@ -1769,7 +1811,9 @@
                       (common-lisp:apply 'make-get-celebrity-info-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCelebrityInfo")
                                   ("Version" ,@"2016-06-27"))
@@ -1790,7 +1834,9 @@
                       (common-lisp:apply 'make-index-faces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"IndexFaces")
                                   ("Version" ,@"2016-06-27"))
@@ -1808,7 +1854,9 @@
                       (common-lisp:apply 'make-list-collections-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListCollections")
                                   ("Version" ,@"2016-06-27"))
@@ -1827,7 +1875,9 @@
                       (common-lisp:apply 'make-list-faces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListFaces")
                                   ("Version" ,@"2016-06-27"))
@@ -1845,7 +1895,9 @@
                       (common-lisp:apply 'make-recognize-celebrities-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RecognizeCelebrities")
                                   ("Version" ,@"2016-06-27"))
@@ -1866,7 +1918,9 @@
                       (common-lisp:apply 'make-search-faces-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SearchFaces")
                                   ("Version" ,@"2016-06-27"))
@@ -1886,7 +1940,9 @@
                       (common-lisp:apply 'make-search-faces-by-image-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "rekognition" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((11) common-lisp:base-char . "rekognition")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SearchFacesByImage")
                                   ("Version" ,@"2016-06-27"))

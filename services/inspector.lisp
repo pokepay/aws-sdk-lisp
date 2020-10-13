@@ -7,15 +7,21 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/inspector)
+
 (common-lisp:deftype access-denied-error-code () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (access-denied-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (error-code (common-lisp:error ":errorcode is required") :type
-    (common-lisp:or access-denied-error-code common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or error-message common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":errorcode is required"))
+    :type (common-lisp:or access-denied-error-code common-lisp:null))
+   (can-retry
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":canretry is required"))
+    :type (common-lisp:or bool common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'access-denied-exception 'make-access-denied-exception))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -41,10 +47,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-attributes-to-findings-request (:copier common-lisp:nil))
-   (finding-arns (common-lisp:error ":findingarns is required") :type
+   (finding-arns
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":findingarns is required"))
+    :type
     (common-lisp:or add-remove-attributes-finding-arn-list common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or user-attribute-list common-lisp:null)))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or user-attribute-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-attributes-to-findings-request
                     'make-add-attributes-to-findings-request))
@@ -66,8 +77,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (add-attributes-to-findings-response (:copier common-lisp:nil))
-   (failed-items (common-lisp:error ":faileditems is required") :type
-    (common-lisp:or failed-items common-lisp:null)))
+   (failed-items
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":faileditems is required"))
+    :type (common-lisp:or failed-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'add-attributes-to-findings-response
                     'make-add-attributes-to-findings-response))
@@ -92,9 +105,12 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (agent-already-running-assessment (:copier common-lisp:nil))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or agent-id common-lisp:null))
-   (assessment-run-arn (common-lisp:error ":assessmentrunarn is required")
+   (agent-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":agentid is required"))
+    :type (common-lisp:or agent-id common-lisp:null))
+   (assessment-run-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":assessmentrunarn is required"))
     :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'agent-already-running-assessment
@@ -125,9 +141,13 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (agent-filter (:copier common-lisp:nil))
-   (agent-healths (common-lisp:error ":agenthealths is required") :type
-    (common-lisp:or agent-health-list common-lisp:null))
-   (agent-health-codes (common-lisp:error ":agenthealthcodes is required")
+   (agent-healths
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":agenthealths is required"))
+    :type (common-lisp:or agent-health-list common-lisp:null))
+   (agent-health-codes
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":agenthealthcodes is required"))
     :type (common-lisp:or agent-health-code-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'agent-filter 'make-agent-filter))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -171,8 +191,9 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (agent-preview (:copier common-lisp:nil))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or agent-id common-lisp:null))
+   (agent-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":agentid is required"))
+    :type (common-lisp:or agent-id common-lisp:null))
    (auto-scaling-group common-lisp:nil :type
     (common-lisp:or auto-scaling-group common-lisp:null)))
  (common-lisp:export (common-lisp:list 'agent-preview 'make-agent-preview))
@@ -200,14 +221,21 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (agents-already-running-assessment-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (agents (common-lisp:error ":agents is required") :type
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or error-message common-lisp:null))
+   (agents
+    (common-lisp:error #A((19) common-lisp:base-char . ":agents is required"))
+    :type
     (common-lisp:or agent-already-running-assessment-list common-lisp:null))
-   (agents-truncated (common-lisp:error ":agentstruncated is required") :type
-    (common-lisp:or bool common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+   (agents-truncated
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":agentstruncated is required"))
+    :type (common-lisp:or bool common-lisp:null))
+   (can-retry
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":canretry is required"))
+    :type (common-lisp:or bool common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'agents-already-running-assessment-exception
                     'make-agents-already-running-assessment-exception))
@@ -248,38 +276,58 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (assessment-run (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or assessment-run-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or assessment-run-name common-lisp:null))
    (assessment-template-arn
-    (common-lisp:error ":assessmenttemplatearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or assessment-run-state common-lisp:null))
-   (duration-in-seconds (common-lisp:error ":durationinseconds is required")
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":assessmenttemplatearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (state
+    (common-lisp:error #A((18) common-lisp:base-char . ":state is required"))
+    :type (common-lisp:or assessment-run-state common-lisp:null))
+   (duration-in-seconds
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":durationinseconds is required"))
     :type (common-lisp:or assessment-run-duration common-lisp:null))
-   (rules-package-arns (common-lisp:error ":rulespackagearns is required")
+   (rules-package-arns
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":rulespackagearns is required"))
     :type (common-lisp:or assessment-rules-package-arn-list common-lisp:null))
    (user-attributes-for-findings
-    (common-lisp:error ":userattributesforfindings is required") :type
-    (common-lisp:or user-attribute-list common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":userattributesforfindings is required"))
+    :type (common-lisp:or user-attribute-list common-lisp:null))
+   (created-at
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":createdat is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
    (started-at common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
    (completed-at common-lisp:nil :type
     (common-lisp:or timestamp common-lisp:null))
-   (state-changed-at (common-lisp:error ":statechangedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (data-collected (common-lisp:error ":datacollected is required") :type
-    (common-lisp:or bool common-lisp:null))
-   (state-changes (common-lisp:error ":statechanges is required") :type
-    (common-lisp:or assessment-run-state-change-list common-lisp:null))
-   (notifications (common-lisp:error ":notifications is required") :type
-    (common-lisp:or assessment-run-notification-list common-lisp:null))
-   (finding-counts (common-lisp:error ":findingcounts is required") :type
-    (common-lisp:or assessment-run-finding-counts common-lisp:null)))
+   (state-changed-at
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":statechangedat is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (data-collected
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":datacollected is required"))
+    :type (common-lisp:or bool common-lisp:null))
+   (state-changes
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":statechanges is required"))
+    :type (common-lisp:or assessment-run-state-change-list common-lisp:null))
+   (notifications
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":notifications is required"))
+    :type (common-lisp:or assessment-run-notification-list common-lisp:null))
+   (finding-counts
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":findingcounts is required"))
+    :type (common-lisp:or assessment-run-finding-counts common-lisp:null)))
  (common-lisp:export (common-lisp:list 'assessment-run 'make-assessment-run))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape assessment-run))
@@ -361,19 +409,28 @@
                                                 'finding-counts))))))
 (common-lisp:progn
  (common-lisp:defstruct (assessment-run-agent (:copier common-lisp:nil))
-   (agent-id (common-lisp:error ":agentid is required") :type
-    (common-lisp:or agent-id common-lisp:null))
-   (assessment-run-arn (common-lisp:error ":assessmentrunarn is required")
+   (agent-id
+    (common-lisp:error #A((20) common-lisp:base-char . ":agentid is required"))
+    :type (common-lisp:or agent-id common-lisp:null))
+   (assessment-run-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":assessmentrunarn is required"))
     :type (common-lisp:or arn common-lisp:null))
-   (agent-health (common-lisp:error ":agenthealth is required") :type
-    (common-lisp:or agent-health common-lisp:null))
-   (agent-health-code (common-lisp:error ":agenthealthcode is required") :type
-    (common-lisp:or agent-health-code common-lisp:null))
+   (agent-health
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":agenthealth is required"))
+    :type (common-lisp:or agent-health common-lisp:null))
+   (agent-health-code
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":agenthealthcode is required"))
+    :type (common-lisp:or agent-health-code common-lisp:null))
    (agent-health-details common-lisp:nil :type
     (common-lisp:or message common-lisp:null))
    (auto-scaling-group common-lisp:nil :type
     (common-lisp:or auto-scaling-group common-lisp:null))
-   (telemetry-metadata (common-lisp:error ":telemetrymetadata is required")
+   (telemetry-metadata
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":telemetrymetadata is required"))
     :type (common-lisp:or telemetry-metadata-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'assessment-run-agent 'make-assessment-run-agent))
@@ -499,16 +556,23 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (assessment-run-in-progress-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (assessment-run-arns (common-lisp:error ":assessmentrunarns is required")
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or error-message common-lisp:null))
+   (assessment-run-arns
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":assessmentrunarns is required"))
     :type
     (common-lisp:or assessment-run-in-progress-arn-list common-lisp:null))
    (assessment-run-arns-truncated
-    (common-lisp:error ":assessmentrunarnstruncated is required") :type
-    (common-lisp:or bool common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":assessmentrunarnstruncated is required"))
+    :type (common-lisp:or bool common-lisp:null))
+   (can-retry
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":canretry is required"))
+    :type (common-lisp:or bool common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'assessment-run-in-progress-exception
                     'make-assessment-run-in-progress-exception))
@@ -548,13 +612,16 @@
 (common-lisp:deftype assessment-run-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (assessment-run-notification (:copier common-lisp:nil))
-   (date (common-lisp:error ":date is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (event (common-lisp:error ":event is required") :type
-    (common-lisp:or inspector-event common-lisp:null))
+   (date
+    (common-lisp:error #A((17) common-lisp:base-char . ":date is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (event
+    (common-lisp:error #A((18) common-lisp:base-char . ":event is required"))
+    :type (common-lisp:or inspector-event common-lisp:null))
    (message common-lisp:nil :type (common-lisp:or message common-lisp:null))
-   (error (common-lisp:error ":error is required") :type
-    (common-lisp:or bool common-lisp:null))
+   (error
+    (common-lisp:error #A((18) common-lisp:base-char . ":error is required"))
+    :type (common-lisp:or bool common-lisp:null))
    (sns-topic-arn common-lisp:nil :type (common-lisp:or arn common-lisp:null))
    (sns-publish-status-code common-lisp:nil :type
     (common-lisp:or assessment-run-notification-sns-status-code
@@ -611,10 +678,13 @@
 (common-lisp:deftype assessment-run-state () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (assessment-run-state-change (:copier common-lisp:nil))
-   (state-changed-at (common-lisp:error ":statechangedat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (state (common-lisp:error ":state is required") :type
-    (common-lisp:or assessment-run-state common-lisp:null)))
+   (state-changed-at
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":statechangedat is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (state
+    (common-lisp:error #A((18) common-lisp:base-char . ":state is required"))
+    :type (common-lisp:or assessment-run-state common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'assessment-run-state-change
                     'make-assessment-run-state-change))
@@ -652,16 +722,23 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (assessment-target (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or assessment-target-name common-lisp:null))
-   (resource-group-arn (common-lisp:error ":resourcegrouparn is required")
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
     :type (common-lisp:or arn common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or assessment-target-name common-lisp:null))
+   (resource-group-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":resourcegrouparn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (created-at
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":createdat is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (updated-at
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":updatedat is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'assessment-target 'make-assessment-target))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -719,24 +796,33 @@
 (common-lisp:deftype assessment-target-name () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (assessment-template (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or assessment-template-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or assessment-template-name common-lisp:null))
    (assessment-target-arn
-    (common-lisp:error ":assessmenttargetarn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (duration-in-seconds (common-lisp:error ":durationinseconds is required")
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":assessmenttargetarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (duration-in-seconds
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":durationinseconds is required"))
     :type (common-lisp:or assessment-run-duration common-lisp:null))
-   (rules-package-arns (common-lisp:error ":rulespackagearns is required")
+   (rules-package-arns
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":rulespackagearns is required"))
     :type
     (common-lisp:or assessment-template-rules-package-arn-list
                     common-lisp:null))
    (user-attributes-for-findings
-    (common-lisp:error ":userattributesforfindings is required") :type
-    (common-lisp:or user-attribute-list common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+    (common-lisp:error
+     #A((38) common-lisp:base-char . ":userattributesforfindings is required"))
+    :type (common-lisp:or user-attribute-list common-lisp:null))
+   (created-at
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":createdat is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'assessment-template 'make-assessment-template))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -827,8 +913,10 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (asset-attributes (:copier common-lisp:nil))
-   (schema-version (common-lisp:error ":schemaversion is required") :type
-    (common-lisp:or numeric-version common-lisp:null))
+   (schema-version
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":schemaversion is required"))
+    :type (common-lisp:or numeric-version common-lisp:null))
    (agent-id common-lisp:nil :type (common-lisp:or agent-id common-lisp:null))
    (auto-scaling-group common-lisp:nil :type
     (common-lisp:or auto-scaling-group common-lisp:null))
@@ -874,8 +962,8 @@
 (common-lisp:deftype asset-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (attribute (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or attribute-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or attribute-key common-lisp:null))
    (value common-lisp:nil :type
     (common-lisp:or attribute-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'attribute 'make-attribute))
@@ -923,9 +1011,12 @@
  (common-lisp:defstruct
      (create-assessment-target-request (:copier common-lisp:nil))
    (assessment-target-name
-    (common-lisp:error ":assessmenttargetname is required") :type
-    (common-lisp:or assessment-target-name common-lisp:null))
-   (resource-group-arn (common-lisp:error ":resourcegrouparn is required")
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":assessmenttargetname is required"))
+    :type (common-lisp:or assessment-target-name common-lisp:null))
+   (resource-group-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":resourcegrouparn is required"))
     :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-assessment-target-request
@@ -949,8 +1040,9 @@
  (common-lisp:defstruct
      (create-assessment-target-response (:copier common-lisp:nil))
    (assessment-target-arn
-    (common-lisp:error ":assessmenttargetarn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":assessmenttargetarn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-assessment-target-response
                     'make-create-assessment-target-response))
@@ -968,14 +1060,20 @@
  (common-lisp:defstruct
      (create-assessment-template-request (:copier common-lisp:nil))
    (assessment-target-arn
-    (common-lisp:error ":assessmenttargetarn is required") :type
-    (common-lisp:or arn common-lisp:null))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":assessmenttargetarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (assessment-template-name
-    (common-lisp:error ":assessmenttemplatename is required") :type
-    (common-lisp:or assessment-template-name common-lisp:null))
-   (duration-in-seconds (common-lisp:error ":durationinseconds is required")
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":assessmenttemplatename is required"))
+    :type (common-lisp:or assessment-template-name common-lisp:null))
+   (duration-in-seconds
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":durationinseconds is required"))
     :type (common-lisp:or assessment-run-duration common-lisp:null))
-   (rules-package-arns (common-lisp:error ":rulespackagearns is required")
+   (rules-package-arns
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":rulespackagearns is required"))
     :type
     (common-lisp:or assessment-template-rules-package-arn-list
                     common-lisp:null))
@@ -1018,8 +1116,9 @@
  (common-lisp:defstruct
      (create-assessment-template-response (:copier common-lisp:nil))
    (assessment-template-arn
-    (common-lisp:error ":assessmenttemplatearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":assessmenttemplatearn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-assessment-template-response
                     'make-create-assessment-template-response))
@@ -1036,7 +1135,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-resource-group-request (:copier common-lisp:nil))
-   (resource-group-tags (common-lisp:error ":resourcegrouptags is required")
+   (resource-group-tags
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":resourcegrouptags is required"))
     :type (common-lisp:or resource-group-tags common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-resource-group-request
@@ -1054,7 +1155,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (create-resource-group-response (:copier common-lisp:nil))
-   (resource-group-arn (common-lisp:error ":resourcegrouparn is required")
+   (resource-group-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":resourcegrouparn is required"))
     :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-resource-group-response
@@ -1072,7 +1175,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-assessment-run-request (:copier common-lisp:nil))
-   (assessment-run-arn (common-lisp:error ":assessmentrunarn is required")
+   (assessment-run-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":assessmentrunarn is required"))
     :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-assessment-run-request
@@ -1091,8 +1196,9 @@
  (common-lisp:defstruct
      (delete-assessment-target-request (:copier common-lisp:nil))
    (assessment-target-arn
-    (common-lisp:error ":assessmenttargetarn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":assessmenttargetarn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-assessment-target-request
                     'make-delete-assessment-target-request))
@@ -1110,8 +1216,9 @@
  (common-lisp:defstruct
      (delete-assessment-template-request (:copier common-lisp:nil))
    (assessment-template-arn
-    (common-lisp:error ":assessmenttemplatearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":assessmenttemplatearn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-assessment-template-request
                     'make-delete-assessment-template-request))
@@ -1128,7 +1235,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-assessment-runs-request (:copier common-lisp:nil))
-   (assessment-run-arns (common-lisp:error ":assessmentrunarns is required")
+   (assessment-run-arns
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":assessmentrunarns is required"))
     :type (common-lisp:or batch-describe-arn-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-assessment-runs-request
@@ -1146,10 +1255,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-assessment-runs-response (:copier common-lisp:nil))
-   (assessment-runs (common-lisp:error ":assessmentruns is required") :type
-    (common-lisp:or assessment-run-list common-lisp:null))
-   (failed-items (common-lisp:error ":faileditems is required") :type
-    (common-lisp:or failed-items common-lisp:null)))
+   (assessment-runs
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":assessmentruns is required"))
+    :type (common-lisp:or assessment-run-list common-lisp:null))
+   (failed-items
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":faileditems is required"))
+    :type (common-lisp:or failed-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-assessment-runs-response
                     'make-describe-assessment-runs-response))
@@ -1172,8 +1285,9 @@
  (common-lisp:defstruct
      (describe-assessment-targets-request (:copier common-lisp:nil))
    (assessment-target-arns
-    (common-lisp:error ":assessmenttargetarns is required") :type
-    (common-lisp:or batch-describe-arn-list common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":assessmenttargetarns is required"))
+    :type (common-lisp:or batch-describe-arn-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-assessment-targets-request
                     'make-describe-assessment-targets-request))
@@ -1190,10 +1304,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-assessment-targets-response (:copier common-lisp:nil))
-   (assessment-targets (common-lisp:error ":assessmenttargets is required")
+   (assessment-targets
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":assessmenttargets is required"))
     :type (common-lisp:or assessment-target-list common-lisp:null))
-   (failed-items (common-lisp:error ":faileditems is required") :type
-    (common-lisp:or failed-items common-lisp:null)))
+   (failed-items
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":faileditems is required"))
+    :type (common-lisp:or failed-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-assessment-targets-response
                     'make-describe-assessment-targets-response))
@@ -1216,8 +1334,9 @@
  (common-lisp:defstruct
      (describe-assessment-templates-request (:copier common-lisp:nil))
    (assessment-template-arns
-    (common-lisp:error ":assessmenttemplatearns is required") :type
-    (common-lisp:or batch-describe-arn-list common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":assessmenttemplatearns is required"))
+    :type (common-lisp:or batch-describe-arn-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-assessment-templates-request
                     'make-describe-assessment-templates-request))
@@ -1234,10 +1353,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-assessment-templates-response (:copier common-lisp:nil))
-   (assessment-templates (common-lisp:error ":assessmenttemplates is required")
+   (assessment-templates
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":assessmenttemplates is required"))
     :type (common-lisp:or assessment-template-list common-lisp:null))
-   (failed-items (common-lisp:error ":faileditems is required") :type
-    (common-lisp:or failed-items common-lisp:null)))
+   (failed-items
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":faileditems is required"))
+    :type (common-lisp:or failed-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-assessment-templates-response
                     'make-describe-assessment-templates-response))
@@ -1259,12 +1382,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-cross-account-access-role-response (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (valid (common-lisp:error ":valid is required") :type
-    (common-lisp:or bool common-lisp:null))
-   (registered-at (common-lisp:error ":registeredat is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (valid
+    (common-lisp:error #A((18) common-lisp:base-char . ":valid is required"))
+    :type (common-lisp:or bool common-lisp:null))
+   (registered-at
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":registeredat is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-cross-account-access-role-response
                     'make-describe-cross-account-access-role-response))
@@ -1290,8 +1417,10 @@
                                                 'registered-at))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-findings-request (:copier common-lisp:nil))
-   (finding-arns (common-lisp:error ":findingarns is required") :type
-    (common-lisp:or batch-describe-arn-list common-lisp:null))
+   (finding-arns
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":findingarns is required"))
+    :type (common-lisp:or batch-describe-arn-list common-lisp:null))
    (locale common-lisp:nil :type (common-lisp:or locale common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-findings-request
@@ -1313,10 +1442,14 @@
                                                 'locale))))))
 (common-lisp:progn
  (common-lisp:defstruct (describe-findings-response (:copier common-lisp:nil))
-   (findings (common-lisp:error ":findings is required") :type
-    (common-lisp:or finding-list common-lisp:null))
-   (failed-items (common-lisp:error ":faileditems is required") :type
-    (common-lisp:or failed-items common-lisp:null)))
+   (findings
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":findings is required"))
+    :type (common-lisp:or finding-list common-lisp:null))
+   (failed-items
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":faileditems is required"))
+    :type (common-lisp:or failed-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-findings-response
                     'make-describe-findings-response))
@@ -1338,7 +1471,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-resource-groups-request (:copier common-lisp:nil))
-   (resource-group-arns (common-lisp:error ":resourcegrouparns is required")
+   (resource-group-arns
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":resourcegrouparns is required"))
     :type (common-lisp:or batch-describe-arn-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-resource-groups-request
@@ -1356,10 +1491,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-resource-groups-response (:copier common-lisp:nil))
-   (resource-groups (common-lisp:error ":resourcegroups is required") :type
-    (common-lisp:or resource-group-list common-lisp:null))
-   (failed-items (common-lisp:error ":faileditems is required") :type
-    (common-lisp:or failed-items common-lisp:null)))
+   (resource-groups
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":resourcegroups is required"))
+    :type (common-lisp:or resource-group-list common-lisp:null))
+   (failed-items
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":faileditems is required"))
+    :type (common-lisp:or failed-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-resource-groups-response
                     'make-describe-resource-groups-response))
@@ -1381,7 +1520,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-rules-packages-request (:copier common-lisp:nil))
-   (rules-package-arns (common-lisp:error ":rulespackagearns is required")
+   (rules-package-arns
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":rulespackagearns is required"))
     :type (common-lisp:or batch-describe-arn-list common-lisp:null))
    (locale common-lisp:nil :type (common-lisp:or locale common-lisp:null)))
  (common-lisp:export
@@ -1405,10 +1546,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (describe-rules-packages-response (:copier common-lisp:nil))
-   (rules-packages (common-lisp:error ":rulespackages is required") :type
-    (common-lisp:or rules-package-list common-lisp:null))
-   (failed-items (common-lisp:error ":faileditems is required") :type
-    (common-lisp:or failed-items common-lisp:null)))
+   (rules-packages
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":rulespackages is required"))
+    :type (common-lisp:or rules-package-list common-lisp:null))
+   (failed-items
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":faileditems is required"))
+    :type (common-lisp:or failed-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'describe-rules-packages-response
                     'make-describe-rules-packages-response))
@@ -1450,10 +1595,13 @@
 (common-lisp:deftype error-message () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (event-subscription (:copier common-lisp:nil))
-   (event (common-lisp:error ":event is required") :type
-    (common-lisp:or inspector-event common-lisp:null))
-   (subscribed-at (common-lisp:error ":subscribedat is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (event
+    (common-lisp:error #A((18) common-lisp:base-char . ":event is required"))
+    :type (common-lisp:or inspector-event common-lisp:null))
+   (subscribed-at
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":subscribedat is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'event-subscription 'make-event-subscription))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1479,10 +1627,14 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (failed-item-details (:copier common-lisp:nil))
-   (failure-code (common-lisp:error ":failurecode is required") :type
-    (common-lisp:or failed-item-error-code common-lisp:null))
-   (retryable (common-lisp:error ":retryable is required") :type
-    (common-lisp:or bool common-lisp:null)))
+   (failure-code
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":failurecode is required"))
+    :type (common-lisp:or failed-item-error-code common-lisp:null))
+   (retryable
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":retryable is required"))
+    :type (common-lisp:or bool common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'failed-item-details 'make-failed-item-details))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1515,8 +1667,8 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (finding (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (schema-version common-lisp:nil :type
     (common-lisp:or numeric-version common-lisp:null))
    (service common-lisp:nil :type
@@ -1539,14 +1691,22 @@
     (common-lisp:or ioc-confidence common-lisp:null))
    (indicator-of-compromise common-lisp:nil :type
     (common-lisp:or bool common-lisp:null))
-   (attributes (common-lisp:error ":attributes is required") :type
-    (common-lisp:or attribute-list common-lisp:null))
-   (user-attributes (common-lisp:error ":userattributes is required") :type
-    (common-lisp:or user-attribute-list common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null))
-   (updated-at (common-lisp:error ":updatedat is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (attributes
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":attributes is required"))
+    :type (common-lisp:or attribute-list common-lisp:null))
+   (user-attributes
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":userattributes is required"))
+    :type (common-lisp:or user-attribute-list common-lisp:null))
+   (created-at
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":createdat is required"))
+    :type (common-lisp:or timestamp common-lisp:null))
+   (updated-at
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":updatedat is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export (common-lisp:list 'finding 'make-finding))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape finding))
@@ -1715,12 +1875,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-assessment-report-request (:copier common-lisp:nil))
-   (assessment-run-arn (common-lisp:error ":assessmentrunarn is required")
+   (assessment-run-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":assessmentrunarn is required"))
     :type (common-lisp:or arn common-lisp:null))
-   (report-file-format (common-lisp:error ":reportfileformat is required")
+   (report-file-format
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":reportfileformat is required"))
     :type (common-lisp:or report-file-format common-lisp:null))
-   (report-type (common-lisp:error ":reporttype is required") :type
-    (common-lisp:or report-type common-lisp:null)))
+   (report-type
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":reporttype is required"))
+    :type (common-lisp:or report-type common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-assessment-report-request
                     'make-get-assessment-report-request))
@@ -1747,8 +1913,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-assessment-report-response (:copier common-lisp:nil))
-   (status (common-lisp:error ":status is required") :type
-    (common-lisp:or report-status common-lisp:null))
+   (status
+    (common-lisp:error #A((19) common-lisp:base-char . ":status is required"))
+    :type (common-lisp:or report-status common-lisp:null))
    (url common-lisp:nil :type (common-lisp:or url common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-assessment-report-response
@@ -1771,7 +1938,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-telemetry-metadata-request (:copier common-lisp:nil))
-   (assessment-run-arn (common-lisp:error ":assessmentrunarn is required")
+   (assessment-run-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":assessmentrunarn is required"))
     :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-telemetry-metadata-request
@@ -1789,7 +1958,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-telemetry-metadata-response (:copier common-lisp:nil))
-   (telemetry-metadata (common-lisp:error ":telemetrymetadata is required")
+   (telemetry-metadata
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":telemetrymetadata is required"))
     :type (common-lisp:or telemetry-metadata-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-telemetry-metadata-response
@@ -1809,8 +1980,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (inspector-service-attributes (:copier common-lisp:nil))
-   (schema-version (common-lisp:error ":schemaversion is required") :type
-    (common-lisp:or numeric-version common-lisp:null))
+   (schema-version
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":schemaversion is required"))
+    :type (common-lisp:or numeric-version common-lisp:null))
    (assessment-run-arn common-lisp:nil :type
     (common-lisp:or arn common-lisp:null))
    (rules-package-arn common-lisp:nil :type
@@ -1840,10 +2013,13 @@
                                                 'rules-package-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (internal-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or error-message common-lisp:null))
+   (can-retry
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":canretry is required"))
+    :type (common-lisp:or bool common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'internal-exception 'make-internal-exception))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1864,12 +2040,18 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (invalid-cross-account-role-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (error-code (common-lisp:error ":errorcode is required") :type
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or error-message common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":errorcode is required"))
+    :type
     (common-lisp:or invalid-cross-account-role-error-code common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+   (can-retry
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":canretry is required"))
+    :type (common-lisp:or bool common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'invalid-cross-account-role-exception
                     'make-invalid-cross-account-role-exception))
@@ -1896,12 +2078,17 @@
 (common-lisp:deftype invalid-input-error-code () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (invalid-input-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (error-code (common-lisp:error ":errorcode is required") :type
-    (common-lisp:or invalid-input-error-code common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or error-message common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":errorcode is required"))
+    :type (common-lisp:or invalid-input-error-code common-lisp:null))
+   (can-retry
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":canretry is required"))
+    :type (common-lisp:or bool common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'invalid-input-exception 'make-invalid-input-exception))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1937,12 +2124,17 @@
 (common-lisp:deftype limit-exceeded-error-code () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (limit-exceeded-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (error-code (common-lisp:error ":errorcode is required") :type
-    (common-lisp:or limit-exceeded-error-code common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or error-message common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":errorcode is required"))
+    :type (common-lisp:or limit-exceeded-error-code common-lisp:null))
+   (can-retry
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":canretry is required"))
+    :type (common-lisp:or bool common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'limit-exceeded-exception 'make-limit-exceeded-exception))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1968,7 +2160,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-assessment-run-agents-request (:copier common-lisp:nil))
-   (assessment-run-arn (common-lisp:error ":assessmentrunarn is required")
+   (assessment-run-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":assessmentrunarn is required"))
     :type (common-lisp:or arn common-lisp:null))
    (filter common-lisp:nil :type
     (common-lisp:or agent-filter common-lisp:null))
@@ -2008,8 +2202,9 @@
  (common-lisp:defstruct
      (list-assessment-run-agents-response (:copier common-lisp:nil))
    (assessment-run-agents
-    (common-lisp:error ":assessmentrunagents is required") :type
-    (common-lisp:or assessment-run-agent-list common-lisp:null))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":assessmentrunagents is required"))
+    :type (common-lisp:or assessment-run-agent-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -2072,7 +2267,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-assessment-runs-response (:copier common-lisp:nil))
-   (assessment-run-arns (common-lisp:error ":assessmentrunarns is required")
+   (assessment-run-arns
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":assessmentrunarns is required"))
     :type (common-lisp:or list-returned-arn-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
@@ -2130,8 +2327,9 @@
  (common-lisp:defstruct
      (list-assessment-targets-response (:copier common-lisp:nil))
    (assessment-target-arns
-    (common-lisp:error ":assessmenttargetarns is required") :type
-    (common-lisp:or list-returned-arn-list common-lisp:null))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":assessmenttargetarns is required"))
+    :type (common-lisp:or list-returned-arn-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -2195,8 +2393,9 @@
  (common-lisp:defstruct
      (list-assessment-templates-response (:copier common-lisp:nil))
    (assessment-template-arns
-    (common-lisp:error ":assessmenttemplatearns is required") :type
-    (common-lisp:or list-returned-arn-list common-lisp:null))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":assessmenttemplatearns is required"))
+    :type (common-lisp:or list-returned-arn-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -2253,8 +2452,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-event-subscriptions-response (:copier common-lisp:nil))
-   (subscriptions (common-lisp:error ":subscriptions is required") :type
-    (common-lisp:or subscription-list common-lisp:null))
+   (subscriptions
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":subscriptions is required"))
+    :type (common-lisp:or subscription-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -2314,8 +2515,10 @@
                                                 'max-results))))))
 (common-lisp:progn
  (common-lisp:defstruct (list-findings-response (:copier common-lisp:nil))
-   (finding-arns (common-lisp:error ":findingarns is required") :type
-    (common-lisp:or list-returned-arn-list common-lisp:null))
+   (finding-arns
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":findingarns is required"))
+    :type (common-lisp:or list-returned-arn-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -2378,7 +2581,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-rules-packages-response (:copier common-lisp:nil))
-   (rules-package-arns (common-lisp:error ":rulespackagearns is required")
+   (rules-package-arns
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":rulespackagearns is required"))
     :type (common-lisp:or list-returned-arn-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
@@ -2403,8 +2608,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resourcearn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-request
                     'make-list-tags-for-resource-request))
@@ -2421,8 +2628,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (list-tags-for-resource-response (:copier common-lisp:nil))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or tag-list common-lisp:null)))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'list-tags-for-resource-response
                     'make-list-tags-for-resource-response))
@@ -2444,12 +2652,17 @@
 (common-lisp:deftype no-such-entity-error-code () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (no-such-entity-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (error-code (common-lisp:error ":errorcode is required") :type
-    (common-lisp:or no-such-entity-error-code common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or error-message common-lisp:null))
+   (error-code
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":errorcode is required"))
+    :type (common-lisp:or no-such-entity-error-code common-lisp:null))
+   (can-retry
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":canretry is required"))
+    :type (common-lisp:or bool common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'no-such-entity-exception 'make-no-such-entity-exception))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2478,7 +2691,9 @@
 (common-lisp:deftype preview-agents-max-results () 'common-lisp:integer)
 (common-lisp:progn
  (common-lisp:defstruct (preview-agents-request (:copier common-lisp:nil))
-   (preview-agents-arn (common-lisp:error ":previewagentsarn is required")
+   (preview-agents-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":previewagentsarn is required"))
     :type (common-lisp:or arn common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null))
@@ -2508,8 +2723,10 @@
                                                 'max-results))))))
 (common-lisp:progn
  (common-lisp:defstruct (preview-agents-response (:copier common-lisp:nil))
-   (agent-previews (common-lisp:error ":agentpreviews is required") :type
-    (common-lisp:or agent-preview-list common-lisp:null))
+   (agent-previews
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":agentpreviews is required"))
+    :type (common-lisp:or agent-preview-list common-lisp:null))
    (next-token common-lisp:nil :type
     (common-lisp:or pagination-token common-lisp:null)))
  (common-lisp:export
@@ -2533,8 +2750,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (register-cross-account-access-role-request (:copier common-lisp:nil))
-   (role-arn (common-lisp:error ":rolearn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (role-arn
+    (common-lisp:error #A((20) common-lisp:base-char . ":rolearn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'register-cross-account-access-role-request
                     'make-register-cross-account-access-role-request))
@@ -2551,10 +2769,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-attributes-from-findings-request (:copier common-lisp:nil))
-   (finding-arns (common-lisp:error ":findingarns is required") :type
+   (finding-arns
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":findingarns is required"))
+    :type
     (common-lisp:or add-remove-attributes-finding-arn-list common-lisp:null))
-   (attribute-keys (common-lisp:error ":attributekeys is required") :type
-    (common-lisp:or user-attribute-key-list common-lisp:null)))
+   (attribute-keys
+    (common-lisp:error
+     #A((26) common-lisp:base-char . ":attributekeys is required"))
+    :type (common-lisp:or user-attribute-key-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-attributes-from-findings-request
                     'make-remove-attributes-from-findings-request))
@@ -2576,8 +2799,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (remove-attributes-from-findings-response (:copier common-lisp:nil))
-   (failed-items (common-lisp:error ":faileditems is required") :type
-    (common-lisp:or failed-items common-lisp:null)))
+   (failed-items
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":faileditems is required"))
+    :type (common-lisp:or failed-items common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'remove-attributes-from-findings-response
                     'make-remove-attributes-from-findings-response))
@@ -2596,12 +2821,15 @@
 (common-lisp:deftype report-type () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (resource-group (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (tags (common-lisp:error ":tags is required") :type
-    (common-lisp:or resource-group-tags common-lisp:null))
-   (created-at (common-lisp:error ":createdat is required") :type
-    (common-lisp:or timestamp common-lisp:null)))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (tags
+    (common-lisp:error #A((17) common-lisp:base-char . ":tags is required"))
+    :type (common-lisp:or resource-group-tags common-lisp:null))
+   (created-at
+    (common-lisp:error
+     #A((22) common-lisp:base-char . ":createdat is required"))
+    :type (common-lisp:or timestamp common-lisp:null)))
  (common-lisp:export (common-lisp:list 'resource-group 'make-resource-group))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape resource-group))
@@ -2631,8 +2859,8 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (resource-group-tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'resource-group-tag 'make-resource-group-tag))
@@ -2667,14 +2895,18 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (rules-package (:copier common-lisp:nil))
-   (arn (common-lisp:error ":arn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (name (common-lisp:error ":name is required") :type
-    (common-lisp:or rules-package-name common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or version common-lisp:null))
-   (provider (common-lisp:error ":provider is required") :type
-    (common-lisp:or provider-name common-lisp:null))
+   (arn (common-lisp:error #A((16) common-lisp:base-char . ":arn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (name
+    (common-lisp:error #A((17) common-lisp:base-char . ":name is required"))
+    :type (common-lisp:or rules-package-name common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or version common-lisp:null))
+   (provider
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":provider is required"))
+    :type (common-lisp:or provider-name common-lisp:null))
    (description common-lisp:nil :type (common-lisp:or text common-lisp:null)))
  (common-lisp:export (common-lisp:list 'rules-package 'make-rules-package))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2718,8 +2950,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (set-tags-for-resource-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
+   (resource-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resourcearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (tags common-lisp:nil :type (common-lisp:or tag-list common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'set-tags-for-resource-request
@@ -2751,8 +2985,9 @@
  (common-lisp:defstruct
      (start-assessment-run-request (:copier common-lisp:nil))
    (assessment-template-arn
-    (common-lisp:error ":assessmenttemplatearn is required") :type
-    (common-lisp:or arn common-lisp:null))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":assessmenttemplatearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (assessment-run-name common-lisp:nil :type
     (common-lisp:or assessment-run-name common-lisp:null)))
  (common-lisp:export
@@ -2776,7 +3011,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (start-assessment-run-response (:copier common-lisp:nil))
-   (assessment-run-arn (common-lisp:error ":assessmentrunarn is required")
+   (assessment-run-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":assessmentrunarn is required"))
     :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'start-assessment-run-response
@@ -2794,7 +3031,9 @@
 (common-lisp:deftype stop-action () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (stop-assessment-run-request (:copier common-lisp:nil))
-   (assessment-run-arn (common-lisp:error ":assessmentrunarn is required")
+   (assessment-run-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":assessmentrunarn is required"))
     :type (common-lisp:or arn common-lisp:null))
    (stop-action common-lisp:nil :type
     (common-lisp:or stop-action common-lisp:null)))
@@ -2818,12 +3057,17 @@
                                                 'stop-action))))))
 (common-lisp:progn
  (common-lisp:defstruct (subscribe-to-event-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (event (common-lisp:error ":event is required") :type
-    (common-lisp:or inspector-event common-lisp:null))
-   (topic-arn (common-lisp:error ":topicarn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resourcearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (event
+    (common-lisp:error #A((18) common-lisp:base-char . ":event is required"))
+    :type (common-lisp:or inspector-event common-lisp:null))
+   (topic-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":topicarn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'subscribe-to-event-request
                     'make-subscribe-to-event-request))
@@ -2849,11 +3093,17 @@
                                                 'topic-arn))))))
 (common-lisp:progn
  (common-lisp:defstruct (subscription (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (topic-arn (common-lisp:error ":topicarn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (event-subscriptions (common-lisp:error ":eventsubscriptions is required")
+   (resource-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resourcearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (topic-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":topicarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (event-subscriptions
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":eventsubscriptions is required"))
     :type (common-lisp:or event-subscription-list common-lisp:null)))
  (common-lisp:export (common-lisp:list 'subscription 'make-subscription))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2884,8 +3134,8 @@
    aws-sdk/generator/shape::members))
 (common-lisp:progn
  (common-lisp:defstruct (tag (:copier common-lisp:nil))
-   (key (common-lisp:error ":key is required") :type
-    (common-lisp:or tag-key common-lisp:null))
+   (key (common-lisp:error #A((16) common-lisp:base-char . ":key is required"))
+    :type (common-lisp:or tag-key common-lisp:null))
    (value common-lisp:nil :type (common-lisp:or tag-value common-lisp:null)))
  (common-lisp:export (common-lisp:list 'tag 'make-tag))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2912,10 +3162,13 @@
 (common-lisp:deftype tag-value () 'common-lisp:string)
 (common-lisp:progn
  (common-lisp:defstruct (telemetry-metadata (:copier common-lisp:nil))
-   (message-type (common-lisp:error ":messagetype is required") :type
-    (common-lisp:or message-type common-lisp:null))
-   (count (common-lisp:error ":count is required") :type
-    (common-lisp:or long common-lisp:null))
+   (message-type
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":messagetype is required"))
+    :type (common-lisp:or message-type common-lisp:null))
+   (count
+    (common-lisp:error #A((18) common-lisp:base-char . ":count is required"))
+    :type (common-lisp:or long common-lisp:null))
    (data-size common-lisp:nil :type (common-lisp:or long common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'telemetry-metadata 'make-telemetry-metadata))
@@ -2970,12 +3223,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (unsubscribe-from-event-request (:copier common-lisp:nil))
-   (resource-arn (common-lisp:error ":resourcearn is required") :type
-    (common-lisp:or arn common-lisp:null))
-   (event (common-lisp:error ":event is required") :type
-    (common-lisp:or inspector-event common-lisp:null))
-   (topic-arn (common-lisp:error ":topicarn is required") :type
-    (common-lisp:or arn common-lisp:null)))
+   (resource-arn
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":resourcearn is required"))
+    :type (common-lisp:or arn common-lisp:null))
+   (event
+    (common-lisp:error #A((18) common-lisp:base-char . ":event is required"))
+    :type (common-lisp:or inspector-event common-lisp:null))
+   (topic-arn
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":topicarn is required"))
+    :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'unsubscribe-from-event-request
                     'make-unsubscribe-from-event-request))
@@ -3002,10 +3260,13 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (unsupported-feature-exception (:copier common-lisp:nil))
-   (message (common-lisp:error ":message is required") :type
-    (common-lisp:or error-message common-lisp:null))
-   (can-retry (common-lisp:error ":canretry is required") :type
-    (common-lisp:or bool common-lisp:null)))
+   (message
+    (common-lisp:error #A((20) common-lisp:base-char . ":message is required"))
+    :type (common-lisp:or error-message common-lisp:null))
+   (can-retry
+    (common-lisp:error
+     #A((21) common-lisp:base-char . ":canretry is required"))
+    :type (common-lisp:or bool common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'unsupported-feature-exception
                     'make-unsupported-feature-exception))
@@ -3028,12 +3289,16 @@
  (common-lisp:defstruct
      (update-assessment-target-request (:copier common-lisp:nil))
    (assessment-target-arn
-    (common-lisp:error ":assessmenttargetarn is required") :type
-    (common-lisp:or arn common-lisp:null))
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":assessmenttargetarn is required"))
+    :type (common-lisp:or arn common-lisp:null))
    (assessment-target-name
-    (common-lisp:error ":assessmenttargetname is required") :type
-    (common-lisp:or assessment-target-name common-lisp:null))
-   (resource-group-arn (common-lisp:error ":resourcegrouparn is required")
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":assessmenttargetname is required"))
+    :type (common-lisp:or assessment-target-name common-lisp:null))
+   (resource-group-arn
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":resourcegrouparn is required"))
     :type (common-lisp:or arn common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-assessment-target-request
@@ -3087,7 +3352,9 @@
                        'make-add-attributes-to-findings-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"AddAttributesToFindings")
                                   ("Version" ,@"2016-02-16"))
@@ -3107,7 +3374,9 @@
                       (common-lisp:apply 'make-create-assessment-target-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAssessmentTarget")
                                   ("Version" ,@"2016-02-16"))
@@ -3130,7 +3399,9 @@
                        'make-create-assessment-template-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateAssessmentTemplate")
                                   ("Version" ,@"2016-02-16"))
@@ -3148,7 +3419,9 @@
                       (common-lisp:apply 'make-create-resource-group-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateResourceGroup")
                                   ("Version" ,@"2016-02-16"))
@@ -3166,7 +3439,9 @@
                       (common-lisp:apply 'make-delete-assessment-run-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAssessmentRun")
                                   ("Version" ,@"2016-02-16"))
@@ -3184,7 +3459,9 @@
                       (common-lisp:apply 'make-delete-assessment-target-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAssessmentTarget")
                                   ("Version" ,@"2016-02-16"))
@@ -3203,7 +3480,9 @@
                        'make-delete-assessment-template-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteAssessmentTemplate")
                                   ("Version" ,@"2016-02-16"))
@@ -3221,7 +3500,9 @@
                       (common-lisp:apply 'make-describe-assessment-runs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAssessmentRuns")
                                   ("Version" ,@"2016-02-16"))
@@ -3240,7 +3521,9 @@
                        'make-describe-assessment-targets-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAssessmentTargets")
                                   ("Version" ,@"2016-02-16"))
@@ -3259,7 +3542,9 @@
                        'make-describe-assessment-templates-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeAssessmentTemplates")
                                   ("Version" ,@"2016-02-16"))
@@ -3270,7 +3555,9 @@
 (common-lisp:progn
  (common-lisp:defun describe-cross-account-access-role ()
    (aws-sdk/generator/operation::parse-response
-    (aws-sdk/api:aws-request :service "inspector" :method :post :params
+    (aws-sdk/api:aws-request :service
+                             #A((9) common-lisp:base-char . "inspector")
+                             :method :post :params
                              (common-lisp:cons "Action"
                                                "DescribeCrossAccountAccessRole"))
     "DescribeCrossAccountAccessRoleResponse" common-lisp:nil))
@@ -3285,7 +3572,9 @@
                       (common-lisp:apply 'make-describe-findings-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeFindings")
                                   ("Version" ,@"2016-02-16"))
@@ -3303,7 +3592,9 @@
                       (common-lisp:apply 'make-describe-resource-groups-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeResourceGroups")
                                   ("Version" ,@"2016-02-16"))
@@ -3321,7 +3612,9 @@
                       (common-lisp:apply 'make-describe-rules-packages-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"DescribeRulesPackages")
                                   ("Version" ,@"2016-02-16"))
@@ -3341,7 +3634,9 @@
                       (common-lisp:apply 'make-get-assessment-report-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetAssessmentReport")
                                   ("Version" ,@"2016-02-16"))
@@ -3359,7 +3654,9 @@
                       (common-lisp:apply 'make-get-telemetry-metadata-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"GetTelemetryMetadata")
                                   ("Version" ,@"2016-02-16"))
@@ -3380,7 +3677,9 @@
                        'make-list-assessment-run-agents-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAssessmentRunAgents")
                                   ("Version" ,@"2016-02-16"))
@@ -3401,7 +3700,9 @@
                       (common-lisp:apply 'make-list-assessment-runs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAssessmentRuns")
                                   ("Version" ,@"2016-02-16"))
@@ -3419,7 +3720,9 @@
                       (common-lisp:apply 'make-list-assessment-targets-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAssessmentTargets")
                                   ("Version" ,@"2016-02-16"))
@@ -3441,7 +3744,9 @@
                        'make-list-assessment-templates-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListAssessmentTemplates")
                                   ("Version" ,@"2016-02-16"))
@@ -3460,7 +3765,9 @@
                       (common-lisp:apply 'make-list-event-subscriptions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListEventSubscriptions")
                                   ("Version" ,@"2016-02-16"))
@@ -3480,7 +3787,9 @@
                       (common-lisp:apply 'make-list-findings-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListFindings")
                                   ("Version" ,@"2016-02-16"))
@@ -3498,7 +3807,9 @@
                       (common-lisp:apply 'make-list-rules-packages-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListRulesPackages")
                                   ("Version" ,@"2016-02-16"))
@@ -3516,7 +3827,9 @@
                       (common-lisp:apply 'make-list-tags-for-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"ListTagsForResource")
                                   ("Version" ,@"2016-02-16"))
@@ -3536,7 +3849,9 @@
                       (common-lisp:apply 'make-preview-agents-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"PreviewAgents")
                                   ("Version" ,@"2016-02-16"))
@@ -3555,7 +3870,9 @@
                        'make-register-cross-account-access-role-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RegisterCrossAccountAccessRole")
                                   ("Version" ,@"2016-02-16"))
@@ -3574,7 +3891,9 @@
                        'make-remove-attributes-from-findings-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"RemoveAttributesFromFindings")
                                   ("Version" ,@"2016-02-16"))
@@ -3592,7 +3911,9 @@
                       (common-lisp:apply 'make-set-tags-for-resource-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SetTagsForResource")
                                   ("Version" ,@"2016-02-16"))
@@ -3612,7 +3933,9 @@
                       (common-lisp:apply 'make-start-assessment-run-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StartAssessmentRun")
                                   ("Version" ,@"2016-02-16"))
@@ -3630,7 +3953,9 @@
                       (common-lisp:apply 'make-stop-assessment-run-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"StopAssessmentRun")
                                   ("Version" ,@"2016-02-16"))
@@ -3648,7 +3973,9 @@
                       (common-lisp:apply 'make-subscribe-to-event-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"SubscribeToEvent")
                                   ("Version" ,@"2016-02-16"))
@@ -3666,7 +3993,9 @@
                       (common-lisp:apply 'make-unsubscribe-from-event-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UnsubscribeFromEvent")
                                   ("Version" ,@"2016-02-16"))
@@ -3687,7 +4016,9 @@
                       (common-lisp:apply 'make-update-assessment-target-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "inspector" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((9) common-lisp:base-char . "inspector")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateAssessmentTarget")
                                   ("Version" ,@"2016-02-16"))

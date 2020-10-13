@@ -7,6 +7,7 @@
   (:import-from #:aws-sdk/generator/operation)
   (:import-from #:aws-sdk/api))
 (common-lisp:in-package #:aws-sdk/services/pinpoint)
+
 (common-lisp:progn
  (common-lisp:defstruct (apnschannel-request (:copier common-lisp:nil))
    (certificate common-lisp:nil :type
@@ -838,8 +839,10 @@
 (common-lisp:progn
  (common-lisp:defstruct (create-app-request (:copier common-lisp:nil))
    (create-application-request
-    (common-lisp:error ":create-application-request is required") :type
-    (common-lisp:or create-application-request common-lisp:null)))
+    (common-lisp:error
+     #A((39) common-lisp:base-char
+        . ":create-application-request is required"))
+    :type (common-lisp:or create-application-request common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-app-request 'make-create-app-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -853,8 +856,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (create-app-response (:copier common-lisp:nil))
    (application-response
-    (common-lisp:error ":application-response is required") :type
-    (common-lisp:or application-response common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":application-response is required"))
+    :type (common-lisp:or application-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-app-response 'make-create-app-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -883,11 +887,14 @@
                                                 'name))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-campaign-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (write-campaign-request
-    (common-lisp:error ":write-campaign-request is required") :type
-    (common-lisp:or write-campaign-request common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":write-campaign-request is required"))
+    :type (common-lisp:or write-campaign-request common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-campaign-request 'make-create-campaign-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -907,7 +914,9 @@
                                                 'write-campaign-request))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-campaign-response (:copier common-lisp:nil))
-   (campaign-response (common-lisp:error ":campaign-response is required")
+   (campaign-response
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":campaign-response is required"))
     :type (common-lisp:or campaign-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-campaign-response 'make-create-campaign-response))
@@ -923,9 +932,13 @@
                                                 'campaign-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-import-job-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (import-job-request (common-lisp:error ":import-job-request is required")
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (import-job-request
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":import-job-request is required"))
     :type (common-lisp:or import-job-request common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-import-job-request
@@ -947,7 +960,9 @@
                                                 'import-job-request))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-import-job-response (:copier common-lisp:nil))
-   (import-job-response (common-lisp:error ":import-job-response is required")
+   (import-job-response
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":import-job-response is required"))
     :type (common-lisp:or import-job-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-import-job-response
@@ -964,11 +979,14 @@
                                                 'import-job-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-segment-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (write-segment-request
-    (common-lisp:error ":write-segment-request is required") :type
-    (common-lisp:or write-segment-request common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":write-segment-request is required"))
+    :type (common-lisp:or write-segment-request common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-segment-request 'make-create-segment-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -988,8 +1006,10 @@
                                                 'write-segment-request))))))
 (common-lisp:progn
  (common-lisp:defstruct (create-segment-response (:copier common-lisp:nil))
-   (segment-response (common-lisp:error ":segment-response is required") :type
-    (common-lisp:or segment-response common-lisp:null)))
+   (segment-response
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":segment-response is required"))
+    :type (common-lisp:or segment-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'create-segment-response 'make-create-segment-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1078,8 +1098,10 @@
                                                 'url))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-apns-channel-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-apns-channel-request
                     'make-delete-apns-channel-request))
@@ -1097,8 +1119,9 @@
  (common-lisp:defstruct
      (delete-apns-channel-response (:copier common-lisp:nil))
    (apnschannel-response
-    (common-lisp:error ":apnschannel-response is required") :type
-    (common-lisp:or apnschannel-response common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":apnschannel-response is required"))
+    :type (common-lisp:or apnschannel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-apns-channel-response
                     'make-delete-apns-channel-response))
@@ -1115,8 +1138,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-apns-sandbox-channel-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-apns-sandbox-channel-request
                     'make-delete-apns-sandbox-channel-request))
@@ -1134,8 +1159,10 @@
  (common-lisp:defstruct
      (delete-apns-sandbox-channel-response (:copier common-lisp:nil))
    (apnssandbox-channel-response
-    (common-lisp:error ":apnssandbox-channel-response is required") :type
-    (common-lisp:or apnssandbox-channel-response common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":apnssandbox-channel-response is required"))
+    :type (common-lisp:or apnssandbox-channel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-apns-sandbox-channel-response
                     'make-delete-apns-sandbox-channel-response))
@@ -1151,8 +1178,10 @@
                                                 'apnssandbox-channel-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-app-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-app-request 'make-delete-app-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1166,8 +1195,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (delete-app-response (:copier common-lisp:nil))
    (application-response
-    (common-lisp:error ":application-response is required") :type
-    (common-lisp:or application-response common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":application-response is required"))
+    :type (common-lisp:or application-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-app-response 'make-delete-app-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1180,10 +1210,14 @@
                                                 'application-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-campaign-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (campaign-id (common-lisp:error ":campaign-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (campaign-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":campaign-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-campaign-request 'make-delete-campaign-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1203,7 +1237,9 @@
                                                 'campaign-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-campaign-response (:copier common-lisp:nil))
-   (campaign-response (common-lisp:error ":campaign-response is required")
+   (campaign-response
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":campaign-response is required"))
     :type (common-lisp:or campaign-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-campaign-response 'make-delete-campaign-response))
@@ -1220,8 +1256,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-email-channel-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-email-channel-request
                     'make-delete-email-channel-request))
@@ -1239,8 +1277,9 @@
  (common-lisp:defstruct
      (delete-email-channel-response (:copier common-lisp:nil))
    (email-channel-response
-    (common-lisp:error ":email-channel-response is required") :type
-    (common-lisp:or email-channel-response common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":email-channel-response is required"))
+    :type (common-lisp:or email-channel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-email-channel-response
                     'make-delete-email-channel-response))
@@ -1256,8 +1295,10 @@
                                                 'email-channel-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-event-stream-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-event-stream-request
                     'make-delete-event-stream-request))
@@ -1274,8 +1315,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (delete-event-stream-response (:copier common-lisp:nil))
-   (event-stream (common-lisp:error ":event-stream is required") :type
-    (common-lisp:or event-stream common-lisp:null)))
+   (event-stream
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":event-stream is required"))
+    :type (common-lisp:or event-stream common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-event-stream-response
                     'make-delete-event-stream-response))
@@ -1291,8 +1334,10 @@
                                                 'event-stream))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-gcm-channel-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-gcm-channel-request
                     'make-delete-gcm-channel-request))
@@ -1308,7 +1353,9 @@
                                                 'application-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-gcm-channel-response (:copier common-lisp:nil))
-   (gcmchannel-response (common-lisp:error ":gcmchannel-response is required")
+   (gcmchannel-response
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":gcmchannel-response is required"))
     :type (common-lisp:or gcmchannel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-gcm-channel-response
@@ -1325,10 +1372,14 @@
                                                 'gcmchannel-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-segment-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (segment-id (common-lisp:error ":segment-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (segment-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":segment-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-segment-request 'make-delete-segment-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1348,8 +1399,10 @@
                                                 'segment-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-segment-response (:copier common-lisp:nil))
-   (segment-response (common-lisp:error ":segment-response is required") :type
-    (common-lisp:or segment-response common-lisp:null)))
+   (segment-response
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":segment-response is required"))
+    :type (common-lisp:or segment-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-segment-response 'make-delete-segment-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -1364,8 +1417,10 @@
                                                 'segment-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-sms-channel-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-sms-channel-request
                     'make-delete-sms-channel-request))
@@ -1381,7 +1436,9 @@
                                                 'application-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (delete-sms-channel-response (:copier common-lisp:nil))
-   (smschannel-response (common-lisp:error ":smschannel-response is required")
+   (smschannel-response
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":smschannel-response is required"))
     :type (common-lisp:or smschannel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'delete-sms-channel-response
@@ -2275,8 +2332,10 @@
                                                 'url))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-apns-channel-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-apns-channel-request 'make-get-apns-channel-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2292,8 +2351,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (get-apns-channel-response (:copier common-lisp:nil))
    (apnschannel-response
-    (common-lisp:error ":apnschannel-response is required") :type
-    (common-lisp:or apnschannel-response common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":apnschannel-response is required"))
+    :type (common-lisp:or apnschannel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-apns-channel-response
                     'make-get-apns-channel-response))
@@ -2310,8 +2370,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-apns-sandbox-channel-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-apns-sandbox-channel-request
                     'make-get-apns-sandbox-channel-request))
@@ -2329,8 +2391,10 @@
  (common-lisp:defstruct
      (get-apns-sandbox-channel-response (:copier common-lisp:nil))
    (apnssandbox-channel-response
-    (common-lisp:error ":apnssandbox-channel-response is required") :type
-    (common-lisp:or apnssandbox-channel-response common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":apnssandbox-channel-response is required"))
+    :type (common-lisp:or apnssandbox-channel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-apns-sandbox-channel-response
                     'make-get-apns-sandbox-channel-response))
@@ -2346,8 +2410,10 @@
                                                 'apnssandbox-channel-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-app-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export (common-lisp:list 'get-app-request 'make-get-app-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
                         ((aws-sdk/generator/shape::shape get-app-request))
@@ -2360,8 +2426,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (get-app-response (:copier common-lisp:nil))
    (application-response
-    (common-lisp:error ":application-response is required") :type
-    (common-lisp:or application-response common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":application-response is required"))
+    :type (common-lisp:or application-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-app-response 'make-get-app-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2375,8 +2442,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-application-settings-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-application-settings-request
                     'make-get-application-settings-request))
@@ -2394,8 +2463,10 @@
  (common-lisp:defstruct
      (get-application-settings-response (:copier common-lisp:nil))
    (application-settings-resource
-    (common-lisp:error ":application-settings-resource is required") :type
-    (common-lisp:or application-settings-resource common-lisp:null)))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":application-settings-resource is required"))
+    :type (common-lisp:or application-settings-resource common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-application-settings-response
                     'make-get-application-settings-response))
@@ -2432,8 +2503,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (get-apps-response (:copier common-lisp:nil))
    (applications-response
-    (common-lisp:error ":applications-response is required") :type
-    (common-lisp:or applications-response common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":applications-response is required"))
+    :type (common-lisp:or applications-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-apps-response 'make-get-apps-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2447,10 +2519,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-campaign-activities-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (campaign-id (common-lisp:error ":campaign-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (campaign-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":campaign-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (token common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
@@ -2485,7 +2561,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-campaign-activities-response (:copier common-lisp:nil))
-   (activities-response (common-lisp:error ":activities-response is required")
+   (activities-response
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":activities-response is required"))
     :type (common-lisp:or activities-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-campaign-activities-response
@@ -2502,10 +2580,14 @@
                                                 'activities-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-campaign-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (campaign-id (common-lisp:error ":campaign-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (campaign-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":campaign-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-campaign-request 'make-get-campaign-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2523,7 +2605,9 @@
                                                 'campaign-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-campaign-response (:copier common-lisp:nil))
-   (campaign-response (common-lisp:error ":campaign-response is required")
+   (campaign-response
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":campaign-response is required"))
     :type (common-lisp:or campaign-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-campaign-response 'make-get-campaign-response))
@@ -2540,12 +2624,17 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-campaign-version-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (campaign-id (common-lisp:error ":campaign-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (campaign-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":campaign-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-campaign-version-request
                     'make-get-campaign-version-request))
@@ -2572,7 +2661,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-campaign-version-response (:copier common-lisp:nil))
-   (campaign-response (common-lisp:error ":campaign-response is required")
+   (campaign-response
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":campaign-response is required"))
     :type (common-lisp:or campaign-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-campaign-version-response
@@ -2590,10 +2681,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-campaign-versions-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (campaign-id (common-lisp:error ":campaign-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (campaign-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":campaign-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (token common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
@@ -2628,7 +2723,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-campaign-versions-response (:copier common-lisp:nil))
-   (campaigns-response (common-lisp:error ":campaigns-response is required")
+   (campaigns-response
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":campaigns-response is required"))
     :type (common-lisp:or campaigns-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-campaign-versions-response
@@ -2645,8 +2742,10 @@
                                                 'campaigns-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-campaigns-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (token common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
@@ -2674,7 +2773,9 @@
                                                 'token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-campaigns-response (:copier common-lisp:nil))
-   (campaigns-response (common-lisp:error ":campaigns-response is required")
+   (campaigns-response
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":campaigns-response is required"))
     :type (common-lisp:or campaigns-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-campaigns-response 'make-get-campaigns-response))
@@ -2690,8 +2791,10 @@
                                                 'campaigns-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-email-channel-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-email-channel-request
                     'make-get-email-channel-request))
@@ -2708,8 +2811,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (get-email-channel-response (:copier common-lisp:nil))
    (email-channel-response
-    (common-lisp:error ":email-channel-response is required") :type
-    (common-lisp:or email-channel-response common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":email-channel-response is required"))
+    :type (common-lisp:or email-channel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-email-channel-response
                     'make-get-email-channel-response))
@@ -2725,10 +2829,14 @@
                                                 'email-channel-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-endpoint-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (endpoint-id (common-lisp:error ":endpoint-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (endpoint-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":endpoint-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-endpoint-request 'make-get-endpoint-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2746,7 +2854,9 @@
                                                 'endpoint-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-endpoint-response (:copier common-lisp:nil))
-   (endpoint-response (common-lisp:error ":endpoint-response is required")
+   (endpoint-response
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":endpoint-response is required"))
     :type (common-lisp:or endpoint-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-endpoint-response 'make-get-endpoint-response))
@@ -2762,8 +2872,10 @@
                                                 'endpoint-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-event-stream-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-event-stream-request 'make-get-event-stream-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2778,8 +2890,10 @@
                                                 'application-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-event-stream-response (:copier common-lisp:nil))
-   (event-stream (common-lisp:error ":event-stream is required") :type
-    (common-lisp:or event-stream common-lisp:null)))
+   (event-stream
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":event-stream is required"))
+    :type (common-lisp:or event-stream common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-event-stream-response
                     'make-get-event-stream-response))
@@ -2795,8 +2909,10 @@
                                                 'event-stream))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-gcm-channel-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-gcm-channel-request 'make-get-gcm-channel-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2811,7 +2927,9 @@
                                                 'application-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-gcm-channel-response (:copier common-lisp:nil))
-   (gcmchannel-response (common-lisp:error ":gcmchannel-response is required")
+   (gcmchannel-response
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":gcmchannel-response is required"))
     :type (common-lisp:or gcmchannel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-gcm-channel-response 'make-get-gcm-channel-response))
@@ -2827,10 +2945,13 @@
                                                 'gcmchannel-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-import-job-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (job-id (common-lisp:error ":job-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (job-id
+    (common-lisp:error #A((19) common-lisp:base-char . ":job-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-import-job-request 'make-get-import-job-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2850,7 +2971,9 @@
                                                 'job-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-import-job-response (:copier common-lisp:nil))
-   (import-job-response (common-lisp:error ":import-job-response is required")
+   (import-job-response
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":import-job-response is required"))
     :type (common-lisp:or import-job-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-import-job-response 'make-get-import-job-response))
@@ -2866,8 +2989,10 @@
                                                 'import-job-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-import-jobs-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (token common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
@@ -2896,8 +3021,9 @@
 (common-lisp:progn
  (common-lisp:defstruct (get-import-jobs-response (:copier common-lisp:nil))
    (import-jobs-response
-    (common-lisp:error ":import-jobs-response is required") :type
-    (common-lisp:or import-jobs-response common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":import-jobs-response is required"))
+    :type (common-lisp:or import-jobs-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-import-jobs-response 'make-get-import-jobs-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2913,12 +3039,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-segment-import-jobs-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
-   (segment-id (common-lisp:error ":segment-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (segment-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":segment-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (token common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-segment-import-jobs-request
@@ -2952,8 +3082,9 @@
  (common-lisp:defstruct
      (get-segment-import-jobs-response (:copier common-lisp:nil))
    (import-jobs-response
-    (common-lisp:error ":import-jobs-response is required") :type
-    (common-lisp:or import-jobs-response common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":import-jobs-response is required"))
+    :type (common-lisp:or import-jobs-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-segment-import-jobs-response
                     'make-get-segment-import-jobs-response))
@@ -2969,10 +3100,14 @@
                                                 'import-jobs-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-segment-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (segment-id (common-lisp:error ":segment-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (segment-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":segment-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-segment-request 'make-get-segment-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -2990,8 +3125,10 @@
                                                 'segment-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-segment-response (:copier common-lisp:nil))
-   (segment-response (common-lisp:error ":segment-response is required") :type
-    (common-lisp:or segment-response common-lisp:null)))
+   (segment-response
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":segment-response is required"))
+    :type (common-lisp:or segment-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-segment-response 'make-get-segment-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3004,12 +3141,17 @@
                                                 'segment-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-segment-version-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (segment-id (common-lisp:error ":segment-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (version (common-lisp:error ":version is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (segment-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":segment-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (version
+    (common-lisp:error #A((20) common-lisp:base-char . ":version is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-segment-version-request
                     'make-get-segment-version-request))
@@ -3036,8 +3178,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-segment-version-response (:copier common-lisp:nil))
-   (segment-response (common-lisp:error ":segment-response is required") :type
-    (common-lisp:or segment-response common-lisp:null)))
+   (segment-response
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":segment-response is required"))
+    :type (common-lisp:or segment-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-segment-version-response
                     'make-get-segment-version-response))
@@ -3054,12 +3198,16 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-segment-versions-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
-   (segment-id (common-lisp:error ":segment-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (segment-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":segment-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (token common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-segment-versions-request
@@ -3092,7 +3240,9 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (get-segment-versions-response (:copier common-lisp:nil))
-   (segments-response (common-lisp:error ":segments-response is required")
+   (segments-response
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":segments-response is required"))
     :type (common-lisp:or segments-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-segment-versions-response
@@ -3109,8 +3259,10 @@
                                                 'segments-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-segments-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (page-size common-lisp:nil :type
     (common-lisp:or |__string| common-lisp:null))
    (token common-lisp:nil :type (common-lisp:or |__string| common-lisp:null)))
@@ -3136,7 +3288,9 @@
                                                 'token))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-segments-response (:copier common-lisp:nil))
-   (segments-response (common-lisp:error ":segments-response is required")
+   (segments-response
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":segments-response is required"))
     :type (common-lisp:or segments-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-segments-response 'make-get-segments-response))
@@ -3152,8 +3306,10 @@
                                                 'segments-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-sms-channel-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-sms-channel-request 'make-get-sms-channel-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -3168,7 +3324,9 @@
                                                 'application-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (get-sms-channel-response (:copier common-lisp:nil))
-   (smschannel-response (common-lisp:error ":smschannel-response is required")
+   (smschannel-response
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":smschannel-response is required"))
     :type (common-lisp:or smschannel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'get-sms-channel-response 'make-get-sms-channel-response))
@@ -3838,9 +3996,13 @@
                                                 'request-id))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-event-stream-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (write-event-stream (common-lisp:error ":write-event-stream is required")
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (write-event-stream
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":write-event-stream is required"))
     :type (common-lisp:or write-event-stream common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-event-stream-request 'make-put-event-stream-request))
@@ -3861,8 +4023,10 @@
                                                 'write-event-stream))))))
 (common-lisp:progn
  (common-lisp:defstruct (put-event-stream-response (:copier common-lisp:nil))
-   (event-stream (common-lisp:error ":event-stream is required") :type
-    (common-lisp:or event-stream common-lisp:null)))
+   (event-stream
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":event-stream is required"))
+    :type (common-lisp:or event-stream common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'put-event-stream-response
                     'make-put-event-stream-response))
@@ -4358,10 +4522,14 @@
                                                 'next-token))))))
 (common-lisp:progn
  (common-lisp:defstruct (send-messages-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (message-request (common-lisp:error ":message-request is required") :type
-    (common-lisp:or message-request common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (message-request
+    (common-lisp:error
+     #A((28) common-lisp:base-char . ":message-request is required"))
+    :type (common-lisp:or message-request common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'send-messages-request 'make-send-messages-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4381,8 +4549,10 @@
                                                 'message-request))))))
 (common-lisp:progn
  (common-lisp:defstruct (send-messages-response (:copier common-lisp:nil))
-   (message-response (common-lisp:error ":message-response is required") :type
-    (common-lisp:or message-response common-lisp:null)))
+   (message-response
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":message-response is required"))
+    :type (common-lisp:or message-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'send-messages-response 'make-send-messages-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4494,10 +4664,14 @@
                                                 'treatment-name))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-apns-channel-request (:copier common-lisp:nil))
-   (apnschannel-request (common-lisp:error ":apnschannel-request is required")
+   (apnschannel-request
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":apnschannel-request is required"))
     :type (common-lisp:or apnschannel-request common-lisp:null))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-apns-channel-request
                     'make-update-apns-channel-request))
@@ -4520,8 +4694,9 @@
  (common-lisp:defstruct
      (update-apns-channel-response (:copier common-lisp:nil))
    (apnschannel-response
-    (common-lisp:error ":apnschannel-response is required") :type
-    (common-lisp:or apnschannel-response common-lisp:null)))
+    (common-lisp:error
+     #A((33) common-lisp:base-char . ":apnschannel-response is required"))
+    :type (common-lisp:or apnschannel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-apns-channel-response
                     'make-update-apns-channel-response))
@@ -4539,10 +4714,14 @@
  (common-lisp:defstruct
      (update-apns-sandbox-channel-request (:copier common-lisp:nil))
    (apnssandbox-channel-request
-    (common-lisp:error ":apnssandbox-channel-request is required") :type
-    (common-lisp:or apnssandbox-channel-request common-lisp:null))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null)))
+    (common-lisp:error
+     #A((40) common-lisp:base-char
+        . ":apnssandbox-channel-request is required"))
+    :type (common-lisp:or apnssandbox-channel-request common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-apns-sandbox-channel-request
                     'make-update-apns-sandbox-channel-request))
@@ -4565,8 +4744,10 @@
  (common-lisp:defstruct
      (update-apns-sandbox-channel-response (:copier common-lisp:nil))
    (apnssandbox-channel-response
-    (common-lisp:error ":apnssandbox-channel-response is required") :type
-    (common-lisp:or apnssandbox-channel-response common-lisp:null)))
+    (common-lisp:error
+     #A((41) common-lisp:base-char
+        . ":apnssandbox-channel-response is required"))
+    :type (common-lisp:or apnssandbox-channel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-apns-sandbox-channel-response
                     'make-update-apns-sandbox-channel-response))
@@ -4583,10 +4764,15 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-application-settings-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (write-application-settings-request
-    (common-lisp:error ":write-application-settings-request is required") :type
+    (common-lisp:error
+     #A((47) common-lisp:base-char
+        . ":write-application-settings-request is required"))
+    :type
     (common-lisp:or write-application-settings-request common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-application-settings-request
@@ -4610,8 +4796,10 @@
  (common-lisp:defstruct
      (update-application-settings-response (:copier common-lisp:nil))
    (application-settings-resource
-    (common-lisp:error ":application-settings-resource is required") :type
-    (common-lisp:or application-settings-resource common-lisp:null)))
+    (common-lisp:error
+     #A((42) common-lisp:base-char
+        . ":application-settings-resource is required"))
+    :type (common-lisp:or application-settings-resource common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-application-settings-response
                     'make-update-application-settings-response))
@@ -4627,13 +4815,18 @@
                                                 'application-settings-resource))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-campaign-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (campaign-id (common-lisp:error ":campaign-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (campaign-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":campaign-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (write-campaign-request
-    (common-lisp:error ":write-campaign-request is required") :type
-    (common-lisp:or write-campaign-request common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":write-campaign-request is required"))
+    :type (common-lisp:or write-campaign-request common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-campaign-request 'make-update-campaign-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4658,7 +4851,9 @@
                                                 'write-campaign-request))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-campaign-response (:copier common-lisp:nil))
-   (campaign-response (common-lisp:error ":campaign-response is required")
+   (campaign-response
+    (common-lisp:error
+     #A((30) common-lisp:base-char . ":campaign-response is required"))
     :type (common-lisp:or campaign-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-campaign-response 'make-update-campaign-response))
@@ -4675,11 +4870,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-email-channel-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (email-channel-request
-    (common-lisp:error ":email-channel-request is required") :type
-    (common-lisp:or email-channel-request common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":email-channel-request is required"))
+    :type (common-lisp:or email-channel-request common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-email-channel-request
                     'make-update-email-channel-request))
@@ -4702,8 +4900,9 @@
  (common-lisp:defstruct
      (update-email-channel-response (:copier common-lisp:nil))
    (email-channel-response
-    (common-lisp:error ":email-channel-response is required") :type
-    (common-lisp:or email-channel-response common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":email-channel-response is required"))
+    :type (common-lisp:or email-channel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-email-channel-response
                     'make-update-email-channel-response))
@@ -4719,12 +4918,18 @@
                                                 'email-channel-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-endpoint-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (endpoint-id (common-lisp:error ":endpoint-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (endpoint-request (common-lisp:error ":endpoint-request is required") :type
-    (common-lisp:or endpoint-request common-lisp:null)))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (endpoint-id
+    (common-lisp:error
+     #A((24) common-lisp:base-char . ":endpoint-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (endpoint-request
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":endpoint-request is required"))
+    :type (common-lisp:or endpoint-request common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-endpoint-request 'make-update-endpoint-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4749,8 +4954,10 @@
                                                 'endpoint-request))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-endpoint-response (:copier common-lisp:nil))
-   (message-body (common-lisp:error ":message-body is required") :type
-    (common-lisp:or message-body common-lisp:null)))
+   (message-body
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":message-body is required"))
+    :type (common-lisp:or message-body common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-endpoint-response 'make-update-endpoint-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4766,11 +4973,14 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-endpoints-batch-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (endpoint-batch-request
-    (common-lisp:error ":endpoint-batch-request is required") :type
-    (common-lisp:or endpoint-batch-request common-lisp:null)))
+    (common-lisp:error
+     #A((35) common-lisp:base-char . ":endpoint-batch-request is required"))
+    :type (common-lisp:or endpoint-batch-request common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-endpoints-batch-request
                     'make-update-endpoints-batch-request))
@@ -4792,8 +5002,10 @@
 (common-lisp:progn
  (common-lisp:defstruct
      (update-endpoints-batch-response (:copier common-lisp:nil))
-   (message-body (common-lisp:error ":message-body is required") :type
-    (common-lisp:or message-body common-lisp:null)))
+   (message-body
+    (common-lisp:error
+     #A((25) common-lisp:base-char . ":message-body is required"))
+    :type (common-lisp:or message-body common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-endpoints-batch-response
                     'make-update-endpoints-batch-response))
@@ -4809,9 +5021,13 @@
                                                 'message-body))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-gcm-channel-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (gcmchannel-request (common-lisp:error ":gcmchannel-request is required")
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (gcmchannel-request
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":gcmchannel-request is required"))
     :type (common-lisp:or gcmchannel-request common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-gcm-channel-request
@@ -4833,7 +5049,9 @@
                                                 'gcmchannel-request))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-gcm-channel-response (:copier common-lisp:nil))
-   (gcmchannel-response (common-lisp:error ":gcmchannel-response is required")
+   (gcmchannel-response
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":gcmchannel-response is required"))
     :type (common-lisp:or gcmchannel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-gcm-channel-response
@@ -4850,13 +5068,18 @@
                                                 'gcmchannel-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-segment-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (segment-id (common-lisp:error ":segment-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (segment-id
+    (common-lisp:error
+     #A((23) common-lisp:base-char . ":segment-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
    (write-segment-request
-    (common-lisp:error ":write-segment-request is required") :type
-    (common-lisp:or write-segment-request common-lisp:null)))
+    (common-lisp:error
+     #A((34) common-lisp:base-char . ":write-segment-request is required"))
+    :type (common-lisp:or write-segment-request common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-segment-request 'make-update-segment-request))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4881,8 +5104,10 @@
                                                 'write-segment-request))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-segment-response (:copier common-lisp:nil))
-   (segment-response (common-lisp:error ":segment-response is required") :type
-    (common-lisp:or segment-response common-lisp:null)))
+   (segment-response
+    (common-lisp:error
+     #A((29) common-lisp:base-char . ":segment-response is required"))
+    :type (common-lisp:or segment-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-segment-response 'make-update-segment-response))
  (common-lisp:defmethod aws-sdk/generator/shape:shape-to-params
@@ -4897,9 +5122,13 @@
                                                 'segment-response))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-sms-channel-request (:copier common-lisp:nil))
-   (application-id (common-lisp:error ":application-id is required") :type
-    (common-lisp:or |__string| common-lisp:null))
-   (smschannel-request (common-lisp:error ":smschannel-request is required")
+   (application-id
+    (common-lisp:error
+     #A((27) common-lisp:base-char . ":application-id is required"))
+    :type (common-lisp:or |__string| common-lisp:null))
+   (smschannel-request
+    (common-lisp:error
+     #A((31) common-lisp:base-char . ":smschannel-request is required"))
     :type (common-lisp:or smschannel-request common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-sms-channel-request
@@ -4921,7 +5150,9 @@
                                                 'smschannel-request))))))
 (common-lisp:progn
  (common-lisp:defstruct (update-sms-channel-response (:copier common-lisp:nil))
-   (smschannel-response (common-lisp:error ":smschannel-response is required")
+   (smschannel-response
+    (common-lisp:error
+     #A((32) common-lisp:base-char . ":smschannel-response is required"))
     :type (common-lisp:or smschannel-response common-lisp:null)))
  (common-lisp:export
   (common-lisp:list 'update-sms-channel-response
@@ -5153,7 +5384,9 @@
                       (common-lisp:apply 'make-create-app-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :post :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateApp")
                                   ("Version" ,@"2016-12-01"))
@@ -5172,7 +5405,13 @@
                       (common-lisp:apply 'make-create-campaign-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/campaigns"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateCampaign")
                                   ("Version" ,@"2016-12-01"))
@@ -5191,7 +5430,13 @@
                       (common-lisp:apply 'make-create-import-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/jobs/import"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateImportJob")
                                   ("Version" ,@"2016-12-01"))
@@ -5210,7 +5455,13 @@
                       (common-lisp:apply 'make-create-segment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/segments"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"CreateSegment")
                                   ("Version" ,@"2016-12-01"))
@@ -5228,7 +5479,13 @@
                       (common-lisp:apply 'make-delete-apns-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/apns"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApnsChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5247,7 +5504,13 @@
                        'make-delete-apns-sandbox-channel-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/apns_sandbox"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApnsSandboxChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5265,7 +5528,13 @@
                       (common-lisp:apply 'make-delete-app-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteApp")
                                   ("Version" ,@"2016-12-01"))
@@ -5283,7 +5552,13 @@
                       (common-lisp:apply 'make-delete-campaign-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/campaigns/~a"
+                                                   application-id campaign-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteCampaign")
                                   ("Version" ,@"2016-12-01"))
@@ -5301,7 +5576,13 @@
                       (common-lisp:apply 'make-delete-email-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/email"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEmailChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5319,7 +5600,13 @@
                       (common-lisp:apply 'make-delete-event-stream-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/eventstream"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteEventStream")
                                   ("Version" ,@"2016-12-01"))
@@ -5337,7 +5624,13 @@
                       (common-lisp:apply 'make-delete-gcm-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/gcm"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteGcmChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5355,7 +5648,13 @@
                       (common-lisp:apply 'make-delete-segment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/segments/~a"
+                                                   application-id segment-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSegment")
                                   ("Version" ,@"2016-12-01"))
@@ -5373,7 +5672,13 @@
                       (common-lisp:apply 'make-delete-sms-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :delete :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :delete :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/sms"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"DeleteSmsChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5391,7 +5696,13 @@
                       (common-lisp:apply 'make-get-apns-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/apns"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetApnsChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5409,7 +5720,13 @@
                       (common-lisp:apply 'make-get-apns-sandbox-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/apns_sandbox"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetApnsSandboxChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5427,7 +5744,13 @@
                       (common-lisp:apply 'make-get-app-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetApp")
                                   ("Version" ,@"2016-12-01"))
@@ -5445,7 +5768,13 @@
                       (common-lisp:apply 'make-get-application-settings-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/settings"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetApplicationSettings")
                                   ("Version" ,@"2016-12-01"))
@@ -5463,7 +5792,9 @@
                       (common-lisp:apply 'make-get-apps-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :params
                                (common-lisp:append
                                 `(("Action" ,@"GetApps")
                                   ("Version" ,@"2016-12-01"))
@@ -5481,7 +5812,13 @@
                       (common-lisp:apply 'make-get-campaign-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/campaigns/~a"
+                                                   application-id campaign-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCampaign")
                                   ("Version" ,@"2016-12-01"))
@@ -5501,7 +5838,13 @@
                       (common-lisp:apply 'make-get-campaign-activities-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/campaigns/~a/activities"
+                                                   application-id campaign-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCampaignActivities")
                                   ("Version" ,@"2016-12-01"))
@@ -5520,7 +5863,14 @@
                       (common-lisp:apply 'make-get-campaign-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/campaigns/~a/versions/~a"
+                                                   application-id campaign-id
+                                                   version)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCampaignVersion")
                                   ("Version" ,@"2016-12-01"))
@@ -5540,7 +5890,13 @@
                       (common-lisp:apply 'make-get-campaign-versions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/campaigns/~a/versions"
+                                                   application-id campaign-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCampaignVersions")
                                   ("Version" ,@"2016-12-01"))
@@ -5558,7 +5914,13 @@
                       (common-lisp:apply 'make-get-campaigns-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/campaigns"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetCampaigns")
                                   ("Version" ,@"2016-12-01"))
@@ -5576,7 +5938,13 @@
                       (common-lisp:apply 'make-get-email-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/email"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetEmailChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5594,7 +5962,13 @@
                       (common-lisp:apply 'make-get-endpoint-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/endpoints/~a"
+                                                   application-id endpoint-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetEndpoint")
                                   ("Version" ,@"2016-12-01"))
@@ -5612,7 +5986,13 @@
                       (common-lisp:apply 'make-get-event-stream-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/eventstream"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetEventStream")
                                   ("Version" ,@"2016-12-01"))
@@ -5630,7 +6010,13 @@
                       (common-lisp:apply 'make-get-gcm-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/gcm"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetGcmChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5648,7 +6034,13 @@
                       (common-lisp:apply 'make-get-import-job-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/jobs/import/~a"
+                                                   application-id job-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetImportJob")
                                   ("Version" ,@"2016-12-01"))
@@ -5666,7 +6058,13 @@
                       (common-lisp:apply 'make-get-import-jobs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/jobs/import"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetImportJobs")
                                   ("Version" ,@"2016-12-01"))
@@ -5684,7 +6082,13 @@
                       (common-lisp:apply 'make-get-segment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/segments/~a"
+                                                   application-id segment-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSegment")
                                   ("Version" ,@"2016-12-01"))
@@ -5704,7 +6108,13 @@
                       (common-lisp:apply 'make-get-segment-import-jobs-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/segments/~a/jobs/import"
+                                                   application-id segment-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSegmentImportJobs")
                                   ("Version" ,@"2016-12-01"))
@@ -5723,7 +6133,14 @@
                       (common-lisp:apply 'make-get-segment-version-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/segments/~a/versions/~a"
+                                                   application-id segment-id
+                                                   version)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSegmentVersion")
                                   ("Version" ,@"2016-12-01"))
@@ -5743,7 +6160,13 @@
                       (common-lisp:apply 'make-get-segment-versions-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/segments/~a/versions"
+                                                   application-id segment-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSegmentVersions")
                                   ("Version" ,@"2016-12-01"))
@@ -5761,7 +6184,13 @@
                       (common-lisp:apply 'make-get-segments-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/segments"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSegments")
                                   ("Version" ,@"2016-12-01"))
@@ -5779,7 +6208,13 @@
                       (common-lisp:apply 'make-get-sms-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :get :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :get :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/sms"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"GetSmsChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5798,7 +6233,13 @@
                       (common-lisp:apply 'make-put-event-stream-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/eventstream"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"PutEventStream")
                                   ("Version" ,@"2016-12-01"))
@@ -5816,7 +6257,13 @@
                       (common-lisp:apply 'make-send-messages-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :post :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :post :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/messages"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"SendMessages")
                                   ("Version" ,@"2016-12-01"))
@@ -5835,7 +6282,13 @@
                       (common-lisp:apply 'make-update-apns-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/apns"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApnsChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5856,7 +6309,13 @@
                        'make-update-apns-sandbox-channel-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/apns_sandbox"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApnsSandboxChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5877,7 +6336,13 @@
                        'make-update-application-settings-request
                        aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/settings"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateApplicationSettings")
                                   ("Version" ,@"2016-12-01"))
@@ -5897,7 +6362,13 @@
                       (common-lisp:apply 'make-update-campaign-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/campaigns/~a"
+                                                   application-id campaign-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateCampaign")
                                   ("Version" ,@"2016-12-01"))
@@ -5916,7 +6387,13 @@
                       (common-lisp:apply 'make-update-email-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/email"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateEmailChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5936,7 +6413,13 @@
                       (common-lisp:apply 'make-update-endpoint-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/endpoints/~a"
+                                                   application-id endpoint-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateEndpoint")
                                   ("Version" ,@"2016-12-01"))
@@ -5955,7 +6438,13 @@
                       (common-lisp:apply 'make-update-endpoints-batch-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/endpoints"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateEndpointsBatch")
                                   ("Version" ,@"2016-12-01"))
@@ -5974,7 +6463,13 @@
                       (common-lisp:apply 'make-update-gcm-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/gcm"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateGcmChannel")
                                   ("Version" ,@"2016-12-01"))
@@ -5994,7 +6489,13 @@
                       (common-lisp:apply 'make-update-segment-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/segments/~a"
+                                                   application-id segment-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSegment")
                                   ("Version" ,@"2016-12-01"))
@@ -6013,7 +6514,13 @@
                       (common-lisp:apply 'make-update-sms-channel-request
                                          aws-sdk/generator/operation::args)))
      (aws-sdk/generator/operation::parse-response
-      (aws-sdk/api:aws-request :service "pinpoint" :method :put :params
+      (aws-sdk/api:aws-request :service
+                               #A((8) common-lisp:base-char . "pinpoint")
+                               :method :put :path
+                               (common-lisp:format common-lisp:nil
+                                                   "/v1/apps/~a/channels/sms"
+                                                   application-id)
+                               :params
                                (common-lisp:append
                                 `(("Action" ,@"UpdateSmsChannel")
                                   ("Version" ,@"2016-12-01"))
