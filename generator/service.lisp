@@ -29,12 +29,25 @@
                  (uiop:read-file-string json))))
       (loop for name being each hash-key of (gethash "shapes" hash)
               using (hash-value options)
-            do (format stream "~&~S~%" (compile-shape name options)))
+            do #+ (or) (format stream "~&~S~%" (compile-shape name options))
+            (let ((*print-readably* t))
+              (pprint (compile-shape name options)
+                      stream)))
 
       (loop for action being each hash-key of (gethash "operations" hash)
               using (hash-value options)
             for input = (gethash "input" options)
-            do (format stream "~&~S~%"
+            do (let ((*print-readably* t))
+                 (pprint (compile-operation
+                           service action (gethash "apiVersion"
+                                                   (gethash "metadata" hash)) options
+                           (and input
+                                (loop for key being each hash-key of (gethash "members"
+                                                                              (gethash (gethash "shape" input)
+                                                                                       (gethash "shapes" hash)))
+                                      collect (lispify key))))
+                         stream))
+            #+ (or) (format stream "~&~S~%"
                        (compile-operation
                         service action (gethash "apiVersion"
                                                 (gethash "metadata" hash)) options
