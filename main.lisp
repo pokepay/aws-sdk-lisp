@@ -12,8 +12,11 @@
   (:import-from #:aws-sdk/api
                 #:*session*
                 #:aws-request)
+  (:import-from #:aws-sdk/connection-cache
+                #:*use-connection-cache*)
   (:export #:*aws-profile*
            #:*session*
+           #:*use-connection-cache*
            #:session
            #:make-session
            #:make-credentials

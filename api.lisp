@@ -8,6 +8,8 @@
                 #:credential-keys
                 #:credential-headers
                 #:aws-credentials)
+  (:import-from #:aws-sdk/connection-cache
+                #:*use-connection-cache*)
   (:import-from #:aws-sign4)
   (:import-from #:dexador)
   (:import-from #:quri)
@@ -21,7 +23,8 @@
   (format nil "~(~A~).~(~A~).amazonaws.com" service region))
 
 (defun aws-request (&key (path "/") service method params headers payload
-                      (session *session*))
+                      (session *session*)
+                      (use-connection-cache *use-connection-cache*))
   (let ((credentials (or (session-credentials session)
                          (aws-credentials)))
         (region (session-region session)))
@@ -50,4 +53,5 @@
                                 ,@(credential-headers credentials)
                                 ("Content-Type" . "application/x-amz-json-1.0")
                                 ,@headers)
-                     :content payload)))))
+                     :content payload
+                     :keep-alive use-connection-cache)))))
