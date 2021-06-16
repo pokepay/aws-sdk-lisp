@@ -58,14 +58,8 @@
                  :secret-access-key secret-access-key
                  :session-token (aget section "aws_session_token")
                  :provider-name (format nil "shared-config: ~A"
-                                        (shared-config-config-path shared-config)))))))
+                                        (shared-config-config-path shared-config))))))
 
-    (let ((section (with-slots (config-path profile) shared-config
-                     (when (and config-path
-                                (probe-file config-path))
-                       (read-from-file config-path
-                                       :profile profile
-                                       :allow-no-profile t)))))
       (let ((role-arn (aget section "role_arn"))
             (source-profile (aget section "source_profile"))
             (credential-source (aget section "credential_source")))
@@ -83,8 +77,14 @@
                                          :credential-source credential-source
                                          :external-id (aget section "external_id")
                                          :serial-number (aget section "mfa_serial")
-                                         :role-session-name (aget section "role_session_name")))))
+                                         :role-session-name (aget section "role_session_name"))))))
 
+    (let ((section (with-slots (config-path profile) shared-config
+                     (when (and config-path
+                                (probe-file config-path))
+                       (read-from-file config-path
+                                       :profile profile
+                                       :allow-no-profile t)))))
       (let ((region (aget section "region")))
         (when region
           (setf (shared-config-region shared-config) region))))
