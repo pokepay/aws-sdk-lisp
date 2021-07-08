@@ -15,7 +15,8 @@
 
 (defclass shared-provider (provider)
   ((file :initarg :file
-         :initform #P"~/.aws/credentials")
+         :initform (merge-pathnames ".aws/credentials"
+                                    (user-homedir-pathname)))
    (profile :initarg :profile
             :initform *aws-profile*
             :accessor provider-profile)
