@@ -38,11 +38,11 @@
                                :method method
                                :host host
                                :path path
-                               :params (mapcar #'(lambda (x) (if (eq (cdr x) t) (cons (car x) "true") x)) params)
+                               :params params
                                :headers headers
                                :payload (or payload ""))
         (dex:request (format nil "https://~A~A?~A" host path
-                             (quri:url-encode-params (mapcar #'(lambda (x) (if (eq (cdr x) t) (cons (car x) "true") x)) params)))
+                             (quri:url-encode-params params))
                      :method method
                      :headers `(("Authorization" . ,authorization)
                                 ("X-Amz-Date" . ,x-amz-date)
