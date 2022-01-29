@@ -52,7 +52,7 @@
                collect (cons (format nil "~A.member.~A" key i) v))))
     (boolean
      (list (cons key
-		 (if (eq value t)
+		 (if value
 		     "true"
 		     "false"))))
     (otherwise (list (cons key value)))))
