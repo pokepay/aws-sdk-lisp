@@ -6612,7 +6612,8 @@
  (common-lisp:defun get-account ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "apigateway" :method :get :params
-                             (common-lisp:cons "Action" "GetAccount"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "GetAccount")))
     "Account" common-lisp:nil))
  (common-lisp:export 'get-account))
 (common-lisp:progn

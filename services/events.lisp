@@ -1136,7 +1136,8 @@
  (common-lisp:defun describe-event-bus ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "events" :method :post :params
-                             (common-lisp:cons "Action" "DescribeEventBus"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "DescribeEventBus")))
     "DescribeEventBusResponse" common-lisp:nil))
  (common-lisp:export 'describe-event-bus))
 (common-lisp:progn

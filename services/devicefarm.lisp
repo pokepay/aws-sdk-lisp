@@ -4169,7 +4169,9 @@
  (common-lisp:defun get-account-settings ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "devicefarm" :method :post :params
-                             (common-lisp:cons "Action" "GetAccountSettings"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GetAccountSettings")))
     "GetAccountSettingsResult" common-lisp:nil))
  (common-lisp:export 'get-account-settings))
 (common-lisp:progn

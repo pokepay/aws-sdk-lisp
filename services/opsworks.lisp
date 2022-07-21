@@ -6416,8 +6416,9 @@
  (common-lisp:defun describe-my-user-profile ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "opsworks" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeMyUserProfile"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeMyUserProfile")))
     "DescribeMyUserProfileResult" common-lisp:nil))
  (common-lisp:export 'describe-my-user-profile))
 (common-lisp:progn

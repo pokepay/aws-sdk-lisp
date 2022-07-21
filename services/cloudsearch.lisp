@@ -2604,7 +2604,8 @@
  (common-lisp:defun list-domain-names ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "cloudsearch" :method :post :params
-                             (common-lisp:cons "Action" "ListDomainNames"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "ListDomainNames")))
     "ListDomainNamesResponse" "ListDomainNamesResult"))
  (common-lisp:export 'list-domain-names))
 (common-lisp:progn

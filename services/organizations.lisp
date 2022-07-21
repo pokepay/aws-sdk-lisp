@@ -2990,7 +2990,9 @@
  (common-lisp:defun delete-organization ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                             (common-lisp:cons "Action" "DeleteOrganization"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DeleteOrganization")))
     common-lisp:nil common-lisp:nil))
  (common-lisp:export 'delete-organization))
 (common-lisp:progn
@@ -3089,8 +3091,9 @@
  (common-lisp:defun describe-organization ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeOrganization"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeOrganization")))
     "DescribeOrganizationResponse" common-lisp:nil))
  (common-lisp:export 'describe-organization))
 (common-lisp:progn
@@ -3170,7 +3173,8 @@
  (common-lisp:defun enable-all-features ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                             (common-lisp:cons "Action" "EnableAllFeatures"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "EnableAllFeatures")))
     "EnableAllFeaturesResponse" common-lisp:nil))
  (common-lisp:export 'enable-all-features))
 (common-lisp:progn
@@ -3214,7 +3218,8 @@
  (common-lisp:defun leave-organization ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "organizations" :method :post :params
-                             (common-lisp:cons "Action" "LeaveOrganization"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "LeaveOrganization")))
     common-lisp:nil common-lisp:nil))
  (common-lisp:export 'leave-organization))
 (common-lisp:progn

@@ -4990,7 +4990,9 @@
  (common-lisp:defun get-checker-ip-ranges ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "route53" :method :get :params
-                             (common-lisp:cons "Action" "GetCheckerIpRanges"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GetCheckerIpRanges")))
     "GetCheckerIpRangesResponse" common-lisp:nil))
  (common-lisp:export 'get-checker-ip-ranges))
 (common-lisp:progn
@@ -5035,7 +5037,9 @@
  (common-lisp:defun get-health-check-count ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "route53" :method :get :params
-                             (common-lisp:cons "Action" "GetHealthCheckCount"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GetHealthCheckCount")))
     "GetHealthCheckCountResponse" common-lisp:nil))
  (common-lisp:export 'get-health-check-count))
 (common-lisp:progn
@@ -5098,7 +5102,9 @@
  (common-lisp:defun get-hosted-zone-count ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "route53" :method :get :params
-                             (common-lisp:cons "Action" "GetHostedZoneCount"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GetHostedZoneCount")))
     "GetHostedZoneCountResponse" common-lisp:nil))
  (common-lisp:export 'get-hosted-zone-count))
 (common-lisp:progn
@@ -5161,8 +5167,9 @@
  (common-lisp:defun get-traffic-policy-instance-count ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "route53" :method :get :params
-                             (common-lisp:cons "Action"
-                                               "GetTrafficPolicyInstanceCount"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GetTrafficPolicyInstanceCount")))
     "GetTrafficPolicyInstanceCountResponse" common-lisp:nil))
  (common-lisp:export 'get-traffic-policy-instance-count))
 (common-lisp:progn

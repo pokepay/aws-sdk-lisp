@@ -3657,8 +3657,9 @@
  (common-lisp:defun describe-active-receipt-rule-set ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "email" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeActiveReceiptRuleSet"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeActiveReceiptRuleSet")))
     "DescribeActiveReceiptRuleSetResponse"
     "DescribeActiveReceiptRuleSetResult"))
  (common-lisp:export 'describe-active-receipt-rule-set))
@@ -3825,14 +3826,16 @@
  (common-lisp:defun get-send-quota ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "email" :method :post :params
-                             (common-lisp:cons "Action" "GetSendQuota"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "GetSendQuota")))
     "GetSendQuotaResponse" "GetSendQuotaResult"))
  (common-lisp:export 'get-send-quota))
 (common-lisp:progn
  (common-lisp:defun get-send-statistics ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "email" :method :post :params
-                             (common-lisp:cons "Action" "GetSendStatistics"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "GetSendStatistics")))
     "GetSendStatisticsResponse" "GetSendStatisticsResult"))
  (common-lisp:export 'get-send-statistics))
 (common-lisp:progn
@@ -3894,7 +3897,9 @@
  (common-lisp:defun list-receipt-filters ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "email" :method :post :params
-                             (common-lisp:cons "Action" "ListReceiptFilters"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "ListReceiptFilters")))
     "ListReceiptFiltersResponse" "ListReceiptFiltersResult"))
  (common-lisp:export 'list-receipt-filters))
 (common-lisp:progn
@@ -3919,8 +3924,9 @@
  (common-lisp:defun list-verified-email-addresses ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "email" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "ListVerifiedEmailAddresses"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "ListVerifiedEmailAddresses")))
     "ListVerifiedEmailAddressesResponse" "ListVerifiedEmailAddressesResult"))
  (common-lisp:export 'list-verified-email-addresses))
 (common-lisp:progn

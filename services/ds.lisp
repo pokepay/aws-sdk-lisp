@@ -3777,7 +3777,9 @@
  (common-lisp:defun get-directory-limits ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "ds" :method :post :params
-                             (common-lisp:cons "Action" "GetDirectoryLimits"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GetDirectoryLimits")))
     "GetDirectoryLimitsResult" common-lisp:nil))
  (common-lisp:export 'get-directory-limits))
 (common-lisp:progn

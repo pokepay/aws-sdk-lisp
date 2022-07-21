@@ -1138,7 +1138,9 @@
  (common-lisp:defun delete-server-catalog ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "sms" :method :post :params
-                             (common-lisp:cons "Action" "DeleteServerCatalog"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DeleteServerCatalog")))
     "DeleteServerCatalogResponse" common-lisp:nil))
  (common-lisp:export 'delete-server-catalog))
 (common-lisp:progn
@@ -1239,7 +1241,9 @@
  (common-lisp:defun import-server-catalog ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "sms" :method :post :params
-                             (common-lisp:cons "Action" "ImportServerCatalog"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "ImportServerCatalog")))
     "ImportServerCatalogResponse" common-lisp:nil))
  (common-lisp:export 'import-server-catalog))
 (common-lisp:progn

@@ -1500,7 +1500,8 @@
  (common-lisp:defun list-domain-names ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "es" :method :get :params
-                             (common-lisp:cons "Action" "ListDomainNames"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "ListDomainNames")))
     "ListDomainNamesResponse" common-lisp:nil))
  (common-lisp:export 'list-domain-names))
 (common-lisp:progn

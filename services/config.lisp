@@ -3009,8 +3009,9 @@
  (common-lisp:defun get-compliance-summary-by-config-rule ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "config" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "GetComplianceSummaryByConfigRule"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GetComplianceSummaryByConfigRule")))
     "GetComplianceSummaryByConfigRuleResponse" common-lisp:nil))
  (common-lisp:export 'get-compliance-summary-by-config-rule))
 (common-lisp:progn

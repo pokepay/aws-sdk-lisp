@@ -4320,8 +4320,9 @@
  (common-lisp:defun delete-registration-code ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "iot" :method :delete :params
-                             (common-lisp:cons "Action"
-                                               "DeleteRegistrationCode"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DeleteRegistrationCode")))
     "DeleteRegistrationCodeResponse" common-lisp:nil))
  (common-lisp:export 'delete-registration-code))
 (common-lisp:progn
@@ -4436,7 +4437,8 @@
  (common-lisp:defun describe-endpoint ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "iot" :method :get :params
-                             (common-lisp:cons "Action" "DescribeEndpoint"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "DescribeEndpoint")))
     "DescribeEndpointResponse" common-lisp:nil))
  (common-lisp:export 'describe-endpoint))
 (common-lisp:progn
@@ -4551,7 +4553,8 @@
  (common-lisp:defun get-logging-options ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "iot" :method :get :params
-                             (common-lisp:cons "Action" "GetLoggingOptions"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "GetLoggingOptions")))
     "GetLoggingOptionsResponse" common-lisp:nil))
  (common-lisp:export 'get-logging-options))
 (common-lisp:progn
@@ -4594,7 +4597,9 @@
  (common-lisp:defun get-registration-code ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "iot" :method :get :params
-                             (common-lisp:cons "Action" "GetRegistrationCode"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GetRegistrationCode")))
     "GetRegistrationCodeResponse" common-lisp:nil))
  (common-lisp:export 'get-registration-code))
 (common-lisp:progn

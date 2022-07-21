@@ -7611,8 +7611,9 @@
  (common-lisp:defun delete-account-password-policy ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "iam" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DeleteAccountPasswordPolicy"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DeleteAccountPasswordPolicy")))
     common-lisp:nil common-lisp:nil))
  (common-lisp:export 'delete-account-password-policy))
 (common-lisp:progn
@@ -8006,8 +8007,9 @@
  (common-lisp:defun generate-credential-report ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "iam" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "GenerateCredentialReport"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GenerateCredentialReport")))
     "GenerateCredentialReportResponse" "GenerateCredentialReportResult"))
  (common-lisp:export 'generate-credential-report))
 (common-lisp:progn
@@ -8052,15 +8054,17 @@
  (common-lisp:defun get-account-password-policy ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "iam" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "GetAccountPasswordPolicy"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GetAccountPasswordPolicy")))
     "GetAccountPasswordPolicyResponse" "GetAccountPasswordPolicyResult"))
  (common-lisp:export 'get-account-password-policy))
 (common-lisp:progn
  (common-lisp:defun get-account-summary ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "iam" :method :post :params
-                             (common-lisp:cons "Action" "GetAccountSummary"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "GetAccountSummary")))
     "GetAccountSummaryResponse" "GetAccountSummaryResult"))
  (common-lisp:export 'get-account-summary))
 (common-lisp:progn
@@ -8109,7 +8113,9 @@
  (common-lisp:defun get-credential-report ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "iam" :method :post :params
-                             (common-lisp:cons "Action" "GetCredentialReport"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GetCredentialReport")))
     "GetCredentialReportResponse" "GetCredentialReportResult"))
  (common-lisp:export 'get-credential-report))
 (common-lisp:progn
@@ -8597,8 +8603,9 @@
  (common-lisp:defun list-open-idconnect-providers ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "iam" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "ListOpenIDConnectProviders"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "ListOpenIDConnectProviders")))
     "ListOpenIDConnectProvidersResponse" "ListOpenIDConnectProvidersResult"))
  (common-lisp:export 'list-open-idconnect-providers))
 (common-lisp:progn
@@ -8679,7 +8686,8 @@
  (common-lisp:defun list-samlproviders ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "iam" :method :post :params
-                             (common-lisp:cons "Action" "ListSAMLProviders"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "ListSAMLProviders")))
     "ListSAMLProvidersResponse" "ListSAMLProvidersResult"))
  (common-lisp:export 'list-samlproviders))
 (common-lisp:progn

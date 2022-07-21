@@ -3754,8 +3754,9 @@ common-lisp:nil
  (common-lisp:defun download-default-key-pair ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DownloadDefaultKeyPair"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DownloadDefaultKeyPair")))
     "DownloadDefaultKeyPairResult" common-lisp:nil))
  (common-lisp:export 'download-default-key-pair))
 (common-lisp:progn
@@ -4164,7 +4165,8 @@ common-lisp:nil
  (common-lisp:defun is-vpc-peered ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                             (common-lisp:cons "Action" "IsVpcPeered"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "IsVpcPeered")))
     "IsVpcPeeredResult" common-lisp:nil))
  (common-lisp:export 'is-vpc-peered))
 (common-lisp:progn
@@ -4190,7 +4192,8 @@ common-lisp:nil
  (common-lisp:defun peer-vpc ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                             (common-lisp:cons "Action" "PeerVpc"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "PeerVpc")))
     "PeerVpcResult" common-lisp:nil))
  (common-lisp:export 'peer-vpc))
 (common-lisp:progn
@@ -4288,7 +4291,8 @@ common-lisp:nil
  (common-lisp:defun unpeer-vpc ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "lightsail" :method :post :params
-                             (common-lisp:cons "Action" "UnpeerVpc"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "UnpeerVpc")))
     "UnpeerVpcResult" common-lisp:nil))
  (common-lisp:export 'unpeer-vpc))
 (common-lisp:progn

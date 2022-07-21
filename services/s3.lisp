@@ -8439,7 +8439,8 @@
  (common-lisp:defun list-buckets ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "s3" :method :get :params
-                             (common-lisp:cons "Action" "ListBuckets"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "ListBuckets")))
     "ListBucketsOutput" common-lisp:nil))
  (common-lisp:export 'list-buckets))
 (common-lisp:progn

@@ -2777,7 +2777,8 @@
  (common-lisp:defun describe-locations ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                             (common-lisp:cons "Action" "DescribeLocations"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "DescribeLocations")))
     "Locations" common-lisp:nil))
  (common-lisp:export 'describe-locations))
 (common-lisp:progn
@@ -2802,8 +2803,9 @@
  (common-lisp:defun describe-virtual-gateways ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "directconnect" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeVirtualGateways"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeVirtualGateways")))
     "VirtualGateways" common-lisp:nil))
  (common-lisp:export 'describe-virtual-gateways))
 (common-lisp:progn

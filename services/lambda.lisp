@@ -2490,7 +2490,9 @@
  (common-lisp:defun get-account-settings ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "lambda" :method :get :params
-                             (common-lisp:cons "Action" "GetAccountSettings"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GetAccountSettings")))
     "GetAccountSettingsResponse" common-lisp:nil))
  (common-lisp:export 'get-account-settings))
 (common-lisp:progn

@@ -1354,8 +1354,9 @@
  (common-lisp:defun list-curated-environment-images ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "codebuild" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "ListCuratedEnvironmentImages"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "ListCuratedEnvironmentImages")))
     "ListCuratedEnvironmentImagesOutput" common-lisp:nil))
  (common-lisp:export 'list-curated-environment-images))
 (common-lisp:progn

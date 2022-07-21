@@ -3445,7 +3445,8 @@
  (common-lisp:defun get-account-balance ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "mturk-requester" :method :post :params
-                             (common-lisp:cons "Action" "GetAccountBalance"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "GetAccountBalance")))
     "GetAccountBalanceResponse" common-lisp:nil))
  (common-lisp:export 'get-account-balance))
 (common-lisp:progn

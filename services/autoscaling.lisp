@@ -4402,16 +4402,18 @@
  (common-lisp:defun describe-account-limits ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeAccountLimits"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeAccountLimits")))
     "DescribeAccountLimitsAnswer" "DescribeAccountLimitsResult"))
  (common-lisp:export 'describe-account-limits))
 (common-lisp:progn
  (common-lisp:defun describe-adjustment-types ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeAdjustmentTypes"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeAdjustmentTypes")))
     "DescribeAdjustmentTypesAnswer" "DescribeAdjustmentTypesResult"))
  (common-lisp:export 'describe-adjustment-types))
 (common-lisp:progn
@@ -4458,8 +4460,9 @@
  (common-lisp:defun describe-auto-scaling-notification-types ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeAutoScalingNotificationTypes"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeAutoScalingNotificationTypes")))
     "DescribeAutoScalingNotificationTypesAnswer"
     "DescribeAutoScalingNotificationTypesResult"))
  (common-lisp:export 'describe-auto-scaling-notification-types))
@@ -4487,8 +4490,9 @@
  (common-lisp:defun describe-lifecycle-hook-types ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeLifecycleHookTypes"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeLifecycleHookTypes")))
     "DescribeLifecycleHookTypesAnswer" "DescribeLifecycleHookTypesResult"))
  (common-lisp:export 'describe-lifecycle-hook-types))
 (common-lisp:progn
@@ -4558,8 +4562,9 @@
  (common-lisp:defun describe-metric-collection-types ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeMetricCollectionTypes"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeMetricCollectionTypes")))
     "DescribeMetricCollectionTypesAnswer"
     "DescribeMetricCollectionTypesResult"))
  (common-lisp:export 'describe-metric-collection-types))
@@ -4632,8 +4637,9 @@
  (common-lisp:defun describe-scaling-process-types ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeScalingProcessTypes"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeScalingProcessTypes")))
     "ProcessesType" "DescribeScalingProcessTypesResult"))
  (common-lisp:export 'describe-scaling-process-types))
 (common-lisp:progn
@@ -4680,8 +4686,9 @@
  (common-lisp:defun describe-termination-policy-types ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "autoscaling" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeTerminationPolicyTypes"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeTerminationPolicyTypes")))
     "DescribeTerminationPolicyTypesAnswer"
     "DescribeTerminationPolicyTypesResult"))
  (common-lisp:export 'describe-termination-policy-types))

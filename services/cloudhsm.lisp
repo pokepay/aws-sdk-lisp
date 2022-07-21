@@ -1375,7 +1375,9 @@
  (common-lisp:defun list-available-zones ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "cloudhsm" :method :post :params
-                             (common-lisp:cons "Action" "ListAvailableZones"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "ListAvailableZones")))
     "ListAvailableZonesResponse" common-lisp:nil))
  (common-lisp:export 'list-available-zones))
 (common-lisp:progn

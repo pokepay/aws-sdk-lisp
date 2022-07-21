@@ -3644,7 +3644,8 @@
  (common-lisp:defun get-change-token ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "waf" :method :post :params
-                             (common-lisp:cons "Action" "GetChangeToken"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "GetChangeToken")))
     "GetChangeTokenResponse" common-lisp:nil))
  (common-lisp:export 'get-change-token))
 (common-lisp:progn

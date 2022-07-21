@@ -3270,8 +3270,9 @@
  (common-lisp:defun describe-cross-account-access-role ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "inspector" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeCrossAccountAccessRole"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeCrossAccountAccessRole")))
     "DescribeCrossAccountAccessRoleResponse" common-lisp:nil))
  (common-lisp:export 'describe-cross-account-access-role))
 (common-lisp:progn

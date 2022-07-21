@@ -4928,8 +4928,9 @@
  (common-lisp:defun disassociate-service-role-from-account ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "greengrass" :method :delete :params
-                             (common-lisp:cons "Action"
-                                               "DisassociateServiceRoleFromAccount"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DisassociateServiceRoleFromAccount")))
     "DisassociateServiceRoleFromAccountResponse" common-lisp:nil))
  (common-lisp:export 'disassociate-service-role-from-account))
 (common-lisp:progn
@@ -5223,8 +5224,9 @@
  (common-lisp:defun get-service-role-for-account ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "greengrass" :method :get :params
-                             (common-lisp:cons "Action"
-                                               "GetServiceRoleForAccount"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GetServiceRoleForAccount")))
     "GetServiceRoleForAccountResponse" common-lisp:nil))
  (common-lisp:export 'get-service-role-for-account))
 (common-lisp:progn

@@ -1495,7 +1495,8 @@
  (common-lisp:defun describe-limits ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "kinesis" :method :post :params
-                             (common-lisp:cons "Action" "DescribeLimits"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "DescribeLimits")))
     "DescribeLimitsOutput" common-lisp:nil))
  (common-lisp:export 'describe-limits))
 (common-lisp:progn

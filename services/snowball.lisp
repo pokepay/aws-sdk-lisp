@@ -1854,7 +1854,8 @@
  (common-lisp:defun get-snowball-usage ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "snowball" :method :post :params
-                             (common-lisp:cons "Action" "GetSnowballUsage"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "GetSnowballUsage")))
     "GetSnowballUsageResult" common-lisp:nil))
  (common-lisp:export 'get-snowball-usage))
 (common-lisp:progn

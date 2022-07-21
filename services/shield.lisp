@@ -884,7 +884,9 @@
  (common-lisp:defun create-subscription ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "shield" :method :post :params
-                             (common-lisp:cons "Action" "CreateSubscription"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "CreateSubscription")))
     "CreateSubscriptionResponse" common-lisp:nil))
  (common-lisp:export 'create-subscription))
 (common-lisp:progn
@@ -909,7 +911,9 @@
  (common-lisp:defun delete-subscription ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "shield" :method :post :params
-                             (common-lisp:cons "Action" "DeleteSubscription"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DeleteSubscription")))
     "DeleteSubscriptionResponse" common-lisp:nil))
  (common-lisp:export 'delete-subscription))
 (common-lisp:progn
@@ -952,8 +956,9 @@
  (common-lisp:defun describe-subscription ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "shield" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeSubscription"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeSubscription")))
     "DescribeSubscriptionResponse" common-lisp:nil))
  (common-lisp:export 'describe-subscription))
 (common-lisp:progn

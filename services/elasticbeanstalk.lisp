@@ -4923,8 +4923,9 @@
  (common-lisp:defun create-storage-location ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "CreateStorageLocation"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "CreateStorageLocation")))
     "CreateStorageLocationResultMessage" "CreateStorageLocationResult"))
  (common-lisp:export 'create-storage-location))
 (common-lisp:progn
@@ -5307,8 +5308,9 @@
  (common-lisp:defun list-available-solution-stacks ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "elasticbeanstalk" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "ListAvailableSolutionStacks"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "ListAvailableSolutionStacks")))
     "ListAvailableSolutionStacksResultMessage"
     "ListAvailableSolutionStacksResult"))
  (common-lisp:export 'list-available-solution-stacks))

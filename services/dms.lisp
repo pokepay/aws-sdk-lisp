@@ -4294,8 +4294,9 @@
  (common-lisp:defun describe-account-attributes ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "dms" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "DescribeAccountAttributes"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "DescribeAccountAttributes")))
     "DescribeAccountAttributesResponse" common-lisp:nil))
  (common-lisp:export 'describe-account-attributes))
 (common-lisp:progn

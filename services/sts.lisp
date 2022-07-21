@@ -834,7 +834,8 @@
  (common-lisp:defun get-caller-identity ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "sts" :method :post :params
-                             (common-lisp:cons "Action" "GetCallerIdentity"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action" "GetCallerIdentity")))
     "GetCallerIdentityResponse" "GetCallerIdentityResult"))
  (common-lisp:export 'get-caller-identity))
 (common-lisp:progn

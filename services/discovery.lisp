@@ -1874,15 +1874,18 @@
  (common-lisp:defun export-configurations ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                             (common-lisp:cons "Action"
-                                               "ExportConfigurations"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "ExportConfigurations")))
     "ExportConfigurationsResponse" common-lisp:nil))
  (common-lisp:export 'export-configurations))
 (common-lisp:progn
  (common-lisp:defun get-discovery-summary ()
    (aws-sdk/generator/operation::parse-response
     (aws-sdk/api:aws-request :service "discovery" :method :post :params
-                             (common-lisp:cons "Action" "GetDiscoverySummary"))
+                             (common-lisp:list
+                              (common-lisp:cons "Action"
+                                                "GetDiscoverySummary")))
     "GetDiscoverySummaryResponse" common-lisp:nil))
  (common-lisp:export 'get-discovery-summary))
 (common-lisp:progn
