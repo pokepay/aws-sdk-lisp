@@ -42,7 +42,7 @@
                                :headers headers
                                :payload (or payload ""))
         (dex:request (format nil "https://~A~A?~A" host path
-                             (quri:url-encode-params params))
+                             (aws-sign4:create-canonical-query-string params))
                      :method method
                      :headers `(("Authorization" . ,authorization)
                                 ("X-Amz-Date" . ,x-amz-date)
